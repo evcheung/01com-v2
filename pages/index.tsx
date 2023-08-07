@@ -7,6 +7,7 @@ import {
   CodeTag,
 } from '../components/sharedstyles'
 import Cards from '../components/cards'
+import { PrimaryButton, SecondaryButton } from '../components/shared/button/button'
 
 export default function Home() {
   return (
@@ -17,14 +18,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
+        <PrimaryButton color="blue" size="large">Large Blue Primary</PrimaryButton>
+        <PrimaryButton color="green" size="large">Large Green Primary</PrimaryButton>
+        <PrimaryButton color="blue" size="small" disabled>Small Blue Primary Disabled</PrimaryButton>
 
-        <Description>
-          Get started by editing
-          <CodeTag>pages/index.tsx</CodeTag>
-        </Description>
+        <SecondaryButton color="blue" size="large">Large Blue Secondary</SecondaryButton>
+        <SecondaryButton color="blue" size="large" disabled>Large Blue Secondary Disabled</SecondaryButton>
 
         <Cards />
       </Main>

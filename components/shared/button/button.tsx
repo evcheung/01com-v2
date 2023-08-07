@@ -1,69 +1,92 @@
 import styled from 'styled-components'
 import { theme } from '../../../theme';
 
-type ButtonColors = 'blue' | 'green';
-
-type ButtonSizes = 'small' | 'large';
-
-interface ButtonProps {
-  color: ButtonColors;
-  size: ButtonSizes;
+export enum ButtonColors {
+  Blue = 'Blue',
+  Green = 'Green',
+  White = 'White',
 }
 
-const ColorValueMap = new Map<ButtonColors, string>([
-  ['blue', theme.colors.brand.primary],
-  ['green', theme.colors.green.primary],
+export enum ButtonTextColors {
+  Blue = 'Blue',
+  Green = 'Green',
+}
+
+export enum ButtonSizes {
+  Small = 'Small',
+  Large = 'Large'
+}
+
+export enum ButtonVariants {
+  Primary = "Primary",
+  Secondary = "Secondary",
+}
+
+interface ButtonProps {
+  btnColor?: ButtonColors;
+  size?: ButtonSizes;
+  variant?: ButtonVariants;
+  textColor?: ButtonTextColors;
+}
+
+const buttonColorMap = new Map<ButtonColors, string>([
+  [ButtonColors.Blue, theme.colors.brand.primary],
+  [ButtonColors.Green, theme.colors.green.primary],
 ])
 
-const SizeValueMap = new Map<ButtonSizes, React.CSSProperties>([
-  ['small', {
+const getButtonColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
+
+const getPrimaryButtonTextColor = (props: ButtonProps) => props.btnColor ? theme.colors.neutral.xs : buttonColorMap.get(props.btnColor);
+const getSecondaryButtonTextColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
+
+const buttonSizeMap = new Map<ButtonSizes, React.CSSProperties>([
+  [ButtonSizes.Small, {
     fontSize: theme.fontSize.xs,
     padding: '8px 16px',
   }],
-  ['large', {
+  [ButtonSizes.Large, {
     fontSize: theme.fontSize.sm,
     padding: '17px 32px',
   }],
 ])
 
-const getColor = (props: ButtonProps) => {
-  return ColorValueMap.get(props.color)
-};
-const getSize = (props: ButtonProps) => {
-  return SizeValueMap.get(props.size)
+const getButtonSize = (props: ButtonProps) => {
+  return buttonSizeMap.get(props.size)
 };
 
 export const Button = styled.button<ButtonProps>`
   border: none;
   font-weight: ${theme.fontWeight[700]};
   cursor: pointer;
+  ${props => ({
+    ...getButtonSize(props),
+    pointerEvents: props.disabled ? 'none' : 'auto',
+  })};
 `
 
 export const PrimaryButton = styled(Button) <ButtonProps>`
-  color: ${theme.colors.neutral.xs};
   ${props => ({
-    ...getSize(props),
-    pointerEvents: props.disabled ? 'none' : 'auto',
-    backgroundColor: props.disabled ? theme.colors.neutral.md : getColor(props),
+    backgroundColor: props.disabled ? theme.colors.neutral.md : getButtonColor(props),
+    color: props.disabled ? theme.colors.neutral.xs : getPrimaryButtonTextColor(props),
   })};
 `
 
 export const SecondaryButton = styled(Button) <ButtonProps>`
-  background-color: ${theme.colors.neutral.xs};
   ${props => ({
-    ...getSize(props),
-    pointerEvents: props.disabled ? 'none' : 'auto',
-    color: props.disabled ? theme.colors.neutral.md : getColor(props),
-  })};
-`
+    backgroundColor: props.disabled ? theme.colors.neutral.md : 'transparent',
+    border: props.disabled ? 'none' : `2px solid ${getButtonColor(props)}`,
+    color: props.disabled ? theme.colors.neutral.xs : getSecondaryButtonTextColor(props),
+  })};`
+
 
 PrimaryButton.defaultProps = {
-  size: 'large',
-  color: 'blue'
+  textColor: ButtonTextColors.Blue,
+  size: ButtonSizes.Large
 }
-
 
 SecondaryButton.defaultProps = {
-  size: 'large',
-  color: 'blue'
+  textColor: ButtonTextColors.Blue,
+  size: ButtonSizes.Large
 }
+
+export default Button;

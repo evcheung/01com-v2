@@ -2,12 +2,11 @@ import Head from 'next/head'
 import {
   Container,
   Main,
-  Title,
-  Description,
-  CodeTag,
 } from '../components/sharedstyles'
 import Cards from '../components/cards'
-import { PrimaryButton, SecondaryButton } from '../components/shared/button/button'
+import Button, { ButtonColors, ButtonSizes, ButtonVariants, PrimaryButton, SecondaryButton } from '../components/shared/button/button'
+import Text, { TextVariants } from '../components/shared/typography/text'
+import Heading, { HeadingColors, HeadingVariants } from '../components/shared/typography/heading'
 
 export default function Home() {
   return (
@@ -18,13 +17,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <PrimaryButton color="blue" size="large">Large Blue Primary</PrimaryButton>
-        <PrimaryButton color="green" size="large">Large Green Primary</PrimaryButton>
-        <PrimaryButton color="blue" size="small" disabled>Small Blue Primary Disabled</PrimaryButton>
+        <PrimaryButton >Large Primary</PrimaryButton>
+        <PrimaryButton btnColor={ButtonColors.Blue} size={ButtonSizes.Large}>Large Blue Primary</PrimaryButton>
+        <PrimaryButton btnColor={ButtonColors.Green} size={ButtonSizes.Large}>Large Green Primary</PrimaryButton>
+        <PrimaryButton size={ButtonSizes.Small} disabled>Small Primary Disabled</PrimaryButton>
 
-        <SecondaryButton color="blue" size="large">Large Blue Secondary</SecondaryButton>
-        <SecondaryButton color="blue" size="large" disabled>Large Blue Secondary Disabled</SecondaryButton>
+        <SecondaryButton >Large Secondary</SecondaryButton>
+        <SecondaryButton size={ButtonSizes.Small} disabled>Small Secondary</SecondaryButton>
 
+        <Text variant={TextVariants.Body1}>Body 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Integer quis auctor elit sed vulputate.</Text>
+        <Text variant={TextVariants.Body2}>Body 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Integer quis auctor elit sed vulputate.</Text>
+        <Text variant={TextVariants.Feat1}>Feat 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Integer quis auctor elit sed vulputate.</Text>
+        <Text variant={TextVariants.Feat2}>Feat 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Integer quis auctor elit sed vulputate.</Text>
+        <Text variant={TextVariants.Feat3}>Feat 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Integer quis auctor elit sed vulputate.</Text>
+
+        <Heading variant={HeadingVariants.Heading1}>Heading 1</Heading>
+        <Heading variant={HeadingVariants.Heading2}>Heading 2</Heading>
+        <Heading variant={HeadingVariants.Heading3}>Heading 3</Heading>
         <Cards />
       </Main>
     </Container>

@@ -23,26 +23,18 @@ const fontSize = {
   lg: 20,
   xl: 24,
   xxl: 30,
-  xxxl: 36
+  xxxl: 36,
+  xxxxl: 48
 }
 
 const fontWeight = {
   300: 300,
-  500: 500,
+  400: 400,
   700: 700
-}
-
-const lineHeight = {
-  xs: 16,
-  sm: 18,
-  md: 30,
-  lg: 32,
-  xl: 64,
 }
 
 export const theme = {
   colors,
   fontSize,
   fontWeight,
-  lineHeight
 }

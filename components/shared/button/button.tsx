@@ -88,5 +88,3 @@ SecondaryButton.defaultProps = {
   textColor: ButtonTextColors.Blue,
   size: ButtonSizes.Large
 }
-
-export default Button;

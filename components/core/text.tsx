@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../../theme";
 
 type TextTransform = 'uppercase' | 'lowercase' | 'capitalize';
 
@@ -83,7 +83,7 @@ const textVariantValueMap = new Map<TextVariants, React.CSSProperties>([
 
 const getTextVariant = (props: TextProps) => textVariantValueMap.get(props.variant)
 
-const Text = styled.p<TextProps>`
+export const Text = styled.p<TextProps>`
   font-weight: ${getTextWeight};
   color: ${getTextColor};
   margin: 0;
@@ -100,5 +100,3 @@ Text.defaultProps = {
   weight: TextWeights.Regular,
   alignment: TextAlignments.Left
 };
-
-export default Text;

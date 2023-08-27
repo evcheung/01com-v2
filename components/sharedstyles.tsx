@@ -1,21 +1,25 @@
 import styled from 'styled-components'
+import { theme } from '../theme'
+import texture from '../public/assets/texture.jpg'
 
 const Container = styled.div`
-  padding: 0 0.5rem;
+  background-color:  ${theme.colors.neutral.sm};
+  background: no-repeat top/contain url("${texture.src}");
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-direction: column nowrap;
   align-items: center;
-  height: 100vh;
-  min-height: 100vh;
+  justify-content: center;
 `
 const Main = styled.main`
-  padding: 5rem 0;
+  padding: 0px 48px;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 1600px;
+  min-height: 100vh;
 `
 
 const Title = styled.h1`

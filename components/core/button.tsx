@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../../theme';
+import { theme } from '../../theme';
 
 export enum ButtonColors {
   Blue = 'Blue',
@@ -27,6 +27,7 @@ interface ButtonProps {
   size?: ButtonSizes;
   variant?: ButtonVariants;
   textColor?: ButtonTextColors;
+  padding?: string;
 }
 
 const buttonColorMap = new Map<ButtonColors, string>([
@@ -46,7 +47,7 @@ const buttonSizeMap = new Map<ButtonSizes, React.CSSProperties>([
   }],
   [ButtonSizes.Large, {
     fontSize: theme.fontSize.sm,
-    padding: '17px 32px',
+    padding: '18px 32px',
   }],
 ])
 
@@ -58,10 +59,12 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   font-weight: ${theme.fontWeight[700]};
   cursor: pointer;
+  font-family: inherit;
   ${props => ({
     ...getButtonSize(props),
     pointerEvents: props.disabled ? 'none' : 'auto',
   })};
+  padding: ${(props) => props.padding}
 `
 
 export const PrimaryButton = styled(Button) <ButtonProps>`

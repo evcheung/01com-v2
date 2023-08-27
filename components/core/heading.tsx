@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import Text from "./text";
+import { theme } from "../../theme";
 
 export enum HeadingVariants {
   Heading1 = "Heading1",
@@ -11,7 +10,8 @@ export enum HeadingVariants {
 export enum HeadingColors {
   Neutral = 'Neutral',
   Blue = "Blue",
-  Green = "Green"
+  Green = "Green",
+  White = "White",
 }
 
 interface HeadingProps {
@@ -23,6 +23,7 @@ const headingColorMap = new Map<HeadingColors, string>([
   [HeadingColors.Blue, theme.colors.brand.primary],
   [HeadingColors.Green, theme.colors.green.primary],
   [HeadingColors.Neutral, theme.colors.neutral.lg],
+  [HeadingColors.White, theme.colors.neutral.xs],
 ])
 
 const getHeadingColor = (props: HeadingProps) => headingColorMap.get(props.headingColor)

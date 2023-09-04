@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 import { theme } from '../theme'
-import texture from '../public/assets/texture.jpg'
+import texture from '../public/assets/texture.png'
 
 const Container = styled.div`
-  background-color:  ${theme.colors.neutral.sm};
   background: no-repeat top/contain url("${texture.src}");
+  background-color:  ${theme.colors.neutral.sm};
   display: flex;
   flex-direction: column nowrap;
   align-items: center;
   justify-content: center;
+  padding: 0px 68px;
 `
 const Main = styled.main`
-  padding: 0px 48px;
   flex: 1;
   display: flex;
   flex-direction: column;

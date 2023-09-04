@@ -1,6 +1,8 @@
 
+import { ReactNode } from 'react';
 import { FooterNav } from './FooterNav'
 import { NavBar } from './NavBar'
+import { PageHeader } from './PageBanner';
 import { Container, Main } from './sharedstyles'
 
 // const fallbackSettings: SettingsPayload = {
@@ -8,27 +10,41 @@ import { Container, Main } from './sharedstyles'
 //   footer: [],
 // }
 
+export enum LayoutVariants {
+  Dark = "Dark",
+  Light = "Light"
+}
+
 export interface LayoutProps {
-  children: React.ReactNode
+  variant?: LayoutVariants;
+  pageTitle?: string;
+  headerContent?: ReactNode;
+  children: ReactNode;
   //   settings: SettingsPayload | undefined
   //   preview?: boolean
   //   loading?: boolean
 }
 
 export default function Layout({
+  variant = LayoutVariants.Light,
+  pageTitle,
+  headerContent,
   children,
 }: LayoutProps) {
   return (
     <Container>
+      {/* <Navbar menuItems={settings?.menuItems} /> */}
       <Main>
-
-        {/* <Navbar menuItems={settings?.menuItems} /> */}
-        <NavBar />
-
+        {variant === LayoutVariants.Light ?
+          <NavBar />
+          :
+          <PageHeader label={pageTitle}>
+            {headerContent}
+          </PageHeader>
+        }
         {children}
         <FooterNav />
-        {/* <Footer /> */}
-      </Main>
-    </Container>
+      </Main >
+    </Container >
   )
 }

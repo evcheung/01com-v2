@@ -10,6 +10,7 @@ export enum ButtonColors {
 export enum ButtonTextColors {
   Blue = 'Blue',
   Green = 'Green',
+  White = 'White',
 }
 
 export enum ButtonSizes {
@@ -35,19 +36,24 @@ const buttonColorMap = new Map<ButtonColors, string>([
   [ButtonColors.Green, theme.colors.green.primary],
 ])
 
-const getButtonColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
+const buttonTextColorMap = new Map<ButtonColors, string>([
+  [ButtonColors.Blue, theme.colors.neutral.xs],
+  [ButtonColors.Green, theme.colors.neutral.xs],
+  [ButtonColors.White, theme.colors.neutral.xl],
+])
 
-const getPrimaryButtonTextColor = (props: ButtonProps) => props.btnColor ? theme.colors.neutral.xs : buttonColorMap.get(props.btnColor);
+const getButtonColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
+const getPrimaryButtonTextColor = (props: ButtonProps) => props.btnColor ? buttonTextColorMap.get(props.btnColor) : theme.colors.neutral.xl;
 const getSecondaryButtonTextColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
 
 const buttonSizeMap = new Map<ButtonSizes, React.CSSProperties>([
   [ButtonSizes.Small, {
     fontSize: theme.fontSize.xs,
-    padding: '8px 16px',
+    padding: '6px 14px',
   }],
   [ButtonSizes.Large, {
     fontSize: theme.fontSize.sm,
-    padding: '18px 32px',
+    padding: '16px 38px',
   }],
 ])
 
@@ -60,17 +66,21 @@ export const Button = styled.button<ButtonProps>`
   font-weight: ${theme.fontWeight[700]};
   cursor: pointer;
   font-family: inherit;
+  box-sizing: border-box;
+  white-space: nowrap;
+  height: fit-content;
   ${props => ({
     ...getButtonSize(props),
     pointerEvents: props.disabled ? 'none' : 'auto',
   })};
-  padding: ${(props) => props.padding}
+  padding: ${(props) => props.padding};
 `
 
 export const PrimaryButton = styled(Button) <ButtonProps>`
   ${props => ({
     backgroundColor: props.disabled ? theme.colors.neutral.md : getButtonColor(props),
     color: props.disabled ? theme.colors.neutral.xs : getPrimaryButtonTextColor(props),
+    border: `2px solid ${getButtonColor(props)}`,
   })};
 `
 

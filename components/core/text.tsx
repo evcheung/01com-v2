@@ -6,7 +6,8 @@ type TextTransform = 'uppercase' | 'lowercase' | 'capitalize';
 export enum TextColors {
   Neutral = 'Neutral',
   Blue = "Blue",
-  Green = "Green"
+  Green = "Green",
+  White = "White"
 }
 
 export enum TextWeights {
@@ -50,6 +51,7 @@ const textColorValueMap = new Map<TextColors, string>([
   [TextColors.Blue, theme.colors.brand.primary],
   [TextColors.Green, theme.colors.green.primary],
   [TextColors.Neutral, theme.colors.neutral.lg],
+  [TextColors.White, theme.colors.neutral.xs],
 ])
 
 const getTextColor = (props: TextProps) => textColorValueMap.get(props.textColor)
@@ -57,7 +59,7 @@ const getTextColor = (props: TextProps) => textColorValueMap.get(props.textColor
 const textVariantValueMap = new Map<TextVariants, React.CSSProperties>([
   [TextVariants.Body1, {
     fontSize: theme.fontSize.lg,
-    fontWeight: textWeightMap.get(TextWeights.Regular),
+    fontWeight: textWeightMap.get(TextWeights.Light),
     lineHeight: '36px'
   }],
   [TextVariants.Body2, {

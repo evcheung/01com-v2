@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 
 export const Anchor = styled(Link)`
-  font-size: ${theme.fontSize.sm};
+  font-size: ${theme.fontSize.md};
   font-weight: ${theme.fontWeight[700]};
   color: ${theme.colors.brand.primary};
   cursor: pointer;

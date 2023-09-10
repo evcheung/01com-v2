@@ -52,7 +52,7 @@ export const FooterNav = () => {
           </Link>
           <NavLink href="/about" label="About 01 Communique"></NavLink>
           <NavLink href="/investor-relations" label="Investor Relations"></NavLink>
-          <NavLink href="/press-room" label="Press Room"></NavLink>
+          <NavLink href="/press-releases" label="Press Room"></NavLink>
           <NavLink href="/partner-programs" label="Partner Programs"></NavLink>
           <NavLink href="/careers" label="Careers"></NavLink>
           <NavLink href="/contact-us" label="Contact Us"></NavLink>
@@ -61,7 +61,7 @@ export const FooterNav = () => {
         </Box>
         <Box margin="24px 0px">
           <Text variant={TextVariants.Body2}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
-          <Text variant={TextVariants.Body2}>I'm InTouch, I'm OnCall, and IronCAP are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
+          <Text variant={TextVariants.Body2}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
         </Box>
         <Box flexDirection='row' flexJustify='space-between' flexAlignment='center'>
           <Text variant={TextVariants.Body2}>Copyright © 2023 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>

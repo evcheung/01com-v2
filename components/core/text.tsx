@@ -16,12 +16,6 @@ export enum TextWeights {
   Bold = "Bold"
 }
 
-export enum TextAlignments {
-  Left = "Left",
-  Right = "Right",
-  Center = "Center"
-}
-
 export enum TextVariants {
   Feat1 = "Feat1",
   Feat2 = "Feat2",
@@ -36,7 +30,7 @@ interface TextProps {
   weight?: TextWeights;
   italic?: boolean;
   textColor?: TextColors;
-  alignment?: TextAlignments;
+  alignment?: 'left' | 'right' | 'center';
 }
 
 const textWeightMap = new Map<TextWeights, number>([
@@ -93,12 +87,11 @@ export const Text = styled.p<TextProps>`
   ${props => ({
     textTransform: props.transform ? props.transform : 'none',
     fontStyle: props.italic ? 'italic' : 'auto',
-    textAlignment: props.alignment,
+    textAlign: props.alignment,
     ...getTextVariant(props)
   })};
 `;
 
 Text.defaultProps = {
-  weight: TextWeights.Regular,
-  alignment: TextAlignments.Left
+  variant: TextVariants.Body1,
 };

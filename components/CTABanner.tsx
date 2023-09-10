@@ -32,8 +32,8 @@ export const CTABanner = () => {
       <Box flexDirection='row' flexAlignment='center' flexJustify='space-between' width="100%" style={{ flexWrap: 'wrap', maxWidth: '1200px' }} >
         <Heading variant={HeadingVariants.Heading2} headingColor={HeadingColors.White} style={{ whiteSpace: 'nowrap' }}>Step In To The Future, Buy Now</Heading>
         <ButtonGrid>
-          <LinkedButton label="IronCAP" href="https://www.ironcap.ca/" target="blank" />
-          <LinkedButton label="IronCAP X" href="https://www.ironcap.ca/ironcap-x" target="blank" />
+          <LinkedButton label="IronCAP™" href="https://www.ironcap.ca/" target="blank" />
+          <LinkedButton label="IronCAP X™" href="https://www.ironcap.ca/ironcap-x" target="blank" />
           <LinkedButton label="I'm InTouch" href="/im-intouch" target="blank" />
           <LinkedButton label="I'm OnCall" href="/im-oncall" target="blank" />
         </ButtonGrid>

@@ -32,6 +32,7 @@ export default function Layout({
   children,
 }: LayoutProps) {
   return (
+    // TODO: add variant for Container to lower texture on dark navbar. Texture has to show through
     <Container>
       {/* <Navbar menuItems={settings?.menuItems} /> */}
       <Main>

@@ -36,8 +36,8 @@ const navBarVariantMap = new Map<NavBarVariants, React.CSSProperties>([
     backgroundColor: theme.colors.neutral.xs
   }],
   [NavBarVariants.Dark, {
-    background: `${theme.colors.neutral.xl}88`,
-    borderBottom: `1px solid ${theme.colors.neutral.xs}50`
+    background: `${theme.colors.neutral.xl}70`,
+    borderBottom: `1px solid ${theme.colors.neutral.xs}30`
   }]
 ])
 
@@ -72,10 +72,10 @@ export const NavBar = ({
         <Image src={Logo} alt="01com logo, click to return home" />
       </Link>
       <Box flexDirection='row'>
-        <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="blank" label="IronCAP" />
-        <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X" />
-        <NavLink color={navLinkColor} href="/im-intouch" label="I'm InTouch" />
-        <NavLink color={navLinkColor} href="/im-oncall" label="I'm OnCall" />
+        <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
+        <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+        <NavLink color={navLinkColor} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+        <NavLink color={navLinkColor} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
         <NavLink color={navLinkColor} href="/support" label="Support" />
         <NavLink color={navLinkColor} href="/intellectual-properties" label="Intellectual Properties" />
       </Box>

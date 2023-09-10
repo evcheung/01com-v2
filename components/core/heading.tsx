@@ -31,7 +31,7 @@ const getHeadingColor = (props: HeadingProps) => headingColorMap.get(props.headi
 const headingVariantMap = new Map<HeadingVariants, React.CSSProperties>([
   [HeadingVariants.Heading1, {
     fontSize: theme.fontSize.xxxxl,
-    fontWeight: theme.fontWeight[300],
+    fontWeight: theme.fontWeight[400],
     lineHeight: '64px'
   }],
   [HeadingVariants.Heading2, {

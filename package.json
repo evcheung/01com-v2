@@ -11,8 +11,10 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-modal-video": "^2.0.1",
     "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "sass": "^1.66.1",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {

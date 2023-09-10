@@ -3,6 +3,7 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
 import { Raleway } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 const theme: DefaultTheme = {
   colors: {
     primary: '#111',

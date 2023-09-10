@@ -10,7 +10,7 @@ const Banner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 0px;
+  padding: 40px 0px;
 `
 
 const ButtonGrid = styled.div`

@@ -38,19 +38,6 @@ line-height:24px;
 width:100%;
 `
 
-const InfoColumnGrid = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 88px;
-  padding: 0px 32px;
-`
-
-const HorizontalBorder = styled(Box)`
-  border-bottom: 1px solid ${theme.colors.neutral.md};
-  width: 100%;
-  margin: 12px 0px;
-`
-
 const AddressText = styled(Text)`
   font-size: ${theme.fontSize.md};
   font-weight: ${theme.fontWeight[300]};

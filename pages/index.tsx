@@ -1,11 +1,19 @@
 import Layout from '../components/Layout'
-import { CTABanner } from '../components/CTABanner'
 import { MainBanner } from '../components/MainBanner'
 import { PressCard } from '../components/PressCard'
 import Head from 'next/head'
 import { Box, ButtonColors, PrimaryButton } from '../components/core'
 import Heading, { HeadingVariants } from '../components/core/heading'
 import Link from 'next/link'
+import styled from 'styled-components'
+import Image from 'next/image'
+import livechat from '../public/assets/live-chat.svg'
+
+const LiveChatButton = styled(Link)`
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+`
 
 export default function Home() {
   return (
@@ -34,6 +42,10 @@ export default function Home() {
           <PressCard date="September 1, 2023" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit" link="/" />
         </Box>
       </Box>
-    </Layout>
+
+      <LiveChatButton href="#" target="_blank" onClick={() => { window.open('https://imoncall.01com.com/pre-sales/', 'pagename', 'resizable,height=600,width=500'); return false; }}>
+        <Image src={livechat} alt="chat bubble" />
+      </LiveChatButton>
+    </Layout >
   )
 }

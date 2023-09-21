@@ -34,6 +34,7 @@ interface ButtonProps {
 const buttonColorMap = new Map<ButtonColors, string>([
   [ButtonColors.Blue, theme.colors.brand.primary],
   [ButtonColors.Green, theme.colors.green.primary],
+  [ButtonColors.White, theme.colors.neutral.xs],
 ])
 
 const buttonTextColorMap = new Map<ButtonColors, string>([
@@ -87,7 +88,7 @@ export const PrimaryButton = styled(Button) <ButtonProps>`
 export const SecondaryButton = styled(Button) <ButtonProps>`
   ${props => ({
     backgroundColor: props.disabled ? theme.colors.neutral.md : 'transparent',
-    border: props.disabled ? 'none' : `2px solid ${getButtonColor(props)}`,
+    border: props.disabled ? '2px solid transparent' : `2px solid ${getButtonColor(props)}`,
     color: props.disabled ? theme.colors.neutral.xs : getSecondaryButtonTextColor(props),
   })};`
 

@@ -14,7 +14,7 @@ const StyledA = styled.a`
   cursor: pointer;
   margin: 0;
   padding: 0;
-  color: ${props => props.color};
+  color: ${theme.colors.neutral.xl}
 `
 
 const AnchorContainer = styled(Box)`
@@ -26,8 +26,8 @@ border-bottom: 1px solid ${theme.colors.neutral.md};
 width: 100%;
 `
 
-export const NavLink = ({ href, label, color, target = "_self" }) => (
-  <StyledA color={color}>
+export const NavLink = ({ href, label, target = "_self" }) => (
+  <StyledA>
     <Link href={href} target={target} passHref legacyBehavior>
       <AnchorContainer>
         {label}
@@ -90,8 +90,10 @@ const LogoContainer = styled(Image)`
 `
 
 const StyledLoginButton = styled(PrimaryButton) <{ isNavBarLight: boolean }>`
-padding: 10px 24px;
-color: ${props => props.isNavBarLight ? theme.colors.neutral.xs : theme.colors.brand.primary};
+&&& {
+  padding: 10px 24px !important;
+  color: ${props => props.isNavBarLight ? theme.colors.neutral.xs : theme.colors.brand.primary};
+}
 `
 
 const LoginMenuContainer = ({ onClickOutside }) => {
@@ -131,7 +133,6 @@ export const NavBarMobile = ({
   variant?: NavBarVariants
 }) => {
   const isLight = variant === NavBarVariants.Light
-  const navLinkColor = isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs;
   const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
   const clickHandler = () => setIsLoginMenuActive(!isLoginMenuActive)
   const clickOutsideHandler = () => setIsLoginMenuActive(false)
@@ -154,7 +155,7 @@ export const NavBarMobile = ({
             // top: '24px'
           },
           bmBurgerBars: {
-            background: `${theme.colors.neutral.xl}`,
+            background: isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs,
             height: "2px"
           },
           // bmBurgerBarsHover: {
@@ -176,11 +177,11 @@ export const NavBarMobile = ({
             top: '0',
             left: '0',
             height: '100%',
-            zIndex: 1100,
+            zIndex: isLight ? 1100 : 2100,
           },
           bmMenu: {
             background: theme.colors.neutral.xs,
-            opacity: '100%',
+            opacity: isLight ? '100%' : '98%',
             padding: '70px 0 0 0',
           },
           bmMorphShape: {
@@ -188,7 +189,6 @@ export const NavBarMobile = ({
           },
           bmItemList: {
             color: theme.colors.neutral.sm,
-            // padding: '20px'
           },
           bmItem: {
             display: 'inline-block'
@@ -199,22 +199,22 @@ export const NavBarMobile = ({
         }}>
           <Box flexDirection='column' width="100%">
             <AnchorDivider />
-            <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
+            <NavLink href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
             <AnchorDivider />
 
-            <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+            <NavLink href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
             <AnchorDivider />
 
-            <NavLink color={navLinkColor} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+            <NavLink href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
             <AnchorDivider />
 
-            <NavLink color={navLinkColor} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
+            <NavLink href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
             <AnchorDivider />
 
-            <NavLink color={navLinkColor} href="/support" label="Support" />
+            <NavLink href="/support" label="Support" />
             <AnchorDivider />
 
-            <NavLink color={navLinkColor} href="/intellectual-properties" label="Intellectual Properties" />
+            <NavLink href="/intellectual-properties" label="Intellectual Properties" />
             <AnchorDivider />
 
           </Box>

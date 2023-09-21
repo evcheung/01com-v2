@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { theme } from '../theme'
 import texture from '../public/assets/texture.png'
+import { breakpoints } from '../utils/breakpoints'
 
 const Container = styled.div`
   background: no-repeat top/contain url("${texture.src}");
@@ -10,6 +11,13 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0px 68px;
+  ${breakpoints("padding", "", [
+  { 1240: "0px 32px" },
+])}
+  ${breakpoints("padding", "", [
+  { 760: "0px 16px" },
+])}
+
 `
 const Main = styled.main`
   flex: 1;

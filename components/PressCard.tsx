@@ -21,8 +21,8 @@ interface PressCardProps {
 export const PressCard = ({ date, description, link, img, imgAlt }: PressCardProps) => {
   return (
     <PressCardContainer flexDirection='column' flexJustify='space-between' flexAlignment='flex-start'>
-      {img && <Image src={img} alt={imgAlt} height={84} />}
-      <Box margin="24px 0px 0px 0px">
+      {img && <Box margin="0 0 24px 0"><Image src={img} alt={imgAlt} height={84} /></Box>}
+      <Box>
         <Text style={{ fontSize: theme.fontSize.md }}>{date}</Text>
         <Text style={{ fontSize: theme.fontSize.xl, margin: '16px 0px 24px 0px' }}>{description}</Text>
       </Box>

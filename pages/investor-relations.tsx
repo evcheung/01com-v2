@@ -62,7 +62,7 @@ display:flex;
 
 const HeaderContent = () => {
   const [isOpen, setOpen] = useState(false);
-  const youtubeThumbnail = `https://i.ytimg.com/vi_webp/hWo17BKPwZs/0.webp`
+  const youtubeThumbnail = `https://i.ytimg.com/vi_webp/SpU45f6jV7w/0.webp`
 
   return (
     <Box padding="0px 48px">
@@ -88,7 +88,7 @@ const HeaderContent = () => {
             channel="youtube"
             youtube={{ mute: 0, autoplay: 0 }}
             isOpen={isOpen}
-            videoId="L61p2uyiMSo"
+            videoId="SpU45f6jV7w"
             onClose={() => setOpen(false)}
           />
           <PlayButton onClick={() => setOpen(true)}>

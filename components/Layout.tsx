@@ -1,7 +1,7 @@
 
 import { ReactNode } from 'react';
 import { FooterNav } from './FooterNav'
-import { NavBar } from './NavBar'
+import { NavBar, NavBarVariants } from './NavBar'
 import { PageHeader } from './PageBanner';
 import { Container, Main } from './sharedstyles'
 
@@ -37,7 +37,7 @@ export default function Layout({
       {/* <Navbar menuItems={settings?.menuItems} /> */}
       <Main>
         {variant === LayoutVariants.Light ?
-          <NavBar />
+          <NavBar variant={NavBarVariants.Light} />
           :
           <PageHeader label={pageTitle}>
             {headerContent}

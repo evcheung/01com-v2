@@ -7,43 +7,85 @@ import { theme } from '../theme'
 import { Anchor } from '../components/core/anchor'
 import pdf from '../public/assets/pdf.svg'
 import Image from 'next/image'
+import { breakpoints } from '../utils/breakpoints'
 
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
   width: 100%;
   margin: 12px 0px;
+
+${breakpoints("width", "", [
+  { 760: '18px 0' },
+])}
 `
 
 const StyledHeading = styled(Heading)`
 font-size: 36px;
 `
 
+const HeaderSubtextContainer = styled(Box)`
+width: 968px;
+padding: 0 48px;
+margin: 16px auto;
+${breakpoints("width", "", [
+  { 1200: '100%' },
+])}
+`
+
 const HeaderSubtext = () => {
   return (
-    <Box width="968px" padding="0 48px" margin="16px auto">
+    <HeaderSubtextContainer>
       <Text textColor={TextColors.White} alignment='center'>
         Innovative technologies used in our Post-Quantum Cybersecurity and Remote Access products are protected by a portfolio of international patents. Established in 1992, 01 Communique is always at the forefront of technology. Its latest innovation is on cybersecurity with the development focus on Post-Quantum Cryptography (PQC). 01's PQC algorithms are designed to operate on classical computer systems as we know them today while at the same time secure enough to safeguard against potential cyberattacks from quantum computers.
       </Text>
-    </Box>
+    </HeaderSubtextContainer>
   )
 }
+
+const PatentItemRow = styled(Box)`
+display: flex;
+align-items: center;
+justify-content: space-between;
+${breakpoints("flex-direction", "", [
+  { 760: 'column' },
+])}
+${breakpoints("align-items", "", [
+  { 760: 'flex-start' },
+])}
+`
 
 const PatentItem = ({ title, link }) => {
   return (
     <>
-      <Box flexDirection='row' flexAlignment='center' flexJustify='space-between'>
+      <PatentItemRow>
         <Text>{title}</Text>
         <Box flexDirection='row' flexAlignment='center'>
-          <Box margin="0px 8px">
+          <Box margin="0 8px 0 0">
             <Image src={pdf} alt="pdf icon"></Image>
           </Box>
           <Anchor href={link} target='_blank'>View PDF</Anchor>
         </Box>
-      </Box>
+      </PatentItemRow>
       <HorizontalBorder />
     </>
   )
 }
+
+const PageContainer = styled(Box)`
+width:100%;
+padding:0 100px;
+margin: 96px 0;
+
+${breakpoints("padding", "", [
+  { 1200: '0 32px' },
+])}
+${breakpoints("padding", "", [
+  { 760: '0' },
+])}
+${breakpoints("margin", "", [
+  { 760: '48px 0' },
+])}
+`
 
 const PATENTS = [
   {
@@ -89,7 +131,7 @@ export default function IntellectualProperties() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </Head>
-      <Box width="100%" padding='0 100px' margin="96px 0">
+      <PageContainer>
         <Box margin="0 0 38px 0">
           <StyledHeading as="h2">Patents</StyledHeading>
         </Box>
@@ -99,7 +141,7 @@ export default function IntellectualProperties() {
             PATENTS.map(patent => <PatentItem title={patent.title} link={patent.link} />)
           }
         </Box>
-      </Box>
+      </PageContainer>
     </Layout >
   )
 }

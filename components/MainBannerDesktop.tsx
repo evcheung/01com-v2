@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Box, Text, TextVariants, TextColors, SecondaryButton, PrimaryButton } from './core'
 import { theme } from '../theme'
-import Link from 'next/link'
 import Heading, { HeadingColors, HeadingVariants } from './core/heading'
 import { Carousel } from 'react-responsive-carousel'
 import securityBanner from '../public/assets/banner-security.jpg'

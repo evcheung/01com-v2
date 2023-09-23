@@ -5,20 +5,35 @@ import Heading, { HeadingVariants } from '../components/core/heading';
 import styled from 'styled-components';
 import { theme } from '../theme';
 import { PageContentContainer } from '../components/PageContentContainer';
-import { Anchor } from '../components/core/anchor';
+import { Anchor, AnchorVariants } from '../components/core/anchor';
 import { LiveChatButton } from '../components/LiveChatButton';
 import { ReactNode } from 'react';
+import { breakpoints } from '../utils/breakpoints';
+import { useWindowSize } from 'usehooks-ts';
 
 const ContactsColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
+  margin-top: 32px;
+  ${breakpoints("display", "", [
+  { 800: "flex" },
+])}
+  ${breakpoints("flex-direction", "", [
+  { 800: "column" },
+])}
 `
 const ContactsRowGrid = styled(Box)`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 24px;
   height: fit-content;
+  ${breakpoints("display", "", [
+  { 800: "flex" },
+])}
+    ${breakpoints("flex-direction", "", [
+  { 800: "column" },
+])}
 `
 const StyledText = styled(Text)`
   margin-bottom: 48px;
@@ -30,8 +45,16 @@ const StyledContactContainer = styled(Box)`
   height: fit-content;
   ${props => props.id === 'phone' && `
     margin-top: -48px;
-    height: 218px;
+    height: 223px;
   `}
+
+  ${breakpoints("margin", "", [
+  { 800: "0" },
+])}
+
+  ${breakpoints("height", "", [
+  { 800: "auto" },
+])}
 `
 const LiveChatButtonColumnGrid = styled(Box)`
   display: grid;
@@ -40,6 +63,7 @@ const LiveChatButtonColumnGrid = styled(Box)`
 `
 const StyledHeading = styled(Heading)`
 margin: 0 0 8px 0;
+}
 `
 const ContactSubText = styled(Text)`
 font-size: 12px;
@@ -54,6 +78,19 @@ const InfoColumnGrid = styled(Box)`
   grid-template-columns: 1fr 1fr;
   grid-gap: 88px;
   padding: 0px 32px;
+  
+  ${breakpoints("margin-top", "", [
+  { 800: "32px" },
+])}
+  ${breakpoints("padding", "", [
+  { 800: "0" },
+])}
+  ${breakpoints("grid-template-columns", "", [
+  { 800: "1fr" },
+])}
+  ${breakpoints("grid-gap", "", [
+  { 800: "32px" },
+])}
 `
 
 const HorizontalBorder = styled(Box)`
@@ -74,6 +111,7 @@ const ContactContainer = ({ heading, children, id }: { heading: string, children
 }
 
 export default function Support() {
+  const { width } = useWindowSize()
   return (
     <Layout variant={LayoutVariants.Dark} pageTitle="General Support">
       <Head>
@@ -106,12 +144,13 @@ export default function Support() {
               <Anchor href="mailto:help@01com.com">help@01com.com</Anchor>
             </ContactContainer>
             <ContactContainer heading="Phone" id="phone">
-              <Box flexDirection='row' flexAlignment='center' flexJustify="space-between">
-                <Box width="50%" style={{ borderRight: `1px dotted ${theme.colors.neutral.md}` }}>
+              <Box flexDirection='row' flexAlignment='center' flexJustify="space-between" style={{ maxWidth: '340px' }}>
+                <Box>
                   <ContactSubText>Sales (Toll-Free):</ContactSubText>
                   <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
                 </Box>
-                <Box width="40%" flexDirection='column'>
+                <Box style={{ borderRight: `1px dotted ${theme.colors.neutral.md}`, height: '46px' }}></Box>
+                <Box>
                   <ContactSubText>Tech Support:</ContactSubText>
                   <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
                 </Box>

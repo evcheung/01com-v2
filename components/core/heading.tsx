@@ -56,6 +56,27 @@ const headingMarkupMap = new Map<HeadingVariants, string>([
 
 const getMarkup = (props: HeadingProps) => headingMarkupMap.get(props.variant)
 
+
+const responsiveFontSizeMap = new Map<HeadingVariants, React.CSSProperties>([
+  [HeadingVariants.Heading1, {
+    fontSize: theme.fontSize.xxxl,
+    lineHeight: '60px'
+  }],
+  [HeadingVariants.Heading2, {
+    fontSize: theme.fontSize.xl,
+    lineHeight: '30px'
+  }],
+  [HeadingVariants.Heading3, {
+    fontSize: theme.fontSize.lg,
+    lineHeight: '26px'
+  }],
+])
+
+
+const getResponsiveFontSize = (props: HeadingProps) => responsiveFontSizeMap.get(props.variant)
+
+
+
 const Heading = styled.h1.attrs<HeadingProps>((props) => ({
   as: getMarkup(props),
 })) <HeadingProps>`
@@ -63,6 +84,11 @@ const Heading = styled.h1.attrs<HeadingProps>((props) => ({
     color: getHeadingColor(props),
     ...getHeadingVariant(props)
   })};
+  @media screen and (max-width: 760px) {
+    ${props => ({
+    ...getResponsiveFontSize(props)
+  })};
+  }
 `;
 
 Heading.defaultProps = {

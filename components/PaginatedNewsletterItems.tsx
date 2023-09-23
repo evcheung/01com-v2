@@ -2,42 +2,9 @@ import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 import { Box } from './core';
-import { PressCard } from './PressCard';
-import { theme } from '../theme';
 import { NewsletterCard } from './NewsletterCard';
-
-const StyledPaginateContainer = styled(Box)`
-  .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style-type: none;
-    font-weight: ${theme.fontWeight[700]};
-    font-size: ${theme.fontSize.md};
-    color: ${theme.colors.neutral};
-  }
-
-  .page-item {
-    padding: 8px;
-    margin: 0px 12px;
-    cursor: pointer;
-  }
-
-  .page-nav-label {
-    cursor: pointer;
-    :first-of-type{
-      margin-right: 48px;
-    }
-    :last-of-type{
-      margin-left: 48px;
-    }
-  }
-
-  .active {
-    border-bottom: 2px solid ${theme.colors.brand.primary};
-    color: ${theme.colors.brand.primary};
-  }
-`
+import { PaginateContainer } from './PaginateContainer';
+import { breakpoints } from '../utils/breakpoints';
 
 const CardGrid = styled(Box)`
   display: grid;
@@ -45,6 +12,16 @@ const CardGrid = styled(Box)`
   grid-gap: 24px;
   margin: 48px 0px;
   width: 100%;
+
+  ${breakpoints(" grid-template-columns", "", [
+  { 1200: '1fr 1fr' },
+])}
+    ${breakpoints(" grid-template-columns", "", [
+  { 760: '1fr' },
+])}
+${breakpoints("margin", "", [
+  { 760: '32px 0' },
+])}
 `
 
 function Items({ currentItems }) {
@@ -90,7 +67,7 @@ export const PaginatedNewsletterItems = ({ itemsPerPage, items }: {
   return (
     <>
       <Items currentItems={currentItems} />
-      <StyledPaginateContainer margin="0px 0px 96px 0px">
+      <PaginateContainer margin="0px 0px 96px 0px">
         <ReactPaginate
           breakLabel="..."
           nextLabel="Next"
@@ -111,7 +88,7 @@ export const PaginatedNewsletterItems = ({ itemsPerPage, items }: {
           marginPagesDisplayed={2}
           activeClassName="active"
         />
-      </StyledPaginateContainer>
+      </PaginateContainer>
     </>
   );
 }

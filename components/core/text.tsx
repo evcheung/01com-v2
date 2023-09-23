@@ -54,7 +54,7 @@ const textVariantValueMap = new Map<TextVariants, React.CSSProperties>([
   [TextVariants.Body1, {
     fontSize: theme.fontSize.lg,
     fontWeight: textWeightMap.get(TextWeights.Light),
-    lineHeight: '36px'
+    lineHeight: '36px',
   }],
   [TextVariants.Body2, {
     fontSize: theme.fontSize.xxs,
@@ -79,6 +79,21 @@ const textVariantValueMap = new Map<TextVariants, React.CSSProperties>([
 
 const getTextVariant = (props: TextProps) => textVariantValueMap.get(props.variant)
 
+
+const responsiveFontSizeMap = new Map<TextVariants, React.CSSProperties>([
+  [TextVariants.Body1, {
+    fontSize: theme.fontSize.md,
+    lineHeight: '30px',
+  }],
+  [TextVariants.Body2, { fontSize: theme.fontSize.xxs }],
+  [TextVariants.Feat1, { fontSize: theme.fontSize.sm, lineHeight: '24px' }],
+  [TextVariants.Feat2, { fontSize: theme.fontSize.sm }],
+  [TextVariants.Feat3, { fontSize: theme.fontSize.xs }],
+])
+
+
+const getResponsiveFontSize = (props: TextProps) => responsiveFontSizeMap.get(props.variant)
+
 export const Text = styled.p<TextProps>`
   font-weight: ${getTextWeight};
   color: ${getTextColor};
@@ -90,6 +105,11 @@ export const Text = styled.p<TextProps>`
     textAlign: props.alignment,
     ...getTextVariant(props)
   })};
+  @media screen and (max-width: 760px) {
+    ${props => ({
+    ...getResponsiveFontSize(props)
+  })};
+  }
 `;
 
 Text.defaultProps = {

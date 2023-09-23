@@ -5,14 +5,29 @@ import Heading, { HeadingVariants } from '../components/core/heading';
 import styled from 'styled-components';
 import { theme } from '../theme';
 import { PageContentContainer } from '../components/PageContentContainer';
-import { Anchor } from '../components/core/anchor';
+import { Anchor, AnchorVariants } from '../components/core/anchor';
 import { LiveChatButton } from '../components/LiveChatButton';
 import { ReactNode } from 'react';
+import { breakpoints } from '../utils/breakpoints';
+import { useWindowSize } from 'usehooks-ts';
 
 const ContactsColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
+
+${breakpoints("grid-template-columns", "", [
+  { 900: '1fr' },
+])}
+${breakpoints("grid-gap", "", [
+  { 900: 'inherit' },
+])}
+${breakpoints("display", "", [
+  { 760: 'flex' },
+])}
+${breakpoints("flex-direction", "", [
+  { 760: 'column' },
+])}
 `
 
 const StyledContactContainer = styled(Box)`
@@ -60,6 +75,7 @@ const HeaderSubTitle = () => (
 )
 
 export default function ContactUs() {
+  const { width } = useWindowSize()
   return (
     <Layout variant={LayoutVariants.Dark} pageTitle="Contact Us" headerContent={<HeaderSubTitle />}>
       <Head>
@@ -92,24 +108,27 @@ export default function ContactUs() {
 
           <Box>
             <ContactContainer heading="Phone" id="phone">
-              <Box flexDirection='row' flexAlignment='center' flexJustify="space-between">
-                <Box width="50%" style={{ borderRight: `1px dotted ${theme.colors.neutral.md}` }}>
+              <Box flexDirection='row' flexAlignment='center' flexJustify={width <= 900 ? 'flex-start' : 'space-between'}>
+                <Box width={width <= 900 ? '180px' : 'auto'}>
                   <ContactSubText>Sales (Toll-Free):</ContactSubText>
                   <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
                 </Box>
-                <Box width="40%" flexDirection='column'>
+                <Box style={{ borderLeft: `1px dotted ${theme.colors.neutral.md}`, height: '46px', width: width <= 900 && '60px' }}></Box>
+                <Box width={width <= 900 ? '200px' : 'auto'} flexDirection='column'>
                   <ContactSubText>Tech Support:</ContactSubText>
                   <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
                 </Box>
               </Box>
-              <Box flexDirection='row' flexAlignment='center' flexJustify="space-between" margin="28px 0 0 0">
-                <Box width="50%" style={{ borderRight: `1px dotted ${theme.colors.neutral.md}` }}>
+
+              <Box flexDirection='row' flexAlignment='center' flexJustify={width <= 900 ? 'flex-start' : 'space-between'} margin="28px 0 0 0">
+                <Box width={width <= 900 ? '180px' : 'auto'}>
                   <ContactSubText>Tel:</ContactSubText>
                   <Anchor href="tel:9057952888">(905) 795-2888</Anchor>
                 </Box>
-                <Box width="40%" flexDirection='column'>
+                <Box style={{ borderLeft: `1px dotted ${theme.colors.neutral.md}`, height: '46px', width: width <= 900 && '60px' }}></Box>
+                <Box width={width <= 900 ? '200px' : 'auto'} flexDirection='column'>
                   <ContactSubText>Fax:</ContactSubText>
-                  <Anchor href="">(905) 795-0101</Anchor>
+                  <Anchor href="tel:9057950101">(905) 795-0101</Anchor>
                 </Box>
               </Box>
             </ContactContainer>

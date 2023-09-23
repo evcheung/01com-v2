@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { PaginatedNewsletterItems } from '../components/PaginatedNewsletterItems'
 import { PressRoomNav } from '../components/PressRoomNav';
 import { Box, ButtonColors, PrimaryButton } from '../components/core';
+import styled from 'styled-components';
+import { breakpoints } from '../utils/breakpoints';
 
 const newsletterItems = [
   {
@@ -1021,6 +1023,23 @@ const newsletterItems = [
   },
 ];
 
+const ButtonContainer = styled(Box)`
+margin: 48px 0 12px 0;
+
+${breakpoints("margin", "", [
+  { 760: '0' },
+])}
+${breakpoints("width", "", [
+  { 760: '100%' },
+])}
+
+button {
+  ${breakpoints("width", "", [
+  { 760: '100%' },
+])}
+  }
+`
+
 // TODO: update all meta tags
 export default function Newsletters() {
   return (
@@ -1031,9 +1050,9 @@ export default function Newsletters() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PressRoomNav activePage='newsletters' />
-      <Box margin="48px 0 12px 0">
+      <ButtonContainer>
         <PrimaryButton btnColor={ButtonColors.Blue}>Read the latest issue</PrimaryButton>
-      </Box>
+      </ButtonContainer>
       <PaginatedNewsletterItems itemsPerPage={6} items={newsletterItems} />
     </Layout>
   )

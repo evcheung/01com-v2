@@ -4,9 +4,26 @@ import React, { ReactNode } from 'react'
 import bannerBg from '../public/assets/blue-texture.jpg'
 import Heading, { HeadingColors } from './core/heading'
 import { NavBar, NavBarVariants } from './NavBar'
+import { breakpoints } from '../utils/breakpoints'
+import { theme } from '../theme'
 
 const StyledBox = styled(Box)`
   background: no-repeat top/cover url("${bannerBg.src}");
+`
+
+const StyledHeading = styled(Heading)`
+&&& {
+  text-align: center;
+  ${breakpoints("font-size", "", [
+  { 760: theme.fontSize.xxl },
+])}
+}
+`
+const HeadingContainer = styled(Box)`
+  margin: 66px 0px;
+  ${breakpoints("margin", "", [
+  { 760: "32px 0" },
+])}
 `
 // TODO: Add breadcrumbs
 export const PageHeader = ({ label, children }: { label: string, children: ReactNode }) => {
@@ -14,10 +31,10 @@ export const PageHeader = ({ label, children }: { label: string, children: React
     <StyledBox width="100vw" flexDirection='column' flexJustify='space-between'>
       <NavBar variant={NavBarVariants.Dark} />
 
-      <Box margin="66px 0px">
-        <Heading headingColor={HeadingColors.White} style={{ textAlign: 'center' }}>{label}</Heading>
+      <HeadingContainer>
+        <StyledHeading headingColor={HeadingColors.White}>{label}</StyledHeading>
         {children}
-      </Box>
+      </HeadingContainer>
     </StyledBox>
   )
 }

@@ -4,11 +4,20 @@ import styled from 'styled-components';
 import { theme } from '../theme';
 import Accordion from 'react-bootstrap/Accordion';
 import bullet from '../public/assets/bullet.svg'
-import { Anchor } from '../components/core/anchor';
+import { Anchor, AnchorVariants } from '../components/core/anchor';
+import { breakpoints } from '../utils/breakpoints';
 
 const StyledHeading = styled(Heading)`
 font-size: ${theme.fontSize.xxxl};
-line-height: 0px
+line-height: 0px;
+margin: 0;
+${breakpoints("font-size", "", [
+  { 1200: theme.fontSize.xxl },
+])}
+${breakpoints("font-size", "", [
+  { 760: theme.fontSize.xl },
+])}
+
 `
 
 const StyledAccordionItem = styled(Accordion.Item)`
@@ -46,6 +55,13 @@ const StyledAccordionItem = styled(Accordion.Item)`
   }
   .accordion-button {
     padding: 48px;
+
+    ${breakpoints("padding", "", [
+  { 1200: '42px' },
+])}
+    ${breakpoints("padding", "", [
+  { 760: '32px' },
+])}
   }
   .accordion-button:focus {
     z-index: 3;
@@ -71,6 +87,10 @@ const StyledJobHeading = styled(Heading)`
   font-size: ${theme.fontSize.xl};
   margin-bottom: 0;
   font-weight: ${theme.fontWeight[300]};
+  
+  ${breakpoints("font-size", "", [
+  { 760: theme.fontSize.lg },
+])}
 `
 
 const StyledLineItem = styled.li`
@@ -78,6 +98,14 @@ const StyledLineItem = styled.li`
   padding-left: 12px;
   margin-bottom: 10px;
 `
+
+const AccordionContainer = styled(Box)`
+padding:0px 48px 48px 48px;
+
+${breakpoints("padding", "", [
+  { 760: '0px 32px 32px 32px' },
+])}
+  `
 
 export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading: '' }] }) => {
   return (
@@ -88,7 +116,7 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
             <StyledHeading as="h2">Engineers</StyledHeading>
           </Accordion.Header>
           <Accordion.Body>
-            <Box padding="0px 48px 48px 48px">
+            <AccordionContainer>
               <StyledText>01 Communique is a TSX-V listed software publisher and an equal opportunity employer that supports workplace diversity. Established in 1992, we are a technology pioneer of Post-Quantum Cyber Security and Remote Access Software Solutions.</StyledText>
               <StyledText>Our latest innovation is on cyber security with the development focus on Quantum-Safe Cryptography. 01's patent-protected Quantum-Safe Cryptography is designed to operate on classical computer systems as we know them today, while simultaneously being secure enough to safeguard against potential cyber attacks from quantum computers.</StyledText>
               <StyledText>Our award winning products and services are marketed around the world. The tremendous increase in demand for our services and patented technologies has created openings in our R&D area. This is an excellent opportunity for successful candidates to further their careers with a result-oriented company in an exciting fast-paced industry.</StyledText>
@@ -145,9 +173,9 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Send your resume to:</StyledJobHeading>
-                <Text>Email: <Anchor href="mailto:hr@01com.com" style={{ fontSize: theme.fontSize.lg }}>hr@01com.com</Anchor> (Attention: Human Resources)</Text>
+                <Text>Email: <Anchor variant={AnchorVariants.Large} href="mailto:hr@01com.com">hr@01com.com</Anchor> (Attention: Human Resources)</Text>
               </Box>
-            </Box>
+            </AccordionContainer>
           </Accordion.Body>
         </StyledAccordionItem>
         <StyledAccordionItem eventKey="1">
@@ -155,7 +183,7 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
             <StyledHeading as="h2">Enterprise Sales</StyledHeading>
           </Accordion.Header>
           <Accordion.Body>
-            <Box padding="0px 48px 48px 48px">
+            <AccordionContainer>
               <StyledText>01 Communique is a TSX-V listed software publisher and an equal opportunity employer that supports workplace diversity.</StyledText>
               <StyledText>Established in 1992, we are a technology pioneer of Post-Quantum Cyber Security and Remote Access Software Solutions.</StyledText>
               <StyledText>Our latest innovation is on cyber security with the development focus on Quantum-Safe Cryptography. 01's patent-protected Quantum-Safe Cryptography is designed to operate on classical computer systems as we know them today while at the same time secure enough to safeguard against potential cyber attacks from quantum computers.</StyledText>
@@ -182,9 +210,9 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Send your resume to:</StyledJobHeading>
-                <Text>Email: <Anchor href="mailto:hr@01com.com" style={{ fontSize: theme.fontSize.lg }}>hr@01com.com</Anchor> (Attention: Human Resources)</Text>
+                <Text>Email: <Anchor variant={AnchorVariants.Large} href="mailto:hr@01com.com">hr@01com.com</Anchor> (Attention: Human Resources)</Text>
               </Box>
-            </Box>
+            </AccordionContainer>
           </Accordion.Body>
         </StyledAccordionItem>
         <StyledAccordionItem eventKey="2">
@@ -192,7 +220,7 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
             <StyledHeading as="h2">Marketing</StyledHeading>
           </Accordion.Header>
           <Accordion.Body>
-            <Box padding="0px 48px 48px 48px">
+            <AccordionContainer>
               <StyledText>01 Communique is a TSX-V listed software publisher and an equal opportunity employer that supports workplace diversity.</StyledText>
               <StyledText>Established in 1992, we are a technology pioneer of Post-Quantum Cyber Security and Remote Access Software Solutions.</StyledText>
               <StyledText>Our latest innovation is on cyber security with the development focus on Quantum-Safe Cryptography. 01's patent-protected Quantum-Safe Cryptography is designed to operate on classical computer systems as we know them today while at the same time secure enough to safeguard against potential cyber attacks from quantum computers.</StyledText>
@@ -219,9 +247,9 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Send your resume to:</StyledJobHeading>
-                <Text>Email: <Anchor href="mailto:hr@01com.com" style={{ fontSize: theme.fontSize.lg }}>hr@01com.com</Anchor> (Attention: Human Resources)</Text>
+                <Text>Email: <Anchor variant={AnchorVariants.Large} href="mailto:hr@01com.com" >hr@01com.com</Anchor> (Attention: Human Resources)</Text>
               </Box>
-            </Box>
+            </AccordionContainer>
           </Accordion.Body>
         </StyledAccordionItem>
       </Accordion>

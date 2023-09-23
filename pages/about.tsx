@@ -4,7 +4,6 @@ import { Box, Text, TextVariants } from '../components/core';
 import Heading, { HeadingVariants } from '../components/core/heading';
 import styled from 'styled-components';
 import { theme } from '../theme';
-import Link from 'next/link';
 import { PageContentContainer } from '../components/PageContentContainer';
 import Image from 'next/image';
 import andrew from '../public/assets/andrew.jpg'
@@ -12,6 +11,7 @@ import brian from '../public/assets/brian.jpg'
 import william from '../public/assets/william.jpg'
 import tyson from '../public/assets/tyson.jpg'
 import gary from '../public/assets/gary.jpg'
+import { breakpoints } from '../utils/breakpoints';
 
 const StyledText = styled(Text)`
   margin-bottom: 24px;
@@ -34,16 +34,52 @@ const TeamCard = styled(Box)`
   background-color: ${theme.colors.neutral.xs};
   display: flex;
   align-items: center;
+  ${breakpoints("flex-direction", "", [
+  { 1060: "column" },
+])}
+  ${breakpoints("align-items", "", [
+  { 1060: "flex-start" },
+])}
+  ${breakpoints("padding", "", [
+  { 1060: "48px" },
+])}
 `
 const StyledHeading2 = styled(Heading)`
   font-size: ${theme.fontSize.xxxxl};
   font-weight: ${theme.fontWeight[400]};
   line-height: 48px;
+
+  ${breakpoints("font-size", "", [
+  { 1060: "32px" },
+])}
+  ${breakpoints("line-height", "", [
+  { 1060: "32px" },
+])}
 `
 const StyledHeading3 = styled(Heading)`
   font-size: ${theme.fontSize.xxxl};
   font-weight: ${theme.fontWeight[400]};
   line-height: 8px;
+
+  ${breakpoints("line-height", "", [
+  { 1060: "32px" },
+])}
+  ${breakpoints("font-size", "", [
+  { 1060: theme.fontSize.xxl },
+])}
+  ${breakpoints("margin-top", "", [
+  { 1060: '24px' },
+])}
+`
+
+const ProfileImage = styled(Image)`
+height: auto;
+${breakpoints("width", "", [
+  { 1060: '200px' },
+])}
+${breakpoints("width", "", [
+  { 760: '140px' },
+])}
 `
 
 export default function AboutUs() {
@@ -86,7 +122,7 @@ export default function AboutUs() {
       <TeamGrid>
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <Image src={andrew} alt="andrew cheung" />
+            <ProfileImage src={andrew} alt="andrew cheung" />
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Andrew Cheung</StyledHeading3>
@@ -97,10 +133,10 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <Image src={brian} alt="Brian Stringer" />
+            <ProfileImage src={brian} alt="Brian Stringer" />
           </Box>
           <Box>
-            <StyledHeading3 variant={HeadingVariants.Heading3}>Andrew Cheung</StyledHeading3>
+            <StyledHeading3 variant={HeadingVariants.Heading3}>Brian Stringer</StyledHeading3>
             <StyledSubtext variant={TextVariants.Body2}>CFO</StyledSubtext>
             <Text variant={TextVariants.Body1}>A Chartered Professional Accountant (CPA) with 25+ years experience in managing publicly listed companies, Brian has been the CFO of 01 for over 18 years. Prior to joining 01, Brian worked as the CFO of various other publicly listed companies. In addition to his extensive CFO experience, Brian also has 12 years experience in patent prosecution and patent litigation in the US and Canada.</Text>
           </Box>
@@ -108,7 +144,7 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <Image src={william} alt="William A. Train" />
+            <ProfileImage src={william} alt="William A. Train" />
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>William A. Train</StyledHeading3>
@@ -119,7 +155,7 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <Image src={gary} alt="Gary Kissack" />
+            <ProfileImage src={gary} alt="Gary Kissack" />
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Gary Kissack</StyledHeading3>
@@ -130,7 +166,7 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <Image src={tyson} alt="Tyson Macauley" />
+            <ProfileImage src={tyson} alt="Tyson Macauley" />
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Tyson Macauley</StyledHeading3>

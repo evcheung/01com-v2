@@ -4,7 +4,7 @@ import { Box, Text, TextColors, TextVariants } from '../components/core'
 import Heading from '../components/core/heading'
 import styled from 'styled-components'
 import { theme } from '../theme'
-import { Anchor } from '../components/core/anchor'
+import { Anchor, AnchorVariants } from '../components/core/anchor'
 import pdf from '../public/assets/pdf.svg'
 import webinar from '../public/assets/webinar.svg'
 import texture from '../public/assets/texture.png'
@@ -14,27 +14,56 @@ import "react-modal-video/scss/modal-video.scss"
 import { useState } from 'react'
 import playButton from '../public/assets/play-button.svg'
 import Link from 'next/link'
+import { useWindowSize } from 'usehooks-ts'
+import { breakpoints } from '../utils/breakpoints'
+
+const youtubeThumbnail = `https://i.ytimg.com/vi_webp/SpU45f6jV7w/0.webp`
 
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
   width: 100%;
   margin: 12px 0px;
+  
+${breakpoints("margin", "", [
+  { 760: '18px 0px' },
+])}
 `
 
 const StyledHeading = styled(Heading)`
-font-size: 36px;
+font-size: ${theme.fontSize.xxxl};
 line-height: 50px;
+
+${breakpoints("font-size", "", [
+  { 900: theme.fontSize.xl },
+])}
+${breakpoints("line-height", "", [
+  { 900: '42px' },
+])}
 `
 
 const StyledContentHeading = styled(Heading)`
-font-size: 36px;
+font-size: ${theme.fontSize.xxxl};
 line-height: 50px;
 margin-bottom: 38px;
+
+${breakpoints("font-size", "", [
+  { 900: theme.fontSize.xl },
+])}
+${breakpoints("margin-bottom", "", [
+  { 760: '12px' },
+])}
+${breakpoints("line-height", "", [
+  { 760: '24px' },
+])}
 `
 
 const StyledVideoHeader = styled(Text)`
 font-size: ${theme.fontSize.xl};
 font-weight: ${theme.fontWeight[700]};
+
+${breakpoints("font-size", "", [
+  { 1200: theme.fontSize.lg },
+])}
 `
 
 const FeaturedVideoContainer = styled(Box)`
@@ -44,6 +73,12 @@ padding: 118px 96px;
 display: grid;
 grid-template-columns: 1fr 1fr;
 column-gap: 96px;
+${breakpoints("column-gap", "", [
+  { 1200: '24px' },
+])}
+${breakpoints("padding", "", [
+  { 1200: '68px 56px' },
+])}
 `
 
 const PlayButton = styled.button`
@@ -54,49 +89,107 @@ const PlayButton = styled.button`
 const TableContainer = styled(Box)`
 display: grid;
 grid-template-columns: 1fr 3fr 2fr;
+
+${breakpoints("grid-template-columns", "", [
+  { 1200: '2fr 3fr 2fr' },
+])}
+${breakpoints("grid-template-columns", "", [
+  { 760: '1fr' },
+])}
+${breakpoints("row-gap", "", [
+  { 760: '8px' },
+])}
 `
 
 const LinkContainer = styled(Box)`
 display:flex;
+
+${breakpoints("flex-direction", "", [
+  { 1200: 'column' },
+])}
+${breakpoints("align-items", "", [
+  { 1200: 'flex-start' },
+])}
+
+${breakpoints("flex-direction", "", [
+  { 760: 'row' },
+])}
+${breakpoints("align-items", "", [
+  { 760: 'center' },
+])}
+${breakpoints("margin-bottom", "", [
+  { 760: '8px' },
+])}
+
+`
+
+const LinkItem = styled(Box)`
+display:flex;
+align-items: center;
+
+:first-of-type {
+  margin: 0 48px 0 -10px;
+}
+:last-of-type {
+  ${breakpoints("margin", "", [
+  { 1200: '10px 0 0 -10px' },
+])}
+  ${breakpoints("margin", "", [
+  { 760: '0 48px 0 -10px' },
+])}
+}
+
+a {
+  ${breakpoints("font-size", "", [
+  { 760: theme.fontSize.sm },
+])}
+}
+
+
 `
 
 const HeaderContent = () => {
   const [isOpen, setOpen] = useState(false);
-  const youtubeThumbnail = `https://i.ytimg.com/vi_webp/SpU45f6jV7w/0.webp`
+  const { width } = useWindowSize()
+
+  const VideoBannerDesktop = () =>
+    <FeaturedVideoContainer backgroundImage={texture.src} flexDirection='row' flexAlignment='center'>
+      <Box>
+        <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
+        <Box padding="0 48px 0 0" margin="16px 0">
+          <StyledHeading as="h2">Interview with Andrew Cheung, CEO 01 Communique</StyledHeading>
+        </Box>
+        <Box padding="0 48px 0 0">
+          <Text>01 Communique talks about its quantum-safe cybersecurity solution.</Text>
+        </Box>
+      </Box>
+      <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' style={{ height: '300px' }}>
+        <ModalVideo
+          channel="youtube"
+          youtube={{ mute: 0, autoplay: 0 }}
+          isOpen={isOpen}
+          videoId="SpU45f6jV7w"
+          onClose={() => setOpen(false)}
+        />
+        <PlayButton onClick={() => setOpen(true)}>
+          <Image src={playButton} alt="play button" />
+        </PlayButton>
+      </Box>
+    </FeaturedVideoContainer>
 
   return (
-    <Box padding="0px 48px">
-      <Box width="968px" padding="0 0 24px 0" margin="16px auto">
-        <Text textColor={TextColors.White} alignment='center'>
-          01 Communique's common shares are listed on the TSX Venture Exchange (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under the symbol 'OONEF'.
-        </Text>
+    <>
+      <Box padding="0px 48px">
+        <Box width={width > 1200 ? "968px" : "100%"} padding="0 0 24px 0" margin="16px auto">
+          <Text textColor={TextColors.White} alignment='center'>
+            01 Communique's common shares are listed on the TSX Venture Exchange (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under the symbol 'OONEF'.
+          </Text>
+        </Box>
+
+        {width > 900 &&
+          <VideoBannerDesktop />}
       </Box>
-
-      <FeaturedVideoContainer backgroundImage={texture.src} flexDirection='row' flexAlignment='center'>
-        <Box>
-          <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
-          <Box padding="0 48px 0 0" margin="16px 0">
-            <StyledHeading as="h2">Interview with Andrew Cheung, CEO 01 Communique</StyledHeading>
-          </Box>
-          <Box padding="0 48px 0 0">
-            <Text>01 Communique talks about its quantum-safe cybersecurity solution.</Text>
-          </Box>
-
-        </Box>
-        <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' style={{ height: '300px' }}>
-          <ModalVideo
-            channel="youtube"
-            youtube={{ mute: 0, autoplay: 0 }}
-            isOpen={isOpen}
-            videoId="SpU45f6jV7w"
-            onClose={() => setOpen(false)}
-          />
-          <PlayButton onClick={() => setOpen(true)}>
-            <Image src={playButton} alt="play button" />
-          </PlayButton>
-        </Box>
-      </FeaturedVideoContainer>
-    </Box>
+    </>
   )
 }
 
@@ -153,16 +246,45 @@ const RECENT_EVENTS = [
   },
 ]
 
+const VideoBannerMobile = () => {
+  const [isOpen, setOpen] = useState(false);
+
+  return <>
+    <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' margin="0 0 32px 0" style={{ height: '300px', width: '100%' }}>
+      <ModalVideo
+        channel="youtube"
+        youtube={{ mute: 0, autoplay: 0 }}
+        isOpen={isOpen}
+        videoId="SpU45f6jV7w"
+        onClose={() => setOpen(false)}
+      />
+      <PlayButton onClick={() => setOpen(true)}>
+        <Image src={playButton} alt="play button" />
+      </PlayButton>
+    </Box>
+
+    <Box>
+      <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
+      <Box margin="16px 0">
+        <StyledHeading as="h2">Interview with Andrew Cheung, CEO 01 Communique</StyledHeading>
+      </Box>
+      <Box>
+        <Text>01 Communique talks about its quantum-safe cybersecurity solution.</Text>
+      </Box>
+    </Box>
+  </>
+}
+
 
 // TODO: abstract border into component
-const TableContent = ({ data }) => {
+const TableContent = ({ width, data }) => {
   return (
     <>
-      <TableContainer>
+      {width > 760 && <TableContainer>
         <Text variant={TextVariants.Feat2}>Date</Text>
         <Text variant={TextVariants.Feat2}>Description</Text>
         <Text variant={TextVariants.Feat2}>Relevant Links</Text>
-      </TableContainer>
+      </TableContainer>}
       <HorizontalBorder />
       {data.map(item =>
         <>
@@ -175,18 +297,18 @@ const TableContent = ({ data }) => {
                   const isPDF = link.type === 'pdf';
                   return (
                     <>
-                      <Box flexDirection='row' flexAlignment='center' margin={isPDF ? '0 48px 0 -10px' : '0'}>
+                      <LinkItem>
                         <Box margin="0px 8px">
                           <Image src={isPDF ? pdf : webinar} alt={isPDF ? 'pdf icon' : 'video icon'} />
                         </Box>
                         <Anchor href={link.url} target='_blank'>{isPDF ? 'Press Release' : 'Webinar Replay'}</Anchor>
-                      </Box>
+                      </LinkItem >
                     </>
                   )
                 })
               }
             </LinkContainer>
-          </TableContainer>
+          </TableContainer >
           <HorizontalBorder />
         </>)
       }
@@ -198,7 +320,32 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `
 
+const ContentContainer = styled(Box)`
+width:100%;
+ padding:0 100px;
+ margin:96px 0;
+
+ ${breakpoints("padding", "", [
+  { 1200: '0 48px' },
+])}
+${breakpoints("margin", "", [
+  { 900: '48px 0' },
+])}
+${breakpoints("padding", "", [
+  { 900: '0' },
+])}
+`
+
+const Section = styled(Box)`
+margin: 0 0 96px 0;
+
+${breakpoints("margin", "", [
+  { 900: '0 0 48px 0' },
+])}
+`
+
 export default function InvestorRelations() {
+  const { width } = useWindowSize()
   return (
     <Layout variant={LayoutVariants.Dark} pageTitle="Investor Relations" headerContent={<HeaderContent />}>
       <Head>
@@ -207,28 +354,30 @@ export default function InvestorRelations() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </Head>
-      <Box width="100%" padding='0 100px' margin="96px 0">
-        <Box margin="0 0 96px 0">
+      <ContentContainer>
+        {width <= 900 && <Box margin="0 0 68px 0"> <VideoBannerMobile /></Box>}
+
+        <Section>
           <StyledContentHeading as="h2">Latest Presentation</StyledContentHeading>
-          <TableContent data={LATEST_PRESENTATION} />
-        </Box>
+          <TableContent width={width} data={LATEST_PRESENTATION} />
+        </Section>
 
-        <Box margin="0 0 96px 0">
+        <Section>
           <StyledContentHeading as="h2">Recent Events</StyledContentHeading>
-          <TableContent data={RECENT_EVENTS} />
-        </Box>
+          <TableContent width={width} data={RECENT_EVENTS} />
+        </Section>
 
-        <Box margin="0 0 96px 0">
+        <Section>
           <StyledContentHeading as="h2">Information Request</StyledContentHeading>
           <Text>For more information about 01 Communique contact us at +1 905 795-2888 or +1 800 668-2185 (US/Canada), or email <StyledLink href="mailto:investorrelations@01com.com">investorrelations@01com.com</StyledLink> with any comments or suggestions.</Text>
-        </Box>
+        </Section>
 
-        <Box margin="0 0 96px 0">
+        <Section>
           <StyledContentHeading as="h2">Stock Quote</StyledContentHeading>
           <Text>Click <StyledLink href="https://money.tmx.com/en/quote/ONE" target="_blank">here</StyledLink> to obtain the latest stock quote.</Text>
-        </Box>
+        </Section>
 
-        <Box margin="0 0 96px 0">
+        <Section>
           <StyledContentHeading as="h2">Financial Results</StyledContentHeading>
           <HorizontalBorder />
 
@@ -236,19 +385,19 @@ export default function InvestorRelations() {
             <Text>Latest Results: Q4 2022</Text>
             <Box></Box>
             <LinkContainer>
-              <Box flexDirection='row' flexAlignment='center' margin={'0 48px 0 -10px'}>
+              <LinkItem>
                 <Box margin="0px 8px">
                   <Image src={pdf} alt='pdf icon' />
                 </Box>
                 <Anchor href="" target='_blank'>{'Press Release'}</Anchor>
-              </Box>
+              </LinkItem>
             </LinkContainer>
           </TableContainer>
           <HorizontalBorder />
-        </Box>
+        </Section>
 
         <Text>For further information on the company's financial results, please visit <StyledLink href="https://www.sedar.com" target="_blank">www.sedar.com</StyledLink>.</Text>
-      </Box>
+      </ContentContainer>
     </Layout >
   )
 }

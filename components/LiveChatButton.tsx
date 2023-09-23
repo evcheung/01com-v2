@@ -3,6 +3,7 @@ import livechat from '../public/assets/livechat.png'
 import Image from "next/image";
 import styled from "styled-components";
 import { theme } from "../theme";
+import { breakpoints } from "../utils/breakpoints";
 
 const LiveChatText = styled.p`
   font-size: ${theme.fontSize.sm};
@@ -10,6 +11,10 @@ const LiveChatText = styled.p`
   color: ${theme.colors.neutral.xs};
   text-align: left;
   margin:0;
+
+  ${breakpoints("line-height", "", [
+  { 760: "16px" },
+])}
 `
 
 const VariantText = styled.p`
@@ -18,13 +23,17 @@ const VariantText = styled.p`
   color: ${theme.colors.neutral.xs};
   text-align: left;
   margin:0;
+  ${breakpoints("line-height", "", [
+  { 760: "16px" },
+])}
 `
 
 export const LiveChatButton = ({ variant }: { variant: 'pre-sales' | 'after-sales' }) => {
   return (
-    <PrimaryButton btnColor={ButtonColors.Blue} style={{ paddingTop: '10px', paddingBottom: '10px', }}>
-      <Box flexDirection='row' flexAlignment='center' flexJustify='space-between'>
-        <Box margin="0px 10px 0px 0px ">
+    <PrimaryButton btnColor={ButtonColors.Blue} padding='10px 20px'>
+      <Box flexDirection='row' flexAlignment='center' flexJustify='center'>
+
+        <Box margin="0px 12px 0px 0px ">
           <Image src={livechat} alt="chat bubble" />
         </Box>
         <Box>

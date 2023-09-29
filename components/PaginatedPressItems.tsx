@@ -10,7 +10,12 @@ function Items({ currentItems }) {
     <CardGrid>
       {currentItems &&
         currentItems.map((item) => (
-          <PressCard date={item.date} description={item.description} link={item.link} img={item.img} imgAlt={item.imgAlt} />
+          <PressCard
+            date={new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))}
+            description={item.description}
+            link={item.link}
+            img={item.img}
+            imgAlt={item.imgAlt} />
         ))}
     </CardGrid>
   );

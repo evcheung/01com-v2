@@ -28,3 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+App.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+  if (Object.keys(pageProps).length > 0) {
+    return { pageProps };
+  } else {
+    return {};
+  }
+};

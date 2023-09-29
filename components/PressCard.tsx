@@ -1,6 +1,6 @@
 import { Box, Text } from './core'
 import { theme } from '../theme'
-import { Anchor, AnchorVariants } from './core/anchor'
+import { Anchor } from './core/anchor'
 import styled from 'styled-components'
 import Image from 'next/image'
 import { breakpoints } from '../utils/breakpoints'
@@ -47,7 +47,7 @@ export const PressCard = ({ date, description, link, img, imgAlt }: PressCardPro
         <Text style={{ fontSize: theme.fontSize.md }}>{date}</Text>
         <PressCardDescription>{description}</PressCardDescription>
       </Box>
-      <Anchor href={link}>Read Article</Anchor>
+      <Anchor href={`${link}`} target="_blank">Read Article</Anchor>
     </PressCardContainer>
   )
 }

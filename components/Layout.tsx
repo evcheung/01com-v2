@@ -45,7 +45,7 @@ export default function Layout({
         }
         {children}
         <FooterNav />
-      </Main >
+      </Main>
     </Container >
   )
 }

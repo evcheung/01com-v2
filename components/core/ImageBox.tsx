@@ -1,4 +1,4 @@
-import { urlForImage } from 'lib/sanity.image'
+// import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 
 interface ImageBoxProps {
@@ -18,14 +18,14 @@ export default function ImageBox({
   size = '100vw',
   classesWrapper,
 }: ImageBoxProps) {
-  const imageUrl =
-    image && urlForImage(image)?.height(height).width(width).fit('crop').url()
+  // const imageUrl =
+  // image && urlForImage(image)?.height(height).width(width).fit('crop').url()
 
   return (
     <div
       className={`w-full overflow-hidden rounded-[3px] bg-gray-50 ${classesWrapper}`}
     >
-      {imageUrl && (
+      {/* {imageUrl && (
         <Image
           className="absolute h-full w-full"
           alt={alt}
@@ -34,7 +34,7 @@ export default function ImageBox({
           sizes={size}
           src={imageUrl}
         />
-      )}
+      )} */}
     </div>
   )
 }

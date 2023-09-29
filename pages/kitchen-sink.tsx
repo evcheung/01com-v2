@@ -5,7 +5,7 @@ import { Box, Text, ButtonColors, ButtonSizes, HeadingVariants, PrimaryButton, S
 import Heading from '../components/core/heading'
 import Layout, { LayoutVariants } from '../components/Layout'
 import { CTABanner } from '../components/CTABanner'
-import { MainBanner } from '../components/MainBannerDesktop'
+import { MainBanner } from '../components/MainBanner'
 import { PressCard } from '../components/PressCard'
 
 export default function KitchenSink() {

@@ -12,10 +12,11 @@ const theme: DefaultTheme = {
 }
 
 // If loading a variable font, you don't need to specify the font weight
-const raleway = Raleway({ subsets: ['latin'] })
+const raleway = Raleway({ subsets: ['latin'], display: 'swap', adjustFontFallback: false })
 
 
 export default function App({ Component, pageProps }: AppProps) {
+
   return (
     <>
       <main className={raleway.className}>

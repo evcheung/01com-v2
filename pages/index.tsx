@@ -13,6 +13,8 @@ import { useWindowSize } from 'usehooks-ts'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { theme } from '../theme'
+import { client } from '../sanity/lib/client'
+import { useMemo } from 'react'
 
 
 const LiveChatButton = styled(Link)`
@@ -66,25 +68,6 @@ ${breakpoints("margin", "", [
 ])}
 `
 
-const featuredNewsItems = [
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-  },
-];
-
-
 const MobileNewsCarousel = styled(Carousel)`
   width: 100%;
 
@@ -132,15 +115,37 @@ const LatestNewsContainer = ({ currentItems }) => {
 
 const LatestNewsContainerMobile = ({ currentItems }) => {
   return (
-    <MobileNewsCarousel emulateTouch>
+    <MobileNewsCarousel emulateTouch showThumbs={false}>
       {currentItems && currentItems.map(item => <PressCard date={item.date} description={item.description} link={item.link} />)}
     </MobileNewsCarousel>
   );
 }
 
 
-export default function Home() {
+type PressRelease = {
+  _id: string,
+  date: string,
+  title: string,
+  link: string,
+}
+
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"][0...3] | order(date desc)`)
+    }
+  }
+}
+
+
+export default function Home({ pressReleases }) {
   const { width } = useWindowSize()
+
+  const featuredNewsItems = useMemo(() => pressReleases.map(item => ({
+    ...item,
+    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))
+  })), [pressReleases])
 
   return (
     <Layout>

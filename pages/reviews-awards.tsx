@@ -1,250 +1,39 @@
 import Layout, { LayoutVariants } from '../components/Layout'
 import Head from 'next/head'
 import { PaginatedPressItems } from '../components/PaginatedPressItems'
-import awardImg from '../public/assets/award.jpg'
 import { PressRoomNav } from '../components/PressRoomNav';
+import { client } from '../sanity/lib/client';
+import { useMemo } from 'react';
+import { imageUrlFor } from '../utils/sanity/image-url-builder';
 
-const awardItems = [
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-    imgAlt: "",
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-    imgAlt: "",
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-  {
-    date: "September 1, 2023",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    link: '/',
-    img: awardImg,
-  },
-];
+
+type ReviewsAwards = {
+  _id: string,
+  image: string,
+  imageAltText: string,
+  date: string,
+  title: string,
+  link: string,
+}
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`)
+    }
+  }
+}
 
 // TODO: update all meta tags
-export default function ReviewsAwards() {
+export default function ReviewsAwards({ reviewsAwards }) {
+  const reviewsAwardsWithFetchedImage = useMemo(() =>
+    reviewsAwards.map(item => {
+      return {
+        ...item,
+        image: imageUrlFor(item.image).height(84).url()
+      }
+    }), [reviewsAwards])
+
   return (
     <Layout variant={LayoutVariants.Dark} pageTitle="Press Room">
       <Head>
@@ -254,7 +43,7 @@ export default function ReviewsAwards() {
       </Head>
       <PressRoomNav activePage='reviews' />
 
-      <PaginatedPressItems itemsPerPage={9} items={awardItems} />
+      <PaginatedPressItems itemsPerPage={9} items={reviewsAwardsWithFetchedImage} />
     </Layout>
   )
 }

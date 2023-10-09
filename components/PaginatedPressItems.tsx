@@ -14,8 +14,9 @@ function Items({ currentItems }) {
             date={new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))}
             description={item.description}
             link={item.link}
-            img={item.img}
-            imgAlt={item.imgAlt} />
+            image={item.image}
+            imageAltText={item.imageAltText}
+            key={item.description} />
         ))}
     </CardGrid>
   );

@@ -2,7 +2,6 @@ import { Box, Text } from './core'
 import { theme } from '../theme'
 import { Anchor } from './core/anchor'
 import styled from 'styled-components'
-import Image from 'next/image'
 import { breakpoints } from '../utils/breakpoints'
 
 const PressCardContainer = styled(Box)`
@@ -18,9 +17,9 @@ const PressCardContainer = styled(Box)`
 interface PressCardProps {
   date: string,
   description: string,
-  link: string,
-  img?: string,
-  imgAlt?: string,
+  link?: string,
+  image?: string,
+  imageAltText?: string,
 }
 
 const PressCardDescription = styled(Text)`
@@ -39,15 +38,15 @@ font-size: ${theme.fontSize.xl};
  
 `
 
-export const PressCard = ({ date, description, link, img, imgAlt }: PressCardProps) => {
+export const PressCard = ({ date, description, link, image, imageAltText }: PressCardProps) => {
   return (
     <PressCardContainer flexDirection='column' flexJustify='space-between' flexAlignment='flex-start'>
-      {img && <Box margin="0 0 24px 0"><Image src={img} alt={imgAlt} height={84} /></Box>}
+      {image && <Box margin="0 0 24px 0"><img src={image} alt={imageAltText} /></Box>}
       <Box>
         <Text style={{ fontSize: theme.fontSize.md }}>{date}</Text>
         <PressCardDescription>{description}</PressCardDescription>
       </Box>
-      <Anchor href={`${link}`} target="_blank">Read Article</Anchor>
+      {link && <Anchor href={`${link}`} target="_blank">Read Article</Anchor>}
     </PressCardContainer>
   )
 }

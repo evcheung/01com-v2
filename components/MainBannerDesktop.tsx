@@ -210,7 +210,7 @@ const OnCallBanner = () => (
 export const MainBannerDesktop = () => {
   return (
     <Container>
-      <StyledCarousel infiniteLoop emulateTouch>
+      <StyledCarousel infiniteLoop emulateTouch showThumbs={false}>
         <SecurityBanner />
         <EmailBanner />
         <RemoteWorkBanner />

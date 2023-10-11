@@ -4,20 +4,21 @@ import { Box, Text, TextColors, TextVariants } from '../components/core'
 import Heading from '../components/core/heading'
 import styled from 'styled-components'
 import { theme } from '../theme'
-import { Anchor, AnchorVariants } from '../components/core/anchor'
+import { Anchor } from '../components/core/anchor'
 import pdf from '../public/assets/pdf.svg'
 import webinar from '../public/assets/webinar.svg'
 import texture from '../public/assets/texture.png'
 import Image from 'next/image'
 import ModalVideo from 'react-modal-video';
 import "react-modal-video/scss/modal-video.scss"
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import playButton from '../public/assets/play-button.svg'
 import Link from 'next/link'
 import { useWindowSize } from 'usehooks-ts'
 import { breakpoints } from '../utils/breakpoints'
+import { client } from '../sanity/lib/client'
+import ShortUniqueId from 'short-unique-id'
 
-const youtubeThumbnail = `https://i.ytimg.com/vi_webp/SpU45f6jV7w/0.webp`
 
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
@@ -144,23 +145,39 @@ a {
   { 760: theme.fontSize.sm },
 ])}
 }
-
-
 `
 
-const HeaderContent = () => {
+type InvestorRelationsVideos = {
+  _id: string,
+  title: string,
+  description: string,
+  link: string,
+  isFeatured: boolean,
+}
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      featuredVideo: await client.fetch<InvestorRelationsVideos[]>(`*[_type == "investor-relations-videos" && isFeatured]`)
+    }
+  }
+}
+
+const HeaderContent = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
-  const { width } = useWindowSize()
+  const { width } = useWindowSize();
+  const youtubeId = featuredVideo.link.split('v=')[1].slice(0, 11)
+  const youtubeThumbnail = useMemo(() => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`, [])
 
   const VideoBannerDesktop = () =>
     <FeaturedVideoContainer backgroundImage={texture.src} flexDirection='row' flexAlignment='center'>
       <Box>
         <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
         <Box padding="0 48px 0 0" margin="16px 0">
-          <StyledHeading as="h2">Interview with Andrew Cheung, CEO 01 Communique</StyledHeading>
+          <StyledHeading as="h2">{featuredVideo.title}</StyledHeading>
         </Box>
         <Box padding="0 48px 0 0">
-          <Text>01 Communique talks about its quantum-safe cybersecurity solution.</Text>
+          <Text>{featuredVideo.description}</Text>
         </Box>
       </Box>
       <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' style={{ height: '300px' }}>
@@ -168,7 +185,7 @@ const HeaderContent = () => {
           channel="youtube"
           youtube={{ mute: 0, autoplay: 0 }}
           isOpen={isOpen}
-          videoId="SpU45f6jV7w"
+          videoId={youtubeId}
           onClose={() => setOpen(false)}
         />
         <PlayButton onClick={() => setOpen(true)}>
@@ -246,8 +263,10 @@ const RECENT_EVENTS = [
   },
 ]
 
-const VideoBannerMobile = () => {
+const VideoBannerMobile = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
+  const youtubeId = featuredVideo.link.split('v=')[1].slice(0, 11)
+  const youtubeThumbnail = useMemo(() => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`, [])
 
   return <>
     <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' margin="0 0 32px 0" style={{ height: '300px', width: '100%' }}>
@@ -278,6 +297,8 @@ const VideoBannerMobile = () => {
 
 // TODO: abstract border into component
 const TableContent = ({ width, data }) => {
+  const uid = new ShortUniqueId({ length: 10 });
+
   return (
     <>
       {width > 760 && <TableContainer>
@@ -288,7 +309,7 @@ const TableContent = ({ width, data }) => {
       <HorizontalBorder />
       {data.map(item =>
         <>
-          <TableContainer>
+          <TableContainer key={`table-container-${uid.rnd()}`}>
             <Text>{item.date}</Text>
             <Text>{item.description}</Text>
             <LinkContainer>
@@ -297,7 +318,7 @@ const TableContent = ({ width, data }) => {
                   const isPDF = link.type === 'pdf';
                   return (
                     <>
-                      <LinkItem>
+                      <LinkItem key={`link-item-${uid.rnd()}`}>
                         <Box margin="0px 8px">
                           <Image src={isPDF ? pdf : webinar} alt={isPDF ? 'pdf icon' : 'video icon'} />
                         </Box>
@@ -344,10 +365,12 @@ ${breakpoints("margin", "", [
 ])}
 `
 
-export default function InvestorRelations() {
+export default function InvestorRelations({ featuredVideo }) {
   const { width } = useWindowSize()
+  console.log('👉👉👉 featuredVdieo', featuredVideo);
+
   return (
-    <Layout variant={LayoutVariants.Dark} pageTitle="Investor Relations" headerContent={<HeaderContent />}>
+    <Layout variant={LayoutVariants.Dark} pageTitle="Investor Relations" headerContent={<HeaderContent featuredVideo={featuredVideo[0]} />}>
       <Head>
         <title>Remote Desktop Software Press and Reviews</title>
         <meta name="description" content="Reviews and press coverage for I'm InTouch remote desktop software and remote control software solutions including 'Product of the Year 2012' award." />
@@ -355,7 +378,7 @@ export default function InvestorRelations() {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </Head>
       <ContentContainer>
-        {width <= 900 && <Box margin="0 0 68px 0"> <VideoBannerMobile /></Box>}
+        {width <= 900 && <Box margin="0 0 68px 0"> <VideoBannerMobile featuredVideo={featuredVideo[0]} /></Box>}
 
         <Section>
           <StyledContentHeading as="h2">Latest Presentation</StyledContentHeading>

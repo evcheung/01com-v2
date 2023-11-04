@@ -7,13 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-- run: npx @sanity/cli dataset export production backup.tar.gz
-  working-directory: studio
-  env:
-    SANITY_STUDIO_API_PROJECT_ID: 7o47py1b
-    SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
-- uses: actions/upload-artifact@v2
-  with:
-    name: production
-    path: studio/backup.tar.gz
-    retention-days: 5
+      - name: Run Backup
+        run: npx @sanity/cli dataset export production backup.tar.gz
+        working-directory: studio
+        env:
+          SANITY_STUDIO_API_PROJECT_ID: 7o47py1b
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: production
+          path: studio/backup.tar.gz
+          retention-days: 5

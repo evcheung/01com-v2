@@ -30,7 +30,7 @@ export default function PressReleases({ pressReleases }) {
       </Head>
       <PressRoomNav activePage='press' />
 
-      <PaginatedPressItems itemsPerPage={12} items={pressReleases} />
+      <PaginatedPressItems itemsPerPage={11} items={pressReleases} />
     </Layout>
   )
 }

@@ -6,17 +6,40 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'date',
+      name: 'year',
+      title: 'Year',
+      type: 'string',
+      initialValue: '2023',
       options: {
-        dateFormat: 'LL',
+        list: [
+          { title: '2024', value: '2024' },
+          { title: '2023', value: '2023' },
+          { title: '2022', value: '2022' },
+          { title: '2021', value: '2021' },
+          { title: '2020', value: '2020' },
+        ],
       }
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
+      name: 'month',
+      title: 'Month',
       type: 'string',
+      options: {
+        list: [
+          { title: 'January', value: 'January' },
+          { title: 'February', value: 'February' },
+          { title: 'March', value: 'March' },
+          { title: 'April', value: 'April' },
+          { title: 'May', value: 'May' },
+          { title: 'June', value: 'June' },
+          { title: 'July', value: 'July' },
+          { title: 'August', value: 'August' },
+          { title: 'September', value: 'September' },
+          { title: 'October', value: 'October' },
+          { title: 'November', value: 'November' },
+          { title: 'December', value: 'December' },
+        ],
+      }
     }),
     defineField({
       name: 'link',
@@ -26,8 +49,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'description',
-      subtitle: 'date',
+      title: 'year',
+      subtitle: 'month',
     }
   },
   orderings: [

@@ -6,391 +6,385 @@ import { Box, ButtonColors, PrimaryButton } from '../components/core';
 import styled from 'styled-components';
 import { breakpoints } from '../utils/breakpoints';
 import { Anchor } from '../components/core/anchor';
+import { client } from '../sanity/lib/client';
+import { useEffect, useMemo, useState } from 'react';
 
-/*
-// *[_type == "newsletter"]{
-//   _id, title,
-//   newsletter[date].year(): [
-      {
-        month: January
-        articles: [
-          '/',
-          '/',
-          '/',
-        ]
-      },
-      {
-        month: February
-        articles: [
-          '/',
-          '/',
-          '/',
-        ]
-      },
-// ]
-// }
-*/
-const newsletterItems = [
-  {
-    year: '2023',
-    items: [
-      {
-        label: 'October',
-        link: 'https://www.01com.com/newsletter/oct23/letter01.html'
-      },
-      {
-        label: 'July',
-        link: 'https://www.01com.com/newsletter/jul23/letter01.html'
-      },
-      {
-        label: 'June',
-        link: 'https://www.01com.com/newsletter/jun23/letter01.html'
-      },
-      {
-        label: 'May',
-        link: 'https://www.01com.com/newsletter/may23/letter01.html'
-      },
-      {
-        label: 'April',
-        link: 'https://www.01com.com/newsletter/apr23/letter01.html'
-      },
-      {
-        label: 'March',
-        link: 'https://www.01com.com/newsletter/mar23/letter01.html'
-      },
-      {
-        label: 'February',
-        link: 'https://www.01com.com/newsletter/feb23/letter01.html'
-      },
-      {
-        label: 'January',
-        link: 'https://www.01com.com/newsletter/jan23/letter01.html'
-      },
-    ]
-  },
-  {
-    year: '2022',
-    items: [
-      {
-        label: 'December',
-        link: 'https://www.01com.com/newsletter/dec22/letter01.html'
-      },
-      {
-        label: 'November',
-        link: 'https://www.01com.com/newsletter/nov22/letter01.html'
-      },
-      {
-        label: 'October',
-        link: 'https://www.01com.com/newsletter/oct22/letter01.html'
-      },
-      {
-        label: 'September',
-        link: 'https://www.01com.com/newsletter/sep22/letter01.html'
-      },
-      {
-        label: 'August',
-        link: 'https://www.01com.com/newsletter/aug22/letter01.html'
-      },
-      {
-        label: 'July',
-        link: 'https://www.01com.com/newsletter/jul22/letter01.html'
-      },
-      {
-        label: 'June',
-        link: 'https://www.01com.com/newsletter/jun22/letter01.html'
-      },
-      {
-        label: 'May',
-        link: 'https://www.01com.com/newsletter/may22/letter01.html'
-      },
-      {
-        label: 'April',
-        link: 'https://www.01com.com/newsletter/apr22/letter01.html'
-      },
-      {
-        label: 'March',
-        link: 'https://www.01com.com/newsletter/mar22/letter01.html'
-      },
-      {
-        label: 'February',
-        link: 'https://www.01com.com/newsletter/feb22/letter01.html'
-      },
-      {
-        label: 'January',
-        link: 'https://www.01com.com/newsletter/jan22/letter01.html'
-      }
-    ]
-  },
-  {
-    year: '2021',
-    items: [
-      {
-        label: 'December',
-        link: 'https://www.01com.com/newsletter/dec21/letter01.html'
-      },
-      {
-        label: 'October',
-        link: 'https://www.01com.com/newsletter/oct21/letter01.html'
-      },
-      {
-        label: 'September',
-        items: [
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/sep21/letter01.html'
-          }
-        ]
-      },
-      {
-        label: 'August',
-        items: [
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/aug21/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/aug21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/aug21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'July',
-        items: [
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/jul21/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/jul21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/jul21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'June',
-        items: [
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/jun21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/jun21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'May',
-        items: [
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/may21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/may21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'April',
-        items: [
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/apr21/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/apr21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/apr21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'March',
-        items: [
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/mar21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/mar21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'February',
-        items: [
-          {
-            label: '#4',
-            link: 'https://www.01com.com/newsletter/feb21/letter04.html'
-          },
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/feb21/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/feb21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/feb21/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'January',
-        items: [
-          {
-            label: '#4',
-            link: 'https://www.01com.com/newsletter/jan21/letter04.html'
-          },
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/jan21/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/jan21/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/jan21/letter01.html'
-          },
-        ]
-      },
-    ]
-  },
-  {
-    year: '2020',
-    items: [
-      {
-        label: 'December',
-        items: [
-          {
-            label: '#5',
-            link: 'https://www.01com.com/newsletter/dec20/letter05.html'
-          },
-          {
-            label: '#4',
-            link: 'https://www.01com.com/newsletter/dec20/letter04.html'
-          },
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/dec20/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/dec20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/dec20/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'November',
-        items: [
-          {
-            label: '#4',
-            link: 'https://www.01com.com/newsletter/nov20/letter04.html'
-          },
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/nov20/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/nov20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/nov20/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'October',
-        items: [
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/oct20/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/oct20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/oct20/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'September',
-        items: [
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/sep20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/sep20/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'August',
-        items: [
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/aug20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/aug20/letter01.html'
-          },
-        ]
-      },
-      {
-        label: 'July',
-        items: [
-          {
-            label: '#4',
-            link: 'https://www.01com.com/newsletter/jul20/letter04.html'
-          },
-          {
-            label: '#3',
-            link: 'https://www.01com.com/newsletter/jul20/letter03.html'
-          },
-          {
-            label: '#2',
-            link: 'https://www.01com.com/newsletter/jul20/letter02.html'
-          },
-          {
-            label: '#1',
-            link: 'https://www.01com.com/newsletter/jul20/letter01.html'
-          },
-        ]
-      },
-    ]
-  },
-];
+type Newsletters = {
+  _id: string,
+  year: string,
+  month: string,
+  link: string,
+}
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`)
+    }
+  }
+}
+
+// const newsletterItems = [
+//   {
+//     year: '2023',
+//     items: [
+//       {
+//         label: 'October',
+//         link: 'https://www.01com.com/newsletter/oct23/letter01.html'
+//       },
+//       {
+//         label: 'July',
+//         link: 'https://www.01com.com/newsletter/jul23/letter01.html'
+//       },
+//       {
+//         label: 'June',
+//         link: 'https://www.01com.com/newsletter/jun23/letter01.html'
+//       },
+//       {
+//         label: 'May',
+//         link: 'https://www.01com.com/newsletter/may23/letter01.html'
+//       },
+//       {
+//         label: 'April',
+//         link: 'https://www.01com.com/newsletter/apr23/letter01.html'
+//       },
+//       {
+//         label: 'March',
+//         link: 'https://www.01com.com/newsletter/mar23/letter01.html'
+//       },
+//       {
+//         label: 'February',
+//         link: 'https://www.01com.com/newsletter/feb23/letter01.html'
+//       },
+//       {
+//         label: 'January',
+//         link: 'https://www.01com.com/newsletter/jan23/letter01.html'
+//       },
+//     ]
+//   },
+//   {
+//     year: '2022',
+//     items: [
+//       {
+//         label: 'December',
+//         link: 'https://www.01com.com/newsletter/dec22/letter01.html'
+//       },
+//       {
+//         label: 'November',
+//         link: 'https://www.01com.com/newsletter/nov22/letter01.html'
+//       },
+//       {
+//         label: 'October',
+//         link: 'https://www.01com.com/newsletter/oct22/letter01.html'
+//       },
+//       {
+//         label: 'September',
+//         link: 'https://www.01com.com/newsletter/sep22/letter01.html'
+//       },
+//       {
+//         label: 'August',
+//         link: 'https://www.01com.com/newsletter/aug22/letter01.html'
+//       },
+//       {
+//         label: 'July',
+//         link: 'https://www.01com.com/newsletter/jul22/letter01.html'
+//       },
+//       {
+//         label: 'June',
+//         link: 'https://www.01com.com/newsletter/jun22/letter01.html'
+//       },
+//       {
+//         label: 'May',
+//         link: 'https://www.01com.com/newsletter/may22/letter01.html'
+//       },
+//       {
+//         label: 'April',
+//         link: 'https://www.01com.com/newsletter/apr22/letter01.html'
+//       },
+//       {
+//         label: 'March',
+//         link: 'https://www.01com.com/newsletter/mar22/letter01.html'
+//       },
+//       {
+//         label: 'February',
+//         link: 'https://www.01com.com/newsletter/feb22/letter01.html'
+//       },
+//       {
+//         label: 'January',
+//         link: 'https://www.01com.com/newsletter/jan22/letter01.html'
+//       }
+//     ]
+//   },
+//   {
+//     year: '2021',
+//     items: [
+//       {
+//         label: 'December',
+//         link: 'https://www.01com.com/newsletter/dec21/letter01.html'
+//       },
+//       {
+//         label: 'October',
+//         link: 'https://www.01com.com/newsletter/oct21/letter01.html'
+//       },
+//       {
+//         label: 'September',
+//         items: [
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/sep21/letter01.html'
+//           }
+//         ]
+//       },
+//       {
+//         label: 'August',
+//         items: [
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/aug21/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/aug21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/aug21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'July',
+//         items: [
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/jul21/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/jul21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/jul21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'June',
+//         items: [
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/jun21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/jun21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'May',
+//         items: [
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/may21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/may21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'April',
+//         items: [
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/apr21/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/apr21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/apr21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'March',
+//         items: [
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/mar21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/mar21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'February',
+//         items: [
+//           {
+//             label: '#4',
+//             link: 'https://www.01com.com/newsletter/feb21/letter04.html'
+//           },
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/feb21/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/feb21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/feb21/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'January',
+//         items: [
+//           {
+//             label: '#4',
+//             link: 'https://www.01com.com/newsletter/jan21/letter04.html'
+//           },
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/jan21/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/jan21/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/jan21/letter01.html'
+//           },
+//         ]
+//       },
+//     ]
+//   },
+//   {
+//     year: '2020',
+//     items: [
+//       {
+//         label: 'December',
+//         items: [
+//           {
+//             label: '#5',
+//             link: 'https://www.01com.com/newsletter/dec20/letter05.html'
+//           },
+//           {
+//             label: '#4',
+//             link: 'https://www.01com.com/newsletter/dec20/letter04.html'
+//           },
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/dec20/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/dec20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/dec20/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'November',
+//         items: [
+//           {
+//             label: '#4',
+//             link: 'https://www.01com.com/newsletter/nov20/letter04.html'
+//           },
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/nov20/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/nov20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/nov20/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'October',
+//         items: [
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/oct20/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/oct20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/oct20/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'September',
+//         items: [
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/sep20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/sep20/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'August',
+//         items: [
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/aug20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/aug20/letter01.html'
+//           },
+//         ]
+//       },
+//       {
+//         label: 'July',
+//         items: [
+//           {
+//             label: '#4',
+//             link: 'https://www.01com.com/newsletter/jul20/letter04.html'
+//           },
+//           {
+//             label: '#3',
+//             link: 'https://www.01com.com/newsletter/jul20/letter03.html'
+//           },
+//           {
+//             label: '#2',
+//             link: 'https://www.01com.com/newsletter/jul20/letter02.html'
+//           },
+//           {
+//             label: '#1',
+//             link: 'https://www.01com.com/newsletter/jul20/letter01.html'
+//           },
+//         ]
+//       },
+//     ]
+//   },
+// ];
 
 const ButtonContainer = styled(Box)`
 margin: 48px 0 12px 0;
@@ -410,7 +404,136 @@ button {
 `
 
 // TODO: update all meta tags
-export default function Newsletters() {
+export default function Newsletters({ newsletters }) {
+
+  const [newsletterItems, setNewsletterItems] = useState([])
+
+  useEffect(() => {
+    const red = newsletters.reduce((acc, curr) => {
+      const existingYear = acc.find((item) => item.year === curr.year);
+
+      if (existingYear) {
+        const existingMonth = existingYear.items.find((item) => item.month === curr.month);
+
+        if (existingMonth) {
+          existingMonth.links.push(curr.link);
+        } else {
+          existingYear.items.push({
+            month: curr.month,
+            links: [curr.link]
+          });
+        }
+      } else {
+        acc.push({
+          year: curr.year,
+          items: [{
+            month: curr.month,
+            links: [curr.link]
+          }]
+        });
+      }
+
+      return acc;
+    }, []);
+
+    const sortedResultArray = red.sort((a, b) => {
+      // Sort years in descending order
+      return parseInt(b.year) - parseInt(a.year);
+    }).map((yearItem) => ({
+      // Sort months in descending order within items
+      ...yearItem,
+      items: yearItem.items.sort((a, b) => {
+        const monthsOrder = {
+          'January': 1, 'February': 2, 'March': 3, 'April': 4,
+          'May': 5, 'June': 6, 'July': 7, 'August': 8,
+          'September': 9, 'October': 10, 'November': 11, 'December': 12
+        };
+        return monthsOrder[b.month] - monthsOrder[a.month];
+      })
+    })).map((yearItem) => {
+      return ({
+        // Sort links based on the "letter" part
+        ...yearItem,
+        items: yearItem.items.map((item) => ({
+          ...item,
+          links: item.links.sort((urlA, urlB) => {
+            const regex = /letter(\d+)\.html/; // Match the "letter" part and extract the numeric portion
+            const matchA = urlA.match(regex);
+            const matchB = urlB.match(regex);
+
+            if (matchA && matchB) {
+              const letterNumberA = parseInt(matchA[1]);
+              const letterNumberB = parseInt(matchB[1]);
+              return letterNumberB - letterNumberA;
+            }
+
+            // If the regex doesn't match, maintain the original order
+            return 0;
+          })
+        }
+        ))
+      })
+    });
+
+    setNewsletterItems(sortedResultArray)
+  }, [newsletters])
+
+  const newsItems = {
+    "2023": {
+      "October": [
+        "https://www.01com.com/newsletter/oct23/letter01.html"
+      ],
+      "May": [
+        "https://www.01com.com/newsletter/may23/letter01.html"
+      ],
+      "April": [
+        "https://www.01com.com/newsletter/apr23/letter01.html"
+      ],
+      "March": [
+        "https://www.01com.com/newsletter/mar23/letter01.html"
+      ],
+      "June": [
+        "https://www.01com.com/newsletter/jun23/letter01.html"
+      ],
+      "July": [
+        "https://www.01com.com/newsletter/jul23/letter01.html"
+      ],
+      "February": [
+        "https://www.01com.com/newsletter/feb23/letter01.html"
+      ],
+      "January": [
+        "https://www.01com.com/newsletter/jan23/letter01.html"
+      ]
+    },
+    "2022": {
+      "October": [
+        "https://www.01com.com/newsletter/oct23/letter01.html"
+      ],
+      "May": [
+        "https://www.01com.com/newsletter/may23/letter01.html"
+      ],
+      "April": [
+        "https://www.01com.com/newsletter/apr23/letter01.html"
+      ],
+      "March": [
+        "https://www.01com.com/newsletter/mar23/letter01.html"
+      ],
+      "June": [
+        "https://www.01com.com/newsletter/jun23/letter01.html"
+      ],
+      "July": [
+        "https://www.01com.com/newsletter/jul23/letter01.html"
+      ],
+      "February": [
+        "https://www.01com.com/newsletter/feb23/letter01.html"
+      ],
+      "January": [
+        "https://www.01com.com/newsletter/jan23/letter01.html"
+      ]
+    },
+
+  }
+
   return (
     <Layout variant={LayoutVariants.Dark} pageTitle="Press Room">
       <Head>

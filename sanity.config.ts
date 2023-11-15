@@ -12,10 +12,10 @@ import { schema } from './sanity/schema'
 
 export default defineConfig({
   basePath: '/studio',
-  // projectId: "7o47py1b",
-  // dataset: 'production',
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
-  dataset: process.env.SANITY_STUDIO_DATASET,
+  projectId: "7o47py1b",
+  dataset: 'production',
+  // projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  // dataset: process.env.SANITY_STUDIO_DATASET,
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [

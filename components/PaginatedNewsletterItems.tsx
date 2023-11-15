@@ -25,12 +25,15 @@ ${breakpoints("margin", "", [
 `
 
 function Items({ currentItems }) {
+
   return (
     <CardGrid>
       {currentItems &&
-        currentItems.map((item) => (
-          <NewsletterCard heading={item.year} items={item.items} key={item.year} />
-        ))}
+        currentItems.map((item) => {
+          return (
+            <NewsletterCard heading={item.year} items={item.items} itemKey={item.year} key={item.year} />
+          )
+        })}
     </CardGrid>
 
   );

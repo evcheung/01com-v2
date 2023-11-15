@@ -84,6 +84,9 @@ row-gap: 24px;
   top: 0;
   right: 0;
 }
+${breakpoints("right", "", [
+  { 1240: "32px" },
+])}
 `
 
 const LogoContainer = styled(Image)`

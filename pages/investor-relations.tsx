@@ -1,178 +1,129 @@
-import Layout, { LayoutVariants } from '../components/Layout'
-import Head from 'next/head'
-import { Box, Text, TextColors, TextVariants } from '../components/core'
-import Heading from '../components/core/heading'
-import styled from 'styled-components'
-import { theme } from '../theme'
-import { Anchor } from '../components/core/anchor'
-import pdf from '../public/assets/pdf.svg'
-import webinar from '../public/assets/webinar.svg'
-import texture from '../public/assets/texture.png'
-import Image from 'next/image'
-import ModalVideo from 'react-modal-video';
-import "react-modal-video/scss/modal-video.scss"
-import { useMemo, useState } from 'react'
-import playButton from '../public/assets/play-button.svg'
-import Link from 'next/link'
-import { useWindowSize } from 'usehooks-ts'
-import { breakpoints } from '../utils/breakpoints'
-import { client } from '../sanity/lib/client'
-import ShortUniqueId from 'short-unique-id'
-
+import Layout, { LayoutVariants } from "../components/Layout";
+import Head from "next/head";
+import { Box, Text, TextColors, TextVariants } from "../components/core";
+import Heading from "../components/core/heading";
+import styled from "styled-components";
+import { theme } from "../theme";
+import { Anchor } from "../components/core/anchor";
+import pdf from "../public/assets/pdf.svg";
+import webinar from "../public/assets/webinar.svg";
+import texture from "../public/assets/texture.png";
+import Image from "next/image";
+import ModalVideo from "react-modal-video";
+import "react-modal-video/scss/modal-video.scss";
+import { useMemo, useState } from "react";
+import playButton from "../public/assets/play-button.svg";
+import Link from "next/link";
+import { useWindowSize } from "usehooks-ts";
+import { breakpoints } from "../utils/breakpoints";
+import { client } from "../sanity/lib/client";
+import ShortUniqueId from "short-unique-id";
 
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
   width: 100%;
   margin: 12px 0px;
-  
-${breakpoints("margin", "", [
-  { 760: '18px 0px' },
-])}
-`
+
+  ${breakpoints("margin", "", [{ 760: "18px 0px" }])}
+`;
 
 const StyledHeading = styled(Heading)`
-font-size: ${theme.fontSize.xxxl};
-line-height: 50px;
+  font-size: ${theme.fontSize.xxxl};
+  line-height: 50px;
 
-${breakpoints("font-size", "", [
-  { 900: theme.fontSize.xl },
-])}
-${breakpoints("line-height", "", [
-  { 900: '42px' },
-])}
-`
+  ${breakpoints("font-size", "", [{ 900: theme.fontSize.xl }])}
+  ${breakpoints("line-height", "", [{ 900: "42px" }])}
+`;
 
 const StyledContentHeading = styled(Heading)`
-font-size: ${theme.fontSize.xxxl};
-line-height: 50px;
-margin-bottom: 38px;
+  font-size: ${theme.fontSize.xxxl};
+  line-height: 50px;
+  margin-bottom: 38px;
 
-${breakpoints("font-size", "", [
-  { 900: theme.fontSize.xl },
-])}
-${breakpoints("margin-bottom", "", [
-  { 760: '12px' },
-])}
-${breakpoints("line-height", "", [
-  { 760: '24px' },
-])}
-`
+  ${breakpoints("font-size", "", [{ 900: theme.fontSize.xl }])}
+  ${breakpoints("margin-bottom", "", [{ 760: "12px" }])}
+${breakpoints("line-height", "", [{ 760: "24px" }])}
+`;
 
 const StyledVideoHeader = styled(Text)`
-font-size: ${theme.fontSize.xl};
-font-weight: ${theme.fontWeight[700]};
+  font-size: ${theme.fontSize.xl};
+  font-weight: ${theme.fontWeight[700]};
 
-${breakpoints("font-size", "", [
-  { 1200: theme.fontSize.lg },
-])}
-`
+  ${breakpoints("font-size", "", [{ 1200: theme.fontSize.lg }])}
+`;
 
 const FeaturedVideoContainer = styled(Box)`
-background-color: ${theme.colors.neutral.sm};
-margin: 0 auto;
-padding: 118px 96px;
-display: grid;
-grid-template-columns: 1fr 1fr;
-column-gap: 96px;
-${breakpoints("column-gap", "", [
-  { 1200: '24px' },
-])}
-${breakpoints("padding", "", [
-  { 1200: '68px 56px' },
-])}
-`
+  background-color: ${theme.colors.neutral.sm};
+  margin: 0 auto;
+  padding: 118px 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 96px;
+  ${breakpoints("column-gap", "", [{ 1200: "24px" }])}
+  ${breakpoints("padding", "", [{ 1200: "68px 56px" }])}
+`;
 
 const PlayButton = styled.button`
   background: none;
   border: none;
-`
+`;
 
 const TableContainer = styled(Box)`
-display: grid;
-grid-template-columns: 1fr 3fr 2fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr;
 
-${breakpoints("grid-template-columns", "", [
-  { 1200: '2fr 3fr 2fr' },
-])}
-${breakpoints("grid-template-columns", "", [
-  { 760: '1fr' },
-])}
-${breakpoints("row-gap", "", [
-  { 760: '8px' },
-])}
-`
+  ${breakpoints("grid-template-columns", "", [{ 1200: "2fr 3fr 2fr" }])}
+  ${breakpoints("grid-template-columns", "", [{ 760: "1fr" }])}
+${breakpoints("row-gap", "", [{ 760: "8px" }])}
+`;
 
 const LinkContainer = styled(Box)`
-display:flex;
+  display: flex;
 
-${breakpoints("flex-direction", "", [
-  { 1200: 'column' },
-])}
-${breakpoints("align-items", "", [
-  { 1200: 'flex-start' },
-])}
+  ${breakpoints("flex-direction", "", [{ 1200: "column" }])}
+  ${breakpoints("align-items", "", [{ 1200: "flex-start" }])}
 
-${breakpoints("flex-direction", "", [
-  { 760: 'row' },
-])}
-${breakpoints("align-items", "", [
-  { 760: 'center' },
-])}
-${breakpoints("margin-bottom", "", [
-  { 760: '8px' },
-])}
-
-`
+${breakpoints("flex-direction", "", [{ 760: "row" }])}
+${breakpoints("align-items", "", [{ 760: "center" }])}
+${breakpoints("margin-bottom", "", [{ 760: "8px" }])}
+`;
 
 const LinkItem = styled(Box)`
-display:flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 
-:first-of-type {
-  margin: 0 48px 0 -10px;
-}
-:last-of-type {
-  ${breakpoints("margin", "", [
-  { 1200: '10px 0 0 -10px' },
-])}
-  ${breakpoints("margin", "", [
-  { 760: '0 48px 0 -10px' },
-])}
-}
-
-a {
-  ${breakpoints("font-size", "", [
-  { 760: theme.fontSize.sm },
-])}
-}
-`
-
-type InvestorRelationsVideos = {
-  _id: string,
-  title: string,
-  description: string,
-  link: string,
-  isFeatured: boolean,
-}
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      featuredVideo: await client.fetch<InvestorRelationsVideos[]>(`*[_type == "investor-relations-videos" && isFeatured]`)
-    }
+  :first-of-type {
+    margin: 0 48px 0 -10px;
   }
-}
+  :last-of-type {
+    ${breakpoints("margin", "", [{ 1200: "10px 0 0 -10px" }])}
+    ${breakpoints("margin", "", [{ 760: "0 48px 0 -10px" }])}
+  }
+
+  a {
+    ${breakpoints("font-size", "", [{ 760: theme.fontSize.sm }])}
+  }
+`;
 
 const HeaderContent = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
   const { width } = useWindowSize();
-  const youtubeId = featuredVideo.link.split('v=')[1].slice(0, 11)
-  const youtubeThumbnail = useMemo(() => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`, [])
+  const youtubeId = featuredVideo.link.split("v=")[1].slice(0, 11);
+  const youtubeThumbnail = useMemo(
+    () => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`,
+    []
+  );
 
-  const VideoBannerDesktop = () =>
-    <FeaturedVideoContainer backgroundImage={texture.src} flexDirection='row' flexAlignment='center'>
+  const VideoBannerDesktop = () => (
+    <FeaturedVideoContainer
+      backgroundImage={texture.src}
+      flexDirection="row"
+      flexAlignment="center"
+    >
       <Box>
-        <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
+        <StyledVideoHeader textColor={TextColors.Blue}>
+          Featured Video
+        </StyledVideoHeader>
         <Box padding="0 48px 0 0" margin="16px 0">
           <StyledHeading as="h2">{featuredVideo.title}</StyledHeading>
         </Box>
@@ -180,7 +131,13 @@ const HeaderContent = ({ featuredVideo }) => {
           <Text>{featuredVideo.description}</Text>
         </Box>
       </Box>
-      <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' style={{ height: '300px' }}>
+      <Box
+        backgroundImage={youtubeThumbnail}
+        flexDirection="row"
+        flexAlignment="center"
+        flexJustify="center"
+        style={{ height: "300px" }}
+      >
         <ModalVideo
           channel="youtube"
           youtube={{ mute: 0, autoplay: 0 }}
@@ -193,107 +150,137 @@ const HeaderContent = ({ featuredVideo }) => {
         </PlayButton>
       </Box>
     </FeaturedVideoContainer>
+  );
 
   return (
     <>
       <Box padding="0px 48px">
-        <Box width={width > 1200 ? "968px" : "100%"} padding="0 0 24px 0" margin="16px auto">
-          <Text textColor={TextColors.White} alignment='center'>
-            01 Communique's common shares are listed on the TSX Venture Exchange (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under the symbol 'OONEF'.
+        <Box
+          width={width > 1200 ? "968px" : "100%"}
+          padding="0 0 24px 0"
+          margin="16px auto"
+        >
+          <Text textColor={TextColors.White} alignment="center">
+            01 Communique's common shares are listed on the TSX Venture Exchange
+            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under
+            the symbol 'OONEF'.
           </Text>
         </Box>
 
-        {width > 900 &&
-          <VideoBannerDesktop />}
+        {width > 900 && <VideoBannerDesktop />}
       </Box>
     </>
-  )
-}
-
+  );
+};
 
 const LATEST_PRESENTATION = [
   {
-    date: 'Spring 2023',
+    date: "Spring 2023",
     description: "Spring 2023 Investor Presentation",
-    links: [{
-      url: 'https://www.01com.com/pdf/2023/Presentation.pdf',
-      type: 'pdf'
-    }]
+    links: [
+      {
+        url: "https://www.01com.com/pdf/2023/Presentation.pdf",
+        type: "pdf",
+      },
+    ],
   },
-]
+];
 
 const RECENT_EVENTS = [
   {
-    date: 'June 15, 2023',
+    date: "June 15, 2023",
     description: "01 reports fiscal Q2 2023",
-    links: [{
-      url: 'https://www.01com.com/pdf/2023/Q2-2023-Press-Release.pdf',
-      type: 'pdf'
-    },
-    {
-      url: 'https://www.01com.com/Videos/2023/2023Q2-Presentation-recording-with-Q&A.mp4',
-      type: 'video'
-    },]
+    links: [
+      {
+        url: "https://www.01com.com/pdf/2023/Q2-2023-Press-Release.pdf",
+        type: "pdf",
+      },
+      {
+        url: "https://www.01com.com/Videos/2023/2023Q2-Presentation-recording-with-Q&A.mp4",
+        type: "video",
+      },
+    ],
   },
   {
-    date: 'March 21, 2023',
+    date: "March 21, 2023",
     description: "01 reports fiscal Q1 2023",
-    links: [{
-      url: 'https://www.01com.com/pdf/2023/Q1-2023-Press-Release.pdf',
-      type: 'pdf'
-    }]
+    links: [
+      {
+        url: "https://www.01com.com/pdf/2023/Q1-2023-Press-Release.pdf",
+        type: "pdf",
+      },
+    ],
   },
   {
-    date: 'January 19, 2023',
+    date: "January 19, 2023",
     description: "01 reports fiscal Q4 2022",
-    links: [{
-      url: 'https://www.01com.com/pdf/2023/Q4-2022-Press-Release.pdf',
-      type: 'pdf'
-    }]
+    links: [
+      {
+        url: "https://www.01com.com/pdf/2023/Q4-2022-Press-Release.pdf",
+        type: "pdf",
+      },
+    ],
   },
   {
-    date: 'September 15, 2022',
+    date: "September 15, 2022",
     description: "01 reports fiscal Q3 2022",
     links: [
       {
-        url: 'https://01com.com/pdf/2022/Q3-2022-Press-Release.pdf',
-        type: 'pdf'
+        url: "https://01com.com/pdf/2022/Q3-2022-Press-Release.pdf",
+        type: "pdf",
       },
-    ]
+    ],
   },
-]
+];
 
 const VideoBannerMobile = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
-  const youtubeId = featuredVideo.link.split('v=')[1].slice(0, 11)
-  const youtubeThumbnail = useMemo(() => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`, [])
+  const youtubeId = featuredVideo.link.split("v=")[1].slice(0, 11);
+  const youtubeThumbnail = useMemo(
+    () => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`,
+    []
+  );
 
-  return <>
-    <Box backgroundImage={youtubeThumbnail} flexDirection='row' flexAlignment='center' flexJustify='center' margin="0 0 32px 0" style={{ height: '300px', width: '100%' }}>
-      <ModalVideo
-        channel="youtube"
-        youtube={{ mute: 0, autoplay: 0 }}
-        isOpen={isOpen}
-        videoId="SpU45f6jV7w"
-        onClose={() => setOpen(false)}
-      />
-      <PlayButton onClick={() => setOpen(true)}>
-        <Image src={playButton} alt="play button" />
-      </PlayButton>
-    </Box>
-
-    <Box>
-      <StyledVideoHeader textColor={TextColors.Blue}>Featured Video</StyledVideoHeader>
-      <Box margin="16px 0">
-        <StyledHeading as="h2">Interview with Andrew Cheung, CEO 01 Communique</StyledHeading>
+  return (
+    <>
+      <Box
+        backgroundImage={youtubeThumbnail}
+        flexDirection="row"
+        flexAlignment="center"
+        flexJustify="center"
+        margin="0 0 32px 0"
+        style={{ height: "300px", width: "100%" }}
+      >
+        <ModalVideo
+          channel="youtube"
+          youtube={{ mute: 0, autoplay: 0 }}
+          isOpen={isOpen}
+          videoId="SpU45f6jV7w"
+          onClose={() => setOpen(false)}
+        />
+        <PlayButton onClick={() => setOpen(true)}>
+          <Image src={playButton} alt="play button" />
+        </PlayButton>
       </Box>
+
       <Box>
-        <Text>01 Communique talks about its quantum-safe cybersecurity solution.</Text>
+        <StyledVideoHeader textColor={TextColors.Blue}>
+          Featured Video
+        </StyledVideoHeader>
+        <Box margin="16px 0">
+          <StyledHeading as="h2">
+            Interview with Andrew Cheung, CEO 01 Communique
+          </StyledHeading>
+        </Box>
+        <Box>
+          <Text>
+            01 Communique talks about its quantum-safe cybersecurity solution.
+          </Text>
+        </Box>
       </Box>
-    </Box>
-  </>
-}
-
+    </>
+  );
+};
 
 // TODO: abstract border into component
 const TableContent = ({ width, data }) => {
@@ -301,103 +288,191 @@ const TableContent = ({ width, data }) => {
 
   return (
     <>
-      {width > 760 && <TableContainer>
-        <Text variant={TextVariants.Feat2}>Date</Text>
-        <Text variant={TextVariants.Feat2}>Description</Text>
-        <Text variant={TextVariants.Feat2}>Relevant Links</Text>
-      </TableContainer>}
+      {width > 760 && (
+        <TableContainer>
+          <Text variant={TextVariants.Feat2}>Date</Text>
+          <Text variant={TextVariants.Feat2}>Description</Text>
+          <Text variant={TextVariants.Feat2}>Relevant Links</Text>
+        </TableContainer>
+      )}
       <HorizontalBorder />
-      {data.map(item =>
-        <>
-          <TableContainer key={`table-container-${uid.rnd()}`}>
-            <Text>{item.date}</Text>
-            <Text>{item.description}</Text>
-            <LinkContainer>
-              {
-                item.links.map(link => {
-                  const isPDF = link.type === 'pdf';
+      {data.map((item) => {
+        return (
+          <>
+            <TableContainer key={`table-container-${uid.rnd()}`}>
+              <Text>{item.date}</Text>
+              <Text>{item.description}</Text>
+              <LinkContainer>
+                {item.relevantLinks.map((link) => {
+                  const isPDF = link.linkType === "pdf";
                   return (
                     <>
                       <LinkItem key={`link-item-${uid.rnd()}`}>
                         <Box margin="0px 8px">
-                          <Image src={isPDF ? pdf : webinar} alt={isPDF ? 'pdf icon' : 'video icon'} />
+                          <Image
+                            src={isPDF ? pdf : webinar}
+                            alt={isPDF ? "pdf icon" : "video icon"}
+                          />
                         </Box>
-                        <Anchor href={link.url} target='_blank'>{isPDF ? 'Press Release' : 'Webinar Replay'}</Anchor>
-                      </LinkItem >
+                        <Anchor href={link.url} target="_blank">
+                          {link.label}
+                        </Anchor>
+                      </LinkItem>
                     </>
-                  )
-                })
-              }
-            </LinkContainer>
-          </TableContainer >
-          <HorizontalBorder />
-        </>)
-      }
+                  );
+                })}
+              </LinkContainer>
+            </TableContainer>
+            <HorizontalBorder />
+          </>
+        )
+      })}
     </>
-  )
-}
+  );
+};
 
 const StyledLink = styled(Link)`
   text-decoration: underline;
-`
+`;
 
 const ContentContainer = styled(Box)`
-width:100%;
- padding:0 100px;
- margin:96px 0;
+  width: 100%;
+  padding: 0 100px;
+  margin: 96px 0;
 
- ${breakpoints("padding", "", [
-  { 1200: '0 48px' },
-])}
-${breakpoints("margin", "", [
-  { 900: '48px 0' },
-])}
-${breakpoints("padding", "", [
-  { 900: '0' },
-])}
-`
+  ${breakpoints("padding", "", [{ 1200: "0 48px" }])}
+  ${breakpoints("margin", "", [{ 900: "48px 0" }])}
+${breakpoints("padding", "", [{ 900: "0" }])}
+`;
 
 const Section = styled(Box)`
-margin: 0 0 96px 0;
+  margin: 0 0 96px 0;
 
-${breakpoints("margin", "", [
-  { 900: '0 0 48px 0' },
-])}
-`
+  ${breakpoints("margin", "", [{ 900: "0 0 48px 0" }])}
+`;
 
-export default function InvestorRelations({ featuredVideo }) {
-  const { width } = useWindowSize()
-  console.log('👉👉👉 featuredVdieo', featuredVideo);
+type InvestorRelations = {
+  featuredVideo: {
+    _id: string;
+    title: string;
+    description: string;
+    link: string;
+    isFeatured: boolean;
+  };
+  latestPresentation: {
+    _id: string;
+    date: string;
+    description: string;
+    relevantLinks: any;
+    isFeatured: boolean;
+  };
+  recentEvents: {
+    _id: string;
+    date: string;
+    description: string;
+    relevantLinks: any;
+  };
+  financialResults: {
+    _id: string;
+    description: string;
+    relevantLinks: any;
+  };
+};
+
+export const getStaticProps = async () => {
+  const queryVideos = `*[_type == "investor-relations-videos" && isFeatured]`;
+  const queryLatestPresentation = `*[ _type == "investor-relations-latest-presentation" && isFeatured ]`;
+  const queryRecentEvents = `*[ _type == "investor-relations-recent-events" ]`;
+  const queryFinancial = `*[ _type == "investor-relations-financial-results" ]`;
+  const query = `{ "featuredVideo": ${queryVideos}, "latestPresentation": ${queryLatestPresentation}, "recentEvents": ${queryRecentEvents}, "financialResults": ${queryFinancial} }`;
+
+  return {
+    props: {
+      investorRelations: await client.fetch<InvestorRelations[]>(query),
+    },
+  };
+};
+
+export default function InvestorRelations({
+  investorRelations,
+}) {
+  const { width } = useWindowSize();
+
+  const sortedRecentEvents = investorRelations.recentEvents.sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    return dateB - dateA;
+  });
+
+  const formattedSortedRecentEvents = sortedRecentEvents.map(item => ({
+    ...item,
+    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))
+  }))
 
   return (
-    <Layout variant={LayoutVariants.Dark} pageTitle="Investor Relations" headerContent={<HeaderContent featuredVideo={featuredVideo[0]} />}>
+    <Layout
+      variant={LayoutVariants.Dark}
+      pageTitle="Investor Relations"
+      headerContent={<HeaderContent featuredVideo={investorRelations.featuredVideo[0]} />}
+    >
       <Head>
         <title>Remote Desktop Software Press and Reviews</title>
-        <meta name="description" content="Reviews and press coverage for I'm InTouch remote desktop software and remote control software solutions including 'Product of the Year 2012' award." />
+        <meta
+          name="description"
+          content="Reviews and press coverage for I'm InTouch remote desktop software and remote control software solutions including 'Product of the Year 2012' award."
+        />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
       </Head>
       <ContentContainer>
-        {width <= 900 && <Box margin="0 0 68px 0"> <VideoBannerMobile featuredVideo={featuredVideo[0]} /></Box>}
+        {width <= 900 && (
+          <Box margin="0 0 68px 0">
+            <VideoBannerMobile featuredVideo={investorRelations.featuredVideo[0]} />
+          </Box>
+        )}
 
         <Section>
-          <StyledContentHeading as="h2">Latest Presentation</StyledContentHeading>
-          <TableContent width={width} data={LATEST_PRESENTATION} />
+          <StyledContentHeading as="h2">
+            Latest Presentation
+          </StyledContentHeading>
+          <TableContent width={width} data={investorRelations.latestPresentation} />
         </Section>
 
         <Section>
           <StyledContentHeading as="h2">Recent Events</StyledContentHeading>
-          <TableContent width={width} data={RECENT_EVENTS} />
+          <TableContent width={width} data={formattedSortedRecentEvents} />
         </Section>
 
         <Section>
-          <StyledContentHeading as="h2">Information Request</StyledContentHeading>
-          <Text>For more information about 01 Communique contact us at +1 905 795-2888 or +1 800 668-2185 (US/Canada), or email <StyledLink href="mailto:investorrelations@01com.com">investorrelations@01com.com</StyledLink> with any comments or suggestions.</Text>
+          <StyledContentHeading as="h2">
+            Information Request
+          </StyledContentHeading>
+          <Text>
+            For more information about 01 Communique contact us at +1 905
+            795-2888 or +1 800 668-2185 (US/Canada), or email{" "}
+            <StyledLink href="mailto:investorrelations@01com.com">
+              investorrelations@01com.com
+            </StyledLink>{" "}
+            with any comments or suggestions.
+          </Text>
         </Section>
 
         <Section>
           <StyledContentHeading as="h2">Stock Quote</StyledContentHeading>
-          <Text>Click <StyledLink href="https://money.tmx.com/en/quote/ONE" target="_blank">here</StyledLink> to obtain the latest stock quote.</Text>
+          <Text>
+            Click{" "}
+            <StyledLink
+              href="https://money.tmx.com/en/quote/ONE"
+              target="_blank"
+            >
+              here
+            </StyledLink>{" "}
+            to obtain the latest stock quote.
+          </Text>
         </Section>
 
         <Section>
@@ -405,22 +480,31 @@ export default function InvestorRelations({ featuredVideo }) {
           <HorizontalBorder />
 
           <TableContainer>
-            <Text>Latest Results: Q4 2022</Text>
+            <Text>{investorRelations.financialResults[0].description}</Text>
             <Box></Box>
             <LinkContainer>
               <LinkItem>
                 <Box margin="0px 8px">
-                  <Image src={pdf} alt='pdf icon' />
+                  <Image src={pdf} alt="pdf icon" />
                 </Box>
-                <Anchor href="" target='_blank'>{'Press Release'}</Anchor>
+                <Anchor href={investorRelations.financialResults[0].relevantLinks[0].url} target="_blank">
+                  {investorRelations.financialResults[0].relevantLinks[0].label}
+                </Anchor>
               </LinkItem>
             </LinkContainer>
           </TableContainer>
           <HorizontalBorder />
         </Section>
 
-        <Text>For further information on the company's financial results, please visit <StyledLink href="https://www.sedar.com" target="_blank">www.sedar.com</StyledLink>.</Text>
+        <Text>
+          For further information on the company's financial results, please
+          visit{" "}
+          <StyledLink href="https://www.sedar.com" target="_blank">
+            www.sedar.com
+          </StyledLink>
+          .
+        </Text>
       </ContentContainer>
-    </Layout >
-  )
+    </Layout>
+  );
 }

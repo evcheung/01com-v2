@@ -133,7 +133,7 @@ type PressRelease = {
 export const getStaticProps = async () => {
   return {
     props: {
-      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"][0...3] | order(date desc)`)
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`)
     }
   }
 }
@@ -142,7 +142,7 @@ export const getStaticProps = async () => {
 export default function Home({ pressReleases }) {
   const { width } = useWindowSize()
 
-  const featuredNewsItems = useMemo(() => pressReleases.map(item => ({
+  const featuredNewsItems = useMemo(() => pressReleases.slice(0, 3).map(item => ({
     ...item,
     date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))
   })), [pressReleases])

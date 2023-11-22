@@ -14,8 +14,8 @@ type PressRelease = {
 export const getStaticProps = async () => {
   return {
     props: {
-      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`)
-    }
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, { next: { revalidate: 10 } })
+    },
   }
 }
 

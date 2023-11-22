@@ -19,8 +19,8 @@ type ReviewsAwards = {
 export const getStaticProps = async () => {
   return {
     props: {
-      reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`)
-    }
+      reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`, { next: { revalidate: 10 } })
+    },
   }
 }
 

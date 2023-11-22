@@ -19,8 +19,8 @@ type Newsletters = {
 export const getStaticProps = async () => {
   return {
     props: {
-      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`)
-    }
+      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`, { next: { revalidate: 10 } })
+    },
   }
 }
 

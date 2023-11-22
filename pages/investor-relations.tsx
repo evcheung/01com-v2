@@ -388,7 +388,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      investorRelations: await client.fetch<InvestorRelations[]>(query),
+      investorRelations: await client.fetch<InvestorRelations[]>(query, { next: { revalidate: 10 } }),
     },
   };
 };

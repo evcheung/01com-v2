@@ -11,10 +11,14 @@ type PressRelease = {
   link: string,
 }
 
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
+
+
 export const getStaticProps = async () => {
   return {
     props: {
-      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, { next: { revalidate: 10 } })
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, { cache: 'no-store' })
     },
   }
 }

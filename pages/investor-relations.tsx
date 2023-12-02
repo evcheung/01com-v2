@@ -19,6 +19,9 @@ import { breakpoints } from "../utils/breakpoints";
 import { client } from "../sanity/lib/client";
 import ShortUniqueId from "short-unique-id";
 
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
+
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
   width: 100%;
@@ -388,7 +391,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      investorRelations: await client.fetch<InvestorRelations[]>(query, { next: { revalidate: 10 } }),
+      investorRelations: await client.fetch<InvestorRelations[]>(query, { cache: 'no-store' }),
     },
   };
 };
@@ -407,7 +410,7 @@ export default function InvestorRelations({
 
   const formattedSortedRecentEvents = sortedRecentEvents.map(item => ({
     ...item,
-    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))
+    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date + 'T00:00')))
   }))
 
   return (

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { breakpoints } from '../utils/breakpoints';
 import { Anchor } from '../components/core/anchor';
 import { client } from '../sanity/lib/client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Newsletters = {
   _id: string,
@@ -15,11 +15,14 @@ type Newsletters = {
   month: string,
   link: string,
 }
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
+
 
 export const getStaticProps = async () => {
   return {
     props: {
-      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`, { next: { revalidate: 10 } })
+      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`, { cache: 'no-store' })
     },
   }
 }

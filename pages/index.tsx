@@ -16,6 +16,8 @@ import { theme } from '../theme'
 import { client } from '../sanity/lib/client'
 import { useMemo } from 'react'
 
+export const revalidate = 10
+export const dynamic = 'force-dynamic'
 
 const LiveChatButton = styled(Link)`
   position: fixed;
@@ -64,7 +66,7 @@ const NewsContainer = styled(Box)`
 margin: -28px 0px 96px 0px;
 
 ${breakpoints("margin", "", [
-  { 760: "-28px 0px 48px 0px" },
+  { 760: "0px 0px 48px 0px" },
 ])}
 `
 
@@ -95,6 +97,9 @@ const MobileNewsCarousel = styled(Carousel)`
 
   .control-dots {
     bottom: -50px;
+    ${breakpoints("bottom", "", [
+  { 760: "-70px" },
+])}
   }
 
   .carousel .control-dots .dot {
@@ -129,11 +134,10 @@ type PressRelease = {
   link: string,
 }
 
-
 export const getStaticProps = async () => {
   return {
     props: {
-      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, { next: { revalidate: 10 } })
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, { cache: 'no-store' })
     },
   }
 }
@@ -141,10 +145,9 @@ export const getStaticProps = async () => {
 
 export default function Home({ pressReleases }) {
   const { width } = useWindowSize()
-
   const featuredNewsItems = useMemo(() => pressReleases.slice(0, 3).map(item => ({
     ...item,
-    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))
+    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date + 'T00:00')))
   })), [pressReleases])
 
   return (
@@ -177,7 +180,7 @@ export default function Home({ pressReleases }) {
         {width > 760 ? <LatestNewsContainer currentItems={featuredNewsItems} /> : <LatestNewsContainerMobile currentItems={featuredNewsItems} />}
 
         {width <= 760 &&
-          <Box margin="32px 0 0 0">
+          <Box margin="86px 0 0 0">
             <Link href="/press-releases">
               <PrimaryButton btnColor={ButtonColors.Blue}>View All</PrimaryButton>
             </Link>

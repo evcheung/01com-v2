@@ -11,7 +11,7 @@ function Items({ currentItems }) {
       {currentItems &&
         currentItems.map((item) => (
           <PressCard
-            date={new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date)))}
+            date={new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date + 'T00:00')))}
             description={item.description}
             link={item.link}
             image={item.image}

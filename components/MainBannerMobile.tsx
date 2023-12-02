@@ -27,19 +27,26 @@ const StyledCarousel = styled(Carousel)`
   }
 `
 
+const StyledBox = styled(Box)`
+  padding: 52px 48px;
+  ${breakpoints("padding", "", [
+  { 760: "52px 48px 68px 48px" },
+])}
+  height: 670px;
+`
+
 const BannerContainer = ({ children, backgroundImageSrc, customBoxStyles }: {
   children: ReactNode, backgroundImageSrc: string, customBoxStyles?: React.CSSProperties
 }) => {
   return (
-    <Box
+    <StyledBox
       backgroundImage={backgroundImageSrc}
-      padding="52px 48px"
       flexDirection='column'
       flexJustify='flex-end'
       flexAlignment='center'
-      style={{ height: '670px', ...customBoxStyles }}>
+      style={{ ...customBoxStyles }}>
       {children}
-    </Box>
+    </StyledBox>
   )
 }
 

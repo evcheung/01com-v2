@@ -21,8 +21,12 @@ export const dynamic = 'force-dynamic'
 export const getStaticProps = async () => {
   return {
     props: {
-      reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`, { cache: 'no-store' })
+      reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`, {
+        cache: 'no-store',
+        next: { revalidate }
+      })
     },
+    revalidate
   }
 }
 

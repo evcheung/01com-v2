@@ -27,7 +27,6 @@ export const getStaticProps = async () => {
         next: { revalidate }
       })
     },
-    revalidate
   }
 }
 

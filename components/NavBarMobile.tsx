@@ -7,34 +7,35 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { NavBarVariants } from './NavBar'
 import { slide as Menu } from 'react-burger-menu'
+import { NavLink } from './core/NavLink'
 
-const StyledA = styled.a`
-  font-size: ${theme.fontSize.sm};
-  font-weight: ${theme.fontWeight[600]};
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  color: ${theme.colors.neutral.xl}
-`
+// const StyledA = styled.a`
+//   font-size: ${theme.fontSize.sm};
+//   font-weight: ${theme.fontWeight[600]};
+//   cursor: pointer;
+//   margin: 0;
+//   padding: 0;
+//   color: ${theme.colors.neutral.xl}
+// `
 
-const AnchorContainer = styled(Box)`
-padding: 24px 16px;
-`
+// const AnchorContainer = styled(Box)`
+// padding: 24px 16px;
+// `
 
 const AnchorDivider = styled(Box)`
 border-bottom: 1px solid ${theme.colors.neutral.md};
 width: 100%;
 `
 
-export const NavLink = ({ href, label, target = "_self" }) => (
-  <StyledA>
-    <Link href={href} target={target} passHref legacyBehavior>
-      <AnchorContainer>
-        {label}
-      </AnchorContainer>
-    </Link>
-  </StyledA>
-)
+// export const NavLink = ({ href, label, target = "_self" }) => (
+//   <StyledA>
+//     <Link href={href} target={target} passHref legacyBehavior>
+//       <AnchorContainer>
+//         {label}
+//       </AnchorContainer>
+//     </Link>
+//   </StyledA>
+// )
 
 interface NavBarContainerProps {
   variant: NavBarVariants
@@ -199,22 +200,22 @@ export const NavBarMobile = ({
         }}>
           <Box flexDirection='column' width="100%">
             <AnchorDivider />
-            <NavLink href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
+            <NavLink color={theme.colors.neutral.xl} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
             <AnchorDivider />
 
-            <NavLink href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+            <NavLink color={theme.colors.neutral.xl} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
             <AnchorDivider />
 
-            <NavLink href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+            <NavLink color={theme.colors.neutral.xl} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
             <AnchorDivider />
 
-            <NavLink href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
+            <NavLink color={theme.colors.neutral.xl} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
             <AnchorDivider />
 
-            <NavLink href="/support" label="Support" />
+            <NavLink color={theme.colors.neutral.xl} href="/support" label="Support" />
             <AnchorDivider />
 
-            <NavLink href="/intellectual-properties" label="Intellectual Properties" />
+            <NavLink color={theme.colors.neutral.xl} href="/intellectual-properties" label="Intellectual Properties" />
             <AnchorDivider />
 
           </Box>

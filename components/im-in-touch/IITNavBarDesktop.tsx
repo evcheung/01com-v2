@@ -1,41 +1,29 @@
-import Logo from 'public/assets/01com-logo.png'
+import Logo from 'public/assets/iit-logo.png'
 import Image from 'next/image'
-import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from './core'
-import { theme } from '../theme'
+import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from '../core'
+import { theme } from '../../theme'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { breakpoints } from '../utils/breakpoints'
-import { NavBarVariants } from './NavBar'
-import { NavLink } from './core/NavLink'
+import { breakpoints } from '../../utils/breakpoints'
+import { NavBarVariants } from '../NavBar'
+import { NavLink } from '../core/NavLink'
 
 interface NavBarContainerProps {
   variant: NavBarVariants
 }
 
-const navBarVariantMap = new Map<string, React.CSSProperties>([
-  ["Light", {
-    backgroundColor: theme.colors.neutral.xs
-  }],
-  ["Dark", {
-    background: `${theme.colors.neutral.xl}70`,
-    borderBottom: `1px solid ${theme.colors.neutral.xs}30`
-  }]
-])
-
-const getNavBarVariant = (props: NavBarContainerProps) => {
-  return navBarVariantMap.get(props.variant as NavBarVariants)
-}
-
 const NavBarContainer = styled(Box) <NavBarContainerProps>`
-  ${props => ({
-    ...getNavBarVariant(props),
-    width: "100vw",
-    padding: "14px 48px",
-  })};
+background: ${theme.colors.neutral.xl}70;
+borderBottom: 1px solid ${theme.colors.neutral.xs}30;
+width: 100vw;
+padding: 14px 48px;
+position: absolute;
+z-index: 9999;
+top: 0;
   ${breakpoints("padding", "", [
-    { 1240: "12px 32px" },
-  ])}
+  { 1240: "12px 32px" },
+])}
 `
 
 const StyledLoginMenuContainer = styled(Box) <{
@@ -72,9 +60,9 @@ const LogoContainer = styled(Image)`
 ])}
 `
 
-const StyledLoginButton = styled(PrimaryButton) <{ isNavBarLight: boolean }>`
+const StyledLoginButton = styled(PrimaryButton)`
 padding: 16px 48px;
-color: ${props => props.isNavBarLight ? theme.colors.neutral.xs : theme.colors.brand.primary};
+color: ${theme.colors.brand.primary} !important;
 `
 
 const LoginMenuContainer = ({ onClickOutside }) => {
@@ -107,13 +95,12 @@ const LoginMenuContainer = ({ onClickOutside }) => {
   )
 }
 
-export const NavBarDesktop = ({
+export const IITNavBarDesktop = ({
   variant
 }: {
   variant?: NavBarVariants
 }) => {
   const isLight = variant === NavBarVariants.Light
-  const navLinkColor = isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs;
   const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
   const clickHandler = () => setIsLoginMenuActive(!isLoginMenuActive)
   const clickOutsideHandler = () => setIsLoginMenuActive(false)
@@ -130,17 +117,16 @@ export const NavBarDesktop = ({
           <LogoContainer src={Logo} alt="01com logo, click to return home" />
         </Link>
         <Box flexDirection='row'>
-          <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
-          <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
-          <NavLink color={navLinkColor} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
-          <NavLink color={navLinkColor} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
-          <NavLink color={navLinkColor} href="/support" label="Support" />
-          <NavLink color={navLinkColor} href="/intellectual-properties" label="Intellectual Properties" />
+          <NavLink color={theme.colors.neutral.xs} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
+          <NavLink color={theme.colors.neutral.xs} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+          <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+          <NavLink color={theme.colors.neutral.xs} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
+          <NavLink color={theme.colors.neutral.xs} href="/support" label="Support" />
+          <NavLink color={theme.colors.neutral.xs} href="/intellectual-properties" label="Intellectual Properties" />
         </Box>
         <StyledLoginButton
-          btnColor={isLight ? ButtonColors.Blue : ButtonColors.White}
+          btnColor={ButtonColors.White}
           onClick={clickHandler}
-          isNavBarLight={isLight}
         >
           Login
         </StyledLoginButton>

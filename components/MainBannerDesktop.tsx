@@ -10,6 +10,7 @@ import onCallBanner from '../public/assets/banner-network.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 import { breakpoints } from '../utils/breakpoints'
+import Link from 'next/link'
 
 const Container = styled(Box)`
 width: 100%;
@@ -128,7 +129,7 @@ const BannerContentText = styled(Text)`
 }
 `
 
-const LearnMoreButton = styled(PrimaryButton)`
+const PrimaryCTAButton = styled(PrimaryButton)`
 
 margin: 48px 0 0 0;
 ${breakpoints("margin", "", [
@@ -137,7 +138,7 @@ ${breakpoints("margin", "", [
 
 `
 
-const TryItFreeButton = styled(SecondaryButton)`
+const SecondaryCTAButton = styled(SecondaryButton)`
 margin: 48px 0 0 0;
 ${breakpoints("margin", "", [
   { 1280: "34px 0 0 0" },
@@ -152,7 +153,7 @@ const SecurityBanner = () => (
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
       IronCAP™ allows businesses of all sizes to easily transform their systems to withstand threats from Quantum Computers.
     </BannerContentText>
-    <LearnMoreButton>Learn More</LearnMoreButton>
+    <PrimaryCTAButton><Link href='https://www.ironcap.ca/' target="_blank">Learn More</Link></PrimaryCTAButton>
   </BannerContainer>
 )
 
@@ -165,7 +166,7 @@ const EmailBanner = () => (
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '137%' }}>
       Now you can safely send any sensitive information via email. IronCAP X™ Quantum-Safe end-to-end email encryption system ensures no adversary or authority other than your intended recipients can read your email. Even us, being the service provider will not hold the key that can decrypt your message.
     </BannerContentText>
-    <LearnMoreButton>Learn More</LearnMoreButton>
+    <PrimaryCTAButton><Link href='https://www.ironcap.ca/ironcap-x' target="_blank">Learn More</Link></PrimaryCTAButton>
   </BannerContainer>
 )
 
@@ -180,9 +181,9 @@ const RemoteWorkBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <LearnMoreButton>Buy Now</LearnMoreButton>
+        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
       </Box>
-      <TryItFreeButton>Try it Free</TryItFreeButton>
+      <SecondaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Try it Free</Link></SecondaryCTAButton>
     </Box>
   </BannerContainer >
 )
@@ -199,9 +200,9 @@ const OnCallBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <LearnMoreButton>Buy Now</LearnMoreButton>
+        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
       </Box>
-      <TryItFreeButton>Try it Free</TryItFreeButton>
+      <SecondaryCTAButton><Link href='https://imoncall.01com.com/go/freeversion.php' target="_blank">Try it Free</Link></SecondaryCTAButton>
     </Box>
   </BannerContainer >
 )
@@ -210,7 +211,7 @@ const OnCallBanner = () => (
 export const MainBannerDesktop = () => {
   return (
     <Container>
-      <StyledCarousel infiniteLoop emulateTouch showThumbs={false}>
+      <StyledCarousel interval={5000} autoPlay infiniteLoop emulateTouch showThumbs={false}>
         <SecurityBanner />
         <EmailBanner />
         <RemoteWorkBanner />

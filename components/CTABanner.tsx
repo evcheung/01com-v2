@@ -67,7 +67,7 @@ export const CTABanner = () => {
         <ButtonGrid>
           <LinkedButton label="IronCAP™" href="https://www.ironcap.ca/" target="blank" />
           <LinkedButton label="IronCAP X™" href="https://www.ironcap.ca/ironcap-x" target="blank" />
-          <LinkedButton label="I'm InTouch" href="/im-intouch" target="blank" />
+          <LinkedButton label="I'm InTouch" href="/imintouch-remote-pc-desktop/" target="blank" />
           <LinkedButton label="I'm OnCall" href="/im-oncall" target="blank" />
         </ButtonGrid>
       </BannerContentContainer>

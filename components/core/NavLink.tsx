@@ -11,27 +11,27 @@ const StyledA = styled.a`
   margin: 0;
   padding: 0;
   color: ${props => props.color};
+  white-space: nowrap;
   ${breakpoints("font-size", "", [
   { 1000: theme.fontSize.xs },
 ])}
 `
 
-const AnchorContainer = styled(Box)`
+const AnchorContainer = styled(Box) <any>`
 margin: 0 24px;
 ${breakpoints("margin", "", [
   { 1160: "0 18px" },
 ])}
-${breakpoints("margin", "", [
-  { 760: "0" },
-])}
-${breakpoints("padding", "", [
-  { 760: "24px 16px" },
-])}
+${props => props.isMobile && (
+    `margin: 0px;
+  padding: 24px 16px;`
+  )}
+)}
 `
 
-export const NavLink = ({ href, label, color, target = "_self" }) => (
+export const NavLink = ({ href, label, color, target = "_self", isMobile = false }) => (
   <Link href={href} target={target} passHref legacyBehavior>
-    <AnchorContainer>
+    <AnchorContainer isMobile={isMobile}>
       <StyledA color={color}>{label}</StyledA>
     </AnchorContainer>
   </Link>

@@ -66,6 +66,9 @@ const StyledCarousel = styled(Carousel)`
 const BannerContentContainer = styled(Box)`
 margin-top: 64px;
 width: 33%;
+${breakpoints("margin-top", "", [
+  { 1280: "58px" },
+])}
 ${breakpoints("width", "", [
   { 1280: "45%" },
 ])}
@@ -82,7 +85,7 @@ ${breakpoints("padding", "", [
   { 1280: "78px 96px" },
 ])};
 ${breakpoints("height", "", [
-  { 1280: "550px" },
+  { 1280: "640px" },
 ])};
 `
 

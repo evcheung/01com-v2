@@ -16,7 +16,7 @@ export const IITNavBar = ({
 
   return (
     <>
-      {width > 940 ? <IITNavBarDesktop variant={variant as NavBarVariants} /> : <IITNavBarMobile variant={variant as NavBarVariants} />}
+      {width > 1380 ? <IITNavBarDesktop variant={variant as NavBarVariants} /> : <IITNavBarMobile variant={variant as NavBarVariants} />}
     </>
   )
 }

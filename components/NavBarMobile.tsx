@@ -8,34 +8,12 @@ import { useEffect, useRef, useState } from 'react'
 import { NavBarVariants } from './NavBar'
 import { slide as Menu } from 'react-burger-menu'
 import { NavLink } from './core/NavLink'
-
-// const StyledA = styled.a`
-//   font-size: ${theme.fontSize.sm};
-//   font-weight: ${theme.fontWeight[600]};
-//   cursor: pointer;
-//   margin: 0;
-//   padding: 0;
-//   color: ${theme.colors.neutral.xl}
-// `
-
-// const AnchorContainer = styled(Box)`
-// padding: 24px 16px;
-// `
+import { NavLogin } from './core/NavLogin'
 
 const AnchorDivider = styled(Box)`
 border-bottom: 1px solid ${theme.colors.neutral.md};
 width: 100%;
 `
-
-// export const NavLink = ({ href, label, target = "_self" }) => (
-//   <StyledA>
-//     <Link href={href} target={target} passHref legacyBehavior>
-//       <AnchorContainer>
-//         {label}
-//       </AnchorContainer>
-//     </Link>
-//   </StyledA>
-// )
 
 interface NavBarContainerProps {
   variant: NavBarVariants
@@ -63,70 +41,10 @@ const NavBarContainer = styled(Box) <NavBarContainerProps>`
   })};
 `
 
-const StyledLoginMenuContainer = styled(Box) <{
-  onClickOutside: () => void
-}>`
-background: ${theme.colors.neutral.xs};
-position: absolute;
-right: 16px;
-top: 65px;
-z-index: 2;
-display: grid;
-grid-template-rows: 1fr 1fr 1fr;
-row-gap: 24px;
-  :before {
-  content: '';
-  width: 90px;
-  height: 4px;
-  background: ${theme.colors.neutral.xl};
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-`
-
 const LogoContainer = styled(Image)`
   width: 80px;
   height: auto;
 `
-
-const StyledLoginButton = styled(PrimaryButton) <{ isNavBarLight: boolean }>`
-&&& {
-  padding: 10px 24px !important;
-  color: ${props => props.isNavBarLight ? theme.colors.neutral.xs : theme.colors.brand.primary};
-}
-`
-
-const LoginMenuContainer = ({ onClickOutside }) => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClickOutside && onClickOutside();
-      }
-    };
-    document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, [onClickOutside]);
-
-  return (
-    <StyledLoginMenuContainer padding="24px" onClickOutside={onClickOutside} ref={ref}>
-      <Link href='https://www.01com.com/imintouch-remote-pc-desktop/login/?'>
-        <Text variant={TextVariants.Feat2}>Access My PC</Text>
-      </Link>
-      <Link href='https://www.01com.com/imoncall-remote-help-desk/login/?'>
-        <Text variant={TextVariants.Feat2}>I'm OnCall Agent</Text>
-      </Link>
-      <Link href='https://www.01com.com/imoncall-remote-help-desk/connect/?'>
-        <Text variant={TextVariants.Feat2}>Connect An Agent</Text>
-      </Link>
-    </StyledLoginMenuContainer>
-  )
-}
-
 
 export const NavBarMobile = ({
   variant
@@ -134,9 +52,6 @@ export const NavBarMobile = ({
   variant?: NavBarVariants
 }) => {
   const isLight = variant === NavBarVariants.Light
-  const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
-  const clickHandler = () => setIsLoginMenuActive(!isLoginMenuActive)
-  const clickOutsideHandler = () => setIsLoginMenuActive(false)
 
   return (
     <>
@@ -200,22 +115,22 @@ export const NavBarMobile = ({
         }}>
           <Box flexDirection='column' width="100%">
             <AnchorDivider />
-            <NavLink color={theme.colors.neutral.xl} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
             <AnchorDivider />
 
-            <NavLink color={theme.colors.neutral.xl} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
             <AnchorDivider />
 
-            <NavLink color={theme.colors.neutral.xl} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
             <AnchorDivider />
 
-            <NavLink color={theme.colors.neutral.xl} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
             <AnchorDivider />
 
-            <NavLink color={theme.colors.neutral.xl} href="/support" label="Support" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/support" label="Support" />
             <AnchorDivider />
 
-            <NavLink color={theme.colors.neutral.xl} href="/intellectual-properties" label="Intellectual Properties" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/intellectual-properties" label="Intellectual Properties" />
             <AnchorDivider />
 
           </Box>
@@ -223,16 +138,8 @@ export const NavBarMobile = ({
         <Link href="/" style={{ zIndex: 2000 }}>
           <LogoContainer src={Logo} alt="01com logo, click to return home" />
         </Link>
-        <StyledLoginButton
-          btnColor={isLight ? ButtonColors.Blue : ButtonColors.White}
-          onClick={clickHandler}
-          isNavBarLight={isLight}
-        >
-          Login
-        </StyledLoginButton>
-        {isLoginMenuActive && <LoginMenuContainer onClickOutside={clickOutsideHandler} />}
-      </NavBarContainer >
-
+        <NavLogin isNavBarLight={isLight} />
+      </NavBarContainer>
     </>
   )
 }

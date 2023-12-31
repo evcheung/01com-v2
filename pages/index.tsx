@@ -46,13 +46,21 @@ ${breakpoints("grid-template-columns", "", [
 }
 `
 
+const FeaturedNewsHeadingContainer = styled(Box)`
+margin: 48px 0px 20px 0px;
+  ${breakpoints("margin", "", [
+  { 1280: "96px 0px 20px 0px" },
+])}
+  ${breakpoints("margin", "", [
+  { 760: "32px auto 0px auto" },
+])}
+`
 const FeaturedNewsHeading = styled(Heading)`
   &&& {
     font-size: 36px;
     ${breakpoints("font-size", "", [
   { 1180: "32px" },
 ])}
-  }
 `
 
 const MainBannerContainer = styled(Box)`
@@ -168,18 +176,17 @@ export default function Home({ pressReleases }) {
       <NewsContainer width="100%" flexDirection='column' flexAlignment='center'>
         {width > 760 ?
           <>
-            <Box flexDirection='row' width='100%' flexJustify='space-between' flexAlignment='center' margin="48px 0px 20px 0px">
+            <FeaturedNewsHeadingContainer flexDirection='row' width='100%' flexJustify='space-between' flexAlignment='center'>
               <FeaturedNewsHeading variant={HeadingVariants.Heading1}>Featured News</FeaturedNewsHeading>
               <Link href="/press-releases">
                 <PrimaryButton btnColor={ButtonColors.Blue}>View All</PrimaryButton>
               </Link>
-            </Box>
-
+            </FeaturedNewsHeadingContainer>
           </>
           :
-          <Box margin="32px auto 0px auto">
+          <FeaturedNewsHeadingContainer>
             <FeaturedNewsHeading variant={HeadingVariants.Heading1} style={{ textAlign: 'center' }}>Featured News</FeaturedNewsHeading>
-          </Box>
+          </FeaturedNewsHeadingContainer>
         }
 
         {width > 760 ? <LatestNewsContainer currentItems={featuredNewsItems} /> : <LatestNewsContainerMobile currentItems={featuredNewsItems} />}

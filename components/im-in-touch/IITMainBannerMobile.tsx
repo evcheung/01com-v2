@@ -33,7 +33,7 @@ const StyledBox = styled(Box)`
   ${breakpoints("padding", "", [
   { 760: "52px 48px 68px 48px" },
 ])}
-  height: 670px;
+  height: 620px;
 `
 
 const BannerContainer = ({ children, backgroundImageSrc, customBoxStyles }: {

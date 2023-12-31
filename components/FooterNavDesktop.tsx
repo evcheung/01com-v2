@@ -32,7 +32,7 @@ const SocialIcon = styled(Image)`
 `
 
 const LinkedSocialIcon = ({ href, src, alt }) => (
-  <Link href={href} target="blank" passHref legacyBehavior>
+  <Link href={href} target="_blank" passHref legacyBehavior>
     <SocialIcon src={src} alt={alt} />
   </Link>
 )

@@ -4,10 +4,10 @@ import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from './core'
 import { theme } from '../theme'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 import { breakpoints } from '../utils/breakpoints'
 import { NavBarVariants } from './NavBar'
 import { NavLink } from './core/NavLink'
+import { NavLogin } from './core/NavLogin'
 
 interface NavBarContainerProps {
   variant: NavBarVariants
@@ -38,31 +38,6 @@ const NavBarContainer = styled(Box) <NavBarContainerProps>`
   ])}
 `
 
-const StyledLoginMenuContainer = styled(Box) <{
-  onClickOutside: () => void
-}>`
-background: ${theme.colors.neutral.xs};
-position: absolute;
-right: 68px;
-top: 81px;
-z-index: 2;
-display: grid;
-grid-template-rows: 1fr 1fr 1fr;
-row-gap: 24px;
-  :before {
-  content: '';
-  width: 138px;
-  height: 4px;
-  background: ${theme.colors.neutral.xl};
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-${breakpoints("right", "", [
-  { 1240: "32px" },
-])}
-`
-
 const LogoContainer = styled(Image)`
   ${breakpoints("width", "", [
   { 1160: "80px" },
@@ -72,41 +47,6 @@ const LogoContainer = styled(Image)`
 ])}
 `
 
-const StyledLoginButton = styled(PrimaryButton) <{ isNavBarLight: boolean }>`
-padding: 16px 48px;
-color: ${props => props.isNavBarLight ? theme.colors.neutral.xs : theme.colors.brand.primary};
-`
-
-const LoginMenuContainer = ({ onClickOutside }) => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClickOutside && onClickOutside();
-      }
-    };
-    document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, [onClickOutside]);
-
-  return (
-    <StyledLoginMenuContainer padding="24px" onClickOutside={onClickOutside} ref={ref}>
-      <Link href='https://www.01com.com/imintouch-remote-pc-desktop/login/?'>
-        <Text variant={TextVariants.Feat2}>Access My PC</Text>
-      </Link>
-      <Link href='https://www.01com.com/imoncall-remote-help-desk/login/?'>
-        <Text variant={TextVariants.Feat2}>I'm OnCall Agent</Text>
-      </Link>
-      <Link href='https://www.01com.com/imoncall-remote-help-desk/connect/?'>
-        <Text variant={TextVariants.Feat2}>Connect An Agent</Text>
-      </Link>
-    </StyledLoginMenuContainer>
-  )
-}
-
 export const NavBarDesktop = ({
   variant
 }: {
@@ -114,9 +54,6 @@ export const NavBarDesktop = ({
 }) => {
   const isLight = variant === NavBarVariants.Light
   const navLinkColor = isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs;
-  const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
-  const clickHandler = () => setIsLoginMenuActive(!isLoginMenuActive)
-  const clickOutsideHandler = () => setIsLoginMenuActive(false)
 
   return (
     <>
@@ -130,21 +67,15 @@ export const NavBarDesktop = ({
           <LogoContainer src={Logo} alt="01com logo, click to return home" />
         </Link>
         <Box flexDirection='row'>
-          <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="blank" label="IronCAP™" />
-          <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="blank" label="IronCAP X™" />
+          <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
+          <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
           <NavLink color={navLinkColor} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
           <NavLink color={navLinkColor} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
           <NavLink color={navLinkColor} href="/support" label="Support" />
           <NavLink color={navLinkColor} href="/intellectual-properties" label="Intellectual Properties" />
         </Box>
-        <StyledLoginButton
-          btnColor={isLight ? ButtonColors.Blue : ButtonColors.White}
-          onClick={clickHandler}
-          isNavBarLight={isLight}
-        >
-          Login
-        </StyledLoginButton>
-        {isLoginMenuActive && <LoginMenuContainer onClickOutside={clickOutsideHandler} />}
+        <NavLogin isNavBarLight={isLight} />
+
       </NavBarContainer>
 
     </>

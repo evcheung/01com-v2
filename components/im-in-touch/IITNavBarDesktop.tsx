@@ -4,7 +4,6 @@ import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from '../core'
 import { theme } from '../../theme'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 import { breakpoints } from '../../utils/breakpoints'
 import { NavBarVariants } from '../NavBar'
 import { NavLink } from '../core/NavLink'
@@ -15,7 +14,7 @@ interface NavBarContainerProps {
 }
 
 const NavBarContainer = styled(Box) <NavBarContainerProps>`
-background: ${theme.colors.neutral.xl}90;
+background: ${theme.colors.neutral.xl}99;
 borderBottom: 1px solid ${theme.colors.neutral.xs}30;
 width: 100vw;
 padding: 14px 48px;
@@ -29,7 +28,7 @@ top: 0;
 
 const LogoContainer = styled(Image)`
   ${breakpoints("width", "", [
-  { 1480: "80px" },
+  { 1480: "90px" },
 ])}
   ${breakpoints("height", "", [
   { 1480: "auto" },
@@ -52,7 +51,7 @@ export const IITNavBarDesktop = ({
         variant={variant}
       >
         <Link href="/imintouch-remote-pc-desktop/" >
-          <LogoContainer src={Logo} alt="01com logo, click to return home" />
+          <LogoContainer src={Logo} alt="I'm InTouch logo, click to return to main product page" />
         </Link>
         <Box flexDirection='row'>
           <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/how-it-works" target="_blank" label="How It Works" />

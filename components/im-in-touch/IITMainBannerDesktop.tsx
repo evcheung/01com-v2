@@ -167,9 +167,9 @@ const ImInTouchBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -183,9 +183,9 @@ const ImInTouchGoBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -201,9 +201,9 @@ const ImInTouchGoMail = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -219,9 +219,9 @@ const ImInTouchPhysicalAuthBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -237,9 +237,9 @@ const ImInTouchProductiveBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )

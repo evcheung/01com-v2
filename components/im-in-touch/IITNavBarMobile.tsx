@@ -16,7 +16,7 @@ width: 100%;
 `
 
 const NavBarContainer = styled(Box)`
-background: ${theme.colors.neutral.xl}90;
+background: ${theme.colors.neutral.xl}99;
 borderBottom: 1px solid ${theme.colors.neutral.xs}30;
 width: 100vw;
 padding: 12px 16px;
@@ -79,7 +79,7 @@ export const IITNavBarMobile = ({
           },
           bmMenu: {
             background: theme.colors.neutral.xs,
-            opacity: isLight ? '100%' : '98%',
+            opacity: '98%',
             padding: '70px 0 0 0',
           },
           bmMorphShape: {

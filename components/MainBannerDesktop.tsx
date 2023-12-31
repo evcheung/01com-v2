@@ -153,7 +153,7 @@ const SecurityBanner = () => (
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
       IronCAP™ allows businesses of all sizes to easily transform their systems to withstand threats from Quantum Computers.
     </BannerContentText>
-    <PrimaryCTAButton><Link href='https://www.ironcap.ca/' target="_blank">Learn More</Link></PrimaryCTAButton>
+    <Link href='https://www.ironcap.ca/' target="_blank"><PrimaryCTAButton>Learn More</PrimaryCTAButton></Link>
   </BannerContainer>
 )
 
@@ -166,7 +166,7 @@ const EmailBanner = () => (
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '137%' }}>
       Now you can safely send any sensitive information via email. IronCAP X™ Quantum-Safe end-to-end email encryption system ensures no adversary or authority other than your intended recipients can read your email. Even us, being the service provider will not hold the key that can decrypt your message.
     </BannerContentText>
-    <PrimaryCTAButton><Link href='https://www.ironcap.ca/ironcap-x' target="_blank">Learn More</Link></PrimaryCTAButton>
+    <Link href='https://www.ironcap.ca/ironcap-x' target="_blank"><PrimaryCTAButton>Learn More</PrimaryCTAButton></Link>
   </BannerContainer>
 )
 
@@ -181,9 +181,9 @@ const RemoteWorkBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Try it Free</Link></SecondaryCTAButton>
+      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )
@@ -200,9 +200,9 @@ const OnCallBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <PrimaryCTAButton><Link href='https://locator.01com.com/ecommerce/account.php' target="_blank">Buy Now</Link></PrimaryCTAButton>
+        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <SecondaryCTAButton><Link href='https://imoncall.01com.com/go/freeversion.php' target="_blank">Try it Free</Link></SecondaryCTAButton>
+      <Link href='https://imoncall.01com.com/go/freeversion.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )

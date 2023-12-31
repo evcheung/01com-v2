@@ -10,9 +10,9 @@ const Container = styled.div`
   flex-direction: column nowrap;
   align-items: center;
   justify-content: center;
-  padding: 0px 68px;
+  padding: 0px 48px;
   ${breakpoints("padding", "", [
-  { 1240: "0px 32px" },
+  { 1280: "0px 32px" },
 ])}
   ${breakpoints("padding", "", [
   { 760: "0px 16px" },
@@ -26,7 +26,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1980px;
   min-height: 100vh;
 `
 

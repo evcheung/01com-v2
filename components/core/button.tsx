@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { theme } from '../../theme';
+import { breakpoints } from '../../utils/breakpoints';
 
 export enum ButtonColors {
   Blue = 'Blue',
@@ -75,6 +76,9 @@ export const Button = styled.button<ButtonProps>`
     pointerEvents: props.disabled ? 'none' : 'auto',
   })};
   padding: ${(props) => props.padding};
+  ${breakpoints("padding", "", [
+    { 1160: "12px 32px" },
+  ])}
 `
 
 export const PrimaryButton = styled(Button) <ButtonProps>`

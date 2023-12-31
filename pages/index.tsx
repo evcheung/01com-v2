@@ -58,7 +58,7 @@ const FeaturedNewsHeading = styled(Heading)`
 const MainBannerContainer = styled(Box)`
  margin: 48px 0;
  ${breakpoints("margin", "", [
-  { 760: "0" },
+  { 1280: "0" },
 ])}
 `
 
@@ -161,24 +161,26 @@ export default function Home({ pressReleases }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainBannerContainer margin="48px 0px" width="100%">
+      <MainBannerContainer width="100%">
         <MainBanner />
       </MainBannerContainer>
 
       <NewsContainer width="100%" flexDirection='column' flexAlignment='center'>
-        <Box flexDirection='row' width='100%' flexJustify='space-between' flexAlignment='center' margin="0px 0px 20px 0px">
-          {width > 760 ?
-            <>
+        {width > 760 ?
+          <>
+            <Box flexDirection='row' width='100%' flexJustify='space-between' flexAlignment='center' margin="48px 0px 20px 0px">
               <FeaturedNewsHeading variant={HeadingVariants.Heading1}>Featured News</FeaturedNewsHeading>
               <Link href="/press-releases">
                 <PrimaryButton btnColor={ButtonColors.Blue}>View All</PrimaryButton>
               </Link>
-            </>
-            : <Box margin="12px auto -10px auto">
-              <FeaturedNewsHeading variant={HeadingVariants.Heading1} style={{ textAlign: 'center' }}>Featured News</FeaturedNewsHeading>
             </Box>
-          }
-        </Box>
+
+          </>
+          :
+          <Box margin="32px auto 0px auto">
+            <FeaturedNewsHeading variant={HeadingVariants.Heading1} style={{ textAlign: 'center' }}>Featured News</FeaturedNewsHeading>
+          </Box>
+        }
 
         {width > 760 ? <LatestNewsContainer currentItems={featuredNewsItems} /> : <LatestNewsContainerMobile currentItems={featuredNewsItems} />}
 

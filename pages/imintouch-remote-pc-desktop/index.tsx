@@ -116,6 +116,10 @@ export const getStaticProps = async () => {
       reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)[0]`, {
         cache: 'no-store',
         next: { revalidate }
+      }),
+      newsUpdates: await client.fetch(`*[_type == "im-in-touch-news-updates"] | order(_updatedAt desc)[0]`, {
+        cache: 'no-store',
+        next: { revalidate }
       })
     }
   }
@@ -123,7 +127,7 @@ export const getStaticProps = async () => {
 
 
 
-export default function ImInTouchHome({ reviewsAwards, IITNewsAndUpdates }) {
+export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
   return (
     <IITLayout>
       <Head>
@@ -152,19 +156,17 @@ export default function ImInTouchHome({ reviewsAwards, IITNewsAndUpdates }) {
               <Heading variant={HeadingVariants.Heading3}>News & Updates</Heading>
             </Box>
             <Divider />
-            <Box margin="16px 0">
-              <Link href="" target="_self">
-                <InfoCardLinkText>I'm InTouch v11 is available</InfoCardLinkText>
-              </Link>
-            </Box>
-            <Divider />
-
-            <Box margin="16px 0">
-              <Link href="" target="_self">
-                <InfoCardLinkText>Read this month's newsletter</InfoCardLinkText>
-              </Link>
-            </Box>
-            <Divider />
+            {newsUpdates.newsUpdatesItems.map(item => (
+              <>
+                <Box margin="16px 0" key={item.label}>
+                  <Link href={item.url} target="_self">
+                    <InfoCardLinkText>{item.label}</InfoCardLinkText>
+                  </Link>
+                </Box>
+                <Divider />
+              </>
+            ))
+            }
           </Box>
 
           <Box margin="24px 0 0 0">
@@ -204,7 +206,6 @@ export default function ImInTouchHome({ reviewsAwards, IITNewsAndUpdates }) {
             <Anchor href="/reviews-awards" variant={AnchorVariants.Small}>Learn More</Anchor>
           </Box>
         </InfoCard>
-
       </InfoCardContainer>
     </IITLayout >
   )

@@ -7,6 +7,7 @@ import newsletters from "./schemas/newsletters";
 import investorRelationsFinancialResults from "./schemas/investorRelationsFinancialResults";
 import investorRelationsLatestPresentation from "./schemas/investorRelationsLatestPresentation";
 import investorRelationsRecentEvents from "./schemas/investorRelationsRecentEvents";
+import imInTouchNewsUpdates from "./schemas/imInTouchNewsUpdates";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     investorRelationsLatestPresentation,
     investorRelationsRecentEvents,
     investorRelationsFinancialResults,
+    imInTouchNewsUpdates
   ],
 };

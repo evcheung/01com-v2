@@ -29,13 +29,8 @@ export default function IITLayout({
     <Container>
       {/* <Navbar menuItems={settings?.menuItems} /> */}
       <Main>
-        {variant === LayoutVariants.Light ?
-          <IITNavBar variant={NavBarVariants.Light} />
-          :
-          <PageHeader label={pageTitle}>
-            {headerContent}
-          </PageHeader>
-        }
+        <IITNavBar variant={NavBarVariants.Dark} />
+
         {children}
         <FooterNav />
       </Main>

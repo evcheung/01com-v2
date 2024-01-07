@@ -12,6 +12,7 @@ export enum ButtonTextColors {
   Blue = 'Blue',
   Green = 'Green',
   White = 'White',
+  Neutral = 'Neutral'
 }
 
 export enum ButtonSizes {
@@ -44,8 +45,19 @@ const buttonTextColorMap = new Map<ButtonColors, string>([
   [ButtonColors.White, theme.colors.neutral.xl],
 ])
 
+const buttonTextColorOverrideMap = new Map<ButtonTextColors, string>([
+  [ButtonTextColors.Blue, theme.colors.brand.primary],
+  [ButtonTextColors.Green, theme.colors.green.primary],
+  [ButtonTextColors.White, theme.colors.neutral.xs],
+])
+
 const getButtonColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
-const getPrimaryButtonTextColor = (props: ButtonProps) => props.btnColor ? buttonTextColorMap.get(props.btnColor) : theme.colors.neutral.xl;
+const getPrimaryButtonTextColor = (props: ButtonProps) => {
+  if (props.textColor) {
+    return buttonTextColorOverrideMap.get(props.textColor)
+  }
+  return props.btnColor ? buttonTextColorMap.get(props.btnColor) : theme.colors.neutral.xl
+};
 const getSecondaryButtonTextColor = (props: ButtonProps) => props.btnColor ? buttonColorMap.get(props.btnColor) : theme.colors.neutral.xs;
 
 const buttonSizeMap = new Map<ButtonSizes, React.CSSProperties>([
@@ -84,7 +96,7 @@ export const Button = styled.button<ButtonProps>`
 export const PrimaryButton = styled(Button) <ButtonProps>`
   ${props => ({
     backgroundColor: props.disabled ? theme.colors.neutral.md : getButtonColor(props),
-    color: props.disabled ? theme.colors.neutral.xs : getPrimaryButtonTextColor(props),
+    color: `${props.disabled ? theme.colors.neutral.xs : getPrimaryButtonTextColor(props)}`,
     border: `2px solid ${getButtonColor(props)}`,
   })};
 `
@@ -98,11 +110,9 @@ export const SecondaryButton = styled(Button) <ButtonProps>`
 
 
 PrimaryButton.defaultProps = {
-  textColor: ButtonTextColors.Blue,
   size: ButtonSizes.Large
 }
 
 SecondaryButton.defaultProps = {
-  textColor: ButtonTextColors.Blue,
   size: ButtonSizes.Large
 }

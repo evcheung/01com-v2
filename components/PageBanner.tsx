@@ -20,7 +20,10 @@ const StyledHeading = styled(Heading)`
 }
 `
 const HeadingContainer = styled(Box)`
-  margin: 66px 0px;
+  margin: 96px 0px;
+  ${breakpoints("margin", "", [
+  { 1160: "66px 0" },
+])}
   ${breakpoints("margin", "", [
   { 760: "32px 0" },
 ])}

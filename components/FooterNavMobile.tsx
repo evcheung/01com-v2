@@ -81,9 +81,9 @@ export const FooterNavMobile = () => {
           <LinkedSocialIcon href="http://blog.01com.com/wp/" src={rss} alt="rss" />
         </Box>
         <Box margin="24px 0px">
-          <Text variant={TextVariants.Body2}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
+          <Text variant={TextVariants.Body3}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
           <Box margin="8px 0">
-            <Text variant={TextVariants.Body2}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
+            <Text variant={TextVariants.Body3}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
           </Box>
         </Box>
         <Box flexDirection='row' flexAlignment='center' margin="8px 0">
@@ -91,7 +91,7 @@ export const FooterNavMobile = () => {
             <Link href="/">
               <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} />
             </Link></Box>
-          <Text variant={TextVariants.Body2}>Copyright © 2023 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>
+          <Text variant={TextVariants.Body3}>Copyright © 2023 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>
         </Box>
       </NavContainer>
     </>

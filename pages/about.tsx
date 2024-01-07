@@ -126,7 +126,7 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Andrew Cheung</StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body2}>CEO</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>CEO</StyledSubtext>
             <Text variant={TextVariants.Body1}>Andrew is the founder, President and CEO of 01 Communique. He built the company from scratch in 1992 and took the company public in 2000. Andrew was a nominee of the Ernst and Young Entrepreneur-Of-The-Year award in 2001. He holds a B.Sc. (Hon) degree in Computer Science from the University of Western Ontario. Besides over 25 years experience in communications, mobile, and cyber security solutions development, he also has 12 years experience in patent prosecution. Andrew is a co-inventor of 7 patents plus several patent-pending applications.</Text>
           </Box>
         </TeamCard>
@@ -137,7 +137,7 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Brian Stringer</StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body2}>CFO</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>CFO</StyledSubtext>
             <Text variant={TextVariants.Body1}>A Chartered Professional Accountant (CPA) with 25+ years experience in managing publicly listed companies, Brian has been the CFO of 01 for over 18 years. Prior to joining 01, Brian worked as the CFO of various other publicly listed companies. In addition to his extensive CFO experience, Brian also has 12 years experience in patent prosecution and patent litigation in the US and Canada.</Text>
           </Box>
         </TeamCard>
@@ -148,7 +148,7 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>William A. Train</StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body2}>Chairman</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>Chairman</StyledSubtext>
             <Text variant={TextVariants.Body1}>William joined the board of 01 Communique in 1995. He has over 35 years of extensive experience in the semi-conductor sector in Canada and the United States. He is the former President of Xicom Products and the CEO of Carolian Systems and has held senior positions at Dynasty Components Inc. Mr. Train holds a B.A. degree of Economics from the University of Toronto with directorships and board experience in various industries including Ozz Utility Management, Navlyns, Blumont Capital, etc.</Text>
           </Box>
         </TeamCard>
@@ -159,7 +159,7 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Gary Kissack</StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body2}>Board Member</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>Board Member</StyledSubtext>
             <Text variant={TextVariants.Body1}>Gary has extensive experience working as a lawyer and advisor in various industries. He practices in a number of areas of business law, including M&A, private equity, venture capital, capital markets, and corporate finance. He is a Partner in the Business Law and Indigenous Law Practice Groups at Fogler, Rubinoff LLP in Toronto. Gary regularly advises Canadian and international companies, underwriters, investors and professional advisors on a range of transactions including IPOs, private placements, etc. He has been a Board Member of 01 Communique since 2006.</Text>
           </Box>
         </TeamCard>
@@ -170,7 +170,7 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>Tyson Macauley</StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body2}>Board Member</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>Board Member</StyledSubtext>
             <Text variant={TextVariants.Body1}>Mr. Macaulay, CISA, LEL CIE, brings with him over twenty five years of engineering and management experience in network, cloud and IoT security solutions. Residing in Ottawa he is currently the Chief Security Officer and Vice President of Field Engineering at Rockport Networks Inc. Prior to that, he held the positions of Chief Product Officer at InfoSec Global (ISG), CTO for BAE Systems Applied Intelligence in North America, CTO - Telecommunications at Intel and Chief Security Strategist at Fortinet. These roles all involved product strategy, corporate development (mergers, acquisitions and partnerships), business development and thought leadership.</Text>
           </Box>
         </TeamCard>

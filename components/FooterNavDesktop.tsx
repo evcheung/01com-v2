@@ -110,15 +110,15 @@ export const FooterNavDesktop = () => {
           <NavLink href="/privacy-policy" label="Privacy Policy"></NavLink>
         </NavLinkContainer>
         <Box margin="24px 0px">
-          <Text variant={TextVariants.Body2}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
-          <Text variant={TextVariants.Body2}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
+          <Text variant={TextVariants.Body3}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
+          <Text variant={TextVariants.Body3}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
         </Box>
         <Box flexDirection='row' flexJustify='space-between' flexAlignment='center'>
           <Box flexDirection='row' flexAlignment='center'>
             <LogoLeft>
               <Link href="/"> <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} /></Link>
             </LogoLeft>
-            <Text variant={TextVariants.Body2}>Copyright © 2023 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>
+            <Text variant={TextVariants.Body3}>Copyright © 2023 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>
 
           </Box>
 

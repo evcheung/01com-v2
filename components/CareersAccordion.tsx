@@ -93,11 +93,6 @@ const StyledJobHeading = styled(Heading)`
 ])}
 `
 
-const StyledLineItem = styled.li`
-  list-style-image: url(${bullet.src});
-  padding-left: 12px;
-  margin-bottom: 10px;
-`
 
 const AccordionContainer = styled(Box)`
 padding:0px 48px 48px 48px;
@@ -106,6 +101,18 @@ ${breakpoints("padding", "", [
   { 760: '0px 32px 32px 32px' },
 ])}
   `
+
+const StyledLineItem = styled.li`
+background: url(${bullet.src}) no-repeat 0 10px;
+padding-left: 32px;
+margin-bottom: 10px;
+`
+
+const StyledList = styled.ul`
+padding: 0;
+list-style: none;
+`
+
 
 export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading: '' }] }) => {
   return (
@@ -123,7 +130,7 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Quantum-Safe Software Developers:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Hands-on skills in C/C++ and Python</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience with designing and implementing code-based cryptography systems, preferably Modern McEliece in C language</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience with analyzing quality of randomness</Text></StyledLineItem>
@@ -132,43 +139,43 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
                   <StyledLineItem><Text>Proven track record of conducting independent and original scientific research preferred</Text></StyledLineItem>
                   <StyledLineItem><Text>Strong math background and profound understanding of the post-quantum cryptography candidates in the NIST recommendation process especially the Classic McEliece method is a plus</Text></StyledLineItem>
                   <StyledLineItem><Text>Post-graduate degrees (M.Sc., Ph.D.) preferred</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Full-Stack Blockchain Engineers:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Hands-on skills in C/C++ and Go</Text></StyledLineItem>
                   <StyledLineItem><Text>Hands-on skills in Linux platform</Text></StyledLineItem>
                   <StyledLineItem><Text>Hands-on skills in Security, Encryption, etc.</Text></StyledLineItem>
                   <StyledLineItem><Text>Familiar with Hyperledger components (e.g. Fabric, Composer) and customized modules</Text></StyledLineItem>
                   <StyledLineItem><Text>Familiar with REST technologies (e.g. Javascript, Node.js, Angular JS, Docker)</Text></StyledLineItem>
                   <StyledLineItem><Text>A degree in B.Sc. or M.Sc. is preferred</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">QA Specialists:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Experience with regression testing and test automation, etc.</Text></StyledLineItem>
                   <StyledLineItem><Text>Familiar with testing web applications, Hyperledger components</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">General Software Engineers:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Hands-on skills in C/C++, Mac Xcode/iPhone SDK, Win32/64, Java/J2EE, COM/ActiveX</Text></StyledLineItem>
                   <StyledLineItem><Text>Sound knowledge of TCP/IP, SSL/XML/HTTPS protocols and proficient in PHP/ASPP</Text></StyledLineItem>
                   <StyledLineItem><Text>Competent in client/server, web applications, and database object development</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Employment:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Full-time/Part-time starting immediately.</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
@@ -191,21 +198,21 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Enterprise Sales Specialists:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Familiar with cyber security products and their operating concepts</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience in prospecting, positioning, and selling technology solutions to enterprises</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience in negotiating large strategic deals</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience in managing ongoing customer relationships</Text></StyledLineItem>
                   <StyledLineItem><Text>Strong verbal, written, and presentation/communication skills</Text></StyledLineItem>
                   <StyledLineItem><Text>Highly motivated, self-driven, organised, and creative</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Employment:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Full-time starting immediately.</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
@@ -228,21 +235,21 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Marketing Specialists:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Strong verbal, written, and presentation/communication skills</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience with social media marketing (SEO, Twitter, LinkedIn, Google Ads, etc.)</Text></StyledLineItem>
                   <StyledLineItem><Text>Understanding of blockchains, tokens, NFTs, smart contracts, metaverse</Text></StyledLineItem>
                   <StyledLineItem><Text>Experience in designing and launching of marketing programs</Text></StyledLineItem>
                   <StyledLineItem><Text>Understanding of cyber security products and their operating concepts is an asset</Text></StyledLineItem>
                   <StyledLineItem><Text>Highly motivated, self-driven, organised, and creative</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Employment:</StyledJobHeading>
-                <ul style={{ padding: '0 20px' }}>
+                <StyledList>
                   <StyledLineItem><Text>Full-time/Part-time starting immediately.</Text></StyledLineItem>
-                </ul>
+                </StyledList>
               </Box>
 
               <Box margin="48px 0 0 0">

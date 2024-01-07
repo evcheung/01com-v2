@@ -165,11 +165,11 @@ export default function Support() {
               <StyledHeading variant={HeadingVariants.Heading3}>User's Guides</StyledHeading>
             </Box>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">IronCAP X™</Anchor>
+            <Anchor href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm">IronCAP X™</Anchor>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">I'm InTouch</Anchor>
+            <Anchor href="https://www.01com.com/01com/imintouch/webhelp/desktop/index.htm">I'm InTouch</Anchor>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">I'm OnCall</Anchor>
+            <Anchor href="https://www.01com.com/01com/imoncall/webhelp/desktop/welcome.htm">I'm OnCall</Anchor>
             <HorizontalBorder />
           </Box>
           <Box>
@@ -177,13 +177,13 @@ export default function Support() {
               <StyledHeading variant={HeadingVariants.Heading3}>FAQ's</StyledHeading>
             </Box>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">IronCAP X™</Anchor>
+            <Anchor href="https://www.ironcap.ca/ironcap-x/faq/">IronCAP X™</Anchor>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">IronCAP™ Toolkits</Anchor>
+            <Anchor href="https://www.ironcap.ca/ironcap-api/faq/">IronCAP™ Toolkits</Anchor>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">I'm InTouch</Anchor>
+            <Anchor href="/imintouch-remote-pc-desktop/faqs/">I'm InTouch</Anchor>
             <HorizontalBorder />
-            <Anchor href="https://ironcap.ca/ironcap-x">I'm OnCall</Anchor>
+            <Anchor href="/imoncall-remote-help-desk/faqs">I'm OnCall</Anchor>
             <HorizontalBorder />
           </Box>
         </InfoColumnGrid>

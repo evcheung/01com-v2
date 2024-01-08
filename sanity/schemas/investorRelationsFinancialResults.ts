@@ -42,7 +42,10 @@ export default defineType({
             }
           ]
         }
-      ]
+      ],
+      options: {
+        sortable: true,
+      },
     }),
   ],
   preview: {

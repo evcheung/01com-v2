@@ -113,7 +113,7 @@ padding: 0;
 list-style: none;
 `
 
-
+// TODO: Add Careers to Sanity
 export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading: '' }] }) => {
   return (
     <Box width="100%">

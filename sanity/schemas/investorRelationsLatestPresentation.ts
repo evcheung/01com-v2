@@ -47,7 +47,10 @@ export default defineType({
             }
           ]
         }
-      ]
+      ],
+      options: {
+        sortable: true,
+      },
     }),
     defineField({
       name: 'isFeatured',

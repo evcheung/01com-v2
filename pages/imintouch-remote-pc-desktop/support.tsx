@@ -93,7 +93,7 @@ export default function Support() {
           <PrimaryButton textColor={ButtonTextColors.Blue}>
             <Link href='/imintouch-remote-pc-desktop/users-guide/'>User's Guide</Link>
           </PrimaryButton>
-          <SecondaryButton> <Link href='/imintouch-remote-pc-desktop/faq/'>FAQ</Link></SecondaryButton>
+          <SecondaryButton> <Link href='/imintouch-remote-pc-desktop/faqs/'>FAQ</Link></SecondaryButton>
         </Box>
       </IITPageBanner>
       <PageContentContainer>

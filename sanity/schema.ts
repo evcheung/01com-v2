@@ -8,6 +8,8 @@ import investorRelationsFinancialResults from "./schemas/investorRelationsFinanc
 import investorRelationsLatestPresentation from "./schemas/investorRelationsLatestPresentation";
 import investorRelationsRecentEvents from "./schemas/investorRelationsRecentEvents";
 import imInTouchNewsUpdates from "./schemas/imInTouchNewsUpdates";
+import imInTouchFAQCategories from "./schemas/imInTouchFAQCategories";
+import imInTouchFAQs from "./schemas/imInTouchFAQs";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -18,6 +20,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     investorRelationsLatestPresentation,
     investorRelationsRecentEvents,
     investorRelationsFinancialResults,
-    imInTouchNewsUpdates
+    imInTouchNewsUpdates,
+    imInTouchFAQCategories,
+    imInTouchFAQs
   ],
 };

@@ -7,6 +7,9 @@ padding: 0px 246px;
 margin: 96px 0;
 min-width 1300px;
 ${breakpoints("padding", "", [
+  { 1300: "0 96px" },
+])}
+${breakpoints("padding", "", [
   { 940: "0 32px" },
 ])}
 ${breakpoints("padding", "", [
@@ -14,6 +17,9 @@ ${breakpoints("padding", "", [
 ])}
 ${breakpoints("margin", "", [
   { 760: "48px 0" },
+])}
+${breakpoints("min-width", "", [
+  { 1300: "auto" },
 ])}
 ${breakpoints("min-width", "", [
   { 940: "auto" },

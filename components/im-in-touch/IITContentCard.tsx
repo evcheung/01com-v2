@@ -10,8 +10,8 @@ const ProductCardContainer = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 48px;
+  justify-content: flex-start;
+  padding: 48px 24px;
   text-align: center;
 
   ${breakpoints("padding", "", [
@@ -22,9 +22,10 @@ const ProductCardContainer = styled(Box)`
 ])}
 `
 const ContentTitle = styled(Text)`
-  margin: 24px 0;
+  margin: ${props => props.title ? '24px 0' : '6px 0'};
   font-size: 24px;
   margin-bottom: 16px;
+  white-space: nowrap;
   ${breakpoints("font-size", "", [
   { 1180: '20px' },
 ])}
@@ -37,8 +38,8 @@ export const IITContentCard = ({ title, description, imageSrc }: {
 }) => {
   return (
     <ProductCardContainer>
-      <Image src={imageSrc} alt="" width={48} height={48} />
-      <ContentTitle>{title}</ContentTitle>
+      <Image src={imageSrc} alt="" width={54} height={54} />
+      <ContentTitle title={title}>{title}</ContentTitle>
       <Text variant={TextVariants.Body2}>{description}</Text>
     </ProductCardContainer>
   )

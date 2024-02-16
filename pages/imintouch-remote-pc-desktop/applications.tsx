@@ -21,7 +21,10 @@ grid-template-columns: 1fr 1fr 1fr;
 gap: 24px;
 width: 100%;
 ${breakpoints("grid-template-columns", "", [
-  { 900: '1fr' },
+  { 900: '1fr 1fr' },
+])}
+${breakpoints("grid-template-columns", "", [
+  { 600: '1fr' },
 ])}
 `
 

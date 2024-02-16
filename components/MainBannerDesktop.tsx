@@ -181,9 +181,9 @@ const RemoteWorkBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <a href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
       </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <a href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
     </Box>
   </BannerContainer >
 )
@@ -200,9 +200,9 @@ const OnCallBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <a href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
       </Box>
-      <Link href='https://imoncall.01com.com/go/freeversion.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <a href='https://imoncall.01com.com/go/freeversion.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
     </Box>
   </BannerContainer >
 )

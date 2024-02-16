@@ -6,6 +6,7 @@ export const PageContentContainer = styled(Box)`
 padding: 0px 246px;
 margin: 96px 0;
 min-width 1300px;
+width: 100%;
 ${breakpoints("padding", "", [
   { 1300: "0 96px" },
 ])}

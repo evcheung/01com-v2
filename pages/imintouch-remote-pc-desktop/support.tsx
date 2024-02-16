@@ -90,10 +90,14 @@ export default function Support() {
       <IITPageBanner heading="General Support">
         <Text variant={TextVariants.Body1} textColor={TextColors.White}>Contact our knowledgeable staff anytime for immediate assistance. Whether you need technical support while operating one of our programs or have questions regarding pricing or features of our remote access and remote control software, we are available at your convenience.</Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <PrimaryButton textColor={ButtonTextColors.Blue}>
-            <Link href='/imintouch-remote-pc-desktop/users-guide/'>User's Guide</Link>
-          </PrimaryButton>
-          <SecondaryButton> <Link href='/imintouch-remote-pc-desktop/faqs/'>FAQ</Link></SecondaryButton>
+          <Link href='/imintouch-remote-pc-desktop/users-guide/'>
+            <PrimaryButton textColor={ButtonTextColors.Blue}>
+              User's Guide
+            </PrimaryButton>
+          </Link>
+          <Link href='/imintouch-remote-pc-desktop/faqs/'>
+            <SecondaryButton> FAQ</SecondaryButton>
+          </Link>
         </Box>
       </IITPageBanner>
       <PageContentContainer>

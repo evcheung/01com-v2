@@ -7,12 +7,15 @@ import { theme } from "../../theme"
 import Link from "next/link"
 import { IITPageBanner } from "../../components/im-in-touch/IITPageBanner"
 import { PageContentContainer } from "../../components/PageContentContainer"
-import { useMemo } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { breakpoints } from "../../utils/breakpoints"
 import { client } from '../../sanity/lib/client'
 import Accordion from 'react-bootstrap/Accordion';
 import { PortableText } from "@portabletext/react"
 import { Anchor } from "../../components/core/anchor"
+import { useWindowSize } from "usehooks-ts"
+import { FAQMenuCategories } from "../../components/im-in-touch/IITFAQMenuCategories"
+import { DropdownFAQMenu, FAQMenu } from "../../components/im-in-touch/IITFAQMenu"
 
 export const revalidate = 10
 export const dynamic = 'force-dynamic'
@@ -29,7 +32,7 @@ const Question = styled(Heading)`
   line-height: auto;
     
     ${breakpoints("font-size", "", [
-  { 760: theme.fontSize.lg },
+  { 760: theme.fontSize.md },
 ])
   }
 }`
@@ -37,6 +40,8 @@ const Question = styled(Heading)`
 const StyledAccordionItem = styled(Accordion.Item)`
   background: white;
   width: 100%;
+  // for some reason needed to avoid width shifting in expanded mode
+  max-width: 1010px;
   border: none;
   padding: 0;
   margin-bottom: 8px;
@@ -69,12 +74,9 @@ const StyledAccordionItem = styled(Accordion.Item)`
   }
   .accordion-button {
     padding: 16px;
-
-    ${breakpoints("padding", "", [
-  { 1200: '42px' },
-])}
-    ${breakpoints("padding", "", [
-  { 760: '32px' },
+    font-size: 18px;
+    ${breakpoints("font-size", "", [
+  { 760: '16px' },
 ])}
   }
   .accordion-button:focus {
@@ -95,12 +97,17 @@ const StyledAccordionItem = styled(Accordion.Item)`
   .accordion-body {
     padding: 0;
   }
+
+  .accordion-button::after {
+    display: none;
+  }
 `
+
 const StyledText = styled(Text)`
 margin-bottom: 18px;
 `
 
-const AccordionContainer = styled(Box)`
+const AnswerContainer = styled(Box)`
 padding: 0 16px 16px 16px;
 `
 
@@ -139,9 +146,13 @@ export const getStaticProps = async () => {
   }
 }
 
+const StyledRichtextHeading = styled.h4`
+font-size: 18px;
+`
+
 const portableTextComponents = {
   block: {
-    h4: ({ children }) => <h4>{children}</h4>,
+    h4: ({ children }) => <StyledRichtextHeading>{children}</StyledRichtextHeading>,
     normal: ({ children }) => <StyledText variant={TextVariants.Body2}>{children}</StyledText>,
   },
   types: {
@@ -150,47 +161,56 @@ const portableTextComponents = {
   marks: {
     link: ({ children, value }) => {
       return (
-        <Anchor href={value} target="_blank">{children}</Anchor>
+        <Anchor href={value.href} target="_blank">{children}</Anchor>
       )
     },
   },
 }
 
-const Answer = ({ eventKey, category, question, answer }) => {
-  return <StyledAccordionItem eventKey={eventKey} key={`${category}${eventKey}`}>
-    <Accordion.Header as='div'>
-      <Question variant={HeadingVariants.Heading3}>{question}</Question>
-    </Accordion.Header>
+const Plus = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+    <path stroke={theme.colors.neutral.xl} stroke-width="0.4" fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+  </svg>
+)
+const Minus = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-dash-lg" viewBox="0 0 16 16">
+    <path stroke={theme.colors.brand.primary} fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
+  </svg>
+)
 
-    <Accordion.Body>
-      <AccordionContainer>
-        <PortableText value={answer} components={portableTextComponents} />
-      </AccordionContainer>
-    </Accordion.Body>
-  </StyledAccordionItem>
-}
+const FAQ = ({ question, answer, setActiveItem, activeKey, eventKey }) => {
+  const isActive = activeKey === eventKey
 
-const FAQMenu = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background: ${theme.colors.neutral.xs};
-  width: 100vw;
-  p {
-    margin: 24px;
-    line-height: 20px;
-    font-size: 14px;
-    ${breakpoints("margin", "", [
-  { 1460: '24px 12px' },
-])}
-    ${breakpoints("font-size", "", [
-  { 1460: '14px' },
-])}
-  }
+  const handleClick = useCallback(() =>
+    activeKey === eventKey
+      ? setActiveItem(null)
+      : setActiveItem(eventKey),
+    [activeKey, eventKey])
+
+
+  return (
+    <StyledAccordionItem eventKey={eventKey} onClick={handleClick}>
+      <Accordion.Header as='div'>
+        <Box flexDirection="row" flexAlignment="center" flexJustify="space-between" width={'100%'}>
+          <Question variant={HeadingVariants.Heading3}>{question}</Question>
+          {isActive ? <Minus /> : <Plus />}
+        </Box>
+      </Accordion.Header>
+
+      <Accordion.Body>
+        <AnswerContainer>
+          {/* TODO: fix typing */}
+          <PortableText value={answer} components={portableTextComponents} />
+        </AnswerContainer>
+      </Accordion.Body>
+    </StyledAccordionItem>
+  )
 }
-`
 
 export default function ImInTouchFAQs({ faqs }) {
+  // TODO: Why did this render 4 times? twice from faqs.tsx and twice from installHook.js
+  const { width } = useWindowSize()
+
   const normalizedFAQs = useMemo(() => {
     const normalized = faqs.reduce((acc, faq) => {
       const category = faq.category.category
@@ -203,7 +223,28 @@ export default function ImInTouchFAQs({ faqs }) {
     return normalized
   }, [faqs])
 
+
+  const [selectedFAQCategory, setSelectedFAQCategory] = useState(Object.keys(normalizedFAQs)[0].trim());
+  const [activeKey, setActiveKey] = useState(null)
+
   console.log('👉👉👉 normalizedFAQs', normalizedFAQs);
+
+  const handleSelect = useCallback((item) => {
+    setSelectedFAQCategory(item);
+  }, []);
+
+  const handleFAQClick = useCallback((faqId) => {
+    setActiveKey(faqId)
+  }, [])
+
+  useEffect(() => {
+    setActiveKey(null)
+  }, [])
+
+  /* 
+  * TODO: Inline text item styles
+  * TODO: Populate CMS
+   */
 
   return (
     <IITLayout>
@@ -225,53 +266,27 @@ export default function ImInTouchFAQs({ faqs }) {
         </Box>
       </IITPageBanner>
 
-      <FAQMenu>
-        <a href={`${normalizedFAQs['General Questions'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>{normalizedFAQs['General Questions'].category}</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>{normalizedFAQs['Security'].category}</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Administrator Functions</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Using I'm InTouch</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Using Remote Wake-Up</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Billing</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Questions on Remote Access</Text>
-        </a>
-        <a href={`${normalizedFAQs['Security'].category.trim()}`}>
-          <Text variant={TextVariants.Feat1}>Remote Audio Questions</Text>
-        </a>
-      </FAQMenu>
+      {width > 1280 &&
+        <FAQMenu>
+          <FAQMenuCategories FAQs={normalizedFAQs} onSelect={handleSelect} selectedCategory={selectedFAQCategory} width={width} />
+        </FAQMenu>
+      }
 
       <PageContentContainer>
+        {width <= 1280 &&
+          <DropdownFAQMenu selectedFAQCategory={selectedFAQCategory}>
+            <FAQMenuCategories FAQs={normalizedFAQs} onSelect={handleSelect} selectedCategory={selectedFAQCategory} width={width} />
+          </DropdownFAQMenu>
+        }
+
         <Accordion defaultActiveKey={null}>
           <Box margin='0 0 48px 0'>
-            <StyledHeading variant={HeadingVariants.Heading3} as="h2" id={normalizedFAQs['General Questions'].category.trim()}>{normalizedFAQs['General Questions'].category}</StyledHeading>
-            {normalizedFAQs['General Questions'].faqs.map((faq, index) => (
-              <Answer category={faq.category} question={faq.question} answer={faq.answer} eventKey={index} />
-            ))}
-          </Box>
-
-          <Box margin='0 0 48px 0'>
-            <StyledHeading variant={HeadingVariants.Heading3} as="h2" id={normalizedFAQs['Security'].category.trim()}>{normalizedFAQs['Security'].category}</StyledHeading>
-            {normalizedFAQs['Security'].faqs.map((faq, index) => (
-              <Answer category={faq.category} question={faq.question} answer={faq.answer} eventKey={index} />
+            <StyledHeading variant={HeadingVariants.Heading3} as="h2" id={selectedFAQCategory.trim()}>{selectedFAQCategory}</StyledHeading>
+            {normalizedFAQs[selectedFAQCategory].faqs.map((faq) => (
+              <FAQ setActiveItem={handleFAQClick} activeKey={activeKey} question={faq.question} answer={faq.answer} eventKey={faq._key} />
             ))}
           </Box>
         </Accordion>
-        <Box margin='48px 0 0 0'>
-          <StyledHeading variant={HeadingVariants.Heading3}>Remote wake-up feature requirement</StyledHeading>
-          <Text variant={TextVariants.Body2}>This feature requires a minimum of 2 computers on the same wired network with I'm InTouch installed and at least one of them must be "on".</Text>
-        </Box>
       </PageContentContainer>
     </IITLayout>
   )

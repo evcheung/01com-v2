@@ -79,7 +79,7 @@ ${breakpoints("width", "", [
 
 const BannerBackgroundContainer = styled(Box)`
 padding: 78px 138px;
-height: 220px;
+height: 720px;
 text-align: left;
 ${breakpoints("padding", "", [
   { 1280: "78px 96px" },

@@ -7,7 +7,7 @@ import googlePlay from 'public/assets/google-play.jpg'
 import appStore from 'public/assets/app-store.jpg'
 import microsoftStore from 'public/assets/microsoft-store.jpg'
 import styled from "styled-components"
-import { Box, Button, ButtonColors, ButtonVariants, PrimaryButton, Text } from "../core"
+import { Box, ButtonColors, PrimaryButton, Text } from "../core"
 import { theme } from "../../theme"
 import Link from "next/link"
 import { breakpoints } from "../../utils/breakpoints"

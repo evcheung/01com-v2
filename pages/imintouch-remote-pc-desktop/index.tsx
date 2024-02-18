@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box, Text, TextVariants, Divider } from "../../components/core"
+import { Box, Text, Divider } from "../../components/core"
 import { breakpoints } from "../../utils/breakpoints"
 import { client } from '../../sanity/lib/client'
 import Head from "next/head"

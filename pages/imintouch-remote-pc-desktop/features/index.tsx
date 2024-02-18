@@ -25,7 +25,7 @@ grid-template-columns: 1fr 1fr;
 gap: 24px;
 width: 100%;
 ${breakpoints("grid-template-columns", "", [
-  { 600: '1fr' },
+  { 680: '1fr' },
 ])}
 `
 
@@ -116,7 +116,7 @@ const OUTLOOK_FEATURES = [
 const SCALABILITY_FEATURES = [
   {
     description: 'Central users administration for 1 to unlimited number of users',
-    pageRoute: '/imintouch-remote-pc-desktop/features/central-user-administration'
+    pageRoute: '/imintouch-remote-pc-desktop/features/central-administration'
   },
   {
     description: 'Users grouping',
@@ -125,7 +125,7 @@ const SCALABILITY_FEATURES = [
 const ALL_YOU_NEED_FEATURES = [
   {
     description: 'Unlimited remote access',
-    pageRoute: '/imintouch-remote-pc-desktop/features/remote-access'
+    pageRoute: '/imintouch-remote-pc-desktop/features/remote-control'
   },
   {
     description: 'Free mobile apps',
@@ -163,7 +163,7 @@ const ALL_YOU_NEED_FEATURES = [
 const ALL_YOU_NEED_FEATURES_MOBILE = [
   {
     description: 'Unlimited remote access',
-    pageRoute: '/imintouch-remote-pc-desktop/features/remote-access'
+    pageRoute: '/imintouch-remote-pc-desktop/features/remote-control'
   },
   {
     description: 'Remote printing',

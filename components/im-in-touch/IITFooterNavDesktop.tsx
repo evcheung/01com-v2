@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { Box, TextVariants, Text } from './core'
-import { theme } from '../theme'
+import { Box, TextVariants, Text } from '../core'
 import Logo from 'public/assets/01com-logo.png'
 import Image from 'next/image'
 import facebook from 'public/assets/facebook.svg'
@@ -9,8 +8,9 @@ import linkedin from 'public/assets/linkedin.svg'
 import twitter from 'public/assets/twitter.svg'
 import rss from 'public/assets/rss.svg'
 import youtube from 'public/assets/youtube.svg'
-import { CTABanner } from './CTABanner'
-import { breakpoints } from '../utils/breakpoints'
+import { breakpoints } from '../../utils/breakpoints'
+import { theme } from '../../theme'
+import { CTABanner } from '../CTABanner'
 
 const StyledA = styled.a`
   font-size: ${theme.fontSize.xs};
@@ -69,12 +69,6 @@ ${breakpoints("row-gap", "", [
 ])}
 `
 
-// const LogoRight = styled(Box)`
-// ${breakpoints("display", "", [
-//   { 920: 'none' },
-// ])}
-// `
-
 const LogoLeft = styled(Box)`
 display: none;
 margin-right: 16px;
@@ -89,7 +83,7 @@ ${breakpoints("display", "", [
 ])}
   `
 
-export const FooterNavDesktop = () => {
+export const IITFooterNavDesktop = () => {
   return (
     <>
       <CTABanner />
@@ -100,18 +94,19 @@ export const FooterNavDesktop = () => {
           <LogoDesktop>
             <Link href="/"> <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} /></Link>
           </LogoDesktop>
-          <NavLink href="/about" label="About 01 Communique"></NavLink>
-          <NavLink href="/investor-relations" label="Investor Relations"></NavLink>
-          <NavLink href="/press-releases" label="Press Room"></NavLink>
-          <NavLink href="/partner-programs" label="Partner Programs"></NavLink>
-          <NavLink href="/careers" label="Careers"></NavLink>
-          <NavLink href="/contact-us" label="Contact Us"></NavLink>
+          <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>
+          <NavLink href="/imintouch-remote-pc-desktop/applications" label="Applications"></NavLink>
+          <NavLink href="/reviews-awards" label="Press Room"></NavLink>
+          <NavLink href="/reviews-awards" label="Press Room"></NavLink>
+          <NavLink href="/imintouch-remote-pc-desktop/security" label="Security"></NavLink>
+          <NavLink href="/imintouch-remote-pc-desktop/support" label="Contact Us"></NavLink>
           <NavLink href="/terms-of-use" label="Terms of Use"></NavLink>
           <NavLink href="/privacy-policy" label="Privacy Policy"></NavLink>
         </NavLinkContainer>
         <Box margin="24px 0px">
-          <Text variant={TextVariants.Body3}>Post-Quantum Cyber Security | Quantum-Safe Email Security | Remote Control Software | Remote Desktop Connection | Remote IT Support</Text>
-          <Text variant={TextVariants.Body3}>I'm InTouch, I'm OnCall, and IronCAP™ are protected under U.S. Patents #6928479, #6938076, #8234701, #11271715, and #11669833</Text>
+          <Text variant={TextVariants.Body3}>Remote Control Software | Remote PC Access Software | Remote Desktop Software | Remote Access Software | Remote Desktop Connection | Remote Computer Access</Text>
+          <Text variant={TextVariants.Body3}>I'm InTouch is protected under U.S. Patents #6928479, #6938076 and #8234701</Text>
+          <Text variant={TextVariants.Body3}>A leader in Remote Access Software and Remote Control Software solutions</Text>
         </Box>
         <Box flexDirection='row' flexJustify='space-between' flexAlignment='center'>
           <Box flexDirection='row' flexAlignment='center'>

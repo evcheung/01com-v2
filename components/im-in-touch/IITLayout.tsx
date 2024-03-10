@@ -1,10 +1,9 @@
 
 import { ReactNode } from 'react';
-import { FooterNav } from '../FooterNav'
 import { NavBar, NavBarVariants } from '../NavBar'
-import { PageHeader } from '../PageBanner';
 import { Container, Main } from '../sharedstyles'
 import { IITNavBar } from './IITNavBar';
+import { IITFooterNav } from './IITFooterNav';
 
 export enum LayoutVariants {
   Dark = "Dark",
@@ -32,7 +31,7 @@ export default function IITLayout({
         <IITNavBar variant={NavBarVariants.Dark} />
 
         {children}
-        <FooterNav />
+        <IITFooterNav />
       </Main>
     </Container >
   )

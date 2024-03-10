@@ -247,7 +247,10 @@ border: 1px solid ${theme.colors.neutral.md};
     }
   }
 }
-
+.dropdown-item:active {
+  background-color: ${theme.colors.neutral.xs};
+  color: ${theme.colors.neutral.xl}
+}
 }
 `
 

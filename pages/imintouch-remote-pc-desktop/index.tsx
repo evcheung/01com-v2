@@ -15,7 +15,7 @@ import { imageUrlFor } from "../../utils/sanity/image-url-builder"
 
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 
 const MainBannerContainer = styled(Box)`
@@ -115,11 +115,11 @@ export const getStaticProps = async () => {
     {
       reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)[0]`, {
         cache: 'no-store',
-        next: { revalidate }
+        ssr: false
       }),
       newsUpdates: await client.fetch(`*[_type == "im-in-touch-news-updates"] | order(_updatedAt desc)[0]`, {
         cache: 'no-store',
-        next: { revalidate }
+        ssr: false
       })
     }
   }

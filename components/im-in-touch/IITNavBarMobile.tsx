@@ -1,4 +1,4 @@
-import Logo from 'public/assets/iit-logo-large.png'
+import Logo from '../../public/assets/iit-logo-large.png'
 import Image from 'next/image'
 import { ButtonColors, PrimaryButton, Box, Text, TextVariants, TextColors } from '../core'
 import { theme } from '../../theme'

@@ -18,7 +18,7 @@ import { FAQMenuCategories } from "../../components/im-in-touch/IITFAQMenuCatego
 import { DropdownFAQMenu, FAQMenu } from "../../components/im-in-touch/IITFAQMenu"
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const StyledHeading = styled(Heading)`
 margin: 0 0 16px 0;
@@ -140,7 +140,7 @@ export const getStaticProps = async () => {
       }`,
         {
           cache: 'no-store',
-          next: { revalidate }
+          ssr: false
         }),
     }
   }

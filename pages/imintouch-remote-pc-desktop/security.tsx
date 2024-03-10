@@ -14,7 +14,7 @@ import Shutdown from "../../public/assets/shutdown.png"
 import SecurityLock from "../../public/assets/security.png"
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const ContentGrid = styled(Box)`
 display: grid;

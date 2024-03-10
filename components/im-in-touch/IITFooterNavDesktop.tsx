@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { Box, TextVariants, Text } from '../core'
-import Logo from 'public/assets/01com-logo.png'
+import Logo from '../../public/assets/01com-logo.png'
 import Image from 'next/image'
-import facebook from 'public/assets/facebook.svg'
-import linkedin from 'public/assets/linkedin.svg'
-import twitter from 'public/assets/twitter.svg'
-import rss from 'public/assets/rss.svg'
-import youtube from 'public/assets/youtube.svg'
+import facebook from '../../public/assets/facebook.svg'
+import linkedin from '../../public/assets/linkedin.svg'
+import twitter from '../../public/assets/twitter.svg'
+import rss from '../../public/assets/rss.svg'
+import youtube from '../../public/assets/youtube.svg'
 import { breakpoints } from '../../utils/breakpoints'
 import { theme } from '../../theme'
 import { CTABanner } from '../CTABanner'
@@ -96,7 +96,6 @@ export const IITFooterNavDesktop = () => {
           </LogoDesktop>
           <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>
           <NavLink href="/imintouch-remote-pc-desktop/applications" label="Applications"></NavLink>
-          <NavLink href="/reviews-awards" label="Press Room"></NavLink>
           <NavLink href="/reviews-awards" label="Press Room"></NavLink>
           <NavLink href="/imintouch-remote-pc-desktop/security" label="Security"></NavLink>
           <NavLink href="/imintouch-remote-pc-desktop/support" label="Contact Us"></NavLink>

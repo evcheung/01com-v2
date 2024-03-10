@@ -1,4 +1,4 @@
-import Logo from 'public/assets/01com-logo.png'
+import Logo from '../public/assets/01com-logo.png'
 import Image from 'next/image'
 import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from './core'
 import { theme } from '../theme'
@@ -31,7 +31,7 @@ const NavBarContainer = styled(Box) <NavBarContainerProps>`
   ${props => ({
     ...getNavBarVariant(props),
     width: "100vw",
-    padding: "14px 48px",
+    padding: "0px 48px",
   })};
   ${breakpoints("padding", "", [
     { 1240: "12px 32px" },

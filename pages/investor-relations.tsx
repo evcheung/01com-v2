@@ -20,7 +20,7 @@ import { client } from "../sanity/lib/client";
 import ShortUniqueId from "short-unique-id";
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const HorizontalBorder = styled(Box)`
   border-bottom: 1px solid ${theme.colors.neutral.md};
@@ -393,7 +393,7 @@ export const getStaticProps = async () => {
     props: {
       investorRelations: await client.fetch<InvestorRelations[]>(query, {
         cache: 'no-store',
-        next: { revalidate }
+        ssr: false
       }),
     },
   };

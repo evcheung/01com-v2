@@ -3,6 +3,7 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
 import { Raleway } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
 
 const theme: DefaultTheme = {
   colors: {
@@ -16,15 +17,19 @@ const raleway = Raleway({ subsets: ['latin'], display: 'swap', adjustFontFallbac
 
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [isClient, setIsClient] = useState(false)
 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   return (
     <>
-      <main className={raleway.className}>
+      {isClient && <main className={raleway.className}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
-      </main>
+      </main>}
     </>
   )
 }

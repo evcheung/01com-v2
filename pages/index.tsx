@@ -17,7 +17,7 @@ import { client } from '../sanity/lib/client'
 import { useMemo } from 'react'
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const LiveChatButton = styled(Link)`
   position: fixed;
@@ -147,7 +147,7 @@ export const getStaticProps = async () => {
     props: {
       pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)[0..2]`, {
         cache: 'no-store',
-        next: { revalidate }
+        ssr: false
       })
     },
   }

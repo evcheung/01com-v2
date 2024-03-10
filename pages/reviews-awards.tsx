@@ -16,14 +16,14 @@ type ReviewsAwards = {
 }
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export const getStaticProps = async () => {
   return {
     props: {
       reviewsAwards: await client.fetch<ReviewsAwards[]>(`*[_type == "reviews-awards"] | order(date desc)`, {
         cache: 'no-store',
-        next: { revalidate }
+        ssr: false
       })
     },
   }

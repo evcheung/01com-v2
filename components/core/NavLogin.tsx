@@ -15,7 +15,7 @@ const StyledLoginMenuContainer = styled(Box) <{
 background: ${theme.colors.neutral.xs};
 position: absolute;
 right: 48px;
-top: 85px;
+top: 84px;
 z-index: 2;
 display: grid;
 grid-template-rows: 1fr 1fr 1fr;

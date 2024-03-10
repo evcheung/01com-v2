@@ -13,7 +13,7 @@ import Travel from "../../public/assets/suitcase.png"
 import ChildLock from "../../public/assets/child.png"
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 const ContentGrid = styled(Box)`
 display: grid;

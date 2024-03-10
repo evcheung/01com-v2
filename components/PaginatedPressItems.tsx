@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { PressCard } from './PressCard';
 import { CardGrid } from './CardGrid';
@@ -45,17 +45,22 @@ export const PaginatedPressItems = ({ itemsPerPage, items }: {
     setItemOffset(newOffset);
   };
 
+  const nextLabel = useMemo(() => width > 560 ? "Next" : ">", [width])
+  const previousLabel = useMemo(() => width > 560 ? "Previous" : "<", [width])
+  const pageRangeDisplayed = useMemo(() => width > 640 ? 2 : 1, [width])
+  const marginPagesDisplayed = useMemo(() => width > 640 ? 2 : 1, [width])
+
   return (
     <>
       <Items currentItems={currentItems} />
       <PaginateContainer>
         <ReactPaginate
           breakLabel="..."
-          nextLabel={width > 560 ? "Next" : ">"}
+          nextLabel={nextLabel}
           onPageChange={handlePageClick}
-          pageRangeDisplayed={width > 640 ? 2 : 1}
+          pageRangeDisplayed={pageRangeDisplayed}
           pageCount={pageCount}
-          previousLabel={width > 560 ? "Previous" : "<"}
+          previousLabel={previousLabel}
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageClassName="page-item"
@@ -66,7 +71,7 @@ export const PaginatedPressItems = ({ itemsPerPage, items }: {
           previousLinkClassName="page-link"
           nextLinkClassName="page-link"
           breakLinkClassName="page-link"
-          marginPagesDisplayed={width > 640 ? 2 : 1}
+          marginPagesDisplayed={marginPagesDisplayed}
           activeClassName="active"
         />
       </PaginateContainer>

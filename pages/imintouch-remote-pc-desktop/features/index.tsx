@@ -16,7 +16,7 @@ import { FeatureCard } from "../../../components/im-in-touch/IITFeatureCard"
 import { useWindowSize } from "usehooks-ts"
 
 export const revalidate = 10
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 
 const FeaturesGrid = styled(Box)`

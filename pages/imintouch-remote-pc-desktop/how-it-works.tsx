@@ -8,7 +8,6 @@ import playButton from "../../public/assets/play.png";
 import One from "../../public/assets/one.png";
 import Two from "../../public/assets/two.png";
 import Three from "../../public/assets/three.png";
-import Link from "next/link";
 import IITLayout from "../../components/im-in-touch/IITLayout";
 import { IITPageBanner } from "../../components/im-in-touch/IITPageBanner";
 import { theme } from "../../theme";

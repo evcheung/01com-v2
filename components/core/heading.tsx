@@ -30,7 +30,7 @@ const getHeadingColor = (props: HeadingProps) => headingColorMap.get(props.headi
 
 const headingVariantMap = new Map<HeadingVariants, React.CSSProperties>([
   [HeadingVariants.Heading1, {
-    fontSize: theme.fontSize.xxxxl,
+    fontSize: theme.fontSize.xxxl,
     fontWeight: theme.fontWeight[400],
     lineHeight: '64px'
   }],
@@ -59,7 +59,7 @@ const getMarkup = (props: HeadingProps) => headingMarkupMap.get(props.variant)
 
 const responsiveFontSizeMap = new Map<HeadingVariants, React.CSSProperties>([
   [HeadingVariants.Heading1, {
-    fontSize: theme.fontSize.xxxl,
+    fontSize: theme.fontSize.xxl,
     lineHeight: '60px'
   }],
   [HeadingVariants.Heading2, {

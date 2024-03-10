@@ -19,6 +19,8 @@ const StyledA = styled.a`
 
 const AnchorContainer = styled(Box) <any>`
 margin: 0 24px;
+// magic padding number to give more room to hover without affecting layout
+padding: 30px 0px;
 ${breakpoints("margin", "", [
   { 1160: "0 18px" },
 ])}
@@ -29,9 +31,15 @@ ${props => props.isMobile && (
 )}
 `
 
-export const NavLink = ({ href, label, color, target = "_self", isMobile = false }) => (
+export const NavLink = ({ href, label, color, target = "_self", isMobile = false }: {
+  href: string,
+  label: string,
+  color?: string,
+  target?: '_self' | '_blank',
+  isMobile?: boolean,
+}) => (
   <Link href={href} target={target} passHref legacyBehavior>
-    <AnchorContainer isMobile={isMobile}>
+    <AnchorContainer isMobile={isMobile} >
       <StyledA color={color}>{label}</StyledA>
     </AnchorContainer>
   </Link>

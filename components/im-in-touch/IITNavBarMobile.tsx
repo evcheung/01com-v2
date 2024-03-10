@@ -1,6 +1,6 @@
 import Logo from 'public/assets/iit-logo-large.png'
 import Image from 'next/image'
-import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from '../core'
+import { ButtonColors, PrimaryButton, Box, Text, TextVariants, TextColors } from '../core'
 import { theme } from '../../theme'
 import styled from 'styled-components'
 import Link from 'next/link'
@@ -112,7 +112,12 @@ export const IITNavBarMobile = ({
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/pricing-comparison" label="Pricing & Comparison" />
             <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/affiliated-products" label="Affiliated Products" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="" label="Affiliated Products" />
+            <Box padding="0 0 0 26px">
+              <Link href="/imintouch-remote-pc-desktop/go"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '-10px 0 18px 0' }}>I'm InTouch Go</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/gomail"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch Go Mail</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch (Server Edition)</Text></Link>
+            </Box>
             <AnchorDivider />
 
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/resources" label="Resources" />

@@ -213,7 +213,6 @@ export default function FeaturesHome() {
           I'm InTouch lets you work remotely by controlling your office computer as if you are physically there. I'm InTouch combines top security with all the features you need into one simple, no jargon, and affordable subscription price.
         </Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-
           <Link href='/imintouch-remote-pc-desktop/users-guide/'>
             <PrimaryButton textColor={ButtonTextColors.Blue}>
               User's Guide

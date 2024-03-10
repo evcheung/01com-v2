@@ -227,8 +227,6 @@ export default function ImInTouchFAQs({ faqs }) {
   const [selectedFAQCategory, setSelectedFAQCategory] = useState(Object.keys(normalizedFAQs)[0].trim());
   const [activeKey, setActiveKey] = useState(null)
 
-  console.log('👉👉👉 normalizedFAQs', normalizedFAQs);
-
   const handleSelect = useCallback((item) => {
     setSelectedFAQCategory(item);
   }, []);

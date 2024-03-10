@@ -160,7 +160,6 @@ export default function Home({ pressReleases }) {
     ...item,
     date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date + 'T00:00')))
   })), [pressReleases])
-  console.log('👉👉👉 pressReleases', pressReleases);
 
   return (
     <Layout>

@@ -73,8 +73,6 @@ ${breakpoints("padding", "", [
 `
 // TODO: Add breadcrumbs
 export const IITPageBanner = ({ heading, children }: { heading: string, children?: ReactNode }) => {
-  console.log('👉👉👉 children', !!children);
-
   return (
     <StyledBox width="100vw" flexDirection='column' flexJustify='space-between'>
       <BannerContainer hasChildren={!!children}>

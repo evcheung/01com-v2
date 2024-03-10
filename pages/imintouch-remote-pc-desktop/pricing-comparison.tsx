@@ -148,18 +148,14 @@ td p {
 ])}
 }
 
-span {
-  color: ${theme.colors.brand.primary};
-  font-weight: 700;
-}
 p:has(span){
   color: ${theme.colors.brand.primary};
 }
 `
 
-const ServicePlanCalculator = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+const ResultSpanText = styled.span`
+color: ${theme.colors.brand.primary};
+font-weight: 700;
 `
 
 const ResultContainer = styled(Box)`
@@ -180,32 +176,28 @@ p {
 }
 }`
 
-
-
 const CalculatorOptionDropdown = styled(Dropdown)`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 background: ${theme.colors.neutral.xs};
 width: 100%;
-margin-bottom: 48px;
+margin-bottom: 16px;
 border: 1px solid ${theme.colors.neutral.md};
-
-
 
 .btn {
   text-align: left;
 }
 .btn-primary {
-  background:  ${theme.colors.neutral.xs};
+  background: ${theme.colors.neutral.xs};
   width: 100%;
   border: none;
-  padding: 16px;
+  padding: 12px 16px;
 
   // h3 styles
   color: ${theme.colors.neutral.lg};
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
   ${breakpoints("font-size", "", [
   { 760: '16px' },
 ])}
@@ -282,15 +274,45 @@ ${breakpoints("font-size", "", [
   { 1460: '14px' },
 ])}`
 
-const SelectOption = ({ children, value, onSelect }) => (
+const CalculatorLabel = styled(Text)`
+font-size: 14px;
+font-weight: 600`
+
+
+const CalculatorOption = ({ children, value, onSelect }) => (
   <StyledDropdownItem>
-    <Text onClick={() => onSelect(value)}>{value}</Text>
+    <Text onClick={() => onSelect(value)}>{children}</Text>
   </StyledDropdownItem >
 )
 
+const CalculatorGrid = styled(Box)`
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 24px;
+${breakpoints("grid-template-columns", "", [
+  { 600: '1fr' },
+])}
+${breakpoints("grid-gap", "", [
+  { 600: '0px' },
+])}
+`
+
+const CalculatorInput = styled.input`
+  border: 1px solid ${theme.colors.neutral.md};
+  background: ${theme.colors.neutral.xs};
+  width: 100%;
+  padding: 12px 16px;
+  color: ${theme.colors.neutral.lg};
+  font-weight: 300;
+  font-size: 16px;
+  ${breakpoints("font-size", "", [
+  { 760: '16px' },
+])}
+`
+
 export default function PricingComparison() {
   const [qty, setQty] = useState(1);
-  const [plan, setPlan] = useState('annual');
+  const [plan, setPlan] = useState('Annual');
   const [currency, setCurrency] = useState('US$');
   const [promCode, setPromCode] = useState('');
   const [totalCost, setTotalCost] = useState(0)
@@ -355,7 +377,7 @@ export default function PricingComparison() {
   ]
   const calculateTotalCost = useCallback((quantity) => {
     const res = costData.slice(0, quantity).reduce((acc, curr) => {
-      if (plan === 'annual') {
+      if (plan === 'Annual') {
         acc += curr.annual
       } else {
         acc += curr.monthly
@@ -367,12 +389,10 @@ export default function PricingComparison() {
   }, [qty, plan, currency, promCode]);
 
   const calculateTotalSavings = useCallback((quantity) => {
-    if (plan === 'monthly') { return null }
+    if (plan === 'Monthly') { return null }
     const monthlyCost = costData.slice(0, quantity).reduce((acc, curr) => {
       return acc += curr.monthly
     }, 0)
-
-    console.log('👉👉👉 monthlyCost', monthlyCost, monthlyCost * 12, totalCost);
 
     const savings = (monthlyCost * 12) - totalCost
     setSavings(savings)
@@ -386,24 +406,8 @@ export default function PricingComparison() {
     calculateTotalSavings(qty)
   }, [totalCost]);
 
-  const handleQtyChange = (event) => {
-    setQty(parseInt(event.target.value));
-  };
-
-  const handlePlanChange = (event) => {
-    setPlan(event.target.value);
-  };
-
-  const handleCurrencyChange = (event) => {
-    setCurrency(event.target.value);
-  };
-
   const handlePromCodeChange = (event) => {
     setPromCode(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -598,7 +602,7 @@ export default function PricingComparison() {
                   <Text variant={TextVariants.Body2}>$9.95/mo</Text>
                 </td>
                 <td>
-                  <Text variant={TextVariants.Body2}><span>$99.95/yr</span> (17% discount)</Text>
+                  <Text variant={TextVariants.Body2}><ResultSpanText>$99.95/yr</ResultSpanText> (17% discount)</Text>
                 </td>
               </tr>
               <tr>
@@ -609,7 +613,7 @@ export default function PricingComparison() {
                   <Text variant={TextVariants.Body2}>$9.50/mo</Text>
                 </td>
                 <td>
-                  <Text variant={TextVariants.Body2}><span>$95.00/yr</span> (17% discount)</Text>
+                  <Text variant={TextVariants.Body2}><ResultSpanText>$95.00/yr</ResultSpanText> (17% discount)</Text>
                 </td>
               </tr>
               <tr>
@@ -620,7 +624,7 @@ export default function PricingComparison() {
                   <Text variant={TextVariants.Body2}>$9.00/mo</Text>
                 </td>
                 <td>
-                  <Text variant={TextVariants.Body2}><span>$90.00/yr</span> (17% discount)</Text>
+                  <Text variant={TextVariants.Body2}><ResultSpanText>$90.00/yr</ResultSpanText> (17% discount)</Text>
                 </td>
               </tr>
               <tr>
@@ -639,62 +643,74 @@ export default function PricingComparison() {
             <Heading variant={HeadingVariants.Heading3}>Service Plan Calculator</Heading>
           </Box>
 
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="qty">Number of licenses:</label>
-              <CalculatorOptionDropdown>
+          <CalculatorGrid>
+            <Box>
+              <CalculatorLabel ># of licenses:</CalculatorLabel>
+              <CalculatorOptionDropdown id='qty'>
                 <Dropdown.Toggle>
                   {qty}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <SelectOption value="1" onSelect={setQty}>1</SelectOption>
-                  <SelectOption value="2" onSelect={setQty} >2</SelectOption>
-                  <SelectOption value="3" onSelect={setQty} >3</SelectOption>
-                  <SelectOption value="4" onSelect={setQty}> 4</SelectOption>
-                  <SelectOption value="5" onSelect={setQty} >5</SelectOption>
-                  <SelectOption value="6" onSelect={setQty} >6</SelectOption>
-                  <SelectOption value="7" onSelect={setQty} >7</SelectOption>
-                  <SelectOption value="8" onSelect={setQty} >8</SelectOption>
-                  <SelectOption value="9" onSelect={setQty} >9</SelectOption>
-                  <SelectOption value="10" onSelect={setQty} >10</SelectOption>
-                  <SelectOption value="11" onSelect={setQty} >11+</SelectOption>
+                  <CalculatorOption value="1" onSelect={setQty}>1</CalculatorOption>
+                  <CalculatorOption value="2" onSelect={setQty} >2</CalculatorOption>
+                  <CalculatorOption value="3" onSelect={setQty} >3</CalculatorOption>
+                  <CalculatorOption value="4" onSelect={setQty}> 4</CalculatorOption>
+                  <CalculatorOption value="5" onSelect={setQty} >5</CalculatorOption>
+                  <CalculatorOption value="6" onSelect={setQty} >6</CalculatorOption>
+                  <CalculatorOption value="7" onSelect={setQty} >7</CalculatorOption>
+                  <CalculatorOption value="8" onSelect={setQty} >8</CalculatorOption>
+                  <CalculatorOption value="9" onSelect={setQty} >9</CalculatorOption>
+                  <CalculatorOption value="10" onSelect={setQty} >10</CalculatorOption>
+                  <CalculatorOption value="11" onSelect={setQty}>11+</CalculatorOption>
                 </Dropdown.Menu>
               </CalculatorOptionDropdown>
-            </div>
-            <div>
-              <label htmlFor="plan">Plan:</label>
-              <select id="plan" value={plan} onChange={handlePlanChange}>
-                <option value="annual">Annual</option>
-                <option value="monthly">Monthly</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="currency">Currency:</label>
-              <select id="currency" value={currency} onChange={handleCurrencyChange}>
-                <option value="2" selected>US$</option>
-                <option value="1" >CN$</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="promCode">Promotional code:</label>
-              <input
-                type="text"
-                id="promCode"
-                value={promCode}
-                onChange={handlePromCodeChange}
-              />
-            </div>
-          </form>
+            </Box>
 
+            <Box>
+              <CalculatorLabel>Payment Frequency:</CalculatorLabel>
+              <CalculatorOptionDropdown id='plan'>
+                <Dropdown.Toggle>
+                  {plan}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <CalculatorOption value="Annual" onSelect={setPlan}>Annual</CalculatorOption>
+                  <CalculatorOption value="Monthly" onSelect={setPlan}>Monthly</CalculatorOption>
+                </Dropdown.Menu>
+              </CalculatorOptionDropdown>
+            </Box>
 
-          <ResultContainer margin="16px 0 0 0" padding="24px" >
+            <Box>
+              <CalculatorLabel>Currency:</CalculatorLabel>
+
+              <CalculatorOptionDropdown id='currency'>
+                <Dropdown.Toggle>
+                  {currency}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <CalculatorOption value="US$" onSelect={setCurrency}>US$</CalculatorOption>
+                  <CalculatorOption value="CN$" onSelect={setCurrency}>CN$</CalculatorOption>
+                </Dropdown.Menu>
+              </CalculatorOptionDropdown>
+            </Box>
+          </CalculatorGrid>
+          <Box>
+            <CalculatorLabel>Promotional code:</CalculatorLabel>
+            <CalculatorInput
+              type="text"
+              id="promCode"
+              value={promCode}
+              onChange={handlePromCodeChange}
+            />
+          </Box>
+
+          <ResultContainer margin="24px 0 0 0" padding="24px" >
             <Text variant={TextVariants.Feat2}>Result:</Text>
             <Box margin="8px 0 0 0">
               <Text variant={TextVariants.Body2}>
-                <span>
-                  ${totalCost.toFixed(2)} per {plan === 'annual' ? 'year' : 'month'}
-                </span>
-                {plan === 'monthly' ? null : ` (save $${savings.toFixed(2)} over annual plan)`}
+                <ResultSpanText>
+                  ${totalCost.toFixed(2)} per {plan === 'Annual' ? 'year' : 'month'}
+                </ResultSpanText>
+                {plan === 'Monthly' ? null : ` (save $${savings.toFixed(2)} over monthly plan)`}
               </Text>
             </Box>
           </ResultContainer>

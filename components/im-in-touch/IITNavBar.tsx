@@ -8,15 +8,17 @@ export enum NavBarVariants {
 }
 
 export const IITNavBar = ({
-  variant = NavBarVariants.Dark as NavBarVariants
+  variant = NavBarVariants.Dark as NavBarVariants,
+  subSite
 }: {
-  variant?: NavBarVariants
+  variant?: NavBarVariants,
+  subSite?: 'go' | 'gomail' | 'server' | 'securekey'
 }) => {
   const { width } = useWindowSize()
 
   return (
     <>
-      {width > 1380 ? <IITNavBarDesktop variant={variant as NavBarVariants} /> : <IITNavBarMobile variant={variant as NavBarVariants} />}
+      {width > 1070 ? <IITNavBarDesktop variant={variant as NavBarVariants} subSite={subSite} /> : <IITNavBarMobile variant={variant as NavBarVariants} subSite={subSite} />}
     </>
   )
 }

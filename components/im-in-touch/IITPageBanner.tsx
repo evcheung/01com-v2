@@ -5,6 +5,7 @@ import bannerBg from '../../public/assets/iit-page-banner.jpg'
 import Heading, { HeadingColors } from '../core/heading'
 import { breakpoints } from '../../utils/breakpoints'
 import { theme } from '../../theme'
+import Image from 'next/image'
 
 const StyledBox = styled(Box)`
   background: no-repeat top/cover url("${bannerBg.src}");
@@ -13,6 +14,7 @@ const StyledBox = styled(Box)`
 const StyledHeading = styled(Heading)`
 &&& {
   text-align: center;
+  font-size: ${theme.fontSize.xxxxl};
   ${breakpoints("font-size", "", [
   { 760: theme.fontSize.xxl },
 ])}
@@ -20,6 +22,9 @@ const StyledHeading = styled(Heading)`
 `
 const BannerContainer = styled(Box) <{ hasChildren: boolean }>`
   margin: 178px 0 96px 0;
+  img {
+    color: white !important;
+  }
   ${props => props.hasChildren
     ? breakpoints("margin", "", [
       { 1160: "120px 0 64px 0" },
@@ -71,11 +76,19 @@ ${breakpoints("padding", "", [
   { 760: '0 16px' },
 ])}
 `
+
+const IconContainer = styled(Box)`
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 16px;
+`
 // TODO: Add breadcrumbs
-export const IITPageBanner = ({ heading, children }: { heading: string, children?: ReactNode }) => {
+export const IITPageBanner = ({ heading, children, iconSrc }: { heading: string, children?: ReactNode, iconSrc?: any }) => {
   return (
     <StyledBox width="100vw" flexDirection='column' flexJustify='space-between'>
       <BannerContainer hasChildren={!!children}>
+        {iconSrc && <IconContainer><Image alt="" src={iconSrc} width={64} height={64} /></IconContainer>}
         <StyledHeading headingColor={HeadingColors.White}>{heading}</StyledHeading>
         {children &&
           <ChildrenContainer>

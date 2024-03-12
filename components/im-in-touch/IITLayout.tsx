@@ -15,23 +15,21 @@ export interface LayoutProps {
   pageTitle?: string;
   headerContent?: ReactNode;
   children: ReactNode;
+  subSite?: 'go' | 'gomail' | 'server';
 }
 
 export default function IITLayout({
   variant = LayoutVariants.Light,
-  pageTitle,
-  headerContent,
   children,
+  subSite
 }: LayoutProps) {
   return (
     // TODO: add variant for Container to lower texture on dark navbar. Texture has to show through
     <Container>
-      {/* <Navbar menuItems={settings?.menuItems} /> */}
       <Main>
-        <IITNavBar variant={NavBarVariants.Dark} />
-
+        <IITNavBar variant={NavBarVariants.Dark} subSite={subSite} />
         {children}
-        <IITFooterNav />
+        <IITFooterNav subSite={subSite} />
       </Main>
     </Container >
   )

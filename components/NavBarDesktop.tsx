@@ -34,7 +34,7 @@ const NavBarContainer = styled(Box) <NavBarContainerProps>`
     padding: "0px 48px",
   })};
   ${breakpoints("padding", "", [
-    { 1240: "12px 32px" },
+    { 1240: "0px 32px" },
   ])}
 `
 

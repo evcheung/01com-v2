@@ -14,6 +14,7 @@ const StyledBox = styled(Box)`
 const StyledHeading = styled(Heading)`
 &&& {
   text-align: center;
+  font-size: ${theme.fontSize.xxxxl};
   ${breakpoints("font-size", "", [
   { 760: theme.fontSize.xxl },
 ])}

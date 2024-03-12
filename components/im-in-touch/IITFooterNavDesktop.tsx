@@ -83,7 +83,7 @@ ${breakpoints("display", "", [
 ])}
   `
 
-export const IITFooterNavDesktop = () => {
+export const IITFooterNavDesktop = ({ subSite }: { subSite?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
   return (
     <>
       <CTABanner />
@@ -94,7 +94,11 @@ export const IITFooterNavDesktop = () => {
           <LogoDesktop>
             <Link href="/"> <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} /></Link>
           </LogoDesktop>
-          <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>
+          {!subSite && <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>}
+          {subSite === 'go' && <NavLink href="/imintouch-remote-pc-desktop/go/about" label="About I'm InTouch Go"></NavLink>}
+          {subSite === 'gomail' && <NavLink href="/imintouch-remote-pc-desktop/gomail/about" label="About I'm InTouch GoMail"></NavLink>}
+          {subSite === 'server' && <NavLink href="/imintouch-remote-pc-desktop/server/about" label="About I'm InTouch (Server Edition)"></NavLink>}
+          {subSite === 'securekey' && <NavLink href="/imintouch-remote-pc-desktsecure-key/about" label="About I'm InTouch SecureKey"></NavLink>}
           <NavLink href="/imintouch-remote-pc-desktop/applications" label="Applications"></NavLink>
           <NavLink href="/reviews-awards" label="Press Room"></NavLink>
           <NavLink href="/imintouch-remote-pc-desktop/security" label="Security"></NavLink>

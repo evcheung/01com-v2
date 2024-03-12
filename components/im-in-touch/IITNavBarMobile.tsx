@@ -1,10 +1,13 @@
-import Logo from '../../public/assets/iit-logo-large.png'
+import IITLogo from '../../public/assets/iit-logo.png'
+import IITGoLogo from '../../public/assets/iit-go-logo.png'
+import IITGoMailLogo from '../../public/assets/iit-go-mail-logo.png'
+import IITServerLogo from '../../public/assets/iit-server-logo.png'
+import IITSecureKeyLogo from '../../public/assets/iit-secure-key-logo.png'
 import Image from 'next/image'
-import { ButtonColors, PrimaryButton, Box, Text, TextVariants, TextColors } from '../core'
+import { Box, Text, TextVariants, TextColors } from '../core'
 import { theme } from '../../theme'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 import { NavBarVariants } from '../NavBar'
 import { slide as Menu } from 'react-burger-menu'
 import { NavLink } from '../core/NavLink'
@@ -30,10 +33,24 @@ const LogoContainer = styled(Image)`
   height: auto;
 `
 
+const getLogo = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {
+  switch (subSite) {
+    case 'go':
+      return IITGoLogo
+    case 'gomail':
+      return IITGoMailLogo
+    case 'server':
+      return IITServerLogo
+    case 'securekey':
+      return IITSecureKeyLogo
+  }
+}
 export const IITNavBarMobile = ({
-  variant
+  variant,
+  subSite
 }: {
-  variant?: NavBarVariants
+  variant?: NavBarVariants,
+  subSite?: 'go' | 'gomail' | 'server' | 'securekey'
 }) => {
   const isLight = variant === NavBarVariants.Light
   return (
@@ -96,45 +113,49 @@ export const IITNavBarMobile = ({
           },
         }}>
           <Box flexDirection='column' width="100%">
-            <AnchorDivider />
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/how-it-works" target="_blank" label="How It Works" />
-            <AnchorDivider />
+            {!subSite &&
+              <>
+                <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/how-it-works" target="_blank" label="How It Works" />
+                <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/features" target="_blank" label="Features" />
-            <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/features" target="_blank" label="Features" />
+                <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/why-im-intouch" label="Why I'm InTouch?" />
-            <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/why-im-intouch" label="Why I'm InTouch?" />
+                <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/support" label="Support" />
-            <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/support" label="Support" />
+                <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/pricing-comparison" label="Pricing & Comparison" />
-            <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/pricing-comparison" label="Pricing & Comparison" />
+              </>
+            }
+            {subSite === 'go' &&
+              <>
+                <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/go/how-it-works" target="_blank" label="How It Works" />
+                <AnchorDivider />
 
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/go/features" target="_blank" label="Features" />
+              </>
+            }
+            <AnchorDivider />
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="" label="Affiliated Products" />
-            <Box padding="0 0 0 26px">
+            <Box padding="0 0 0 48px">
               <Link href="/imintouch-remote-pc-desktop/go"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '-10px 0 18px 0' }}>I'm InTouch Go</Text></Link>
               <Link href="/imintouch-remote-pc-desktop/gomail"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch Go Mail</Text></Link>
               <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch (Server Edition)</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch SecureKey</Text></Link>
             </Box>
             <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/resources" label="Resources" />
-            <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/security" label="Security" />
-            <AnchorDivider />
-
-
           </Box>
         </Menu>
-        <Link href="/" style={{ zIndex: 2000 }}>
-          <LogoContainer src={Logo} alt="I'm InTouch logo, click to return to main product page" />
+        <Link href={`/imintouch-remote-pc-desktop/${subSite}`} style={{ zIndex: 2000 }}>
+          <LogoContainer src={!subSite ? IITLogo : getLogo(subSite)} alt="I'm InTouch product logo, click to return to main product page" />
         </Link>
         <NavLogin isNavBarLight={false} isIIT={true} />
       </NavBarContainer >
-
     </>
   )
 }

@@ -121,10 +121,10 @@ export const NavBarMobile = ({
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
             <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.01com.com/imintouch-remote-pc-desktop/" label="I'm InTouch" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
             <AnchorDivider />
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.01com.com/imoncall-remote-help-desk/" label="I'm OnCall" />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/" label="I'm OnCall" />
             <AnchorDivider />
 
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/support" label="Support" />

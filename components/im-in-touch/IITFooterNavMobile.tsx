@@ -56,14 +56,18 @@ const NavLinkContainer = styled(Box)`
   { 570: "calc((100%/2) - 94px)" },
 ])}`
 
-export const IITFooterNavMobile = () => {
+export const IITFooterNavMobile = ({ subSite }: { subSite?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
   return (
     <>
       <CTABanner />
 
       <NavContainer>
         <NavLinkContainer>
-          <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>
+          {!subSite && <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>}
+          {subSite === 'go' && <NavLink href="/imintouch-remote-pc-desktop/go/about" label="About I'm InTouch Go"></NavLink>}
+          {subSite === 'gomail' && <NavLink href="/imintouch-remote-pc-desktop/gomail/about" label="About I'm InTouch GoMail"></NavLink>}
+          {subSite === 'server' && <NavLink href="/imintouch-remote-pc-desktop/server/about" label="About I'm InTouch (Server Edition)"></NavLink>}
+          {subSite === 'securekey' && <NavLink href="/imintouch-remote-pc-desktsecure-key/about" label="About I'm InTouch SecureKey"></NavLink>}
           <NavLink href="/imintouch-remote-pc-desktop/applications" label="Applications"></NavLink>
           <NavLink href="/reviews-awards" label="Press Room"></NavLink>
           <NavLink href="/reviews-awards" label="Press Room"></NavLink>

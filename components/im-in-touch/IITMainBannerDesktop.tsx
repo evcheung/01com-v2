@@ -14,6 +14,7 @@ import { breakpoints } from '../../utils/breakpoints'
 import Link from 'next/link'
 
 const Container = styled(Box)`
+  width: 100vw;
 `
 
 const StyledCarousel = styled(Carousel)`
@@ -89,8 +90,8 @@ ${breakpoints("height", "", [
 ])};
 `
 
-const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles }: {
-  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties
+const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location }: {
+  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string
 }) => {
   const getAlignment = (alignment) => alignment === 'left' ? 'flex-start' : 'flex-end';
 
@@ -100,7 +101,12 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
       flexDirection='column'
       flexJustify='center'
       flexAlignment={getAlignment(alignment)}
-      style={{ ...customBoxStyles }}>
+      onClick={() => {
+        if (clickable) {
+          window.location.href = location
+        }
+      }}
+      style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
       <BannerContentContainer>
         {children}
       </BannerContentContainer>
@@ -158,8 +164,8 @@ ${breakpoints("margin", "", [
 ])};
 `
 
-const ImInTouchBanner = () => (
-  <BannerContainer alignment="left" backgroundImageSrc={iitBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }}>
+const ImInTouchBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iitBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
     <BannerContentHeading headingColor={HeadingColors.White}>Remote Work from Anywhere, Anytime</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
@@ -174,8 +180,8 @@ const ImInTouchBanner = () => (
   </BannerContainer>
 )
 
-const ImInTouchGoBanner = () => (
-  <BannerContainer alignment="left" backgroundImageSrc={iitGoBanner.src}>
+const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iitGoBanner.src} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch Go</ProductTitle>
     <BannerContentHeading headingColor={HeadingColors.White}>Stay InTouch from all your devices</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
@@ -190,8 +196,8 @@ const ImInTouchGoBanner = () => (
   </BannerContainer>
 )
 
-const ImInTouchGoMail = () => (
-  <BannerContainer alignment="left" backgroundImageSrc={iitGoMailBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }}>
+const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iitGoMailBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch Go Mail</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Mobilize Your Outlook®
@@ -208,8 +214,8 @@ const ImInTouchGoMail = () => (
   </BannerContainer>
 )
 
-const ImInTouchPhysicalAuthBanner = () => (
-  <BannerContainer alignment="left" backgroundImageSrc={iitPhysicalAuthBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }}>
+const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iitPhysicalAuthBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Physical Authentication
@@ -226,8 +232,8 @@ const ImInTouchPhysicalAuthBanner = () => (
   </BannerContainer>
 )
 
-const ImInTouchProductiveBanner = () => (
-  <BannerContainer alignment="left" backgroundImageSrc={iitProductivityBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }}>
+const ImInTouchProductiveBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iitProductivityBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Be productive as a company work efficiently anywhere!
@@ -244,17 +250,35 @@ const ImInTouchProductiveBanner = () => (
   </BannerContainer>
 )
 
+const getBannerComponent = (banner: 'go' | 'gomail' | 'server' | 'securekey') => {
+  switch (banner) {
+    case 'go':
+      return <ImInTouchGoBanner />
+    case 'gomail':
+      return <ImInTouchGoMail />
+    case 'server':
+      return <ImInTouchProductiveBanner />
+    case 'securekey':
+      return <ImInTouchPhysicalAuthBanner />
+  }
+}
 
-export const IITMainBannerDesktop = () => {
+
+export const IITMainBannerDesktop = ({ isCarousel = true, banner }: { isCarousel?: boolean, banner?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
   return (
-    <Container>
+    isCarousel ? (<Container>
       <StyledCarousel autoPlay interval={5000} infiniteLoop emulateTouch showThumbs={false}>
-        <ImInTouchBanner />
-        <ImInTouchGoBanner />
-        <ImInTouchGoMail />
-        <ImInTouchPhysicalAuthBanner />
-        <ImInTouchProductiveBanner />
+        <ImInTouchBanner clickable location="/imintouch-remote-pc-desktop/" />
+        <ImInTouchGoBanner clickable location="/imintouch-remote-pc-desktop/go" />
+        <ImInTouchGoMail clickable location="/imintouch-remote-pc-desktop/gomail" />
+        {/* physical auth = secure key */}
+        <ImInTouchPhysicalAuthBanner clickable location="/imintouch-remote-pc-desktsecure-key" />
+        {/* server edition */}
+        <ImInTouchProductiveBanner clickable location="/imintouch-remote-pc-desktop/server" />
       </StyledCarousel>
     </Container>
+    )
+      :
+      <Container>{getBannerComponent(banner)}</Container>
   )
 }

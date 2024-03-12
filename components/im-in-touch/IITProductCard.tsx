@@ -1,13 +1,13 @@
 import Image from "next/image"
-import desktop from 'public/assets/desktop.png'
-import ios from 'public/assets/ios.png'
-import android from 'public/assets/android.png'
-import tablet from 'public/assets/tablet.png'
-import googlePlay from 'public/assets/google-play.jpg'
-import appStore from 'public/assets/app-store.jpg'
-import microsoftStore from 'public/assets/microsoft-store.jpg'
+import desktop from '../../public/assets/desktop.png'
+import ios from '../../public/assets/ios.png'
+import android from '../../public/assets/android.png'
+import tablet from '../../public/assets/tablet.png'
+import googlePlay from '../../public/assets/google-play.jpg'
+import appStore from '../../public/assets/app-store.jpg'
+import microsoftStore from '../../public/assets/microsoft-store.jpg'
 import styled from "styled-components"
-import { Box, ButtonColors, PrimaryButton, Text } from "../core"
+import { Box, ButtonColors, PrimaryButton, Text, TextVariants } from "../core"
 import { theme } from "../../theme"
 import Link from "next/link"
 import { breakpoints } from "../../utils/breakpoints"
@@ -32,6 +32,25 @@ const ProductText = styled(Text)`
 const LoginButton = styled(PrimaryButton)`
 padding: 12px 46px;`
 
+
+const ProductDescription = () => {
+  return (
+    <Box margin="0 0 12px 0">
+      <ol>
+        <li>
+          <Text variant={TextVariants.Body2}>Download I'm InTouch Go</Text>
+        </li>
+        <li>
+          <Text variant={TextVariants.Body2}>Launch I'm InTouch Go</Text>
+        </li>
+        <li>
+          <Text variant={TextVariants.Body2}>Login and access your computer</Text>
+        </li>
+      </ol>
+    </Box>
+  )
+}
+
 const Browser = () => {
   return (
     <ProductCardContainer>
@@ -46,13 +65,14 @@ const Browser = () => {
   )
 }
 
-const IOS = () => {
+const IOS = ({ hasDescription }: { hasDescription?: boolean }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
         <Image src={ios} alt="ios" />
       </Box>
       <ProductText>iPhone/iPad</ProductText>
+      {hasDescription && <ProductDescription />}
       <Link href="https://apps.apple.com/ca/app/im-intouch-go/id526473842" target="_blank">
         <Image src={appStore} alt="iOS App Store" />
       </Link>
@@ -60,7 +80,7 @@ const IOS = () => {
   )
 }
 
-const Android = () => {
+const Android = ({ hasDescription }: { hasDescription?: boolean }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
@@ -68,19 +88,21 @@ const Android = () => {
         <Image src={android} alt="android" />
       </Box>
       <ProductText>Android</ProductText>
+      {hasDescription && <ProductDescription />}
       <Link href="https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo&hl=en&pli=1" target="_blank">
         <Image src={googlePlay} alt="Google Play" />
       </Link>
     </ProductCardContainer>
   )
 }
-const Tablet = () => {
+const Tablet = ({ hasDescription }: { hasDescription?: boolean }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
         <Image src={tablet} alt="tablet" />
       </Box>
       <ProductText>Windows Tablet</ProductText>
+      {hasDescription && <ProductDescription />}
       <Link href="https://apps.microsoft.com/detail/9WZDNCRDSMRK?hl=en-ca&gl=CA" target="_blank">
         <Image src={microsoftStore} alt="Microsoft Store" />
       </Link>
@@ -88,21 +110,24 @@ const Tablet = () => {
   )
 }
 
-const getVariant = (variant) => {
+const getVariant = (variant, hasDescription) => {
   switch (variant) {
     case 'browser':
       return <Browser />
     case 'ios':
-      return <IOS />
+      return <IOS hasDescription={hasDescription} />
     case 'android':
-      return <Android />
+      return <Android hasDescription={hasDescription} />
     case 'tablet':
-      return <Tablet />
+      return <Tablet hasDescription={hasDescription} />
   }
 }
 
-export const IITProductCard = ({ variant }: { variant: 'browser' | 'ios' | 'android' | 'tablet' }) => {
+export const IITProductCard = ({ variant, hasDescription }: {
+  variant: 'browser' | 'ios' | 'android' | 'tablet',
+  hasDescription?: boolean
+}) => {
   return (
-    getVariant(variant)
+    getVariant(variant, hasDescription)
   )
 }

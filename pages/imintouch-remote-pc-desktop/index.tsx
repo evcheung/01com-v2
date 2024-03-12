@@ -136,9 +136,8 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainBannerContainer margin="48px 0px" width="100%">
-        <IITMainBanner />
-      </MainBannerContainer>
+      <IITMainBanner />
+
       <ProductsHeadingContainer>
         <ProductsHeading>Remote Working with Absolute Security via Any Device from Anywhere, Anytime</ProductsHeading>
       </ProductsHeadingContainer>

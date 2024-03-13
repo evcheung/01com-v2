@@ -93,7 +93,7 @@ const AffiliatedProductsMenu = ({ handleMouseLeave }) => {
       <Link href='/imintouch-remote-pc-desktop/server'>
         <Text variant={TextVariants.Feat2}>I'm InTouch (Server Edition)</Text>
       </Link>
-      <Link href='/imintouch-remote-pc-desktsecure-key'>
+      <Link href='/imintouch-remote-pc-desktop/secure-key'>
         <Text variant={TextVariants.Feat2}>I'm InTouch SecureKey</Text>
       </Link>
     </StyledDropdownMenu>
@@ -162,6 +162,12 @@ export const IITNavBarDesktop = ({
             <>
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/gomail/how-it-works" target="_blank" label="How It Works" />
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/gomail/features" target="_blank" label="Features" />
+            </>
+          }
+          {subSite === 'securekey' &&
+            <>
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/secure-key/how-it-works" target="_blank" label="How It Works" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/secure-key/features" target="_blank" label="Features" />
             </>
           }
           <Box onMouseOver={displayMenu} onMouseLeave={debouncedHideMenu} style={{ position: 'relative' }}>

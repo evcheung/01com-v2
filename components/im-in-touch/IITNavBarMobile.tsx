@@ -140,6 +140,24 @@ export const IITNavBarMobile = ({
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/go/features" target="_blank" label="Features" />
               </>
             }
+            {subSite === 'gomail' &&
+              <>
+                <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/gomail/how-it-works" target="_blank" label="How It Works" />
+                <AnchorDivider />
+
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/gomail/features" target="_blank" label="Features" />
+              </>
+            }
+            {subSite === 'securekey' &&
+              <>
+                <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/secure-key/how-it-works" target="_blank" label="How It Works" />
+                <AnchorDivider />
+
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/secure-key/features" target="_blank" label="Features" />
+              </>
+            }
             <AnchorDivider />
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="" label="Affiliated Products" />
             <Box padding="0 0 0 48px">

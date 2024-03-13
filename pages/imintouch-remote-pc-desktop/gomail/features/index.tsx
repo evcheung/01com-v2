@@ -11,6 +11,7 @@ import Outlook from '../../../../public/assets/gomail-feature-outlook.jpg'
 import Notification from '../../../../public/assets/gomail-feature-notification.jpg'
 import Image from "next/image";
 import Link from "next/link";
+import { FullPageContentContainer } from "../../../../components/PageContentContainer";
 
 const FeaturesGrid = styled(Box)`
 display: grid;
@@ -65,7 +66,7 @@ export default function GoMailFeaturesHome() {
       <IITPageBanner heading="Features">
         <Text textColor={TextColors.White}>Unlike other mobile mailbox services, I'm InTouch GoMail lets you keep your emails on your computer. Your data will not be duplicated onto your mobile device or any cloud storage. This not only maximizes your data security/privacy but also eliminates third party cloud storage fee.</Text>
       </IITPageBanner>
-      <Box margin="96px 0">
+      <FullPageContentContainer>
         <FeaturesGrid>
           <FeatureCard>
             <StyledImage src={Attachments.src} alt="attachment management panel in app" width={200} height={200} />
@@ -107,7 +108,7 @@ export default function GoMailFeaturesHome() {
             </Box>
           </FeatureCard>
         </FeaturesGrid>
-      </Box>
+      </FullPageContentContainer>
     </IITLayout>
   );
 }

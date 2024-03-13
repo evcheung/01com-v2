@@ -29,3 +29,21 @@ ${breakpoints("width", "", [
   { 940: "100%" },
 ])}
 `
+
+export const FullPageContentContainer = styled(Box)`
+margin: 96px 0;
+min-width 1300px;
+width: 100%;
+${breakpoints("margin", "", [
+  { 760: "48px 0" },
+])}
+${breakpoints("min-width", "", [
+  { 1300: "auto" },
+])}
+${breakpoints("min-width", "", [
+  { 940: "auto" },
+])}
+${breakpoints("width", "", [
+  { 940: "100%" },
+])}
+`

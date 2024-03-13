@@ -11,6 +11,7 @@ import { theme } from "../../../theme";
 import { IITPageBanner } from "../../../components/im-in-touch/IITPageBanner";
 import IITLayout from "../../../components/im-in-touch/IITLayout";
 import Link from "next/link";
+import { FullPageContentContainer } from "../../../components/PageContentContainer";
 
 const StepsGrid = styled(Box)`
 display: grid;
@@ -77,7 +78,7 @@ export default function GoMailHowItWorks() {
       </Head>
 
       <IITPageBanner heading="How It Works" />
-      <Box margin="96px 0">
+      <FullPageContentContainer>
         <StepsGrid>
           <StepCard>
             <StepImage src={One.src} alt="Step 1" width={64} height={64} />
@@ -116,7 +117,7 @@ export default function GoMailHowItWorks() {
             </Box>
           </StepCard>
         </StepsGrid>
-      </Box>
+      </FullPageContentContainer>
     </IITLayout>
   );
 }

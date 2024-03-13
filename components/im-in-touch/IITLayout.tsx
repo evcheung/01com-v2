@@ -16,7 +16,7 @@ export interface LayoutProps {
   pageTitle?: string;
   headerContent?: ReactNode;
   children: ReactNode;
-  subSite?: 'go' | 'gomail' | 'server';
+  subSite?: 'go' | 'gomail' | 'server' | 'securekey';
 }
 
 export default function IITLayout({

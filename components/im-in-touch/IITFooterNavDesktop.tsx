@@ -83,28 +83,24 @@ ${breakpoints("display", "", [
 ])}
   `
 
-export const IITFooterNavDesktop = ({ subSite }: { subSite?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
+export const IITFooterNavDesktop = () => {
   return (
     <>
       <CTABanner />
 
       <NavContainer>
-
         <NavLinkContainer>
           <LogoDesktop>
             <Link href="/"> <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} /></Link>
           </LogoDesktop>
-          {!subSite && <NavLink href="/imintouch-remote-pc-desktop/about" label="About I'm InTouch"></NavLink>}
-          {subSite === 'go' && <NavLink href="/imintouch-remote-pc-desktop/go/about" label="About I'm InTouch Go"></NavLink>}
-          {subSite === 'gomail' && <NavLink href="/imintouch-remote-pc-desktop/gomail/about" label="About I'm InTouch GoMail"></NavLink>}
-          {subSite === 'server' && <NavLink href="/imintouch-remote-pc-desktop/server/about" label="About I'm InTouch (Server Edition)"></NavLink>}
-          {subSite === 'securekey' && <NavLink href="/imintouch-remote-pc-desktsecure-key/about" label="About I'm InTouch SecureKey"></NavLink>}
-          <NavLink href="/imintouch-remote-pc-desktop/applications" label="Applications"></NavLink>
-          <NavLink href="/reviews-awards" label="Press Room"></NavLink>
-          <NavLink href="/imintouch-remote-pc-desktop/security" label="Security"></NavLink>
-          <NavLink href="/imintouch-remote-pc-desktop/support" label="Contact Us"></NavLink>
-          <NavLink href="/terms-of-use" label="Terms of Use"></NavLink>
-          <NavLink href="/privacy-policy" label="Privacy Policy"></NavLink>
+          <NavLink href="/about" label="About 01 Communique" />
+          <NavLink href="/investor-relations" label="Investor Relations" />
+          <NavLink href="/reviews-awards" label="Press Room" />
+          <NavLink href="/partner-programs" label="Partner Programs" />
+          <NavLink href="/careers" label="Careers" />
+          <NavLink href="/contact-us" label="Contact Us" />
+          <NavLink href="/terms-of-use" label="Terms of Use" />
+          <NavLink href="/privacy-policy" label="Privacy Policy" />
         </NavLinkContainer>
         <Box margin="24px 0px">
           <Text variant={TextVariants.Body3}>Remote Control Software | Remote PC Access Software | Remote Desktop Software | Remote Access Software | Remote Desktop Connection | Remote Computer Access</Text>

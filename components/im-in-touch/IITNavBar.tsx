@@ -9,13 +9,13 @@ export enum NavBarVariants {
 
 export const IITNavBar = ({
   variant = NavBarVariants.Dark as NavBarVariants,
-  subSite
+  subSite,
+  width
 }: {
   variant?: NavBarVariants,
-  subSite?: 'go' | 'gomail' | 'server' | 'securekey'
+  subSite?: 'go' | 'gomail' | 'server' | 'securekey',
+  width: number
 }) => {
-  const { width } = useWindowSize()
-
   return (
     <>
       {width > 1070 ? <IITNavBarDesktop variant={variant as NavBarVariants} subSite={subSite} /> : <IITNavBarMobile variant={variant as NavBarVariants} subSite={subSite} />}

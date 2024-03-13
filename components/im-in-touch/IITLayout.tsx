@@ -4,6 +4,7 @@ import { NavBar, NavBarVariants } from '../NavBar'
 import { Container, Main } from '../sharedstyles'
 import { IITNavBar } from './IITNavBar';
 import { IITFooterNav } from './IITFooterNav';
+import { useWindowSize } from 'usehooks-ts';
 
 export enum LayoutVariants {
   Dark = "Dark",
@@ -23,13 +24,15 @@ export default function IITLayout({
   children,
   subSite
 }: LayoutProps) {
+  const { width } = useWindowSize()
+
   return (
     // TODO: add variant for Container to lower texture on dark navbar. Texture has to show through
     <Container>
       <Main>
-        <IITNavBar variant={NavBarVariants.Dark} subSite={subSite} />
+        <IITNavBar variant={NavBarVariants.Dark} subSite={subSite} width={width} />
         {children}
-        <IITFooterNav subSite={subSite} />
+        <IITFooterNav subSite={subSite} width={width} />
       </Main>
     </Container >
   )

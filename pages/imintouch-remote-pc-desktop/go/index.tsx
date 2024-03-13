@@ -114,9 +114,9 @@ export default function GoHome() {
         </Box>
       </HeadingContainer>
       <ProductsCardContainer>
-        <IITProductCard variant='ios' hasDescription={true} />
-        <IITProductCard variant='android' hasDescription={true} />
-        <IITProductCard variant='tablet' hasDescription={true} />
+        <IITProductCard variant='ios' hasDescription={true} subSite={'go'} />
+        <IITProductCard variant='android' hasDescription={true} subSite={'go'} />
+        <IITProductCard variant='tablet' hasDescription={true} subSite={'go'} />
       </ProductsCardContainer>
     </IITLayout >
   )

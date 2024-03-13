@@ -33,18 +33,19 @@ const LoginButton = styled(PrimaryButton)`
 padding: 12px 46px;`
 
 
-const ProductDescription = () => {
+const ProductDescription = ({ subSite }: { subSite?: 'go' | 'gomail' }) => {
+  if (!subSite) { return null };
   return (
     <Box margin="0 0 12px 0">
       <ol>
         <li>
-          <Text variant={TextVariants.Body2}>Download I'm InTouch Go</Text>
+          <Text variant={TextVariants.Body2}>Download I'm InTouch {subSite === 'go' ? 'Go' : "GoMail"}</Text>
         </li>
         <li>
-          <Text variant={TextVariants.Body2}>Launch I'm InTouch Go</Text>
+          <Text variant={TextVariants.Body2}>Launch I'm InTouch {subSite === 'go' ? 'Go' : "GoMail"}</Text>
         </li>
         <li>
-          <Text variant={TextVariants.Body2}>Login and access your computer</Text>
+          <Text variant={TextVariants.Body2}>Login and access your {subSite === 'go' ? 'computer' : "Outlook"}</Text>
         </li>
       </ol>
     </Box>
@@ -65,14 +66,14 @@ const Browser = () => {
   )
 }
 
-const IOS = ({ hasDescription }: { hasDescription?: boolean }) => {
+const IOS = ({ hasDescription, subSite }: { hasDescription?: boolean, subSite?: 'go' | 'gomail' }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
         <Image src={ios} alt="ios" />
       </Box>
       <ProductText>iPhone/iPad</ProductText>
-      {hasDescription && <ProductDescription />}
+      {hasDescription && <ProductDescription subSite={subSite} />}
       <Link href="https://apps.apple.com/ca/app/im-intouch-go/id526473842" target="_blank">
         <Image src={appStore} alt="iOS App Store" />
       </Link>
@@ -80,7 +81,7 @@ const IOS = ({ hasDescription }: { hasDescription?: boolean }) => {
   )
 }
 
-const Android = ({ hasDescription }: { hasDescription?: boolean }) => {
+const Android = ({ hasDescription, subSite }: { hasDescription?: boolean, subSite?: 'go' | 'gomail' }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
@@ -88,21 +89,21 @@ const Android = ({ hasDescription }: { hasDescription?: boolean }) => {
         <Image src={android} alt="android" />
       </Box>
       <ProductText>Android</ProductText>
-      {hasDescription && <ProductDescription />}
+      {hasDescription && <ProductDescription subSite={subSite} />}
       <Link href="https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo&hl=en&pli=1" target="_blank">
         <Image src={googlePlay} alt="Google Play" />
       </Link>
     </ProductCardContainer>
   )
 }
-const Tablet = ({ hasDescription }: { hasDescription?: boolean }) => {
+const Tablet = ({ hasDescription, subSite }: { hasDescription?: boolean, subSite?: 'go' | 'gomail' }) => {
   return (
     <ProductCardContainer>
       <Box margin='32px'>
         <Image src={tablet} alt="tablet" />
       </Box>
       <ProductText>Windows Tablet</ProductText>
-      {hasDescription && <ProductDescription />}
+      {hasDescription && <ProductDescription subSite={subSite} />}
       <Link href="https://apps.microsoft.com/detail/9WZDNCRDSMRK?hl=en-ca&gl=CA" target="_blank">
         <Image src={microsoftStore} alt="Microsoft Store" />
       </Link>
@@ -110,24 +111,20 @@ const Tablet = ({ hasDescription }: { hasDescription?: boolean }) => {
   )
 }
 
-const getVariant = (variant, hasDescription) => {
+
+export const IITProductCard = ({ variant, hasDescription, subSite }: {
+  variant: 'browser' | 'ios' | 'android' | 'tablet',
+  hasDescription?: boolean,
+  subSite?: 'go' | 'gomail'
+}) => {
   switch (variant) {
     case 'browser':
       return <Browser />
     case 'ios':
-      return <IOS hasDescription={hasDescription} />
+      return <IOS hasDescription={hasDescription} subSite={subSite} />
     case 'android':
-      return <Android hasDescription={hasDescription} />
+      return <Android hasDescription={hasDescription} subSite={subSite} />
     case 'tablet':
-      return <Tablet hasDescription={hasDescription} />
+      return <Tablet hasDescription={hasDescription} subSite={subSite} />
   }
-}
-
-export const IITProductCard = ({ variant, hasDescription }: {
-  variant: 'browser' | 'ios' | 'android' | 'tablet',
-  hasDescription?: boolean
-}) => {
-  return (
-    getVariant(variant, hasDescription)
-  )
 }

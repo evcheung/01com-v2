@@ -67,9 +67,9 @@ const StyledLink = styled(Link)`
 text-decoration: underline;
 `
 
-export default function GoHowItWorks() {
+export default function GoMailHowItWorks() {
   return (
-    <IITLayout subSite="go">
+    <IITLayout subSite="gomail">
       <Head>
         <title>Remote Desktop Connection & Control Software | 01com.com</title>
         <meta name="description" content="Remote access software for online meetings, web conferencing software, remote PC access software and remote IT support including help desk software and online training solutions." />
@@ -83,7 +83,7 @@ export default function GoHowItWorks() {
             <StepImage src={One.src} alt="Step 1" width={64} height={64} />
             <Box margin="16px 0 0 0">
               <Text>
-                Download and install I'm InTouch Go onto your iPad, iPhone, Android, or Windows Tablet device. I'm InTouch Go is a FREE App.
+                Download and install I'm InTouch GoMail on to your iPad, iPhone, iPod, or Android device. I'm InTouch GoMail is a FREE App.
               </Text>
             </Box>
           </StepCard>
@@ -91,7 +91,7 @@ export default function GoHowItWorks() {
             <StepImage src={Two.src} alt="Step 2" width={64} height={64} />
             <Box margin="16px 0 0 0">
               <Text >
-                Make sure you have Internet connection on your mobile device (e.g. cellular data or WiFi Internet connection) and then launch I'm InTouch Go.
+                Make sure you have Internet connection on your mobile device (e.g. cellular data or WiFi Internet connection) and then launch I'm InTouch GoMail.
               </Text>
             </Box>
           </StepCard>
@@ -99,8 +99,9 @@ export default function GoHowItWorks() {
             <StepImage src={Three.src} alt="Step 3" width={64} height={64} />
             <Box margin="16px 0 0 0">
               <Text >
-                Either login to your I'm InTouch account to pick your computer from the list, or quickly find your computer by its Computer
-                Name. (Click <StyledLink href='/imintouch-remote-pc-desktop/how-it-works/' target="_blank">here</StyledLink> to see how to create an I'm InTouch account and activate your computer to become I'm InTouch-enabled.)
+                Either login to your I'm InTouch account to pick your computer from the list, or quickly find your computer by its Computer Name.
+                (Click <StyledLink href='/imintouch-remote-pc-desktop/how-it-works/' target="_blank">here</StyledLink> to see how to create an
+                I'm InTouch account and activate your computer to become I'm InTouch-enabled.)
               </Text>
             </Box>
           </StepCard>
@@ -108,7 +109,9 @@ export default function GoHowItWorks() {
             <StepImage src={Four.src} alt="Step 4" width={64} height={64} />
             <Box margin="16px 0 0 0">
               <Text >
-                After authentication, you will be able to <StyledLink href="/imintouch-remote-pc-desktop/go/features/pc-remote-access/" target="_blank">remotely control</StyledLink> your desktop computer from your mobile device.
+                After authentication, your Outlook is now virtually at your finger tips. (During your first connection
+                I'm InTouch GoMail will prompt if you want to register the mobile device
+                to <StyledLink href="/imintouch-remote-pc-desktop/gomail" target="_blank">receive notification</StyledLink> when new emails arrive.)
               </Text>
             </Box>
           </StepCard>

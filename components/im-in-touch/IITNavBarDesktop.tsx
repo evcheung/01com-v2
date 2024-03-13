@@ -158,6 +158,12 @@ export const IITNavBarDesktop = ({
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/go/features" target="_blank" label="Features" />
             </>
           }
+          {subSite === 'gomail' &&
+            <>
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/gomail/how-it-works" target="_blank" label="How It Works" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/gomail/features" target="_blank" label="Features" />
+            </>
+          }
           <Box onMouseOver={displayMenu} onMouseLeave={debouncedHideMenu} style={{ position: 'relative' }}>
             <NavLink color={theme.colors.neutral.xs} label="Affiliated Products" href="" />
             <AffiliatedProductsMenu handleMouseLeave={debouncedHideMenu} />

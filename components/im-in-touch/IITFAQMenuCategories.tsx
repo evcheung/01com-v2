@@ -19,6 +19,9 @@ const StyledMenuItem = styled.button<MenuButtonProps>`
   cursor: pointer;
   padding: 4px 24px 0 24px;
   margin: 0;
+  :focus {
+    border: none;
+  }
   ${breakpoints("text-align", "", [
   { 1280: 'left' },
 ])}
@@ -63,9 +66,30 @@ const FAQCategory = ({ category, selectedCategory, onSelect }) => {
 
 }
 
+const FAQContainer = ({ width, category, selectedCategory, onSelect }) => {
+  if (width > 1280) {
+    return (
+      <FAQCategory key={category} category={category} selectedCategory={selectedCategory} onSelect={onSelect} />
+    )
+  } else
+    return (
+      <StyledDropdownItem>
+        <FAQCategory key={category} category={category} selectedCategory={selectedCategory} onSelect={onSelect} />
+      </StyledDropdownItem>
+    )
+}
+
 export const FAQMenuCategories = ({ FAQs, onSelect, selectedCategory, width }) => (
   <>
-    {Object.keys(FAQs).map((faqCategory) => {
+    <FAQContainer category={FAQs['General Questions'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Security'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Administrator Functions'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Using I’m InTouch'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Using Remote Wake-Up'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Billing'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Remote Access'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    <FAQContainer category={FAQs['Remote Audio'].category} selectedCategory={selectedCategory} onSelect={onSelect} width={width} />
+    {/* {Object.keys(FAQs).map((faqCategory) => {
       const category = FAQs[faqCategory].category.trim()
       if (width > 1280) {
         return (
@@ -77,6 +101,6 @@ export const FAQMenuCategories = ({ FAQs, onSelect, selectedCategory, width }) =
             <FAQCategory key={category} category={category} selectedCategory={selectedCategory} onSelect={onSelect} />
           </StyledDropdownItem>
         )
-    })}
+    })} */}
   </>
 )

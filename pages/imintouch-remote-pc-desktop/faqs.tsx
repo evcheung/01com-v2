@@ -222,6 +222,8 @@ export default function ImInTouchFAQs({ faqs }) {
     }, {})
     return normalized
   }, [faqs])
+  console.log('👉👉👉 normalizedFAQs', normalizedFAQs);
+  console.log('👉👉👉 normalizedFAQs gq', normalizedFAQs['General Questions']['faqs']);
 
 
   const [selectedFAQCategory, setSelectedFAQCategory] = useState(Object.keys(normalizedFAQs)[0].trim());

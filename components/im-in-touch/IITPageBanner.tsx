@@ -52,9 +52,13 @@ display: flex;
 flex-direction: column;
 align-items:center;
 a {
-  :first-of-type {
+  button {
+  margin-right: 24px;
+
+  }
+  :last-of-type {
     button {
-    margin-right: 24px;
+    margin-right: 0;
     }
   }
 }

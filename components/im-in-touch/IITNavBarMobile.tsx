@@ -122,7 +122,7 @@ export const IITNavBarMobile = ({
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/features" target="_blank" label="Features" />
                 <AnchorDivider />
 
-                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/why-im-intouch" label="Why I'm InTouch?" />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/applications" label="Why I'm InTouch?" />
                 <AnchorDivider />
 
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/support" label="Support" />
@@ -158,13 +158,29 @@ export const IITNavBarMobile = ({
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/secure-key/features" target="_blank" label="Features" />
               </>
             }
+            {subSite === 'server' &&
+              <>
+                <AnchorDivider />
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/server/how-it-works" target="_blank" label="How It Works" />
+                <AnchorDivider />
+
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/server/features" target="_blank" label="Features" />
+                <AnchorDivider />
+
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/server/support" target="_blank" label="Support" />
+                <AnchorDivider />
+
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/server/pricing-comparison" target="_blank" label="Pricing & Comparison" />
+
+              </>
+            }
             <AnchorDivider />
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="" label="Affiliated Products" />
             <Box padding="0 0 0 48px">
               <Link href="/imintouch-remote-pc-desktop/go"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '-10px 0 18px 0' }}>I'm InTouch Go</Text></Link>
               <Link href="/imintouch-remote-pc-desktop/gomail"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch Go Mail</Text></Link>
               <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch (Server Edition)</Text></Link>
-              <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch SecureKey</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/secure-key"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch SecureKey</Text></Link>
             </Box>
             <AnchorDivider />
           </Box>

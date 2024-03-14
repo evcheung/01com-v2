@@ -5,6 +5,7 @@ import { Container, Main } from '../sharedstyles'
 import { IITNavBar } from './IITNavBar';
 import { IITFooterNav } from './IITFooterNav';
 import { useWindowSize } from 'usehooks-ts';
+import { LiveChatBubble } from '../LiveChatBubble';
 
 export enum LayoutVariants {
   Dark = "Dark",
@@ -34,6 +35,7 @@ export default function IITLayout({
         {children}
         <IITFooterNav subSite={subSite} width={width} />
       </Main>
+      <LiveChatBubble />
     </Container >
   )
 }

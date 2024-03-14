@@ -44,11 +44,12 @@ ${breakpoints("grid-template-columns", "", [
 `
 
 
-export const FeatureCard = ({ columns, title, imgSrc, children }: { columns: 1 | 2, title: string, imgSrc: string, children: ReactNode }) => {
+export const FeatureCard = ({ columns, title, imgSrc, children, subText }: { columns: 1 | 2, title: string, imgSrc: string, children: ReactNode, subText?: ReactNode }) => {
   return (
     <FeatureCardContainer>
       <Image src={imgSrc} alt='' width={64} height={64} />
       <FeatureTitle>{title}</FeatureTitle>
+      {subText}
       <FeatureCardGrid columns={columns}>
         {children}
       </FeatureCardGrid>

@@ -60,6 +60,7 @@ const ProductTitle = styled(Heading)`
 &&& {
   font-size: 18px;
   line-height: 24px;
+  text-align:center;
 }
 `
 
@@ -69,6 +70,7 @@ const BannerContentHeading = styled(Heading)`
   line-height: 36px;
   margin: 8px 0px;
   padding: 0px 24px;
+  text-align:center;
 }
 `
 
@@ -77,6 +79,7 @@ const BannerContentText = styled(Text)`
   font-size: 18px;
   line-height: 30px;
   padding: 0px 24px;
+  text-align:center;
 }
 `
 

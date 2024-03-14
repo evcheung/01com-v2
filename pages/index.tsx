@@ -19,11 +19,7 @@ import { useMemo } from 'react'
 export const revalidate = 10
 // export const dynamic = 'force-dynamic'
 
-const LiveChatButton = styled(Link)`
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-`
+
 
 const StyledLatestNewsContainer = styled(Box)`
 display: grid;
@@ -200,9 +196,7 @@ export default function Home({ pressReleases }) {
         }
       </NewsContainer>
 
-      <LiveChatButton href="#" target="_blank" onClick={() => { window.open('https://imoncall.01com.com/pre-sales/', 'pagename', 'resizable,height=600,width=500'); return false; }}>
-        <Image src={livechat} alt="chat bubble" />
-      </LiveChatButton>
+
     </Layout >
   )
 }

@@ -43,7 +43,7 @@ const StyledLink = styled(Link)`
 
 export default function SecureKeyFeaturesHome() {
   return (
-    <IITLayout subSite="gomail">
+    <IITLayout subSite="securekey">
       <Head>
         <title>Remote Desktop Connection & Control Software | 01com.com</title>
         <meta

@@ -13,7 +13,6 @@ import { FeatureCard } from "../../../../components/im-in-touch/IITFeatureCard";
 import { Anchor } from "../../../../components/core/anchor";
 
 
-
 const FeaturesGrid = styled(Box)`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;

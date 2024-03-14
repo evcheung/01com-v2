@@ -112,6 +112,16 @@ const getLogo = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {
       return IITSecureKeyLogo
   }
 }
+const getSubSiteLink = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {
+  switch (subSite) {
+    case 'go':
+    case 'gomail':
+    case 'server':
+      return subSite
+    case 'securekey':
+      return 'secure-key'
+  }
+}
 
 export const IITNavBarDesktop = ({
   variant,
@@ -139,7 +149,7 @@ export const IITNavBarDesktop = ({
         flexAlignment='center'
         variant={variant}
       >
-        <Link href={`/imintouch-remote-pc-desktop/${subSite}`}>
+        <Link href={`/imintouch-remote-pc-desktop/${getSubSiteLink(subSite) || ''}`}>
           <LogoContainer src={!subSite ? IITLogo : getLogo(subSite)} alt="I'm InTouch product logo, click to return to main product page" />
         </Link>
         <Box flexDirection='row'>
@@ -147,7 +157,7 @@ export const IITNavBarDesktop = ({
             <>
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/how-it-works" target="_blank" label="How It Works" />
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/features" target="_blank" label="Features" />
-              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/why-im-intouch" label="Why I'm InTouch?" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/applications" label="Why I'm InTouch?" />
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/support" label="Support" />
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/pricing-comparison" label="Pricing & Comparison" />
             </>
@@ -170,10 +180,23 @@ export const IITNavBarDesktop = ({
               <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/secure-key/features" target="_blank" label="Features" />
             </>
           }
+          {subSite === 'server' &&
+            <>
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/server/how-it-works" target="_blank" label="How It Works" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/server/features" target="_blank" label="Features" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/server/support" target="_blank" label="Support" />
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/server/pricing-comparison" target="_blank" label="Pricing & Comparison" />
+            </>
+          }
           <Box onMouseOver={displayMenu} onMouseLeave={debouncedHideMenu} style={{ position: 'relative' }}>
             <NavLink color={theme.colors.neutral.xs} label="Affiliated Products" href="" />
             <AffiliatedProductsMenu handleMouseLeave={debouncedHideMenu} />
           </Box>
+          {subSite === 'server' &&
+            <>
+              <NavLink color={theme.colors.neutral.xs} href="/imintouch-remote-pc-desktop/server/benefits" target="_blank" label="Benefits & Advantages" />
+            </>
+          }
         </Box>
         <NavLogin isNavBarLight={false} isIIT={true} />
       </NavBarContainer>

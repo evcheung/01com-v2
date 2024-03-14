@@ -39,7 +39,7 @@ ${breakpoints("flex-direction", "", [
 `
 export default function SecureKeyHowItWorks() {
   return (
-    <IITLayout subSite="gomail">
+    <IITLayout subSite="securekey">
       <Head>
         <title>Remote Desktop Connection & Control Software | 01com.com</title>
         <meta

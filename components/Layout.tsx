@@ -4,6 +4,8 @@ import { FooterNav } from './FooterNav'
 import { NavBar, NavBarVariants } from './NavBar'
 import { PageHeader } from './PageBanner';
 import { Container, Main } from './sharedstyles'
+import { LiveChatBubble } from './LiveChatBubble';
+
 
 // const fallbackSettings: SettingsPayload = {
 //   menuItems: [],
@@ -45,6 +47,7 @@ export default function Layout({
         }
         {children}
         <FooterNav />
+        <LiveChatBubble />
       </Main>
     </Container >
   )

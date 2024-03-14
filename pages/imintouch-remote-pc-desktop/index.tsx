@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box, Text, Divider } from "../../components/core"
+import { Box, Text } from "../../components/core"
 import { breakpoints } from "../../utils/breakpoints"
 import { client } from '../../sanity/lib/client'
 import Head from "next/head"
@@ -12,6 +12,7 @@ import { theme } from "../../theme"
 import { Anchor, AnchorVariants } from "../../components/core/anchor"
 import Link from "next/link"
 import { imageUrlFor } from "../../utils/sanity/image-url-builder"
+import { Divider } from "../../components/core/Divider"
 
 
 export const revalidate = 10

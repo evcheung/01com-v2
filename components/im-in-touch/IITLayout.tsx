@@ -33,7 +33,7 @@ export default function IITLayout({
       <Main>
         <IITNavBar variant={NavBarVariants.Dark} subSite={subSite} width={width} />
         {children}
-        <IITFooterNav subSite={subSite} width={width} />
+        <IITFooterNav width={width} />
       </Main>
       <LiveChatBubble />
     </Container >

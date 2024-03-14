@@ -200,6 +200,7 @@ const FAQ = ({ question, answer, setActiveItem, activeKey, eventKey }) => {
       <Accordion.Body>
         <AnswerContainer>
           {/* TODO: fix typing */}
+          {/* @ts-ignore */}
           <PortableText value={answer} components={portableTextComponents} />
         </AnswerContainer>
       </Accordion.Body>

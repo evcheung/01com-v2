@@ -189,9 +189,80 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
             </Box>
 
             <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can remotely control your I'm InTouch computer using a Pocket PC with an Internet connection.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can discreetly monitor your children's computer activities using I'm InTouch's Stealth Mode.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                I'm InTouch can notify your cell phone whenever you receive an email on your computer.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can print files from your distant computer to a local printer using I'm InTouch.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                With the Remote Audio feature, you can listen to music on your distant PC from anywhere.
+
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can remotely view all the monitors connected to your Host PC using I'm InTouch's Multi Monitor feature.
+
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can stream video from a webcam on your Host PC to any Computer or Pocket PC.
+
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can view a list of all your computers on one screen and access them with a single click in I'm InTouch.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can access your computer even if it is turned off with the I'm InTouch Wake-up feature.
+              </InfoCardText>
+            </Box>
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                I'm InTouch provides you with direct access to your Outlook or Windows Mail Emails from any wireless device.
+              </InfoCardText>
+            </Box>
+
+            <Divider />
+            <Box margin="16px 0">
+              <InfoCardText>
+                You can transfer files between your computers using I'm InTouch's File Transfer feature.
+              </InfoCardText>
+            </Box>
+
+            <Divider />
           </Box>
           <Box margin="24px 0 0 0">
-            <Anchor href="/imintouch-remote-pc-desktop/features/remote-web-conferencing/" variant={AnchorVariants.Small}>Learn More</Anchor>
+            <Anchor href="/imintouch-remote-pc-desktop/features/" variant={AnchorVariants.Small}>Learn More</Anchor>
           </Box>
         </InfoCard>
 

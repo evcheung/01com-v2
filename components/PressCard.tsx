@@ -3,6 +3,7 @@ import { theme } from '../theme'
 import { Anchor } from './core/anchor'
 import styled from 'styled-components'
 import { breakpoints } from '../utils/breakpoints'
+import Image from 'next/image'
 
 const PressCardContainer = styled(Box)`
   background: ${theme.colors.neutral.xs};
@@ -35,13 +36,17 @@ font-size: ${theme.fontSize.xl};
  ${breakpoints("font-size", "", [
   { 760: theme.fontSize.lg },
 ])}
- 
+`
+
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: auto;
 `
 
 export const PressCard = ({ date, description, link, image, imageAltText }: PressCardProps) => {
   return (
-    <PressCardContainer flexDirection='column' flexJustify='space-between' flexAlignment='flex-start'>
-      {image && <Box margin="0 0 24px 0"><img src={image} alt={imageAltText} /></Box>}
+    <PressCardContainer flexDirection='column' flexAlignment='flex-start'>
+      {image && <Box margin="0 0 24px 0"><StyledImage src={image} alt={imageAltText} width={100} height={80} /></Box>}
       <Box>
         <Text style={{ fontSize: theme.fontSize.md }}>{date}</Text>
         <PressCardDescription>{description}</PressCardDescription>

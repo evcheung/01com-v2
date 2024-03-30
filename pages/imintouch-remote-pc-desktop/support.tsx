@@ -117,7 +117,7 @@ export default function Support() {
 
           <Box>
             <ContactSubText>Tech Support:</ContactSubText>
-            <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
+            <Anchor href="tel:905-795-2888">(905) 795-2888</Anchor>
           </Box>
           <Border />
 

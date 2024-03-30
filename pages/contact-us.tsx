@@ -116,7 +116,7 @@ export default function ContactUs() {
                 <Box style={{ borderLeft: `1px dotted ${theme.colors.neutral.md}`, height: '46px', width: width <= 900 && '60px' }}></Box>
                 <Box width={width <= 900 ? '200px' : 'auto'} flexDirection='column'>
                   <ContactSubText>Tech Support:</ContactSubText>
-                  <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
+                  <Anchor href="tel:(905-795-8166">(905) 795-8166</Anchor>
                 </Box>
               </Box>
 

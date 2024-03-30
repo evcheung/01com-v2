@@ -37,7 +37,7 @@ export default function GoMultiMonitor() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <IITPageBanner heading="Remote Control" iconSrc={Conference.src} />
+      <IITPageBanner heading="Multi-Monitor Support" iconSrc={Conference.src} />
       <PageContentContainer>
         <Text>Multi-Monitor Support allows your host computer to have a configuration of up to 10 monitors.</Text>
         <ImagesContainer>

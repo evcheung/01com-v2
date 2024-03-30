@@ -2,7 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { Box, Text } from "../../../../components/core";
 import { IITPageBanner } from "../../../../components/im-in-touch/IITPageBanner";
-import FeatureImage from "../../../../public/assets/server-admin.jpg";
+import FeatureImage from "../../../../public/assets/usage-stats.png";
 import IITLayout from "../../../../components/im-in-touch/IITLayout";
 import Image from "next/image";
 import { PageContentContainer } from "../../../../components/PageContentContainer";
@@ -31,12 +31,10 @@ export default function ServerAccessRights() {
       <PageContentContainer>
         <Text>
           As the Administrator of the I'm InTouch Server Edition, you can
-          monitor the usage statistics of all the users on your I'm InTouch{" "}
-          <StyledLink
+          monitor the usage statistics of all the users on your <StyledLink
             href="/imintouch-remote-pc-desktop/server/"
             target="_blank"
-          >
-            remote access system
+          >I'm InTouch remote access system
           </StyledLink>
           . This enhances your understanding of the usage habits and thus giving
           you a better picture in managing your servers and bandwidth

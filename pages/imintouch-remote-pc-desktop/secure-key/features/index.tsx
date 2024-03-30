@@ -41,7 +41,11 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
-export default function SecureKeyFeaturesHome() {
+const Bolded = styled.span`
+font-weight: 600;
+`;
+
+export default function SecureKEYFeaturesHome() {
   return (
     <IITLayout subSite="securekey">
       <Head>
@@ -57,8 +61,11 @@ export default function SecureKeyFeaturesHome() {
       <PageContentContainer>
         <Box margin="16px 0 0 0">
           <Text>
-            I'm InTouch SecureKEY is a powerful physical authentication device
-            uniquely activated with your I'm InTouch-enabled computer. Only a
+            I'm InTouch SecureKEY is a powerful <Bolded>physical authentication</Bolded> device
+            uniquely activated with your <StyledLink
+              target="_blank"
+              href="/imintouch-remote-pc-desktop/features/"
+            >I'm InTouch-enabled</StyledLink> computer. Only a
             computer with your I'm InTouch SecureKEY in the USB slot can access
             your I'm InTouch-enabled computer in addition to the password
             protection. Chances of any unauthorized access is thus minimized.
@@ -66,20 +73,14 @@ export default function SecureKeyFeaturesHome() {
         </Box>
         <Box margin="16px 0 0 0">
           <Text>
-            Auto-Login can be enabled to allow controlling your{" "}
-            <StyledLink
-              target="_blank"
-              href="/imintouch-remote-pc-desktop/features/"
-            >
-              I'm InTouch-enabled
-            </StyledLink>{" "}
+            <Bolded>Auto-Login</Bolded> can be enabled to allow controlling your I'm InTouch-enabled
             computer remotely within seconds of inserting the I'm InTouch
             SecureKEY.
           </Text>
         </Box>
         <Box margin="16px 0 0 0">
           <Text>
-            As a free bonus I'm InTouch SecureKEY can also be used as a 1GB USB
+            As a free bonus I'm InTouch SecureKEY can also be used as a <Bolded>1GB USB </Bolded>
             storage drive.
           </Text>
         </Box>

@@ -460,7 +460,7 @@ export default function InvestorRelations({
           <Text>
             For more information about 01 Communique contact us at +1 905
             795-2888 or +1 800 668-2185 (US/Canada), or email{" "}
-            <StyledLink href="mailto:investorrelations@01com.com">
+            <StyledLink target="_blank" href="mailto:investorrelations@01com.com">
               investorrelations@01com.com
             </StyledLink>{" "}
             with any comments or suggestions.

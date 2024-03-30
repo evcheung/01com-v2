@@ -79,7 +79,7 @@ ${breakpoints("margin-bottom", "", [
 const StyledLink = styled(Link)`
 text-decoration: underline;`
 
-export default function SecureKeyHome() {
+export default function SecureKEYHome() {
   return (
     <IITLayout subSite="securekey">
       <Head>
@@ -110,7 +110,7 @@ export default function SecureKeyHome() {
         </Box>
         <Box margin="24px 0">
           <Text>You have to be a subscriber of
-            our <StyledLink target="_blank" href="/imintouch-remote-pc-desktop/secure-key/how-it-works">I'm InTouch remote access service</StyledLink> in
+            our <StyledLink target="_blank" href="/imintouch-remote-pc-desktop/">I'm InTouch remote access service</StyledLink> in
             order to use this optional companion product. If you are not a subscriber yet,
             a <StyledLink target="_blank" href="https://locator.01com.com/ecommerce/account.php">free trial</StyledLink> is available.</Text>
         </Box>

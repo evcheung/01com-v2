@@ -37,7 +37,7 @@ ${breakpoints("flex-direction", "", [
   { 1080: "column" },
 ])}
 `
-export default function SecureKeyHowItWorks() {
+export default function SecureKEYHowItWorks() {
   return (
     <IITLayout subSite="securekey">
       <Head>
@@ -72,7 +72,7 @@ export default function SecureKeyHowItWorks() {
               your I'm InTouch-enabled computer. See{" "}
               <StyledLink
                 target="_blank"
-                href="imintouch-remote-pc-desktop/faqs#security/"
+                href="imintouch-remote-pc-desktop/faqs/"
               >
                 Physical Authentication FAQs
               </StyledLink>{" "}
@@ -87,7 +87,7 @@ export default function SecureKeyHowItWorks() {
             </Box>
           </Box>
 
-          <StyledImage src={Activation.src} width={100} height={100} alt="SecureKey Activation screen"></StyledImage>
+          <StyledImage src={Activation.src} width={100} height={100} alt="SecureKEY Activation screen"></StyledImage>
         </Container>
 
         <Box margin="48px 0">

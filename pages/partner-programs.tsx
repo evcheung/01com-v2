@@ -50,7 +50,7 @@ export default function ParterPrograms() {
           Our products and special private labelling programs are designed to assist OEMs in meeting their business goals,
           differentiating their products, build their brand and providing a total solution to their customers. <br /><br />
           To learn more about our IBP, SI, or OEM programs please contact us at toll-free (800) 668-2185 or (905) 795-2888
-          or email to <StyledLink href="mailto:sales@01com.com">sales@01com.com</StyledLink>.
+          or email to <StyledLink target="_blank" href="mailto:sales@01com.com">sales@01com.com</StyledLink>.
         </StyledText>
 
         <StyledText variant={TextVariants.Body1}></StyledText>

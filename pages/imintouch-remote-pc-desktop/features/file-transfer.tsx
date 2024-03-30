@@ -21,10 +21,10 @@ export default function FileTransfer() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <IITPageBanner heading="Remote 2-Way Audio" />
+      <IITPageBanner heading="File Transfer" />
       <PageContentContainer>
         <Text>
-          I'm InTouch allows you to stream audio from the speakers on the remote computer to your local computer. It also allows you to stream the microphone input on the local computer to your remote computer.
+          Using I'm InTouch you can copy files back-and-forth easily between your remote and local computers. Simply drag-and-drop the files between the 2 computers.
         </Text>
         <Box margin="48px 0 0 0">
           <StyledImage src={FileTransferImage.src} alt="screen showing files from both local and remote computers" width={100} height={548} />

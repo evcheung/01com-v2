@@ -128,7 +128,7 @@ const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, locat
 
 const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer backgroundImageSrc={iitGoMailBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }} clickable={clickable} location={location} >
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch Go Mail</ProductTitle>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch GoMail</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Mobilize Your Outlook®
     </BannerContentHeading>
@@ -146,12 +146,12 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
 
 const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer backgroundImageSrc={iitPhysicalAuthBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }} clickable={clickable} location={location} >
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
-    <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch SecureKEY</ProductTitle>
+    <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White} >
       Physical Authentication
     </BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
-      Ultimate Security for your I'm InTouch Remote PC Access
+      <span style={{ whiteSpace: 'nowrap' }}>Ultimate Security for your I'm InTouch</span> Remote PC Access
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">

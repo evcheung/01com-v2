@@ -223,11 +223,8 @@ export default function ImInTouchFAQs({ faqs }) {
     }, {})
     return normalized
   }, [faqs])
-  console.log('👉👉👉 normalizedFAQs', normalizedFAQs);
-  console.log('👉👉👉 normalizedFAQs gq', normalizedFAQs['General Questions']['faqs']);
 
-
-  const [selectedFAQCategory, setSelectedFAQCategory] = useState(Object.keys(normalizedFAQs)[0].trim());
+  const [selectedFAQCategory, setSelectedFAQCategory] = useState('General Questions');
   const [activeKey, setActiveKey] = useState(null)
 
   const handleSelect = useCallback((item) => {
@@ -241,11 +238,6 @@ export default function ImInTouchFAQs({ faqs }) {
   useEffect(() => {
     setActiveKey(null)
   }, [])
-
-  /* 
-  * TODO: Inline text item styles
-  * TODO: Populate CMS
-   */
 
   return (
     <IITLayout>
@@ -262,7 +254,7 @@ export default function ImInTouchFAQs({ faqs }) {
         </Box>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
           <SecondaryButton>
-            <Link href='/imintouch-remote-pc-desktop/users-guide/'>User's Guide</Link>
+            <Link href='https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm' target="_blank">User's Guide</Link>
           </SecondaryButton>
         </Box>
       </IITPageBanner>

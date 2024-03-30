@@ -90,7 +90,7 @@ export default function Support() {
       <IITPageBanner heading="General Support">
         <Text variant={TextVariants.Body1} textColor={TextColors.White}>Contact our knowledgeable staff anytime for immediate assistance. Whether you need technical support while operating one of our programs or have questions regarding pricing or features of our remote access and remote control software, we are available at your convenience.</Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <Link href='/imintouch-remote-pc-desktop/users-guide/'>
+          <Link href='https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm' target="_blank">
             <PrimaryButton textColor={ButtonTextColors.Blue}>
               User's Guide
             </PrimaryButton>
@@ -123,7 +123,7 @@ export default function Support() {
 
           <Box>
             <ContactSubText>Email:</ContactSubText>
-            <Anchor href="mailto:help@01com.com">help@01com.com</Anchor>
+            <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
           </Box>
         </ContactContainer>
 

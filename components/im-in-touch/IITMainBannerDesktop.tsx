@@ -198,7 +198,7 @@ const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, locat
 
 const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer alignment="left" backgroundImageSrc={iitGoMailBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }} clickable={clickable} location={location}>
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch Go Mail</ProductTitle>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch GoMail</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Mobilize Your Outlook®
     </BannerContentHeading>
@@ -216,12 +216,12 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
 
 const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer alignment="left" backgroundImageSrc={iitPhysicalAuthBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }} clickable={clickable} location={location}>
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch SecureKEY</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Physical Authentication
     </BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '80%' }}>
-      Ultimate Security for your I'm InTouch Remote PC Access
+      <span style={{ whiteSpace: 'nowrap' }}>Ultimate Security for your I'm InTouch</span> Remote PC Access
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
@@ -272,7 +272,7 @@ export const IITMainBannerDesktop = ({ isCarousel = true, banner }: { isCarousel
         <ImInTouchGoBanner clickable location="/imintouch-remote-pc-desktop/go" />
         <ImInTouchGoMail clickable location="/imintouch-remote-pc-desktop/gomail" />
         {/* physical auth = secure key */}
-        <ImInTouchPhysicalAuthBanner clickable location="/imintouch-remote-pc-desktsecure-key" />
+        <ImInTouchPhysicalAuthBanner clickable location="/imintouch-remote-pc-desktop/secure-key" />
         {/* server edition */}
         <ImInTouchProductiveBanner clickable location="/imintouch-remote-pc-desktop/server" />
       </StyledCarousel>

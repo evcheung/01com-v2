@@ -181,7 +181,7 @@ export default function ServerSupport() {
           <Box>
             <ContactSubText>Email:</ContactSubText>
             <Box margin="12px 0">
-              <Anchor href="mailto:help@01com.com">help@01com.com</Anchor>
+              <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
             </Box>
           </Box>
         </ContactContainer>

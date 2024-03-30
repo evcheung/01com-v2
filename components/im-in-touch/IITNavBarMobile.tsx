@@ -2,7 +2,7 @@ import IITLogo from '../../public/assets/iit-logo.png'
 import IITGoLogo from '../../public/assets/iit-go-logo.png'
 import IITGoMailLogo from '../../public/assets/iit-go-mail-logo.png'
 import IITServerLogo from '../../public/assets/iit-server-logo.png'
-import IITSecureKeyLogo from '../../public/assets/iit-secure-key-logo.png'
+import IITSecureKEYLogo from '../../public/assets/iit-secure-key-logo.png'
 import Image from 'next/image'
 import { Box, Text, TextVariants, TextColors } from '../core'
 import { theme } from '../../theme'
@@ -42,7 +42,7 @@ const getLogo = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {
     case 'server':
       return IITServerLogo
     case 'securekey':
-      return IITSecureKeyLogo
+      return IITSecureKEYLogo
   }
 }
 export const IITNavBarMobile = ({
@@ -178,9 +178,9 @@ export const IITNavBarMobile = ({
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="" label="Affiliated Products" />
             <Box padding="0 0 0 48px">
               <Link href="/imintouch-remote-pc-desktop/go"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '-10px 0 18px 0' }}>I'm InTouch Go</Text></Link>
-              <Link href="/imintouch-remote-pc-desktop/gomail"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch Go Mail</Text></Link>
-              <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch (Server Edition)</Text></Link>
-              <Link href="/imintouch-remote-pc-desktop/secure-key"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch SecureKey</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/gomail"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch GoMail</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/server"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch Server Edition</Text></Link>
+              <Link href="/imintouch-remote-pc-desktop/secure-key"><Text textColor={TextColors.Neutral} variant={TextVariants.Feat3} style={{ margin: '0 0 18px 0' }}>I'm InTouch SecureKEY</Text></Link>
             </Box>
             <AnchorDivider />
           </Box>

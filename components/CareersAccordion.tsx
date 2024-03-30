@@ -254,7 +254,7 @@ export const CareersAccordion = ({ activeCategory = [{ heading: '' }, { heading:
 
               <Box margin="48px 0 0 0">
                 <StyledJobHeading as="h3">Send your resume to:</StyledJobHeading>
-                <Text>Email: <Anchor variant={AnchorVariants.Large} href="mailto:hr@01com.com" >hr@01com.com</Anchor> (Attention: Human Resources)</Text>
+                <Text>Email: <Anchor variant={AnchorVariants.Large} href="mailto:hr@01com.com" target="_blank">hr@01com.com</Anchor> (Attention: Human Resources)</Text>
               </Box>
             </AccordionContainer>
           </Accordion.Body>

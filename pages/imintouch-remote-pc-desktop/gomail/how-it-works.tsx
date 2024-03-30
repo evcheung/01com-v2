@@ -112,7 +112,7 @@ export default function GoMailHowItWorks() {
               <Text >
                 After authentication, your Outlook is now virtually at your finger tips. (During your first connection
                 I'm InTouch GoMail will prompt if you want to register the mobile device
-                to <StyledLink href="/imintouch-remote-pc-desktop/gomail" target="_blank">receive notification</StyledLink> when new emails arrive.)
+                to <StyledLink href="/imintouch-remote-pc-desktop/gomail/features/" target="_blank">receive notification</StyledLink> when new emails arrive.)
               </Text>
             </Box>
           </StepCard>

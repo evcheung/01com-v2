@@ -135,31 +135,31 @@ export default function ContactUs() {
             <ContactContainer heading="Email" id="email">
               <Box margin="0 0 18px 0">
                 <ContactSubText>General Inquiries:</ContactSubText>
-                <Anchor href="mailto:01com@01com.com">01com@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:01com@01com.com">01com@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Sales & VAR Inquiries:</ContactSubText>
-                <Anchor href="mailto:sales@01com.com">sales@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:sales@01com.com">sales@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Technical Support:</ContactSubText>
-                <Anchor href="mailto:help@01com.com">help@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Customer Relations:</ContactSubText>
-                <Anchor href="mailto:customerservice@01com.com">customerservice@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:customerservice@01com.com">customerservice@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Investor Relations:</ContactSubText>
-                <Anchor href="mailto:ir@01com.com">ir@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:ir@01com.com">ir@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Marketing:</ContactSubText>
-                <Anchor href="mailto:marketing@01com.com">marketing@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:marketing@01com.com">marketing@01com.com</Anchor>
               </Box>
               <Box margin="0 0 18px 0">
                 <ContactSubText>Human Resources:</ContactSubText>
-                <Anchor href="mailto:hr@01com.com">hr@01com.com</Anchor>
+                <Anchor target="_blank" href="mailto:hr@01com.com">hr@01com.com</Anchor>
               </Box>
             </ContactContainer>
           </Box>

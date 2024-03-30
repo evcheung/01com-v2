@@ -37,7 +37,7 @@ export default function GoRemoteAudio() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <IITPageBanner heading="Remote Control" iconSrc={Volume.src} />
+      <IITPageBanner heading="Remote Audio" iconSrc={Volume.src} />
       <PageContentContainer>
         <Text>Remote Audio allows you to listen to music, watch video, and run programs with sound as if you were sitting in front of your host computer.</Text>
         <ImagesContainer>

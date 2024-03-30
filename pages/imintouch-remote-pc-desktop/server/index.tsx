@@ -117,7 +117,11 @@ export default function ServerHome() {
               remote access
             </StyledLink>{" "}
             functionality is identical to the hosted I'm InTouch service. Sign
-            up a free I'm InTouch trial account today and experience the
+            up for a free <StyledLink
+              target="_blank"
+              href="https://locator.01com.com/ecommerce/account.php"
+            >
+              I'm InTouch trial account</StyledLink> today and experience the
             convenience and benefits brought by our award winning products.
           </Text>
         </Box>

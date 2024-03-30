@@ -2,7 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { Box, Text } from "../../../../components/core";
 import { IITPageBanner } from "../../../../components/im-in-touch/IITPageBanner";
-import FeatureImage from "../../../../public/assets/server-admin.jpg";
+import FeatureImage from "../../../../public/assets/add-new-users.png";
 import IITLayout from "../../../../components/im-in-touch/IITLayout";
 import Image from "next/image";
 import { PageContentContainer } from "../../../../components/PageContentContainer";
@@ -31,12 +31,10 @@ export default function ServerAddRemoveAccounts() {
       <PageContentContainer>
         <Text>
           As the Administrator of the I'm InTouch Server Edition, you can manage
-          all the users on your I'm InTouch{" "}
-          <StyledLink
+          all the users on your <StyledLink
             href="/imintouch-remote-pc-desktop/server/"
             target="_blank"
-          >
-            remote access system</StyledLink>. The number of users you can create is only
+          >I'm InTouch remote access system</StyledLink>. The number of users you can create is only
           restricted by the number of user licenses you have purchased.
         </Text>
         <Box
@@ -52,6 +50,6 @@ export default function ServerAddRemoveAccounts() {
           />
         </Box>
       </PageContentContainer>
-    </IITLayout>
+    </IITLayout >
   );
 }

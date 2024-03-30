@@ -2,7 +2,7 @@ import IITLogo from '../../public/assets/iit-logo.png'
 import IITGoLogo from '../../public/assets/iit-go-logo.png'
 import IITGoMailLogo from '../../public/assets/iit-go-mail-logo.png'
 import IITServerLogo from '../../public/assets/iit-server-logo.png'
-import IITSecureKeyLogo from '../../public/assets/iit-secure-key-logo.png'
+import IITSecureKEYLogo from '../../public/assets/iit-secure-key-logo.png'
 import Image from 'next/image'
 import { Box, Text, TextVariants } from '../core'
 import { theme } from '../../theme'
@@ -91,10 +91,10 @@ const AffiliatedProductsMenu = ({ handleMouseLeave }) => {
         <Text variant={TextVariants.Feat2}>I'm InTouch GoMail</Text>
       </Link>
       <Link href='/imintouch-remote-pc-desktop/server'>
-        <Text variant={TextVariants.Feat2}>I'm InTouch (Server Edition)</Text>
+        <Text variant={TextVariants.Feat2}>I'm InTouch Server Edition</Text>
       </Link>
       <Link href='/imintouch-remote-pc-desktop/secure-key'>
-        <Text variant={TextVariants.Feat2}>I'm InTouch SecureKey</Text>
+        <Text variant={TextVariants.Feat2}>I'm InTouch SecureKEY</Text>
       </Link>
     </StyledDropdownMenu>
   )
@@ -109,7 +109,7 @@ const getLogo = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {
     case 'server':
       return IITServerLogo
     case 'securekey':
-      return IITSecureKeyLogo
+      return IITSecureKEYLogo
   }
 }
 const getSubSiteLink = (subSite: 'go' | 'gomail' | 'server' | 'securekey') => {

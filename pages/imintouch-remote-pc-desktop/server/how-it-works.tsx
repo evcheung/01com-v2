@@ -134,7 +134,7 @@ export default function ServerHowItWorks() {
             <Text>
               Click the{" "}
               <StyledLink
-                href="imintouch-remote-pc-desktop/server/features/"
+                href="/imintouch-remote-pc-desktop/server/features/"
                 target="_blank"
               >
                 Features
@@ -146,7 +146,7 @@ export default function ServerHowItWorks() {
           <Box margin="24px 0">
             <Text>
               For more information about the I'm InTouch Server Edition,
-              download the following: -{" "}
+              download the following: {" "}
               <StyledLink
                 target="_blank"
                 href="https://www.01com.com/pdf/CSE/I'm_InTouch_SE_Technology_White_Paper.pdf"

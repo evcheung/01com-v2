@@ -21,7 +21,7 @@ export default function RemotePrinting() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <IITPageBanner heading="Remote Control" />
+      <IITPageBanner heading="Remote Printing" />
       <PageContentContainer>
         <Text>
           Remote Printing enables you to print any document on your remote computer to a local printer. Simply select printing to the special "I'm InTouch Remote Printer".

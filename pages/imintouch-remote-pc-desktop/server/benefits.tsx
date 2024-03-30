@@ -81,7 +81,7 @@ export default function ServerBenefits() {
               automatically send invitation emails to them and prompt them to
               activate their{" "}
               <StyledLink
-                href="/imintouch-remote-pc-desktop/server/features/"
+                href="/imintouch-remote-pc-desktop/server/how-it-works/"
                 target="_blank"
               >
                 computers for remote access
@@ -114,14 +114,12 @@ export default function ServerBenefits() {
                 href="/imintouch-remote-pc-desktop/server/features/"
                 target="_blank"
               >
-                premise-based
-              </StyledLink>{" "}
-              remote access software that they can fully manage and control. If
+                premise-based remote access</StyledLink> software that they can fully manage and control. If
               you would like to do remote access to a single computer or even
               multiple remote desktops in your business but prefer that we
               manage the technology for you, try our{" "}
               <StyledLink
-                href="/imintouch-remote-pc-desktop/server/features/"
+                href="/imintouch-remote-pc-desktop/server/how-it-works/"
                 target="_blank"
               >
                 I'm InTouch

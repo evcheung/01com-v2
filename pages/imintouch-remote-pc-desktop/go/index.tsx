@@ -109,7 +109,7 @@ export default function GoHome() {
           <Text>Before you can use I'm InTouch Go, you must first activate your remote computer to become I'm InTouch-enabled.
             The activation process is as easy as 1-2-3. Simply click here to create
             a free <StyledLink target="_blank" href="https://locator.01com.com/ecommerce/account.php">30-day Trial Account.</StyledLink> Then from
-            the computer you wish to activate, go to <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">www.imintouch.com.</StyledLink> Login to the
+            the computer you wish to activate, go to <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">I'm InTouch.</StyledLink> Login to the
             I'm InTouch account you have just created and follow the on-screen instructions to activate the computer.</Text>
         </Box>
       </HeadingContainer>

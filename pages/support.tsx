@@ -141,7 +141,7 @@ export default function Support() {
           </ContactsRowGrid>
           <ContactsRowGrid>
             <ContactContainer heading="Email" >
-              <Anchor href="mailto:help@01com.com">help@01com.com</Anchor>
+              <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
             </ContactContainer>
             <ContactContainer heading="Phone" id="phone">
               <Box flexDirection='row' flexAlignment='center' flexJustify="space-between" style={{ maxWidth: '340px' }}>

@@ -109,7 +109,7 @@ export default function GoHowItWorks() {
             <StepImage src={Four.src} alt="Step 4" width={64} height={64} />
             <Box margin="16px 0 0 0">
               <Text >
-                After authentication, you will be able to <StyledLink href="/imintouch-remote-pc-desktop/go/features/pc-remote-access/" target="_blank">remotely control</StyledLink> your desktop computer from your mobile device.
+                After authentication, you will be able to <StyledLink href="/imintouch-remote-pc-desktop/go/features/remote-control" target="_blank">remotely control</StyledLink> your desktop computer from your mobile device.
               </Text>
             </Box>
           </StepCard>

@@ -539,7 +539,7 @@ export default function PricingComparison() {
             </tr>
             <tr>
               <td>
-                <Text>MAC Address Restriction<sup>2</sup></Text>
+                <Text>MAC Address Restriction</Text>
               </td>
               <td>
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
@@ -561,7 +561,7 @@ export default function PricingComparison() {
             </tr>
             <tr>
               <td>
-                <Text>Outlook Mobilization</Text>
+                <Text>Outlook Mobilization<sup>2</sup></Text>
               </td>
               <td>
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />

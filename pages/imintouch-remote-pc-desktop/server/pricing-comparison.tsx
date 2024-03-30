@@ -291,16 +291,6 @@ export default function ServerPricing() {
       </Head>
 
       <IITPageBanner heading="Pricing & Comparison">
-        <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <a href='https://locator.01com.com/ecommerce/account.php' target="_blank">
-            <PrimaryButton textColor={ButtonTextColors.Blue}>
-              Buy Now
-            </PrimaryButton>
-          </a>
-          <a href='https://locator.01com.com/ecommerce/account.php' target="_blank">
-            <SecondaryButton>Try It Free</SecondaryButton>
-          </a>
-        </Box>
       </IITPageBanner>
       <PageContentContainer>
         <ComparisonTable>
@@ -486,7 +476,7 @@ export default function ServerPricing() {
               <Text variant={TextVariants.Body2}>Prices are subject to change</Text>
             </li>
             <li>
-              <Text variant={TextVariants.Body2}>User license is the license to create an user on your I'm InTouch server</Text>
+              <Text variant={TextVariants.Body2}>User license is the license to create a user on your I'm InTouch server</Text>
             </li>
             <li>
               <Text variant={TextVariants.Body2}>Administrator is counted as one user license</Text>

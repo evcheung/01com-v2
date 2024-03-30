@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box, Text } from "../../components/core"
+import { Box, ButtonColors, PrimaryButton, Text } from "../../components/core"
 import { breakpoints } from "../../utils/breakpoints"
 import { client } from '../../sanity/lib/client'
 import Head from "next/head"
@@ -27,6 +27,9 @@ margin:0;
 const ProductsHeadingContainer = styled(Box)`
 width: 740px;
 margin: 84px auto 48px auto;
+display: flex;
+flex-direction: column;
+align-items: center;
 ${breakpoints("width", "", [
   { 960: '100%' },
 ])}
@@ -141,6 +144,11 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
 
       <ProductsHeadingContainer>
         <ProductsHeading>Remote Working with Absolute Security via Any Device from Anywhere, Anytime</ProductsHeading>
+        <Box margin="16px 0 0 0">
+          <Link href="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf" target="_blank">
+            <PrimaryButton btnColor={ButtonColors.Blue}>Brochure</PrimaryButton>
+          </Link>
+        </Box>
       </ProductsHeadingContainer>
       <ProductsCardContainer>
         <IITProductCard variant='browser' />

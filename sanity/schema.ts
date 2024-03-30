@@ -10,6 +10,10 @@ import investorRelationsRecentEvents from "./schemas/investorRelationsRecentEven
 import imInTouchNewsUpdates from "./schemas/imInTouchNewsUpdates";
 import imInTouchFAQCategories from "./schemas/imInTouchFAQCategories";
 import imInTouchFAQs from "./schemas/imInTouchFAQs";
+import imInTouchSecureKeyFAQCategories from "./schemas/imInTouchSecureKeyFAQCategories";
+import imInTouchSecureKeyFAQs from "./schemas/imInTouchSecureKeyFAQs";
+import imInTouchServerFAQCategories from "./schemas/imInTouchServerFAQCategories";
+import imInTouchServerFAQs from "./schemas/imInTouchServerFAQs";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,6 +26,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     investorRelationsFinancialResults,
     imInTouchNewsUpdates,
     imInTouchFAQCategories,
-    imInTouchFAQs
+    imInTouchFAQs,
+    imInTouchSecureKeyFAQCategories,
+    imInTouchSecureKeyFAQs,
+    imInTouchServerFAQCategories,
+    imInTouchServerFAQs
   ],
 };

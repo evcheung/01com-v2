@@ -65,14 +65,14 @@ export default function SecureKEYHowItWorks() {
               physical authentication device when you want to{" "}
               <StyledLink
                 target="_blank"
-                href="/imintouch-remote-pc-desktop/features/remote-control//"
+                href="/imintouch-remote-pc-desktop/features/remote-control/"
               >
                 remotely access
               </StyledLink>{" "}
               your I'm InTouch-enabled computer. See{" "}
               <StyledLink
                 target="_blank"
-                href="imintouch-remote-pc-desktop/faqs/"
+                href="/imintouch-remote-pc-desktop/faqs#security"
               >
                 Physical Authentication FAQs
               </StyledLink>{" "}

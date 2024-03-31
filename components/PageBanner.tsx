@@ -6,6 +6,7 @@ import Heading, { HeadingColors } from './core/heading'
 import { NavBar, NavBarVariants } from './NavBar'
 import { breakpoints } from '../utils/breakpoints'
 import { theme } from '../theme'
+import { Breadcrumb } from './Breadcrumb'
 
 const StyledBox = styled(Box)`
   background: no-repeat top/cover url("${bannerBg.src}");
@@ -36,6 +37,7 @@ export const PageHeader = ({ label, children }: { label: string, children: React
       <NavBar variant={NavBarVariants.Dark} />
 
       <HeadingContainer>
+        <Breadcrumb label={label} />
         <StyledHeading headingColor={HeadingColors.White}>{label}</StyledHeading>
         {children}
       </HeadingContainer>

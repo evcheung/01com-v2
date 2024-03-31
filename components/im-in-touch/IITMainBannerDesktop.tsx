@@ -216,7 +216,7 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
 
 const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer alignment="left" backgroundImageSrc={iitPhysicalAuthBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }} clickable={clickable} location={location}>
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch SecureKEY</ProductTitle>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch SecureKey</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Physical Authentication
     </BannerContentHeading>

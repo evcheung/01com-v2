@@ -99,7 +99,7 @@ export default function ImInTouchFAQs({ faqs }) {
 
 
       <IITPageBanner heading="FAQs">
-        <Box width='95%'>
+        <Box width='65%'>
           <Text variant={TextVariants.Body1} textColor={TextColors.White}>Choose one of the following links to find answers to your questions about our Remote Desktop Software.</Text>
         </Box>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">

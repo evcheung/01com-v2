@@ -139,8 +139,7 @@ export default function ServerSupport() {
               End User's Guide
             </PrimaryButton>
           </Link>
-          {/* TODO: make IIT Server faqs */}
-          <Link href="/imintouch-remote-pc-desktop/faqs/" target="_blank">
+          <Link href="/imintouch-remote-pc-desktop/server/faqs/" target="_blank">
             <SecondaryButton>FAQ</SecondaryButton>
           </Link>
         </BannerButtonContainer>

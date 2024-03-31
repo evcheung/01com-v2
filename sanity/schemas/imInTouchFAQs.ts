@@ -29,7 +29,7 @@ export default defineType({
               name: 'answer',
               title: 'Answer',
               type: 'array',
-              of: [{ type: 'block' }]
+              of: [{ type: 'block' }, { type: 'image' }],
             },
           ]
         }

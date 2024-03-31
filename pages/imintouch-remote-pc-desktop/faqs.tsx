@@ -83,7 +83,7 @@ export default function ImInTouchFAQs({ faqs }) {
   }, [])
 
   useEffect(() => {
-    const id = window.location.href.split('#')[1];
+    const id = window.location.href.split('#')[1] || '';
     const split = id.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const category = split === 'Using Remote Wake Up' ? "Using Remote Wake-Up" : split
     setSelectedFAQCategory(category || 'General Questions')

@@ -70,7 +70,7 @@ export const NavBarDesktop = ({
           <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
           <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
           <NavLink color={navLinkColor} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
-          <NavLink color={navLinkColor} target="_blank" href="https://www.01com.com/imoncall-remote-help-desk/" target="_blank" label="I'm OnCall" />
+          <NavLink color={navLinkColor} href="https://www.01com.com/imoncall-remote-help-desk/" target="_blank" label="I'm OnCall" />
           <NavLink color={navLinkColor} href="/support" label="Support" />
           <NavLink color={navLinkColor} href="/intellectual-properties" label="Intellectual Properties" />
         </Box>

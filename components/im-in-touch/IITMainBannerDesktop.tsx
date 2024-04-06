@@ -200,7 +200,7 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
   <BannerContainer alignment="left" backgroundImageSrc={iitGoMailBanner.src} customBoxStyles={{ backgroundPositionY: '35%' }} clickable={clickable} location={location}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch GoMail</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
-      Mobilize Your Outlook®
+      Mobilize Your Outlook<sup style={{ fontSize: '14px', top: '-16px' }}>®</sup>
     </BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '80%' }}>
       A Revolutionary Mobile Mailbox
@@ -211,7 +211,7 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
       </Box>
       <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
-  </BannerContainer>
+  </BannerContainer >
 )
 
 const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
@@ -223,30 +223,30 @@ const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: bool
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '80%' }}>
       <span style={{ whiteSpace: 'nowrap' }}>Ultimate Security for your I'm InTouch</span> Remote PC Access
     </BannerContentText>
-    <Box flexDirection='row'>
+    {/* <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
         <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
       <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
-    </Box>
+    </Box> */}
   </BannerContainer>
 )
 
 const ImInTouchProductiveBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer alignment="left" backgroundImageSrc={iitProductivityBanner.src} customBoxStyles={{ backgroundPositionY: 'top' }} clickable={clickable} location={location}>
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch Server Edition</ProductTitle>
     <BannerContentHeading variant={HeadingVariants.Heading1} headingColor={HeadingColors.White}>
       Be productive as a company work efficiently anywhere!
     </BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White} style={{ width: '80%' }}>
       Host your own I'm InTouch remote access service
     </BannerContentText>
-    <Box flexDirection='row'>
+    {/* <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
         <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
       <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
-    </Box>
+    </Box> */}
   </BannerContainer>
 )
 

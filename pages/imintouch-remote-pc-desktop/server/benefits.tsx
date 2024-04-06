@@ -111,7 +111,7 @@ export default function ServerBenefits() {
               ). I'm InTouch Server Edition is a cost-effective solution for
               businesses requiring a{" "}
               <StyledLink
-                href="/imintouch-remote-pc-desktop/server/features/"
+                href="/imintouch-remote-pc-desktop/server/how-it-works/"
                 target="_blank"
               >
                 premise-based remote access</StyledLink> software that they can fully manage and control. If
@@ -119,7 +119,7 @@ export default function ServerBenefits() {
               multiple remote desktops in your business but prefer that we
               manage the technology for you, try our{" "}
               <StyledLink
-                href="/imintouch-remote-pc-desktop/server/how-it-works/"
+                href="/imintouch-remote-pc-desktop/"
                 target="_blank"
               >
                 I'm InTouch

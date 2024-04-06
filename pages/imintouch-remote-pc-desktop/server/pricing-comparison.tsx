@@ -383,7 +383,7 @@ export default function ServerPricing() {
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
               </td>
               <td>
-                <Image src={DotHalf.src} alt="full checkmark" width={20} height={20} />
+                <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
               </td>
             </tr>
             <tr>
@@ -394,7 +394,7 @@ export default function ServerPricing() {
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
               </td>
               <td>
-                <Image src={DotHalf.src} alt="full checkmark" width={20} height={20} />
+                <Image src={DotEmpty.src} alt="empty checkmark" width={20} height={20} />
               </td>
             </tr>
             <tr>
@@ -427,7 +427,7 @@ export default function ServerPricing() {
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
               </td>
               <td>
-                <Image src={DotEmpty.src} alt="half checkmark" width={20} height={20} />
+                <Image src={DotEmpty.src} alt="empty checkmark" width={20} height={20} />
               </td>
             </tr>
             <tr>
@@ -438,7 +438,7 @@ export default function ServerPricing() {
                 <Image src={DotFull.src} alt="full checkmark" width={20} height={20} />
               </td>
               <td>
-                <Image src={DotEmpty.src} alt="half checkmark" width={20} height={20} />
+                <Image src={DotEmpty.src} alt="empty checkmark" width={20} height={20} />
               </td>
             </tr>
           </tbody>

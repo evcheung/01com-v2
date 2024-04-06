@@ -2,7 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { Box, Text } from "../../../../components/core";
 import { IITPageBanner } from "../../../../components/im-in-touch/IITPageBanner";
-import FeatureImage from "../../../../public/assets/server-admin.jpg";
+import FeatureImage from "../../../../public/assets/iit-access-rights.png";
 import IITLayout from "../../../../components/im-in-touch/IITLayout";
 import Image from "next/image";
 import { PageContentContainer } from "../../../../components/PageContentContainer";

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { breakpoints } from "../../../utils/breakpoints"
 import { IITMainBanner } from "../../../components/im-in-touch/IITMainBanner"
 import Heading from "../../../components/core/heading"
+import { LINKS } from "../../../utils/constants"
 
 const HeadingContainer = styled(Box)`
 width: 888px;
@@ -112,7 +113,7 @@ export default function SecureKEYHome() {
           <Text>You have to be a subscriber of
             our <StyledLink target="_blank" href="/imintouch-remote-pc-desktop/">I'm InTouch remote access service</StyledLink> in
             order to use this optional companion product. If you are not a subscriber yet,
-            a <StyledLink target="_blank" href="https://locator.01com.com/ecommerce/account.php">free trial</StyledLink> is available.</Text>
+            a <StyledLink target="_blank" href={LINKS.IIT_TRY_IT_FREE}>free trial</StyledLink> is available.</Text>
         </Box>
         <Box margin="24px 0">
           <Text>For more information or to purchase your I'm InTouch SecureKEY, call 1-800-668-2185 or chat with our product specialists.</Text>

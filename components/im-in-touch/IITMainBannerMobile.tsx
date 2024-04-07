@@ -12,6 +12,7 @@ import iitProductivityBanner from '../../public/assets/banner-iit-productivity-m
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 import { breakpoints } from '../../utils/breakpoints'
+import { LINKS } from '../../utils/constants'
 
 const Container = styled(Box)`
 width: calc(100% + 64px);
@@ -102,9 +103,9 @@ const ImInTouchBanner = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -119,9 +120,9 @@ const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, locat
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -137,9 +138,9 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )
@@ -153,12 +154,6 @@ const ImInTouchPhysicalAuthBanner = ({ clickable, location }: { clickable?: bool
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
       <span style={{ whiteSpace: 'nowrap' }}>Ultimate Security for your I'm InTouch</span> Remote PC Access
     </BannerContentText>
-    {/* <Box flexDirection='row'>
-      <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
-      </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
-    </Box> */}
   </BannerContainer >
 )
 
@@ -172,12 +167,6 @@ const ImInTouchProductiveBanner = ({ clickable, location }: { clickable?: boolea
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
       Host your own I'm InTouch remote access service
     </BannerContentText>
-    {/* <Box flexDirection='row'>
-      <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
-      </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
-    </Box> */}
   </BannerContainer >
 )
 

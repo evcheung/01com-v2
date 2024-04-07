@@ -9,6 +9,7 @@ import { breakpoints } from "../../../utils/breakpoints"
 import { IITMainBanner } from "../../../components/im-in-touch/IITMainBanner"
 import Heading from "../../../components/core/heading"
 import { IITProductCard } from "../../../components/im-in-touch/IITProductCard"
+import { LINKS } from "../../../utils/constants"
 
 const HeadingContainer = styled(Box)`
 width: 888px;
@@ -108,7 +109,7 @@ export default function GoHome() {
         <Box margin="24px 0">
           <Text>Before you can use I'm InTouch Go, you must first activate your remote computer to become I'm InTouch-enabled.
             The activation process is as easy as 1-2-3. Simply click here to create
-            a free <StyledLink target="_blank" href="https://locator.01com.com/ecommerce/account.php">30-day Trial Account.</StyledLink> Then from
+            a free <StyledLink target="_blank" href={LINKS.IIT_TRY_IT_FREE}>30-day Trial Account.</StyledLink> Then from
             the computer you wish to activate, go to <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">I'm InTouch.</StyledLink> Login to the
             I'm InTouch account you have just created and follow the on-screen instructions to activate the computer.</Text>
         </Box>

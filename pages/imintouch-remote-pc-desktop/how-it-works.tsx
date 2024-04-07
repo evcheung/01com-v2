@@ -15,6 +15,7 @@ import Heading from "../../components/core/heading";
 import { breakpoints } from "../../utils/breakpoints";
 import { Box, Text, TextVariants } from "../../components/core";
 import { Anchor, AnchorVariants } from "../../components/core/anchor";
+import { LINKS } from "../../utils/constants";
 
 const PlayButton = styled.button`
   background: none;
@@ -137,7 +138,7 @@ export default function HowItWorks() {
           <Box margin="16px 0 0 0">
             <Text variant={TextVariants.Body1}>
               <Anchor
-                href="https://locator.01com.com/ecommerce/account.php"
+                href={LINKS.IIT_TRY_IT_FREE}
                 target="_blank"
                 variant={AnchorVariants.Large}
               >

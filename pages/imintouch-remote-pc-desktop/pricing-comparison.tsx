@@ -16,6 +16,7 @@ import { breakpoints } from "../../utils/breakpoints"
 import Image from "next/image"
 import { Dropdown } from "react-bootstrap"
 import ChevronDown from "../../public/assets/chevron-down.svg"
+import { LINKS } from "../../utils/constants"
 
 const ComparisonTable = styled.table`
 width: 100%;
@@ -422,12 +423,12 @@ export default function PricingComparison() {
 
       <IITPageBanner heading="Pricing & Comparison">
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <a href='https://locator.01com.com/ecommerce/account.php' target="_blank">
+          <a href={LINKS.IIT_BUY_NOW} target="_blank">
             <PrimaryButton textColor={ButtonTextColors.Blue}>
               Buy Now
             </PrimaryButton>
           </a>
-          <a href='https://locator.01com.com/ecommerce/account.php' target="_blank">
+          <a href={LINKS.IIT_TRY_IT_FREE} target="_blank">
             <SecondaryButton>Try It Free</SecondaryButton>
           </a>
         </Box>

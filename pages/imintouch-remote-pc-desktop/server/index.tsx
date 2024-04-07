@@ -6,6 +6,7 @@ import Link from "next/link";
 import { breakpoints } from "../../../utils/breakpoints";
 import { IITMainBanner } from "../../../components/im-in-touch/IITMainBanner";
 import Heading from "../../../components/core/heading";
+import { LINKS } from "../../../utils/constants";
 
 const HeadingContainer = styled(Box)`
   width: 888px;
@@ -119,7 +120,7 @@ export default function ServerHome() {
             functionality is identical to the hosted I'm InTouch service. Sign
             up for a free <StyledLink
               target="_blank"
-              href="https://locator.01com.com/ecommerce/account.php"
+              href={LINKS.IIT_TRY_IT_FREE}
             >
               I'm InTouch trial account</StyledLink> today and experience the
             convenience and benefits brought by our award winning products.

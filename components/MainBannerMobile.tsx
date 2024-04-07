@@ -11,6 +11,7 @@ import onCallBanner from '../public/assets/banner-network-mobile.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 import { breakpoints } from '../utils/breakpoints'
+import { LINKS } from '../utils/constants'
 
 const Container = styled(Box)`
 width: calc(100% + 64px);
@@ -117,9 +118,9 @@ const RemoteWorkBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )
@@ -136,9 +137,9 @@ const OnCallBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href='https://locator.01com.com/ecommerce/account.php' target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IOC_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href='https://imoncall.01com.com/go/freeversion.php' target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IOC_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )

@@ -119,7 +119,6 @@ export default function ServerHome() {
             </StyledLink>{" "}
             functionality is identical to the hosted I'm InTouch service. Sign
             up for a free <StyledLink
-              target="_blank"
               href={LINKS.IIT_TRY_IT_FREE}
             >
               I'm InTouch trial account</StyledLink> today and experience the

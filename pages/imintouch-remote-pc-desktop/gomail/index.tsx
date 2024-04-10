@@ -110,7 +110,7 @@ export default function GoMailHome() {
         <Box margin="24px 0">
           <Text>Before you can use I'm InTouch GoMail, you must first activate your Outlook computer to become
             I'm InTouch-enabled. The activation process is as easy as 1-2-3. Simply click here to create
-            a <StyledLink target="_blank" href={LINKS.IIT_TRY_IT_FREE}>Free Account.</StyledLink> Then
+            a <StyledLink href={LINKS.IIT_TRY_IT_FREE}>Free Account.</StyledLink> Then
             from the computer you wish to activate, go
             to <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">www.imintouch.com.</StyledLink> Login
             to the I'm InTouch account you

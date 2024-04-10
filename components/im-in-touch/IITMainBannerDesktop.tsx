@@ -174,9 +174,9 @@ const ImInTouchBanner = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -190,9 +190,9 @@ const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, locat
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer>
 )
@@ -208,9 +208,9 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
     </Box>
   </BannerContainer >
 )

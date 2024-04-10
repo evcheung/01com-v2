@@ -423,12 +423,12 @@ export default function PricingComparison() {
 
       <IITPageBanner heading="Pricing & Comparison">
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <a href={LINKS.IIT_BUY_NOW} target="_blank">
+          <a href={LINKS.IIT_BUY_NOW}>
             <PrimaryButton textColor={ButtonTextColors.Blue}>
               Buy Now
             </PrimaryButton>
           </a>
-          <a href={LINKS.IIT_TRY_IT_FREE} target="_blank">
+          <a href={LINKS.IIT_TRY_IT_FREE}>
             <SecondaryButton>Try It Free</SecondaryButton>
           </a>
         </Box>

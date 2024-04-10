@@ -139,7 +139,6 @@ export default function HowItWorks() {
             <Text variant={TextVariants.Body1}>
               <Anchor
                 href={LINKS.IIT_TRY_IT_FREE}
-                target="_blank"
                 variant={AnchorVariants.Large}
               >
                 Sign up

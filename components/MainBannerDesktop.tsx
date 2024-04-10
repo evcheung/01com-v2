@@ -182,9 +182,9 @@ const RemoteWorkBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <a href={LINKS.IIT_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
+        <a href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
       </Box>
-      <a href={LINKS.IIT_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
+      <a href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
     </Box>
   </BannerContainer >
 )
@@ -201,9 +201,9 @@ const OnCallBanner = () => (
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <a href={LINKS.IOC_BUY_NOW} target="_blank"><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
+        <a href={LINKS.IOC_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></a>
       </Box>
-      <a href={LINKS.IOC_TRY_IT_FREE} target="_blank"><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
+      <a href={LINKS.IOC_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></a>
     </Box>
   </BannerContainer >
 )

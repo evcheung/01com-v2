@@ -102,16 +102,19 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
       flexDirection='column'
       flexJustify='center'
       flexAlignment={getAlignment(alignment)}
-      onClick={() => {
-        if (clickable) {
-          window.location.href = location
-        }
-      }}
       style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
-      <BannerContentContainer>
-        {children}
-      </BannerContentContainer>
-    </BannerBackgroundContainer>
+
+      {clickable ?
+        < Link href={location}>
+          <BannerContentContainer>
+            {children}
+          </BannerContentContainer>
+        </Link>
+        : <BannerContentContainer>
+          {children}
+        </BannerContentContainer>}
+
+    </BannerBackgroundContainer >
   )
 }
 

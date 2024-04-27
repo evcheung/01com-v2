@@ -46,13 +46,8 @@ const BannerContainer = ({ children, backgroundImageSrc, customBoxStyles, clicka
       flexDirection='column'
       flexJustify='flex-end'
       flexAlignment='center'
-      onClick={() => {
-        if (clickable) {
-          window.location.href = location
-        }
-      }}
       style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
-      {children}
+      {clickable ? <Link href={location}>{children}</Link> : children}
     </StyledBox>
   )
 }

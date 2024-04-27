@@ -91,6 +91,10 @@ ${breakpoints("height", "", [
 ])};
 `
 
+const StyledLink = styled(Link)`
+width: 100%;
+`
+
 const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location }: {
   children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string
 }) => {
@@ -105,11 +109,11 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
       style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
 
       {clickable ?
-        < Link href={location}>
+        <StyledLink href={location}>
           <BannerContentContainer>
             {children}
           </BannerContentContainer>
-        </Link>
+        </StyledLink>
         : <BannerContentContainer>
           {children}
         </BannerContentContainer>}

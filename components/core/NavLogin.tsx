@@ -84,7 +84,7 @@ const LoginMenuContainer = ({ onClickOutside, isIIT }) => {
 
   return (
     <StyledLoginMenuContainer padding="24px" isIIT={isIIT} onClickOutside={onClickOutside} ref={ref}>
-      <Link href='https://www.01com.com/imintouch-remote-pc-desktop/login/?'>
+      <Link href='https://locator.01com.com/'>
         <Text variant={TextVariants.Feat2}>Access My PC</Text>
       </Link>
       <Link href='https://www.01com.com/imoncall-remote-help-desk/login/?'>

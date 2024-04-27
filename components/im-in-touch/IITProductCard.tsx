@@ -59,7 +59,7 @@ const Browser = () => {
         <Image src={desktop} alt="browser" />
       </Box>
       <ProductText>Browser</ProductText>
-      <Link href="https://www.01com.com/imintouch-remote-pc-desktop/login/" target="_self">
+      <Link href="https://locator.01com.com/" target="_self">
         <LoginButton btnColor={ButtonColors.Blue}>Login</LoginButton>
       </Link>
     </ProductCardContainer>

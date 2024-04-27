@@ -36,19 +36,34 @@ const StyledBox = styled(Box)`
 ])}
   height: 620px;
 `
+const StyledLink = styled(Link)`
+width: 100%;
+`
 
 const BannerContainer = ({ children, backgroundImageSrc, customBoxStyles, clickable, location }: {
   children: ReactNode, backgroundImageSrc: string, customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string
 }) => {
   return (
-    <StyledBox
-      backgroundImage={backgroundImageSrc}
-      flexDirection='column'
-      flexJustify='flex-end'
-      flexAlignment='center'
-      style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
-      {clickable ? <Link href={location}>{children}</Link> : children}
-    </StyledBox>
+    clickable ?
+      <StyledLink href={location}>
+        <StyledBox
+          backgroundImage={backgroundImageSrc}
+          flexDirection='column'
+          flexJustify='flex-end'
+          flexAlignment='center'
+          style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
+          {children}
+        </StyledBox>
+      </StyledLink>
+      :
+      <StyledBox
+        backgroundImage={backgroundImageSrc}
+        flexDirection='column'
+        flexJustify='flex-end'
+        flexAlignment='center'
+        style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
+        {children}
+      </StyledBox>
   )
 }
 

@@ -101,24 +101,33 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
   const getAlignment = (alignment) => alignment === 'left' ? 'flex-start' : 'flex-end';
 
   return (
-    <BannerBackgroundContainer
-      backgroundImage={backgroundImageSrc}
-      flexDirection='column'
-      flexJustify='center'
-      flexAlignment={getAlignment(alignment)}
-      style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
 
-      {clickable ?
-        <StyledLink href={location}>
+    clickable ?
+      (<StyledLink href={location}>
+        <BannerBackgroundContainer
+          backgroundImage={backgroundImageSrc}
+          flexDirection='column'
+          flexJustify='center'
+          flexAlignment={getAlignment(alignment)}
+          style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
+
           <BannerContentContainer>
             {children}
           </BannerContentContainer>
-        </StyledLink>
-        : <BannerContentContainer>
+        </BannerBackgroundContainer >
+      </StyledLink>)
+      :
+      (<BannerBackgroundContainer
+        backgroundImage={backgroundImageSrc}
+        flexDirection='column'
+        flexJustify='center'
+        flexAlignment={getAlignment(alignment)}
+        style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
+        <BannerContentContainer>
           {children}
-        </BannerContentContainer>}
-
-    </BannerBackgroundContainer >
+        </BannerContentContainer>
+      </BannerBackgroundContainer>
+      )
   )
 }
 

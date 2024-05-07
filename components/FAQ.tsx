@@ -172,8 +172,8 @@ export const FAQ = ({ question, answer, setActiveItem, activeKey, eventKey }) =>
 
 
   return (
-    <StyledAccordionItem eventKey={eventKey} onClick={handleClick}>
-      <Accordion.Header as='div'>
+    <StyledAccordionItem eventKey={eventKey} >
+      <Accordion.Header as='div' onClick={handleClick}>
         <Box flexDirection="row" flexAlignment="center" flexJustify="space-between" width={'100%'}>
           <Question variant={HeadingVariants.Heading3}>{question}</Question>
           {isActive ? <Minus /> : <Plus />}

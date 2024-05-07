@@ -172,7 +172,7 @@ export default function ServerSupport() {
           <Box>
             <ContactSubText>Tech Support:</ContactSubText>
             <Box margin="12px 0">
-              <Anchor href="tel:905-795-2888">(905) 795-2888</Anchor>
+              <Anchor href="tel:905-795-8166">(905) 795-8166</Anchor>
             </Box>
           </Box>
           <Border />

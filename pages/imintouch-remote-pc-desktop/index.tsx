@@ -14,6 +14,7 @@ import Link from "next/link";
 import { imageUrlFor } from "../../utils/sanity/image-url-builder";
 import { Divider } from "../../components/core/Divider";
 import { Carousel } from "react-responsive-carousel";
+import { useEffect, useState } from "react";
 
 export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
@@ -87,6 +88,7 @@ type ReviewsAwards = {
   link: string;
 };
 
+
 export const getStaticProps = async () => {
   return {
     props: {
@@ -154,7 +156,77 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 
+
+const RandomizedTips = [
+  <InfoCardText>
+    You can temporarily add Guest Users to I'm InTouch, perfect for
+    conducting online meetings and presentations.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can remotely control your I'm InTouch computer using a Pocket
+    PC with an Internet connection.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can discreetly monitor your children's computer activities
+    using I'm InTouch's Stealth Mode.
+  </InfoCardText>,
+
+  <InfoCardText>
+    I'm InTouch can notify your cell phone whenever you receive an
+    email on your computer.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can print files from your distant computer to a local printer
+    using I'm InTouch.
+  </InfoCardText>,
+  <InfoCardText>
+    With the Remote Audio feature, you can listen to music on your
+    distant PC from anywhere.
+  </InfoCardText>,
+  <InfoCardText>
+    You can remotely view all the monitors connected to your Host PC
+    using I'm InTouch's Multi Monitor feature.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can stream video from a webcam on your Host PC to any Computer
+    or Pocket PC.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can view a list of all your computers on one screen and access
+    them with a single click in I'm InTouch.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can access your computer even if it is turned off with the I'm
+    InTouch Wake-up feature.
+  </InfoCardText>,
+
+  <InfoCardText>
+    I'm InTouch provides you with direct access to your Outlook or
+    Windows Mail Emails from any wireless device.
+  </InfoCardText>,
+
+  <InfoCardText>
+    You can transfer files between your computers using I'm InTouch's
+    File Transfer feature.
+  </InfoCardText>
+]
+
+
 export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
+  const [shuffledTips, setShuffledTips] = useState([]);
+
+  useEffect(() => {
+    // Shuffle the array when the component mounts
+    const shuffledArray = [...RandomizedTips].sort(() => Math.random() - 0.5);
+    setShuffledTips(shuffledArray);
+  }, []);
+
   return (
     <IITLayout>
       <Head>
@@ -229,65 +301,11 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
             emulateTouch
             showThumbs={false}
           >
-            <InfoCardText>
-              You can temporarily add Guest Users to I'm InTouch, perfect for
-              conducting online meetings and presentations.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can remotely control your I'm InTouch computer using a Pocket
-              PC with an Internet connection.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can discreetly monitor your children's computer activities
-              using I'm InTouch's Stealth Mode.
-            </InfoCardText>
-
-            <InfoCardText>
-              I'm InTouch can notify your cell phone whenever you receive an
-              email on your computer.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can print files from your distant computer to a local printer
-              using I'm InTouch.
-            </InfoCardText>
-
-            <InfoCardText>
-              With the Remote Audio feature, you can listen to music on your
-              distant PC from anywhere.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can remotely view all the monitors connected to your Host PC
-              using I'm InTouch's Multi Monitor feature.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can stream video from a webcam on your Host PC to any Computer
-              or Pocket PC.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can view a list of all your computers on one screen and access
-              them with a single click in I'm InTouch.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can access your computer even if it is turned off with the I'm
-              InTouch Wake-up feature.
-            </InfoCardText>
-
-            <InfoCardText>
-              I'm InTouch provides you with direct access to your Outlook or
-              Windows Mail Emails from any wireless device.
-            </InfoCardText>
-
-            <InfoCardText>
-              You can transfer files between your computers using I'm InTouch's
-              File Transfer feature.
-            </InfoCardText>
+            {shuffledTips.map((tip, index) => (
+              <div key={index}>
+                {tip}
+              </div>
+            ))}
           </StyledCarousel>
 
           {/* <Divider /> */}

@@ -74,7 +74,7 @@ const IOS = ({ hasDescription, subSite }: { hasDescription?: boolean, subSite?: 
       </Box>
       <ProductText>iPhone/iPad</ProductText>
       {hasDescription && <ProductDescription subSite={subSite} />}
-      <Link href={subSite === 'go' ? "https://apps.apple.com/ca/app/im-intouch-go/id526473842" : "https://apps.apple.com/ca/app/im-intouch-gomail/id1047341493"} target="_blank">
+      <Link href={!subSite || subSite === 'go' ? "https://apps.apple.com/ca/app/im-intouch-go/id526473842" : "https://apps.apple.com/ca/app/im-intouch-gomail/id1047341493"} target="_blank">
         <Image src={appStore} alt="iOS App Store" />
       </Link>
     </ProductCardContainer>
@@ -90,7 +90,7 @@ const Android = ({ hasDescription, subSite }: { hasDescription?: boolean, subSit
       </Box>
       <ProductText>Android</ProductText>
       {hasDescription && <ProductDescription subSite={subSite} />}
-      <Link href={subSite === 'go' ? "https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo&hl=en&pli=1" : "https://play.google.com/store/apps/details?id=com.zeroonecom.gomail&hl=en"} target="_blank">
+      <Link href={!subSite || subSite === 'go' ? "https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo&hl=en&pli=1" : "https://play.google.com/store/apps/details?id=com.zeroonecom.gomail&hl=en"} target="_blank">
         <Image src={googlePlay} alt="Google Play" />
       </Link>
     </ProductCardContainer>

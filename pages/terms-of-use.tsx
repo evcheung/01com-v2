@@ -26,8 +26,8 @@ export default function Support() {
       </Head>
       <PageContentContainer>
         <StyledText variant={TextVariants.Body1}>
-          The I'm InTouch, I'm OnCall, and I'm InTouch Meeting{" "}
-          <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">
+          The I'm InTouch and I'm OnCall{" "}
+          <StyledLink target="_blank" href="/">
             remote access services
           </StyledLink>{" "}
           are subject to these{" "}
@@ -40,8 +40,7 @@ export default function Support() {
         </StyledText>
 
         <StyledText variant={TextVariants.Body1}>
-          To continue using the I'm InTouch, I'm OnCall, or I'm InTouch Meeting
-          remote access service after the free trial period, you must subscribe
+          To continue using the I'm InTouch or I'm OnCall remote access service after the free trial period, you must subscribe
           to the service:
         </StyledText>
         <StyledText variant={TextVariants.Body1}>
@@ -49,15 +48,11 @@ export default function Support() {
             <li>
               Login to your online account at{" "}
               <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">
-                I'm InTouch
+                I'm InTouch{" "}
               </StyledLink>
-              ,{" "}
+              or{" "}
               <StyledLink target="_blank" href="https://www.01com.com/imoncall-remote-help-desk/faqs/">
                 I'm OnCall
-              </StyledLink>
-              , or{" "}
-              <StyledLink target="_blank" href="/imintouch-remote-pc-desktop">
-                I'm InTouch Meeting
               </StyledLink>
             </li>
             <li>Click on the "Buy Now" link to reach the billing page.</li>

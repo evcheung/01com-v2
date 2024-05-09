@@ -190,9 +190,14 @@ const ImInTouchBanner = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <span onClick={() => window.location.assign(LINKS.IIT_BUY_NOW)}>
+          <PrimaryCTAButton>Buy Now
+          </PrimaryCTAButton>
+        </span>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <span onClick={() => window.location.assign(LINKS.IIT_TRY_IT_FREE)}>
+        <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      </span>
     </Box>
   </BannerContainer>
 )
@@ -206,9 +211,13 @@ const ImInTouchGoBanner = ({ clickable, location }: { clickable?: boolean, locat
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <span onClick={() => window.location.assign(LINKS.IIT_BUY_NOW)}>
+          <PrimaryCTAButton>Buy Now</PrimaryCTAButton>
+        </span>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <span onClick={() => window.location.assign(LINKS.IIT_TRY_IT_FREE)}>
+        <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      </span>
     </Box>
   </BannerContainer>
 )
@@ -224,9 +233,13 @@ const ImInTouchGoMail = ({ clickable, location }: { clickable?: boolean, locatio
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <Link href={LINKS.IIT_BUY_NOW}><PrimaryCTAButton>Buy Now</PrimaryCTAButton></Link>
+        <span onClick={() => window.location.assign(LINKS.IIT_BUY_NOW)}>
+          <PrimaryCTAButton>Buy Now</PrimaryCTAButton>
+        </span>
       </Box>
-      <Link href={LINKS.IIT_TRY_IT_FREE}><SecondaryCTAButton>Try it Free</SecondaryCTAButton></Link>
+      <span onClick={() => window.location.assign(LINKS.IIT_TRY_IT_FREE)}>
+        <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
+      </span>
     </Box>
   </BannerContainer >
 )
@@ -272,7 +285,7 @@ const getBannerComponent = (banner: 'go' | 'gomail' | 'server' | 'securekey') =>
 export const IITMainBannerDesktop = ({ isCarousel = true, banner }: { isCarousel?: boolean, banner?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
   return (
     isCarousel ? (<Container>
-      <StyledCarousel autoPlay interval={5000} infiniteLoop emulateTouch showThumbs={false}>
+      <StyledCarousel stopOnHover={false} autoPlay interval={5000} infiniteLoop emulateTouch showThumbs={false}>
         <ImInTouchBanner clickable location="/imintouch-remote-pc-desktop/" />
         <ImInTouchGoBanner clickable location="/imintouch-remote-pc-desktop/go" />
         <ImInTouchGoMail clickable location="/imintouch-remote-pc-desktop/gomail" />

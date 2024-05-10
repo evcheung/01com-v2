@@ -148,7 +148,7 @@ const OnCallBanner = () => (
 export const MainBannerMobile = () => {
   return (
     <Container>
-      <StyledCarousel stopOnHover={false} interval={5000} autoPlay infiniteLoop emulateTouch showThumbs={false}>
+      <StyledCarousel stopOnHover={false} interval={7000} autoPlay infiniteLoop emulateTouch showThumbs={false}>
         <SecurityBanner />
         <EmailBanner />
         <RemoteWorkBanner />

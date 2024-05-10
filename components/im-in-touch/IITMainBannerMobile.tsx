@@ -211,7 +211,7 @@ export const IITMainBannerMobile = ({ isCarousel = true, banner }: { isCarousel?
   return (
     isCarousel ? (
       <Container>
-        <StyledCarousel stopOnHover={false} interval={5000} autoPlay infiniteLoop emulateTouch showThumbs={false}>
+        <StyledCarousel stopOnHover={false} interval={7000} autoPlay infiniteLoop emulateTouch showThumbs={false}>
           <ImInTouchBanner clickable location="/imintouch-remote-pc-desktop/" />
           <ImInTouchGoBanner clickable location="/imintouch-remote-pc-desktop/go" />
           <ImInTouchGoMail clickable location="/imintouch-remote-pc-desktop/gomail" />

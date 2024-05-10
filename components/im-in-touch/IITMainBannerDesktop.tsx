@@ -285,7 +285,7 @@ const getBannerComponent = (banner: 'go' | 'gomail' | 'server' | 'securekey') =>
 export const IITMainBannerDesktop = ({ isCarousel = true, banner }: { isCarousel?: boolean, banner?: 'go' | 'gomail' | 'server' | 'securekey' }) => {
   return (
     isCarousel ? (<Container>
-      <StyledCarousel stopOnHover={false} autoPlay interval={5000} infiniteLoop emulateTouch showThumbs={false}>
+      <StyledCarousel stopOnHover={false} autoPlay interval={7000} infiniteLoop emulateTouch showThumbs={false}>
         <ImInTouchBanner clickable location="/imintouch-remote-pc-desktop/" />
         <ImInTouchGoBanner clickable location="/imintouch-remote-pc-desktop/go" />
         <ImInTouchGoMail clickable location="/imintouch-remote-pc-desktop/gomail" />

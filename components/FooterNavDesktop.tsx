@@ -118,7 +118,7 @@ export const FooterNavDesktop = () => {
             <LogoLeft>
               <Link href="/"> <Image src={Logo} alt="01com logo, click to return home" width={64} quality={100} /></Link>
             </LogoLeft>
-            <Text variant={TextVariants.Body3}>Copyright © 2024 - 01 Communique Laboratory Inc. All Rights Reserved.</Text>
+            <Text variant={TextVariants.Body3}>{`Copyright © ${new Date().getFullYear()} - 01 Communique Laboratory Inc. All Rights Reserved.`}</Text>
 
           </Box>
 

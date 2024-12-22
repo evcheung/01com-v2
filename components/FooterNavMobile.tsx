@@ -6,7 +6,7 @@ import Logo from '../public/assets/01com-logo.png'
 import Image from 'next/image'
 import facebook from '../public/assets/facebook.svg'
 import linkedin from '../public/assets/linkedin.svg'
-import twitter from '../public/assets/twitter.svg'
+import x from '../public/assets/x.svg'
 import rss from '../public/assets/rss.svg'
 import youtube from '../public/assets/youtube.svg'
 import { CTABanner } from './CTABanner'
@@ -74,7 +74,7 @@ export const FooterNavMobile = () => {
         </NavLinkContainer>
 
         <Box flexDirection='row' flexJustify='space-between' flexAlignment='center' margin="24px 0">
-          <LinkedSocialIcon href="https://twitter.com/IronCAPCyber" src={twitter} alt="twitter" />
+          <LinkedSocialIcon href="https://x.com/IronCAPCyber" src={x} alt="x" />
           <LinkedSocialIcon href="https://www.facebook.com/IronCAP01/" src={facebook} alt="facebook" />
           <LinkedSocialIcon href="https://www.linkedin.com/company/ironcap/" src={linkedin} alt="linkedin" />
           <LinkedSocialIcon href="https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg" src={youtube} alt="youtube" />

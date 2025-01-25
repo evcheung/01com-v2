@@ -165,7 +165,7 @@ const HeaderContent = ({ featuredVideo }) => {
         >
           <Text textColor={TextColors.White} alignment="center">
             01 Communique's common shares are listed on the TSX Venture Exchange
-            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under
+            (TSX-V) under the symbol 'ONE' and quoted on the OTC Pink market under
             the symbol 'OONEF'.
           </Text>
         </Box>

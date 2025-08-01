@@ -11,6 +11,7 @@ import brian from '../public/assets/brian.jpg'
 import william from '../public/assets/william.jpg'
 import tyson from '../public/assets/tyson.jpg'
 import gary from '../public/assets/gary.jpg'
+import edoardo from '../public/assets/edoardo.png'
 import { breakpoints } from '../utils/breakpoints';
 
 const StyledText = styled(Text)`
@@ -172,6 +173,19 @@ export default function AboutUs() {
             <StyledHeading3 variant={HeadingVariants.Heading3}>Tyson Macauley</StyledHeading3>
             <StyledSubtext variant={TextVariants.Body3}>Board Member</StyledSubtext>
             <Text variant={TextVariants.Body1}>Mr. Macaulay, CISA, LEL CIE, brings with him over twenty five years of engineering and management experience in network, cloud and IoT security solutions. Residing in Ottawa he is currently the Chief Security Officer and Vice President of Field Engineering at Rockport Networks Inc. Prior to that, he held the positions of Chief Product Officer at InfoSec Global (ISG), CTO for BAE Systems Applied Intelligence in North America, CTO - Telecommunications at Intel and Chief Security Strategist at Fortinet. These roles all involved product strategy, corporate development (mergers, acquisitions and partnerships), business development and thought leadership.</Text>
+          </Box>
+        </TeamCard>
+
+        <TeamCard>
+          <Box margin="0 48px 0 0">
+            <ProfileImage src={edoardo} alt="Edoardo Persichetti" />
+          </Box>
+          <Box>
+            <StyledHeading3 variant={HeadingVariants.Heading3}>Edoardo Perischetti</StyledHeading3>
+            <StyledSubtext variant={TextVariants.Body3}>Advisor</StyledSubtext>
+            <Text variant={TextVariants.Body1}>Dr. Edoardo Persichetti is currently an Associate Professor in the Department of Mathematical and Statistics at Florida Atlantic University. Before moving to Florida, he was a Postdoc (Adiunkt Naukowy) in the Cryptography and Data Security Group at Warsaw University in Poland. He completed his PhD in Mathematics in late 2012 at University of Auckland, New Zealand. <br />
+            <br />Dr. Persichetti’s research interests revolve around public-key cryptography and number theory, with a particular focus on code-based cryptography. He has an established track record of publications in cryptography.  He is a co-author of four distinct submissions to the first NIST Post-Quantum Standardization process. Three of the four algorithms – Classic McEliece, BIKE and DAGS reached the conclusive round while the fourth one – HQC was selected as the winner in March 2025.    Dr. Persichetti has also co-authored three submissions to NIST's “onramp” call for novel signature schemes.<br />
+            <br />Dr. Persichetti Is one of the most acclaimed researchers in code-based cryptography.  He is frequently being invited to act as an advisory committee member for major cryptography conferences such as CRYPTO, EUROCRYPT and ASIACRYPT; as well as a peer-reviewer for publications like the Journal of Mathematical Cryptology and Designs, Codes and Cryptography. He was chair of the 2018 edition of the Code-Based Cryptography Workshop (CBC 2018) and co-chair of the 2019 and 2020 editions. His expertise is called upon regularly to speak at events such as the Joint Mathematics Meetings (JMM), coding and cryptography by AMS, SIAM and DIMACS, workshops on Post-Quantum Cryptography, and many others.</Text>
           </Box>
         </TeamCard>
       </TeamGrid>

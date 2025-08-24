@@ -40,8 +40,8 @@ export default function Support() {
         </StyledText>
 
         <StyledText variant={TextVariants.Body1}>
-          To continue using the I'm InTouch or I'm OnCall remote access service after the free trial period, you must subscribe
-          to the service:
+          To continue using the I'm InTouch or I'm OnCall remote access service
+          after the free trial period, you must subscribe to the service:
         </StyledText>
         <StyledText variant={TextVariants.Body1}>
           <ol>
@@ -51,7 +51,10 @@ export default function Support() {
                 I'm InTouch{" "}
               </StyledLink>
               or{" "}
-              <StyledLink target="_blank" href="https://www.01com.com/imoncall-remote-help-desk/faqs/">
+              <StyledLink
+                target="_blank"
+                href="https://www.01com.com/imoncall-remote-help-desk/faqs/"
+              >
                 I'm OnCall
               </StyledLink>
             </li>
@@ -70,7 +73,7 @@ export default function Support() {
           </ol>
         </StyledText>
         <StyledText variant={TextVariants.Body1}>
-          01 Communique provides free technical support for trial account via
+          01 Quantum provides free technical support for trial account via
           e-mail:{" "}
           <StyledLink href="mailto:help@01com.com" target="_blank">
             help@01com.com

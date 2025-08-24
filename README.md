@@ -1,4 +1,4 @@
-This is a Next.js-powered corporate website for 01 Communique, a technology pioneer in Post-Quantum Cybersecurity and Remote Access Software. 
+This is a Next.js-powered corporate website for 01 Quantum, a technology pioneer in Post-Quantum Cybersecurity and Remote Access Software.
 
 ## 🚀 Technology Stack
 
@@ -12,12 +12,14 @@ This is a Next.js-powered corporate website for 01 Communique, a technology pion
 ## 📦 Dependencies
 
 ### Core Dependencies
+
 - `next` (14.1.3) - React framework
 - `react` (18.2.0) - UI library
 - `typescript` (4.7.4) - Type safety
 - `styled-components` (5.2) - CSS-in-JS styling
 
 ### CMS & Content
+
 - `sanity` (3.16.7) - Headless CMS
 - `next-sanity` (5.5.4) - Sanity integration
 - `@portabletext/react` (3.0.11) - Rich text rendering
@@ -25,25 +27,27 @@ This is a Next.js-powered corporate website for 01 Communique, a technology pion
 ## 🛠️ Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - Yarn package manager
 
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 yarn install
 ```
 
 2. Start the development server:
+
 ```bash
 yarn dev
 ```
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser!
 
-4. Go to [http://localhost:3000/studio](http://localhost:3000/studio) for the local version of Sanity Studio. 
-
+4. Go to [http://localhost:3000/studio](http://localhost:3000/studio) for the local version of Sanity Studio.
 
 ## 📁 Project Structure
 
@@ -75,9 +79,7 @@ The application uses a design system with:
 - **Breakpoints**: Responsive design utilities in `utils/breakpoints.ts`
 - **Styled Components**: Component-level styling with theme integration
 
-
 The designs for this site are managed in [Figma](https://www.figma.com/design/HxiBacjCO3ukwsPRrZcPwX/01com-Design?node-id=0-1&p=f&t=FFnPrsroIq94Tp2d-0), and assets are exported from here for development.
-
 
 ## 🔐 Content Management
 
@@ -114,6 +116,7 @@ To deploy 01com, run `yarn build` on a computer with access to the SFTP servers.
 Navigate to https://www.01com.com and https://www.01com.com/studio with cleared browser cache to check the deployment (ensure the computer you are checking from is pointing its hosts file to the Test server).
 
 ## 📱 Features
+
 - **Responsive Design**: Mobile-first approach with breakpoint-based layouts
 - **SEO Optimized**: Meta tags, structured data, and semantic HTML
 - **Performance**: Optimized images, lazy loading, and efficient bundling
@@ -121,14 +124,11 @@ Navigate to https://www.01com.com and https://www.01com.com/studio with cleared 
 - **Interactive Elements**: Carousels, modals, and animated components
 - **Accessibility**: WCAG compliant components and navigation
 
-
-
-
 ### Notes
 
 This project was initially generated with `yarn create next-app --example with-styled-components with-styled-components-app`. This starter contained the below warnings:
 
-*Nextjs with styled-components*
+_Nextjs with styled-components_
 
 This example features how you use a different styling solution than [styled-jsx](https://github.com/vercel/styled-jsx) that also supports universal styles. That means we can serve the required styles for the first render within the HTML and then load the rest in the client. In this case we are using [styled-components](https://github.com/styled-components/styled-components).
 
@@ -136,7 +136,7 @@ This example uses the Rust-based [SWC](https://nextjs.org/docs/advanced-features
 
 Currently, only the `ssr` and `displayName` transforms have been implemented. These two transforms are the main requirement for using `styled-components` in Next.js.
 
-*Link Component*
+_Link Component_
 
 When wrapping a [Link](https://nextjs.org/docs/api-reference/next/link) from `next/link` within a styled-component, the [as](https://styled-components.com/docs/api#as-polymorphic-prop) prop provided by `styled` will collide with the Link's `as` prop and cause styled-components to throw an `Invalid tag` error. To avoid this, you can either use the recommended [forwardedAs](https://styled-components.com/docs/api#forwardedas-prop) prop from styled-components or use a different named prop to pass to a `styled` Link.
 
@@ -147,14 +147,14 @@ When wrapping a [Link](https://nextjs.org/docs/api-reference/next/link) from `ne
 **components/StyledLink.js**
 
 ```javascript
-import Link from 'next/link'
-import styled from 'styled-components'
+import Link from "next/link";
+import styled from "styled-components";
 
 const StyledLink = ({ as, children, className, href }) => (
   <Link href={href} as={as} passHref>
     <a className={className}>{children}</a>
   </Link>
-)
+);
 
 export default styled(StyledLink)`
   color: #0075e0;
@@ -170,20 +170,19 @@ export default styled(StyledLink)`
     outline: none;
     border: 0;
   }
-`
+`;
 ```
 
 **pages/index.js**
 
 ```javascript
-import StyledLink from '../components/StyledLink'
+import StyledLink from "../components/StyledLink";
 
 export default () => (
   <StyledLink href="/post/[pid]" forwardedAs="/post/abc">
     First post
   </StyledLink>
-)
+);
 ```
 
 </details>
-

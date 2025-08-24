@@ -19,7 +19,7 @@ import { breakpoints } from "../utils/breakpoints";
 import { client } from "../sanity/lib/client";
 import ShortUniqueId from "short-unique-id";
 
-export const revalidate = 10
+export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
 
 const HorizontalBorder = styled(Box)`
@@ -164,9 +164,9 @@ const HeaderContent = ({ featuredVideo }) => {
           margin="16px auto"
         >
           <Text textColor={TextColors.White} alignment="center">
-            01 Communique's common shares are listed on the TSX Venture Exchange
-            (TSX-V) under the symbol 'ONE' and quoted on the OTC Pink market under
-            the symbol 'OONEF'.
+            01 Quantum's common shares are listed on the TSX Venture Exchange
+            (TSX-V) under the symbol 'ONE' and quoted on the OTC Pink market
+            under the symbol 'OONEF'.
           </Text>
         </Box>
 
@@ -183,10 +183,10 @@ const LATEST_PRESENTATION = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Presentation.pdf",
-        type: "pdf",
-      },
-    ],
-  },
+        type: "pdf"
+      }
+    ]
+  }
 ];
 
 const RECENT_EVENTS = [
@@ -196,13 +196,13 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q2-2023-Press-Release.pdf",
-        type: "pdf",
+        type: "pdf"
       },
       {
         url: "https://www.01com.com/Videos/2023/2023Q2-Presentation-recording-with-Q&A.mp4",
-        type: "video",
-      },
-    ],
+        type: "video"
+      }
+    ]
   },
   {
     date: "March 21, 2023",
@@ -210,9 +210,9 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q1-2023-Press-Release.pdf",
-        type: "pdf",
-      },
-    ],
+        type: "pdf"
+      }
+    ]
   },
   {
     date: "January 19, 2023",
@@ -220,9 +220,9 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q4-2022-Press-Release.pdf",
-        type: "pdf",
-      },
-    ],
+        type: "pdf"
+      }
+    ]
   },
   {
     date: "September 15, 2022",
@@ -230,10 +230,10 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://01com.com/pdf/2022/Q3-2022-Press-Release.pdf",
-        type: "pdf",
-      },
-    ],
-  },
+        type: "pdf"
+      }
+    ]
+  }
 ];
 
 const VideoBannerMobile = ({ featuredVideo }) => {
@@ -272,12 +272,12 @@ const VideoBannerMobile = ({ featuredVideo }) => {
         </StyledVideoHeader>
         <Box margin="16px 0">
           <StyledHeading as="h2">
-            Interview with Andrew Cheung, CEO 01 Communique
+            Interview with Andrew Cheung, CEO 01 Quantum
           </StyledHeading>
         </Box>
         <Box>
           <Text>
-            01 Communique talks about its quantum-safe cybersecurity solution.
+            01 Quantum talks about its quantum-safe cybersecurity solution.
           </Text>
         </Box>
       </Box>
@@ -299,14 +299,14 @@ const TableContent = ({ width, data }) => {
         </TableContainer>
       )}
       <HorizontalBorder />
-      {data.map((item) => {
+      {data.map(item => {
         return (
           <>
             <TableContainer key={`table-container-${uid.rnd()}`}>
               <Text>{item.date}</Text>
               <Text>{item.description}</Text>
               <LinkContainer>
-                {item.relevantLinks.map((link) => {
+                {item.relevantLinks.map(link => {
                   const isPDF = link.linkType === "pdf";
                   return (
                     <>
@@ -328,7 +328,7 @@ const TableContent = ({ width, data }) => {
             </TableContainer>
             <HorizontalBorder />
           </>
-        )
+        );
       })}
     </>
   );
@@ -392,16 +392,14 @@ export const getStaticProps = async () => {
   return {
     props: {
       investorRelations: await client.fetch<InvestorRelations[]>(query, {
-        cache: 'no-store',
+        cache: "no-store",
         ssr: false
-      }),
-    },
+      })
+    }
   };
 };
 
-export default function InvestorRelations({
-  investorRelations,
-}) {
+export default function InvestorRelations({ investorRelations }) {
   const { width } = useWindowSize();
 
   const sortedRecentEvents = investorRelations.recentEvents.sort((a, b) => {
@@ -413,14 +411,20 @@ export default function InvestorRelations({
 
   const formattedSortedRecentEvents = sortedRecentEvents.map(item => ({
     ...item,
-    date: new Intl.DateTimeFormat("en-CA", { month: 'long', day: 'numeric', year: 'numeric' }).format((new Date(item.date + 'T00:00')))
-  }))
+    date: new Intl.DateTimeFormat("en-CA", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    }).format(new Date(item.date + "T00:00"))
+  }));
 
   return (
     <Layout
       variant={LayoutVariants.Dark}
       pageTitle="Investor Relations"
-      headerContent={<HeaderContent featuredVideo={investorRelations.featuredVideo[0]} />}
+      headerContent={
+        <HeaderContent featuredVideo={investorRelations.featuredVideo[0]} />
+      }
     >
       <Head>
         <title>Remote Desktop Software Press and Reviews</title>
@@ -437,7 +441,9 @@ export default function InvestorRelations({
       <ContentContainer>
         {width <= 900 && (
           <Box margin="0 0 68px 0">
-            <VideoBannerMobile featuredVideo={investorRelations.featuredVideo[0]} />
+            <VideoBannerMobile
+              featuredVideo={investorRelations.featuredVideo[0]}
+            />
           </Box>
         )}
 
@@ -445,7 +451,10 @@ export default function InvestorRelations({
           <StyledContentHeading as="h2">
             Latest Presentation
           </StyledContentHeading>
-          <TableContent width={width} data={investorRelations.latestPresentation} />
+          <TableContent
+            width={width}
+            data={investorRelations.latestPresentation}
+          />
         </Section>
 
         <Section>
@@ -458,9 +467,12 @@ export default function InvestorRelations({
             Information Request
           </StyledContentHeading>
           <Text>
-            For more information about 01 Communique contact us at +1 905
-            795-2888 or +1 800 668-2185 (US/Canada), or email{" "}
-            <StyledLink target="_blank" href="mailto:investorrelations@01com.com">
+            For more information about 01 Quantum contact us at +1 905 795-2888
+            or +1 800 668-2185 (US/Canada), or email{" "}
+            <StyledLink
+              target="_blank"
+              href="mailto:investorrelations@01com.com"
+            >
               investorrelations@01com.com
             </StyledLink>{" "}
             with any comments or suggestions.
@@ -493,7 +505,12 @@ export default function InvestorRelations({
                 <Box margin="0px 8px">
                   <Image src={pdf} alt="pdf icon" />
                 </Box>
-                <Anchor href={investorRelations.financialResults[0].relevantLinks[0].url} target="_blank">
+                <Anchor
+                  href={
+                    investorRelations.financialResults[0].relevantLinks[0].url
+                  }
+                  target="_blank"
+                >
                   {investorRelations.financialResults[0].relevantLinks[0].label}
                 </Anchor>
               </LinkItem>

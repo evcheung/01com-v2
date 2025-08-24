@@ -7,7 +7,7 @@ import {
   SecondaryButton,
   Text,
   TextColors,
-  TextVariants,
+  TextVariants
 } from "../../../components/core";
 import { breakpoints } from "../../../utils/breakpoints";
 import { IITPageBanner } from "../../../components/im-in-touch/IITPageBanner";
@@ -58,8 +58,8 @@ const Border = styled(Box)`
 
   ${breakpoints("border-left", "", [{ 900: "none" }])}
   ${breakpoints("border-bottom", "", [
-  { 900: `1px dotted ${theme.colors.neutral.md}` },
-])}
+    { 900: `1px dotted ${theme.colors.neutral.md}` }
+  ])}
 ${breakpoints("width", "", [{ 900: `100%` }])}
 ${breakpoints("height", "", [{ 900: `auto` }])}
 ${breakpoints("margin", "", [{ 900: `16px 0` }])}
@@ -89,16 +89,18 @@ const LiveChatButtonColumnGrid = styled(Box)`
 `;
 
 const BannerButtonContainer = styled(Box)`
-display: flex; flex-alignment: center; margin: 24px 0 0 0;
-${breakpoints("flex-direction", "", [{ 640: "column" }])}
+  display: flex;
+  flex-alignment: center;
+  margin: 24px 0 0 0;
+  ${breakpoints("flex-direction", "", [{ 640: "column" }])}
 
-a button {
-${breakpoints("margin", "", [{ 640: "0" }])}
-${breakpoints("margin-bottom", "", [{ 640: "20px" }])}
+  a button {
+    ${breakpoints("margin", "", [{ 640: "0" }])}
+    ${breakpoints("margin-bottom", "", [{ 640: "20px" }])}
 ${breakpoints("width", "", [{ 640: "100%" }])}
-}
-// TODO: make last button margin bottom 0 on mobile
-`
+  }
+  // TODO: make last button margin bottom 0 on mobile
+`;
 export default function ServerSupport() {
   return (
     <IITLayout subSite="server">
@@ -139,7 +141,10 @@ export default function ServerSupport() {
               End User's Guide
             </PrimaryButton>
           </Link>
-          <Link href="/imintouch-remote-pc-desktop/server/faqs/" target="_blank">
+          <Link
+            href="/imintouch-remote-pc-desktop/server/faqs/"
+            target="_blank"
+          >
             <SecondaryButton>FAQ</SecondaryButton>
           </Link>
         </BannerButtonContainer>
@@ -180,7 +185,9 @@ export default function ServerSupport() {
           <Box>
             <ContactSubText>Email:</ContactSubText>
             <Box margin="12px 0">
-              <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
+              <Anchor target="_blank" href="mailto:help@01com.com">
+                help@01com.com
+              </Anchor>
             </Box>
           </Box>
         </ContactContainer>
@@ -204,7 +211,7 @@ export default function ServerSupport() {
             </StyledLineItem>
             <StyledLineItem>
               <Text variant={TextVariants.Body2}>
-                Linux (01 Communique optimized Linux OS supplied during
+                Linux (01 Quantum optimized Linux OS supplied during
                 installation)
               </Text>
             </StyledLineItem>

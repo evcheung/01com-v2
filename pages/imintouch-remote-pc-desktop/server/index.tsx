@@ -95,9 +95,9 @@ export default function ServerHome() {
             href="/imintouch-remote-pc-desktop/server/features"
           >
             remotely accessing
-          </StyledLink>
-          {" "}their office computers via your own I'm InTouch servers instead of the
-          servers hosted by 01 Communique.
+          </StyledLink>{" "}
+          their office computers via your own I'm InTouch servers instead of the
+          servers hosted by 01 Quantum.
         </Text>
         <Box margin="24px 0">
           <Text>
@@ -118,11 +118,12 @@ export default function ServerHome() {
               remote access
             </StyledLink>{" "}
             functionality is identical to the hosted I'm InTouch service. Sign
-            up for a free <StyledLink
-              href={LINKS.IIT_TRY_IT_FREE}
-            >
-              I'm InTouch trial account</StyledLink> today and experience the
-            convenience and benefits brought by our award winning products.
+            up for a free{" "}
+            <StyledLink href={LINKS.IIT_TRY_IT_FREE}>
+              I'm InTouch trial account
+            </StyledLink>{" "}
+            today and experience the convenience and benefits brought by our
+            award winning products.
           </Text>
         </Box>
         <Box margin="24px 0">
@@ -131,7 +132,6 @@ export default function ServerHome() {
             call 1-800-668-2185 or chat with our product specialists.
           </Text>
         </Box>
-
       </HeadingContainer>
     </IITLayout>
   );

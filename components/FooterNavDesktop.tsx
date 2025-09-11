@@ -57,12 +57,6 @@ ${breakpoints("column-gap", "", [{ 960: "calc((100%/4) - 84px)" }])}
 ${breakpoints("row-gap", "", [{ 960: "16px" }])}
 `;
 
-// const LogoRight = styled(Box)`
-// ${breakpoints("display", "", [
-//   { 920: 'none' },
-// ])}
-// `
-
 const LogoLeft = styled(Box)`
   display: none;
   margin-right: 16px;

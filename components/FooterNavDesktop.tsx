@@ -141,17 +141,17 @@ export const FooterNavDesktop = () => {
             flexAlignment="center"
           >
             <LinkedSocialIcon
-              href="https://x.com/IronCAPCyber"
+              href="https://x.com/01quantuminc"
               src={x}
               alt="x"
             />
             <LinkedSocialIcon
-              href="https://www.facebook.com/IronCAP01/"
+              href="https://www.facebook.com/01QuantumInc"
               src={facebook}
               alt="facebook"
             />
             <LinkedSocialIcon
-              href="https://www.linkedin.com/company/ironcap/"
+              href="https://www.linkedin.com/company/01-quantum/"
               src={linkedin}
               alt="linkedin"
             />

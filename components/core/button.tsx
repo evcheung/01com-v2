@@ -100,8 +100,13 @@ export const PrimaryButton = styled(Button) <ButtonProps>`
     border: `2px solid ${getButtonColor(props)}`,
   })};
 `
-export const IOCButton = styled(Button)<ButtonProps>`
+export const IOCButton = styled(Button)<ButtonProps & { btnWidth?: string; btnHeight?: string }>`
   ${props => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '16px', 
+    padding: '6px 10px', 
     backgroundColor: props.disabled
       ? theme.colors.neutral.md
       : getButtonColor({ ...props, btnColor: ButtonColors.Green }),
@@ -111,7 +116,10 @@ export const IOCButton = styled(Button)<ButtonProps>`
     color: props.disabled
       ? theme.colors.neutral.xs
       : getPrimaryButtonTextColor({ ...props, textColor: ButtonTextColors.White }),
-  })};`
+  })}
+`
+
+
 
 export const SecondaryButton = styled(Button) <ButtonProps>`
   ${props => ({

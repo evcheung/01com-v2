@@ -1,10 +1,9 @@
 import styled from "styled-components"
-import { Box, Text, TextVariants, TextColors, PrimaryButton, SecondaryButton, ButtonTextColors, ButtonSizes } from "../../components/core"
+import { Box, Text, TextVariants, TextColors, PrimaryButton, SecondaryButton, ButtonTextColors, ButtonSizes, IOCButton } from "../../components/core"
 import Head from "next/head"
 import IOCLayout from "../../components/im-on-call/IOCLayout"
 import Heading, { HeadingVariants } from "../../components/core/heading"
 import { theme } from "../../theme"
-import { Anchor } from "../../components/core/anchor"
 import Link from "next/link"
 import { IOCPageBanner } from "../../components/im-on-call/IOCPageBanner"
 import { PageContentContainer } from "../../components/PageContentContainer"
@@ -13,6 +12,8 @@ import bullet from '../../public/assets/gbullet.png'
 import { breakpoints } from "../../utils/breakpoints"
 import { IOCAnchor } from "../../components/core/ioc-anchor"
 import { LINKS } from "../../utils/constants"
+import IOCChat from "../../public/assets/ioc-chat.png"
+import Image from "next/image"
 
 const StyledContactContainer = styled(Box)`
   background-color: ${theme.colors.neutral.xs};
@@ -80,6 +81,15 @@ padding: 0;
 list-style: none;
 `
 
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+`;
+
+
 export default function Support() {
   return (
     <IOCLayout>
@@ -106,8 +116,31 @@ export default function Support() {
 
         <ContactContainer>
           <Box>
-            <ContactSubText>Office Hours</ContactSubText>
-            <Text variant={TextVariants.Body2}>Monday - Friday 9am to 6pm EST</Text>
+            <ContactSubText>Live Chat (powered by I'm OnCall):</ContactSubText>
+            <ButtonGroup>
+              <IOCButton btnWidth="148px" btnHeight="48px">
+                <Image src={IOCChat} alt="chat icon" />
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: '14px' }}>
+                  <Text variant={TextVariants.Body2} style={{ fontWeight: "700", marginBottom: "-4px" }}>
+                    Live Chat
+                  </Text>
+                  <Text variant={TextVariants.Body2}>(pre-sales)</Text>
+                </div>
+              </IOCButton>
+
+              <IOCButton btnWidth="128px" btnHeight="48px">
+                <Image src={IOCChat} alt="chat icon" />
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: '14px' }}>
+                  <Text variant={TextVariants.Body2} style={{ fontWeight: "700", marginBottom: "-4px" }}>
+                    Live Chat
+                  </Text>
+                  <Text variant={TextVariants.Body2}>(after-sales)</Text>
+                </div>
+              </IOCButton>
+            </ButtonGroup>
+
+
+
           </Box>
           <Border />
 
@@ -126,6 +159,13 @@ export default function Support() {
           <Box>
             <ContactSubText>Email:</ContactSubText>
             <IOCAnchor target="_blank" href="mailto:help@01com.com">help@01com.com</IOCAnchor>
+          </Box>
+        </ContactContainer>
+
+        <ContactContainer>
+          <Box>
+            <ContactSubText>Office Hours</ContactSubText>
+            <Text variant={TextVariants.Body2}>Monday - Friday 9am to 6pm EST</Text>
           </Box>
         </ContactContainer>
 

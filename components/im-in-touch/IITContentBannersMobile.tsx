@@ -4,7 +4,6 @@ import Heading, { HeadingColors, HeadingVariants } from '../core/heading'
 import iit2faBanner from '../../public/assets/iit-2fa-banner-mobile.jpg'
 import iitAccessBanner from '../../public/assets/iit-access-banner-mobile.jpg'
 import iitVpnBanner from '../../public/assets/iit-vpn-banner-mobile.jpg'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 
 const Container = styled(Box)`

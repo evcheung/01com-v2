@@ -97,22 +97,46 @@ const LoginMenuContainer = ({ onClickOutside, isIIT }) => {
   )
 }
 
-export const NavLogin = ({ isNavBarLight, isIIT = false }: { isNavBarLight: boolean, isIIT?: boolean }) => {
+export const NavLogin = ({
+  isNavBarLight,
+  isIIT = false,
+  isIOC = false,
+  textColor, // new optional prop
+}: {
+  isNavBarLight: boolean,
+  isIIT?: boolean,
+  isIOC?: boolean,
+  textColor?: string
+}) => {
   const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
+
   const clickHandler = () => setIsLoginMenuActive(!isLoginMenuActive)
   const clickOutsideHandler = () => setIsLoginMenuActive(false)
+
+  // Determine button background color (kept same)
+  const buttonColor = isNavBarLight ? ButtonColors.Blue : ButtonColors.White
+
+  // Determine text color
+  const loginTextColor = textColor || (isIOC ? ButtonColors.Green : ButtonColors.Blue)
 
   return (
     <>
       <StyledLoginButton
-        btnColor={isNavBarLight ? ButtonColors.Blue : ButtonColors.White}
+        btnColor={buttonColor}
         onClick={clickHandler}
         isNavBarLight={isNavBarLight}
+        style={{ color: loginTextColor }} // apply text color
       >
         Login
       </StyledLoginButton>
-      {isLoginMenuActive && <LoginMenuContainer isIIT={isIIT} onClickOutside={clickOutsideHandler} />}
+
+      {isLoginMenuActive && (
+        <LoginMenuContainer isIIT={isIIT} onClickOutside={clickOutsideHandler} />
+      )}
     </>
   )
 }
+
+
+
 

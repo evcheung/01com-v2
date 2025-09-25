@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Box, Text, TextVariants, PrimaryButton, ButtonTextColors, SecondaryButton } from "../../components/core"
-import { Anchor, AnchorVariants } from "../../components/core/anchor";
+import { IOCAnchor, AnchorVariants } from "../../components/core/ioc-anchor";
 import { breakpoints } from "../../utils/breakpoints"
 import Head from "next/head"
 import IOCLayout from "../../components/im-on-call/IOCLayout"
@@ -15,7 +15,6 @@ import Puzzle from "../../public/assets/puzzle-1.png"
 import Tracking from "../../public/assets/tracking-1.png"
 import Hierarchy from "../../public/assets/hierarchy-structure-1.png"
 import { LINKS } from "../../utils/constants"
-import { TextColors } from '../../components/core/text';
 
 export const revalidate = 10
 // export const dynamic = 'force-dynamic'
@@ -67,9 +66,9 @@ export default function Applications() {
             description="As a support agent, nothing is more effective than temporarily taking remote control of your customers' computers to resolve their technical issues. In addition to controlling the screen you may also do remote file transfer."
             imageSrc={RMC.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/remote-control"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -77,9 +76,9 @@ export default function Applications() {
             description="This essentially can eliminate your customer service phone lines. Your customers can submit live chat requests through a queue (clicking the Live-Chat button on your web site embedded with an URL given to you by I'm OnCall). Your agents simply pick up requests and perform real-time live chat with the customers via the Internet. Your customers may leave call-back requests if the queue is busy."
             imageSrc={LiveChat.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/live-chat"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -87,9 +86,9 @@ export default function Applications() {
             description="Agents can chat with many customers at the same time."
             imageSrc={Conference.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/multi-session"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -97,9 +96,9 @@ export default function Applications() {
             description="You can ensure customer satisfaction by sending a survey to them automatically. Customers can rate on the support service they have just received."
             imageSrc={Browser.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/post-session-survey"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -107,9 +106,9 @@ export default function Applications() {
             description="A wide range of customization options including customizing your banner, agents' photos, etc. on the support session page are available in I'm OnCall."
             imageSrc={Puzzle.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/customization"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -117,9 +116,9 @@ export default function Applications() {
             description="Your agents or service representatives can view all open incidents including time stamping, priority and categories. Closed incidents are also available via the History feature."
             imageSrc={Tracking.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/incident-tracking"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -127,9 +126,9 @@ export default function Applications() {
             description="You can classify users into Agents, Supervisors, and Adminstrators according to your company requirements."
             imageSrc={Hierarchy.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/user-hierarchy"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
         </ContentGrid>

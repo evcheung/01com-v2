@@ -3,6 +3,7 @@ import { breakpoints } from "../../utils/breakpoints"
 import { theme } from "../../theme"
 import { Box } from "./box"
 import Link from "next/link"
+import Image from "next/image"
 
 const StyledA = styled.a`
   font-size: ${theme.fontSize.sm};
@@ -31,15 +32,28 @@ ${props => props.isMobile && (
 )}
 `
 
-export const NavLink = ({ href, label, color, target = "_self", isMobile = false }: {
+export const NavLink = ({ href, label, color, target = "_self", isMobile = false, imgSrc, imgAlt="", imgHeight, imgWidth}: {
   href: string,
   label: string,
   color?: string,
   target?: '_self' | '_blank',
   isMobile?: boolean,
+  imgSrc?: string,
+  imgAlt?: string,
+  imgHeight?: number,
+  imgWidth?: number,
 }) => (
   <Link href={href} target={target} passHref legacyBehavior>
     <AnchorContainer isMobile={isMobile} >
+      {imgSrc && (
+        <Image
+          src={imgSrc}
+          alt={imgAlt || label}
+          width={imgWidth}
+          height={imgHeight}
+          style={{marginRight: "12px"}}
+        />
+      )}
       <StyledA color={color}>{label}</StyledA>
     </AnchorContainer>
   </Link>

@@ -11,6 +11,8 @@ import { PageContentContainer } from "../../components/PageContentContainer"
 import { ReactNode } from "react"
 import bullet from '../../public/assets/gbullet.png'
 import { breakpoints } from "../../utils/breakpoints"
+import { IOCAnchor } from "../../components/core/ioc-anchor"
+import { LINKS } from "../../utils/constants"
 
 const StyledContactContainer = styled(Box)`
   background-color: ${theme.colors.neutral.xs};
@@ -90,12 +92,12 @@ export default function Support() {
       <IOCPageBanner heading="General Support">
         <Text variant={TextVariants.Body1} textColor={TextColors.White}>The I'm OnCall remote IT support service technology is hosted in our secure data center. You don't need to invest in any expensive new hardware or software. Be our subscriber and you can focus on delivering superb support services to your valuable customers in no time. It is that easy and affordable!</Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <Link href='https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm' target="_blank">
+          <Link href={LINKS.IOC_USER_GUIDE} target="_blank">
             <PrimaryButton textColor={ButtonTextColors.Green}>
               User's Guide
             </PrimaryButton>
           </Link>
-          <Link href='/imintouch-remote-pc-desktop/faqs/'>
+          <Link href={LINKS.IOC_FAQ}>
             <SecondaryButton>FAQ</SecondaryButton>
           </Link>
         </Box>
@@ -111,19 +113,19 @@ export default function Support() {
 
           <Box>
             <ContactSubText>Sales (Toll-Free):</ContactSubText>
-            <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
+            <IOCAnchor href="tel:1-800-668-2185">1-800-668-2185</IOCAnchor>
           </Box>
           <Border />
 
           <Box>
             <ContactSubText>Tech Support:</ContactSubText>
-            <Anchor href="tel:905-795-8166">(905) 795-8166</Anchor>
+            <IOCAnchor href="tel:905-795-8166">(905) 795-8166</IOCAnchor>
           </Box>
           <Border />
 
           <Box>
             <ContactSubText>Email:</ContactSubText>
-            <Anchor target="_blank" href="mailto:help@01com.com">help@01com.com</Anchor>
+            <IOCAnchor target="_blank" href="mailto:help@01com.com">help@01com.com</IOCAnchor>
           </Box>
         </ContactContainer>
 

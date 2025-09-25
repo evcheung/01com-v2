@@ -9,7 +9,8 @@ import Heading, { HeadingVariants } from "../../components/core/heading";
 import { IOCProductCard } from "../../components/im-on-call/IOCProductCard";
 import { IOCContentBanners } from "../../components/im-on-call/IOCContentBanners";
 import { theme } from "../../theme";
-import { Anchor, AnchorVariants } from "../../components/core/anchor";
+import { AnchorVariants } from "../../components/core/anchor";
+import { IOCAnchor } from "../../components/core/ioc-anchor";
 import Link from "next/link";
 import { imageUrlFor } from "../../utils/sanity/image-url-builder";
 import { Divider } from "../../components/core/Divider";
@@ -76,7 +77,7 @@ const InfoCardText = styled(Text)`
   line-height: 28px;
 `;
 const InfoCardLinkText = styled(InfoCardText)`
-  color: ${theme.colors.brand.primary};
+  color: ${theme.colors.green.primary};
 `;
 
 type ReviewsAwards = {
@@ -242,7 +243,7 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
 
       <IOCContentBanners />
       <InfoCardContainer>
-        <InfoCard>
+        <InfoCard>``
           <Box>
             <Box margin="0 0 16px 0">
               <Heading variant={HeadingVariants.Heading3}>
@@ -263,9 +264,9 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
           </Box>
 
           <Box margin="24px 0 0 0">
-            <Anchor href="/newsletters" variant={AnchorVariants.Small}>
+            <IOCAnchor href="/newsletters" variant={AnchorVariants.Small}>
               View All
-            </Anchor>
+            </IOCAnchor>
           </Box>
         </InfoCard>
 
@@ -290,12 +291,12 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
 
           {/* <Divider /> */}
           <Box margin="24px 0 0 0">
-            <Anchor
+            <IOCAnchor
               href="/imintouch-remote-pc-desktop/features/"
               variant={AnchorVariants.Small}
             >
               Learn More
-            </Anchor>
+            </IOCAnchor>
           </Box>
         </InfoCard>
 
@@ -312,9 +313,9 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
             </Box>
           </Box>
           <Box margin="24px 0 0 0">
-            <Anchor href="/reviews-awards" variant={AnchorVariants.Small}>
+            <IOCAnchor href="/reviews-awards" variant={AnchorVariants.Small}>
               Learn More
-            </Anchor>
+            </IOCAnchor>
           </Box>
         </InfoCard>
       </InfoCardContainer>

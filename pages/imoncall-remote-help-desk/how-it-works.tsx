@@ -2,7 +2,6 @@ import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
 import ModalVideo from "react-modal-video";
-import "react-modal-video/scss/modal-video.scss";
 import { useState } from "react";
 import playButton from "../../public/assets/play.png";
 import One from "../../public/assets/iocstep1.png";
@@ -17,111 +16,8 @@ import { Box, ButtonTextColors, PrimaryButton, SecondaryButton, Text, TextColors
 import { HeadingVariants } from "../../components/core/heading";
 import bullet from '../../public/assets/gbullet.png'
 import Link from "next/link";
-
-
-const PlayButton = styled.button`
-  background: none;
-  border: none;
-`;
-
-const VideoDesktopContainer = styled(Box)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 888px;
-  height: 500px;
-  margin-top: 32px;
-  // override the X button styles inherited from the banner
-  button {
-    min-width: auto !important;
-    padding: 0 !important;
-  }
-
-  ${breakpoints("width", "", [{ 1000: "calc(100vw - 64px)" }])}
-  ${breakpoints("width", "", [{ 760: "calc(100vw - 32px)" }])}
-
-
-${breakpoints("height", "", [{ 870: "420px" }])}
-${breakpoints("height", "", [{ 760: "380px" }])}
-${breakpoints("margin-top", "", [{ 760: "20px" }])}
-
-img {
-    ${breakpoints("width", "", [{ 760: "240px" }])}
-    ${breakpoints("height", "", [{ 760: "240px" }])}
-  }
-`;
-const StyledHeading = styled(Heading)`
-  font-size: 36px;
-  text-align: center;
-  margin-top: 156px;
-`;
-
-const StepsGrid = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 24px;
-  margin: 48px 0 96px 0;
-
-  ${breakpoints("grid-template-columns", "", [{ 1000: "1fr" }])}
-`;
-const BannerSpacingContainer = styled(Box)`
-  height: 370px;
-  ${breakpoints("height", "", [{ 870: "340px" }])}
-  ${breakpoints("height", "", [{ 760: "300px" }])}
-`;
-
-const VideoDesktop = () => {
-  const [isOpen, setOpen] = useState(false);
-  const youtubeThumbnail = "https://i.ytimg.com/vi_webp/tzMxRHmP0s4/0.webp";
-
-  return (
-    <BannerSpacingContainer>
-      <VideoDesktopContainer backgroundImage={youtubeThumbnail}>
-        <ModalVideo
-          channel="youtube"
-          youtube={{ mute: 0, autoplay: 0 }}
-          isOpen={isOpen}
-          videoId={"tzMxRHmP0s4"}
-          onClose={() => setOpen(false)}
-        />
-        <PlayButton onClick={() => setOpen(true)}>
-          <Image src={playButton} alt="play button" />
-        </PlayButton>
-      </VideoDesktopContainer>
-    </BannerSpacingContainer>
-  );
-};
-
-const StepCard = styled(Box)`
-  background: ${theme.colors.neutral.xs};
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-
-  ${breakpoints("align-items", "", [{ 1000: "center" }])}
-
-  ${breakpoints("padding", "", [{ 1200: "32px" }])}
-
-p, a {
-    ${breakpoints("font-size", "", [{ 1200: "18px" }])}
-    ${breakpoints("line-height", "", [{ 1200: "32px" }])}
-  }
-`;
-
-const StepImage = styled(Image)`
-  width: 96px;
-  height: 96px;
-  ${breakpoints("width", "", [{ 1200: "82px" }])}
-  ${breakpoints("height", "", [{ 1200: "82px" }])}
-${breakpoints("width", "", [{ 640: "64px" }])}
-${breakpoints("height", "", [{ 640: "64px" }])}
-`;
-
-const WhiteTextBanner = styled(IOCPageBanner)`
-  && {
-    color: white;
-  }
-`;
+import { constants } from "buffer";
+import { LINKS } from "../../utils/constants";
 
 const StepsContainer = styled(Box)`
   background-color: ${theme.colors.neutral.xs};
@@ -132,13 +28,50 @@ const StepsContainer = styled(Box)`
   justify-content: center;   
   align-items: center;       
   gap: 56px;   
+
+  /* Switch to vertical layout on mobile */
   ${breakpoints("flex-direction", "", [
-  { 900: 'column' },
-])}
+    { 900: "column" },
+  ])}
+
+  /* Center everything when stacked */
   ${breakpoints("align-items", "", [
-  { 900: 'flex-start' },
-])}              
+    { 900: "center" },
+  ])}
+
+  ${breakpoints("padding", "", [
+    { 900: "48px 32px" },
+    { 600: "32px 16px" },
+  ])}
+
+  ${breakpoints("gap", "", [
+    { 900: "32px" },
+    { 600: "24px" },
+  ])}
+
+  /* Text always comes first on mobile */
+  > div {
+    order: 0;
+    width: 100%;
+    text-align: center; /* centers text for mobile */
+    ${breakpoints("text-align", "", [
+      { 900: "left" }, /* keep left-aligned on desktop */
+    ])}
+  }
+
+  /* Image always comes second on mobile */
+  img {
+    order: 1;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* centers the image itself */
+    ${breakpoints("width", "", [{ 600: "90%" }])}
+  }
 `;
+
+
+
 
 const StyledLineItem = styled.li`
   background: url(${bullet.src}) no-repeat 0 4px;
@@ -166,12 +99,12 @@ export default function HowItWorks() {
       <IOCPageBanner heading="How It Works">
         <Text variant={TextVariants.Body1} textColor={TextColors.White}>The I'm OnCall remote IT support service technology is hosted in our secure data center. You don't need to invest in any expensive new hardware or software. Be our subscriber and you can focus on delivering superb support services to your valuable customers in no time. It is that easy and affordable!</Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <Link href='https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm' target="_blank">
+          <Link href={LINKS.IOC_BUY_NOW} target="_blank">
             <PrimaryButton textColor={ButtonTextColors.Green}>
               Buy Now
             </PrimaryButton>
           </Link>
-          <Link href='/imintouch-remote-pc-desktop/faqs/'>
+          <Link href={LINKS.IOC_TRY_IT_FREE}>
             <SecondaryButton>Try it Free</SecondaryButton>
           </Link>
         </Box>
@@ -182,7 +115,7 @@ export default function HowItWorks() {
         <Box>
           <Text variant={TextVariants.Body1} style={{ fontWeight: 400 }}><strong style={{ fontWeight: 700 }}>1.</strong> Login</Text>
           <Text variant={TextVariants.Body2} style={{ marginTop: "16px" }}>
-            Go to imoncall.01com.com/login.php. Your agents simply login and wait for a "live chat request". This is similar to how they wait for incoming phone calls.
+            Go to <Link href="imoncall.01com.com/login.php" style={{textDecoration:"underline"}}>imoncall.01com.com/login.php.</Link> Your agents simply login and wait for a "live chat request". This is similar to how they wait for incoming phone calls.
           </Text>
         </Box>
       </StepsContainer>
@@ -203,7 +136,7 @@ export default function HowItWorks() {
             If necessary you can request remote control of your customer's computer:
           </Text>
           <StyledList style={{ marginTop: "24px" }}>
-            <StyledLineItem><Text variant={TextVariants.Body2}>Send your customer a request for a temporary remote control session permission</Text></StyledLineItem>
+            <StyledLineItem><Text variant={TextVariants.Body2}>Send your customer a request for a <span style={{textDecoration:"underline"}}>temporary remote control session</span> permission</Text></StyledLineItem>
             <StyledLineItem><Text variant={TextVariants.Body2}>Once accepted, your customer's computer screen will appear on the agent's computer</Text></StyledLineItem>
             <StyledLineItem><Text variant={TextVariants.Body2}>The agent can then help resolving issues as if he/she was sitting in front of it</Text></StyledLineItem>
           </StyledList>

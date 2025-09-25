@@ -100,10 +100,22 @@ export const PrimaryButton = styled(Button) <ButtonProps>`
     border: `2px solid ${getButtonColor(props)}`,
   })};
 `
+export const IOCButton = styled(Button)<ButtonProps>`
+  ${props => ({
+    backgroundColor: props.disabled
+      ? theme.colors.neutral.md
+      : getButtonColor({ ...props, btnColor: ButtonColors.Green }),
+    border: props.disabled
+      ? '2px solid transparent'
+      : `2px solid ${theme.colors.green.primary}`,
+    color: props.disabled
+      ? theme.colors.neutral.xs
+      : getPrimaryButtonTextColor({ ...props, textColor: ButtonTextColors.White }),
+  })};`
 
 export const SecondaryButton = styled(Button) <ButtonProps>`
   ${props => ({
-    backgroundColor: props.disabled ? theme.colors.neutral.md : 'transparent',
+    backgroundColor: props.disabled ? theme.colors.green.primary : 'transparent',
     border: props.disabled ? '2px solid transparent' : `2px solid ${getButtonColor(props)}`,
     color: props.disabled ? theme.colors.neutral.xs : getSecondaryButtonTextColor(props),
   })};`
@@ -116,3 +128,10 @@ PrimaryButton.defaultProps = {
 SecondaryButton.defaultProps = {
   size: ButtonSizes.Large
 }
+
+IOCButton.defaultProps = {
+  size: ButtonSizes.Large,
+  btnColor: ButtonColors.Green,
+  textColor: ButtonTextColors.White,
+};
+

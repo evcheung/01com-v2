@@ -1,18 +1,15 @@
 import styled from 'styled-components'
-import { Box, Text, TextVariants, TextColors, SecondaryButton, PrimaryButton, ButtonTextColors } from '../core'
+import { Box, Text, TextVariants, TextColors, SecondaryButton, PrimaryButton } from '../core'
 import { theme } from '../../theme'
 import Heading, { HeadingColors, HeadingVariants } from '../core/heading'
 import { Carousel } from 'react-responsive-carousel'
 import iocBanner from '../../public/assets/bitmap.png'
-import iitGoBanner from '../../public/assets/banner-iit-go.jpg'
-import iitGoMailBanner from '../../public/assets/banner-iit-gomail.jpg'
-import iitPhysicalAuthBanner from '../../public/assets/banner-iit-physical-auth.jpg'
-import iitProductivityBanner from '../../public/assets/banner-iit-productivity.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 import { breakpoints } from '../../utils/breakpoints'
 import Link from 'next/link'
 import { LINKS } from '../../utils/constants'
+import { Breadcrumb } from '../Breadcrumb'
 
 const Container = styled(Box)`
   width: 100vw;
@@ -91,8 +88,8 @@ const StyledLink = styled(Link)`
 width: 100%;
 `
 
-const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location }: {
-  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string
+const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location, breadcrumb }: {
+  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string, breadcrumb: string
 }) => {
   const getAlignment = (alignment) => alignment === 'left' ? 'flex-start' : 'flex-end';
 
@@ -108,6 +105,7 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
           style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
 
           <BannerContentContainer>
+            {breadcrumb && <Breadcrumb label={breadcrumb} />}
             {children}
           </BannerContentContainer>
         </BannerBackgroundContainer >
@@ -120,6 +118,7 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
         flexAlignment={getAlignment(alignment)}
         style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
         <BannerContentContainer>
+          {breadcrumb && <Breadcrumb label={breadcrumb} />}
           {children}
         </BannerContentContainer>
       </BannerBackgroundContainer>
@@ -177,8 +176,8 @@ ${breakpoints("margin", "", [
 ])};
 `
 
-const ImOnCallBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
-  <BannerContainer alignment="left" backgroundImageSrc={iocBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location}>
+const ImOnCallBanner = ({ clickable, location, breadcrumb="I'm OnCall" }: { clickable?: boolean, location?: string, breadcrumb?: string}) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iocBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location} breadcrumb={breadcrumb}>
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm OnCall</ProductTitle>
     <BannerContentHeading headingColor={HeadingColors.White}>Remote Support with a Secured Channel</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
@@ -186,12 +185,12 @@ const ImOnCallBanner = ({ clickable, location }: { clickable?: boolean, location
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">
-        <span onClick={() => window.location.assign(LINKS.IIT_BUY_NOW)}>
+        <span onClick={() => window.location.assign(LINKS.IOC_BUY_NOW)}>
           <PrimaryCTAButton>Buy Now
           </PrimaryCTAButton>
         </span>
       </Box>
-      <span onClick={() => window.location.assign(LINKS.IIT_TRY_IT_FREE)}>
+      <span onClick={() => window.location.assign(LINKS.IOC_TRY_IT_FREE)}>
         <SecondaryCTAButton>Try it Free</SecondaryCTAButton>
       </span>
     </Box>

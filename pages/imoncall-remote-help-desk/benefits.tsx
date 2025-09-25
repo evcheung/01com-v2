@@ -1,19 +1,16 @@
 import styled from "styled-components"
 import { Box, Text, TextVariants, PrimaryButton, ButtonTextColors, SecondaryButton } from "../../components/core"
-import { Anchor, AnchorVariants } from "../../components/core/anchor";
+import { IOCAnchor, AnchorVariants } from "../../components/core/ioc-anchor";
 import { breakpoints } from "../../utils/breakpoints"
 import Head from "next/head"
 import IOCLayout from "../../components/im-on-call/IOCLayout"
 import { IOCPageBanner } from "../../components/im-on-call/IOCPageBanner"
 import { IOCContentCard } from "../../components/im-on-call/IOCContentCard"
-import Collab from "../../public/assets/collaboration -1.png"
 import RMC from "../../public/assets/remote-control-1.png"
 import LiveChat from "../../public/assets/live-chat-1.png"
-import Conference from "../../public/assets/conference-1.png"
 import Browser from "../../public/assets/browser-2-1.png"
 import Puzzle from "../../public/assets/puzzle-1.png"
 import Tracking from "../../public/assets/tracking-1.png"
-import Hierarchy from "../../public/assets/hierarchy-structure-1.png"
 import { LINKS } from "../../utils/constants"
 import { TextColors } from '../../components/core/text';
 
@@ -51,12 +48,12 @@ export default function Applications() {
           I'm OnCall helps improving your customer satisfaction ratings and competitive edges. You can expedite the time it takes to resolve a problem with our remote support technology while reducing your overall service cost.
         </Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
-          <a href={LINKS.IOC_BUY_NOW}>
+          <a href={LINKS.IOC_USER_GUIDE}>
             <PrimaryButton textColor={ButtonTextColors.Green}>
               User's Guide
             </PrimaryButton>
           </a>
-          <a href={LINKS.IOC_TRY_IT_FREE}>
+          <a href={LINKS.IOC_FAQ}>
             <SecondaryButton>FAQ</SecondaryButton>
           </a>
         </Box>
@@ -69,9 +66,9 @@ export default function Applications() {
             description="With the customer's permission, a temporary remote control session is established with his/her computer. Any technical issue can be resolved with ease."
             imageSrc={RMC.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/remote-control"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -79,9 +76,9 @@ export default function Applications() {
             description={"I'm OnCall gives you 3 customizable URLs for embedding into your web site. You can then easily implement a Live-Chat customer service feature on your web site within minutes. One agent can simultaneously chat with multiple customers to facilitate busy \"call\" volume. Not only that it is impossible to achieve with the traditional phone system, it can actually save cost by eliminating the need of installing numerous physical phone lines."}
             imageSrc={LiveChat.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/live-chat"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -89,9 +86,9 @@ export default function Applications() {
             description="Enhance your professional image and branding with a customized banner on the support session page. It can include your company logo, slogan, agents' photos, etc."
             imageSrc={Puzzle.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/customization"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -99,9 +96,9 @@ export default function Applications() {
             description="Your agents or service representatives will benefit from the incident logs. They will help your company to provide better service to your customers."
             imageSrc={Tracking.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/incident-tracking"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
           <IOCContentCard
@@ -109,9 +106,9 @@ export default function Applications() {
             description="An automatic post-session survey can be conducted to measure customer's rating on the support service they have just received."
             imageSrc={Browser.src}>
             <Text variant={TextVariants.Body1}>
-              <Anchor href={LINKS.IOC_TRY_IT_FREE} variant={AnchorVariants.Small}>
+              <IOCAnchor href={"./features-ioc/post-session-survey"} variant={AnchorVariants.Small}>
                 Learn More
-              </Anchor>{" "}
+              </IOCAnchor>{" "}
             </Text>
           </IOCContentCard>
         </ContentGrid>

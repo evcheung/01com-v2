@@ -74,7 +74,7 @@ export default function PricingComparison() {
           </Box>
 
           <Box style={{ flex: 1, display: "flex", justifyContent: "center", marginTop: "24px" }}>
-              <IOCButton>Send</IOCButton>
+              <IOCButton btnWidth="130px" btnHeight="50px" style={{justifyContent:"center"}}>Send</IOCButton>
           </Box>
         </ContactContainer>
 

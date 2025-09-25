@@ -107,6 +107,8 @@ export const IOCButton = styled(Button)<ButtonProps & { btnWidth?: string; btnHe
     justifyContent: 'flex-start',
     gap: '16px', 
     padding: '6px 10px', 
+    width: props.btnWidth || '128px',
+    height: props.btnHeight || '48px',
     backgroundColor: props.disabled
       ? theme.colors.neutral.md
       : getButtonColor({ ...props, btnColor: ButtonColors.Green }),

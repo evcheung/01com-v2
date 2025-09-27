@@ -88,8 +88,8 @@ const StyledLink = styled(Link)`
 width: 100%;
 `
 
-const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location, breadcrumb }: {
-  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string, breadcrumb: string
+const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxStyles, clickable, location }: {
+  children: ReactNode, backgroundImageSrc: string, alignment: 'left' | 'right', customBoxStyles?: React.CSSProperties, clickable?: boolean, location?: string
 }) => {
   const getAlignment = (alignment) => alignment === 'left' ? 'flex-start' : 'flex-end';
 
@@ -105,7 +105,6 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
           style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
 
           <BannerContentContainer>
-            {breadcrumb && <Breadcrumb label={breadcrumb} />}
             {children}
           </BannerContentContainer>
         </BannerBackgroundContainer >
@@ -118,7 +117,6 @@ const BannerContainer = ({ children, backgroundImageSrc, alignment, customBoxSty
         flexAlignment={getAlignment(alignment)}
         style={{ ...customBoxStyles, cursor: clickable ? 'pointer' : 'inherit' }}>
         <BannerContentContainer>
-          {breadcrumb && <Breadcrumb label={breadcrumb} />}
           {children}
         </BannerContentContainer>
       </BannerBackgroundContainer>
@@ -176,12 +174,12 @@ ${breakpoints("margin", "", [
 ])};
 `
 
-const ImOnCallBanner = ({ clickable, location, breadcrumb="I'm OnCall" }: { clickable?: boolean, location?: string, breadcrumb?: string}) => (
-  <BannerContainer alignment="left" backgroundImageSrc={iocBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location} breadcrumb={breadcrumb}>
-    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm OnCall</ProductTitle>
-    <BannerContentHeading headingColor={HeadingColors.White}>Remote Support with a Secured Channel</BannerContentHeading>
+const ImOnCallBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
+  <BannerContainer alignment="left" backgroundImageSrc={iocBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location}>
+    <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
+    <BannerContentHeading headingColor={HeadingColors.White}>Remote Work from Anywhere, Anytime</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
-      I'm OnCall is a cost-effective, secure online help desk software which allows organizations to offer remote support over the internet to their customers.
+      I'm InTouch lets you work remotely by controlling your office computer as if you are physically there.
     </BannerContentText>
     <Box flexDirection='row'>
       <Box margin="0px 24px 0px 0px">

@@ -7,13 +7,14 @@ import { theme } from "../../theme"
 import { Anchor, AnchorVariants } from "../../components/core/anchor"
 import { IOCPageBanner } from "../../components/im-on-call/IOCPageBanner"
 import { PageContentContainer } from "../../components/PageContentContainer"
-import { ReactNode, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import DotFull from '../../public/assets/gdot-full.png'
 import { breakpoints } from "../../utils/breakpoints"
 import Image from "next/image"
 import { Dropdown } from "react-bootstrap"
-import ChevronDown from "../../public/assets/chevron-down.svg"
+import ChevronDown from "../../public/assets/ioc-down.png"
 import { LINKS } from "../../utils/constants"
+import { IOCAnchor } from "../../components/core/ioc-anchor"
 
 const ComparisonTable = styled.table`
 width: 100%;
@@ -220,13 +221,14 @@ border: 1px solid ${theme.colors.neutral.md};
     border-left: none;
 
     flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 12px;
+    height: 6px;
     margin-left: auto;
     content: "";
     background-image: url(${ChevronDown.src});
     background-repeat: no-repeat;
-    background-size: 1.25rem;
+    background-size: 12px 6px; /* match actual image dimensions */
+    background-position: center; /* optional, centers the arrow */
     transition: transform 0.2s ease-in-out;
     box-sizing: border-box;
   }
@@ -601,7 +603,7 @@ export default function PricingComparison() {
                   <Text variant={TextVariants.Body2}>11+ licenses</Text>
                 </td>
                 <td>
-                  <Text variant={TextVariants.Body2}>Please call <Anchor href="tel:+1-800-668-2185" variant={AnchorVariants.Small}>1-800-668-2185</Anchor></Text>
+                  <Text variant={TextVariants.Body2}>Please call <IOCAnchor href="tel:+1-800-668-2185" variant={AnchorVariants.Small}>1-800-668-2185</IOCAnchor></Text>
                 </td>
                 <td></td>
               </tr>

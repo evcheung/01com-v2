@@ -8,7 +8,6 @@ import iitGoBanner from '../../public/assets/banner-iit-go.jpg'
 import iitGoMailBanner from '../../public/assets/banner-iit-gomail.jpg'
 import iitPhysicalAuthBanner from '../../public/assets/banner-iit-physical-auth.jpg'
 import iitProductivityBanner from '../../public/assets/banner-iit-productivity.jpg'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from 'react'
 import { breakpoints } from '../../utils/breakpoints'
 import Link from 'next/link'

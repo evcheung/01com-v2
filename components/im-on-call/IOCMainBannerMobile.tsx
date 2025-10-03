@@ -74,7 +74,7 @@ export const IOCMainBannerMobile: React.FC<IOCMainBannerMobileProps> = ({ isCaro
         I'm OnCall
       </ProductTitle>
       <BannerContentHeading headingColor={HeadingColors.White}>
-        Remote Work from Anywhere, Anytime
+        Remote Support with a Secured Channel
       </BannerContentHeading>
       <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
         I'm OnCall is a cost-effective, secure online help desk software which allows organizations to offer remote support over the Internet to their customers.

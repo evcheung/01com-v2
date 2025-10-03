@@ -45,7 +45,80 @@ export const IOCNavBarMobile: React.FC<IOCNavBarMobileProps> = ({ variant, subSi
         flexJustify='space-between'
         flexAlignment='center'
       >
-        {/* … your existing JSX … */}
+        <Menu styles={{
+          bmBurgerButton: {
+            position: 'relative',
+            width: '30px',
+            height: '20px',
+          },
+          bmBurgerBars: {
+            background: theme.colors.neutral.xs,
+            height: "2px"
+          },
+          bmCrossButton: {
+            height: '24px',
+            width: '24px',
+            left: '16px',
+            top: '14px',
+          },
+          bmCross: {
+            background: theme.colors.neutral.xl,
+            width: '2px',
+            height: '28px',
+          },
+          bmMenuWrap: {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            height: '100%',
+            zIndex: isLight ? 1100 : 2100,
+          },
+          bmMenu: {
+            background: theme.colors.neutral.xs,
+            opacity: '98%',
+            padding: '70px 0 0 0',
+          },
+          bmMorphShape: {
+            fill: theme.colors.neutral.xs,
+          },
+          bmItemList: {
+            color: theme.colors.neutral.sm,
+          },
+          bmItem: {
+            display: 'inline-block'
+          },
+          bmOverlay: {
+            background: 'transparent'
+          },
+        }}>
+          <Box flexDirection='column' width="100%">
+            <NavLink imgSrc={vector.src} imgWidth={8} imgHeight={12} isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop" target="_blank" label = "I'm InTouch" />
+            <AnchorDivider />
+
+            <AnchorDivider />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/how-it-works" target="_blank" label="How It Works" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/features" target="_blank" label="Features" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/support" label="Support" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/pricing-comparison" label="Pricing & Comparison" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/benefits" label="Benefits" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/tell-a-friend" label="Tell a Friend" />
+            <AnchorDivider />
+
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/connect-to-an-agent" label="Connect to an Agent" />
+            <AnchorDivider />
+
+          </Box>
+        </Menu>
 
         <Link href="/imoncall-remote-help-desk" style={{ zIndex: 2000 }}>
           <LogoContainer src={IOCLogo} alt="I'm OnCall homepage, click to return to main menu" />

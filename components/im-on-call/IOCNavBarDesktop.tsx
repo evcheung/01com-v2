@@ -37,10 +37,15 @@ const LogoContainer = styled(Image)`
   ])}
 `
 
-export const IOCNavBarDesktop = ({ variant }: { variant?: NavBarVariants }) => {
+export type NavBarProps = {
+  variant?: NavBarVariants;
+  subSite?: 'go' | 'gomail' | 'server' | 'securekey';
+};
+
+export const IOCNavBarDesktop: React.FC<NavBarProps> = ({ variant, subSite }) => {
   const debouncedHideMenu = useDebounceCallback(() => {
     if (!document.querySelector('.hover-dropdown-menu :hover')) {
-      const menu: HTMLElement = document.querySelector('.hover-dropdown-menu')
+      const menu = document.querySelector('.hover-dropdown-menu') as HTMLElement
       if (menu) {
         menu.style.visibility = 'hidden'
       }

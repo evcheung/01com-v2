@@ -1,12 +1,20 @@
-type IOCMainBannerDesktopProps = {
+import { useWindowSize } from 'usehooks-ts'
+import { IOCMainBannerDesktop } from './IOCMainBannerDesktop'
+import { IOCMainBannerMobile } from './IOCMainBannerMobile'
+
+type IOCMainBannerProps = {
   isCarousel?: boolean;
   banner?: 'go' | 'gomail' | 'server' | 'securekey';
 };
 
-export const IOCMainBannerDesktop: React.FC<IOCMainBannerDesktopProps> = ({ isCarousel, banner }) => {
+export const IOCMainBanner: React.FC<IOCMainBannerProps> = ({ isCarousel = true, banner }) => {
+  const { width } = useWindowSize();
+
   return (
-    <div>
-      Desktop banner: {banner} - {isCarousel ? "carousel" : "static"}
-    </div>
+    <>
+      {width > 760 
+        ? <IOCMainBannerDesktop isCarousel={isCarousel} banner={banner} /> 
+        : <IOCMainBannerMobile isCarousel={isCarousel} banner={banner} />}
+    </>
   );
 };

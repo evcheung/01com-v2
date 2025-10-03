@@ -62,10 +62,17 @@ const BannerContainer = ({ children }: { children: React.ReactNode }) => (
   </StyledBox>
 )
 
-export const IOCMainBannerMobile = () => (
+type IOCMainBannerMobileProps = {
+  isCarousel?: boolean;
+  banner?: 'go' | 'gomail' | 'server' | 'securekey';
+};
+
+export const IOCMainBannerMobile: React.FC<IOCMainBannerMobileProps> = ({ isCarousel, banner }) => (
   <Container>
     <BannerContainer>
-      <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm InTouch</ProductTitle>
+      <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>
+        I'm InTouch
+      </ProductTitle>
       <BannerContentHeading headingColor={HeadingColors.White}>
         Remote Work from Anywhere, Anytime
       </BannerContentHeading>
@@ -84,4 +91,5 @@ export const IOCMainBannerMobile = () => (
       </Box>
     </BannerContainer>
   </Container>
-)
+);
+

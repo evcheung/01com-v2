@@ -30,6 +30,7 @@ const NavBarContainer = styled(Box)<NavBarContainerProps>`
 
 const LogoContainer = styled(Image)`
   margin-left: 32px;
+  margin-right: -16px;
 
   ${breakpoints("width", "", [
     { 1280: "110px" },

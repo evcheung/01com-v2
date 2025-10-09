@@ -29,6 +29,8 @@ const NavBarContainer = styled(Box)<NavBarContainerProps>`
 `
 
 const LogoContainer = styled(Image)`
+  margin-left: 32px;
+
   ${breakpoints("width", "", [
     { 1280: "110px" },
   ])}
@@ -36,6 +38,7 @@ const LogoContainer = styled(Image)`
     { 1480: "auto" },
   ])}
 `
+
 
 export type NavBarProps = {
   variant?: NavBarVariants;

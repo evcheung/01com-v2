@@ -60,7 +60,7 @@ const StyledCarousel = styled(Carousel) <StyledCarouselProps>`
 
 const BannerContentContainer = styled(Box)`
 margin-top: 64px;
-width: 33%;
+width: 35%;
 ${breakpoints("margin-top", "", [
   { 1280: "58px" },
 ])}
@@ -73,7 +73,7 @@ ${breakpoints("width", "", [
 `
 
 const BannerBackgroundContainer = styled(Box)`
-padding: 78px 138px;
+padding: 178px 48px;
 height: 720px;
 text-align: left;
 ${breakpoints("padding", "", [
@@ -136,8 +136,8 @@ const ProductTitle = styled(Heading)`
 
 const BannerContentHeading = styled(Heading)`
 &&& {
-  font-size: 36px;
-  line-height: 48px;
+  font-size: 48px;
+  line-height: 64px;
   margin: 12px 0px;
   ${breakpoints("font-size", "", [
   { 1280: "32px" },
@@ -151,10 +151,10 @@ const BannerContentHeading = styled(Heading)`
 const BannerContentText = styled(Text)`
 &&& {
   ${breakpoints("font-size", "", [
-  { 1280: "19px" },
+  { 1280: "20px" },
 ])};
   ${breakpoints("line-height", "", [
-  { 1280: "34px" },
+  { 1280: "36px" },
 ])};
 }
 `
@@ -176,9 +176,9 @@ ${breakpoints("margin", "", [
 
 const ImOnCallBanner = ({ clickable, location }: { clickable?: boolean, location?: string }) => (
   <BannerContainer alignment="left" backgroundImageSrc={iocBanner.src} customBoxStyles={{ backgroundPositionY: 'bottom' }} clickable={clickable} location={location}>
+    <Breadcrumb label={""} />
     <ProductTitle variant={HeadingVariants.Heading2} headingColor={HeadingColors.White}>I'm OnCall</ProductTitle>
-    <BannerContentHeading headingColor={HeadingColors.White}>Remote Support with 
-a Secured Channel</BannerContentHeading>
+    <BannerContentHeading headingColor={HeadingColors.White}>Remote Support with a Secured Channel</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
       I'm OnCall is a cost-effective, secure online help desk software which allows organizations to offer remote support over the Internet to their customers.
     </BannerContentText>

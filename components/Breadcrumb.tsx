@@ -10,7 +10,7 @@ const StyledText = styled(Text)`
   font-weight: ${theme.fontWeight[300]};
   color: ${theme.colors.neutral.xs};
 `;
-const BreadcrumbContainer = styled(Box) <{ isIIT: boolean }>`
+const BreadcrumbContainer = styled(Box)<{ isIIT: boolean }>`
   position: absolute;
   top: 84px;
   left: 48px;
@@ -98,11 +98,16 @@ export const Breadcrumb = ({ label }) => {
           <StyledText>
             <Link href="/imoncall-remote-help-desk">I'm OnCall</Link>
           </StyledText>
-          <span>
-            <StyledText>{">"}</StyledText>
-          </span>
+          {/* Only show arrow if not exactly on /imoncall-remote-help-desk */}
+          {!location.endsWith("/imoncall-remote-help-desk/") &&
+            !location.endsWith("/imoncall-remote-help-desk") && (
+              <span>
+                <StyledText>{">"}</StyledText>
+              </span>
+            )}
         </>
       )}
+
       {subSite && (
         <>
           <StyledText>

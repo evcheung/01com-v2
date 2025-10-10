@@ -15,6 +15,7 @@ width: 100vw;
 
 
 const BannerContentContainer = styled(Box)`
+margin-top: 56px;
 width: 37%;
 height: 576px;
 ${breakpoints("width", "", [

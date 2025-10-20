@@ -165,7 +165,7 @@ const HeaderContent = ({ featuredVideo }) => {
         >
           <Text textColor={TextColors.White} alignment="center">
             01 Quantum's common shares are listed on the TSX Venture Exchange
-            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB Pink market
+            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market
             under the symbol 'OONEF'.
           </Text>
         </Box>

@@ -20,6 +20,13 @@ import urlBuilder from "@sanity/image-url"
 import { getImageDimensions } from '@sanity/asset-utils'
 import { FAQ } from "../../components/FAQ"
 
+//Remove the following topics:
+// How do I enable Remote Wake-Up in my I’m InTouch administrator account?
+// Which Network cards support Remote Wake-Up? 
+// How can I change my Remote Wake-Up password? 
+// What should I modify my Windows 8 to make I’m InTouch shutdown properly… ? 
+
+
 export const revalidate = 10
 // export const dynamic = 'force-dynamic'
 

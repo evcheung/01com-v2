@@ -137,8 +137,7 @@ export default function AboutUs() {
           your browser to track your visits to our website. The information
           contained in a cookie can only be read by a 01 Quantum Web server and
           cannot be used to run programs or deliver viruses to your computer. A
-          cookie essentially functions as an identifier, but does not attach it
-          self to or contain any personal data you may provide to 01. 01
+          cookie essentially functions as an identifier, but does not attach itself to or contain any personal data you may provide to 01. 01
           Quantum's website uses cookies to track user traffic patterns, so that
           we can improve our navigational structure to better help the user
           reach the information they require.

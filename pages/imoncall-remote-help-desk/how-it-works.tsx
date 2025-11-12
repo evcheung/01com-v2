@@ -138,7 +138,7 @@ export default function HowItWorks() {
           <StyledList style={{ marginTop: "24px" }}>
             <StyledLineItem><Text variant={TextVariants.Body2}>Send your customer a request for a <span style={{textDecoration:"underline"}}>temporary remote control session</span> permission</Text></StyledLineItem>
             <StyledLineItem><Text variant={TextVariants.Body2}>Once accepted, your customer's computer screen will appear on the agent's computer</Text></StyledLineItem>
-            <StyledLineItem><Text variant={TextVariants.Body2}>The agent can then help resolving issues as if he/she was sitting in front of it</Text></StyledLineItem>
+            <StyledLineItem><Text variant={TextVariants.Body2}>The agent can then help resolving issues as if they were sitting in front of it</Text></StyledLineItem>
           </StyledList>
         </Box>
       </StepsContainer>

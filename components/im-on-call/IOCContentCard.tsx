@@ -25,24 +25,26 @@ const ContentTitle = styled(Text)`
   margin: ${props => props.title ? '24px 0' : '6px 0'};
   font-size: 24px;
   margin-bottom: 16px;
-  white-space: nowrap;
+  white-space: normal;
   ${breakpoints("font-size", "", [
   { 1180: '20px' },
 ])}
 `
 
-export const IOCContentCard = ({ title, description, imageSrc, children }: {
-  title?: string,
-  description: string,
+export const IOCContentCard = ({title, description, imageSrc, children
+}: {
+  title: string,
+  description?: React.ReactNode,
   imageSrc: string,
   children?: React.ReactNode
 }) => {
   return (
     <ProductCardContainer>
       <Image src={imageSrc} alt="" width={54} height={54} />
-      <ContentTitle title={title}>{title}</ContentTitle>
+      <ContentTitle>{title}</ContentTitle>
       <Text variant={TextVariants.Body2}>{description}</Text>
       {children && <Box>{children}</Box>}
     </ProductCardContainer>
   )
 }
+

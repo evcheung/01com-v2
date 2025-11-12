@@ -8,6 +8,7 @@ import { ReactNode } from 'react'
 import { breakpoints } from '../../utils/breakpoints'
 import leftGradient from '../../public/assets/left-gradient.png'
 import rightGradient from '../../public/assets/right-gradient.png'
+import Link from 'next/link'
 
 const Container = styled(Box)`
 width: 100vw;
@@ -83,7 +84,9 @@ const LiveChatBanner = () => (
   <BannerContainer alignment="right" backgroundImageSrc={iocLiveChatBanner.src} overlayImage={rightGradient.src}>
     <BannerContentHeading headingColor={HeadingColors.White}>Instant Live-Chat Support <br /> from I'm OnCall</BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
-      You can provide world-class Live-Chat support to your customers within minutes. I'm OnCall gives you private URLs for embedding into your web site. Simply implement a Live-Chat button with the given URL on your web site. Your customers can then request to chat with an agent easily. Each agent can have up to 10 simultaneous chat sessions to deal with volumes at peak times.
+      You can provide world-class {' '}
+      <Link href="/imoncall-remote-help-desk/features-ioc/live-chat/" style={{textDecoration: "underline"}}>Live Chat</Link>
+      {' '}support to your customers within minutes. I'm OnCall gives you private URLs for embedding into your web site. Simply implement a Live-Chat button with the given URL on your web site. Your customers can then request to chat with an agent easily. Each agent can have up to 10 simultaneous chat sessions to deal with volumes at peak times.
     </BannerContentText>
   </BannerContainer>
 )
@@ -94,7 +97,11 @@ const TechSupportBanner = () => (
       Efficient Technical Support with I'm OnCall's Remote Access
     </BannerContentHeading>
     <BannerContentText variant={TextVariants.Body1} textColor={TextColors.White}>
-      I'm OnCall lets you setup a temporary connection to your customer's computer without any pre-installed software. You can quickly andefficiently resolve your customers' technical and IT support issues by remotely controlling their computers. Plus, your agents can login from anywhere in the world to support your customers, saving your time and travelling cost.
+      I'm OnCall lets you setup a  {' '}
+      <Link href="/imoncall-remote-help-desk/features/" style={{textDecoration:"underline"}}>temporary connection</Link>
+      {' '} to your customer's computer without any pre-installed software. You can quickly and efficiently resolve your customers' technical and IT support issues by {' '}
+      <Link href="/imoncall-remote-help-desk/how-it-works/" style={{textDecoration: "underline"}}>remotely controlling</Link>
+      {' '}their computers. Plus, your agents can login from anywhere in the world to support your customers, saving your time and travelling cost.
     </BannerContentText>
   </BannerContainer >
 )

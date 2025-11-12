@@ -100,14 +100,18 @@ export default function Support() {
       </Head>
 
       <IOCPageBanner heading="General Support">
-        <Text variant={TextVariants.Body1} textColor={TextColors.White}>The I'm OnCall remote IT support service technology is hosted in our secure data center. You don't need to invest in any expensive new hardware or software. Be our subscriber and you can focus on delivering superb support services to your valuable customers in no time. It is that easy and affordable!</Text>
+        <Text variant={TextVariants.Body1} textColor={TextColors.White}>The I'm OnCall {' '}
+          <Link href="./features" style={{textDecoration: "underline"}}>
+            remote IT support service
+          </Link>
+           {' '} technology is hosted in our secure data center. You don't need to invest in any expensive new hardware or software. Be our subscriber and you can focus on delivering superb support services to your valuable customers in no time. It is that easy and affordable!</Text>
         <Box flexDirection="row" flexAlignment="center" margin="24px 0 0 0">
           <Link href={LINKS.IOC_USER_GUIDE} target="_blank">
             <PrimaryButton textColor={ButtonTextColors.Green}>
               User's Guide
             </PrimaryButton>
           </Link>
-          <Link href={LINKS.IOC_FAQ}>
+          <Link href="./faqs">
             <SecondaryButton>FAQ</SecondaryButton>
           </Link>
         </Box>

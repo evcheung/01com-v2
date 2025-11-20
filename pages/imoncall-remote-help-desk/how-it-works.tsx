@@ -74,10 +74,15 @@ const StepsContainer = styled(Box)`
 
 
 const StyledLineItem = styled.li`
-  background: url(${bullet.src}) no-repeat 0 4px;
-  padding-left: 32px;
+  background: url(${bullet.src}) no-repeat left 6px;
+  background-size: 20px 20px;
+  padding-left: 32px;         
   margin-bottom: 16px;
-`
+  list-style: none;
+  text-align: left;            
+  display: block;              
+`;
+
 
 const StyledList = styled.ul`
 padding: 0;

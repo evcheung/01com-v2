@@ -274,14 +274,22 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
           <Box margin="0 0 16px 0" width="100%">
             <Heading variant={HeadingVariants.Heading3}>Usage Tips</Heading>
           </Box>
-          <Divider />
+          {/* <Divider /> */}
 
-          <Text variant={TextVariants.Body2} style={{marginTop: "16px", marginBottom: "16px"}}>
-            You can temporarily add Guest Users to I'm InTouch, perfect for conducting online meetings and presentations.
-          </Text>
+          <StyledCarousel
+            showIndicators={false}
+            infiniteLoop
+            emulateTouch
+            showThumbs={false}
+          >
+            {shuffledTips.map((tip, index) => (
+              <div key={index}>
+                {tip}
+              </div>
+            ))}
+          </StyledCarousel>
 
-          <Divider />
-
+          {/* <Divider /> */}
           <Box margin="24px 0 0 0">
             <IOCAnchor
               href="/imintouch-remote-pc-desktop/features/"

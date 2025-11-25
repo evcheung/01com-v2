@@ -78,7 +78,7 @@ const StyledLineItem = styled.li`
 
 const StyledList = styled.ul`
 padding: 0;
-list-style: none;
+list-style: none; 
 `
 
 const ButtonGroup = styled.div`

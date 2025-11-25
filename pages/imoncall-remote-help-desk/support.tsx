@@ -111,7 +111,7 @@ export default function Support() {
               User's Guide
             </PrimaryButton>
           </Link>
-          <Link href="./faqs">
+          <Link href="https://www.01com.com/imoncall-remote-help-desk/faqs/">
             <SecondaryButton>FAQ</SecondaryButton>
           </Link>
         </Box>
@@ -132,7 +132,7 @@ export default function Support() {
                 </div>
               </IOCButton>
 
-              <IOCButton btnWidth="128px" btnHeight="48px">
+              <IOCButton btnWidth="152px" btnHeight="48px">
                 <Image src={IOCChat} alt="chat icon" />
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: '14px' }}>
                   <Text variant={TextVariants.Body2} style={{ fontWeight: "700", marginBottom: "-4px" }}>

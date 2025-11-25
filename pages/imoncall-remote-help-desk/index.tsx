@@ -20,35 +20,6 @@ import { useEffect, useState } from "react";
 export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
 
-const ProductsHeadingContainer = styled(Box)`
-  width: 740px;
-  margin: 84px auto 48px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  ${breakpoints("width", "", [{ 960: "100%" }])}
-  ${breakpoints("margin", "", [{ 960: "48px auto 24px auto" }])}
-`;
-
-const ProductsHeading = styled(Heading)`
-  text-align: center;
-  font-size: 36px;
-  line-height: 48px;
-  ${breakpoints("font-size", "", [{ 760: "24px" }])}
-  ${breakpoints("line-height", "", [{ 760: "40px" }])}
-`;
-
-const ProductsCardContainer = styled(Box)`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 100%;
-  grid-gap: 24px;
-  margin-bottom: 96px;
-  ${breakpoints("grid-template-columns", "", [{ 960: "repeat(2, 1fr)" }])}
-
-  ${breakpoints("margin-bottom", "", [{ 960: "48px" }])}
-`;
-
 const InfoCardContainer = styled(Box)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -79,6 +50,13 @@ const InfoCardText = styled(Text)`
 const InfoCardLinkText = styled(InfoCardText)`
   color: ${theme.colors.green.primary};
 `;
+const CarouselWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  `;
 
 type ReviewsAwards = {
   _id: string;
@@ -160,66 +138,43 @@ const StyledCarousel = styled(Carousel)`
 
 const RandomizedTips = [
   <InfoCardText>
-    You can temporarily add Guest Users to I'm InTouch, perfect for
-    conducting online meetings and presentations.
-  </InfoCardText>,
-
-  <InfoCardText>
-    You can remotely control your I'm InTouch computer using a Pocket
-    PC with an Internet connection.
-  </InfoCardText>,
-
-  <InfoCardText>
-    You can discreetly monitor your children's computer activities
-    using I'm InTouch's Stealth Mode.
-  </InfoCardText>,
-
-  <InfoCardText>
-    I'm InTouch can notify your cell phone whenever you receive an
-    email on your computer.
-  </InfoCardText>,
-
-  <InfoCardText>
-    You can print files from your distant computer to a local printer
-    using I'm InTouch.
+    I'm OnCall's Shareable Licenses means you can have as many technicians as you want without having to purchase one license for each technician.
   </InfoCardText>,
   <InfoCardText>
-    With the Remote Audio feature, you can listen to music on your
-    distant PC from anywhere.
+    You can personalize your I'm OnCall pages by using your company's logo.
   </InfoCardText>,
   <InfoCardText>
-    You can remotely view all the monitors connected to your Host PC
-    using I'm InTouch's Multi Monitor feature.
+    There is no pre-loaded software required for a remote session.
   </InfoCardText>,
-
   <InfoCardText>
-    You can stream video from a webcam on your Host PC to any Computer
-    or Pocket PC.
+    You can support more than one customer at a time from the same machine.
   </InfoCardText>,
-
   <InfoCardText>
-    You can view a list of all your computers on one screen and access
-    them with a single click in I'm InTouch.
+    I'm OnCall is a secure encrypted connection.
   </InfoCardText>,
-
   <InfoCardText>
-    You can access your computer even if it is turned off with the I'm
-    InTouch Wake-up feature.
+    I'm OnCall can support computers behind firewalls without opening ports.
   </InfoCardText>,
-
   <InfoCardText>
-    I'm InTouch provides you with direct access to your Outlook or
-    Windows Mail Emails from any wireless device.
+    A customer has the ability to start a chat session or terminate the session at any time.
   </InfoCardText>,
-
   <InfoCardText>
-    You can transfer files between your computers using I'm InTouch's
-    File Transfer feature.
+    You can support Mac customers.
+  </InfoCardText>,
+  <InfoCardText>
+    Technicians can transfer files and folders.
+  </InfoCardText>,
+  <InfoCardText>
+    You will automatic reconnect after rebooting a customer's machine.
+  </InfoCardText>,
+  <InfoCardText>
+    Customers can join a remote support session by directly entering the Session ID...
   </InfoCardText>
 ]
 
 
-export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
+
+export default function ImOnCallHome({ reviewsAwards, newsUpdates }) {
   const [shuffledTips, setShuffledTips] = useState([]);
 
   useEffect(() => {
@@ -283,16 +238,16 @@ export default function ImInTouchHome({ reviewsAwards, newsUpdates }) {
             showThumbs={false}
           >
             {shuffledTips.map((tip, index) => (
-              <div key={index}>
+              <CarouselWrapper key={index}>
                 {tip}
-              </div>
+              </CarouselWrapper>
             ))}
           </StyledCarousel>
 
           {/* <Divider /> */}
           <Box margin="24px 0 0 0">
             <IOCAnchor
-              href="/imintouch-remote-pc-desktop/features/"
+              href="/imoncall-remote-help-desk/features/"
               variant={AnchorVariants.Small}
             >
               Learn More

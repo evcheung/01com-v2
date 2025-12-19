@@ -550,7 +550,7 @@ export default function Newsletters({ newsletters }) {
       <PressRoomNav activePage='newsletters' />
       <ButtonContainer>
         <PrimaryButton btnColor={ButtonColors.Blue}>
-          <Anchor href="https://www.01com.com/newsletter/Latest/letter01.html" target="_blank" style={{ color: 'white' }}>
+          <Anchor href="https://www.01com.com/newsletter/Latest/letter01.html" target="_blank" style={{ color: 'white', margin: "0" }}>
             Read the latest issue</Anchor></PrimaryButton>
       </ButtonContainer>
       <PaginatedNewsletterItems itemsPerPage={6} items={newsletterItems} />

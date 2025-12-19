@@ -12,6 +12,10 @@ import { breakpoints } from "../utils/breakpoints";
 import { useWindowSize } from "usehooks-ts";
 import Link from "next/link";
 
+const SupportAnchor = styled(Anchor)`
+  margin: 4px;
+`;
+
 const ContactsColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,7 +54,9 @@ const StyledContactContainer = styled(Box)`
 const LiveChatButtonColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 32px;
+  justify-content: center;
+  padding: 12px;
 `;
 const StyledHeading = styled(Heading)`
 margin: 0 0 8px 0;
@@ -153,9 +159,9 @@ export default function Support() {
           </ContactsRowGrid>
           <ContactsRowGrid>
             <ContactContainer heading="Email">
-              <Anchor style={{marginTop: "4px"}} target="_blank" href="mailto:help@01com.com">
+              <SupportAnchor target="_blank" href="mailto:help@01com.com">
                 help@01com.com
-              </Anchor>
+              </SupportAnchor>
             </ContactContainer>
             <ContactContainer heading="Phone" id="phone">
               <Box
@@ -166,7 +172,7 @@ export default function Support() {
               >
                 <Box>
                   <ContactSubText>Sales (Toll-Free):</ContactSubText>
-                  <Anchor style={{marginTop: "4px"}} href="tel:1-800-668-2185">1-800-668-2185</Anchor>
+                  <SupportAnchor href="tel:1-800-668-2185">1-800-668-2185</SupportAnchor>
                 </Box>
                 <Box
                   style={{
@@ -176,7 +182,7 @@ export default function Support() {
                 ></Box>
                 <Box>
                   <ContactSubText>Tech Support:</ContactSubText>
-                  <Anchor style={{marginTop: "4px"}} href="tel:905-795-8166">(905) 795-8166</Anchor>
+                  <SupportAnchor href="tel:905-795-8166">(905) 795-8166</SupportAnchor>
                 </Box>
               </Box>
             </ContactContainer>
@@ -191,17 +197,17 @@ export default function Support() {
               </StyledHeading>
             </Box>
             <HorizontalBorder />
-            <Anchor href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm">
+            <SupportAnchor href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm">
               IronCAP X™
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
-            <Anchor href="https://www.01com.com/01com/imintouch/webhelp/desktop/index.htm">
+            <SupportAnchor href="https://www.01com.com/01com/imintouch/webhelp/desktop/index.htm">
               I'm InTouch
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
-            <Anchor href="https://www.01com.com/01com/imoncall/webhelp/desktop/welcome.htm">
+            <SupportAnchor href="https://www.01com.com/01com/imoncall/webhelp/desktop/welcome.htm">
               I'm OnCall
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
           </Box>
           <Box>
@@ -211,21 +217,21 @@ export default function Support() {
               </StyledHeading>
             </Box>
             <HorizontalBorder />
-            <Anchor href="https://www.ironcap.ca/ironcap-x/faq/">
+            <SupportAnchor href="https://www.ironcap.ca/ironcap-x/faq/">
               IronCAP X™
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
-            <Anchor href="https://www.ironcap.ca/ironcap-api/faq/">
+            <SupportAnchor href="https://www.ironcap.ca/ironcap-api/faq/">
               IronCAP™ Toolkits
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
-            <Anchor href="/imintouch-remote-pc-desktop/faqs/">
+            <SupportAnchor href="/imintouch-remote-pc-desktop/faqs/">
               I'm InTouch
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
-            <Anchor href="https://www.01com.com/imoncall-remote-help-desk/faqs">
+            <SupportAnchor href="https://www.01com.com/imoncall-remote-help-desk/faqs">
               I'm OnCall
-            </Anchor>
+            </SupportAnchor>
             <HorizontalBorder />
           </Box>
         </InfoColumnGrid>

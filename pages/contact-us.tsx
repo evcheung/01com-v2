@@ -41,7 +41,9 @@ const StyledContactContainer = styled(Box)`
 const LiveChatButtonColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 32px;
+  justify-content: center;
+  padding: 12px;
 `;
 
 const StyledHeading = styled(Heading)`

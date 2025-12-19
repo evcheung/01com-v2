@@ -27,7 +27,7 @@ const StyledContactContainer = styled(Box)`
   align-items: center;
   gap: 32px;
   padding: 32px 24px;
-  width: 70%;
+  width: 100%;
   justify-self: center;
 
   ${breakpoints("flex-direction", "", [{ 900: "column" }])}

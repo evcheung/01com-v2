@@ -11,6 +11,16 @@ import { ReactNode } from "react";
 import { breakpoints } from "../utils/breakpoints";
 import { useWindowSize } from "usehooks-ts";
 
+const emailList = [
+      ["General Inquiries:", "01com@01com.com"],
+      ["Sales & VAR Inquiries:", "sales@01com.com"],
+      ["Technical Support:", "help@01com.com"],
+      ["Customer Relations:", "customerservice@01com.com"],
+      ["Investor Relations:", "ir@01com.com"],
+      ["Marketing:", "marketing@01com.com"],
+      ["Human Resources:", "hr@01com.com"],
+    ];
+
 const ContactsColumnGrid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -126,103 +136,108 @@ export default function ContactUs() {
           </Box>
 
           <Box>
-            <ContactContainer heading="Phone" id="phone">
-              <Box
-                flexDirection="row"
-                flexAlignment="center"
-                flexJustify={width <= 900 ? "flex-start" : "space-between"}
-              >
-                <Box width={width <= 900 ? "180px" : "auto"}>
-                  <ContactSubText>Sales (Toll-Free):</ContactSubText>
-                  <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
-                </Box>
-                <Box
-                  style={{
-                    borderLeft: `1px dotted ${theme.colors.neutral.md}`,
-                    height: "46px",
-                    width: width <= 900 && "60px"
-                  }}
-                ></Box>
-                <Box
-                  width={width <= 900 ? "200px" : "auto"}
-                  flexDirection="column"
-                >
-                  <ContactSubText>Tech Support:</ContactSubText>
-                  <Anchor href="tel:(905-795-8166">(905) 795-8166</Anchor>
-                </Box>
-              </Box>
+  <ContactContainer heading="Phone" id="phone">
+    {/* Row 1 */}
+    <Box
+      flexDirection="row"
+      flexAlignment="stretch"
+      style={{
+        gap: width <= 900 ? "16px" : "24px",
+      }}
+    >
+      <Box
+        flexDirection="column"
+        style={{
+          flex: 1,
+          minWidth: width <= 900 ? "180px" : 0,
+          gap: "6px",
+        }}
+      >
+        <ContactSubText>Sales (Toll-Free):</ContactSubText>
+        <Anchor style={{marginTop: "0"}} href="tel:18006682185">1-800-668-2185</Anchor>
+      </Box>
 
-              <Box
-                flexDirection="row"
-                flexAlignment="center"
-                flexJustify={width <= 900 ? "flex-start" : "space-between"}
-                margin="28px 0 0 0"
-              >
-                <Box width={width <= 900 ? "180px" : "auto"}>
-                  <ContactSubText>Tel:</ContactSubText>
-                  <Anchor href="tel:9057952888">(905) 795-2888</Anchor>
-                </Box>
-                <Box
-                  style={{
-                    borderLeft: `1px dotted ${theme.colors.neutral.md}`,
-                    height: "46px",
-                    width: width <= 900 && "60px"
-                  }}
-                ></Box>
-                <Box
-                  width={width <= 900 ? "200px" : "auto"}
-                  flexDirection="column"
-                >
-                  <ContactSubText>Fax:</ContactSubText>
-                  <Anchor href="tel:9057950101">(905) 795-0101</Anchor>
-                </Box>
-              </Box>
-            </ContactContainer>
-            <ContactContainer heading="Email" id="email">
-              <Box margin="0 0 18px 0">
-                <ContactSubText>General Inquiries:</ContactSubText>
-                <Anchor target="_blank" href="mailto:01com@01com.com">
-                  01com@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Sales & VAR Inquiries:</ContactSubText>
-                <Anchor target="_blank" href="mailto:sales@01com.com">
-                  sales@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Technical Support:</ContactSubText>
-                <Anchor target="_blank" href="mailto:help@01com.com">
-                  help@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Customer Relations:</ContactSubText>
-                <Anchor target="_blank" href="mailto:customerservice@01com.com">
-                  customerservice@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Investor Relations:</ContactSubText>
-                <Anchor target="_blank" href="mailto:ir@01com.com">
-                  ir@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Marketing:</ContactSubText>
-                <Anchor target="_blank" href="mailto:marketing@01com.com">
-                  marketing@01com.com
-                </Anchor>
-              </Box>
-              <Box margin="0 0 18px 0">
-                <ContactSubText>Human Resources:</ContactSubText>
-                <Anchor target="_blank" href="mailto:hr@01com.com">
-                  hr@01com.com
-                </Anchor>
-              </Box>
-            </ContactContainer>
-          </Box>
+      <Box
+        aria-hidden="true"
+        style={{
+          borderLeft: `1px dotted ${theme.colors.neutral.md}`,
+          alignSelf: "stretch",
+        }}
+      />
+
+      <Box
+        flexDirection="column"
+        style={{
+          flex: 1,
+          minWidth: width <= 900 ? "200px" : 0,
+          gap: "6px",
+        }}
+      >
+        <ContactSubText style={{marginLeft: "12px"}}>Tech Support:</ContactSubText>
+        <Anchor style={{marginTop: "0", marginLeft: "12px"}} href="tel:9057958166">(905) 795-8166</Anchor>
+      </Box>
+    </Box>
+
+    {/* Row 2 */}
+    <Box
+      flexDirection="row"
+      flexAlignment="stretch"
+      margin="28px 0 0 0"
+      style={{
+        gap: width <= 900 ? "16px" : "24px",
+      }}
+    >
+      <Box
+        flexDirection="column"
+        style={{
+          flex: 1,
+          minWidth: width <= 900 ? "180px" : 0,
+          gap: "6px",
+        }}
+      >
+        <ContactSubText>Tel:</ContactSubText>
+        <Anchor style={{marginTop: "0"}} href="tel:9057952888">(905) 795-2888</Anchor>
+      </Box>
+
+      <Box
+        aria-hidden="true"
+        style={{
+          borderLeft: `1px dotted ${theme.colors.neutral.md}`,
+          alignSelf: "stretch",
+        }}
+      />
+
+      <Box
+        flexDirection="column"
+        style={{
+          flex: 1,
+          minWidth: width <= 900 ? "200px" : 0,
+          gap: "6px",
+        }}
+      >
+        <ContactSubText style={{marginLeft: "12px"}}>Fax:</ContactSubText>
+        <Anchor style={{marginTop: "0", marginLeft: "12px"}} href="tel:9057950101">(905) 795-0101</Anchor>
+      </Box>
+    </Box>
+  </ContactContainer>
+
+  <ContactContainer heading="Email" id="email">
+    {emailList.map(([label, email]) => (
+      <Box
+        key={email}
+        flexDirection="column"
+        margin="0 0 18px 0"
+        style={{ gap: "6px" }}
+      >
+        <ContactSubText>{label}</ContactSubText>
+        <Anchor style={{marginTop: "-8px"}} target="_blank" href={`mailto:${email}`}>
+          {email}
+        </Anchor>
+      </Box>
+    ))}
+  </ContactContainer>
+</Box>
+
         </ContactsColumnGrid>
       </PageContentContainer>
     </Layout>

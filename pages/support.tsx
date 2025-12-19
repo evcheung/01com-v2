@@ -10,6 +10,7 @@ import { LiveChatButton } from "../components/LiveChatButton";
 import { ReactNode } from "react";
 import { breakpoints } from "../utils/breakpoints";
 import { useWindowSize } from "usehooks-ts";
+import Link from "next/link";
 
 const ContactsColumnGrid = styled(Box)`
   display: grid;
@@ -124,8 +125,11 @@ export default function Support() {
           For presales support, our product specialists will recommend you the
           appropriate solutions based on your industry or personal needs. Find
           out how to mobilize your computer, operate your Outlook as a mobile
-          mailbox, provide remote support to your customers, conduct online
-          presentations/meetings, or do home/child monitoring.
+          mailbox, {' '}
+          <Link style={{textDecoration: "underline"}} href="https://www.01com.com/imoncall-remote-help-desk/">provide remote support</Link> 
+          {' '}to your customers, {' '}
+          <Link style={{textDecoration: "underline"}} href="https://www.01com.com/imintouch-online-meetings/">conduct online presentations/meetings</Link>
+          {' '} or do home/child monitoring.
         </StyledText>
 
         <ContactsColumnGrid>
@@ -149,7 +153,7 @@ export default function Support() {
           </ContactsRowGrid>
           <ContactsRowGrid>
             <ContactContainer heading="Email">
-              <Anchor target="_blank" href="mailto:help@01com.com">
+              <Anchor style={{marginTop: "4px"}} target="_blank" href="mailto:help@01com.com">
                 help@01com.com
               </Anchor>
             </ContactContainer>
@@ -162,7 +166,7 @@ export default function Support() {
               >
                 <Box>
                   <ContactSubText>Sales (Toll-Free):</ContactSubText>
-                  <Anchor href="tel:1-800-668-2185">1-800-668-2185</Anchor>
+                  <Anchor style={{marginTop: "4px"}} href="tel:1-800-668-2185">1-800-668-2185</Anchor>
                 </Box>
                 <Box
                   style={{
@@ -172,7 +176,7 @@ export default function Support() {
                 ></Box>
                 <Box>
                   <ContactSubText>Tech Support:</ContactSubText>
-                  <Anchor href="tel:905-795-8166">(905) 795-8166</Anchor>
+                  <Anchor style={{marginTop: "4px"}} href="tel:905-795-8166">(905) 795-8166</Anchor>
                 </Box>
               </Box>
             </ContactContainer>

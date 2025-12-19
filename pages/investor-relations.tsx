@@ -317,7 +317,7 @@ const TableContent = ({ width, data }) => {
                             alt={isPDF ? "pdf icon" : "video icon"}
                           />
                         </Box>
-                        <Anchor href={link.url} target="_blank">
+                        <Anchor style={{marginTop: "4px"}} href={link.url} target="_blank">
                           {link.label}
                         </Anchor>
                       </LinkItem>
@@ -505,7 +505,7 @@ export default function InvestorRelations({ investorRelations }) {
                 <Box margin="0px 8px">
                   <Image src={pdf} alt="pdf icon" />
                 </Box>
-                <Anchor
+                <Anchor style={{marginTop: "4px"}}
                   href={
                     investorRelations.financialResults[0].relevantLinks[0].url
                   }

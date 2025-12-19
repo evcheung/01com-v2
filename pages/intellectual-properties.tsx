@@ -56,13 +56,13 @@ const PatentItemRow = styled(Box)`
 const PatentItem = ({ title, link }) => {
   return (
     <>
-      <PatentItemRow>
+      <PatentItemRow style={{display: "flex", alignItems: "center", marginLeft: "4px", marginRight: "112px"}}>
         <Text>{title}</Text>
         <Box flexDirection="row" flexAlignment="center">
           <Box margin="0 8px 0 0">
             <Image src={pdf} alt="pdf icon"></Image>
           </Box>
-          <Anchor href={link} target="_blank">
+          <Anchor style={{marginTop: "4px"}} href={link} target="_blank">
             View PDF
           </Anchor>
         </Box>

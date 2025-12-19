@@ -117,7 +117,8 @@ export const NavLogin = ({
   const buttonColor = isNavBarLight ? ButtonColors.Blue : ButtonColors.White
 
   // Determine text color
-  const loginTextColor = textColor || (isIOC ? ButtonColors.Green : ButtonColors.Blue)
+const loginTextColor =textColor ?? (isNavBarLight ? theme.colors.neutral.xs : (isIOC ? ButtonColors.Green : ButtonColors.Blue))
+
 
   return (
     <>

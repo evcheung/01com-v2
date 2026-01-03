@@ -92,7 +92,7 @@ export const FooterNavDesktop = () => {
           ></NavLink>
           <NavLink href="/press-releases" label="Press Room"></NavLink>
           <NavLink href="/partner-programs" label="Partner Programs"></NavLink>
-          <NavLink href="/careers" label="Careers"></NavLink>
+          {/* <NavLink href="/careers" label="Careers"></NavLink> */}
           <NavLink href="/contact-us" label="Contact Us"></NavLink>
           <NavLink href="/terms-of-use" label="Terms of Use"></NavLink>
           <NavLink href="/privacy-policy" label="Privacy Policy"></NavLink>

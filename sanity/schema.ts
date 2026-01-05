@@ -13,15 +13,12 @@ import imInTouchFAQs from "./schemas/imInTouchFAQs";
 import imInTouchServerFAQCategories from "./schemas/imInTouchServerFAQCategories";
 import imInTouchServerFAQs from "./schemas/imInTouchServerFAQs";
 
-import post from "./schemas/post";
 import blogPost from "./schemas/blogPost";
-import blockContent from "./schemas/blockContent"
-
+import blockContent from "./schemas/blockContent";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContent,
-    post,
     blogPost,
 
     pressReleases,
@@ -35,6 +32,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imInTouchFAQCategories,
     imInTouchFAQs,
     imInTouchServerFAQCategories,
-    imInTouchServerFAQs
+    imInTouchServerFAQs,
   ],
 };

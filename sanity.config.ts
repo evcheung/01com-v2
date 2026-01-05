@@ -10,6 +10,7 @@ import { deskTool } from 'sanity/desk'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema } from './sanity/schema'
 
+
 export default defineConfig({
   basePath: '/studio',
   projectId: "7o47py1b",
@@ -17,7 +18,9 @@ export default defineConfig({
   // projectId: process.env.SANITY_STUDIO_PROJECT_ID,
   // dataset: process.env.SANITY_STUDIO_DATASET,
   // Add and edit the content schema in the './sanity/schema' folder
+
   schema,
+
   plugins: [
     deskTool(),
     // Vision is a tool that lets you query your content with GROQ in the studio

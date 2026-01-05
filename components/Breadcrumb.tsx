@@ -73,12 +73,13 @@ export const Breadcrumb = ({ label }) => {
   console.log("👉👉👉 location", location, location.includes("imintouch"));
   const isIIT = location.includes("imintouch");
   const isIOC = location.includes("imoncall");
+  const isBlog = location.includes("blog");
   const subSite = isIIT ? getSubSite(location) : undefined;
 
   return (
     <BreadcrumbContainer isIIT={isIIT}>
       <StyledText>
-        <Link href="/">01com</Link>
+        <Link href="/">01 Quantum</Link>
       </StyledText>
       <span>
         <StyledText>{">"}</StyledText>
@@ -98,13 +99,24 @@ export const Breadcrumb = ({ label }) => {
           <StyledText>
             <Link href="/imoncall-remote-help-desk">I'm OnCall</Link>
           </StyledText>
-          {/* Only show arrow if not exactly on /imoncall-remote-help-desk */}
           {!location.endsWith("/imoncall-remote-help-desk/") &&
             !location.endsWith("/imoncall-remote-help-desk") && (
               <span>
                 <StyledText>{">"}</StyledText>
               </span>
             )}
+        </>
+      )}
+      {isBlog && (
+        <>
+          <StyledText>
+            <Link href="/blog">Blog</Link>
+          </StyledText>
+          {label && (
+            <span>
+              <StyledText>{">"}</StyledText>
+            </span>
+          )}
         </>
       )}
 

@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "blogPost",
@@ -23,9 +23,7 @@ export default defineType({
       title: "Main image",
       type: "image",
       options: { hotspot: true },
-      fields: [
-        { name: "alt", type: "string", title: "Alternative Text" },
-      ],
+      fields: [{ name: "alt", type: "string", title: "Alternative Text" }],
     } as any),
     defineField({
       name: "publishedAt",
@@ -45,5 +43,10 @@ export default defineType({
       type: "blockContent",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "email",
+      title: "Email",
+      type: "email",
+    }),
   ],
-})
+});

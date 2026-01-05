@@ -149,7 +149,7 @@ export const BlogNavBarDesktop = ({
               href="/intellectual-properties"
               label="Intellectual Properties"
             />
-          </>ß
+          </>
         </Box>
         <NavLogin isNavBarLight={false} isIIT={true} />
       </NavBarContainer>

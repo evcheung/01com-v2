@@ -12,6 +12,7 @@ import william from "../public/assets/william.jpg";
 import tyson from "../public/assets/tyson.jpg";
 import gary from "../public/assets/gary.jpg";
 import edoardo from "../public/assets/edoardo.png";
+import alex from "../public/assets/alexshpurov.png";
 import { breakpoints } from "../utils/breakpoints";
 
 const StyledText = styled(Text)`
@@ -199,6 +200,56 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
+            <ProfileImage src={tyson} alt="Tyson Macauley" />
+          </Box>
+          <Box>
+            <StyledHeading3 variant={HeadingVariants.Heading3}>
+              Tyson Macauley
+            </StyledHeading3>
+            <StyledSubtext variant={TextVariants.Body3}>
+              Chief Operating Officer
+            </StyledSubtext>
+            <Text variant={TextVariants.Body1}>
+              Mr. Macaulay, CISA, LEL CIE, brings with him over twenty five
+              years of engineering and management experience in network, cloud
+              and IoT security solutions. Residing in Ottawa he is currently the
+              Chief Security Officer and Vice President of Field Engineering at
+              Rockport Networks Inc. Prior to that, he held the positions of
+              Chief Product Officer at InfoSec Global (ISG), CTO for BAE Systems
+              Applied Intelligence in North America, CTO - Telecommunications at
+              Intel and Chief Security Strategist at Fortinet. These roles all
+              involved product strategy, corporate development (mergers,
+              acquisitions and partnerships), business development and thought
+              leadership.
+            </Text>
+          </Box>
+        </TeamCard>
+
+        <TeamCard>
+          <Box margin="0 48px 0 0">
+            <ProfileImage src={alex} alt="Alex Shpruov" />
+          </Box>
+          <Box>
+            <StyledHeading3 variant={HeadingVariants.Heading3}>
+              Alex Shpruov
+            </StyledHeading3>
+            <StyledSubtext variant={TextVariants.Body3}>
+              Chief Technology Officer
+            </StyledSubtext>
+            <Text variant={TextVariants.Body1}>
+              Alex Shpurov is a certified cloud solutions architect and applied cryptography engineer focused on building secure, privacy-preserving systems using Fully Homomorphic Encryption (FHE), Zero-Knowledge Proofs (ZKP), and modern cloud architectures. His work centers on enabling computation, verification, and decision-making over sensitive data without exposing the underlying information.
+              <br />
+              <br />
+              He specializes in designing production-grade cryptographic systems that integrate FHE and ZKP into real-world workflows, including secure DeFi, private AI, and regulated enterprise environments - often without requiring changes to existing blockchain protocols or infrastructure. His work bridges advanced cryptography with practical cloud deployment across AWS and hybrid environments.
+              <br />
+              <br />
+              Alex has authored or contributed to approximately 20 patents in cybersecurity and applied cryptography, spanning post-quantum security, zero-knowledge architectures, and secure distributed systems. He brings extensive experience delivering scalable cloud solutions across finance, security, and data-intensive domains, with a focus on turning advanced research into systems that are operable, auditable, and deployable at scale.
+            </Text>
+          </Box>
+        </TeamCard>
+
+        <TeamCard>
+          <Box margin="0 48px 0 0">
             <ProfileImage src={gary} alt="Gary Kissack" />
           </Box>
           <Box>
@@ -218,33 +269,6 @@ export default function AboutUs() {
               companies, underwriters, investors and professional advisors on a
               range of transactions including IPOs, private placements, etc. He
               has been a Board Member of 01 Quantum since 2006.
-            </Text>
-          </Box>
-        </TeamCard>
-
-        <TeamCard>
-          <Box margin="0 48px 0 0">
-            <ProfileImage src={tyson} alt="Tyson Macauley" />
-          </Box>
-          <Box>
-            <StyledHeading3 variant={HeadingVariants.Heading3}>
-              Tyson Macauley
-            </StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body3}>
-              Board Member
-            </StyledSubtext>
-            <Text variant={TextVariants.Body1}>
-              Mr. Macaulay, CISA, LEL CIE, brings with him over twenty five
-              years of engineering and management experience in network, cloud
-              and IoT security solutions. Residing in Ottawa he is currently the
-              Chief Security Officer and Vice President of Field Engineering at
-              Rockport Networks Inc. Prior to that, he held the positions of
-              Chief Product Officer at InfoSec Global (ISG), CTO for BAE Systems
-              Applied Intelligence in North America, CTO - Telecommunications at
-              Intel and Chief Security Strategist at Fortinet. These roles all
-              involved product strategy, corporate development (mergers,
-              acquisitions and partnerships), business development and thought
-              leadership.
             </Text>
           </Box>
         </TeamCard>

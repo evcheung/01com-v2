@@ -18,7 +18,21 @@ const Container = styled.div`
   ${breakpoints("padding", "", [
   { 760: "0px 16px" },
 ])}
-
+`
+const BlogContainer = styled.div`
+  background-color:  ${theme.colors.neutral.sm};
+  display: flex;
+  flex-direction: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 48px;
+  overflow: hidden;
+  ${breakpoints("padding", "", [
+  { 1280: "0px 32px" },
+])}
+  ${breakpoints("padding", "", [
+  { 760: "0px 16px" },
+])}
 `
 const Main = styled.main`
   flex: 1;
@@ -64,4 +78,4 @@ const CodeTag = styled.code`
     Bitstream Vera Sans Mono, Courier New, monospace;
 `
 
-export { Container, Main, Title, Description, CodeTag }
+export { BlogContainer, Container, Main, Title, Description, CodeTag }

@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc){
     title,
     "slug": slug.current,
-    publishedAt
+    publishedAt,
   }
 `)
 
@@ -38,63 +38,6 @@ const StyledHeading = styled(Heading)`
   ${breakpoints("font-size", "", [{ 760: "28px" }])}
 `;
 
-const ListContainer = styled(Box)`
-  width: 100%;
-  margin: 0 0 48px 0;
-`;
-
-const ListRow = styled(Box)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 0;
-  border-top: 1px solid ${theme.colors.neutral.md};
-
-  &:last-child {
-    border-bottom: 1px solid ${theme.colors.neutral.md};
-  }
-
-  ${breakpoints("flex-direction", "", [{ 760: "column" }])}
-  ${breakpoints("align-items", "", [{ 760: "flex-start" }])}
-  ${breakpoints("gap", "", [{ 760: "8px" }])}
-`;
-
-const TitleLink = styled.a`
-  color: ${theme.colors.neutral.xl};
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: ${theme.fontWeight[400]};
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  ${breakpoints("font-size", "", [{ 760: "16px" }])}
-  ${breakpoints("line-height", "", [{ 760: "26px" }])}
-`;
-
-const Date = styled(Text)`
-  color: ${theme.colors.neutral.lg};
-  opacity: 0.7;
-  white-space: nowrap;
-  font-size: 12px;
-  line-height: 18px;
-
-  ${breakpoints("align-self", "", [{ 760: "flex-start" }])}
-`;
-
-function formatDate(date?: string) {
-  if (!date) return "";
-  const d = new globalThis.Date(date);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
 
 export default function BlogIndexPage({ posts }: Props) {
   return (

@@ -1,0 +1,31 @@
+import styled from "styled-components";
+import { Box } from "../core";
+import { breakpoints } from "../../utils/breakpoints";
+
+export const BlogPageContentContainer = styled(Box)`
+padding: 0px 246px;
+margin: 96px 0;
+max-width: 1300px;
+width: 100%;
+${breakpoints("padding", "", [
+  { 1300: "0 96px" },
+])}
+${breakpoints("padding", "", [
+  { 940: "0 32px" },
+])}
+${breakpoints("padding", "", [
+  { 760: "0" },
+])}
+${breakpoints("margin", "", [
+  { 760: "48px 0" },
+])}
+${breakpoints("max-width", "", [
+  { 1300: "auto" },
+])}
+${breakpoints("max-width", "", [
+  { 940: "auto" },
+])}
+${breakpoints("width", "", [
+  { 940: "100%" },
+])}
+`

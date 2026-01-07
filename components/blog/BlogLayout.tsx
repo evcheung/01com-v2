@@ -1,7 +1,7 @@
 
 import { ReactNode } from 'react';
 import { NavBar, NavBarVariants } from '../NavBar'
-import { Container, Main } from '../sharedstyles'
+import { BlogContainer, Main } from '../sharedstyles'
 import { BlogNavBar } from './BlogNavBar';
 import { BlogFooterNav } from './BlogFooterNav';
 import { useWindowSize } from 'usehooks-ts';
@@ -26,13 +26,13 @@ export default function BlogLayout({
   const { width } = useWindowSize()
 
   return (
-    <Container>
+    <BlogContainer>
       <Main>
         <BlogNavBar variant={NavBarVariants.Dark} width={width} />
         {children}
         <BlogFooterNav width={width} />
       </Main>
       <LiveChatBubble />
-    </Container >
+    </BlogContainer>
   )
 }

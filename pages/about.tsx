@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { theme } from "../theme";
 import { PageContentContainer } from "../components/PageContentContainer";
 import Image from "next/image";
-import andrew from "../public/assets/andrew.jpg";
+import andrew from "../public/assets/andrew.png";
 import brian from "../public/assets/brian.jpg";
 import william from "../public/assets/william.jpg";
 import tyson from "../public/assets/tyson.jpg";
@@ -207,7 +207,7 @@ export default function AboutUs() {
               Tyson Macauley
             </StyledHeading3>
             <StyledSubtext variant={TextVariants.Body3}>
-              Chief Operating Officer
+              Board Member & COO
             </StyledSubtext>
             <Text variant={TextVariants.Body1}>
               Mr. Macaulay, CISA, LEL CIE, brings with him over twenty five
@@ -234,7 +234,7 @@ export default function AboutUs() {
               Alex Shpruov
             </StyledHeading3>
             <StyledSubtext variant={TextVariants.Body3}>
-              Chief Technology Officer
+              CTO
             </StyledSubtext>
             <Text variant={TextVariants.Body1}>
               Alex Shpurov is a certified cloud solutions architect and applied cryptography engineer focused on building secure, privacy-preserving systems using Fully Homomorphic Encryption (FHE), Zero-Knowledge Proofs (ZKP), and modern cloud architectures. His work centers on enabling computation, verification, and decision-making over sensitive data without exposing the underlying information.
@@ -279,9 +279,9 @@ export default function AboutUs() {
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>
-              Edoardo Perischetti
+              Edoardo Persichetti
             </StyledHeading3>
-            <StyledSubtext variant={TextVariants.Body3}>Advisor</StyledSubtext>
+            <StyledSubtext variant={TextVariants.Body3}>PQC Advisor</StyledSubtext>
             <Text variant={TextVariants.Body1}>
               Dr. Edoardo Persichetti is currently an Associate Professor in the
               Department of Mathematical and Statistics at Florida Atlantic

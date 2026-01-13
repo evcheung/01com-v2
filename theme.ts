@@ -34,8 +34,13 @@ const fontWeight = {
   700: 700
 }
 
+const fontStyles = {
+  heading: `'Cardo', serif`,
+}
+
 export const theme = {
   colors,
   fontSize,
   fontWeight,
+  fontStyles,
 }

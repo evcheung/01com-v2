@@ -18,6 +18,19 @@ import { useWindowSize } from "usehooks-ts";
 import { breakpoints } from "../utils/breakpoints";
 import { client } from "../sanity/lib/client";
 import ShortUniqueId from "short-unique-id";
+import thumbnail from "../public/assets/thumbnail-andrew-cheung.png";
+
+const isMp4Link = (url?: string) => !!url && /\.mp4(\?|#|$)/i.test(url);
+
+const getYoutubeId = (url: string) => {
+  // supports youtu.be/<id>, youtube.com/watch?v=<id>, youtube.com/embed/<id>
+  const match =
+    url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/) ||
+    url.match(/[?&]v=([A-Za-z0-9_-]{11})/) ||
+    url.match(/\/embed\/([A-Za-z0-9_-]{11})/);
+
+  return match?.[1] ?? "";
+};
 
 export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
@@ -111,10 +124,12 @@ const LinkItem = styled(Box)`
 const HeaderContent = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
   const { width } = useWindowSize();
-  const youtubeId = featuredVideo.link.split("v=")[1].slice(0, 11);
+
+  const isMp4 = isMp4Link(featuredVideo?.link);
+  const youtubeId = !isMp4 ? getYoutubeId(featuredVideo.link) : "";
   const youtubeThumbnail = useMemo(
-    () => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`,
-    []
+    () => (!isMp4 && youtubeId ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp` : ""),
+    [isMp4, youtubeId]
   );
 
   const VideoBannerDesktop = () => (
@@ -134,20 +149,70 @@ const HeaderContent = ({ featuredVideo }) => {
           <Text>{featuredVideo.description}</Text>
         </Box>
       </Box>
+
       <Box
-        backgroundImage={youtubeThumbnail}
+        backgroundImage={isMp4 ? thumbnail.src : youtubeThumbnail}
         flexDirection="row"
         flexAlignment="center"
         flexJustify="center"
         style={{ height: "300px" }}
       >
-        <ModalVideo
-          channel="youtube"
-          youtube={{ mute: 0, autoplay: 0 }}
-          isOpen={isOpen}
-          videoId={youtubeId}
-          onClose={() => setOpen(false)}
-        />
+        {/* MP4 modal */}
+        {isMp4 && isOpen && (
+          <Box
+            style={{
+              position: "fixed",
+              inset: 0,
+              background: "rgba(0,0,0,0.75)",
+              zIndex: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "24px",
+            }}
+            onClick={() => setOpen(false)}
+          >
+            <Box
+              style={{ width: "min(960px, 100%)" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Box style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
+                <button
+                  onClick={() => setOpen(false)}
+                  style={{
+                    background: "transparent",
+                    border: "1px solid rgba(255,255,255,0.5)",
+                    color: "#fff",
+                    padding: "6px 10px",
+                    cursor: "pointer",
+                  }}
+                  aria-label="Close video"
+                >
+                  Close
+                </button>
+              </Box>
+
+              <video
+                src={featuredVideo.link}
+                controls
+                autoPlay
+                style={{ width: "100%", borderRadius: "8px" }}
+              />
+            </Box>
+          </Box>
+        )}
+
+        {/* YouTube modal (existing) */}
+        {!isMp4 && (
+          <ModalVideo
+            channel="youtube"
+            youtube={{ mute: 0, autoplay: 0 }}
+            isOpen={isOpen}
+            videoId={youtubeId}
+            onClose={() => setOpen(false)}
+          />
+        )}
+
         <PlayButton onClick={() => setOpen(true)}>
           <Image src={playButton} alt="play button" />
         </PlayButton>
@@ -175,6 +240,7 @@ const HeaderContent = ({ featuredVideo }) => {
     </>
   );
 };
+
 
 const LATEST_PRESENTATION = [
   {
@@ -238,47 +304,99 @@ const RECENT_EVENTS = [
 
 const VideoBannerMobile = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
-  const youtubeId = featuredVideo.link.split("v=")[1].slice(0, 11);
+
+  const isMp4 = isMp4Link(featuredVideo?.link);
+  const youtubeId = !isMp4 ? getYoutubeId(featuredVideo.link) : "";
   const youtubeThumbnail = useMemo(
-    () => `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`,
-    []
+    () =>
+      !isMp4 && youtubeId
+        ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`
+        : "",
+    [isMp4, youtubeId]
   );
 
   return (
     <>
       <Box
-        backgroundImage={youtubeThumbnail}
+        backgroundImage={isMp4 ? thumbnail.src : youtubeThumbnail}
         flexDirection="row"
         flexAlignment="center"
         flexJustify="center"
         margin="0 0 32px 0"
         style={{ height: "300px", width: "100%" }}
       >
-        <ModalVideo
-          channel="youtube"
-          youtube={{ mute: 0, autoplay: 0 }}
-          isOpen={isOpen}
-          videoId="SpU45f6jV7w"
-          onClose={() => setOpen(false)}
-        />
+        {isMp4 && isOpen && (
+          <Box
+            style={{
+              position: "fixed",
+              inset: 0,
+              background: "rgba(0,0,0,0.75)",
+              zIndex: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "24px",
+            }}
+            onClick={() => setOpen(false)}
+          >
+            <Box
+              style={{ width: "min(960px, 100%)" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginBottom: "8px",
+                }}
+              >
+                <button
+                  onClick={() => setOpen(false)}
+                  style={{
+                    background: "transparent",
+                    border: "1px solid rgba(255,255,255,0.5)",
+                    color: "#fff",
+                    padding: "6px 10px",
+                    cursor: "pointer",
+                  }}
+                  aria-label="Close video"
+                >
+                  Close
+                </button>
+              </Box>
+
+              <video
+                src={featuredVideo.link}
+                controls
+                autoPlay
+                style={{ width: "100%", borderRadius: "8px" }}
+              />
+            </Box>
+          </Box>
+        )}
+        {!isMp4 && (
+          <ModalVideo
+            channel="youtube"
+            youtube={{ mute: 0, autoplay: 0 }}
+            isOpen={isOpen}
+            videoId={youtubeId}
+            onClose={() => setOpen(false)}
+          />
+        )}
+
         <PlayButton onClick={() => setOpen(true)}>
           <Image src={playButton} alt="play button" />
         </PlayButton>
       </Box>
-
       <Box>
         <StyledVideoHeader textColor={TextColors.Blue}>
           Featured Video
         </StyledVideoHeader>
         <Box margin="16px 0">
-          <StyledHeading as="h2">
-            Interview with Andrew Cheung, CEO 01 Quantum
-          </StyledHeading>
+          <StyledHeading as="h2">{featuredVideo.title}</StyledHeading>
         </Box>
         <Box>
-          <Text>
-            01 Quantum talks about its quantum-safe cybersecurity solution.
-          </Text>
+          <Text>{featuredVideo.description}</Text>
         </Box>
       </Box>
     </>

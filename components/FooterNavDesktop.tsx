@@ -86,6 +86,9 @@ export const FooterNavDesktop = () => {
             </Link>
           </LogoDesktop>
           <NavLink href="/about" label="About 01 Quantum"></NavLink>
+
+          <NavLink href="/blog" label="01 Quantum Blog"></NavLink>
+
           <NavLink
             href="/investor-relations"
             label="Investor Relations"

@@ -99,7 +99,7 @@ export const FooterNavMobile = () => {
             alt="youtube"
           />
           <LinkedSocialIcon
-            href="http://blog.01com.com/wp/"
+            href="./blog"
             src={rss}
             alt="rss"
           />

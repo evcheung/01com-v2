@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
-import { Raleway } from 'next/font/google'
+import { Raleway, Cardo} from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 
@@ -14,6 +14,12 @@ const theme: DefaultTheme = {
 
 // If loading a variable font, you don't need to specify the font weight
 const raleway = Raleway({ subsets: ['latin'], display: 'swap', adjustFontFallback: false })
+const cardo = Cardo({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-heading",
+});
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -24,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [])
   return (
     <>
-      {isClient && <main className={raleway.className}>
+      {isClient && <main className={`${raleway.className} ${cardo.variable}`}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Component {...pageProps} />

@@ -101,11 +101,13 @@ export const NavLogin = ({
   isNavBarLight,
   isIIT = false,
   isIOC = false,
+  isBlog = false,
   textColor, // new optional prop
 }: {
   isNavBarLight: boolean,
   isIIT?: boolean,
   isIOC?: boolean,
+  isBlog?: boolean,
   textColor?: string
 }) => {
   const [isLoginMenuActive, setIsLoginMenuActive] = useState(false)
@@ -117,7 +119,7 @@ export const NavLogin = ({
   const buttonColor = isNavBarLight ? ButtonColors.Blue : ButtonColors.White
 
   // Determine text color
-const loginTextColor =textColor ?? (isNavBarLight ? theme.colors.neutral.xs : (isIOC ? ButtonColors.Green : ButtonColors.Blue))
+const loginTextColor =textColor ?? (isNavBarLight ? theme.colors.neutral.xs : (isIOC ? ButtonColors.Green : ButtonColors.Neutral))
 
 
   return (

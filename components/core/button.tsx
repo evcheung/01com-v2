@@ -6,6 +6,7 @@ export enum ButtonColors {
   Blue = 'Blue',
   Green = 'Green',
   White = 'White',
+  Neutral = '#115293'
 }
 
 export enum ButtonTextColors {

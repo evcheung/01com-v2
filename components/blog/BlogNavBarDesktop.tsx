@@ -70,29 +70,6 @@ const hideMenu = () => {
   }
 };
 
-const AffiliatedProductsMenu = ({ handleMouseLeave }) => {
-  return (
-    <StyledDropdownMenu
-      className="hover-dropdown-menu"
-      onMouseOver={displayMenu}
-      onMouseLeave={handleMouseLeave}
-    >
-      <Link href="/imintouch-remote-pc-desktop/go">
-        <Text variant={TextVariants.Feat2}>I'm InTouch Go</Text>
-      </Link>
-      <Link href="/imintouch-remote-pc-desktop/gomail">
-        <Text variant={TextVariants.Feat2}>I'm InTouch GoMail</Text>
-      </Link>
-      <Link href="/imintouch-remote-pc-desktop/server">
-        <Text variant={TextVariants.Feat2}>I'm InTouch Server Edition</Text>
-      </Link>
-      <Link href="/imintouch-remote-pc-desktop/secure-key">
-        <Text variant={TextVariants.Feat2}>I'm InTouch SecureKEY</Text>
-      </Link>
-    </StyledDropdownMenu>
-  );
-};
-
 export const BlogNavBarDesktop = ({
   variant,
 }: {
@@ -141,6 +118,11 @@ export const BlogNavBarDesktop = ({
             />
             <NavLink
               color={theme.colors.neutral.xs}
+              href="/imoncall-/"
+              label="I'm OnCall"
+            />
+            <NavLink
+              color={theme.colors.neutral.xs}
               href="/support"
               label="Support"
             />
@@ -151,7 +133,7 @@ export const BlogNavBarDesktop = ({
             />
           </>
         </Box>
-        <NavLogin isNavBarLight={false} isIIT={true} />
+        <NavLogin isNavBarLight={false} isBlog={true} textColor="#115293"/>
       </NavBarContainer>
     </>
   );

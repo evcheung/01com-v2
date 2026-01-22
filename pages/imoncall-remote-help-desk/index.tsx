@@ -73,17 +73,9 @@ export const getStaticProps = async () => {
     props: {
       reviewsAwards: await client.fetch<ReviewsAwards[]>(
         `*[_type == "reviews-awards"] | order(date desc)[0]`,
-        {
-          cache: "no-store",
-          ssr: false,
-        }
       ),
       newsUpdates: await client.fetch(
         `*[_type == "im-in-touch-news-updates"] | order(_updatedAt desc)[0]`,
-        {
-          cache: "no-store",
-          ssr: false,
-        }
       ),
     },
   };

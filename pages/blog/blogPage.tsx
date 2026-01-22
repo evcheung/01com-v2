@@ -32,18 +32,6 @@ export type Post = {
 
 type Props = { post: Post | null };
 
-const SmallDivider = () => (
-  <div
-    style={{
-      justifySelf: "center",
-      width: "40%",
-      height: "1px",
-      backgroundColor: "rgba(0,0,0,0.7)",
-      margin: "24px 0",
-    }}
-  />
-);
-
 const Divider = () => (
   <div
     style={{
@@ -86,7 +74,6 @@ const BlogPage = ({ post }: Props) => {
           style={{
             lineHeight: "1.2",
             marginBottom: "24px",
-            fontFamily: "var(--font-heading)",
           }}
         >
           {post.title}
@@ -130,7 +117,6 @@ const BlogPage = ({ post }: Props) => {
             lineHeight: "28px",
             marginTop: "32px",
             marginBottom: "32px",
-            fontFamily: "inherit", // keep Raleway
           }}
         >
           <style jsx>{`
@@ -140,14 +126,19 @@ const BlogPage = ({ post }: Props) => {
             div :global(h4),
             div :global(h5),
             div :global(h6) {
-              font-family: var(--font-heading);
               margin-top: 32px;
               margin-bottom: 20px;
               line-height: 1.25;
+              font-weight: 450;
             }
 
             div :global(p) {
               margin-bottom: 24px;
+              font-weight: 300;
+            }
+
+            div :global(p:last-of-type) {
+              font-weight: 500;
             }
 
             /* first heading shouldn't be pushed down */
@@ -161,7 +152,6 @@ const BlogPage = ({ post }: Props) => {
           <PortableText value={post.body} />
         </div>
 
-        <SmallDivider />
         <Divider />
 
         <div
@@ -172,7 +162,6 @@ const BlogPage = ({ post }: Props) => {
             marginTop: "48px",
           }}
         >
-          {/* previous */}
           <div style={{ flex: 1, textAlign: "left" }}>
             {post.previous && (
               <Link
@@ -186,7 +175,6 @@ const BlogPage = ({ post }: Props) => {
             )}
           </div>
 
-          {/* next */}
           <div style={{ flex: 1, textAlign: "right" }}>
             {post.next && (
               <Link

@@ -69,4 +69,4 @@ export default defineType({
       return {...selection, subtitle: author && `by ${author}`}
     },
   },
-})
+} as any)

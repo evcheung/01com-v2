@@ -18,10 +18,7 @@ export const revalidate = 10
 export const getStaticProps = async () => {
   return {
     props: {
-      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`, {
-        cache: 'no-store',
-        ssr: false
-      })
+      pressReleases: await client.fetch<PressRelease[]>(`*[_type == "press-releases"] | order(date desc)`,)
     },
   }
 }

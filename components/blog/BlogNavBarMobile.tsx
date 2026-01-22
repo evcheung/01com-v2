@@ -111,6 +111,9 @@ export const BlogNavBarMobile = ({
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
                 <AnchorDivider />
 
+                <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk/" label="I'm OnCall" />
+                <AnchorDivider />
+
                 <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/support" label="Support" />
                 <AnchorDivider />
 
@@ -121,7 +124,7 @@ export const BlogNavBarMobile = ({
         <Link href={`/`} style={{ zIndex: 2000 }}>
           <LogoContainer src={BrandLogo} alt="01 Quantum Inc brand logo, click to return to homepage" />
         </Link>
-        <NavLogin isNavBarLight={false} isIIT={true} />
+        <NavLogin isNavBarLight={false} isBlog={true} textColor="#115293" />
       </NavBarContainer >
     </>
   )

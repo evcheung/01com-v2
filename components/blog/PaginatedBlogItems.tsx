@@ -39,7 +39,7 @@ const TitleLink = styled.a`
   text-decoration: none;
   font-size: 18px;
   line-height: 28px;
-  font-weight: ${theme.fontWeight[400]};
+  font-weight: ${theme.fontWeight[300]};
 
   &:hover {
     text-decoration: underline;
@@ -53,7 +53,7 @@ const DateText = styled(Text)`
   color: ${theme.colors.neutral.lg};
   opacity: 0.7;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
 
   ${breakpoints("align-self", "", [{ 760: "flex-start" }])}

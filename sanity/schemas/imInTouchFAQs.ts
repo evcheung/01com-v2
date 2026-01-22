@@ -44,4 +44,4 @@ export default defineType({
       title: 'category.category',
     }
   },
-})
+} as any);

@@ -43,11 +43,7 @@ export const getStaticProps = async () => {
       {
         ...,
         category -> { category }
-      }`,
-        {
-          cache: 'no-store',
-          ssr: false
-        }),
+      }`,),
     }
   }
 }

@@ -142,10 +142,6 @@ export const getStaticProps = async () => {
     props: {
       pressReleases: await client.fetch<PressRelease[]>(
         `*[_type == "press-releases"] | order(date desc)[0..2]`,
-        {
-          cache: "no-store",
-          ssr: false,
-        }
       ),
     },
   };

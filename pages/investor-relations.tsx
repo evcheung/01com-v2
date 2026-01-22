@@ -509,10 +509,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      investorRelations: await client.fetch<InvestorRelations[]>(query, {
-        cache: "no-store",
-        ssr: false
-      })
+      investorRelations: await client.fetch<InvestorRelations[]>(query),
     }
   };
 };

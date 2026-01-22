@@ -22,10 +22,12 @@ export const revalidate = 10
 export const getStaticProps = async () => {
   return {
     props: {
-      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`, {
-        cache: 'no-store',
-        ssr: false
-      })
+      newsletters: await client.fetch<Newsletters[]>(`*[_type == "newsletters"] | order(date desc)`, 
+      //   {
+      //   cache: 'no-store',
+      //   ssr: false
+      // }
+    )
     },
   }
 }

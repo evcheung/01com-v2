@@ -87,7 +87,7 @@ export const FooterNavDesktop = () => {
           </LogoDesktop>
           <NavLink href="/about" label="About 01 Quantum"></NavLink>
 
-          <NavLink href="/blog" label="01 Quantum Blog"></NavLink>
+          <NavLink href="https://blogs.groupware.org.uk/01-Quantum-Inc" label="01 Quantum Blog"></NavLink>
 
           <NavLink
             href="/investor-relations"
@@ -158,7 +158,7 @@ export const FooterNavDesktop = () => {
               alt="youtube"
             />
             <LinkedSocialIcon
-              href="./blog"
+              href="https://blogs.groupware.org.uk/01-Quantum-Inc"
               src={rss}
               alt="rss"
             />

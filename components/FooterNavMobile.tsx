@@ -62,7 +62,7 @@ export const FooterNavMobile = () => {
         <NavLinkContainer>
           <NavLink href="/about" label="About 01 Quantum"></NavLink>
 
-          <NavLink href="https://blogs.groupware.org.uk/01-Quantum-Inc" label="01 Quantum Blog"></NavLink>
+          <NavLink href="/blog" label="01 Quantum Blog"></NavLink>
 
           <NavLink
             href="/investor-relations"

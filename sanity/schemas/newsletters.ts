@@ -12,6 +12,7 @@ export default defineType({
       initialValue: '2025',
       options: {
         list: [
+          { title: '2026', value: '2026' },
           { title: '2025', value: '2025' },
           { title: '2024', value: '2024' },
           { title: '2023', value: '2023' },

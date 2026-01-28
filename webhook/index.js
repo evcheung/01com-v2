@@ -44,7 +44,7 @@ app.post(
     exec(
       "yarn build",
       {
-        cwd: "/Users/Sean/01com-v2/01com-v2",
+        cwd: "C:\\Users\\Sean\\01com-v2",
         shell: "/bin/zsh",
       },
       (err, stdout, stderr) => {

@@ -200,11 +200,11 @@ export default function AboutUs() {
 
         <TeamCard>
           <Box margin="0 48px 0 0">
-            <ProfileImage src={tyson} alt="Tyson Macauley" />
+            <ProfileImage src={tyson} alt="Tyson Macaulay" />
           </Box>
           <Box>
             <StyledHeading3 variant={HeadingVariants.Heading3}>
-              Tyson Macauley
+              Tyson Macaulay
             </StyledHeading3>
             <StyledSubtext variant={TextVariants.Body3}>
               Board Member & COO

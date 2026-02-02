@@ -12,7 +12,7 @@ const BUILD_CWD = process.env.BUILD_CWD || process.cwd();
 const BUILD_CMD = process.env.BUILD_CMD || "yarn build";
 const SKIP_SIGNATURE = String(process.env.SKIP_SIGNATURE || "false").toLowerCase() === "true";
 
-// Keep raw body EXACTLY as received for signature verification.
+// Keep raw body as received for signature verification.
 app.post(
   "/sanity/webhook",
   bodyParser.raw({
@@ -80,7 +80,7 @@ app.post(
     const isWindows = process.platform === "win32";
     const shell = isWindows ? "cmd.exe" : "/bin/bash";
 
-    // On Windows, exec uses cmd by default; we still set it explicitly.
+    // set cmd explicitly for windows
     const cmd = isWindows ? `${BUILD_CMD}` : `${BUILD_CMD}`;
 
     exec(

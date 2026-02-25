@@ -14,44 +14,6 @@ const TEXT_BODY = "#e6eefb";
 const TEXT_BLUE = "#4db1ff";
 const TEXT_GREEN = "#00cf7d";
 
-const footerActionLinks = [
-  { label: "Contact", href: "/contact-us" },
-  { label: "Demo", href: "/contact-us" },
-];
-
-const footerNavLinks = [
-  { label: "Products", href: "/" },
-  { label: "Services", href: "/" },
-  { label: "Use Cases", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact-us" },
-  { label: "Investor Relations", href: "/investor-relations" },
-];
-
-const footerSocialLinks = [
-  {
-    label: "X",
-    href: "https://x.com/01quantuminc",
-    src: "/assets/x.png",
-    width: 24,
-    height: 24,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/01-quantum/",
-    src: "/assets/linkedin.png",
-    width: 24,
-    height: 24,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg",
-    src: "/assets/youtube.png",
-    width: 24,
-    height: 24,
-  },
-];
-
 const MainBannerContainer = styled.section`
   position: relative;
   z-index: 1;

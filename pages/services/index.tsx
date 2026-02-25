@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { Footer } from "../../components/Footer";
 
 export const revalidate = 10;
 
@@ -12,44 +13,6 @@ const TEXT_WHITE = "#f4f8ff";
 const TEXT_BODY = "#e6eefb";
 const TEXT_BLUE = "#4db1ff";
 const TEXT_GREEN = "#00cf7d";
-
-const footerActionLinks = [
-  { label: "Contact", href: "/contact-us" },
-  { label: "Demo", href: "/contact-us" },
-];
-
-const footerNavLinks = [
-  { label: "Products", href: "/" },
-  { label: "Services", href: "/" },
-  { label: "Use Cases", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact-us" },
-  { label: "Investor Relations", href: "/investor-relations" },
-];
-
-const footerSocialLinks = [
-  {
-    label: "X",
-    href: "https://x.com/01quantuminc",
-    src: "/assets/x.png",
-    width: 24,
-    height: 24,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/01-quantum/",
-    src: "/assets/linkedin.png",
-    width: 24,
-    height: 24,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg",
-    src: "/assets/youtube.png",
-    width: 24,
-    height: 24,
-  },
-];
 
 const MainBannerContainer = styled.section`
   position: relative;
@@ -106,8 +69,6 @@ const HeroTitle = styled.h1`
   line-height: 0.96;
   letter-spacing: 0.01em;
 `;
-
-/* Threat to AI Models Managed */
 
 const PageRoot = styled.div`
   font-family: var(--font-jost), "Jost", sans-serif;
@@ -168,112 +129,6 @@ const IntroCopy = styled.div`
 
 const PanelCard = styled.div`
   width: 100%;
-`;
-
-const PanelCardTop = styled(PanelCard)``;
-const PanelCardBottom = styled(PanelCard)`
-  bottom: 20px;
-`;
-
-const CardTitle = styled.p`
-  margin: 0 0 12px;
-  color: ${TEXT_BLUE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 1.25;
-`;
-
-const CardList = styled.ul`
-  margin: 0;
-  padding-left: 18px;
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 1.55;
-
-  li {
-    margin: 0 0 6px;
-  }
-
-  li:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const TopRectContent = styled.div`
-  position: absolute;
-  top: 150px; /* must match PanelTop */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%; /* must match PanelTop */
-  z-index: 6;
-
-  box-sizing: border-box;
-  padding: 34px 38px; /* <-- this is what makes it line up like the mock */
-`;
-
-const BottomRectContent = styled.div`
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  z-index: 6;
-  box-sizing: border-box;
-  padding: 55px 38px 34px;
-`;
-
-const IntroTitle = styled.h1`
-  margin: 0;
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 200;
-  font-size: clamp(24px, 2.06vw, 38px);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
-`;
-
-const IntroLogo = styled(Image)`
-  width: min(460px, 100%);
-  height: auto;
-  display: block;
-`;
-
-const IntroLead = styled.p`
-  margin: 0;
-  color: ${TEXT_BLUE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 33px;
-  line-height: 1.56;
-`;
-
-const IntroBody = styled.p`
-  margin: 0;
-  color: ${TEXT_BODY};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: clamp(14px, 0.92vw, 17px);
-  line-height: 1.62;
-`;
-
-const IntroParagraph = styled.p`
-  margin: 0;
-  color: ${TEXT_BODY};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: clamp(14px, 0.92vw, 16px);
-  line-height: 2;
-`;
-
-const LeadInline = styled.div`
-  color: ${TEXT_BLUE};
-  font-weight: 300;
-  font-size: 33px;
-  line-height: 1.2;
-  margin-bottom: 12px;
 `;
 
 const OfferingsGrid = styled.section`
@@ -409,52 +264,11 @@ const ColumnTitle = styled.h2`
   }
 `;
 
-const ColumnSummary = styled.p`
-  margin-top: 20px;
-  color: ${TEXT_BODY};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: clamp(13px, 0.88vw, 16px);
-  line-height: 2;
-`;
-
 const OfferingColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
   height: 100%;
-`;
-
-const OfferingCard = styled.div`
-  width: min(364px, 100%);
-  min-height: 175px;
-  border-radius: 28px;
-  background: center / cover no-repeat url("/assets/big-card.png");
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-  display: grid;
-  place-items: center;
-  margin: 0 auto 14px; /* <-- centers the card, keeps bottom spacing */
-
-  @media screen and (max-width: 1020px) {
-    margin: 0 auto 6px;
-  }
-`;
-
-const OfferingCardTitle = styled.h2`
-  margin: 0;
-  text-align: center;
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 600;
-  font-size: clamp(19px, 1.66vw, 30px);
-  line-height: 1.18;
-`;
-
-const Trademark = styled.span`
-  font-size: 0.42em;
-  vertical-align: super;
-  letter-spacing: 0.04em;
-  margin-left: 2px;
 `;
 
 const OfferingList = styled.div`
@@ -464,30 +278,6 @@ const OfferingList = styled.div`
   gap: 48px;
   flex: 1;
   align-self: stretch;
-`;
-
-const OfferingItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-`;
-
-const OfferingItemTitle = styled.p`
-  margin: 0;
-  color: ${TEXT_BLUE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: clamp(17px, 1.28vw, 24px);
-  line-height: 1.28;
-`;
-
-const OfferingItemSubTitle = styled.p`
-  margin: 0;
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: clamp(14px, 0.92vw, 17px);
-  line-height: 1.36;
 `;
 
 const Divider = styled(Image)`
@@ -578,198 +368,6 @@ const ThreatText = styled.p`
   line-height: 1.5;
 `;
 
-const ThreatTitle = styled.h2`
-  margin-top: -128px;
-  margin-bottom: 64px;
-  color: #61b8ff;
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 1.25;
-`;
-
-/* Footer section */
-
-const FooterShowcaseSection = styled.section`
-  position: relative;
-  z-index: 2;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #060a12;
-`;
-
-/* Top bar (vector background) */
-const FooterTopBar = styled.div`
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #0a0f18 url("/assets/footer-vector.png") center / cover no-repeat;
-  padding: 18px 0 16px;
-`;
-
-/* Bottom bar (solid black) */
-const FooterBottomBar = styled.div`
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #000;
-  padding: 40px 0 50px;
-`;
-
-const FooterShowcaseInner = styled.div`
-  width: min(1260px, 92vw);
-  margin: 0 auto;
-`;
-
-const FooterTopRow = styled.div`
-  position: relative;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and (max-width: 860px) {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-`;
-
-const FooterActionGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 88px;
-
-  @media screen and (max-width: 860px) {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-`;
-
-const FooterActionButton = styled(Link)`
-  width: 106px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-
-  /* use your provided image */
-  background: url("/assets/footer-button.png") center / contain no-repeat;
-  border: none;
-
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1;
-  text-decoration: none;
-
-  &:hover {
-    filter: brightness(1.06);
-  }
-`;
-
-const FooterSocialCluster = styled.div`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  @media screen and (max-width: 860px) {
-    position: static;
-    transform: none;
-    width: 100%;
-    justify-content: flex-end;
-  }
-`;
-
-const FooterSocialLink = styled(Link)`
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-`;
-
-const FooterSocialIcon = styled(Image)`
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-`;
-
-const FooterBottomRow = styled.div`
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 30px 34px;
-  align-items: flex-start;
-
-  padding-top: 16px;
-
-  @media screen and (max-width: 860px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const FooterLogoLink = styled(Link)`
-  display: inline-flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
-const FooterLogo = styled(Image)`
-  height: auto;
-  display: block;
-`;
-
-const FooterMeta = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
-
-  padding: 0;
-`;
-
-const FooterNavLinks = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 32px;
-`;
-
-const FooterNavLink = styled(Link)`
-  color: #ffffff;
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 1;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const FooterAddress = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 32px;
-  gap: 16px;
-`;
-
-const FooterAddressLine = styled.p`
-  margin: 0;
-  color: #71bfff;
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 16.5px;
-  line-height: 1.4;
-`;
-
 const OnCallHeaderRow = styled.div`
   display: flex;
   align-items: center;
@@ -835,35 +433,6 @@ const InTouchSubHead = styled.p`
   font-weight: 200;
   font-size: 30px;
   line-height: 2;
-`;
-
-const LogoStripSection = styled.section`
-  margin-top: 60px;
-  margin-bottom: 112px;
-  display: flex;
-  justify-content: center;
-`;
-
-const LogoStripInner = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 56px;
-  flex-wrap: nowrap;
-
-  & > span {
-    flex: 0 0 auto;
-  }
-
-  @media (max-width: 900px) {
-    flex-wrap: wrap;
-    gap: 28px;
-  }
-`;
-
-const LogoStripImage = styled(Image)`
-  width: auto;
-  height: auto;
 `;
 
 const AdvantageItem = styled.div`
@@ -1546,76 +1115,7 @@ export default function Home() {
             </OfferingsGridDivided>
           </Inner>
 
-          <FooterShowcaseSection>
-            {/* TOP BAR */}
-            <FooterTopBar>
-              <FooterShowcaseInner>
-                <FooterTopRow>
-                  <FooterActionGroup>
-                    {footerActionLinks.map((item) => (
-                      <FooterActionButton key={item.label} href={item.href}>
-                        {item.label}
-                      </FooterActionButton>
-                    ))}
-                  </FooterActionGroup>
-
-                  <FooterSocialCluster>
-                    {footerSocialLinks.map((item) => (
-                      <FooterSocialLink
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={item.label}
-                      >
-                        <FooterSocialIcon
-                          src={item.src}
-                          alt={item.label}
-                          width={item.width}
-                          height={item.height}
-                        />
-                      </FooterSocialLink>
-                    ))}
-                  </FooterSocialCluster>
-                </FooterTopRow>
-              </FooterShowcaseInner>
-            </FooterTopBar>
-
-            {/* BOTTOM BAR */}
-            <FooterBottomBar>
-              <FooterShowcaseInner>
-                <FooterBottomRow>
-                  <FooterLogoLink href="/">
-                    <FooterLogo
-                      src="/assets/01quantum-logo.png"
-                      alt="01 Quantum logo"
-                      width={124}
-                      height={83}
-                    />
-                  </FooterLogoLink>
-
-                  <FooterMeta>
-                    <FooterNavLinks aria-label="Footer quick links">
-                      {footerNavLinks.map((item) => (
-                        <FooterNavLink key={item.label} href={item.href}>
-                          {item.label}
-                        </FooterNavLink>
-                      ))}
-                    </FooterNavLinks>
-
-                    <FooterAddress>
-                      <FooterAddressLine>
-                        01 Quantum, 789 Don Mills Road, Suite #700
-                      </FooterAddressLine>
-                      <FooterAddressLine>
-                        Toronto, ON M3C 1T5, Canada
-                      </FooterAddressLine>
-                    </FooterAddress>
-                  </FooterMeta>
-                </FooterBottomRow>
-              </FooterShowcaseInner>
-            </FooterBottomBar>
-          </FooterShowcaseSection>
+          <Footer />
         </HomeSurface>
       </PageRoot>
     </Layout>

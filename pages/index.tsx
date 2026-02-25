@@ -21,11 +21,14 @@ const MainBannerContainer = styled.section`
   overflow: hidden;
   background: ${HERO_BG};
 
-  /* scales nicely on large displays */
-  height: clamp(520px, 48vw, 760px);
+  height: clamp(420px, 60vw, 760px);
 
   @media (min-width: 1441px) {
     height: clamp(620px, 40vw, 880px);
+  }
+
+  @media (max-width: 600px) {
+    height: 520px;
   }
 `;
 
@@ -36,7 +39,7 @@ const MainBannerImage = styled(Image)`
 
 const HeroCopy = styled.div`
   position: absolute;
-  top: 42%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -53,6 +56,18 @@ const HeroCopy = styled.div`
   @media screen and (max-width: 980px) {
     width: min(900px, 92vw);
   }
+
+  @media screen and (max-width: 700px) {
+    top: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    transform: translate(-50%, -50%);
+  }
+
+  @media screen and (max-width: 420px) {
+    width: 92vw;
+  }
 `;
 
 const HeroVerticalText = styled.span`
@@ -67,6 +82,15 @@ const HeroVerticalText = styled.span`
   margin-right: 20px;
   display: inline-flex;
   align-items: center;
+
+  @media screen and (max-width: 700px) {
+    writing-mode: initial;
+    transform: none;
+    margin-right: 0;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.9;
+  }
 `;
 
 const HeroTextBlock = styled.div`
@@ -80,23 +104,25 @@ const HeroKicker = styled.p`
   margin: 0;
   color: ${TEXT_WHITE};
   font-family: var(--font-jost), "Jost", sans-serif;
-  font-size: 44px;
+  font-size: clamp(18px, 4.4vw, 44px);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.05;
 `;
 
 const HeroTitle = styled.h1`
   margin: 0;
   color: ${TEXT_WHITE};
   font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 200; /* ExtraLight */
+  font-weight: 200;
   font-style: normal;
-  font-size: 137px;
-  line-height: 0.96;
+  font-size: clamp(44px, 10vw, 137px);
+  line-height: 0.98;
   letter-spacing: 0.01em;
-`;
 
-/* Threat to AI Models Managed */
+  @media screen and (max-width: 420px) {
+    line-height: 1.02;
+  }
+`;
 
 const PageRoot = styled.div`
   font-family: var(--font-jost), "Jost", sans-serif;
@@ -109,6 +135,10 @@ const HomeSurface = styled.section`
   background: ${PAGE_BG};
   overflow: hidden;
   padding: 74px 0 0px;
+
+  @media screen and (max-width: 760px) {
+    padding: 46px 0 0px;
+  }
 `;
 
 const Inner = styled.div`
@@ -137,23 +167,24 @@ const IntroCopy = styled.div`
 `;
 
 const IntroTitle = styled.h1`
-  margin-bottom: 16px;
+  margin: 0 0 16px;
   color: ${TEXT_WHITE};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 200;
-  font-size: 44px;
+  font-size: clamp(28px, 5.2vw, 44px);
   line-height: 1.12;
   letter-spacing: 0.01em;
-  white-space: nowrap;
+
+  white-space: normal;
 `;
 
 const IntroLead = styled.p`
-  margin-bottom: 12px;
+  margin: 0 0 12px;
   color: ${TEXT_BLUE};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 300;
-  font-size: 21px;
-  line-height: 2;
+  font-size: clamp(16px, 2.4vw, 21px);
+  line-height: 1.8;
 `;
 
 const IntroBody = styled.p`
@@ -162,7 +193,12 @@ const IntroBody = styled.p`
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 300;
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.8;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
 `;
 
 const GraphicWrap = styled.div`
@@ -210,6 +246,11 @@ const OfferingsGrid = styled.section`
     &::before {
       display: none;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 48px;
+    gap: 36px;
   }
 `;
 
@@ -368,14 +409,20 @@ const ThreatLink = styled(Link)`
   }
 `;
 
-/* Applications */
-
 const ApplicationsSection = styled.section`
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-top: 42px;
   padding: 70px 0 80px;
   background: #dcdcdc;
+
+  @media screen and (max-width: 760px) {
+    padding: 54px 0 62px;
+  }
+
+  @media screen and (max-width: 420px) {
+    padding: 46px 0 54px;
+  }
 `;
 
 const ApplicationsInner = styled.div`
@@ -420,22 +467,27 @@ const ApplicationCard = styled.article`
 `;
 
 const ApplicationIconWrap = styled.div`
-  width: 74px;
-  height: 74px;
+  width: 84px;
+  height: 84px;
   display: grid;
   place-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+
+  @media screen and (max-width: 420px) {
+    width: 72px;
+    height: 72px;
+  }
 `;
 
 const ApplicationIcon = styled(Image)`
-  width: 74px;
-  height: 74px;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: contain;
 `;
 
 const ApplicationIconSvg = styled.svg`
-  width: 74px;
-  height: 74px;
+  width: 100%;
+  height: 100%;
 `;
 
 const ApplicationTitle = styled.h3`
@@ -443,7 +495,7 @@ const ApplicationTitle = styled.h3`
   color: #1a1a1a;
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 500;
-  font-size: clamp(20px, 1.58vw, 36px);
+  font-size: clamp(20px, 4.6vw, 30px);
   line-height: 1.22;
   text-align: center;
 `;
@@ -563,9 +615,7 @@ export default function Home() {
                     world.
                   </ColumnSummary>
 
-                  <LearnMore href="/products/ironcap">
-                    LEARN MORE
-                  </LearnMore>
+                  <LearnMore href="/products/ironcap">LEARN MORE</LearnMore>
 
                   <OfferingList>
                     <OfferingItem>
@@ -626,9 +676,7 @@ export default function Home() {
                     acceleration. <br /> <br />
                   </ColumnSummary>
 
-                  <LearnMore href="/services">
-                    LEARN MORE
-                  </LearnMore>
+                  <LearnMore href="/services">LEARN MORE</LearnMore>
 
                   <OfferingList>
                     <OfferingItem>

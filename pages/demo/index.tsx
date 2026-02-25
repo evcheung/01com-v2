@@ -469,7 +469,7 @@ export default function Home() {
 
                         <AuthChevron>
                           <Image
-                            src="/assets/>.png"
+                            src="/assets/right-chev.png"
                             alt=""
                             fill
                             style={{ objectFit: "contain" }}
@@ -492,7 +492,7 @@ export default function Home() {
 
                         <AuthChevron>
                           <Image
-                            src="/assets/>.png"
+                            src="/assets/right-chev.png"
                             alt=""
                             fill
                             style={{ objectFit: "contain" }}
@@ -519,7 +519,7 @@ export default function Home() {
 
                         <AuthChevron>
                           <Image
-                            src="/assets/>.png"
+                            src="/assets/right-chev.png"
                             alt=""
                             fill
                             style={{ objectFit: "contain" }}
@@ -542,7 +542,7 @@ export default function Home() {
 
                         <AuthChevron>
                           <Image
-                            src="/assets/>.png"
+                            src="/assets/right-chev.png"
                             alt=""
                             fill
                             style={{ objectFit: "contain" }}

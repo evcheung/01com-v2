@@ -166,7 +166,7 @@ const OnCallBody = styled.p`
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
-  max-width: 1920px;
+  max-width: none;
 `;
 
 export default function Home() {

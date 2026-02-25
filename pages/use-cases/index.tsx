@@ -193,7 +193,7 @@ const OnCallBody = styled.p`
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
-  max-width: 1920px;
+  max-width: none;
 `;
 
 const GreenRow = styled.div`
@@ -206,10 +206,24 @@ const GreenRow = styled.div`
   font-weight: 200;
   font-size: 22px;
   line-height: 2;
+
+  @media (max-width: 760px) {
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+  }
 `;
 
 const GreenItem = styled.span`
-  white-space: nowrap; /* keeps each label together */
+  white-space: nowrap;
+
+  @media (max-width: 760px) {
+    white-space: normal;
+    overflow-wrap: anywhere; 
+    word-break: break-word;
+  }
 `;
 
 const InTouchSubHead = styled.p`
@@ -346,7 +360,7 @@ const ProductDesc = styled.p`
   font-weight: 300;
   font-size: 16px;
   line-height: 1.85;
-  max-width: 1920px;
+  max-width: none;
   opacity: 0.92;
 `;
 
@@ -380,19 +394,25 @@ export default function Home() {
 
         <HomeSurface>
           <Inner>
-            <IntroGrid style={{ marginTop: "80px", marginBottom: "120px" }}>
+            <IntroGrid style={{ marginTop: "80px", marginBottom: "0" }}>
               <IntroCopy>
-                <OnCallTitle>Performance</OnCallTitle>
                 <OnCallBody>
-                  01 Quantum portfolio of quantum-safe products and
-                  services is available for a variety of business verticals,
-                  including Financial Institutions, Government Sectors, Defense
-                  and AI Integrators. Below are sample use cases in selected
-                  sectors. <br /> <br />
+                  01 Quantum portfolio of quantum-safe products and services is
+                  available for a variety of business verticals, including
+                  Financial Institutions, Government Sectors, Defense and AI
+                  Integrators. Below are sample use cases in selected sectors.{" "}
+                  <br /> <br />
                   <GreenRow>
                     <GreenItem>
                       To learn more about how 01 Quantum can work with your
-                      company, contact us <Link href="/contact" style={{textDecoration: "underline"}}>here</Link>.
+                      company, contact us{" "}
+                      <Link
+                        href="/contact"
+                        style={{ textDecoration: "underline" }}
+                      >
+                        here
+                      </Link>
+                      .
                     </GreenItem>
                   </GreenRow>
                   <br /> <br />
@@ -400,22 +420,7 @@ export default function Home() {
               </IntroCopy>
             </IntroGrid>
 
-            <ServicesBanner>
-              <ServicesBannerImage
-                src="/assets/services-vector.png"
-                alt=""
-                aria-hidden="true"
-                width={1920}
-                height={101}
-              />
-
-              <ServicesBannerContent>
-                <ServicesBannerTitle>IronCAP™ Services</ServicesBannerTitle>
-              </ServicesBannerContent>
-            </ServicesBanner>
-
             <WrapperSection>
-              <WrapperTitle>Quantum AI Wrapper</WrapperTitle>
               <WrapperCategory>Finance</WrapperCategory>
 
               <WrapperList style={{ marginBottom: "80px" }}>

@@ -366,7 +366,7 @@ const InfoList = styled.ul`
 
 const DisclaimerSection = styled.section`
   width: 100vw;
-  max-width: 1920px;
+  max-width: none;
   margin-left: calc(50% - 50vw);
   margin-bottom: 160px;
   background: ${PAGE_BG};

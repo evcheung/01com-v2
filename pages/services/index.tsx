@@ -42,6 +42,12 @@ const HeroBg = styled(Image)`
 
   pointer-events: none;
   user-select: none;
+
+  @media (max-width: 760px) {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.65;
+  }
 `;
 
 const HeroCopy = styled.div`
@@ -95,6 +101,17 @@ const HomeSurface = styled.section`
     bottom: 0;
     background: ${PAGE_BG};
     z-index: 0;
+  }
+
+  @media (max-width: 760px) {
+    margin-top: 0;
+    padding-top: 20px;
+
+    overflow: visible;
+
+    &::before {
+      top: 0;
+    }
   }
 `;
 
@@ -215,7 +232,7 @@ const OfferingsGridDivided = styled.section`
     grid-template-rows: auto;
     row-gap: 56px;
     column-gap: 0;
-
+    justify-items: center;
     &::before {
       display: none;
     }
@@ -269,6 +286,10 @@ const OfferingColumn = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 100%;
+
+  @media (max-width: 1020px) {
+    align-items: center;
+  }
 `;
 
 const OfferingList = styled.div`
@@ -278,6 +299,12 @@ const OfferingList = styled.div`
   gap: 48px;
   flex: 1;
   align-self: stretch;
+
+  @media (max-width: 1020px) {
+    align-self: center;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const Divider = styled(Image)`
@@ -291,16 +318,24 @@ const ThreatPanel = styled.section`
   position: relative;
   width: min(1220px, 92vw);
   margin: 18px auto 0;
+
+  @media (max-width: 760px) {
+    margin-top: 34px;   
+  }
 `;
 
 const ThreatBgImage = styled(Image)`
-  width: 1220px; /* original size */
+  width: 1220px;
   height: auto;
-  max-width: 100%; /* shrink on smaller screens, never stretch bigger */
+  max-width: 100%;
   display: block;
   margin: 0 auto;
   pointer-events: none;
   user-select: none;
+
+  @media (max-width: 760px) {
+    display: none; 
+  }
 `;
 
 const ThreatContent = styled.div`
@@ -313,6 +348,13 @@ const ThreatContent = styled.div`
   justify-content: center;
 
   padding: 34px 60px;
+
+  @media (max-width: 760px) {
+    position: relative; 
+    inset: auto;
+    padding: 0;      
+    margin-top: 24px;     
+  }
 `;
 
 const BigThreatContent = styled.div`
@@ -372,6 +414,13 @@ const OnCallHeaderRow = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
 `;
 
 const OnCallIcon = styled(Image)`
@@ -389,6 +438,11 @@ const OnCallTitle = styled.h2`
   font-size: 46px;
   line-height: 1;
   max-width: 1020px;
+
+  @media (max-width: 760px) {
+    font-size: 34px;
+    line-height: 1.1;
+  }
 `;
 
 const OnCallHeadline = styled.p`
@@ -407,7 +461,7 @@ const OnCallBody = styled.p`
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
-  max-width: 1920px;
+  max-width: none;
 `;
 
 const GreenRow = styled.div`
@@ -420,10 +474,16 @@ const GreenRow = styled.div`
   font-weight: 300;
   font-size: 18px;
   line-height: 2;
+
+  @media (max-width: 760px) {
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+  }
 `;
 
 const GreenItem = styled.span`
-  white-space: nowrap; /* keeps each label together */
+  white-space: nowrap; 
 `;
 
 const InTouchSubHead = styled.p`
@@ -437,22 +497,29 @@ const InTouchSubHead = styled.p`
 
 const AdvantageItem = styled.div`
   position: relative;
-  z-index: 1; /* above the divider */
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   max-width: 460px;
+
+  @media (max-width: 1020px) {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const AdvantageIcon = styled(Image)`
-  width: 61px !important;
-  height: 74px !important;
   object-fit: contain;
-
-  position: relative;
-  margin: 0 auto 18px; /* center icon above each item */
   display: block;
+  margin: 0 auto 18px;
+
+  @media (max-width: 1020px) {
+    margin: 0 auto 14px;
+  }
 `;
 
 const AdvantageTitle = styled.p`
@@ -462,6 +529,13 @@ const AdvantageTitle = styled.p`
   font-weight: 300;
   font-size: 30px;
   line-height: 1.2;
+
+  overflow-wrap: anywhere; 
+  word-break: break-word; 
+
+  @media (max-width: 1020px) {
+    text-align: center;
+  }
 `;
 
 const AdvantageDesc = styled.p`
@@ -472,6 +546,14 @@ const AdvantageDesc = styled.p`
   font-size: 16px;
   line-height: 2;
   max-width: 420px;
+
+  overflow-wrap: anywhere;
+  word-break: break-word; 
+
+  @media (max-width: 1020px) {
+    text-align: center;
+    max-width: 520px;
+  }
 `;
 
 export default function Home() {
@@ -518,15 +600,14 @@ export default function Home() {
                   <OnCallTitle>QAW (Quantum AI Wrapper)</OnCallTitle>
                 </OnCallHeaderRow>
                 <OnCallBody>
-                  IronCAP™ (Quantum) AI Wrapper [QAW]QAW (Quantum AI Wrapper) is
-                  a cutting-edge security architecture designed to bridge the
-                  gap between high-performance AI and "Hard Security and
-                  Privacy." Developed by 01 Quantum, QAW applies either a
-                  complete software-based approach to Fully Homomorphic
-                  Encryption (FHE) or leverages hybrid processing by combining
-                   FHE with Trusted Execution Environments (TEEs) AKA hardware
-                  enclaves to ensure your data remains encrypted even while
-                  being processed. <br /> <br />
+                  IronCAP™ (Quantum) AI Wrapper [QAW] is a cutting-edge security
+                  architecture designed to bridge the gap between
+                  high-performance AI and "Hard Security and Privacy." Developed
+                  by 01 Quantum, QAW applies either a complete software-based
+                  approach to Fully Homomorphic Encryption (FHE) or leverages
+                  hybrid processing by combining  FHE with Trusted Execution
+                  Environments (TEEs) AKA hardware enclaves to ensure your data
+                  remains encrypted even while being processed. <br /> <br />
                   Whether a software or hybrid FHE solution, 01 Quantum
                   future-proofs the critical key management functions in FHE
                   using post-quantum key generation and exchange.
@@ -536,7 +617,7 @@ export default function Home() {
             </IntroGrid>
 
             <ColumnTitle>Key Advantages</ColumnTitle>
-            <OfferingsGridLong>
+            <OfferingsGridDivided>
               {/* LEFT COLUMN */}
               <OfferingColumn>
                 <OfferingList>
@@ -650,7 +731,7 @@ export default function Home() {
                   </AdvantageItem>
                 </OfferingList>
               </OfferingColumn>
-            </OfferingsGridLong>
+            </OfferingsGridDivided>
 
             <Divider
               src="/assets/divider-down.png"
@@ -785,7 +866,7 @@ export default function Home() {
             <ColumnTitle style={{ marginTop: "180px" }}>
               Key Advantages
             </ColumnTitle>
-            <OfferingsGridDividedSingle >
+            <OfferingsGridDividedSingle>
               <OfferingColumn>
                 <AdvantageItem>
                   <AdvantageIcon
@@ -898,7 +979,10 @@ export default function Home() {
               height={23}
             />
 
-            <IntroGrid style={{ marginTop: "180px", marginBottom: "180px" }} id="crypto-services">
+            <IntroGrid
+              style={{ marginTop: "180px", marginBottom: "180px" }}
+              id="crypto-services"
+            >
               <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
@@ -1104,12 +1188,11 @@ export default function Home() {
                 />
                 <AdvantageTitle>Strategic Support & Training</AdvantageTitle>
                 <AdvantageDesc>
-                  Cryptographic agility is a
-                  marathon, not a sprint. We provide ongoing support and
-                  specialized training to help your development teams understand
-                  the nuances of PQC, from signature schemes to key
-                  encapsulation mechanisms (KEMs), ensuring your organization is
-                  ready for "Q-Day."
+                  Cryptographic agility is a marathon, not a sprint. We provide
+                  ongoing support and specialized training to help your
+                  development teams understand the nuances of PQC, from
+                  signature schemes to key encapsulation mechanisms (KEMs),
+                  ensuring your organization is ready for "Q-Day."
                 </AdvantageDesc>
               </AdvantageItem>
             </OfferingsGridDivided>

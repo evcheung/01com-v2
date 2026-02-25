@@ -39,6 +39,12 @@ const HeroBg = styled(Image)`
   z-index: 0;
   pointer-events: none;
   user-select: none;
+
+  @media (max-width: 760px) {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.65;
+  }
 `;
 
 const HeroCopy = styled.div`
@@ -104,6 +110,15 @@ const HomeSurface = styled.section`
     background: ${PAGE_BG};
     z-index: 0;
   }
+
+  @media (max-width: 760px) {
+    margin-top: 0;          
+    padding-top: 32px;     
+    
+    &::before {
+      top: 0;             
+    }
+  }
 `;
 
 const Inner = styled.div`
@@ -120,11 +135,14 @@ const ContactSection = styled.section`
   @media (max-width: 980px) {
     padding: 64px 0 90px;
   }
+
+  @media (max-width: 760px) {
+    padding: 46px 0 72px;
+  }
 `;
 
 const ContactGrid = styled.div`
   display: grid;
-
   grid-template-columns: minmax(360px, 1fr) minmax(520px, 640px);
   gap: 60px;
   align-items: start;
@@ -138,12 +156,22 @@ const ContactGrid = styled.div`
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  @media (max-width: 760px) {
+    justify-items: center; /* centers both columns when stacked */
+  }
 `;
 
 const LeftCol = styled.div`
   display: flex;
   flex-direction: column;
   gap: 64px;
+
+  @media (max-width: 760px) {
+    align-items: center;
+    text-align: center;
+    gap: 44px;
+  }
 `;
 
 const MethodRow = styled.div`
@@ -151,6 +179,12 @@ const MethodRow = styled.div`
   grid-template-columns: 86px 1fr;
   column-gap: 18px;
   align-items: center;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    justify-items: center;
+  }
 `;
 
 const IconSlot = styled.div`
@@ -167,6 +201,10 @@ const MethodText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+
+  @media (max-width: 760px) {
+    align-items: center;
+  }
 `;
 
 const MethodValue = styled.div`
@@ -176,6 +214,11 @@ const MethodValue = styled.div`
   font-size: 35px;
   line-height: 1;
   letter-spacing: 0.01em;
+
+  @media (max-width: 760px) {
+    text-align: center;
+    font-size: 28px;
+  }
 `;
 
 const MethodLink = styled(Link)`
@@ -189,6 +232,11 @@ const MethodLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 760px) {
+    text-align: center;
+    font-size: 28px;
+  }
 `;
 
 const DeptButtons = styled.div`
@@ -201,6 +249,12 @@ const DeptButtons = styled.div`
 
   @media (max-width: 980px) {
     width: min(320px, 100%);
+  }
+
+  @media (max-width: 760px) {
+    margin-left: 0;
+    align-items: center;
+    width: min(340px, 100%);
   }
 `;
 
@@ -226,6 +280,10 @@ const DeptButtonLink = styled.a`
 
   &:hover {
     filter: brightness(1.08);
+  }
+
+  @media (max-width: 760px) {
+    width: 220px;
   }
 `;
 
@@ -261,6 +319,12 @@ const FormPanel = styled.div`
   @media (max-width: 980px) {
     padding: 26px 18px 24px;
   }
+
+  @media (max-width: 760px) {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto; /* center the panel */
+  }
 `;
 
 const PanelIntro = styled.p`
@@ -271,6 +335,12 @@ const PanelIntro = styled.p`
   font-size: 24px;
   line-height: 1.75;
   max-width: 640px;
+
+  @media (max-width: 760px) {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const PanelBg = styled(Image)`
@@ -357,6 +427,10 @@ const SubmitRow = styled.div`
   margin-top: 18px;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 760px) {
+    justify-content: center;
+  }
 `;
 
 const Submit = styled.button`

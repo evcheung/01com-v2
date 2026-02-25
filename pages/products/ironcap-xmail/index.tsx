@@ -255,34 +255,9 @@ const OfferingsGrid = styled.section`
     width: min(700px, 92vw);
     grid-template-columns: 1fr;
     gap: 52px;
-  }
-`;
 
-const OfferingsGridDivided = styled(OfferingsGrid)`
-  padding-bottom: 96px;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 566px;
-    height: 566px;
-
-    background: url("/assets/double-dividey.png") center no-repeat;
-    background-size: auto;
-
-    pointer-events: none;
-  }
-
-  @media screen and (max-width: 1020px) {
-    padding-bottom: 56px;
-
-    &::before {
-      display: none;
-    }
+    justify-items: center;
+    text-align: center;
   }
 `;
 
@@ -410,6 +385,9 @@ const AdvantagesGrid = styled.section`
     row-gap: 72px;
     padding-bottom: 56px;
 
+    justify-items: center;
+    text-align: center;
+
     &::before {
       display: none;
     }
@@ -427,8 +405,15 @@ const AdvantageIcon = styled(Image)`
   height: 74px !important;
   object-fit: contain;
   position: relative;
+
   margin-left: 128px;
   margin-bottom: 24px;
+
+  @media (max-width: 1020px) {
+    margin-left: 0;
+    display: block;
+    margin: 0 auto 24px;
+  }
 `;
 
 const IconStack = styled.div`
@@ -442,6 +427,11 @@ const IconStack = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1020px) {
+    margin-left: 0;
+    margin: 0 auto 24px;
+  }
 `;
 
 const IconOuter = styled(Image)`
@@ -519,12 +509,18 @@ const DownloadBar = styled.section`
 
 const DownloadBarInner = styled.div`
   position: relative;
-  width: 1200px; /* match the real image width */
-  height: 80px; /* match the real image height */
+  width: min(1200px, 92vw);
+  aspect-ratio: 1200 / 80;
+  overflow: hidden;
 `;
 
 const DownloadBarImg = styled(Image)`
-  object-fit: none; /* <- keeps original size */
+  object-fit: none;
+  object-position: center;
+
+  @media (max-width: 768px) {
+    object-fit: contain;
+  }
 `;
 
 const DownloadBarText = styled.a`
@@ -544,6 +540,12 @@ const DownloadBarText = styled.a`
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(16px, 4.2vw, 22px);
+    padding: 0 12px;
+    text-align: center;
   }
 `;
 
@@ -764,9 +766,8 @@ export default function Home() {
                 />
                 <AdvantageTitle>General File Encryption</AdvantageTitle>
                 <AdvantageDesc>
-                  IronCAP X allows you to encrypt your
-                  sensitive files such as personal finances, etc. to safeguard
-                  against cyber attacks.
+                  IronCAP X allows you to encrypt your sensitive files such as
+                  personal finances, etc. to safeguard against cyber attacks.
                 </AdvantageDesc>
               </AdvantageItem>
             </AdvantagesGrid>

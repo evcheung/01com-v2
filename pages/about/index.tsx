@@ -42,6 +42,12 @@ const HeroBg = styled(Image)`
 
   pointer-events: none;
   user-select: none;
+
+  @media (max-width: 760px) {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.65;
+  }
 `;
 
 const HeroCopy = styled.div`
@@ -98,6 +104,15 @@ const HomeSurface = styled.section`
     background: ${PAGE_BG};
     z-index: 0;
   }
+
+  @media (max-width: 760px) {
+    margin-top: 0;
+    padding-top: 20px;
+
+    &::before {
+      top: 0;
+    }
+  }
 `;
 
 const Inner = styled.div`
@@ -142,7 +157,7 @@ const SidePanelWrap = styled.div`
 
   @media screen and (max-width: 1020px) {
     justify-content: center;
-    padding-right: 0;
+    padding-left: 0;
   }
 `;
 
@@ -180,6 +195,10 @@ const IntroParagraphExt = styled(IntroParagraph)`
   margin-top: -52px;
   grid-area: ext;
   max-width: none;
+
+  @media (max-width: 760px) {
+    margin-top: 0;
+  }
 `;
 
 const LeadInline = styled.span`
@@ -187,6 +206,10 @@ const LeadInline = styled.span`
   font-weight: 300;
   font-size: 33px;
   line-height: 1.2;
+
+  @media (max-width: 760px) {
+    font-size: 22px;
+  }
 `;
 
 const ColumnTitle = styled(Link)`
@@ -224,6 +247,8 @@ const ResourcesGrid = styled.div`
   @media (max-width: 1020px) {
     grid-template-columns: 1fr;
     row-gap: 60px;
+    justify-items: center;  
+    text-align: center;     
   }
 `;
 
@@ -231,6 +256,10 @@ const ResourcesCol = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (max-width: 1020px) {
+    align-items: center; 
+  }
 `;
 
 const ResourcesTitle = styled.h2`
@@ -245,9 +274,15 @@ const ResourcesLink = styled(Link)`
   color: ${TEXT_GREEN};
   font-size: 24px;
   text-decoration: none;
+  display: inline-block;
+  padding: 6px 0;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    font-size: 20px;
   }
 `;
 
@@ -255,6 +290,12 @@ const ResourcesMeta = styled.p`
   margin: 4px 0 0;
   font-size: 16px;
   color: ${TEXT_WHITE};
+`;
+
+const ResourcesDivider = styled(Image)`
+  @media (max-width: 1020px) {
+    display: none !important;
+  }
 `;
 
 export default function Home() {
@@ -358,17 +399,21 @@ export default function Home() {
                   <ResourcesTitle id="downloads">Downloads</ResourcesTitle>
 
                   <div>
-                    <ResourcesLink href="https://ironcap.ca/ironcap-x/personal">IronCAP X™</ResourcesLink>
+                    <ResourcesLink href="https://ironcap.ca/ironcap-x/personal">
+                      IronCAP X™
+                    </ResourcesLink>
                     <ResourcesMeta>FREE personal usage</ResourcesMeta>
                   </div>
 
                   <div>
-                    <ResourcesLink href="https://www.ironcap.ca/ironcap-x/business/">IronCAP X</ResourcesLink>
+                    <ResourcesLink href="https://www.ironcap.ca/ironcap-x/business/">
+                      IronCAP X
+                    </ResourcesLink>
                     <ResourcesMeta>Business usage</ResourcesMeta>
                   </div>
                 </ResourcesCol>
 
-                <Image
+                <ResourcesDivider
                   src="/assets/vert-dividey.png"
                   alt=""
                   aria-hidden="true"
@@ -381,19 +426,25 @@ export default function Home() {
                   <ResourcesTitle>User Guides</ResourcesTitle>
 
                   <div>
-                    <ResourcesLink href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X/Welcome_to_IronCap_X.htm">IronCAP X</ResourcesLink>
+                    <ResourcesLink href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X/Welcome_to_IronCap_X.htm">
+                      IronCAP X
+                    </ResourcesLink>
                     <ResourcesMeta>FREE personal usage</ResourcesMeta>
                   </div>
 
                   <div>
-                    <ResourcesLink href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X/Welcome_to_IronCap_X.htm">IronCAP X</ResourcesLink>
+                    <ResourcesLink href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X/Welcome_to_IronCap_X.htm">
+                      IronCAP X
+                    </ResourcesLink>
                     <ResourcesMeta>Business usage</ResourcesMeta>
                   </div>
 
-                  <ResourcesLink href="https://youtu.be/iKSD8MYShsY">IronCAP X Tutorial</ResourcesLink>
+                  <ResourcesLink href="https://youtu.be/iKSD8MYShsY">
+                    IronCAP X Tutorial
+                  </ResourcesLink>
                 </ResourcesCol>
 
-                <Image
+                <ResourcesDivider
                   src="/assets/vert-dividey.png"
                   alt=""
                   aria-hidden="true"
@@ -405,19 +456,25 @@ export default function Home() {
                 <ResourcesCol>
                   <ResourcesTitle>FAQs</ResourcesTitle>
 
-                  <ResourcesLink href="https://www.ironcap.ca/ironcap-x/faq">IronCAP X</ResourcesLink>
+                  <ResourcesLink href="https://www.ironcap.ca/ironcap-x/faq">
+                    IronCAP X
+                  </ResourcesLink>
 
                   <div>
                     <ResourcesLink href="/">IronCAP Key</ResourcesLink>
                     <ResourcesMeta>Coming soon</ResourcesMeta>
                   </div>
 
-                  <ResourcesLink href="https://www.ironcap.ca/ironcap-toolkits/faq">IronCAP Toolkits</ResourcesLink>
+                  <ResourcesLink href="https://www.ironcap.ca/ironcap-toolkits/faq">
+                    IronCAP Toolkits
+                  </ResourcesLink>
                 </ResourcesCol>
               </ResourcesGrid>
             </ResourcesSection>
 
-            <ColumnTitle href="/investor-relations">Press Release & News</ColumnTitle>
+            <ColumnTitle href="/investor-relations">
+              Press Release & News
+            </ColumnTitle>
           </Inner>
 
           <Footer />

@@ -1,4 +1,3 @@
-// components/Footer.tsx
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
@@ -43,6 +42,12 @@ const FooterTopBar = styled.div`
   height: 122px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 860px) {
+    height: auto;
+    padding: 18px 0 20px;
+    background-position: center;
+  }
 `;
 
 const FooterBottomBar = styled.div`
@@ -50,25 +55,30 @@ const FooterBottomBar = styled.div`
   margin-left: calc(50% - 50vw);
   background: #000;
   padding: 40px 0 50px;
+
+  @media screen and (max-width: 860px) {
+    padding: 28px 0 36px;
+  }
 `;
 
 const FooterShowcaseInner = styled.div`
   width: min(1260px, 92vw);
   margin: 0 auto;
+
+  @media screen and (max-width: 420px) {
+    width: min(1260px, 90vw);
+  }
 `;
 
 const FooterTopRow = styled.div`
-  position: relative;
-  min-height: 44px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 28px;
 
   @media screen and (max-width: 860px) {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    gap: 18px;
   }
 `;
 
@@ -78,10 +88,19 @@ const FooterActionGroup = styled.div`
   justify-content: center;
   gap: 144px;
 
+  @media screen and (max-width: 1100px) {
+    gap: 64px;
+  }
+
   @media screen and (max-width: 860px) {
     width: 100%;
-    justify-content: flex-start;
-    gap: 16px;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 420px) {
+    gap: 12px;
   }
 `;
 
@@ -100,38 +119,75 @@ const FooterActionButton = styled(Link)`
   font-size: 28px;
   line-height: 1;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     filter: brightness(1.06);
   }
+
+  &:focus-visible {
+    outline: 2px solid rgba(113, 191, 255, 0.7);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 132px;
+    height: 46px;
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    height: 46px;
+    font-size: 22px;
+    background-size: 100% 100%;
+    border-radius: 12px;
+  }
 `;
 
 const FooterSocialCluster = styled.div`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 28px;
 
   @media screen and (max-width: 860px) {
-    position: static;
-    transform: none;
-    width: 100%;
-    justify-content: flex-end;
+    gap: 18px;
   }
 `;
 
 const FooterSocialLink = styled(Link)`
   display: grid;
   place-items: center;
+  -webkit-tap-highlight-color: transparent;
+
+  @media screen and (max-width: 860px) {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+
+    &:active {
+      background: rgba(113, 191, 255, 0.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(113, 191, 255, 0.7);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
 `;
 
 const FooterSocialIcon = styled(Image)`
   width: 100% !important;
   height: 100% !important;
   object-fit: contain;
+
+  @media screen and (max-width: 860px) {
+    width: 28px !important;
+    height: 28px !important;
+  }
 `;
 
 const FooterBottomRow = styled.div`
@@ -144,6 +200,8 @@ const FooterBottomRow = styled.div`
 
   @media screen and (max-width: 860px) {
     grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 8px;
   }
 `;
 
@@ -151,11 +209,27 @@ const FooterLogoLink = styled(Link)`
   display: inline-flex;
   align-items: flex-start;
   justify-content: flex-start;
+
+  @media screen and (max-width: 860px) {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(113, 191, 255, 0.7);
+    outline-offset: 4px;
+    border-radius: 14px;
+  }
 `;
 
 const FooterLogo = styled(Image)`
   height: auto;
   display: block;
+
+  @media screen and (max-width: 860px) {
+    width: 110px !important;
+    height: auto !important;
+  }
 `;
 
 const FooterMeta = styled.div`
@@ -165,6 +239,11 @@ const FooterMeta = styled.div`
   gap: 28px;
 
   padding: 0;
+
+  @media screen and (max-width: 860px) {
+    align-items: center;
+    gap: 18px;
+  }
 `;
 
 const FooterNavLinks = styled.nav`
@@ -173,6 +252,16 @@ const FooterNavLinks = styled.nav`
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 32px;
+
+  @media screen and (max-width: 860px) {
+    justify-content: center;
+    gap: 16px 20px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 420px) {
+    gap: 12px 16px;
+  }
 `;
 
 const FooterNavLink = styled(Link)`
@@ -182,9 +271,24 @@ const FooterNavLink = styled(Link)`
   font-size: 20px;
   line-height: 1;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(113, 191, 255, 0.7);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 860px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: 16px;
   }
 `;
 
@@ -194,6 +298,13 @@ const FooterAddress = styled.div`
   align-items: flex-start;
   margin-top: 32px;
   gap: 16px;
+
+  @media screen and (max-width: 860px) {
+    margin-top: 6px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
 `;
 
 const FooterAddressLine = styled.p`
@@ -203,6 +314,14 @@ const FooterAddressLine = styled.p`
   font-weight: 300;
   font-size: 16.5px;
   line-height: 1.4;
+
+  @media screen and (max-width: 860px) {
+    font-size: 15.5px;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: 14.5px;
+  }
 `;
 
 const DEFAULT_ACTION_LINKS: FooterLink[] = [

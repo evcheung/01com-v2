@@ -320,7 +320,7 @@ const InvestorIntroText = styled(Text)`
   font-weight: 300;
   margin-top: -40px;
   margin-bottom: 60px;
-  max-width: 1920px;
+  max-width: none;
   text-align: center;
 
   white-space: nowrap;
@@ -355,7 +355,7 @@ const StyledLink = styled(Link)`
 `;
 
 const ContentContainer = styled(Box)`
-  max-width: 1920px;
+  max-width: none;
   margin: 0 auto;
 `;
 

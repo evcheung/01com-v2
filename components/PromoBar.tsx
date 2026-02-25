@@ -27,6 +27,13 @@ const PromoBar = styled.section`
   margin-left: calc(50% - 50vw);
   height: ${BAR_H}px;
   overflow: hidden;
+
+  @media (max-width: 760px) {
+    height: auto;
+    min-height: ${BAR_H}px;
+    padding: 14px 0 18px;
+    overflow: hidden;
+  }
 `;
 
 const Bg = styled(Image)`
@@ -35,6 +42,7 @@ const Bg = styled(Image)`
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
+  object-position: center;
   pointer-events: none;
   user-select: none;
 `;
@@ -48,6 +56,10 @@ const Inner = styled.div`
 
   display: flex;
   align-items: center;
+
+  @media (max-width: 760px) {
+    height: auto;
+  }
 `;
 
 const Row = styled.div`
@@ -57,18 +69,19 @@ const Row = styled.div`
   justify-content: space-between;
 
   gap: 24px;
-
   padding: 0 18px;
 
   @media (max-width: 900px) {
     padding: 0 12px;
     gap: 16px;
   }
-  @media (max-width: 620px) {
+
+  @media (max-width: 760px) {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: 10px;
+    gap: 12px;
+    padding: 0 10px;
   }
 `;
 
@@ -86,6 +99,13 @@ const LeftText = styled.h3`
     white-space: normal;
     line-height: 1.15;
   }
+
+  @media (max-width: 760px) {
+    white-space: normal;
+    max-width: 22ch;
+    line-height: 1.15;
+    font-size: 20px;
+  }
 `;
 
 const ButtonsRow = styled.div`
@@ -98,10 +118,11 @@ const ButtonsRow = styled.div`
     gap: 12px;
   }
 
-  @media (max-width: 620px) {
+  @media (max-width: 760px) {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
   }
 `;
 
@@ -140,11 +161,17 @@ const BtnImgWrap = styled.span<{ $w: number; $h: number }>`
   width: ${(p) => p.$w}px;
   height: ${(p) => p.$h}px;
   display: inline-block;
+  transform-origin: center;
 
   ${breakpoints("transform", "", [{ 900: "scale(0.94)" }])}
-  ${breakpoints("transform", "", [{ 760: "scale(0.88)" }])}
 
-  transform-origin: center;
+  @media (max-width: 760px) {
+    transform: scale(0.82);
+  }
+
+  @media (max-width: 420px) {
+    transform: scale(0.74);
+  }
 `;
 
 const CenterOnlyText = styled.h3`

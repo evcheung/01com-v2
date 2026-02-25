@@ -1,145 +1,480 @@
-import Logo from '../public/assets/01com-logo.png'
-import Image from 'next/image'
-import { ButtonColors, PrimaryButton, Box, Text, TextVariants } from './core'
-import { theme } from '../theme'
-import styled from 'styled-components'
-import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
-import { NavBarVariants } from './NavBar'
-import { slide as Menu } from 'react-burger-menu'
-import { NavLink } from './core/NavLink'
-import { NavLogin } from './core/NavLogin'
+import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
 
-const AnchorDivider = styled(Box)`
-border-bottom: 1px solid ${theme.colors.neutral.md};
-width: 100%;
-`
+import Logo from "../public/assets/01quantum-logo.png";
+import LoginButtonBg from "../public/assets/vector.png";
+import { Box } from "./core";
+import { theme } from "../theme";
+import { NavBarVariants } from "./NavBar";
 
 interface NavBarContainerProps {
-  variant: NavBarVariants
+  variant: NavBarVariants;
+  isOverlay?: boolean;
 }
 
 const navBarVariantMap = new Map<string, React.CSSProperties>([
-  ["Light", {
-    backgroundColor: theme.colors.neutral.xs
-  }],
-  ["Dark", {
-    background: `${theme.colors.neutral.xl}70`,
-    borderBottom: `1px solid ${theme.colors.neutral.xs}30`
-  }]
-])
+  ["Light", { backgroundColor: "#010101" }],
+  ["Dark", { background: "transparent" }],
+]);
 
 const getNavBarVariant = (props: NavBarContainerProps) => {
-  return navBarVariantMap.get(props.variant)
-}
+  return navBarVariantMap.get(props.variant as NavBarVariants);
+};
 
-const NavBarContainer = styled(Box) <NavBarContainerProps>`
-  ${props => ({
-    ...getNavBarVariant(props),
+const NavBarContainer = styled(Box)<NavBarContainerProps>`
+  ${(props) => ({
     width: "100vw",
-    padding: "12px 16px",
+    padding: "14px 18px",
+    position: props.isOverlay ? "absolute" : "relative",
+    top: props.isOverlay ? "0" : "auto",
+    left: props.isOverlay ? "0" : "auto",
+    zIndex: props.isOverlay ? "2100" : "10",
   })};
-`
+
+  background: #010101;
+  font-family: var(--font-jost), "Jost", sans-serif;
+`;
+
+const TopRow = styled(Box)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
 
 const LogoContainer = styled(Image)`
-  width: 80px;
+  width: 88px;
   height: auto;
-`
+`;
+
+const RightControls = styled(Box)`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const LoginButton = styled.a<{ isOverlay?: boolean }>`
+  width: 96px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: center / cover no-repeat url("${LoginButtonBg.src}");
+  color: ${theme.colors.neutral.xs};
+
+  font-family: var(--font-jost), "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 0.01em;
+
+  transition:
+    color 180ms ease,
+    filter 180ms ease;
+
+  &&:hover {
+    color: #71bfff !important;
+  }
+`;
+
+const IconButton = styled.button`
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(113, 191, 255, 0.16);
+  background: rgba(10, 17, 29, 0.35);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 120ms ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:hover {
+    border-color: rgba(113, 191, 255, 0.28);
+    background: rgba(10, 17, 29, 0.45);
+  }
+`;
+
+const Burger = styled.div<{ $open: boolean }>`
+  width: 18px;
+  height: 12px;
+  position: relative;
+
+  span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 99px;
+    background: ${theme.colors.neutral.xs};
+    transition:
+      transform 180ms ease,
+      top 180ms ease,
+      opacity 180ms ease;
+
+    &:nth-child(1) {
+      top: ${(p) => (p.$open ? "5px" : "0px")};
+      transform: ${(p) => (p.$open ? "rotate(45deg)" : "none")};
+    }
+    &:nth-child(2) {
+      top: 5px;
+      opacity: ${(p) => (p.$open ? 0 : 1)};
+    }
+    &:nth-child(3) {
+      top: ${(p) => (p.$open ? "5px" : "10px")};
+      transform: ${(p) => (p.$open ? "rotate(-45deg)" : "none")};
+    }
+  }
+`;
+
+const Backdrop = styled.div<{ $open: boolean }>`
+  position: fixed;
+  inset: 0;
+  z-index: 2190;
+  background: rgba(0, 0, 0, 0.48);
+  opacity: ${(p) => (p.$open ? 1 : 0)};
+  pointer-events: ${(p) => (p.$open ? "auto" : "none")};
+  transition: opacity 180ms ease;
+`;
+
+const Drawer = styled.aside<{ $open: boolean }>`
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(86vw, 360px);
+  z-index: 2200;
+
+  background: rgba(6, 10, 18, 0.92);
+  border-left: 1px solid rgba(113, 191, 255, 0.16);
+  backdrop-filter: blur(14px);
+
+  transform: translateX(${(p) => (p.$open ? "0" : "104%")});
+  transition: transform 220ms ease;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const DrawerHeader = styled.div`
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(113, 191, 255, 0.14);
+`;
+
+const DrawerTitle = styled.div`
+  color: ${theme.colors.neutral.xs};
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+`;
+
+const DrawerBody = styled.nav`
+  padding: 10px 10px 18px;
+  overflow: auto;
+`;
+
+const Section = styled.div`
+  border: 1px solid rgba(113, 191, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(10, 17, 29, 0.38);
+  overflow: hidden;
+
+  & + & {
+    margin-top: 10px;
+  }
+`;
+
+const RowButton = styled.button<{ $accent?: boolean }>`
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 14px 14px;
+  color: ${theme.colors.neutral.xs};
+  font-family: var(--font-jost), "Jost", sans-serif;
+  font-size: ${(p) => (p.$accent ? "16px" : "16px")};
+  font-weight: 200;
+  letter-spacing: 0.01em;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+
+  &:hover {
+    background: rgba(113, 191, 255, 0.08);
+    color: #71bfff;
+  }
+`;
+
+const LinkRow = styled.a<{ $sub?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: ${(p) => (p.$sub ? "12px 14px 12px 28px" : "14px 14px")};
+  font-size: ${(p) => (p.$sub ? "14px" : "16px")};
+  font-weight: ${(p) => (p.$sub ? 300 : 200)};
+  opacity: ${(p) => (p.$sub ? 0.92 : 1)};
+  color: ${theme.colors.neutral.xs};
+  text-decoration: none;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+
+  &:hover {
+    background: rgba(113, 191, 255, 0.08);
+    color: #71bfff;
+  }
+`;
+
+const Caret = styled.span<{ $open: boolean }>`
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid ${theme.colors.neutral.xs};
+  border-bottom: 2px solid ${theme.colors.neutral.xs};
+  transform: rotate(${(p) => (p.$open ? "-135deg" : "45deg")});
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+
+  ${RowButton}:hover & {
+    border-right-color: #71bfff;
+    border-bottom-color: #71bfff;
+  }
+`;
+
+const SubList = styled.div<{ $open: boolean }>`
+  max-height: ${(p) => (p.$open ? "520px" : "0px")};
+  overflow: hidden;
+  transition: max-height 220ms ease;
+  border-top: 1px solid rgba(113, 191, 255, 0.12);
+`;
+
+const DrawerFooter = styled.div`
+  padding: 12px 16px 16px;
+  border-top: 1px solid rgba(113, 191, 255, 0.14);
+`;
+
+const SmallNote = styled.div`
+  color: rgba(244, 248, 255, 0.7);
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.4;
+`;
+
+const navItems = [
+  {
+    label: "Products",
+    dropdown: [
+      { label: "IronCAP Engine", href: "/products/ironcap" },
+      { label: "IronCAP XMail", href: "/products/ironcap-xmail" },
+      { label: "IronCAP OnCall", href: "/products/ironcap-oncall" },
+      {
+        label: "Connect to an Agent",
+        href: "/products/ironcap-oncall/connect",
+      },
+      { label: "IronCAP InTouch", href: "/products/ironcap-intouch" },
+    ],
+  },
+  {
+    label: "Services",
+    dropdown: [
+      { label: "Quantum AI Wrapper (QAW)", href: "/services" },
+      { label: "Digital Asset Protection", href: "/services/#da-protection" },
+      {
+        label: "Cryptographic Integration Services",
+        href: "/services/#crypto-services",
+      },
+    ],
+  },
+  { label: "Use Cases", href: "/use-cases" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 export const NavBarMobile = ({
-  variant
+  variant,
+  isOverlay = false,
 }: {
-  variant?: NavBarVariants
+  variant?: NavBarVariants;
+  isOverlay?: boolean;
 }) => {
-  const isLight = variant === NavBarVariants.Light
+  const [open, setOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const isLight = variant === NavBarVariants.Light;
+  const showLoginInline = !isOverlay; // overlay already had special login logic; on mobile we show it normally
+  const loginHref = "https://locator.01com.com/";
+
+  const textColor = useMemo(
+    () => (isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs),
+    [isLight],
+  );
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  useEffect(() => {
+    // lock scroll when drawer is open
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  const close = () => {
+    setOpen(false);
+    setOpenSection(null);
+  };
 
   return (
     <>
       <NavBarContainer
-        flexDirection='row'
-        flexJustify='space-between'
-        flexAlignment='center'
+        flexDirection="row"
+        flexJustify="space-between"
+        flexAlignment="center"
         variant={variant}
+        isOverlay={isOverlay}
       >
+        <TopRow>
+          <Link href="/" aria-label="01 Quantum home">
+            <LogoContainer
+              src={Logo}
+              alt="01 Quantum logo, click to return home"
+            />
+          </Link>
 
-        <Menu styles={{
-          bmBurgerButton: {
-            position: 'relative',
-            width: '30px',
-            height: '20px',
-            // left: '30px',
-            // top: '24px'
-          },
-          bmBurgerBars: {
-            background: isLight ? theme.colors.neutral.xl : theme.colors.neutral.xs,
-            height: "2px"
-          },
-          // bmBurgerBarsHover: {
-          //   background: '#a90000'
-          // },
-          bmCrossButton: {
-            height: '24px',
-            width: '24px',
-            left: '16px',
-            top: '14px',
-          },
-          bmCross: {
-            background: theme.colors.neutral.xl,
-            width: '2px',
-            height: '28px',
-          },
-          bmMenuWrap: {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            height: '100%',
-            zIndex: isLight ? 1100 : 2100,
-          },
-          bmMenu: {
-            background: theme.colors.neutral.xs,
-            opacity: isLight ? '100%' : '98%',
-            padding: '70px 0 0 0',
-          },
-          bmMorphShape: {
-            fill: theme.colors.neutral.xs,
-          },
-          bmItemList: {
-            color: theme.colors.neutral.sm,
-          },
-          bmItem: {
-            display: 'inline-block'
-          },
-          bmOverlay: {
-            background: 'transparent'
-          },
-        }}>
-          <Box flexDirection='column' width="100%">
-            <AnchorDivider />
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
-            <AnchorDivider />
+          <RightControls>
+            {showLoginInline && (
+              <Link href={loginHref} target="_blank" passHref legacyBehavior>
+                <LoginButton isOverlay={isOverlay}>Login</LoginButton>
+              </Link>
+            )}
 
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
-            <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />
-            <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/imoncall-remote-help-desk" label="I'm OnCall" target="_blank" />
-            <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/support" label="Support" />
-            <AnchorDivider />
-
-            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/intellectual-properties" label="Intellectual Properties" />
-            <AnchorDivider />
-
-          </Box>
-        </Menu>
-        <Link href="/" style={{ zIndex: 2000 }}>
-          <LogoContainer src={Logo} alt="01com logo, click to return home" />
-        </Link>
-        <NavLogin isNavBarLight={isLight} />
+            <IconButton
+              type="button"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <Burger $open={open} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </Burger>
+            </IconButton>
+          </RightControls>
+        </TopRow>
       </NavBarContainer>
+
+      <Backdrop $open={open} onClick={close} />
+
+      <Drawer $open={open} aria-label="Mobile navigation">
+        <DrawerHeader>
+          <DrawerTitle style={{ color: textColor }}>
+            {open ? "Menu" : " "}
+          </DrawerTitle>
+
+          <div style={{ marginLeft: "auto" }}>
+            <IconButton type="button" aria-label="Close menu" onClick={close}>
+              <Burger $open={true} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </Burger>
+            </IconButton>
+          </div>
+        </DrawerHeader>
+
+        <DrawerBody>
+          {isOverlay && (
+            <Section>
+              <Link href={loginHref} target="_blank" passHref legacyBehavior>
+                <LinkRow onClick={close}>Login</LinkRow>
+              </Link>
+            </Section>
+          )}
+
+          {navItems.map((item) => (
+            <Section key={item.label}>
+              {item.dropdown ? (
+                <>
+                  <RowButton
+                    type="button"
+                    onClick={() =>
+                      setOpenSection((cur) =>
+                        cur === item.label ? null : item.label,
+                      )
+                    }
+                    aria-expanded={openSection === item.label}
+                  >
+                    <span>{item.label}</span>
+                    <Caret $open={openSection === item.label} />
+                  </RowButton>
+
+                  <SubList $open={openSection === item.label}>
+                    {item.dropdown.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        passHref
+                        legacyBehavior
+                      >
+                        <LinkRow
+                          $sub={sub.label === "Connect to an Agent"}
+                          onClick={close}
+                        >
+                          {sub.label}
+                        </LinkRow>
+                      </Link>
+                    ))}
+                  </SubList>
+                </>
+              ) : (
+                <Link href={item.href ?? "/"} passHref legacyBehavior>
+                  <LinkRow onClick={close}>{item.label}</LinkRow>
+                </Link>
+              )}
+            </Section>
+          ))}
+        </DrawerBody>
+
+        <DrawerFooter>
+          <SmallNote>
+            Tip: tap outside the menu (or hit Esc) to close.
+          </SmallNote>
+        </DrawerFooter>
+      </Drawer>
     </>
-  )
-}
+  );
+};

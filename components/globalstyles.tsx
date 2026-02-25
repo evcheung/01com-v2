@@ -1,7 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-  html,
+  :root {
+    --font-jost: "Jost", "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-raleway: "Raleway", "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  html{
+    scroll-behaviour: smooth;
+  },
   body {
     color: ${({ theme }) => theme.colors.primary};
     padding: 0;

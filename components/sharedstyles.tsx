@@ -4,7 +4,7 @@ import texture from '../public/assets/texture.png'
 import { breakpoints } from '../utils/breakpoints'
 
 const Container = styled.div`
-  background: no-repeat top/contain url("${texture.src}");
+  // background: no-repeat top/contain url("${texture.src}");
   background-color:  ${theme.colors.neutral.sm};
   display: flex;
   flex-direction: column nowrap;

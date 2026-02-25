@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
-import { Raleway} from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 
@@ -12,10 +11,6 @@ const theme: DefaultTheme = {
   },
 }
 
-// If loading a variable font, you don't need to specify the font weight
-const raleway = Raleway({ subsets: ['latin'], display: 'swap', adjustFontFallback: false })
-
-
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false)
 
@@ -24,12 +19,15 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [])
   return (
     <>
-      {isClient && <main className={`${raleway.className}`}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </main>}
+      {isClient && (
+  <main>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  </main>
+)}
+
     </>
   )
 }

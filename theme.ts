@@ -24,7 +24,8 @@ const fontSize = {
   xl: '24px',
   xxl: '30px',
   xxxl: '36px',
-  xxxxl: '48px'
+  xxxxl: '48px',
+  xxxxxl: '128px',
 }
 
 const fontWeight = {

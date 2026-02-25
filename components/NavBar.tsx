@@ -8,15 +8,21 @@ export enum NavBarVariants {
 }
 
 export const NavBar = ({
-  variant = NavBarVariants.Light as NavBarVariants
+  variant = NavBarVariants.Light as NavBarVariants,
+  isOverlay = false
 }: {
   variant?: NavBarVariants
+  isOverlay?: boolean
 }) => {
   const { width } = useWindowSize()
 
   return (
     <>
-      {width > 940 ? <NavBarDesktop variant={variant as NavBarVariants} /> : <NavBarMobile variant={variant as NavBarVariants} />}
+      {width > 940 ? (
+        <NavBarDesktop variant={variant as NavBarVariants} isOverlay={isOverlay} />
+      ) : (
+        <NavBarMobile variant={variant as NavBarVariants} />
+      )}
     </>
   )
 }

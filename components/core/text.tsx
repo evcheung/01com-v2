@@ -22,7 +22,8 @@ export enum TextVariants {
   Feat3 = "Feat3",
   Body1 = "Body1",
   Body2 = "Body2",
-  Body3 = "Body3"
+  Body3 = "Body3",
+  Large1 = "Large1"
 }
 
 interface TextProps {
@@ -80,6 +81,11 @@ const textVariantValueMap = new Map<TextVariants, React.CSSProperties>([
     fontSize: theme.fontSize.xs,
     fontWeight: '600',
     lineHeight: '18px'
+  }],
+  [TextVariants.Large1, {
+    fontSize: theme.fontSize.xxxxxl,
+    fontWeight: textWeightMap.get(TextWeights.Light),
+    lineHeight: '32px'
   }],
 ])
 

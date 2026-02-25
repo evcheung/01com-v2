@@ -163,6 +163,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const PanelCard = styled.div`
@@ -990,13 +991,13 @@ export default function Home() {
                 src="/assets/callout-text.png"
                 alt=""
                 aria-hidden="true"
-                width={1000} // adjust to actual size
-                height={200} // adjust to actual size
+                width={1000}
+                height={200} 
               />
             </ThreatPanel>
 
             <IntroGrid style={{ marginTop: "120px", marginBottom: "120px" }}>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
+              <IntroCopy>
                 <OnCallBody>
                   The quantum-safe tokens mark a revolution in the post-quantum
                   digital asset industry with the ability to not only protect

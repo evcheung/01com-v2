@@ -163,6 +163,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const PanelCard = styled.div`
@@ -935,7 +936,7 @@ export default function Home() {
         <HomeSurface>
           <Inner>
             <IntroGrid>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/qaw.png"
@@ -1091,7 +1092,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px" }} id="da-protection">
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallTitle>
                     Digital Asset Protection Services - Securing the Future of
@@ -1111,7 +1112,7 @@ export default function Home() {
               </IntroCopy>
             </IntroGrid>
             <IntroGrid style={{ marginTop: "80px" }}>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/quantum-crypto.png"
@@ -1138,7 +1139,7 @@ export default function Home() {
               </IntroCopy>
             </IntroGrid>
             <IntroGrid style={{ marginTop: "80px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/quantum-defi.png"
@@ -1329,7 +1330,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "180px", marginBottom: "180px" }} id="crypto-services">
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/os-crypto.png"
@@ -1370,7 +1371,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px", marginBottom: "200px" }}>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-server.png"

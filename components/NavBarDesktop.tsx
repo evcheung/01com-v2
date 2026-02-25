@@ -38,13 +38,21 @@ const DropdownMenu = styled.div`
   }
 `;
 
-const DropdownItem = styled.a`
+const DropdownItem = styled.a<{ $sub?: boolean }>`
   display: block;
   padding: 10px 20px;
   font-size: 18px;
   font-weight: 300;
   color: ${theme.colors.neutral.xs};
   transition: all 150ms ease;
+
+  ${(p) =>
+    p.$sub &&
+    `
+      padding-left: 38px;   
+      font-size: 14px;      
+      opacity: 0.9;         
+    `}
 
   &:hover {
     background: rgba(113, 191, 255, 0.08);
@@ -182,6 +190,7 @@ const desktopNavItems = [
       { label: "IronCAP Engine", href: "/products/ironcap" },
       { label: "IronCAP XMail", href: "/products/ironcap-xmail" },
       { label: "IronCAP OnCall", href: "/products/ironcap-oncall" },
+      {label: "Connect to an Agent", href: "/products/ironcap-oncall/connect"},
       { label: "IronCAP InTouch", href: "/products/ironcap-intouch" },
     ],
   },
@@ -191,7 +200,10 @@ const desktopNavItems = [
     dropdown: [
       { label: "Quantum AI Wrapper (QAW)", href: "/services" },
       { label: "Digital Asset Protection", href: "/services/#da-protection" },
-      { label: "Cryptographic Integration Services", href: "/services/#crypto-services" },
+      {
+        label: "Cryptographic Integration Services",
+        href: "/services/#crypto-services",
+      },
     ],
   },
   { label: "Use Cases", href: "/use-cases" },
@@ -272,7 +284,11 @@ export const NavBarDesktop = ({
                       passHref
                       legacyBehavior
                     >
-                      <DropdownItem>{subItem.label}</DropdownItem>
+                      <DropdownItem
+                        $sub={subItem.label === "Connect to an Agent"}
+                      >
+                        {subItem.label}
+                      </DropdownItem>
                     </Link>
                   ))}
                 </DropdownMenu>

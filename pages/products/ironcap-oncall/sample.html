@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  
+	
+	$("button").click(function(){
+		
+		var ret=false;
+		var ses_id=$("input[name=session_id]" ).val().trim();
+		
+		// Validate We have some sessionId not empty string
+		if (!ses_id) {
+			
+			alert('Please input your Session code.');
+			$( "input[name=session_id]" ).focus();
+			return;
+			
+		}
+		
+		
+		var data = "todo=CHECK_SES_ID&ses_id="+ses_id;
+		let self = this;
+		self.ses_id =  ses_id;
+		
+		
+		// Send Request to the server to find sessionID from database
+		
+		$.ajax({
+			type: "POST",
+			url:  "/proxy.php",
+			cache: false,
+			timeout: 10000,
+			data: data,
+			success: function(content){
+				var status=100;
+				
+				// Checking status
+				if(content.substr(0, 9)=='RSSTATUS=')
+				{
+					status=content.substr(9);
+					
+					if(status<6)  //STATUS2, OK Good
+					{
+						$( "input[name=session_id]" ).val('');
+						ret=true;
+						chatwin=window.open("https://imoncall.01com.com/go/connect.php?ses_id="+self.ses_id, "Chat", "directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no, resizable=yes, scrollbars=1, width=452, height=796");
+						chatwin.focus();
+						
+						// All good we don't need to proceed futher
+						return ;
+						
+					}	
+				}
+				
+				
+				// Error Messages Section
+				if(!ret)
+				{
+					
+					if(status==6)
+						$("#msg").text('All links and the Session Code provided to you are no longer valid. Contact your technical support person if you decide to authorize remote access to your computer.');
+					else if(status==7)
+						$("#msg").text('All links and the Session Code provided to you have expired. Contact your technical support person to request a new remote support session.');
+					else if(status==8)
+						$("#msg").text('All links and the Session Code provided to you are inactive. Contact your technical support person to request a new remote support session.');
+					else
+						$("#msg").text('The Session Code you entered is invalid. Re-enter the Session Code or contact your technical support person to request a new remote support session.');
+					
+					$("#msg").css('display','block');
+				}	
+			}
+		});
+		
+    
+  	});
+});
+</script>
+</head>
+<body>
+
+<h2>Sample code - SessionID</h2>
+
+<input type="text" name="session_id" />
+<button>Click me</button>
+<p id="msg"> </p>
+
+</body>
+</html>

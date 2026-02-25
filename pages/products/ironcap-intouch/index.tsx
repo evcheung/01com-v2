@@ -164,6 +164,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const PanelCard = styled.div`
@@ -944,7 +945,7 @@ export default function Home() {
         <HomeSurface>
           <Inner>
             <IntroGrid>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-intouch.png"
@@ -1058,7 +1059,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-intouch-go.png"
@@ -1134,7 +1135,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/intouch-gomail.png"
@@ -1203,7 +1204,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-security.png"
@@ -1255,7 +1256,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px", marginBottom: "200px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-server.png"

@@ -355,6 +355,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const OnCallBody = styled.p`
@@ -412,10 +413,6 @@ export default function Home() {
     <Layout>
       <Head>
         <title>IronCAP™ OnCall | 01 Quantum</title>
-        <meta
-          name="description"
-          content="We love to hear from our customers or partners. Call or email us with your questions or comments!"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -432,10 +429,6 @@ export default function Home() {
 
           <HeroCopy>
             <HeroTitle>IronCAP™ OnCall</HeroTitle>
-            <HeroSubtext>
-              We love to hear from our customers or partners. Call or email us
-              with your questions or comments!
-            </HeroSubtext>
           </HeroCopy>
         </MainBannerContainer>
 
@@ -505,7 +498,7 @@ export default function Home() {
             </ContactSection>
 
             <IntroGrid style={{ marginBottom: "60px" }}>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
+              <IntroCopy>
                 <OnCallBody>
                   You can provide world-class{" "}
                   <span style={{ textDecoration: "underline" }}>Live-Chat</span>{" "}

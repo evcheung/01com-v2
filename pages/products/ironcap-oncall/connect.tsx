@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "../../../components/Footer";
+import { useRef } from "react";
 
 export const revalidate = 10;
 
@@ -116,44 +117,12 @@ const Inner = styled.div`
   margin: 0 auto;
 `;
 
-/* ===== CONTACT SECTION (matches screenshot) ===== */
-
 const ContactSection = styled.section`
   position: relative;
   padding: 86px 0 120px;
 
   @media (max-width: 980px) {
     padding: 64px 0 90px;
-  }
-`;
-
-const AccentBarLeft = styled(Image)`
-  position: absolute !important;
-  left: -80px;
-  top: 18px;
-  width: 520px !important;
-  height: auto !important;
-  opacity: 0.85;
-  pointer-events: none;
-  user-select: none;
-
-  @media (max-width: 980px) {
-    display: none;
-  }
-`;
-
-const AccentBarRight = styled(Image)`
-  position: absolute !important;
-  right: -60px;
-  top: 64px;
-  width: 360px !important;
-  height: auto !important;
-  opacity: 0.8;
-  pointer-events: none;
-  user-select: none;
-
-  @media (max-width: 980px) {
-    display: none;
   }
 `;
 
@@ -188,66 +157,6 @@ const LeftCol = styled.div`
     align-items: center;
   }
 `;
-
-const MethodRow = styled.div`
-  /* NEW: match the button width and center icon within it */
-  width: 258px;
-  display: flex;
-  justify-content: center;
-
-  @media (max-width: 980px) {
-    width: min(320px, 100%);
-  }
-`;
-
-const IconSlot = styled.div`
-  width: 86px;
-  height: 82px;
-  position: relative;
-  margin-bottom: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const DeptButtons = styled.div`
-  margin-top: -36px;
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-  width: 258px;
-
-  @media (max-width: 980px) {
-    width: min(320px, 100%);
-  }
-`;
-
-const DeptButton = styled.button`
-  height: 62.47px;
-  width: 258px;
-  border: none;
-  padding: 0;
-
-  background: url("/assets/big-green-button.png") center / contain no-repeat;
-
-  display: grid;
-  place-items: center;
-
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 35px;
-  letter-spacing: 0.02em;
-
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(1.08);
-  }
-`;
-
-/* Right panel (form) */
 
 const FormPanel = styled.div`
   position: relative;
@@ -347,6 +256,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const OnCallBody = styled.p`
@@ -400,12 +310,12 @@ const SubNavDivider = styled(Image)`
 `;
 
 const LeftText = styled.div`
-  max-width: 420px;
+  max-width: 540px;
 
   color: ${TEXT_WHITE};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 300;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.8;
   margin-top: 48px;
 
@@ -433,151 +343,228 @@ const GoButton = styled.button`
 `;
 
 export default function Home() {
-  return (
-    <Layout>
-      <Head>
-        <title>IronCAP™ OnCall | 01 Quantum</title>
-        <meta
-          name="description"
-          content="We love to hear from our customers or partners. Call or email us with your questions or comments!"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const sessionRef = useRef<HTMLInputElement | null>(null);
 
-      <PageRoot>
-        <MainBannerContainer>
-          <HeroBg
-            src="/assets/header-mask.png"
-            alt=""
-            aria-hidden="true"
-            width={730}
-            height={441}
-            priority
-          />
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-          <HeroCopy>
-            <HeroTitle>IronCAP™ OnCall</HeroTitle>
-            <HeroSubtext>
-              We love to hear from our customers or partners. Call or email us
-              with your questions or comments!
-            </HeroSubtext>
-          </HeroCopy>
-        </MainBannerContainer>
+    const input = sessionRef.current;
+    const ses_id = (input?.value ?? "").trim();
 
-        <HomeSurface>
-          <Inner>
-            <ContactSection>
-              <ContactGrid>
-                {/* LEFT COLUMN */}
-                <LeftCol>
-                  <LeftText>
-                    Enter the Session Code provided to you and click Go.
-                    <br />
-                    <br />
-                  </LeftText>
-                </LeftCol>
+    if (!ses_id) {
+      alert("Please input your Session code.");
+      input?.focus();
+      return;
+    }
 
-                {/* RIGHT COLUMN */}
-                <FormPanel>
-                  <PanelBg
-                    src="/assets/big-side-panel.png"
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    priority={false}
-                  />
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
-                  <PanelContent>
-                    <PanelIntro>Connect to an Agent</PanelIntro>
+    try {
+      const body = `todo=CHECK_SES_ID&ses_id=${encodeURIComponent(ses_id)}`;
 
-                    <form>
-                      <Fields>
-                        <Field placeholder="Session Code" name="sessionCode" />
-                      </Fields>
+      const res = await fetch("/proxy.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+        body,
+        cache: "no-store",
+        signal: controller.signal,
+      });
 
-                      <SubmitRow>
-                        <GoButton type="submit">
-                          <Image
-                            src="/assets/go-button.png"
-                            alt="Go"
-                            width={151}
-                            height={50.83} 
-                            priority={false}
+      const content = await res.text();
+
+      let status: number | string = 100;
+
+      if (content.substr(0, 9) === "RSSTATUS=") {
+        status = content.substr(9);
+        const statusNum = Number(status);
+
+        if (!Number.isNaN(statusNum) && statusNum < 6) {
+          if (input) input.value = "";
+
+          const chatwin = window.open(
+            `https://imoncall.01com.com/go/connect.php?ses_id=${encodeURIComponent(
+              ses_id,
+            )}`,
+            "Chat",
+            "directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,resizable=yes,scrollbars=1,width=452,height=796",
+          );
+          chatwin?.focus();
+          return;
+        }
+      }
+      const s = Number(status);
+      if (s === 6) {
+        alert(
+          "All links and the Session Code provided to you are no longer valid. Contact your technical support person if you decide to authorize remote access to your computer.",
+        );
+      } else if (s === 7) {
+        alert(
+          "All links and the Session Code provided to you have expired. Contact your technical support person to request a new remote support session.",
+        );
+      } else if (s === 8) {
+        alert(
+          "All links and the Session Code provided to you are inactive. Contact your technical support person to request a new remote support session.",
+        );
+      } else {
+        alert(
+          "The Session Code you entered is invalid. Re-enter the Session Code or contact your technical support person to request a new remote support session.",
+        );
+      }
+    } catch {
+      alert("Request timed out or failed. Please try again.");
+    } finally {
+      clearTimeout(timeout);
+    }
+  };
+  {
+    return (
+      <Layout>
+        <Head>
+          <title>IronCAP™ OnCall | 01 Quantum</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <PageRoot>
+          <MainBannerContainer>
+            <HeroBg
+              src="/assets/header-mask.png"
+              alt=""
+              aria-hidden="true"
+              width={730}
+              height={441}
+              priority
+            />
+
+            <HeroCopy>
+              <HeroTitle>IronCAP™ OnCall</HeroTitle>
+            </HeroCopy>
+          </MainBannerContainer>
+
+          <HomeSurface>
+            <Inner>
+              <ContactSection>
+                <ContactGrid>
+                  {/* LEFT COLUMN */}
+                  <LeftCol>
+                    <LeftText>
+                      Enter the Session Code provided to you and click Go.
+                      <br />
+                      <br />
+                    </LeftText>
+                  </LeftCol>
+
+                  {/* RIGHT COLUMN */}
+                  <FormPanel>
+                    <PanelBg
+                      src="/assets/big-side-panel.png"
+                      alt=""
+                      aria-hidden="true"
+                      fill
+                      priority={false}
+                    />
+
+                    <PanelContent>
+                      <PanelIntro>Connect to an Agent</PanelIntro>
+
+                      <form onSubmit={handleSubmit}>
+                        <Fields>
+                          <Field
+                            placeholder="Session Code"
+                            name="sessionCode"
+                            ref={sessionRef}
                           />
-                        </GoButton>
-                      </SubmitRow>
-                    </form>
-                  </PanelContent>
-                </FormPanel>
-              </ContactGrid>
-            </ContactSection>
+                        </Fields>
 
-            <IntroGrid style={{ marginBottom: "60px" }}>
-              <IntroCopy style={{ maxWidth: "1920px" }}>
-                <OnCallBody
-                  style={{ marginTop: "-24px", marginBottom: "64px" }}
-                >
-                  With your permission, a{" "}
-                  <span style={{ textDecoration: "underline" }}>
-                    temporary session
-                  </span>{" "}
-                  will set up for the agent to remotely control your computer.
-                  You may terminate the session any time. Once terminated,
-                  everything regarding this support session will be erased
-                  leaving no trace to ensure security and privacy. <br /> <br />
-                  During this remote support session, you may also have{" "}
-                  <span style={{ textDecoration: "underline" }}>
-                    real-time
-                  </span>{" "}
-                  chats with the agent. Chat logs can be saved for future
-                  references. (Chat session will be displayed once you have
-                  typed in your session code and authorized the connection.)
-                  <br /> <br />
-                </OnCallBody>
-              </IntroCopy>
-            </IntroGrid>
+                        <SubmitRow>
+                          <GoButton type="submit">
+                            <Image
+                              src="/assets/go-button.png"
+                              alt="Go"
+                              width={151}
+                              height={50.83}
+                              priority={false}
+                            />
+                          </GoButton>
+                        </SubmitRow>
+                      </form>
+                    </PanelContent>
+                  </FormPanel>
+                </ContactGrid>
+              </ContactSection>
 
-            <SubNavRow aria-label="IronCAP OnCall links">
-              <SubNavLink href="/ironcap-oncall/about">
-                About IronCAP OnCall
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+              <IntroGrid style={{ marginBottom: "60px" }}>
+                <IntroCopy>
+                  <OnCallBody
+                    style={{ marginTop: "-24px", marginBottom: "64px" }}
+                  >
+                    With your permission, a{" "}
+                    <span style={{ textDecoration: "underline" }}>
+                      temporary session
+                    </span>{" "}
+                    will set up for the agent to remotely control your computer.
+                    You may terminate the session any time. Once terminated,
+                    everything regarding this support session will be erased
+                    leaving no trace to ensure security and privacy. <br />{" "}
+                    <br />
+                    During this remote support session, you may also have{" "}
+                    <span style={{ textDecoration: "underline" }}>
+                      real-time
+                    </span>{" "}
+                    chats with the agent. Chat logs can be saved for future
+                    references. (Chat session will be displayed once you have
+                    typed in your session code and authorized the connection.)
+                    <br /> <br />
+                  </OnCallBody>
+                </IntroCopy>
+              </IntroGrid>
 
-              <SubNavLink href="/ironcap-oncall/application">
-                Application
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+              <SubNavRow aria-label="IronCAP OnCall links">
+                <SubNavLink href="/ironcap-oncall/about">
+                  About IronCAP OnCall
+                </SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-              <SubNavLink href="/ironcap-oncall/press-room">
-                Press Room
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+                <SubNavLink href="/ironcap-oncall/application">
+                  Application
+                </SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-              <SubNavLink href="/ironcap-oncall/security">Security</SubNavLink>
-            </SubNavRow>
-          </Inner>
+                <SubNavLink href="/ironcap-oncall/press-room">
+                  Press Room
+                </SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-          <Footer />
-        </HomeSurface>
-      </PageRoot>
-    </Layout>
-  );
+                <SubNavLink href="/ironcap-oncall/security">
+                  Security
+                </SubNavLink>
+              </SubNavRow>
+            </Inner>
+
+            <Footer />
+          </HomeSurface>
+        </PageRoot>
+      </Layout>
+    );
+  }
 }

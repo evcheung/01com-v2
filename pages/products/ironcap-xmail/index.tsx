@@ -164,6 +164,7 @@ const IntroCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: none;
 `;
 
 const PanelCard = styled.div`
@@ -622,7 +623,7 @@ const OnCallBody = styled.p`
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
-  max-width: 1920px;
+  max-width: none;
 `;
 
 export default function Home() {
@@ -853,7 +854,7 @@ export default function Home() {
             />
 
             <IntroGrid style={{ marginTop: "80px", marginBottom: "120px" }}>
-              <IntroCopy style={{ maxWidth: "1200px" }}>
+              <IntroCopy>
                 <OnCallHeaderRow>
                   <OnCallIcon
                     src="/assets/ironcap-oncall.png"

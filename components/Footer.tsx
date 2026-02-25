@@ -213,7 +213,7 @@ const DEFAULT_ACTION_LINKS: FooterLink[] = [
 const DEFAULT_NAV_LINKS: FooterLink[] = [
   { label: "Products", href: "/#offerings" },
   { label: "Services", href: "/#offerings" },
-  { label: "Use Cases", href: "/" },
+  { label: "Use Cases", href: "/use-cases" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Investor Relations", href: "/investor-relations" },

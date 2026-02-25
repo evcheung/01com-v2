@@ -52,19 +52,24 @@ const footerSocialLinks = [
   },
 ];
 
-/* Solutions for the Post-Quantum Era */
 const MainBannerContainer = styled.section`
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
   background: ${HERO_BG};
+
+  /* scales nicely on large displays */
+  height: clamp(520px, 48vw, 760px);
+
+  @media (min-width: 1441px) {
+    height: clamp(620px, 40vw, 880px);
+  }
 `;
 
 const MainBannerImage = styled(Image)`
-  width: 100%;
-  height: auto;
-  display: block;
+  object-fit: cover;
+  object-position: center;
 `;
 
 const HeroCopy = styled.div`
@@ -170,22 +175,23 @@ const IntroCopy = styled.div`
 `;
 
 const IntroTitle = styled.h1`
-  margin: 0;
+  margin-bottom: 16px;
   color: ${TEXT_WHITE};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 200;
-  font-size: clamp(24px, 2.06vw, 38px);
+  font-size: 44px;
   line-height: 1.12;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 `;
 
 const IntroLead = styled.p`
-  margin: 0;
+  margin-bottom: 12px;
   color: ${TEXT_BLUE};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 300;
-  font-size: clamp(15px, 1.04vw, 19px);
-  line-height: 1.56;
+  font-size: 21px;
+  line-height: 2;
 `;
 
 const IntroBody = styled.p`
@@ -193,8 +199,8 @@ const IntroBody = styled.p`
   color: ${TEXT_BODY};
   font-family: var(--font-jost), "Jost", sans-serif;
   font-weight: 300;
-  font-size: clamp(14px, 0.92vw, 17px);
-  line-height: 1.62;
+  font-size: 16px;
+  line-height: 2;
 `;
 
 const GraphicWrap = styled.div`
@@ -511,186 +517,6 @@ const SignatureIcon = () => (
   </ApplicationIconSvg>
 );
 
-/* Footer section */
-
-const FooterShowcaseSection = styled.section`
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #060a12;
-`;
-
-/* Top bar (vector background) */
-const FooterTopBar = styled.div`
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #0a0f18 url("/assets/footer-vector.png") center / cover no-repeat;
-  padding: 18px 0 16px;
-`;
-
-/* Bottom bar (solid black) */
-const FooterBottomBar = styled.div`
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #000;
-  padding: 40px 0 50px;
-`;
-
-const FooterShowcaseInner = styled.div`
-  width: min(1260px, 92vw);
-  margin: 0 auto;
-`;
-
-const FooterTopRow = styled.div`
-  position: relative;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and (max-width: 860px) {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-`;
-
-const FooterActionGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 88px;
-
-  @media screen and (max-width: 860px) {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-`;
-
-const FooterActionButton = styled(Link)`
-  width: 106px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-
-  /* use your provided image */
-  background: url("/assets/footer-button.png") center / contain no-repeat;
-  border: none;
-
-  color: ${TEXT_WHITE};
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1;
-  text-decoration: none;
-
-  &:hover {
-    filter: brightness(1.06);
-  }
-`;
-
-const FooterSocialCluster = styled.div`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  @media screen and (max-width: 860px) {
-    position: static;
-    transform: none;
-    width: 100%;
-    justify-content: flex-end;
-  }
-`;
-
-const FooterSocialLink = styled(Link)`
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-`;
-
-const FooterSocialIcon = styled(Image)`
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-`;
-
-const FooterBottomRow = styled.div`
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 30px 34px;
-  align-items: flex-start;
-
-  padding-top: 16px;
-
-  @media screen and (max-width: 860px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const FooterLogoLink = styled(Link)`
-  display: inline-flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
-const FooterLogo = styled(Image)`
-  height: auto;
-  display: block;
-`;
-
-const FooterMeta = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
-
-  padding: 0;
-`;
-
-const FooterNavLinks = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 32px;
-`;
-
-const FooterNavLink = styled(Link)`
-  color: #ffffff;
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 1;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const FooterAddress = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 32px;
-  gap: 16px;
-`;
-
-const FooterAddressLine = styled.p`
-  margin: 0;
-  color: #71bfff;
-  font-family: var(--font-jost), "Jost", sans-serif;
-  font-weight: 300;
-  font-size: 16.5px;
-  line-height: 1.4;
-`;
-
 export default function Home() {
   return (
     <Layout>
@@ -709,9 +535,9 @@ export default function Home() {
           <MainBannerImage
             src="/assets/mask-group.png"
             alt="Main banner"
-            width={1920}
-            height={900}
+            fill
             priority
+            sizes="100vw"
           />
           <HeroCopy>
             <HeroVerticalText>Solutions</HeroVerticalText>
@@ -749,8 +575,8 @@ export default function Home() {
                   src="/assets/animated-graphic.svg"
                   alt=""
                   aria-hidden="true"
-                  width={600}
-                  height={444}
+                  width={579}
+                  height={374}
                   priority
                 />
               </GraphicWrap>
@@ -775,7 +601,7 @@ export default function Home() {
                     world.
                   </ColumnSummary>
 
-                  <LearnMore href="https://www.ironcap.ca/ironcap-x/faq">
+                  <LearnMore href="/products/ironcap">
                     LEARN MORE
                   </LearnMore>
 
@@ -838,7 +664,7 @@ export default function Home() {
                     acceleration. <br /> <br />
                   </ColumnSummary>
 
-                  <LearnMore href="https://www.ironcap.ca/ironcap-x/faq">
+                  <LearnMore href="/services">
                     LEARN MORE
                   </LearnMore>
 

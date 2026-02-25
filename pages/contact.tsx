@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 export const revalidate = 10;
 
@@ -13,8 +14,6 @@ const TEXT_WHITE = "#f4f8ff";
 
 const ACCENT_BLUE = "#71bfff";
 const ACCENT_GREEN = "#00cf7d";
-
-/* ===== HERO ===== */
 
 const MainBannerContainer = styled.section`
   position: relative;
@@ -79,8 +78,6 @@ const HeroSubtext = styled.p`
   line-height: 1.45;
 `;
 
-/* ===== PAGE SURFACE ===== */
-
 const PageRoot = styled.div`
   font-family: var(--font-jost), "Jost", sans-serif;
 `;
@@ -116,8 +113,6 @@ const Inner = styled.div`
   margin: 0 auto;
 `;
 
-/* ===== CONTACT SECTION (matches screenshot) ===== */
-
 const ContactSection = styled.section`
   position: relative;
   padding: 86px 0 120px;
@@ -127,40 +122,9 @@ const ContactSection = styled.section`
   }
 `;
 
-const AccentBarLeft = styled(Image)`
-  position: absolute !important;
-  left: -80px;
-  top: 18px;
-  width: 520px !important;
-  height: auto !important;
-  opacity: 0.85;
-  pointer-events: none;
-  user-select: none;
-
-  @media (max-width: 980px) {
-    display: none;
-  }
-`;
-
-const AccentBarRight = styled(Image)`
-  position: absolute !important;
-  right: -60px;
-  top: 64px;
-  width: 360px !important;
-  height: auto !important;
-  opacity: 0.8;
-  pointer-events: none;
-  user-select: none;
-
-  @media (max-width: 980px) {
-    display: none;
-  }
-`;
-
 const ContactGrid = styled.div`
   display: grid;
 
-  /* slightly reduced width */
   grid-template-columns: minmax(360px, 1fr) minmax(520px, 640px);
   gap: 60px;
   align-items: start;
@@ -184,7 +148,7 @@ const LeftCol = styled.div`
 
 const MethodRow = styled.div`
   display: grid;
-  grid-template-columns: 86px 1fr; /* fixed icon column */
+  grid-template-columns: 86px 1fr;
   column-gap: 18px;
   align-items: center;
 `;
@@ -195,20 +159,7 @@ const IconSlot = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; /* centers icon inside slot */
-  flex: 0 0 auto;
-`;
-
-const MethodIcon = styled(Image)`
-  width: 43.8px;
-  height: 75.63px;
-  object-fit: contain;
-`;
-
-const IconWrap = styled.div<{ $w: number; $h: number }>`
-  width: ${(p) => p.$w}px;
-  height: ${(p) => p.$h}px;
-  position: relative;
+  justify-content: center;
   flex: 0 0 auto;
 `;
 
@@ -296,8 +247,6 @@ const SmallText = styled.p`
   font-size: 16px;
   line-height: 2;
 `;
-
-/* Right panel (form) */
 
 const FormPanel = styled.div`
   position: relative;
@@ -429,6 +378,91 @@ const Submit = styled.button`
 `;
 
 export default function Home() {
+  const [statusMsg, setStatusMsg] = useState<string>("");
+  const [isSending, setIsSending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatusMsg("");
+
+    const form = e.currentTarget;
+
+    const firstName = (
+      form.elements.namedItem("firstName") as HTMLInputElement
+    ).value.trim();
+    const lastName = (
+      form.elements.namedItem("lastName") as HTMLInputElement
+    ).value.trim();
+    const title = (
+      form.elements.namedItem("title") as HTMLInputElement
+    ).value.trim();
+    const company = (
+      form.elements.namedItem("company") as HTMLInputElement
+    ).value.trim();
+    const email = (
+      form.elements.namedItem("email") as HTMLInputElement
+    ).value.trim();
+    const phone = (
+      form.elements.namedItem("phone") as HTMLInputElement
+    ).value.trim();
+    const message = (
+      form.elements.namedItem("message") as HTMLTextAreaElement
+    ).value.trim();
+
+    if (!firstName) {
+      setStatusMsg("Please input your First name.");
+      (form.elements.namedItem("firstName") as HTMLInputElement).focus();
+      return;
+    }
+    if (!lastName) {
+      setStatusMsg("Please input your Last name.");
+      (form.elements.namedItem("lastName") as HTMLInputElement).focus();
+      return;
+    }
+    if (!title) {
+      setStatusMsg("Please input your Title.");
+      (form.elements.namedItem("title") as HTMLInputElement).focus();
+      return;
+    }
+    if (!email) {
+      setStatusMsg("Please input your Email.");
+      (form.elements.namedItem("email") as HTMLInputElement).focus();
+      return;
+    }
+    if (!message) {
+      setStatusMsg("Please input your Message.");
+      (form.elements.namedItem("message") as HTMLTextAreaElement).focus();
+      return;
+    }
+
+    setIsSending(true);
+
+    const to = "01com@01com.com";
+    const subject = `Contact form submission - ${firstName} ${lastName}`;
+    const body = [
+      `First name: ${firstName}`,
+      `Last name: ${lastName}`,
+      `Title: ${title}`,
+      `Company: ${company || "-"}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "-"}`,
+      "",
+      "Message: \n",
+      message,
+    ].join("\n");
+
+    const mailtoUrl =
+      `mailto:${encodeURIComponent(to)}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    form.reset();
+    setStatusMsg("Opening your email client...");
+    setIsSending(false);
+
+    window.location.href = mailtoUrl;
+  }
+
   return (
     <Layout>
       <Head>
@@ -501,26 +535,24 @@ export default function Home() {
                   </MethodRow>
 
                   <DeptButtons aria-label="Contact departments">
-                    <DeptButtons aria-label="Contact departments">
-                      <DeptButtonLink href="mailto:sales@ironcap.ca">
-                        Sales/VARs
-                      </DeptButtonLink>
-                      <DeptButtonLink href="mailto:ir@ironcap.ca">
-                        Investor Relations
-                      </DeptButtonLink>
-                      <DeptButtonLink href="mailto:help@ironcap.ca">
-                        Technical Support
-                      </DeptButtonLink>
-                      <DeptButtonLink href="mailto:marketing@ironcap.ca">
-                        Marketing
-                      </DeptButtonLink>
-                      <DeptButtonLink href="mailto:customerservice@ironcap.ca">
-                        Customer Service
-                      </DeptButtonLink>
-                      <DeptButtonLink href="mailto:hr@ironcap.ca">
-                        Human Resources
-                      </DeptButtonLink>
-                    </DeptButtons>
+                    <DeptButtonLink href="mailto:sales@ironcap.ca">
+                      Sales/VARs
+                    </DeptButtonLink>
+                    <DeptButtonLink href="mailto:ir@ironcap.ca">
+                      Investor Relations
+                    </DeptButtonLink>
+                    <DeptButtonLink href="mailto:help@ironcap.ca">
+                      Technical Support
+                    </DeptButtonLink>
+                    <DeptButtonLink href="mailto:marketing@ironcap.ca">
+                      Marketing
+                    </DeptButtonLink>
+                    <DeptButtonLink href="mailto:customerservice@ironcap.ca">
+                      Customer Service
+                    </DeptButtonLink>
+                    <DeptButtonLink href="mailto:hr@ironcap.ca">
+                      Human Resources
+                    </DeptButtonLink>
                   </DeptButtons>
 
                   <div style={{ marginLeft: "16px" }}>
@@ -560,7 +592,7 @@ export default function Home() {
                       articles or to answer specific questions.
                     </PanelIntro>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <Fields>
                         <Field placeholder="First name*" name="firstName" />
                         <Field placeholder="Last name*" name="lastName" />
@@ -571,8 +603,16 @@ export default function Home() {
                         <Message placeholder="Message*" name="message" />
                       </Fields>
 
+                      {statusMsg && (
+                        <p style={{ marginTop: 14, display: "block" }}>
+                          {statusMsg}
+                        </p>
+                      )}
+
                       <SubmitRow>
-                        <Submit type="submit">Send</Submit>
+                        <Submit type="submit" disabled={isSending}>
+                          {isSending ? "Opening..." : "Send"}
+                        </Submit>
                       </SubmitRow>
                     </form>
                   </PanelContent>

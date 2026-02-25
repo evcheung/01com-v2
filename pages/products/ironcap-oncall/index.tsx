@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "../../../components/Footer";
+import { useRef } from "react";
 
 export const revalidate = 10;
 
@@ -13,8 +14,6 @@ const TEXT_WHITE = "#f4f8ff";
 
 const ACCENT_BLUE = "#71bfff";
 const ACCENT_GREEN = "#00cf7d";
-
-/* ===== HERO ===== */
 
 const MainBannerContainer = styled.section`
   position: relative;
@@ -115,8 +114,6 @@ const Inner = styled.div`
   width: min(1200px, 86vw);
   margin: 0 auto;
 `;
-
-/* ===== CONTACT SECTION (matches screenshot) ===== */
 
 const ContactSection = styled.section`
   position: relative;
@@ -409,164 +406,270 @@ const SubNavDivider = styled(Image)`
 `;
 
 export default function Home() {
-  return (
-    <Layout>
-      <Head>
-        <title>IronCAP™ OnCall | 01 Quantum</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const loginRef = useRef<HTMLInputElement | null>(null);
+  const passRef = useRef<HTMLInputElement | null>(null);
 
-      <PageRoot>
-        <MainBannerContainer>
-          <HeroBg
-            src="/assets/header-mask.png"
-            alt=""
-            aria-hidden="true"
-            width={730}
-            height={441}
-            priority
-          />
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-          <HeroCopy>
-            <HeroTitle>IronCAP™ OnCall</HeroTitle>
-          </HeroCopy>
-        </MainBannerContainer>
+    const loginInput = loginRef.current;
+    const passInput = passRef.current;
 
-        <HomeSurface>
-          <Inner>
-            <ContactSection>
-              <ContactGrid>
-                {/* LEFT COLUMN */}
-                <LeftCol>
-                  <MethodRow>
-                    <IconSlot>
-                      <Image
-                        src="/assets/contact-chat.png"
-                        alt=""
-                        aria-hidden="true"
-                        fill
-                        sizes="86px"
-                        style={{ objectFit: "contain" }}
-                      />
-                    </IconSlot>
-                  </MethodRow>
+    const login_id = (loginInput?.value ?? "").trim();
+    const password = (passInput?.value ?? "").trim();
 
-                  <DeptButtons aria-label="Contact departments">
-                    <DeptButton href="https://imoncall.01com.com/go/freeversion.php">Try It Free</DeptButton>
-                    <DeptButton href="https://locator.01com.com/ecommerce/account.php">Buy Now</DeptButton>
-                  </DeptButtons>
-                </LeftCol>
+    // Validate non-empty (match sample's pattern)
+    if (!login_id) {
+      alert("Please input your Login ID.");
+      loginInput?.focus();
+      return;
+    }
 
-                {/* RIGHT COLUMN */}
-                <FormPanel>
-                  <PanelBg
-                    src="/assets/big-side-panel.png"
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    priority={false}
-                  />
+    if (!password) {
+      alert("Please input your Password.");
+      passInput?.focus();
+      return;
+    }
 
-                  <PanelContent>
-                    <PanelIntro>Agent Login</PanelIntro>
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
-                    <form>
-                      <Fields>
-                        <Field placeholder="Login ID" name="loginId" />
-                        <Field
-                          placeholder="Password"
-                          name="password"
-                          type="password"
+    try {
+      // Same POST shape as sample.html (x-www-form-urlencoded)
+      // NOTE: adjust todo/param names if your proxy expects different ones.
+      const body =
+        `todo=AGENT_LOGIN` +
+        `&login_id=${encodeURIComponent(login_id)}` +
+        `&password=${encodeURIComponent(password)}`;
+
+      const res = await fetch("/proxy.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+        body,
+        cache: "no-store",
+        signal: controller.signal,
+      });
+
+      const content = await res.text();
+
+      let status: number | string = 100;
+
+      // Parse RSSTATUS= (same as sample.html)
+      if (content.substr(0, 9) === "RSSTATUS=") {
+        status = content.substr(9);
+        const statusNum = Number(status);
+
+        if (!Number.isNaN(statusNum) && statusNum < 6) {
+          // success: clear fields, then proceed
+          if (loginInput) loginInput.value = "";
+          if (passInput) passInput.value = "";
+
+          // What to open on success depends on your agent flow.
+          // If you have a known agent landing URL, put it here.
+          // For now: open the agent console page if that's what you want.
+          const win = window.open(
+            "https://imoncall.01com.com/go/",
+            "Agent",
+            "directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,resizable=yes,scrollbars=1,width=452,height=796",
+          );
+          win?.focus();
+          return;
+        }
+      }
+
+      // Error messages mapping (same as sample.html)
+      const s = Number(status);
+      if (s === 6) {
+        alert(
+          "All links and the Session Code provided to you are no longer valid. Contact your technical support person if you decide to authorize remote access to your computer.",
+        );
+      } else if (s === 7) {
+        alert(
+          "All links and the Session Code provided to you have expired. Contact your technical support person to request a new remote support session.",
+        );
+      } else if (s === 8) {
+        alert(
+          "All links and the Session Code provided to you are inactive. Contact your technical support person to request a new remote support session.",
+        );
+      } else {
+        alert(
+          "The Session Code you entered is invalid. Re-enter the Session Code or contact your technical support person to request a new remote support session.",
+        );
+      }
+    } catch {
+      alert("Request timed out or failed. Please try again.");
+    } finally {
+      clearTimeout(timeout);
+    }
+  };
+  {
+    return (
+      <Layout>
+        <Head>
+          <title>IronCAP™ OnCall | 01 Quantum</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <PageRoot>
+          <MainBannerContainer>
+            <HeroBg
+              src="/assets/header-mask.png"
+              alt=""
+              aria-hidden="true"
+              width={730}
+              height={441}
+              priority
+            />
+
+            <HeroCopy>
+              <HeroTitle>IronCAP™ OnCall</HeroTitle>
+            </HeroCopy>
+          </MainBannerContainer>
+
+          <HomeSurface>
+            <Inner>
+              <ContactSection>
+                <ContactGrid>
+                  {/* LEFT COLUMN */}
+                  <LeftCol>
+                    <MethodRow>
+                      <IconSlot>
+                        <Image
+                          src="/assets/contact-chat.png"
+                          alt=""
+                          aria-hidden="true"
+                          fill
+                          sizes="86px"
+                          style={{ objectFit: "contain" }}
                         />
-                      </Fields>
+                      </IconSlot>
+                    </MethodRow>
 
-                      <SubmitRow>
-                        <GoButton type="submit">
-                          <Image
-                            src="/assets/go-button.png"
-                            alt="Go"
-                            width={151}
-                            height={50.83}
-                            priority={false}
+                    <DeptButtons aria-label="Contact departments">
+                      <DeptButton href="https://imoncall.01com.com/go/freeversion.php">
+                        Try It Free
+                      </DeptButton>
+                      <DeptButton href="https://locator.01com.com/ecommerce/account.php">
+                        Buy Now
+                      </DeptButton>
+                    </DeptButtons>
+                  </LeftCol>
+
+                  {/* RIGHT COLUMN */}
+                  <FormPanel>
+                    <PanelBg
+                      src="/assets/big-side-panel.png"
+                      alt=""
+                      aria-hidden="true"
+                      fill
+                      priority={false}
+                    />
+
+                    <PanelContent>
+                      <PanelIntro>Agent Login</PanelIntro>
+
+                      <form onSubmit={handleSubmit}>
+                        <Fields>
+                          <Field placeholder="Login ID" name="loginId" ref={loginRef} />
+                          <Field
+                            placeholder="Password"
+                            name="password"
+                            type="password"
+                            ref={passRef}
                           />
-                        </GoButton>
-                      </SubmitRow>
-                    </form>
-                  </PanelContent>
-                </FormPanel>
-              </ContactGrid>
-            </ContactSection>
+                        </Fields>
 
-            <IntroGrid style={{ marginBottom: "60px" }}>
-              <IntroCopy>
-                <OnCallBody>
-                  You can provide world-class{" "}
-                  <span style={{ textDecoration: "underline" }}>Live-Chat</span>{" "}
-                  support to your customers within minutes. IronCAP OnCall gives
-                  you private URLs for embedding into your web site. Simply
-                  implement a Live-Chat button with the given URL on your web
-                  site, your customers can then request to chat with an agent
-                  easily. Each agent can have up to 10 simultaneous chat
-                  sessions to deal with volumes at peak times. <br /> <br />
-                  IronCAP OnCall lets you setup a{" "}
-                  <span style={{ textDecoration: "underline" }}>
-                    temporary connection
-                  </span>{" "}
-                  to your customer's computer without any pre-installed
-                  software. You can quickly and efficiently resolve your
-                  customers' technical and IT support issues by{" "}
-                  <span style={{ textDecoration: "underline" }}>
-                    remotely controlling
-                  </span>{" "}
-                  their computers. Plus, your agents can login from anywhere in
-                  the world to support your customers, saving you time and
-                  travelling cost.
-                  <br /> <br />
-                </OnCallBody>
-              </IntroCopy>
-            </IntroGrid>
+                        <SubmitRow>
+                          <GoButton type="submit">
+                            <Image
+                              src="/assets/go-button.png"
+                              alt="Go"
+                              width={151}
+                              height={50.83}
+                              priority={false}
+                            />
+                          </GoButton>
+                        </SubmitRow>
+                      </form>
+                    </PanelContent>
+                  </FormPanel>
+                </ContactGrid>
+              </ContactSection>
 
-            <SubNavRow aria-label="IronCAP OnCall links">
-              <SubNavLink href="/imoncall-remote-help-desk">
-                About IronCAP OnCall
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+              <IntroGrid style={{ marginBottom: "60px" }}>
+                <IntroCopy>
+                  <OnCallBody>
+                    You can provide world-class{" "}
+                    <span style={{ textDecoration: "underline" }}>
+                      Live-Chat
+                    </span>{" "}
+                    support to your customers within minutes. IronCAP OnCall
+                    gives you private URLs for embedding into your web site.
+                    Simply implement a Live-Chat button with the given URL on
+                    your web site, your customers can then request to chat with
+                    an agent easily. Each agent can have up to 10 simultaneous
+                    chat sessions to deal with volumes at peak times. <br />{" "}
+                    <br />
+                    IronCAP OnCall lets you setup a{" "}
+                    <span style={{ textDecoration: "underline" }}>
+                      temporary connection
+                    </span>{" "}
+                    to your customer's computer without any pre-installed
+                    software. You can quickly and efficiently resolve your
+                    customers' technical and IT support issues by{" "}
+                    <span style={{ textDecoration: "underline" }}>
+                      remotely controlling
+                    </span>{" "}
+                    their computers. Plus, your agents can login from anywhere
+                    in the world to support your customers, saving you time and
+                    travelling cost.
+                    <br /> <br />
+                  </OnCallBody>
+                </IntroCopy>
+              </IntroGrid>
 
-              <SubNavLink href="/about/#downloads">
-                Application
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+              <SubNavRow aria-label="IronCAP OnCall links">
+                <SubNavLink href="/imoncall-remote-help-desk">
+                  About IronCAP OnCall
+                </SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-              <SubNavLink href="/investor-relations">
-                Press Room
-              </SubNavLink>
-              <SubNavDivider
-                src="/assets/divider-line.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={30}
-              />
+                <SubNavLink href="/about/#downloads">Application</SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-              <SubNavLink href="/products/ironcap-oncall">Security</SubNavLink>
-            </SubNavRow>
-          </Inner>
+                <SubNavLink href="/investor-relations">Press Room</SubNavLink>
+                <SubNavDivider
+                  src="/assets/divider-line.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={1}
+                  height={30}
+                />
 
-          <Footer />
-        </HomeSurface>
-      </PageRoot>
-    </Layout>
-  );
+                <SubNavLink href="/products/ironcap-oncall">
+                  Security
+                </SubNavLink>
+              </SubNavRow>
+            </Inner>
+
+            <Footer />
+          </HomeSurface>
+        </PageRoot>
+      </Layout>
+    );
+  }
 }

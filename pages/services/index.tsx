@@ -87,7 +87,7 @@ const HomeSurface = styled.section`
 
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  overflow: hidden;
+  overflow: visible;
   padding: 28px 0 0px;
 
   background: transparent;
@@ -216,13 +216,14 @@ const OfferingsGridDivided = styled.section`
     content: "";
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    bottom: 80px;
+    transform: translateX(-50%);
 
-    width: 566px;
-    height: 566px;
+    width: 37px;
+    height: auto;
 
-    background: url("/assets/double-dividey.png") center / contain no-repeat;
+    background: url("/assets/long-dividey.png") center / contain no-repeat;
     pointer-events: none;
     z-index: 0;
   }
@@ -320,7 +321,7 @@ const ThreatPanel = styled.section`
   margin: 18px auto 0;
 
   @media (max-width: 760px) {
-    margin-top: 34px;   
+    margin-top: 34px;
   }
 `;
 
@@ -334,7 +335,7 @@ const ThreatBgImage = styled(Image)`
   user-select: none;
 
   @media (max-width: 760px) {
-    display: none; 
+    display: none;
   }
 `;
 
@@ -350,10 +351,10 @@ const ThreatContent = styled.div`
   padding: 34px 60px;
 
   @media (max-width: 760px) {
-    position: relative; 
+    position: relative;
     inset: auto;
-    padding: 0;      
-    margin-top: 24px;     
+    padding: 0;
+    margin-top: 24px;
   }
 `;
 
@@ -483,7 +484,7 @@ const GreenRow = styled.div`
 `;
 
 const GreenItem = styled.span`
-  white-space: nowrap; 
+  white-space: nowrap;
 `;
 
 const InTouchSubHead = styled.p`
@@ -530,8 +531,8 @@ const AdvantageTitle = styled.p`
   font-size: 30px;
   line-height: 1.2;
 
-  overflow-wrap: anywhere; 
-  word-break: break-word; 
+  overflow-wrap: anywhere;
+  word-break: break-word;
 
   @media (max-width: 1020px) {
     text-align: center;
@@ -548,7 +549,7 @@ const AdvantageDesc = styled.p`
   max-width: 420px;
 
   overflow-wrap: anywhere;
-  word-break: break-word; 
+  word-break: break-word;
 
   @media (max-width: 1020px) {
     text-align: center;

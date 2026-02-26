@@ -619,14 +619,6 @@ export default function Home() {
 
                   <OfferingList>
                     <OfferingItem>
-                      <OfferingItemTitle href="/services">
-                        Quantum AI Wrapper
-                      </OfferingItemTitle>
-                      <OfferingItemSubTitle>
-                        Cutting-edge security architecture
-                      </OfferingItemSubTitle>
-                    </OfferingItem>
-                    <OfferingItem>
                       <OfferingItemTitle href="/products/ironcap">
                         IronCAP
                         <Trademark>TM</Trademark> Engine

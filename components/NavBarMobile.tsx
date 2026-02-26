@@ -115,6 +115,10 @@ export const NavBarMobile = ({
         }}>
           <Box flexDirection='column' width="100%">
             <AnchorDivider />
+            <NavLink isMobile={true} color={theme.colors.neutral.xl} href="/qaw-legacy" target="_blank" label="Quantum AI Wrapper" />
+            <AnchorDivider />
+
+            <AnchorDivider />
             <NavLink isMobile={true} color={theme.colors.neutral.xl} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
             <AnchorDivider />
 

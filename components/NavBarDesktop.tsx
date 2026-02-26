@@ -67,6 +67,7 @@ export const NavBarDesktop = ({
           <LogoContainer src={Logo} alt="01com logo, click to return home" />
         </Link>
         <Box flexDirection='row'>
+          <NavLink color={navLinkColor} href="/qaw-legacy" target="_blank" label="Quantum AI Wrapper" />
           <NavLink color={navLinkColor} href="https://www.ironcap.ca/" target="_blank" label="IronCAP™" />
           <NavLink color={navLinkColor} href="https://www.ironcap.ca/ironcap-x" target="_blank" label="IronCAP X™" />
           <NavLink color={navLinkColor} href="/imintouch-remote-pc-desktop/" label="I'm InTouch" />

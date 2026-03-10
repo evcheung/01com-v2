@@ -49,4 +49,21 @@ export default defineType({
       type: "email",
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      slug: "slug.current",
+      media: "mainImage",
+      publishedAt: "publishedAt",
+    },
+    prepare({ title, slug, media, publishedAt }) {
+      return {
+        title: title || "Untitled Blog Post",
+        subtitle: slug
+          ? `/blog/${slug}${publishedAt ? ` • ${new Date(publishedAt).toLocaleDateString()}` : ""}`
+          : "No slug set",
+        media,
+      };
+    },
+  },
 });

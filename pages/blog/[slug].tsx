@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
     props: {
       post,
       preview,
-    },
+    }, 
   };
 };
 

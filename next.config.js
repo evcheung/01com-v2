@@ -2,8 +2,7 @@
 const path = require('path')
 
 const nextConfig = {
-  //output: 'export',
-  // https://nextjs.org/docs/messages/export-image-api
+  output: 'export',
   images: {
     unoptimized: true
   },

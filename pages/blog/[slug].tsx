@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
       preview,
     }, 
   };
-};
+}; 
 
 const Page: NextPage<Props> = (props) => <BlogPage {...props} />;
 

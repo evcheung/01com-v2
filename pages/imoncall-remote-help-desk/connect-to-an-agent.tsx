@@ -91,6 +91,15 @@ const BannerSpacingContainer = styled(Box)`
   ${breakpoints("height", "", [{ 760: "300px" }])}
 `;
 
+const formatSessionNumber = (value: string) => {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+
+  return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+};
+
 const VideoDesktop = () => {
   const [isOpen, setOpen] = useState(false);
   const youtubeThumbnail = "https://i.ytimg.com/vi_webp/tzMxRHmP0s4/0.webp";
@@ -224,9 +233,13 @@ export default function HowItWorks() {
           <FormInputWrapper>
             <FormInput
               name="session_id"
-              placeholder="Session code"
+              placeholder="Enter Session Code"
               value={sessionId}
-              onChange={(e) => setSessionId(e.target.value)}
+              style={{"opacity": "80%"}}
+              onChange={(e) => {
+                const formatted = formatSessionNumber(e.target.value);
+                setSessionId(formatted);
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleConnect();
               }}

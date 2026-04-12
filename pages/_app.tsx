@@ -3,6 +3,14 @@ import { ThemeProvider, DefaultTheme } from 'styled-components'
 import GlobalStyle from '../components/globalstyles'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
+import Head from "next/head";
+
+<Head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+</Head>
 
 const theme: DefaultTheme = {
   colors: {

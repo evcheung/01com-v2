@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import Link from "next/link";
 import { Box, Text, TextVariants } from "../core";
-import { PaginateContainer } from "../PaginateContainer";
 import { breakpoints } from "../../utils/breakpoints";
 import { theme } from "../../theme";
 import { BlogPaginateContainer } from "./BlogPaginateContainer";
@@ -75,7 +74,7 @@ function Items({ currentItems }: { currentItems: BlogListItem[] }) {
     <ListContainer>
       {currentItems?.map((post, index) => (
         <ListRow key={post.slug} index={index}>
-          <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
+          <Link href={`/blog/post?slug=${post.slug}`} passHref legacyBehavior>
             <TitleLink>{post.title}</TitleLink>
           </Link>
 

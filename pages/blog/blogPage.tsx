@@ -30,7 +30,10 @@ export type Post = {
   next?: { title: string; slug: string; publishedAt?: string } | null;
 };
 
-type Props = { post: Post | null };
+type Props = {
+  post: Post | null;
+  loading?: boolean;
+};
 
 const Divider = () => (
   <div
@@ -43,7 +46,24 @@ const Divider = () => (
   />
 );
 
-const BlogPage = ({ post }: Props) => {
+const BlogPage = ({ post, loading = false }: Props) => {
+  if (loading) {
+    return (
+      <BlogLayout>
+        <BlogReadBanner heading="">
+          <Text
+            variant={TextVariants.Body1}
+            textColor={TextColors.White}
+          ></Text>
+        </BlogReadBanner>
+
+        <BlogPageContentContainer>
+          <Heading variant={HeadingVariants.Heading3}>Loading post...</Heading>
+        </BlogPageContentContainer>
+      </BlogLayout>
+    );
+  }
+
   if (!post) {
     return (
       <BlogPageContentContainer>
@@ -55,9 +75,6 @@ const BlogPage = ({ post }: Props) => {
   const imageUrl = post.mainImage
     ? urlForImage(post.mainImage).width(800).height(400).url()
     : "";
-
-  console.log("mainImage:", post.mainImage);
-  console.log("imageUrl:", imageUrl);
 
   return (
     <BlogLayout>
@@ -74,6 +91,8 @@ const BlogPage = ({ post }: Props) => {
           style={{
             lineHeight: "1.2",
             marginBottom: "24px",
+            fontFamily: "Cardo, serif",
+            fontWeight: 400,
           }}
         >
           {post.title}
@@ -83,7 +102,7 @@ const BlogPage = ({ post }: Props) => {
           <Text
             variant={TextVariants.Body2}
             textColor={TextColors.Neutral}
-            style={{ marginBottom: "32px" }}
+            style={{ marginBottom: "32px", opacity: 0.8 }}
           >
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               month: "short",
@@ -120,6 +139,10 @@ const BlogPage = ({ post }: Props) => {
           }}
         >
           <style jsx>{`
+            div {
+              font-family: "Cardo", serif;
+            }
+
             div :global(h1),
             div :global(h2),
             div :global(h3),
@@ -129,19 +152,21 @@ const BlogPage = ({ post }: Props) => {
               margin-top: 32px;
               margin-bottom: 20px;
               line-height: 1.25;
-              font-weight: 450;
+              font-weight: 600;
+              font-family: "Cardo", serif;
             }
 
             div :global(p) {
               margin-bottom: 24px;
-              font-weight: 300;
+              font-weight: 400;
+              font-family: "Cardo", serif;
+              font-size: 18px;
             }
 
             div :global(p:last-of-type) {
               font-weight: 500;
             }
 
-            /* first heading shouldn't be pushed down */
             div :global(h1:first-child),
             div :global(h2:first-child),
             div :global(h3:first-child) {
@@ -165,7 +190,7 @@ const BlogPage = ({ post }: Props) => {
           <div style={{ flex: 1, textAlign: "left" }}>
             {post.previous && (
               <Link
-                href={`/blog/${post.previous.slug}`}
+                href={`/blog/post?slug=${post.previous.slug}`}
                 style={{ textDecoration: "underline" }}
               >
                 <Text variant={TextVariants.Body2}>
@@ -178,7 +203,7 @@ const BlogPage = ({ post }: Props) => {
           <div style={{ flex: 1, textAlign: "right" }}>
             {post.next && (
               <Link
-                href={`/blog/${post.next.slug}`}
+                href={`/blog/post?slug=${post.next.slug}`}
                 style={{ textDecoration: "underline" }}
               >
                 <Text variant={TextVariants.Body2}>

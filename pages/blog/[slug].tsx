@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: slugs.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -24,55 +24,59 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   const post = await client.fetch<Post>(
     `
-  *[_type == "blogPost" && slug.current == $slug][0]{
-    _id,
-    title,
-    "slug": slug.current,
-    publishedAt,
-    summary,
-    body,
-    mainImage,
-
-    "previous": *[
-      _type == "blogPost" &&
-      defined(slug.current) &&
-      slug.current != $slug &&
-      !(_id in path("drafts.**")) &&
-      (
-        publishedAt > ^.publishedAt ||
-        (publishedAt == ^.publishedAt && _id > ^._id)
-      )
-    ] | order(publishedAt asc, _id asc)[0]{
+    *[_type == "blogPost" && slug.current == $slug][0]{
+      _id,
       title,
       "slug": slug.current,
-      publishedAt
-    },
+      publishedAt,
+      summary,
+      body,
+      mainImage,
 
-    "next": *[
-      _type == "blogPost" &&
-      defined(slug.current) &&
-      slug.current != $slug &&
-      !(_id in path("drafts.**")) &&
-      (
-        publishedAt < ^.publishedAt ||
-        (publishedAt == ^.publishedAt && _id < ^._id)
-      )
-    ] | order(publishedAt desc, _id desc)[0]{
-      title,
-      "slug": slug.current,
-      publishedAt
+      "previous": *[
+        _type == "blogPost" &&
+        defined(slug.current) &&
+        slug.current != $slug &&
+        !(_id in path("drafts.**")) &&
+        (
+          publishedAt > ^.publishedAt ||
+          (publishedAt == ^.publishedAt && _id > ^._id)
+        )
+      ] | order(publishedAt asc, _id asc)[0]{
+        title,
+        "slug": slug.current,
+        publishedAt
+      },
+
+      "next": *[
+        _type == "blogPost" &&
+        defined(slug.current) &&
+        slug.current != $slug &&
+        !(_id in path("drafts.**")) &&
+        (
+          publishedAt < ^.publishedAt ||
+          (publishedAt == ^.publishedAt && _id < ^._id)
+        )
+      ] | order(publishedAt desc, _id desc)[0]{
+        title,
+        "slug": slug.current,
+        publishedAt
+      }
     }
-  }
-  `,
-    { slug }
+    `,
+    { slug },
   );
 
   if (!post) {
-    return { notFound: true };
+    return {
+      notFound: true,
+      revalidate: 30,
+    };
   }
 
   return {
     props: { post },
+    revalidate: 30,
   };
 };
 

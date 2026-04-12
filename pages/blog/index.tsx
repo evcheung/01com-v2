@@ -1,11 +1,10 @@
-import type { GetStaticProps } from "next";
+import { useEffect, useState } from "react";
 import { client } from "../../sanity/lib/client";
 
 import styled from "styled-components";
-import { Box, Text, TextVariants, TextColors } from "../../components/core";
+import { Text, TextVariants, TextColors } from "../../components/core";
 import Head from "next/head";
 import Heading, { HeadingVariants } from "../../components/core/heading";
-import { theme } from "../../theme";
 import { PageContentContainer } from "../../components/PageContentContainer";
 import { breakpoints } from "../../utils/breakpoints";
 import BlogLayout from "../../components/blog/BlogLayout";
@@ -18,28 +17,38 @@ type BlogListItem = {
   publishedAt?: string;
 };
 
-type Props = { posts: BlogListItem[] };
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const posts = await client.fetch<BlogListItem[]>(`
-  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc){
-    title,
-    "slug": slug.current,
-    publishedAt,
-  }
-`)
-
-  return { props: { posts } };
-};
-
 const StyledHeading = styled(Heading)`
   font-size: 36px;
   margin-bottom: 48px;
   ${breakpoints("font-size", "", [{ 760: "28px" }])}
 `;
 
+export default function BlogIndexPage() {
+  const [posts, setPosts] = useState<BlogListItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default function BlogIndexPage({ posts }: Props) {
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const fetchedPosts = await client.fetch<BlogListItem[]>(`
+          *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc){
+            title,
+            "slug": slug.current,
+            publishedAt
+          }
+        `);
+
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error("Failed to fetch blog posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, []);
+
   return (
     <BlogLayout>
       <Head>
@@ -61,7 +70,12 @@ export default function BlogIndexPage({ posts }: Props) {
         <StyledHeading variant={HeadingVariants.Heading3}>
           Watch, Read, Listen
         </StyledHeading>
-        <PaginatedBlogItems itemsPerPage={10} items={posts} />
+
+        {loading ? (
+          <Text variant={TextVariants.Body2}>Loading posts...</Text>
+        ) : (
+          <PaginatedBlogItems itemsPerPage={10} items={posts} />
+        )}
       </PageContentContainer>
     </BlogLayout>
   );

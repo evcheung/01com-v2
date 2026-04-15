@@ -128,7 +128,7 @@ export const IITFooterNavDesktop = () => {
             </LogoLeft>
             <Text
               variant={TextVariants.Body3}
-            >{`Copyright © ${new Date().getFullYear()} - 01 Quantum Laboratory Inc. All Rights Reserved.`}</Text>
+            >{`Copyright © ${new Date().getFullYear()} - 01 Quantum Inc. All Rights Reserved.`}</Text>
           </Box>
 
           <Box

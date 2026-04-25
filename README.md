@@ -1,37 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Recomendaciones.
+Solo agregar los assets que se vayan necesitando, si es posible hacer vectores con clases css en lugar de usar los vecotores .svg
+Los assets se encuentran en el correo que contiene el archivo .zip `01 Quantum - v2.zip`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Crear componentes genericos reutilizables 
+como el ejemplo del boton que esta en ui/button.tsx
+crear componentes que reciban props para poder utilizarlas en todo el proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# nextjs-quantum
+## Componente de Lottie
+Es para agregar las animaciones que se encuentran en assets/animations/*.json
+solo se le pasa como prop y debe ajustarle el estilo

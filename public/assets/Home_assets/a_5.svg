@@ -1,0 +1,30 @@
+<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_30_1290)">
+<mask id="mask0_30_1290" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="18">
+<path d="M8.42002 17.96C-0.809981 14.55 0.0200182 2.85 0.0200182 2.85C3.36002 2.61 5.50002 1.25 6.78002 0H10.05C11.33 1.25 13.47 2.61 16.81 2.85C16.81 2.85 16.91 4.23 15.99 7.53L13.65 6.82L11.58 13.66L14.46 14.6C14.46 14.6 10.98 17.02 8.41002 17.97" fill="white"/>
+</mask>
+<g mask="url(#mask0_30_1290)">
+<path d="M8.42 16.57C0.609998 13.68 1.31 3.76999 1.31 3.76999C4.14 3.56999 5.95 2.40999 7.04 1.35999H9.81C10.9 2.41999 12.71 3.56999 15.54 3.76999C15.54 3.76999 16.24 13.68 8.43 16.57" stroke="#6E8090" stroke-width="0.96" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M18.34 11.15C18.34 13.39 16.47 15.71 14.29 15.2C12.36 14.75 10.55 12.93 10.24 11.15C9.86 8.94998 12.05 7.09998 14.29 7.09998C16.53 7.09998 18.34 8.90998 18.34 11.15Z" fill="black"/>
+<path d="M11.75 5.87003C10.11 4.72003 7.83002 4.91003 6.41002 6.41003C4.85002 8.06003 4.92002 10.65 6.57002 12.21C8.22002 13.77 10.81 13.7 12.37 12.05L14.42 9.89003" stroke="#6E8090" stroke-width="0.96" stroke-miterlimit="10" stroke-linecap="round"/>
+<mask id="mask1_30_1290" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="7" width="5" height="5">
+<path d="M16.553 10.5824L13.5034 7.69446L12.1763 9.09582L15.2259 11.9837L16.553 10.5824Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_30_1290)">
+<path d="M14.6291 9.66678L10.9505 9.76697L11.0507 13.4456L14.7293 13.3454L14.6291 9.66678Z" stroke="#6E8090" stroke-width="0.96" stroke-miterlimit="10" stroke-linecap="round"/>
+</g>
+<path d="M12.22 14.24C13.86 15.39 16.13 15.19 17.55 13.7C19.11 12.05 19.04 9.45995 17.39 7.89995C15.74 6.33995 13.15 6.40995 11.59 8.05995L9.53998 10.22" stroke="#6E8090" stroke-width="0.96" stroke-miterlimit="10" stroke-linecap="round"/>
+<mask id="mask2_30_1290" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="8" width="5" height="5">
+<path d="M7.40658 9.51933L10.4562 12.4072L11.7832 11.0059L8.73364 8.11797L7.40658 9.51933Z" fill="white"/>
+</mask>
+<g mask="url(#mask2_30_1290)">
+<path d="M9.3318 10.4355L13.0104 10.3353L12.9103 6.65669L9.23162 6.75687L9.3318 10.4355Z" stroke="#6E8090" stroke-width="0.96" stroke-miterlimit="10" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_30_1290">
+<rect width="19.16" height="17.96" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -10,6 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-urbanist: var(--font-urbanist);
+
+  /* 01 Quantum brand colors */
+  --color-quantum-blue: #71bfff;
+  --color-quantum-green: #79c99c;
+  --color-steel-gray: #6e8090;
+  --color-lite-gray: #b6bbcd;
 }
 
 @media (prefers-color-scheme: dark) {

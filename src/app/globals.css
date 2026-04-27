@@ -38,7 +38,9 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-urbanist: var(--font-urbanist);
+}
 
+@theme {
   /* 01 Quantum brand colors */
   --color-quantum-blue: #71bfff;
   --color-quantum-green: #79c99c;

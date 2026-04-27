@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Dropdown from "@/components/DropdownProducts";
 
 const navLinks = [
-  { label: "Products +", href: "/products" },
   { label: "Services +", href: "#" },
   { label: "Customers", href: "#" },
   { label: "Use Cases", href: "#" },
@@ -11,13 +11,16 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 overflow-hidden">
-      <img
-        src="/header_assets/bkgnd.svg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
+    <header className="sticky top-0 left-0 right-0 z-50">
+      {/* Clip only the background, not the dropdown */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <img
+          src="/header_assets/bkgnd.svg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="relative z-10 max-w-[1512px] mx-auto px-[95px] h-[91px] flex items-center justify-between">
           <Image
             alt="01 Quantum"
@@ -30,6 +33,14 @@ export default function Header() {
           {/* Navigation */}
           <nav aria-label="Main navigation">
             <ul className="flex items-center list-none">
+              {/* Products dropdown — first nav item */}
+              <li key="divider-products">
+                <div className="w-px h-[45px] bg-[#B6BBCD]" />
+              </li>
+              <li key="products-dropdown">
+                <Dropdown />
+              </li>
+
               {navLinks.flatMap(({ label, href }, index) => {
                 const items = [
                   <li key={`divider-${label}`}>

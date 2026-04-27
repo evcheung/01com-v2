@@ -1,238 +1,267 @@
-import { Button } from "@/components/ui/button";
-import LottiePlayer from "@/components/LottiePlayer";
+"use client";
 
-const strengths = [
+import LottiePlayer from "@/components/LottiePlayer";
+import { Button } from "@/components/ui/button";
+import xmailIconAnim from "@/assets/animations/icon-IC-EmailX.json";
+import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
+import emailEncryptionFlowchart from "@/assets/animations/EmailEncryptionFlowchart.json";
+import digitalSignatureFlowchart from "@/assets/animations/DIgitalSignatureFlowchart.json";
+
+/* ── Data ──────────────────────────────────────────────────────────── */
+const xmailAdvantages = [
   {
-    icon: "/product_assets/standard_compliant.svg",
-    name: "Standard Compliant",
-    description:
-      "Protection with state-of-the-art cryptographic technologies standardized through the rigorous selection process by NIST. Readily integrate through standard interfaces such as PKCS#11 and OpenPGP (RFC4880).",
+    title: "Quick + Easy Setup",
+    body: (
+      <>
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail will automatically detect if your
+        email recipient has an IronCAP<sup className="text-[9.675px]">™</sup> XMail account. If
+        not, an invitation message with the link to install the software will be sent accordingly.
+        Upon creating a free personal IronCAP<sup className="text-[9.675px]">™</sup> XMail
+        account, the recipient can decrypt and read your encrypted email. It&apos;s that simple.
+      </>
+    ),
   },
   {
-    icon: "/product_assets/versatile.svg",
-    name: "Versatile",
-    description:
-      "Broadly applicable to a cross-platform of vertical applications such as, but not limited to, Email encryption, File encryption, Digital signature, Blockchain security, Remote access / VPN, Cloud storage, Credit card security, General Internet communication security, etc. Available with OpenSSL support.",
+    title: "Zero Learning Curve",
+    body: (
+      <>
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail tightly integrates with your
+        everyday email client such as Outlook, Gmail, Yahoo, etc. to ensure a zero learning
+        curve. After composing your email, you can choose to encrypt and digitally sign this
+        message with a simple click before sending it out.
+      </>
+    ),
   },
   {
-    icon: "/product_assets/credible.svg",
-    name: "Credible",
-    description:
-      "Elevate from today's proven best-in-class code-base cryptography theory and NIST-selected mechanisms.",
+    title: "Digital Document Authenticity",
+    body: (
+      <>
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you sign your digital files to
+        prove their authenticity that they are the original true copies from you rather than from
+        a bogus hacker.
+      </>
+    ),
   },
   {
-    icon: "/product_assets/efficient.svg",
-    name: "Efficient",
-    description:
-      "Quick and efficient encryption/decryption/key-generation processes. Our implementation takes advantage of the Advanced Vector Extensions 2 (AVX2) capability of most modern CPU to ensure the highest possible throughput.",
-  },
-  {
-    icon: "/product_assets/quantum_safe.svg",
-    name: "Quantum Safe",
-    description: "Guard against future attacks from quantum computers.",
-  },
-  {
-    icon: "/product_assets/practical.svg",
-    name: "Practical",
-    description:
-      "Applicable in today's conventional devices while safe against future quantum computers.",
+    title: "General File Encryption",
+    body: (
+      <>
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail allows you to encrypt your sensitive
+        files such as personal finances, etc. to safeguard against cyber attacks.
+      </>
+    ),
   },
 ];
 
-export default function Products() {
+const onCallAdvantages = [
+  {
+    title: "Instant Live-Chat Support",
+    body: "You can provide world-class Live Chat support to your customers within minutes. OnCall gives you private URLs for embedding into your web site. Simply implement a Live-Chat button with the given URL on your web site. Your customers can then request to chat with an agent easily. Each agent can have up to 10 simultaneous chat sessions to deal with volumes at peak times.",
+  },
+  {
+    title: "Efficient Technical Support",
+    body: "OnCall lets you setup a temporary connection to your customer's computer without any pre-installed software. You can quickly and efficiently resolve your customers' technical and IT support issues by remotely controlling their computers. Plus, your agents can login from anywhere in the world to support your customers, saving your time and traveling cost.",
+  },
+];
+
+/* ── Component ─────────────────────────────────────────────────────── */
+export default function IroncapXmailOncall() {
   return (
-    <main
+    <div
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
-      {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          Products
-        </h1>
-      </section>
+      {/* ══ XMail section ═══════════════════════════════════════════ */}
+      <section
+        id="ironcap-xmail"
+        className="relative overflow-hidden bg-white text-black scroll-mt-24"
+      >
+        {/* Product intro */}
+        <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
+          <div className="flex items-start gap-14">
+            {/* Lottie icon */}
+            <div className="flex-shrink-0 w-[130px] pt-2">
+              <LottiePlayer src={xmailIconAnim} className="w-full" />
+            </div>
 
-      {/* IronCAP section */}
-
-      <section className="bg-white py-16 px-24 gap-16 min-h-[408px] justify-center flex">
-        {/* Left column */}
-        <div className="flex flex-col gap-16 flex-1">
-          <img
-            src="/product_assets/IronCAP_logo.svg"
-            className="w-100"
-            alt="IronCAP"
-          />
-
-          <div className="flex flex-col gap-[7px] text-[15px] leading-[24px]">
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Engine{" "}
-              </span>
-              is post-quantum cryptography (PQC) built to protect against
-              today&apos;s threats—and tomorrow&apos;s quantum-enabled attacks.
-            </p>
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Toolkits{" "}
-              </span>
-              combine NIST-approved PQC algorithms with our patent-protected
-              quantum-safe technologies, enabling secure integration across
-              virtually any environment. Designed for broad adoption across
-              verticals, they support use cases including AI, digital assets,
-              email security, remote access, digital identity, cloud storage,
-              IoT, blockchain, and financial transactions—and any system or data
-              that demands quantum-resistant protection.
-            </p>
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Cryptography (ICC)
-              </span>{" "}
-              is the core cryptographic suite within the IronCAP™ Toolkits. It
-              includes NIST algorithms plus our patented, high-performance
-              implementation of Classic McEliece, engineered for large-scale
-              deployments (U.S. Patent No. 11,271,715). IronCAP™ actively
-              monitors PQC standardization progress at the National Institute of
-              Standards and Technology (NIST) via the Computer Security Resource
-              Center (CSRC) and is continuously updated to remain aligned with
-              the latest developments.
-            </p>
-          </div>
-
-          <div>
-            <Button
-              text="white paper · · ·"
-              url="/products/ironcap"
-              border="border-steel-gray"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-            />
+            {/* Text */}
+            <div className="flex flex-col gap-4 max-w-[1140px] pt-10">
+              <h2 className="text-[#71bfff] text-[30px] font-medium leading-[46px]">
+                IronCAP<sup className="text-[11.61px]">™</sup> XMail
+              </h2>
+              <p className="text-[#79c99c] text-[20px] font-medium leading-[34px]">
+                End-to-End, Quantum-Safe Email Security
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                IronCAP<sup className="text-[9.675px]">™</sup> XMail is a quantum-safe,
+                end-to-end email security system powered by IronCAP
+                <sup className="text-[9.675px]">™</sup> Crypto (ICC)—our advanced post-quantum
+                cryptographic foundation. Built to withstand attacks from both classical and
+                quantum adversaries, XMail delivers protection that legacy email architectures
+                were never designed to provide.
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                By removing intermediary servers from the trust chain, IronCAP
+                <sup className="text-[9.675px]">™</sup> XMail helps eliminate man-in-the-middle
+                exposure and ensures only intended recipients can decrypt your communications.
+                This end-to-end, zero-trust design keeps every email and attachment encrypted on
+                your device, in transit, and at rest—even if networks, servers, or accounts are
+                compromised.
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                With quantum-safe digital signatures, recipients can verify authenticity
+                instantly—confirming messages haven&apos;t been spoofed, forged, or altered.
+                This strengthens defenses against phishing, impersonation, and business email
+                compromise as these threats continue to rise worldwide.
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                If a device is lost or an account is accessed without authorization, your
+                sensitive content remains protected. Because it is built on quantum-resistant
+                cryptography, IronCAP<sup className="text-[9.675px]">™</sup> XMail safeguards
+                communications not only for today&apos;s risk landscape, but for the long-term
+                realities of the post-quantum era.
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                IronCAP<sup className="text-[9.675px]">™</sup> XMail sets a new standard for
+                email security: end-to-end, quantum-safe, and engineered for enduring trust.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Right column */}
-        <div className="flex flex-col items-center flex-1">
+      </section>
+
+      {/* ── How it Works ────────────────────────────────────── */}
+      <section className="bg-black text-white">
+        <div className="max-w-[1512px] mx-auto px-[95px] pt-20 pb-20">
+          <h3 className="text-[#71bfff] text-[30px] font-medium leading-[46px] mb-10">
+            How it Works
+          </h3>
+
+          {/* End-to-End Encryption */}
+          <div className="mb-16">
+            <p className="text-[#79c99c] text-[20px] font-medium leading-[34px] mb-2">
+              End-to-End Encryption
+            </p>
+            <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
+              Unlike some secure email systems that store your emails and require your recipients
+              to read from their servers, IronCAP<sup className="text-[9.675px]">™</sup> XMail
+              provides direct end-to-end encryption with no central storage point that&apos;s
+              vulnerable to a cyber attack.
+            </p>
             <LottiePlayer
-              src={require("@/assets/animations/shieldAnimation.json")}
-              className="aspect-square w-60"
+              src={emailEncryptionFlowchart}
+              className="w-full max-w-[1246px]"
+              loop
+              autoplay
             />
-          <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
-            IronCAP™ included PQC technologies from NIST
-          </h2>
-          <div className="flex gap-12 mt-3">
-            <div className="flex flex-col gap-[7px]">
-              <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
-                Digital signature mechanisms
-              </h4>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                ML-DSA (FIPS 204)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                SLH-DSA (FIPS 205)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                Falcon2
-              </p>
-            </div>
-            <div className="flex flex-col gap-[7px]">
-              <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
-                Key encapsulation mechanisms (KEM)
-              </h4>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                ML-KEM (FIPS 203)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                Classic McEliece3
-              </p>
-            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Quantum threat callout */}
-      <section
-        className="flex justify-center items-center px-24 py-20 min-h-[408px]"
-        style={{
-          background:
-            "linear-gradient(to right, #f2f6f7 11%, white 54%, #f2f6f7 89%)",
-        }}
-      >
-        <div className="flex items-center gap-8 max-w-[1216px]">
-          <img
-            src="/product_assets/sword.svg"
-            className="w-20 flex-shrink-0"
-            alt=""
-          />
+          {/* End-to-End Digital Signature */}
           <div>
-            <p className="text-lite-gray text-[21px] font-normal leading-[30px] mb-4 max-w-[928px]">
-              Like most adversaries, quantum attacks will occur when we are
-              least prepared. Armed with IronCAP™ solutions and services,
-              customers today are safeguarding data and guarding against any
-              unexpected quantum attacks in the future.
+            <p className="text-[#79c99c] text-[20px] font-medium leading-[34px] mb-2">
+              End-to-End Digital Signature
             </p>
-            <span className="text-lite-gray text-[14px] font-normal uppercase tracking-wide">
-              Read more on quantum threat . . .
-            </span>
+            <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
+              IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you digitally sign your
+              emails. Recipients can easily distinguish between your legitimate emails from those
+              phishing ones.
+            </p>
+            <LottiePlayer
+              src={digitalSignatureFlowchart}
+              className="w-full max-w-[1246px]"
+              loop
+              autoplay
+            />
           </div>
         </div>
       </section>
 
-      {/* Unique Strengths */}
-      <section
-        className="py-20 px-24"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
-          Unique Strengths
-        </h2>
-
-        <div className="grid grid-cols-2">
-          {strengths.map((item, i) => (
-            <div
-              key={item.name}
-              className={[
-                "flex gap-4 py-10",
-                i % 2 === 0 ? "pr-16" : "pl-16 border-l border-white/10",
-                i >= 2 ? "border-t border-white/10" : "",
-              ].join(" ")}
-            >
-              <img
-                src={item.icon}
-                alt=""
-                className="w-8 h-8 flex-shrink-0 mt-1"
-              />
-              <div className="flex flex-col gap-[7px]">
-                <p className="text-quantum-green text-[18px] font-semibold leading-[20px] uppercase">
-                  {item.name}
-                </p>
-                <p className="text-white text-[15px] font-normal leading-[24px]">
-                  {item.description}
-                </p>
-              </div>
+      {/* ── XMail Key Advantages ──────────────────────────────────── */}
+      <section className="bg-black text-white">
+        <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
+          <h3 className="text-[#71bfff] text-[30px] font-medium leading-[46px] mb-10">
+            Key Advantages
+          </h3>
+          <div className="relative">
+            {/* Decorative dividers */}
+            <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-px bg-white/15 pointer-events-none" />
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/15 pointer-events-none" />
+            <div className="grid grid-cols-2 gap-x-36 gap-y-16 py-14 relative">
+              {xmailAdvantages.map((adv, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <p className="text-[#79c99c] text-[18px] font-semibold leading-[20px] uppercase">
+                    {adv.title}
+                  </p>
+                  <p className="text-white text-[15px] leading-[24px]">{adv.body}</p>
+                </div>
+              ))}
             </div>
-          ))}
+                <div className="max-w-[1512px] mx-auto px-[95px] pb-24 flex justify-center gap-6">
+                  <Button
+                    text="brochure · · ·"
+                    url="#"
+                    border="border-gray-200"
+                    textColor="text-green-400"
+                    hoverBg="hover:bg-green-500/10"
+                />
+              </div>
+          </div>
         </div>
 
-        {/* CTA buttons */}
-        <div className="flex justify-center gap-8 mt-16">
-          <Button
-            text="brochure · · ·"
-            url="/brochure"
-            border="border-quantum-green"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
-          <Button
-            text="step into the future, buy IronCAP™ now · · ·"
-            url="/buy"
-            border="border-quantum-green"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
+      </section>
+
+      {/* ══ OnCall section ══════════════════════════════════════════ */}
+      <section id="ironcap-oncall" className="bg-white text-black scroll-mt-24">
+        <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
+          {/* Product intro */}
+          <div className="flex items-start gap-14">
+            {/* Lottie icon */}
+            <div className="flex-shrink-0 w-[130px] pt-2">
+              <LottiePlayer src={onCallIconAnim} className="w-full" />
+            </div>
+
+            {/* Text */}
+            <div className="flex flex-col gap-4 max-w-[1140px] pt-10">
+              <h2 className="text-[#71bfff] text-[30px] font-medium leading-[46px]">
+                IronCAP<sup className="text-[11.61px]">™</sup> OnCall
+              </h2>
+              <p className="text-[#79c99c] text-[20px] font-medium leading-[34px]">
+                End-to-End, Quantum-Safe Customer Support
+              </p>
+              <p className="text-[#6e8090] text-[15px] leading-[24px]">
+                IronCAP<sup className="text-[9.675px]">™</sup> OnCall is a cost-effective, secure
+                online help desk software which allows organizations to offer remote support over
+                the Internet to their customers.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
-    </main>
+
+      {/* ── OnCall Key Advantages ─────────────────────────────────── */}
+      <section className="relative overflow-hidden text-white bg-black">
+        <div className="max-w-[1512px] mx-auto px-[95px] py-20">
+          <h3 className="text-[#71bfff] text-[30px] font-medium leading-[46px] mb-10">
+            Key Advantages
+          </h3>
+
+          <div className="relative">
+            {/* Centre vertical divider */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-px bg-white/15 pointer-events-none" />
+            <div className="grid grid-cols-2 gap-x-36 gap-y-8">
+              {onCallAdvantages.map((adv, i) => (
+                <div key={i} className="flex flex-col gap-3">
+                  <p className="text-[#79c99c] text-[18px] font-semibold leading-[20px] uppercase">
+                    {adv.title}
+                  </p>
+                  <p className="text-white text-[15px] leading-[24px]">{adv.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

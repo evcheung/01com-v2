@@ -2,7 +2,7 @@ import Image from "next/image";
 import Dropdown from "@/components/DropdownProducts";
 
 const navLinks = [
-  { label: "Services +", href: "#" },
+  { label: "Services +", href: "/services" },
   { label: "Customers", href: "#" },
   { label: "Use Cases", href: "#" },
   { label: "Demo", href: "#" },

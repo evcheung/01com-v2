@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${urbanist.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-urbanist)]" style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}>
         <Header />
         {children}
         <Footer />

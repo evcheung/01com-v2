@@ -41,10 +41,7 @@ const strengths = [
 
 export default function Products() {
   return (
-    <main
-      className="font-[family-name:var(--font-urbanist)]"
-      style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
-    >
+    <main>
       {/* Page title */}
       <section className="bg-black flex items-center px-24 min-h-[196px]">
         <h1 className="text-white text-[50px] font-medium leading-[50px]">

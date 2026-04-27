@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Products +", href: "#" },
+  { label: "Products +", href: "/products" },
   { label: "Services +", href: "#" },
   { label: "Customers", href: "#" },
   { label: "Use Cases", href: "#" },
@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 left-0 right-0 z-50 overflow-hidden">
       <img
-        src="/assets/Home_assets/bkgnd.svg"
+        src="/header_assets/bkgnd.svg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
@@ -21,7 +21,7 @@ export default function Header() {
       <div className="relative z-10 max-w-[1512px] mx-auto px-[95px] h-[91px] flex items-center justify-between">
           <Image
             alt="01 Quantum"
-            src="/assets/Home_assets/logo.svg"
+            src="/header_assets/logo.svg"
             width={60}
             height={60}
             className="object-contain"

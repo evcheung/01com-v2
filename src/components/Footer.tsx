@@ -1,4 +1,4 @@
-const imgLogo = "/assets/Home_assets/logo.svg";
+const imgLogo = "/header_assets/logo.svg";
 const imgSocial = "/assets/Home_assets/social.svg";
 import { Button } from "@/components/ui/button";
 

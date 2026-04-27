@@ -1,5 +1,7 @@
 const imgLogo = "/assets/Home_assets/logo.svg";
 const imgSocial = "/assets/Home_assets/social.svg";
+import { Button } from "@/components/ui/button";
+
 import Image from "next/image";
 
 const footerColumns = [
@@ -25,25 +27,14 @@ const footerColumns = [
   },
 ];
 export default function Footer() {
-    return(
-        <>
-        
-              {/* ── Footer ─────────────────────────────────────────────── */}
+  return (
+    <>
+      {/* ── Footer ─────────────────────────────────────────────── */}
       <footer className="bg-black border-t border-white/10">
         {/* CTA row */}
         <div className="max-w-[1512px] mx-auto px-[95px] py-16 flex justify-center gap-20">
-          <a
-            href="#"
-            className="text-white text-[12px] font-medium uppercase tracking-widest border border-white/30 px-10 py-3 hover:bg-white/10 transition-colors"
-          >
-            CONTACT
-          </a>
-          <a
-            href="#"
-            className="text-white text-[12px] font-medium uppercase tracking-widest border border-white/30 px-10 py-3 hover:bg-white/10 transition-colors"
-          >
-            DEMO
-          </a>
+          <Button text="CONTACT · · ·" url="#" />
+          <Button text="DEMO · · ·" url="#" />
         </div>
 
         {/* Links row */}
@@ -91,7 +82,6 @@ export default function Footer() {
           </p>
         </div>
       </footer>
-      </>
-    )
-
+    </>
+  );
 }

@@ -1,28 +1,46 @@
 import HomeAnimation from "@/assets/home-banner-animation.svg";
 import { HeroSpline } from "@/components/ui/hero-spline";
 import { Button } from "@/components/ui/button";
-const imgIcon =
-  "https://www.figma.com/api/mcp/asset/b8395f35-fefb-472a-bd18-13d72628093c";
-const imgBracketBottom =
-  "https://www.figma.com/api/mcp/asset/6b1f8fc9-43a0-43b6-b45d-0790af127873";
-const imgIronCapEnginIcon =
-  "https://www.figma.com/api/mcp/asset/4f35e063-0b79-4ce0-845c-6614638b5185";
-const imgProductsIcon =
-  "https://www.figma.com/api/mcp/asset/263b8a70-024a-4a77-a4f5-91ec2f14c0a4";
+import { IronCapSection } from "@/components/home/IronCapSection";
 
 const products = [
-  { name: "IronCAP™ Engine", desc: "Software Toolkit" },
-  { name: "IronCAP™ Xmail", desc: "Outlook Email Encryption" },
-  { name: "IronCAP™ OnCall", desc: "Encrypted Customer Support" },
-  { name: "IronCAP™ InTouch", desc: "Encrypted Remote Desktop" },
+  {
+    name: "IronCAP™ Engine",
+    desc: "Software Toolkit",
+    icon: "/home_assets/p_1.svg",
+  },
+  {
+    name: "IronCAP™ Xmail",
+    desc: "Outlook Email Encryption",
+    icon: "/home_assets/p_2.svg",
+  },
+  {
+    name: "IronCAP™ OnCall",
+    desc: "Encrypted Customer Support",
+    icon: "/home_assets/p_3.svg",
+  },
+  {
+    name: "IronCAP™ InTouch",
+    desc: "Encrypted Remote Desktop",
+    icon: "/home_assets/p_4.svg",
+  },
 ];
 
 const services = [
-  { name: "Quantum AI Wrapper QAW", desc: "AI Prompt + Model Security" },
-  { name: "Digital Asset Protection", desc: "Quantum-safe Digital Assets" },
+  {
+    name: "Quantum AI Wrapper QAW",
+    desc: "AI Prompt + Model Security",
+    icon: "/home_assets/s_1.svg",
+  },
+  {
+    name: "Digital Asset Protection",
+    desc: "Quantum-safe Digital Assets",
+    icon: "/home_assets/s_2.svg",
+  },
   {
     name: "Cryptographic Integration Services",
     desc: "Open-source Integration + Managed Services",
+    icon: "/home_assets/s_3.svg",
   },
 ];
 
@@ -30,18 +48,22 @@ const applications = [
   {
     title: "AI Prompts + Models",
     desc: "Secure model IP, training data and prompt-privacy with quantum safe encryption.",
+    icon: "/home_assets/a_1.svg",
   },
   {
     title: "Blockchain",
     desc: "Allow blockchain vendors including cryptocurrencies to digitally sign new blocks to ensure security today and in tomorrow's post-quantum world.",
+    icon: "/home_assets/a_2.svg",
   },
   {
     title: "Remote Access / VPN",
     desc: "Ensure privacy of remote access channels such as VPNs today and in tomorrow's post-quantum world.",
+    icon: "/home_assets/a_3.svg",
   },
   {
     title: "Email / Digital Signature",
     desc: "Securely encrypt emails and send quantum-safe encrypted files in a post-quantum world.",
+    icon: "/home_assets/a_4.svg",
   },
 ];
 
@@ -77,10 +99,9 @@ export default function Home() {
           <div className="relative p-12">
             {/* Bracket decorations */}
             <div className="absolute -left-1 top-0 bottom-0 flex flex-col items-center pointer-events-none ">
-            
               <img
                 alt=""
-                src={imgBracketBottom}
+                src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px] position-absolute"
                 style={{ transform: "scaleY(-1)" }}
@@ -88,7 +109,7 @@ export default function Home() {
               <div className="flex-1 w-px" />
               <img
                 alt=""
-                src={imgBracketBottom}
+                src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px]"
               />
@@ -117,79 +138,7 @@ export default function Home() {
 
       {/* ── IronCAP Products & Services ────────────────────────── */}
       <section className="bg-black py-24">
-        <div className="max-w-[1512px] mx-auto px-[95px] grid grid-cols-2 gap-10">
-          {/* Products */}
-          <div className="border border-white/10 rounded p-10">
-            <div className="flex items-center gap-3 mb-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt=""
-                src={imgIronCapEnginIcon}
-                aria-hidden="true"
-                className="w-5 h-5 object-contain"
-              />
-              <h3 className="text-white text-[30px] font-medium leading-none">
-                IronCAP<sup className="text-[10px] align-super">™</sup> Products
-              </h3>
-            </div>
-            <p className="text-white/70 text-[15px] font-normal leading-[24px] mb-8">
-              From end-to-end quantum-safe email and file encryption to secure
-              remote access, blockchain transactions, and digital signatures,
-              IronCAP secures your data in a post-quantum world.
-            </p>
-            <ul className="space-y-6">
-              {products.map(({ name, desc }) => (
-                <li key={name}>
-                  <p className="text-[#79c99c] text-[18px] font-semibold uppercase leading-none mb-2">
-                    {name}
-                  </p>
-                  <p className="text-white text-[16px] font-normal leading-none mb-2">
-                    {desc}
-                  </p>
-                  <p className="text-[#6e8090] text-[12px] font-medium uppercase">
-                    More · · ·
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="border border-white/10 rounded p-10">
-            <div className="flex items-center gap-3 mb-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt=""
-                src={imgProductsIcon}
-                aria-hidden="true"
-                className="w-5 h-5 object-contain"
-              />
-              <h3 className="text-white text-[30px] font-medium leading-none">
-                IronCAP<sup className="text-[10px] align-super">™</sup> Services
-              </h3>
-            </div>
-            <p className="text-white/70 text-[15px] font-normal leading-[24px] mb-8">
-              Professional and managed services securing AI and digital assets
-              via open source cryptography integration and hardware
-              acceleration.
-            </p>
-            <ul className="space-y-6">
-              {services.map(({ name, desc }) => (
-                <li key={name}>
-                  <p className="text-[#71bfff] text-[18px] font-semibold uppercase leading-none mb-2">
-                    {name}
-                  </p>
-                  <p className="text-white text-[16px] font-normal leading-none mb-2">
-                    {desc}
-                  </p>
-                  <p className="text-[#6e8090] text-[12px] font-medium uppercase">
-                    More · · ·
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <IronCapSection products={products} services={services} />
       </section>
 
       {/* ── What is the Post-Quantum Threat? ───────────────────── */}
@@ -197,28 +146,29 @@ export default function Home() {
         <div className="max-w-[1512px] mx-auto px-[95px]">
           <div className="flex gap-12 items-start">
             {/* Side bracket + icon */}
-            <div className="flex flex-col items-center flex-none pt-2">
+            <div className="flex flex-col items-center flex-none gap-12">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt=""
-                src={imgBracketBottom}
+                src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px]"
                 style={{ transform: "scaleY(-1)" }}
               />
-              <div className="h-[74px] w-px bg-black/15" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* Linea vertical */}
+              {/* Logo circular */}
               <img
                 alt=""
-                src={imgIcon}
+                src="/home_assets/icon_quantum.svg"
                 aria-hidden="true"
                 className="w-[74px] h-[74px] object-contain"
               />
-              <div className="h-[74px] w-px bg-black/15" />
+
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt=""
-                src={imgBracketBottom}
+                src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px]"
               />
@@ -250,24 +200,43 @@ export default function Home() {
 
       {/* ── Applications ───────────────────────────────────────── */}
       <section id="applications" className="bg-black py-24">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+        <div className="max-w-[1080px] mx-auto px-[95px] ">
           <h2 className="text-[#71bfff] text-[30px] font-medium mb-12">
             Applications
           </h2>
-          <div className="grid grid-cols-2 gap-8">
-            {applications.map(({ title, desc }) => (
-              <div
-                key={title}
-                className="border border-white/10 rounded p-8 hover:border-[#71bfff]/40 transition-colors"
-              >
-                <h3 className="text-[#71bfff] text-[18px] font-semibold uppercase leading-[20px] mb-4">
-                  {title}
-                </h3>
-                <p className="text-white text-[15px] font-normal leading-[24px]">
-                  {desc}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 gap-5">
+            {applications.map(({ title, desc, icon }, index) => {
+              // Each card expands from the corner closest to the grid center
+              const origins = ["bottom right", "bottom left", "top right", "top left"];
+              const delay = index * 0.12;
+              return (
+                <div
+                  key={title}
+                  className="border border-white/20 rounded-[1vw] p-8 hover:border-[#71bfff]/40 transition-colors"
+                  style={{
+                    transformOrigin: origins[index],
+                    animation: `card-expand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}s both`,
+                  }}
+                >
+                  <h3 className="text-[#71bfff] text-[18px] font-semibold uppercase leading-[20px] mb-4">
+                    {title}
+                  </h3>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    alt=""
+                    src={icon}
+                    aria-hidden="true"
+                    className="w-10 h-10 object-contain mb-4"
+                    style={{
+                      animation: `icon-fade-in 0.4s ease-out ${delay + 0.4}s both`,
+                    }}
+                  />
+                  <p className="text-white text-[15px] font-normal leading-[24px]">
+                    {desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

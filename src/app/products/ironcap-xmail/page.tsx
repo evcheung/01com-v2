@@ -13,11 +13,13 @@ const xmailAdvantages = [
     title: "Quick + Easy Setup",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail will automatically detect if your
-        email recipient has an IronCAP<sup className="text-[9.675px]">™</sup> XMail account. If
-        not, an invitation message with the link to install the software will be sent accordingly.
-        Upon creating a free personal IronCAP<sup className="text-[9.675px]">™</sup> XMail
-        account, the recipient can decrypt and read your encrypted email. It&apos;s that simple.
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail will automatically
+        detect if your email recipient has an IronCAP
+        <sup className="text-[9.675px]">™</sup> XMail account. If not, an
+        invitation message with the link to install the software will be sent
+        accordingly. Upon creating a free personal IronCAP
+        <sup className="text-[9.675px]">™</sup> XMail account, the recipient can
+        decrypt and read your encrypted email. It&apos;s that simple.
       </>
     ),
   },
@@ -25,10 +27,11 @@ const xmailAdvantages = [
     title: "Zero Learning Curve",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail tightly integrates with your
-        everyday email client such as Outlook, Gmail, Yahoo, etc. to ensure a zero learning
-        curve. After composing your email, you can choose to encrypt and digitally sign this
-        message with a simple click before sending it out.
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail tightly integrates
+        with your everyday email client such as Outlook, Gmail, Yahoo, etc. to
+        ensure a zero learning curve. After composing your email, you can choose
+        to encrypt and digitally sign this message with a simple click before
+        sending it out.
       </>
     ),
   },
@@ -36,9 +39,9 @@ const xmailAdvantages = [
     title: "Digital Document Authenticity",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you sign your digital files to
-        prove their authenticity that they are the original true copies from you rather than from
-        a bogus hacker.
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you sign your
+        digital files to prove their authenticity that they are the original
+        true copies from you rather than from a bogus hacker.
       </>
     ),
   },
@@ -46,8 +49,9 @@ const xmailAdvantages = [
     title: "General File Encryption",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail allows you to encrypt your sensitive
-        files such as personal finances, etc. to safeguard against cyber attacks.
+        IronCAP<sup className="text-[9.675px]">™</sup> XMail allows you to
+        encrypt your sensitive files such as personal finances, etc. to
+        safeguard against cyber attacks.
       </>
     ),
   },
@@ -67,15 +71,19 @@ const onCallAdvantages = [
 /* ── Component ─────────────────────────────────────────────────────── */
 export default function IroncapXmailOncall() {
   return (
-    <div
+    <main
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
+      {/* ─── Page Title ─── */}
+      <section className="bg-black flex items-center px-24 min-h-[196px]">
+        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+          Products
+        </h1>
+      </section>
+
       {/* ══ XMail section ═══════════════════════════════════════════ */}
-      <section
-        id="ironcap-xmail"
-        className="relative overflow-hidden bg-white text-black scroll-mt-24"
-      >
+      <section id="ironcap-xmail" className="relative overflow-hidden bg-white text-black scroll-mt-24">
         {/* Product intro */}
         <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
           <div className="flex items-start gap-14">
@@ -93,42 +101,47 @@ export default function IroncapXmailOncall() {
                 End-to-End, Quantum-Safe Email Security
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                IronCAP<sup className="text-[9.675px]">™</sup> XMail is a quantum-safe,
-                end-to-end email security system powered by IronCAP
-                <sup className="text-[9.675px]">™</sup> Crypto (ICC)—our advanced post-quantum
-                cryptographic foundation. Built to withstand attacks from both classical and
-                quantum adversaries, XMail delivers protection that legacy email architectures
-                were never designed to provide.
+                IronCAP<sup className="text-[9.675px]">™</sup> XMail is a
+                quantum-safe, end-to-end email security system powered by
+                IronCAP
+                <sup className="text-[9.675px]">™</sup> Crypto (ICC)—our
+                advanced post-quantum cryptographic foundation. Built to
+                withstand attacks from both classical and quantum adversaries,
+                XMail delivers protection that legacy email architectures were
+                never designed to provide.
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
                 By removing intermediary servers from the trust chain, IronCAP
-                <sup className="text-[9.675px]">™</sup> XMail helps eliminate man-in-the-middle
-                exposure and ensures only intended recipients can decrypt your communications.
-                This end-to-end, zero-trust design keeps every email and attachment encrypted on
-                your device, in transit, and at rest—even if networks, servers, or accounts are
-                compromised.
+                <sup className="text-[9.675px]">™</sup> XMail helps eliminate
+                man-in-the-middle exposure and ensures only intended recipients
+                can decrypt your communications. This end-to-end, zero-trust
+                design keeps every email and attachment encrypted on your
+                device, in transit, and at rest—even if networks, servers, or
+                accounts are compromised.
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                With quantum-safe digital signatures, recipients can verify authenticity
-                instantly—confirming messages haven&apos;t been spoofed, forged, or altered.
-                This strengthens defenses against phishing, impersonation, and business email
-                compromise as these threats continue to rise worldwide.
+                With quantum-safe digital signatures, recipients can verify
+                authenticity instantly—confirming messages haven&apos;t been
+                spoofed, forged, or altered. This strengthens defenses against
+                phishing, impersonation, and business email compromise as these
+                threats continue to rise worldwide.
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                If a device is lost or an account is accessed without authorization, your
-                sensitive content remains protected. Because it is built on quantum-resistant
-                cryptography, IronCAP<sup className="text-[9.675px]">™</sup> XMail safeguards
-                communications not only for today&apos;s risk landscape, but for the long-term
-                realities of the post-quantum era.
+                If a device is lost or an account is accessed without
+                authorization, your sensitive content remains protected. Because
+                it is built on quantum-resistant cryptography, IronCAP
+                <sup className="text-[9.675px]">™</sup> XMail safeguards
+                communications not only for today&apos;s risk landscape, but for
+                the long-term realities of the post-quantum era.
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                IronCAP<sup className="text-[9.675px]">™</sup> XMail sets a new standard for
-                email security: end-to-end, quantum-safe, and engineered for enduring trust.
+                IronCAP<sup className="text-[9.675px]">™</sup> XMail sets a new
+                standard for email security: end-to-end, quantum-safe, and
+                engineered for enduring trust.
               </p>
             </div>
           </div>
         </div>
-
       </section>
 
       {/* ── How it Works ────────────────────────────────────── */}
@@ -144,9 +157,10 @@ export default function IroncapXmailOncall() {
               End-to-End Encryption
             </p>
             <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
-              Unlike some secure email systems that store your emails and require your recipients
-              to read from their servers, IronCAP<sup className="text-[9.675px]">™</sup> XMail
-              provides direct end-to-end encryption with no central storage point that&apos;s
+              Unlike some secure email systems that store your emails and
+              require your recipients to read from their servers, IronCAP
+              <sup className="text-[9.675px]">™</sup> XMail provides direct
+              end-to-end encryption with no central storage point that&apos;s
               vulnerable to a cyber attack.
             </p>
             <LottiePlayer
@@ -163,9 +177,9 @@ export default function IroncapXmailOncall() {
               End-to-End Digital Signature
             </p>
             <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
-              IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you digitally sign your
-              emails. Recipients can easily distinguish between your legitimate emails from those
-              phishing ones.
+              IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you
+              digitally sign your emails. Recipients can easily distinguish
+              between your legitimate emails from those phishing ones.
             </p>
             <LottiePlayer
               src={digitalSignatureFlowchart}
@@ -193,22 +207,23 @@ export default function IroncapXmailOncall() {
                   <p className="text-[#79c99c] text-[18px] font-semibold leading-[20px] uppercase">
                     {adv.title}
                   </p>
-                  <p className="text-white text-[15px] leading-[24px]">{adv.body}</p>
+                  <p className="text-white text-[15px] leading-[24px]">
+                    {adv.body}
+                  </p>
                 </div>
               ))}
             </div>
-                <div className="max-w-[1512px] mx-auto px-[95px] pb-24 flex justify-center gap-6">
-                  <Button
-                    text="brochure · · ·"
-                    url="#"
-                    border="border-gray-200"
-                    textColor="text-green-400"
-                    hoverBg="hover:bg-green-500/10"
-                />
-              </div>
+            <div className="max-w-[1512px] mx-auto px-[95px] pb-24 flex justify-center gap-6">
+              <Button
+                text="brochure · · ·"
+                url="#"
+                border="border-gray-200"
+                textColor="text-green-400"
+                hoverBg="hover:bg-green-500/10"
+              />
+            </div>
           </div>
         </div>
-
       </section>
 
       {/* ══ OnCall section ══════════════════════════════════════════ */}
@@ -230,9 +245,10 @@ export default function IroncapXmailOncall() {
                 End-to-End, Quantum-Safe Customer Support
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                IronCAP<sup className="text-[9.675px]">™</sup> OnCall is a cost-effective, secure
-                online help desk software which allows organizations to offer remote support over
-                the Internet to their customers.
+                IronCAP<sup className="text-[9.675px]">™</sup> OnCall is a
+                cost-effective, secure online help desk software which allows
+                organizations to offer remote support over the Internet to their
+                customers.
               </p>
             </div>
           </div>
@@ -255,13 +271,15 @@ export default function IroncapXmailOncall() {
                   <p className="text-[#79c99c] text-[18px] font-semibold leading-[20px] uppercase">
                     {adv.title}
                   </p>
-                  <p className="text-white text-[15px] leading-[24px]">{adv.body}</p>
+                  <p className="text-white text-[15px] leading-[24px]">
+                    {adv.body}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

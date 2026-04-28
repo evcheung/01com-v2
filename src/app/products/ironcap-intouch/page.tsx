@@ -40,16 +40,16 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Intro ─── */}
-      <section className="bg-white py-16 px-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8">
-        <div className="flex-shrink-0 w-[130px] pt-2">
-          <LottiePlayer
-            src={require("@/assets/animations/icon-IC-inTouch.json")}
-            className="w-[130px] h-[168px]"
-          />
-        </div>
+      <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
+        <div className="max-w-[1512px] mx-auto flex gap-8 px-[95px] pb-20">
+          <div className="flex-shrink-0 w-[130px] pt-2">
+            <LottiePlayer
+              src={require("@/assets/animations/icon-IC-inTouch.json")}
+              className="w-[130px] h-[168px]"
+            />
+          </div>
 
-        <div className="flex flex-col gap-[7px] max-w-[1141px]">
+        <div className="flex flex-col gap-1 max-w-[1140px] pt-10">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
             IronCAP<sup className="text-[11.6px]">™</sup> InTouch
           </h2>

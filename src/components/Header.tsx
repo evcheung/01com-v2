@@ -4,7 +4,7 @@ import Dropdown from "@/components/DropdownProducts";
 const navLinks = [
   { label: "Services +", href: "/services" },
   { label: "Customers", href: "#" },
-  { label: "Use Cases", href: "#" },
+  { label: "Use Cases", href: "/use_cases" },
   { label: "Demo", href: "#" },
   { label: "Login", href: "#" },
 ];

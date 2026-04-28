@@ -8,22 +8,27 @@ const footerColumns = [
   {
     heading: "Company",
     links: ["Products", "Services", "Customers"],
+    urls: ["/products/ironcap-engine", "/services", "/customers"],
   },
   {
     heading: "Resources",
     links: ["Use Cases", "Investor Relations", "Press Room"],
+    urls: ["/use-cases", "/investor-relations", "/press-room"],
   },
   {
     heading: "About",
     links: ["Investor Relations", "About", "Newsletters"],
+    urls: ["/investor-relations", "/about", "/newsletters"],
   },
   {
     heading: "Legal",
     links: ["Blog", "Product FAQ", "General FAQ"],
+    urls: ["/blog", "/product-faq", "/general-faq"],
   },
   {
     heading: "Support",
     links: ["Support", "Contact", "Login"],
+    urls: ["/support", "/contact", "/login"],
   },
 ];
 export default function Footer() {
@@ -57,15 +62,15 @@ export default function Footer() {
             />
           </div>
 
-          {footerColumns.map(({ heading, links }) => (
+          {footerColumns.map(({ heading, links, urls }) => (
             <div key={heading} className="flex flex-col gap-2">
               <p className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
                 {heading}
               </p>
-              {links.map((link) => (
+              {links.map((link, index) => (
                 <a
                   key={link}
-                  href="#"
+                  href={urls[index]}
                   className="text-white text-[12px] hover:text-[#71bfff] transition-colors"
                 >
                   {link}

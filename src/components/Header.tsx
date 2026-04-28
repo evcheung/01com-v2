@@ -3,8 +3,8 @@ import Dropdown from "@/components/DropdownProducts";
 
 const navLinks = [
   { label: "Services +", href: "/services" },
-  { label: "Customers", href: "#" },
-  { label: "Use Cases", href: "/use_cases" },
+  { label: "Customers", href: "/customers" },
+  { label: "Use Cases", href: "/use-cases" },
   { label: "Demo", href: "/live-demo" },
   { label: "Login", href: "#" },
 ];
@@ -21,15 +21,16 @@ export default function Header() {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="relative z-10 max-w-[1512px] mx-auto px-[95px] h-[91px] flex items-center justify-between">
-          <Image
-            alt="01 Quantum"
-            src="/header_assets/logo.svg"
-            width={60}
-            height={60}
-            className="object-contain"
-          />
-
+      <div className="relative z-10 max-w-[1512px] mx-auto px-[95px] h-[91px] flex items-center justify-between">        
+          <a href="/">
+            <Image
+              alt="01 Quantum"
+              src="/header_assets/logo.svg"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
+          </a>
           {/* Navigation */}
           <nav aria-label="Main navigation">
             <ul className="flex items-center list-none">

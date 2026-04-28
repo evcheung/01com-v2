@@ -95,7 +95,7 @@ function InfoSection({
 export default function LiveDemo() {
   return (
     <main
-      className="font-[family-name:var(--font-urbanist)] mx-auto w-full max-w-[1512px] min-h-[1867px]"
+      className="font-[family-name:var(--font-urbanist)] mx-auto w-full max-w-[1512px] bg-white"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}

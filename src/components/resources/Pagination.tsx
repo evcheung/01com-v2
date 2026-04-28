@@ -68,7 +68,7 @@ export function Pagination({
   query,
   siblingCount = 1,
 }: PaginationProps) {
-  if (totalPages <= 1) return null;
+  if (totalPages < 1) return null;
 
   const pages = buildPageList(currentPage, totalPages, siblingCount);
   const hasPrev = currentPage > 1;

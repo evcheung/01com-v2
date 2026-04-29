@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { Section } from "./Section";
 
 export interface Advantage {
@@ -8,8 +9,8 @@ export interface Advantage {
   description: string;
   /** Optional rich content rendered after the description (e.g. inline highlights). */
   extra?: ReactNode;
-  /** Optional small decorative icon shown next to the title. */
-  icon?: ReactNode;
+  /** Optional icon filename shown next to the title. */
+  icon?: string;
 }
 
 interface KeyAdvantagesProps {
@@ -27,41 +28,37 @@ export function KeyAdvantages({ items }: KeyAdvantagesProps) {
         Key Advantages
       </h2>
 
-      <div className="grid grid-cols-2 gap-x-10">
-        {items.map((item, index) => {
-          const isLeft = index % 2 === 0;
-          const isFirstRow = index < 2;
-          return (
-            <div
-              key={item.title}
-              className={[
-                "relative px-4 py-8",
-                isLeft ? "pr-8" : "pl-8",
-                isFirstRow ? "" : "border-t border-lite-gray/40",
-                isLeft ? "border-r border-lite-gray/40" : "",
-              ].join(" ")}
-            >
-              <div className="flex items-center gap-2 mb-3">
-                {item.icon ?? <DefaultAdvantageIcon />}
-                <h3 className="text-quantum-green text-[16px] font-semibold uppercase tracking-wide leading-none">
-                  {item.title}
-                </h3>
-              </div>
-              <p className="text-steel-gray text-[15px] leading-[22px] max-w-[480px]">
-                {item.description}
-              </p>
-              {item.extra ? <div className="mt-3">{item.extra}</div> : null}
-
-              {/* Decorative dot at the divider crossings (top of every left-col item starting on row 2) */}
-              {!isFirstRow && isLeft ? (
-                <span
-                  aria-hidden="true"
-                  className="absolute -top-[3px] right-0 translate-x-1/2 w-1.5 h-1.5 rounded-full bg-lite-gray"
-                />
-              ) : null}
+      <div className="grid grid-cols-2 divide-x divide-lite-gray/40">
+        {[items.filter((_, i) => i % 2 === 0), items.filter((_, i) => i % 2 !== 0)].map(
+          (col, colIdx) => (
+            <div key={colIdx} className="flex flex-col divide-y divide-lite-gray/40">
+              {col.map((item, rowIdx) => (
+                <div
+                  key={item.title}
+                  className={[
+                    "relative py-8",
+                    colIdx === 0 ? "pr-10" : "pl-10",
+                  ].join(" ")}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    {item.icon ? (
+                      <Image src={item.icon} alt="" width={20} height={20} className="flex-shrink-0" />
+                    ) : (
+                      <DefaultAdvantageIcon />
+                    )}
+                    <h3 className="text-quantum-green text-[16px] font-semibold uppercase tracking-wide leading-none">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="text-steel-gray text-[15px] leading-[22px] max-w-[480px]">
+                    {item.description}
+                  </p>
+                  {item.extra ? <div className="mt-3">{item.extra}</div> : null}                  
+                </div>
+              ))}
             </div>
-          );
-        })}
+          )
+        )}
       </div>
     </Section>
   );

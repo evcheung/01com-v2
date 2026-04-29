@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import {
   NewsletterCard,
   type NewsletterYearData,
@@ -13,11 +12,7 @@ const BASE_PATH = "/resources/newsletters";
 const years: NewsletterYearData[] = [
   {
     year: 2026,
-    entries: [
-      { month: "January" },
-      { month: "February" },
-      { month: "March" },
-    ],
+    entries: [{ month: "January" }, { month: "February" }, { month: "March" }],
   },
   {
     year: 2025,
@@ -97,31 +92,6 @@ const years: NewsletterYearData[] = [
   },
 ];
 
-/* ── Search / filter icon ────────────────────────────────────────── */
-function SearchIcon() {
-  return (
-    <button
-      type="button"
-      aria-label="Search newsletters"
-      className="w-[49px] h-[49px] rounded-full border border-quantum-blue/40 flex items-center justify-center text-quantum-blue hover:bg-quantum-blue/10 transition-colors"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-5 h-5"
-        aria-hidden
-      >
-        <circle cx="11" cy="11" r="7" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    </button>
-  );
-}
-
 /* ── Page ─────────────────────────────────────────────────────────── */
 export default async function ResourcesNewsletters({
   searchParams,
@@ -146,21 +116,25 @@ export default async function ResourcesNewsletters({
   return (
     <>
       {/* ─── Content ─── */}
-      <section className="bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7] py-12">
-        <div className="max-w-[1512px] mx-auto px-[106px]">
+      <section className="bg-[#f5f6f8] py-16">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
           {/* Header row */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex items-center gap-6 mb-12">
+            <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
               Newsletters
             </h2>
-            <SearchIcon />
+            <div className="flex-1 h-px bg-lite-gray/60" />
+            <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
+              <img
+                src="/resources_assets/nletter_i.svg"
+                alt=""
+                aria-hidden="true"
+                className="w-12 h-12 object-contain"
+              />
+            </div>
           </div>
-
-          {/* Divider */}
-          <hr className="border-t border-[#dfe6ea] mb-10" />
-
           {/* Year cards grid */}
-          <div className="grid grid-cols-3 gap-x-7 gap-y-8 items-stretch auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-8 items-stretch auto-rows-fr">
             {visible.map((y) => (
               <NewsletterCard key={y.year} data={y} />
             ))}
@@ -175,17 +149,6 @@ export default async function ResourcesNewsletters({
             />
           </div>
         </div>
-      </section>
-
-      {/* ─── Learn More CTA ─── */}
-      <section className="bg-white py-16 flex justify-center">
-        <Button
-          text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
-          url="/products"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
       </section>
     </>
   );

@@ -22,26 +22,12 @@ export function ProvenInMarket({
         <div className="relative bg-gradient-to-br from-[#eaf3fb] via-white to-[#eaf6ee] rounded-[28px] px-16 py-14 max-w-[1129px] mx-auto">
           <div className="flex gap-12">
             {/* Logo + bracket */}
-            <div className="flex flex-col items-center flex-shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt=""
-                aria-hidden="true"
-                src="/home_assets/bracket_bottom.svg"
-                className="w-[60px] h-[60px]"
-                style={{ transform: "scaleY(-1)" }}
-              />
-              <div className="my-2 w-12 h-12 rounded-full border border-lite-gray flex items-center justify-center text-quantum-blue text-[18px] font-bold">
-                01
-              </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt=""
-                aria-hidden="true"
-                src="/home_assets/bracket_bottom.svg"
-                className="w-[60px] h-[60px]"
-              />
-            </div>
+            <img
+              alt=""
+              aria-hidden="true"
+              src="/service_assets/market.svg"
+              className="object-contain"
+            />
 
             {/* Content */}
             <div className="flex flex-col gap-5 max-w-[909px]">

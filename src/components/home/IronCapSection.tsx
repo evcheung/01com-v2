@@ -99,10 +99,10 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
   return (
     <div
       ref={sectionRef}
-      className="max-w-[1512px] mx-auto px-[95px] grid grid-cols-2 gap-10"
+      className="max-w-[1512px] mx-auto px-6 md:px-[95px] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10"
     >
       {/* Products */}
-      <div className="border border-white/20 rounded-[2vw] p-10">
+      <div className="border border-white/20 rounded-[2vw] p-6 md:p-10">
         <div className="flex items-center gap-3 mb-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -111,11 +111,11 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
             aria-hidden="true"
             className="w-15 h-15 object-contain"
           />
-          <h3 className="text-white text-[30px] font-medium leading-none">
+          <h3 className="text-white text-[22px] md:text-[30px] font-medium leading-none">
             IronCAP<sup className="text-[10px] align-super">™</sup> Products
           </h3>
         </div>
-        <p className="text-white/70 text-[18px] font-normal leading-[24px] mb-8">
+        <p className="text-white/70 text-[15px] md:text-[18px] font-normal leading-[22px] md:leading-[24px] mb-8">
           From end-to-end quantum-safe email and file encryption to secure
           remote access, blockchain transactions, and digital signatures,
           IronCAP secures your data in a post-quantum world.
@@ -129,7 +129,7 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
       </div>
 
       {/* Services */}
-      <div className="border border-white/20 rounded-[2vw] p-10">
+      <div className="border border-white/20 rounded-[2vw] p-6 md:p-10">
         <div className="flex items-center gap-3 mb-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -138,11 +138,11 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
             aria-hidden="true"
             className="w-15 h-15 object-contain"
           />
-          <h3 className="text-white text-[30px] font-medium leading-none">
+          <h3 className="text-white text-[22px] md:text-[30px] font-medium leading-none">
             IronCAP<sup className="text-[10px] align-super">™</sup> Services
           </h3>
         </div>
-        <p className="text-white/70 text-[18px] font-normal leading-[24px] mb-8">
+        <p className="text-white/70 text-[15px] md:text-[18px] font-normal leading-[22px] md:leading-[24px] mb-8">
           Professional and managed services securing AI and digital assets via
           open source cryptography integration and hardware acceleration.
         </p>

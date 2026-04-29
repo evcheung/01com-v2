@@ -32,15 +32,15 @@ export default function Contact() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
           Contact
         </h1>
       </section>
 
       {/* ─── Intro ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pt-16 pb-10">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-16 pb-10">
           <p className="text-steel-gray text-[18px] leading-[28px] max-w-[1129px]">
             We love to hear from our customers or partners. Call or email us
             with your questions or comments!
@@ -50,7 +50,7 @@ export default function Contact() {
 
       {/* ─── Two Column: Contact Info + Form ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pb-20 flex gap-8 items-start">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-start">
           {/* Left Column - centered in remaining space */}
           <aside className="flex-1 flex flex-col gap-6 items-center">
             {/* Phone block */}
@@ -133,7 +133,7 @@ export default function Contact() {
           </aside>
 
           {/* Contact Form */}
-          <div className="w-[705px] min-h-[879px] shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-12 shadow-sm">
+          <div className="w-full md:w-[705px] md:min-h-[879px] shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
             <p className="text-steel-gray text-[20px] leading-[32px] max-w-[446px] mb-8">
               Contact us to receive updates, white papers, brochures, articles
               or to answer specific questions.

@@ -51,95 +51,98 @@ export default function Products() {
 
       {/* IronCAP section */}
 
-      <section className="bg-white py-16 px-24 gap-16 min-h-[408px] justify-center flex">
-        {/* Left column */}
-        <div className="flex flex-col gap-16 flex-1">
-          <img
-            src="/product_assets/IronCAP_logo.svg"
-            className="w-100"
-            alt="IronCAP"
-          />
-
-          <div className="flex flex-col gap-[7px] text-[15px] leading-[24px]">
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Engine{" "}
-              </span>
-              is post-quantum cryptography (PQC) built to protect against
-              today&apos;s threats—and tomorrow&apos;s quantum-enabled attacks.
-            </p>
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Toolkits{" "}
-              </span>
-              combine NIST-approved PQC algorithms with our patent-protected
-              quantum-safe technologies, enabling secure integration across
-              virtually any environment. Designed for broad adoption across
-              verticals, they support use cases including AI, digital assets,
-              email security, remote access, digital identity, cloud storage,
-              IoT, blockchain, and financial transactions—and any system or data
-              that demands quantum-resistant protection.
-            </p>
-            <p className="text-steel-gray">
-              <span className="text-quantum-blue font-normal">
-                IronCAP™ Cryptography (ICC)
-              </span>{" "}
-              is the core cryptographic suite within the IronCAP™ Toolkits. It
-              includes NIST algorithms plus our patented, high-performance
-              implementation of Classic McEliece, engineered for large-scale
-              deployments (U.S. Patent No. 11,271,715). IronCAP™ actively
-              monitors PQC standardization progress at the National Institute of
-              Standards and Technology (NIST) via the Computer Security Resource
-              Center (CSRC) and is continuously updated to remain aligned with
-              the latest developments.
-            </p>
-          </div>
-
-          <div>
-            <Button
-              text="white paper · · ·"
-              url="/products/ironcap"
-              border="border-steel-gray"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
+      <section className="bg-white flex justify-center">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-12 md:py-20">
+          {/* Left column */}
+          <div className="flex flex-col gap-16 flex-1">
+            <img
+              src="/product_assets/IronCAP_logo.svg"
+              className="w-100"
+              alt="IronCAP"
             />
-          </div>
-        </div>
 
-        {/* Right column */}
-        <div className="flex flex-col items-center flex-1">
+            <div className="flex flex-col gap-[7px] text-[15px] leading-[24px]">
+              <p className="text-steel-gray">
+                <span className="text-quantum-blue font-normal">
+                  IronCAP™ Engine{" "}
+                </span>
+                is post-quantum cryptography (PQC) built to protect against
+                today&apos;s threats—and tomorrow&apos;s quantum-enabled
+                attacks.
+              </p>
+              <p className="text-steel-gray">
+                <span className="text-quantum-blue font-normal">
+                  IronCAP™ Toolkits{" "}
+                </span>
+                combine NIST-approved PQC algorithms with our patent-protected
+                quantum-safe technologies, enabling secure integration across
+                virtually any environment. Designed for broad adoption across
+                verticals, they support use cases including AI, digital assets,
+                email security, remote access, digital identity, cloud storage,
+                IoT, blockchain, and financial transactions—and any system or
+                data that demands quantum-resistant protection.
+              </p>
+              <p className="text-steel-gray">
+                <span className="text-quantum-blue font-normal">
+                  IronCAP™ Cryptography (ICC)
+                </span>{" "}
+                is the core cryptographic suite within the IronCAP™ Toolkits. It
+                includes NIST algorithms plus our patented, high-performance
+                implementation of Classic McEliece, engineered for large-scale
+                deployments (U.S. Patent No. 11,271,715). IronCAP™ actively
+                monitors PQC standardization progress at the National Institute
+                of Standards and Technology (NIST) via the Computer Security
+                Resource Center (CSRC) and is continuously updated to remain
+                aligned with the latest developments.
+              </p>
+            </div>
+
+            <div>
+              <Button
+                text="white paper · · ·"
+                url="/products/ironcap"
+                border="border-steel-gray"
+                textColor="text-quantum-green"
+                hoverBg="hover:bg-quantum-green/10"
+              />
+            </div>
+          </div>
+
+          {/* Right column */}
+          <div className="flex flex-col items-center flex-1">
             <LottiePlayer
               src={require("@/assets/animations/shieldAnimation.json")}
               className="aspect-square w-60"
             />
-          <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
-            IronCAP™ included PQC technologies from NIST
-          </h2>
-          <div className="flex gap-12 mt-3">
-            <div className="flex flex-col gap-[7px]">
-              <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
-                Digital signature mechanisms
-              </h4>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                ML-DSA (FIPS 204)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                SLH-DSA (FIPS 205)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                Falcon2
-              </p>
-            </div>
-            <div className="flex flex-col gap-[7px]">
-              <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
-                Key encapsulation mechanisms (KEM)
-              </h4>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                ML-KEM (FIPS 203)
-              </p>
-              <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
-                Classic McEliece3
-              </p>
+            <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
+              IronCAP™ included PQC technologies from NIST
+            </h2>
+            <div className="flex gap-12 mt-3">
+              <div className="flex flex-col gap-[7px]">
+                <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
+                  Digital signature mechanisms
+                </h4>
+                <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
+                  ML-DSA (FIPS 204)
+                </p>
+                <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
+                  SLH-DSA (FIPS 205)
+                </p>
+                <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
+                  Falcon2
+                </p>
+              </div>
+              <div className="flex flex-col gap-[7px]">
+                <h4 className="text-quantum-blue text-[15px] font-bold leading-[24px]">
+                  Key encapsulation mechanisms (KEM)
+                </h4>
+                <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
+                  ML-KEM (FIPS 203)
+                </p>
+                <p className="text-steel-gray text-[15px] font-medium leading-[24px]">
+                  Classic McEliece3
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -147,20 +150,20 @@ export default function Products() {
 
       {/* Quantum threat callout */}
       <section
-        className="flex justify-center items-center px-24 py-20 min-h-[408px]"
+        className="flex justify-center items-center py-12 md:py-20 px-6 md:px-12 min-h-[408px]"
         style={{
           background:
             "linear-gradient(to right, #f2f6f7 11%, white 54%, #f2f6f7 89%)",
         }}
       >
-        <div className="flex items-center gap-8 max-w-[1216px]">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-12 md:px-20 max-w-[1000px] items-center">
           <img
             src="/product_assets/sword.svg"
-            className="w-20 flex-shrink-0"
+            className="w-16 md:w-20 flex-shrink-0 mx-auto md:mx-0"
             alt=""
           />
-          <div>
-            <p className="text-lite-gray text-[21px] font-normal leading-[30px] mb-4 max-w-[928px]">
+          <div className="flex flex-col gap-4">
+            <p className="text-lite-gray text-lg md:text-[21px] font-normal leading-[28px] md:leading-[30px] max-w-[928px]">
               Like most adversaries, quantum attacks will occur when we are
               least prepared. Armed with IronCAP™ solutions and services,
               customers today are safeguarding data and guarding against any
@@ -175,7 +178,7 @@ export default function Products() {
 
       {/* Unique Strengths */}
       <section
-        className="py-20 px-24"
+        className="py-20 px-24 max-w-[1512px] mx-auto"
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -185,7 +188,7 @@ export default function Products() {
           Unique Strengths
         </h2>
 
-        <div className="grid grid-cols-2">
+        <div className=" px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {strengths.map((item, i) => (
             <div
               key={item.name}

@@ -1,5 +1,5 @@
 import { ResourcesSubMenu } from "@/components/resources/ResourcesSubMenu";
-
+import { Bottom } from "@/components/resources/Bottom";
 export default function ResourcesLayout({
   children,
 }: {
@@ -7,7 +7,7 @@ export default function ResourcesLayout({
 }) {
   return (
     <div
-      className="font-[family-name:var(--font-urbanist)] mx-auto w-full max-w-[1512px] bg-white"
+      className="font-[family-name:var(--font-urbanist)] mx-auto w-full bg-white"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
@@ -21,6 +21,7 @@ export default function ResourcesLayout({
       <ResourcesSubMenu />
 
       {children}
+      <Bottom />
     </div>
   );
 }

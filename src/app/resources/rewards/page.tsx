@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { RewardCard } from "@/components/resources/rewards/RewardCard";
 import { Pagination } from "@/components/resources/rewards/Pagination";
-import { Submenu } from "@/components/resources/Submenu";
 
 // TODO: Replace with Sanity fetch. Shape kept stable so the API can plug in directly.
 const rewards = [
@@ -23,8 +21,7 @@ const rewards = [
   },
   {
     date: "August 15, 2015",
-    description:
-      "IronCAP™ OnCall won the TMC Contact Center Technology Award.",
+    description: "IronCAP™ OnCall won the TMC Contact Center Technology Award.",
     image: "/about_assets/placeholder.png",
     imageAlt: "TMC Contact Center Technology Award",
     href: "#",
@@ -86,45 +83,23 @@ export default function RewardsPage() {
   const totalPages = 14;
 
   return (
-    <main>
-      {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          Resources
-        </h1>
-      </section>
-
-      {/* Sub menu */}
-      <Submenu active="Rewards" />
-
+    <>
       {/* Reviews + Rewards */}
       <section className="bg-[#f5f6f8] py-16">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
           {/* Section header */}
           <div className="flex items-center gap-6 mb-12">
             <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
-              Reviews + Rewards
+              Reviews & Rewards
             </h2>
             <div className="flex-1 h-px bg-lite-gray/60" />
-            <div className="flex items-center justify-center w-[50px] h-[50px] rounded-full border border-lite-gray/60 text-steel-gray shrink-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
+              <img
+                src="/resources_assets/rewar_i.svg"
+                alt=""
                 aria-hidden="true"
-              >
-                <path d="M8 21h8" />
-                <path d="M12 17v4" />
-                <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
-                <path d="M17 4h3v3a3 3 0 0 1-3 3" />
-                <path d="M7 4H4v3a3 3 0 0 0 3 3" />
-              </svg>
+                className="w-12 h-12 object-contain"
+              />
             </div>
           </div>
 
@@ -148,18 +123,6 @@ export default function RewardsPage() {
           </div>
         </div>
       </section>
-
-      {/* Learn more CTA */}
-      <section className="bg-white py-20">
-        <div className="flex justify-center">
-          <Button
-            url="/products/ironcap-engine"
-            textColor="text-quantum-blue"
-            border="border-quantum-blue/60"
-            text="Learn more about 01 Quantum products · · ·"
-          />
-        </div>
-      </section>
-    </main>
+    </>
   );
 }

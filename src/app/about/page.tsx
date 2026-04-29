@@ -50,13 +50,13 @@ export default function About() {
   return (
     <main>
       {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
           About
         </h1>
       </section>
-      <section className="bg-white flex flex-col items-center px-24 py-18">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+      <section className="bg-white flex flex-col items-center px-6 md:px-24 py-18">
+        <div className="max-w-[1512px] mx-auto px-0 md:px-[95px]">
           <p className="text-steel-gray text-[15px] leading-[24px]">
             <span className="text-quantum-blue font-normal">
               01 Quantum Inc.
@@ -101,12 +101,12 @@ export default function About() {
 
       {/* ─── Resources ─────────────────────────────────────────── */}
       <section className="bg-black py-20">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-14">
             Resources
           </h2>
 
-          <div className="grid grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {/* Downloads */}
             <div className="bg-[#0d0d0d] border border-white/10 rounded-[20px] px-10 py-9">
               <h3 className="text-quantum-blue text-[22px] font-medium leading-tight mb-4">
@@ -220,8 +220,8 @@ export default function About() {
       </section>
 
       {/* Leadership */}
-      <section className="bg-white py-20 px-[95px]">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+      <section className="bg-white py-20 px-6 md:px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-0 md:px-[95px]">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-14">
             Leadership
           </h2>
@@ -229,18 +229,18 @@ export default function About() {
           {/* Bento grid */}
           <div className="">
             {/* Top row — 3 leaders */}
-            <div className="grid grid-cols-3 divide-x divide-black/10 border-b border-black/10 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-black/10 border-b border-black/10 justify-items-center">
               {leaders.slice(0, 3).map((leader) => (
-                <div key={leader.name} className="px-10 py-10">
+                <div key={leader.name} className="px-6 md:px-10 py-10">
                   <Leader {...leader} />
                 </div>
               ))}
             </div>
 
             {/* Bottom row — 4 leaders */}
-            <div className="grid grid-cols-4 divide-x divide-black/10 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-black/10 justify-items-center">
               {leaders.slice(3).map((leader) => (
-                <div key={leader.name} className="px-10 py-10">
+                <div key={leader.name} className="px-6 md:px-10 py-10">
                   <Leader {...leader} />
                 </div>
               ))}

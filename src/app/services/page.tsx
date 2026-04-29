@@ -1,4 +1,3 @@
-import { Section } from "@/components/services/Section";
 import { ServiceIntro } from "@/components/services/ServiceIntro";
 import { KeyAdvantages } from "@/components/services/KeyAdvantages";
 import { CalloutBox } from "@/components/services/CalloutBox";
@@ -13,6 +12,7 @@ const qawAdvantages = [
     title: "Seamless Open Source Integration",
     description:
       "QAW is built for transparency and auditability. It integrates proven open-source artifacts—including ZAMA, Concrete-ML, FHE-Studio (Pythonic circuit development)—so your security stack stays flexible, reviewable, and free from vendor lock-in.",
+    icon: "/service_assets/a_1.svg",
   },
   {
     title: "Hybrid FHE Optimizations",
@@ -24,23 +24,27 @@ const qawAdvantages = [
         <p>Corporate Copilots ~200ms latency</p>
       </div>
     ),
+    icon: "/service_assets/a_2.svg",
   },
   {
     title: "Rigorous Testing + Verification",
     description:
       "Security is only credible when it is validated. QAW includes disciplined testing and verification to ensure cryptographic circuits are optimized for your specific expert AI tasks. Every encrypted model is validated against its cleartext equivalent to confirm accuracy and response quality remain within defined tolerances.",
+    icon: "/service_assets/a_4.svg",
   },
   {
     title: "Managed Services + Remote Monitoring",
     description:
       "For organizations that require continuous assurance, 01 Quantum offers a managed operating model. We remotely monitor and manage FHE-enabled AI deployments and supporting post-quantum (PQ) key infrastructure—on-prem or in the cloud—so AI services remain secure, stable, and available 24/7.",
+    icon: "/service_assets/a_3.svg",
   },
   {
     title: "Ongoing Support + Training",
     description:
       "FHE and post-quantum migration require specialized expertise. We provide tailored training and continuous support so your team can operate “wrapped” (encrypted) AI with confidence—and align with emerging governance frameworks, including NIST AI RMF and ISO/IEC 42001.",
+    icon: "/service_assets/p_4.svg",
   },
-] as const;
+];
 
 // ─── Digital Asset Protection ────────────────────────────────────────────
 const digitalAssetAdvantages = [
@@ -48,6 +52,7 @@ const digitalAssetAdvantages = [
     title: "Open Source Integration + Interoperability",
     description:
       "Our approach is integration-first. QCW/QDW and our Layer 1 Migration Toolkit are designed to fit leading ecosystems including Ethereum, Solana, and Hyperliquid—using open protocols and algorithms to remain transparent, auditable, and developer-ready.",
+    icon: "/service_assets/p_1.svg",
   },
   {
     title: "Phased Testing + Verification",
@@ -75,16 +80,19 @@ const digitalAssetAdvantages = [
         </div>
       </div>
     ),
+    icon: "/service_assets/p_2.svg",
   },
   {
     title: "Managed Security + Remote Monitoring",
     description:
       "For high-assurance environments, we provide a Managed Digital Asset Service. We monitor smart contracts and PQ key infrastructure (on-prem or cloud) with daily health checks and real-time alerts—reducing exposure to long-term threats posed by cryptographic weaknesses as quantum capability scales.",
+    icon: "/service_assets/p_3.svg",
   },
   {
     title: "On-going Support and Training",
     description:
       "Transitioning to quantum-resilient digital assets is a strategic program, not a patch. We provide expert-led training and ongoing support to balance cryptographic performance requirements with ecosystem constraints—so your assets are prepared for Q-Day and beyond.",
+    icon: "/service_assets/p_4.svg",
   },
 ];
 
@@ -94,21 +102,25 @@ const cryptoIntegrationAdvantages = [
     title: "Hybrid Cryptographic Implementations",
     description:
       "We implement hybrid deployments that combine classical algorithms with PQC—maintaining current compliance while adding quantum resistance through a safe, incremental migration path.",
+    icon: "/service_assets/b_2.svg",
   },
   {
     title: "Open Source Integration + Custom Circuitry",
     description:
       "We leverage leading open-source libraries and tools to build transparent, auditable security layers—and integrate them into your existing IDE and CI/CD pipelines to keep every release cryptographically sound.",
+    icon: "/service_assets/b_1.svg",
   },
   {
     title: "Testing, Verification + Performance Tuning",
     description:
       "PQC can change latency and packet size. We test, verify, and tune implementations to preserve user experience while meeting enterprise benchmarks—aligned with frameworks including NIST CSF 2.0 and ISO 27002 / 62443.",
+    icon: "/service_assets/b_3.svg",
   },
   {
     title: "Strategic Support + Training",
     description:
       "Cryptographic agility is an ongoing capability. We train and support your teams across PQC primitives—from signature schemes to KEMs—so you can operate confidently today and stay ready for Q-Day.",
+    icon: "/service_assets/p_4.svg",
   },
 ];
 
@@ -116,8 +128,8 @@ export default function Services() {
   return (
     <main>
       {/* ─── Page Title ────────────────────────────────────────── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
           Services
         </h1>
       </section>
@@ -302,7 +314,6 @@ export default function Services() {
           />
         </div>
       </div>
-
     </main>
   );
 }

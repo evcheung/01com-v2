@@ -13,17 +13,17 @@ const footerColumns = [
   {
     heading: "Resources",
     links: ["Use Cases", "Investor Relations", "Press Room"],
-    urls: ["/use-cases", "/investor-relations", "/press-room"],
+    urls: ["/use-cases", "/investor-relations", "/resources/press-releases"],
   },
   {
     heading: "About",
     links: ["Investor Relations", "About", "Newsletters"],
-    urls: ["/investor-relations", "/about", "/newsletters"],
+    urls: ["/investor-relations", "/about", "/resources/newsletters"],
   },
   {
     heading: "Legal",
     links: ["Blog", "Product FAQ", "General FAQ"],
-    urls: ["/blog", "/product-faq", "/general-faq"],
+    urls: ["/resources/blog", "/resources/documents", "/general-faq"],
   },
   {
     heading: "Support",
@@ -37,15 +37,15 @@ export default function Footer() {
       {/* ── Footer ─────────────────────────────────────────────── */}
       <footer className="bg-black border-t border-white/10">
         {/* CTA row */}
-        <div className="max-w-[1512px] mx-auto px-[95px] py-16 flex justify-center gap-20">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 md:py-16 flex justify-center gap-6 md:gap-20">
           <Button text="CONTACT · · ·" url="#" />
           <Button text="DEMO · · ·" url="#" />
         </div>
 
         {/* Links row */}
-        <div className="max-w-[1512px] mx-auto px-[95px] pb-12 flex items-start justify-between gap-8">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12">
           {/* Logo + social */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mb-10 md:mb-0 md:hidden">
             <Image
               alt="01 Quantum"
               src={imgLogo}
@@ -62,22 +62,42 @@ export default function Footer() {
             />
           </div>
 
-          {footerColumns.map(({ heading, links, urls }) => (
-            <div key={heading} className="flex flex-col gap-2">
-              <p className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
-                {heading}
-              </p>
-              {links.map((link, index) => (
-                <a
-                  key={link}
-                  href={urls[index]}
-                  className="text-white text-[12px] hover:text-[#71bfff] transition-colors"
-                >
-                  {link}
-                </a>
-              ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:items-start md:justify-between gap-8">
+            {/* Logo + social — desktop only */}
+            <div className="hidden md:flex flex-col gap-4">
+              <Image
+                alt="01 Quantum"
+                src={imgLogo}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+              <Image
+                alt="Social media links"
+                src={imgSocial}
+                width={100}
+                height={100}
+                className="object-contain"
+              />
             </div>
-          ))}
+
+            {footerColumns.map(({ heading, links, urls }) => (
+              <div key={heading} className="flex flex-col gap-2">
+                <p className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+                  {heading}
+                </p>
+                {links.map((link, index) => (
+                  <a
+                    key={link}
+                    href={urls[index]}
+                    className="text-white text-[12px] hover:text-[#71bfff] transition-colors"
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Copyright */}

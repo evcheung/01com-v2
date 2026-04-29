@@ -4,14 +4,14 @@ export default function QuantumThreat() {
   return (
     <main>
       {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[28px] md:text-[50px] font-medium leading-[50px]">
           Quantum-safe Cryptography
         </h1>
       </section>
-      <section className="bg-black flex flex-col items-center px-24 pt-18">
+      <section className="bg-black flex flex-col items-center px-6 md:px-24 pt-18">
         <div className="max-w-[1512px] mx-auto">
-          <div className="flex mb-10 items-center">
+          <div className="flex flex-col md:flex-row mb-10 items-center gap-8">
             <div className="flex flex-col gap-4">
               <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-4">
                 Quantum Attack

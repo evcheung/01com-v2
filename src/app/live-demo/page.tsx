@@ -10,7 +10,7 @@ function BracketCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative w-[494px] h-[311px]">
+    <div className="relative w-full max-w-[494px] h-[311px]">
       {/* Bracket frame */}
       <Image
         src="/live_demo_assets/Bracket.svg"
@@ -99,16 +99,16 @@ export default function LiveDemo() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          IronCAP<sup className="text-[30px] align-super leading-none">™</sup>{" "}
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[28px] md:text-[50px] font-medium leading-[50px]">
+          IronCAP<sup className="text-[18px] md:text-[30px] align-super leading-none">™</sup>{" "}
           Live Demo
         </h1>
       </section>
 
       {/* ─── Intro ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pt-12 pb-8">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-12 pb-8">
           <p className="text-steel-gray text-[15px] leading-[24px] max-w-[1230px]">
             IronCAP<sup className="text-[9.675px]">™</sup> is our latest
             innovation for the post-quantum cybersecurity. This
@@ -126,9 +126,9 @@ export default function LiveDemo() {
 
       {/* ─── Two-column layout ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pb-16 flex gap-12 items-start">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-16 flex flex-col md:flex-row gap-12 items-start">
           {/* Left column – instructions + info */}
-          <div className="w-[479px] shrink-0 flex flex-col gap-6">
+          <div className="w-full md:w-[479px] shrink-0 flex flex-col gap-6">
             {/* Try IronCAP™ encryption */}
             <div>
               <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-1">
@@ -206,7 +206,7 @@ export default function LiveDemo() {
           </div>
 
           {/* Right column – registration boxes */}
-          <div className="flex flex-col gap-8 shrink-0 ml-[150px]">
+          <div className="flex flex-col gap-8 shrink-0 w-full md:w-auto md:ml-[150px]">
             {/* Registration */}
             <BracketCard title="Registration">
               <div className="flex flex-col gap-3 items-center">

@@ -10,8 +10,8 @@ export type ResourceMenuItem = {
 
 export const resourceMenuItems: ResourceMenuItem[] = [
   { label: "News", href: "/resources/news" },
-  { label: "Press Releases", href: "/resources/press_releases" },
-  { label: "Reviews + Awards", href: "/resources/reviews_awards" },
+  { label: "Press Releases", href: "/resources/press-releases" },
+  { label: "Reviews + Awards", href: "/resources/rewards" },
   { label: "Newsletters", href: "/resources/newsletters" },
   { label: "Blog", href: "/resources/blog" },
   { label: "Documents", href: "/resources/documents" },
@@ -27,17 +27,18 @@ export function ResourcesSubMenu() {
   const pathname = usePathname();
 
   return (
-    <section className="bg-black h-[88px] relative flex items-center justify-center">
+    <section className="bg-black relative flex items-center justify-center py-5 md:h-[88px] md:py-0">
       {/* Top divider line */}
       <div
         aria-hidden
         className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] bg-white/30"
       />
-      <ul className="flex items-center gap-6 text-[12px]">
+      {/* Mobile: 3-col × 2-row grid | Desktop: single row */}
+      <ul className="grid grid-cols-3 gap-x-6 gap-y-4 text-[12px] md:flex md:items-center md:gap-6">
         {resourceMenuItems.map((m, i) => {
           const active = pathname === m.href;
           return (
-            <li key={m.label} className="flex items-center gap-6">
+            <li key={m.label} className="flex items-center justify-center gap-6 md:justify-start">
               <Link
                 href={m.href}
                 aria-current={active ? "page" : undefined}
@@ -45,12 +46,13 @@ export function ResourcesSubMenu() {
                   active
                     ? "text-quantum-blue font-semibold"
                     : "text-white hover:text-quantum-blue"
-                } transition-colors`}
+                } transition-colors text-center md:text-left`}
               >
                 {m.label}
               </Link>
+              {/* Separator only visible in desktop row layout */}
               {i < resourceMenuItems.length - 1 && (
-                <span aria-hidden className="text-white/50">
+                <span aria-hidden className="hidden text-white/50 md:inline">
                   |
                 </span>
               )}

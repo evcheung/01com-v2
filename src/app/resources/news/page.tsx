@@ -1,6 +1,5 @@
 import { NewsCard } from "@/components/resources/news/NewsCard";
 import { Button } from "@/components/ui/button";
-import { subMenu, Submenu } from "@/components/resources/Submenu";
 // Placeholder data — will be replaced with Sanity fetch later.
 const featuredNews = [
   {
@@ -24,44 +23,18 @@ const featuredNews = [
 
 export default function NewsPage() {
   return (
-    <main>
-      {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          Resources
-        </h1>
-      </section>
-
-      {/* Sub menu */}
-      <Submenu active="News" />
-
+    <>
       {/* Featured News */}
       <section className="bg-[#f5f6f8] py-16">
-        <div className="max-w-[1512px] mx-auto px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
           {/* Section header */}
           <div className="flex items-center gap-6 mb-12">
             <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
               Featured News
             </h2>
             <div className="flex-1 h-px bg-lite-gray/60" />
-            <div className="flex items-center justify-center w-[50px] h-[50px] rounded-full border border-lite-gray/60 text-steel-gray shrink-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="9" y1="13" x2="15" y2="13" />
-                <line x1="9" y1="17" x2="15" y2="17" />
-              </svg>
+            <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
+              <img src="/resources_assets/news_i.svg" alt="" aria-hidden="true" className="w-12 h-12 object-contain" />
             </div>
           </div>
 
@@ -88,18 +61,6 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
-
-      {/* Learn more CTA */}
-      <section className="bg-white py-20">
-        <div className="flex justify-center">
-          <Button
-            url="/products/ironcap-engine"
-            textColor="text-quantum-blue"
-            border="border-quantum-blue/60"
-            text="Learn more about 01 Quantum products · · ·"
-          />
-        </div>
-      </section>
-    </main>
+    </>
   );
 }

@@ -88,7 +88,7 @@ const digitalAssetsUseCases = [
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7] py-7">
-      <div className="max-w-[1512px] mx-auto px-[95px]">
+      <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
         <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
           {children}
         </h2>
@@ -108,12 +108,12 @@ function UseCaseRow({
 }) {
   return (
     <div
-      className={`flex gap-8 py-6 ${
+      className={`flex flex-col md:flex-row gap-2 md:gap-8 py-6 ${
         isLast ? "" : "border-b border-[#dfe6ea]"
       }`}
     >
-      <div className="w-[210px] shrink-0">
-        <p className="text-steel-gray text-[15px] leading-[24px]">{label}</p>
+      <div className="md:w-[210px] md:shrink-0">
+        <p className="text-steel-gray text-[15px] leading-[24px] font-medium">{label}</p>
       </div>
       <div className="flex-1">
         <p className="text-steel-gray text-[15px] leading-[24px]">{body}</p>
@@ -130,15 +130,15 @@ export default function UseCases() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
+        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
           Use Cases
         </h1>
       </section>
 
       {/* ─── Performance / Intro ─── */}
       <section className="bg-black">
-        <div className="max-w-[1512px] mx-auto px-[95px] pt-4 pb-16 flex flex-col gap-6">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-4 pb-16 flex flex-col gap-6">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
             Performance
           </h2>
@@ -160,7 +160,7 @@ export default function UseCases() {
         IronCAP<sup className="text-[11.61px]">™</sup>&nbsp;&nbsp;Products
       </SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] py-10">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
           {ironcapProducts.map((row, i) => (
             <UseCaseRow
               key={i}
@@ -177,7 +177,7 @@ export default function UseCases() {
         IronCAP<sup className="text-[11.61px]">™</sup>&nbsp;&nbsp;Services
       </SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] py-10 flex flex-col gap-12">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10 flex flex-col gap-12">
           <h3 className="text-quantum-blue text-[20px] font-medium leading-[34px]">
             Quantum AI Wrapper
           </h3>
@@ -198,7 +198,7 @@ export default function UseCases() {
           </div>
 
           {/* Government — gradient background per design */}
-          <div className="-mx-[95px] px-[95px] py-8 bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7]">
+          <div className="-mx-6 md:-mx-[95px] px-6 md:px-[95px] py-8 bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7]">
             <h4 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-4">
               Government
             </h4>
@@ -232,7 +232,7 @@ export default function UseCases() {
       {/* ─── Digital Assets Security Services ─── */}
       <SectionTitle>Digital Assets Security Services</SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] py-10">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
           {digitalAssetsUseCases.map((row, i) => (
             <UseCaseRow
               key={i}

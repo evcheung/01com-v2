@@ -14,7 +14,7 @@ const footerColumns = [
   {
     heading: "Company",
     links: ["Products", "Services", "Customers"],
-    urls: ["/products/ironcap-engine", "/services", "/customers"],
+    urls: ["/products/ironcap-engine", "/services", "#"],
   },
   {
     heading: "Resources",
@@ -29,12 +29,12 @@ const footerColumns = [
   {
     heading: "Legal",
     links: ["Blog", "Product FAQ", "General FAQ"],
-    urls: ["/resources/blog", "/resources/documents", "/general-faq"],
+    urls: ["/resources/blog", "/resources/documents", "#"],
   },
   {
     heading: "Support",
     links: ["Support", "Contact", "Login"],
-    urls: ["/support", "/contact", "/login"],
+    urls: ["/support", "/contact", "#"],
   },
 ];
 export default function Footer() {

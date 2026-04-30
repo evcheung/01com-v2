@@ -13,7 +13,7 @@ const mobileProducts = [
 
 const navLinks = [
   { label: "Services +", href: "/services" },
-  { label: "Customers", href: "/customers" },
+  { label: "Customers", href: "#" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Demo", href: "/live-demo" },
   { label: "Login", href: "#" },

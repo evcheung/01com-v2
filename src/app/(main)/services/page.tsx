@@ -192,7 +192,7 @@ export default function Services() {
               </p>
               <p className="text-quantum-blue text-[16px] font-medium leading-tight mt-1">
                 On-chain proofs on post-quantum signatures
-              </p>
+              </p>1
               <p className="mt-2">
                 By combining Zero-Knowledge Proofs (ZKPs) with our NIST-endorsed
                 IronCAP

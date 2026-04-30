@@ -27,7 +27,7 @@ export function PressCard({ item, className = "" }: PressCardProps) {
     <article
       className={`bg-white w-[408px] h-[201px] p-8 flex flex-col gap-2 shadow-sm ${className}`}
     >
-      <p className="text-steel-gray text-[15px] leading-[24px]">{item.date}</p>
+      <p className="text-steel-gray text-[15px] leading-[24px]">{new Date(item.date).toDateString()}</p>
       <p className="text-steel-gray text-[15px] leading-[24px] flex-1 line-clamp-3">
         {item.title}
       </p>

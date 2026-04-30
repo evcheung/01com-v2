@@ -1,5 +1,11 @@
 const imgLogo = "/header_assets/logo.svg";
-const imgSocial = "/assets/Home_assets/social.svg";
+const socialLinks = [
+  { icon: "/header_assets/x.svg", url: "https://x.com", label: "X" },
+  { icon: "/header_assets/fb.svg", url: "https://facebook.com", label: "Facebook" },
+  { icon: "/header_assets/in.svg", url: "https://linkedin.com", label: "LinkedIn" },
+  { icon: "/header_assets/yt.svg", url: "https://youtube.com", label: "YouTube" },
+];
+
 import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
@@ -53,13 +59,19 @@ export default function Footer() {
               height={48}
               className="object-contain"
             />
-            <Image
-              alt="Social media links"
-              src={imgSocial}
-              width={100}
-              height={100}
-              className="object-contain"
-            />
+            <div className="flex">
+              {socialLinks.map(({ icon, url, label }) => (
+                <a key={label} href={url} className="mr-4 last:mr-0">
+                  <Image
+                    alt={label}
+                    src={icon}
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:items-start md:justify-between gap-8">
@@ -72,13 +84,19 @@ export default function Footer() {
                 height={48}
                 className="object-contain"
               />
-              <Image
-                alt="Social media links"
-                src={imgSocial}
-                width={100}
-                height={100}
-                className="object-contain"
-              />
+              <div className="flex">
+                {socialLinks.map(({ icon, url, label }) => (
+                  <a key={label} href={url} className="mr-4 last:mr-0">
+                    <Image
+                      alt={label}
+                      src={icon}
+                      width={20}
+                      height={20}
+                      className="object-contain"
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
 
             {footerColumns.map(({ heading, links, urls }) => (

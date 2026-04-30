@@ -1,9 +1,9 @@
 const imgLogo = "/header_assets/logo.svg";
 const socialLinks = [
-  { icon: "/header_assets/x.svg", url: "https://x.com", label: "X" },
-  { icon: "/header_assets/fb.svg", url: "https://facebook.com", label: "Facebook" },
-  { icon: "/header_assets/in.svg", url: "https://linkedin.com", label: "LinkedIn" },
-  { icon: "/header_assets/yt.svg", url: "https://youtube.com", label: "YouTube" },
+  { icon: "/header_assets/x.svg", url: "https://x.com/01quantuminc", label: "X" },
+  { icon: "/header_assets/fb.svg", url: "https://facebook.com/01QuantumInc", label: "Facebook" },
+  { icon: "/header_assets/in.svg", url: "https://linkedin.com/company/01-quantum/", label: "LinkedIn" },
+  { icon: "/header_assets/yt.svg", url: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg", label: "YouTube" },
 ];
 
 import { Button } from "@/components/ui/button";

@@ -4,6 +4,12 @@ import { CalloutBox } from "@/components/services/CalloutBox";
 import { ProvenInMarket } from "@/components/services/ProvenInMarket";
 import { Button } from "@/components/ui/button";
 
+import animation1 from "@/assets/animations/iconDark-IC-QuantumAIW.json"
+import animation2 from "@/assets/animations/iconDark-IC-DAPS.json"
+import animation3 from "@/assets/animations/iconDark-OSCIS.json"
+import animation4 from "@/assets/animations/OSCIS-spinner.json"
+
+
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 // ─── QAW (IronCAP Quantum AI Wrapper) ────────────────────────────────────
@@ -137,7 +143,7 @@ export default function Services() {
       {/* ─── 1. IronCAP Quantum AI Wrapper (QAW) ───────────────── */}
       <ServiceIntro
         id="qaw"
-        animation={require("@/assets/animations/iconDark-IC-QuantumAIW.json")}
+        animation={animation1}
         heading={
           <>
             IronCAP
@@ -170,7 +176,7 @@ export default function Services() {
       {/* ─── 2. Digital Asset Protection ───────────────────────── */}
       <ServiceIntro
         id="digital-asset"
-        animation={require("@/assets/animations/iconDark-IC-DAPS.json")}
+        animation={animation2}
         topDivider
         heading={
           <>
@@ -250,7 +256,7 @@ export default function Services() {
       {/* ─── 3. Open Source Cryptographic Integration Services ── */}
       <ServiceIntro
         id="open-source-crypto"
-        animation={require("@/assets/animations/iconDark-OSCIS.json")}
+        animation={animation3}
         topDivider
         heading={<>Open Source Cryptographic Integration Services</>}
         subheading="Apply certified, industry-standard algorithms and libraries"
@@ -267,7 +273,7 @@ export default function Services() {
       />
 
       <CalloutBox
-        animation={require("@/assets/animations/OSCIS-spinner.json")}
+        animation={animation4}
         heading="Real-World Integration Experience"
         body={
           <p>

@@ -2,6 +2,7 @@ import { NewsCard } from "@/components/resources/news/NewsCard";
 import { Pagination } from "@/components/resources/rewards/Pagination";
 import { client } from "@/sanity/lib/client";
 import { NEWS_COUNT_QUERY, NEWS_QUERY } from "@/sanity/lib/queries";
+import Image from "next/image";
 import { Key } from "react";
 
 const PAGE_SIZE = 12;
@@ -32,7 +33,7 @@ export default async function NewsPage({
           </h2>
           <div className="flex-1 h-px bg-lite-gray/60" />
           <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
-            <img src="/resources_assets/news_i.svg" alt="" aria-hidden="true" className="w-12 h-12 object-contain" />
+            <Image src="/resources_assets/news_i.svg" alt="" aria-hidden="true" className="object-contain" width={64} height={64} />
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">

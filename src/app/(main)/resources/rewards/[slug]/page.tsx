@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { REWARD_QUERY } from "@/sanity/lib/queries";
+import Image from "next/image";
 
 export default async function RewardItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -16,7 +17,7 @@ export default async function RewardItemPage({ params }: { params: Promise<{ slu
           ← Back to Rewards
         </Link>
         {post.image && (
-          <img src={post.image} alt={post.title} className="max-h-[120px] w-auto object-contain mb-8" />
+          <Image src={post.image} alt={post.title} className="max-h-[120px] w-auto object-contain mb-8" width={120} height={120} />
         )}
         <p className="text-steel-gray text-[13px] mb-4">{post.date}</p>
         <h1 className="text-[#2b2f38] text-[28px] md:text-[36px] font-semibold leading-tight mb-8">{post.title}</h1>

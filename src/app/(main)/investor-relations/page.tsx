@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const presentations = [
@@ -140,7 +141,9 @@ export default function InvestorRelations() {
 
             {/* Right column - video */}
             <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
-              <img
+              <Image
+                width={540}
+                height={303}
                 src="/investor_relations_assets/featured-video.png"
                 alt="Featured video"
                 className="absolute inset-0 w-full h-full object-cover rounded-md"
@@ -280,8 +283,8 @@ export default function InvestorRelations() {
       <SectionTitle>Financial Results</SectionTitle>
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
-          {financialResults.map((row) => (
-            <div className="flex flex-col md:flex-row gap-4 md:gap-16 py-4">
+          {financialResults.map((row, i) => (
+            <div key={i} className="flex flex-col md:flex-row gap-4 md:gap-16 py-4">
               <p className="text-steel-gray text-[15px] leading-[24px] w-[228px] shrink-0">
                 {row.date}
               </p>

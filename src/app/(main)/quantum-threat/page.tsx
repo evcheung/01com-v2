@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function QuantumThreat() {
   return (
@@ -32,10 +33,12 @@ export default function QuantumThreat() {
                 modern digital trust.
               </p>
             </div>
-            <img
+            <Image
               src="/quantum_assets/img.png"
               alt=""
               className="opacity-90 h-90 [mask-image:radial-gradient(ellipse_60%_70%_at_60%_50%,black_40%,transparent_80%)]"
+              width={360}
+              height={360}
             />
           </div>
 

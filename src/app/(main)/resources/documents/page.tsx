@@ -3,6 +3,7 @@ import {
   DocumentsCard,
   type DocumentsCardData,
 } from "@/components/resources/documents/DocumentsCard";
+import Image from "next/image";
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const cards: DocumentsCardData[] = [
@@ -51,11 +52,13 @@ export default function ResourcesDocuments() {
             </h2>
             <div className="flex-1 h-px bg-lite-gray/60" />
             <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
-              <img
+              <Image
                 src="/resources_assets/news_i.svg"
                 alt=""
                 aria-hidden="true"
-                className="w-12 h-12 object-contain"
+                className="object-contain"
+                width={64}
+                height={64}
               />
             </div>
           </div>

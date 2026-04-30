@@ -2,7 +2,7 @@ import HomeAnimation from "@/assets/home-banner-animation.svg";
 import { HeroSpline } from "@/components/ui/hero-spline";
 import { Button } from "@/components/ui/button";
 import { IronCapSection } from "@/components/home/IronCapSection";
-
+import Image from "next/image";
 const products = [
   {
     name: "IronCAP™ Engine",
@@ -96,7 +96,9 @@ export default function Home() {
           <div className="relative p-6 md:p-12">
             {/* Bracket decorations */}
             <div className="absolute -left-1 top-0 bottom-0 hidden md:flex flex-col items-center pointer-events-none ">
-              <img
+              <Image
+                width={100}
+                height={100}
                 alt=""
                 src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
@@ -104,7 +106,9 @@ export default function Home() {
                 style={{ transform: "scaleY(-1)" }}
               />
               <div className="flex-1 w-px" />
-              <img
+              <Image
+                width={100}
+                height={100}
                 alt=""
                 src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
@@ -144,30 +148,36 @@ export default function Home() {
           <div className="flex gap-12 items-start">
             {/* Side bracket + icon — hidden on mobile */}
             <div className="hidden md:flex flex-col items-center flex-none gap-12">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              
+              <Image
                 alt=""
                 src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px]"
                 style={{ transform: "scaleY(-1)" }}
+                width={60}
+                height={60}
               />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+               
               {/* Linea vertical */}
               {/* Logo circular */}
-              <img
+              <Image
                 alt=""
                 src="/home_assets/icon_quantum.svg"
                 aria-hidden="true"
                 className="w-[74px] h-[74px] object-contain"
+                width={74}
+                height={74}
               />
 
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+               
+              <Image
                 alt=""
                 src="/home_assets/bracket_bottom.svg"
                 aria-hidden="true"
                 className="w-[60px] h-[60px]"
+                width={60}
+                height={60}
               />
             </div>
 
@@ -218,8 +228,10 @@ export default function Home() {
                   <h3 className="text-[#71bfff] text-[16px] md:text-[18px] font-semibold uppercase leading-[20px] mb-4">
                     {title}
                   </h3>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  
+                  <Image
+                    width={100}
+                    height={100}
                     alt=""
                     src={icon}
                     aria-hidden="true"

@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
+import animation1 from "@/assets/animations/icon-IC-inTouch.json"
+import animation2 from  "@/assets/animations/icon-IC-intouchGo.json"
+import animation3 from "@/assets/animations/intouchGoFlowchart.json"
+import animation4 from "@/assets/animations/icon-IC-intouchGoMail.json"
+import animation5 from "@/assets/animations/iconDark-IC-intouchSecureKey.json"
+import animation6 from "@/assets/animations/icon-IC-intouch-SE.json"
+import Image from "next/image";
+
 const howWorkSteps = [
   {
     step: "1",
@@ -44,7 +52,7 @@ export default function InTouchPage() {
         <div className="max-w-[1512px] mx-auto flex gap-8 px-[95px] pb-20">
           <div className="flex-shrink-0 w-[130px] pt-2">
             <LottiePlayer
-              src={require("@/assets/animations/icon-IC-inTouch.json")}
+              src={animation1}
               className="w-[130px] h-[168px]"
             />
           </div>
@@ -157,7 +165,9 @@ export default function InTouchPage() {
                     {item.name}
                   </span>
                   {item.img ? (
-                    <img
+                    <Image
+                      width={64}
+                      height={64}
                       src={item.img}
                       alt={item.name}
                       className="h-6 object-contain"
@@ -179,7 +189,7 @@ export default function InTouchPage() {
         <div className="max-w-[1512px] mx-auto flex gap-8">
           <div className="flex-shrink-0 w-[130px] pt-2">
             <LottiePlayer
-              src={require("@/assets/animations/icon-IC-intouchGo.json")}
+              src={animation2}
               className="w-[130px] h-[168px]"
             />
           </div>
@@ -275,7 +285,7 @@ export default function InTouchPage() {
             <div className="flex items-center justify-center border-white/10">
               <LottiePlayer
                 loop={false}
-                src={require("@/assets/animations/intouchGoFlowchart.json")}
+                src={animation3}
                 className="w-[130px] h-[168px]"
               />
             </div>
@@ -321,7 +331,9 @@ export default function InTouchPage() {
                   <span className="text-lite-gray text-[12px]">
                     {item.name}
                   </span>
-                  <img
+                  <Image
+                    width={64}
+                    height={64}
                     src={item.img}
                     alt={item.name}
                     className="h-6 object-contain"
@@ -338,7 +350,7 @@ export default function InTouchPage() {
         <div className="max-w-[1512px] mx-auto flex gap-8">
           <div className="flex-shrink-0 w-[130px] pt-2">
             <LottiePlayer
-              src={require("@/assets/animations/icon-IC-intouchGoMail.json")}
+              src={animation4}
               className="w-[130px] h-[168px]"
             />
           </div>
@@ -419,10 +431,12 @@ export default function InTouchPage() {
                     <span className="text-steel-gray text-[12px]">
                       {item.name}
                     </span>
-                    <img
+                    <Image
                       src={item.img}
                       alt={item.name}
                       className="h-6 object-contain"
+                      width={64}
+                      height={64}
                     />
                   </div>
                 ))}
@@ -437,7 +451,7 @@ export default function InTouchPage() {
         <div className="max-w-[1512px] mx-auto flex gap-8">
           <div className="flex-shrink-0 w-[130px] pt-2">
             <LottiePlayer
-              src={require("@/assets/animations/iconDark-IC-intouchSecureKey.json")}
+              src={animation5}
               className="w-[130px] h-[168px]"
             />
           </div>
@@ -493,7 +507,7 @@ export default function InTouchPage() {
         <div className="max-w-[1512px] mx-auto flex gap-8">
           <div className="flex-shrink-0 w-[130px] pt-2">
             <LottiePlayer
-              src={require("@/assets/animations/icon-IC-intouch-SE.json")}
+              src={animation6}
               className="w-[130px] h-[168px]"
             />
           </div>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
-
+import Image from "next/image";
+import animation1 from "@/assets/animations/shieldAnimation.json"
 const strengths = [
   {
     icon: "/product_assets/standard_compliant.svg",
@@ -55,7 +56,9 @@ export default function Products() {
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-12 md:py-20">
           {/* Left column */}
           <div className="flex flex-col gap-16 flex-1">
-            <img
+            <Image
+              width={400}
+              height={100}
               src="/product_assets/IronCAP_logo.svg"
               className="w-100"
               alt="IronCAP"
@@ -111,7 +114,7 @@ export default function Products() {
           {/* Right column */}
           <div className="flex flex-col items-center flex-1">
             <LottiePlayer
-              src={require("@/assets/animations/shieldAnimation.json")}
+              src={animation1}
               className="aspect-square w-60"
             />
             <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
@@ -157,7 +160,9 @@ export default function Products() {
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-12 md:px-20 max-w-[1000px] items-center">
-          <img
+          <Image
+            width={64}
+            height={64}
             src="/product_assets/sword.svg"
             className="w-16 md:w-20 flex-shrink-0 mx-auto md:mx-0"
             alt=""
@@ -198,7 +203,9 @@ export default function Products() {
                 i >= 2 ? "border-t border-white/10" : "",
               ].join(" ")}
             >
-              <img
+              <Image
+                width={32}
+                height={32}
                 src={item.icon}
                 alt=""
                 className="w-8 h-8 flex-shrink-0 mt-1"

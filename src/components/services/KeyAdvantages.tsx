@@ -32,7 +32,7 @@ export function KeyAdvantages({ items }: KeyAdvantagesProps) {
         {[items.filter((_, i) => i % 2 === 0), items.filter((_, i) => i % 2 !== 0)].map(
           (col, colIdx) => (
             <div key={colIdx} className="flex flex-col divide-y divide-lite-gray/40">
-              {col.map((item, rowIdx) => (
+              {col.map((item) => (
                 <div
                   key={item.title}
                   className={[

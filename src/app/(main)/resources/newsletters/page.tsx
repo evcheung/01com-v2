@@ -35,7 +35,7 @@ export default async function ResourcesNewsletters({
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-8">
-          {newsletters.map((item: { _id: string; year: string; month: string; slug: string }) => (
+          {newsletters.map((item: { _id: string; year: string; month: string[]; slug: string }) => (
             <NewsletterCard key={item._id} year={item.year} month={item.month} slug={item.slug} />
           ))}
         </div>

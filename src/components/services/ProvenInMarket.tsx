@@ -1,5 +1,5 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
-
 interface ProvenInMarketProps {
   body: ReactNode;
   /** CTA href, e.g. "/qlabs" */
@@ -22,7 +22,9 @@ export function ProvenInMarket({
         <div className="relative bg-gradient-to-br from-[#eaf3fb] via-white to-[#eaf6ee] rounded-[28px] px-16 py-14 max-w-[1129px] mx-auto">
           <div className="flex gap-12">
             {/* Logo + bracket */}
-            <img
+            <Image
+              width={100}
+              height={100}
               alt=""
               aria-hidden="true"
               src="/service_assets/market.svg"

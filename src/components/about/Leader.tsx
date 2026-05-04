@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface LeaderProps {
   name: string;
   title: string;
@@ -8,10 +10,12 @@ interface LeaderProps {
 export const Leader = ({ name, title, bun, pic }: LeaderProps) => {
   return (
     <div className="flex flex-col items-start gap-2">
-      <img
+      <Image
         src={pic}
         alt={name}
         className="w-[155px] h-[155px] rounded-[12px] object-cover mb-1"
+        width={155}
+        height={155}
       />
       <h3 className="text-quantum-blue text-[16px] font-medium leading-tight">
         {name}
@@ -24,7 +28,7 @@ export const Leader = ({ name, title, bun, pic }: LeaderProps) => {
         {bun}
       </a>
       <a href="#" aria-label={`${name} LinkedIn`} className="mt-0.5">
-        <img
+        <Image
           src="/about_assets/in.svg"
           alt="LinkedIn"
           width={22}

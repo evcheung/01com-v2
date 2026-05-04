@@ -8,9 +8,6 @@ interface ButtonProps {
 
 
 export const Button = ({ text, url, border, textColor, hoverBg }: ButtonProps) => {
-  const w = 250;
-  const h = 54;
-  const r = 22; // radio de las dos esquinas redondeadas
 
   return (
     <a

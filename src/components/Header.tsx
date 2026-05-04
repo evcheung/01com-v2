@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Dropdown from "@/components/DropdownProducts";
+import Link from "next/link";
 
 const mobileProducts = [
   { label: "Engine",  href: "/products/ironcap-engine" },
@@ -13,7 +14,7 @@ const mobileProducts = [
 
 const navLinks = [
   { label: "Services +", href: "/services" },
-  { label: "Customers", href: "/customers" },
+  { label: "Customers", href: "#" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Demo", href: "/live-demo" },
   { label: "Login", href: "#" },
@@ -27,17 +28,19 @@ export default function Header() {
     <header className="sticky top-0 left-0 right-0 z-50">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <img
+        <Image
           src="/header_assets/bkgnd.svg"
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover"
+          width={1512}
+          height={91}
         />
       </div>
 
       {/* Desktop header */}
       <div className="relative z-10 max-w-[1512px] mx-auto px-6 md:px-[95px] h-[91px] flex items-center justify-between">
-        <a href="/">
+        <Link href="/">
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
@@ -45,7 +48,7 @@ export default function Header() {
             height={60}
             className="object-contain"
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav aria-label="Main navigation" className="hidden md:block">
@@ -122,7 +125,7 @@ export default function Header() {
         </button>
 
         {/* Logo */}
-        <a href="/" className="mb-10" onClick={() => setSidebarOpen(false)}>
+        <Link href="/" className="mb-10" onClick={() => setSidebarOpen(false)}>
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
@@ -130,7 +133,7 @@ export default function Header() {
             height={50}
             className="object-contain"
           />
-        </a>
+        </Link>
 
         {/* Nav links */}
         <nav aria-label="Mobile navigation">

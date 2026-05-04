@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 interface Item {
@@ -40,13 +41,14 @@ function AnimatedList({
                 : "none",
             }}
           >
-            <div className="flex gap-2 items-start">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="flex gap-2 items-start">              
+              <Image
                 alt=""
                 src={icon}
                 aria-hidden="true"
                 className="w-6 h-6 object-contain flex-shrink-0"
+                width={24}
+                height={24}
                 style={{
                   opacity: visible ? 1 : 0,
                   animation: visible
@@ -103,13 +105,14 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
     >
       {/* Products */}
       <div className="border border-white/20 rounded-[2vw] p-6 md:p-10">
-        <div className="flex items-center gap-3 mb-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="flex items-center gap-3 mb-3">          
+          <Image
             alt=""
             src="/home_assets/products_icon.svg"
             aria-hidden="true"
             className="w-15 h-15 object-contain"
+            width={60}
+            height={60}
           />
           <h3 className="text-white text-[22px] md:text-[30px] font-medium leading-none">
             IronCAP<sup className="text-[10px] align-super">™</sup> Products
@@ -130,13 +133,14 @@ export function IronCapSection({ products, services }: IronCapSectionProps) {
 
       {/* Services */}
       <div className="border border-white/20 rounded-[2vw] p-6 md:p-10">
-        <div className="flex items-center gap-3 mb-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="flex items-center gap-3 mb-3">          
+          <Image
             alt=""
             src="/home_assets/products_icon.svg"
             aria-hidden="true"
             className="w-15 h-15 object-contain"
+            width={60}
+            height={60}
           />
           <h3 className="text-white text-[22px] md:text-[30px] font-medium leading-none">
             IronCAP<sup className="text-[10px] align-super">™</sup> Services

@@ -1,5 +1,11 @@
 const imgLogo = "/header_assets/logo.svg";
-const imgSocial = "/assets/Home_assets/social.svg";
+const socialLinks = [
+  { icon: "/header_assets/x.svg", url: "https://x.com/01quantuminc", label: "X" },
+  { icon: "/header_assets/fb.svg", url: "https://facebook.com/01QuantumInc", label: "Facebook" },
+  { icon: "/header_assets/in.svg", url: "https://linkedin.com/company/01-quantum/", label: "LinkedIn" },
+  { icon: "/header_assets/yt.svg", url: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg", label: "YouTube" },
+];
+
 import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
@@ -8,7 +14,7 @@ const footerColumns = [
   {
     heading: "Company",
     links: ["Products", "Services", "Customers"],
-    urls: ["/products/ironcap-engine", "/services", "/customers"],
+    urls: ["/products/ironcap-engine", "/services", "#"],
   },
   {
     heading: "Resources",
@@ -23,12 +29,12 @@ const footerColumns = [
   {
     heading: "Legal",
     links: ["Blog", "Product FAQ", "General FAQ"],
-    urls: ["/resources/blog", "/resources/documents", "/general-faq"],
+    urls: ["/resources/blog", "/resources/documents", "#"],
   },
   {
     heading: "Support",
     links: ["Support", "Contact", "Login"],
-    urls: ["/support", "/contact", "/login"],
+    urls: ["/support", "/contact", "#"],
   },
 ];
 export default function Footer() {
@@ -53,13 +59,19 @@ export default function Footer() {
               height={48}
               className="object-contain"
             />
-            <Image
-              alt="Social media links"
-              src={imgSocial}
-              width={100}
-              height={100}
-              className="object-contain"
-            />
+            <div className="flex">
+              {socialLinks.map(({ icon, url, label }) => (
+                <a key={label} href={url} className="mr-4 last:mr-0">
+                  <Image
+                    alt={label}
+                    src={icon}
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:items-start md:justify-between gap-8">
@@ -72,13 +84,19 @@ export default function Footer() {
                 height={48}
                 className="object-contain"
               />
-              <Image
-                alt="Social media links"
-                src={imgSocial}
-                width={100}
-                height={100}
-                className="object-contain"
-              />
+              <div className="flex">
+                {socialLinks.map(({ icon, url, label }) => (
+                  <a key={label} href={url} className="mr-4 last:mr-0">
+                    <Image
+                      alt={label}
+                      src={icon}
+                      width={20}
+                      height={20}
+                      className="object-contain"
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
 
             {footerColumns.map(({ heading, links, urls }) => (

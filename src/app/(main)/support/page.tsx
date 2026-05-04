@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Titles } from "@/components/Titles";
 import { Button } from "@/components/ui/button";
 import { DocumentsCards } from "@/components/Documents";
-import { Heading } from "@/app/(main)/customers/page";
+
 export default function Support() {
   return (
     <>

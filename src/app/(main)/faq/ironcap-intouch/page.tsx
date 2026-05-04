@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
 import { Button } from "@/components/ui/button";
@@ -480,16 +479,6 @@ const wakeUpFaqs: Faq[] = [
     ),
   },
 ];
-
-function GreenDots() {
-  return (
-    <span aria-hidden className="inline-flex items-center gap-0.75">
-      <span className="block size-1.25 rounded-full bg-quantum-green" />
-      <span className="block size-1.25 rounded-full bg-quantum-green" />
-      <span className="block size-1.25 rounded-full bg-quantum-green" />
-    </span>
-  );
-}
 
 function FaqList({
   items,

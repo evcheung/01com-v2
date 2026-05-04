@@ -29,7 +29,7 @@ export default function CustomersPage() {
             </h3>
             <p className="text-steel-gray text-[20px] leading-[30px]">
               High absolute cost, but allows banks to collaborate without a
-              central "trusted" party—saving billions in potential regulatory
+              central &quot;trusted&quot; party—saving billions in potential regulatory
               fines.
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function CustomersPage() {
             </h3>
             <p className="text-steel-gray text-[20px] leading-[30px]">
               Lowest overhead for simple regression. Real-time recalculations
-              remain affordable at a ~20% "privacy tax".
+              remain affordable at a ~20% &quot;privacy tax&quot;.
             </p>
           </div>
           <div>
@@ -71,7 +71,7 @@ export default function CustomersPage() {
             </h3>
             <p className="text-steel-gray text-[20px] leading-[30px]">
               Allows for the cross-referencing of ultra-sensitive
-              files(criminal, financial, mental health) without raw data ever
+              files (criminal, financial, mental health) without raw data ever
               being decrypted in the cloud, ensuring maximum privacy for
               high-clearance candidates.
             </p>
@@ -93,7 +93,7 @@ export default function CustomersPage() {
             <p className="text-steel-gray text-[20px] leading-[30px]">
               Agencies can run scoring models across private financial records
               from multiple banks/entities. The high cost is justified by the
-              "Zero-Trust" math required for legal compliance and data
+              &quot;Zero-Trust&quot; math required for legal compliance and data
               sovereignty.
             </p>
           </div>

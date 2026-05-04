@@ -64,9 +64,9 @@ export default function QuantumThreat() {
           <div>
             <div className="flex items-center justify-center py-16">
               <Button
-                text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
-                url="/buy"
-                border="border-quantum-green"
+                text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
+                url="/products/ironcap-engine"
+                border="border-quantum-green/60"
                 textColor="text-quantum-green"
                 hoverBg="hover:bg-quantum-green/10"
               />

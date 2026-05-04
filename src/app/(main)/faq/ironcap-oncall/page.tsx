@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
-
+import { Button} from "@/components/ui/button";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 type Faq = { id: string; question: React.ReactNode; answer: React.ReactNode };
@@ -444,15 +444,15 @@ export default function FaqIronCapOnCallPage() {
         </div>
 
         {/* Learn-more pill button */}
-        <div className="mt-16 flex justify-center">
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-3 rounded-full border border-quantum-green px-6 py-3 text-[12px] font-normal uppercase tracking-wide text-quantum-green transition-colors hover:bg-quantum-green hover:text-black"
-          >
-            <span>Learn More About 01 Quantum Products</span>
-            <GreenDots />
-          </Link>
-        </div>
+      <section className="bg-white py-16 flex justify-center">
+        <Button
+          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
+          url="/products/ironcap-engine"
+          border="border-quantum-green/60"
+          textColor="text-quantum-green"
+          hoverBg="hover:bg-quantum-green/10"
+        />
+      </section>
       </div>
     </div>
   );

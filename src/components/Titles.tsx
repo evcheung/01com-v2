@@ -1,4 +1,6 @@
-export const Titles = ({text}: {text: string}) => {
+import { ReactNode } from 'react';
+
+export const Titles = ({text}: {text: string | ReactNode}) => {
   return (
     <section className="bg-black flex items-center px-24 min-h-[196px]">
       <h1 className="text-white text-[50px] font-medium leading-[50px]">

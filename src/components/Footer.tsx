@@ -14,7 +14,7 @@ const footerColumns = [
   {
     heading: "Company",
     links: ["Products", "Services", "Customers"],
-    urls: ["/products/ironcap-engine", "/services", "#"],
+    urls: ["/products/ironcap-engine", "/services", "/customers"],
   },
   {
     heading: "Resources",
@@ -29,7 +29,7 @@ const footerColumns = [
   {
     heading: "Legal",
     links: ["Blog", "Product FAQ", "General FAQ"],
-    urls: ["/resources/blog", "/resources/documents", "#"],
+    urls: ["/resources/blog", "/resources/documents", "/faq/ironcap-x"],
   },
   {
     heading: "Support",
@@ -44,8 +44,8 @@ export default function Footer() {
       <footer className="bg-black border-t border-white/10">
         {/* CTA row */}
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 md:py-16 flex justify-center gap-6 md:gap-20">
-          <Button text="CONTACT · · ·" url="#" />
-          <Button text="DEMO · · ·" url="#" />
+          <Button text="CONTACT" url="#" bgDots="bg-white" />
+          <Button text="DEMO" url="#"  bgDots="bg-white" />
         </div>
 
         {/* Links row */}

@@ -215,7 +215,7 @@ export default function IroncapXmailOncall() {
             </div>
             <div className="max-w-[1512px] mx-auto px-[95px] pb-24 flex justify-center gap-6">
               <Button
-                text="brochure · · ·"
+                text="brochure"
                 url="#"
                 border="border-gray-200"
                 textColor="text-green-400"

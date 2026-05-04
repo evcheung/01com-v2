@@ -102,7 +102,7 @@ export default function Products() {
 
             <div>
               <Button
-                text="white paper · · ·"
+                text="white paper"
                 url="/products/ironcap"
                 border="border-steel-gray"
                 textColor="text-quantum-green"
@@ -225,14 +225,14 @@ export default function Products() {
         {/* CTA buttons */}
         <div className="flex justify-center gap-8 mt-16">
           <Button
-            text="brochure · · ·"
+            text="brochure"
             url="/brochure"
             border="border-quantum-green"
             textColor="text-quantum-green"
             hoverBg="hover:bg-quantum-green/10"
           />
           <Button
-            text="step into the future, buy IronCAP™ now · · ·"
+            text="step into the future, buy IronCAP™ now"
             url="/buy"
             border="border-quantum-green"
             textColor="text-quantum-green"

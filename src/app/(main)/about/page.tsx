@@ -248,8 +248,8 @@ export default function About() {
           </div>
           <div className="flex justify-center mt-16">
             <Button
-              text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
-              url="/buy"
+              text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
+              url="/products/ironcap-engine"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

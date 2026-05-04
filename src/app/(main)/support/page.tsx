@@ -86,7 +86,7 @@ export default function Support() {
         </div>
         <section className="bg-white py-16 flex justify-center">
           <Button
-            text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
+            text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
             url="/products"
             border="border-quantum-green/60"
             textColor="text-quantum-green"

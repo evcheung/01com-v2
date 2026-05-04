@@ -247,8 +247,8 @@ export default function UseCases() {
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
         <Button
-          text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
-          url="/products"
+          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
+          url="/products/ironcap-engine"
           border="border-quantum-green/60"
           textColor="text-quantum-green"
           hoverBg="hover:bg-quantum-green/10"

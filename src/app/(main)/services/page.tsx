@@ -312,7 +312,7 @@ export default function Services() {
         <KeyAdvantages items={cryptoIntegrationAdvantages} />
         <div>
           <Button
-            text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS · · ·"
+            text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
             url="/buy"
             border="border-quantum-green"
             textColor="text-quantum-green"

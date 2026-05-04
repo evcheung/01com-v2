@@ -80,7 +80,7 @@ export default function Home() {
           <h1 className="text-[32px] md:text-[50px] font-semibold leading-tight bg-gradient-to-r from-[#71bfff] to-[#79c99c] bg-clip-text text-transparent mb-10">
             Post-Quantum Era
           </h1>
-          <Button text="discover · · ·" url="#discover" />
+          <Button text="discover" url="#discover" bgDots="bg-white" />
         </div>
       </section>
 

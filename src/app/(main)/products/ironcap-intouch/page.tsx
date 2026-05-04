@@ -114,7 +114,7 @@ export default function InTouchPage() {
           {/* Brochure button */}
           <div className="flex justify-center mb-16">
             <Button
-              text="brochure · · ·"
+              text="brochure"
               url="#"
               border="border-quantum-green"
               textColor="text-quantum-green"
@@ -557,7 +557,7 @@ export default function InTouchPage() {
       <section className="bg-white py-12 px-24">
         <div className="max-w-[1512px] mx-auto flex justify-center">
           <Button
-            text="step into the future, buy IronCAP™ now · · ·"
+            text="step into the future, buy IronCAP™ now"
             url="/buy"
             border="border-quantum-green"
             textColor="text-quantum-green"

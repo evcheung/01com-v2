@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
 
@@ -36,11 +37,11 @@ const faqs: Faq[] = [
     ),
     answer: (
       <>
-        IronCAP X<Trademark />
-        {" "}is the world&apos;s first Quantum-safe end-to-end email encryption
-        system utilizing IronCAP Crypto (ICC) as its cryptographic foundation
-        with post-quantum cryptographic algorithms that are approved by NIST
-        (National Institute of Standards and Technology in the US).
+        IronCAP X<Trademark /> is the world&apos;s first Quantum-safe end-to-end
+        email encryption system utilizing IronCAP Crypto (ICC) as its
+        cryptographic foundation with post-quantum cryptographic algorithms that
+        are approved by NIST (National Institute of Standards and Technology in
+        the US).
       </>
     ),
   },
@@ -49,9 +50,8 @@ const faqs: Faq[] = [
     question: <>How do I sign up for a FREE account?</>,
     answer: (
       <>
-        IronCAP X<Trademark />
-        {" "}is free for personal usage. To sign up for a FREE account, simply
-        visit{" "}
+        IronCAP X<Trademark /> is free for personal usage. To sign up for a FREE
+        account, simply visit{" "}
         <a
           href="https://www.ironcapx.com"
           target="_blank"
@@ -61,9 +61,9 @@ const faqs: Faq[] = [
           www.ironcapx.com
         </a>{" "}
         and click &ldquo;FREE Personal Usage&rdquo;. Enter your name and email
-        address. Then click &ldquo;Send Installation Email&rdquo;. An email
-        will be sent to you with a link to install IronCAP X<Trademark /> onto
-        your computer.
+        address. Then click &ldquo;Send Installation Email&rdquo;. An email will
+        be sent to you with a link to install IronCAP X<Trademark /> onto your
+        computer.
       </>
     ),
   },
@@ -76,10 +76,9 @@ const faqs: Faq[] = [
     ),
     answer: (
       <>
-        IronCAP X<Trademark />
-        {" "}requires Windows 7 or above with Outlook 2010+ as the email
-        client. Note: Web-based clients such as Gmail, Yahoo, and Hotmail will
-        be supported in a future version.
+        IronCAP X<Trademark /> requires Windows 7 or above with Outlook 2010+ as
+        the email client. Note: Web-based clients such as Gmail, Yahoo, and
+        Hotmail will be supported in a future version.
       </>
     ),
   },
@@ -105,10 +104,10 @@ const faqs: Faq[] = [
     ),
     answer: (
       <>
-        Not in the current version. Future version of IronCAP X<Trademark />
-        {" "}will work with web-based email clients such as Gmail, Yahoo, and
-        Hotmail via installation of a browser plug-in. Compatible browsers are
-        Chrome and Firefox.
+        Not in the current version. Future version of IronCAP X<Trademark />{" "}
+        will work with web-based email clients such as Gmail, Yahoo, and Hotmail
+        via installation of a browser plug-in. Compatible browsers are Chrome
+        and Firefox.
       </>
     ),
   },
@@ -121,9 +120,8 @@ const faqs: Faq[] = [
     ),
     answer: (
       <>
-        Current version of IronCAP X<Trademark />
-        {" "}supports Windows-based Outlook. Support of webmail clients is
-        coming soon.
+        Current version of IronCAP X<Trademark /> supports Windows-based
+        Outlook. Support of webmail clients is coming soon.
       </>
     ),
   },
@@ -132,9 +130,9 @@ const faqs: Faq[] = [
     question: <>Can I manage more than 1 email address on one computer?</>,
     answer: (
       <>
-        Current version of IronCAP X<Trademark />
-        {" "}only supports 1 email address per license. Future version will
-        allow up to 3 email addresses on the same computer.
+        Current version of IronCAP X<Trademark /> only supports 1 email address
+        per license. Future version will allow up to 3 email addresses on the
+        same computer.
       </>
     ),
   },
@@ -250,15 +248,15 @@ export default function FaqIronCapXPage() {
           </ul>
 
           {/* Learn-more pill button */}
-          <div className="mt-16 flex justify-center lg:justify-start">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-3 rounded-full border border-quantum-green px-6 py-3 text-[12px] font-normal uppercase tracking-wide text-quantum-green transition-colors hover:bg-quantum-green hover:text-black"
-            >
-              <span>Learn More About 01 Quantum Products</span>
-              <GreenDots />
-            </Link>
-          </div>
+          <section className="bg-white py-16 flex justify-center">
+            <Button
+              text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
+              url="/products/ironcap-engine"
+              border="border-quantum-green/60"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+            />
+          </section>
         </section>
       </div>
     </div>

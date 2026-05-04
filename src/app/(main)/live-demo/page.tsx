@@ -95,7 +95,7 @@ function InfoSection({
 export default function LiveDemo() {
   return (
     <main
-      className="font-[family-name:var(--font-urbanist)] mx-auto w-full max-w-[1512px] bg-white"
+      className="font-[family-name:var(--font-urbanist)] w-full bg-white"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
@@ -108,7 +108,7 @@ export default function LiveDemo() {
 
       {/* ─── Intro ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-12 pb-8">
+        <div className="px-6 md:px-[95px] pt-12 pb-8">
           <p className="text-steel-gray text-[15px] leading-[24px] max-w-[1230px]">
             IronCAP<sup className="text-[9.675px]">™</sup> is our latest
             innovation for the post-quantum cybersecurity. This
@@ -126,7 +126,7 @@ export default function LiveDemo() {
 
       {/* ─── Two-column layout ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-16 flex flex-col md:flex-row gap-12 items-start">
+        <div className="px-6 md:px-[95px] pb-16 flex flex-col md:flex-row gap-12 items-start">
           {/* Left column – instructions + info */}
           <div className="w-full md:w-[479px] shrink-0 flex flex-col gap-6">
             {/* Try IronCAP™ encryption */}

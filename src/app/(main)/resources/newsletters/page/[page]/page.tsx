@@ -3,20 +3,45 @@ import { Pagination } from "@/components/resources/Pagination";
 import { client } from "@/sanity/lib/client";
 import { NEWSLETTERS_COUNT_QUERY, NEWSLETTERS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const PAGE_SIZE = 12;
 
-export default async function ResourcesNewsletters() {
-  const currentPage = 1;
-  const start = 0;
-  const end = start + PAGE_SIZE;
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const total = await client.fetch<number>(NEWSLETTERS_COUNT_QUERY);
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    page: String(i + 1),
+  }));
+}
+
+export default async function NewslettersPaginatedPage({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}) {
+  const { page } = await params;
+  const currentPage = Number(page);
+
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    notFound();
+  }
 
   const [newsletters, total] = await Promise.all([
-    client.fetch(NEWSLETTERS_QUERY, { start, end }),
-    client.fetch(NEWSLETTERS_COUNT_QUERY),
+    client.fetch(NEWSLETTERS_QUERY, {
+      start: (currentPage - 1) * PAGE_SIZE,
+      end: currentPage * PAGE_SIZE,
+    }),
+    client.fetch<number>(NEWSLETTERS_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
+  if (currentPage > totalPages) {
+    notFound();
+  }
 
   return (
     <section className="bg-[#f5f6f8] py-16">

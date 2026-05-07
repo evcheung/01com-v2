@@ -5,10 +5,8 @@ interface PaginationProps {
   currentPage: number;
   /** Total number of pages. */
   totalPages: number;
-  /** Base path for links (the page query is appended). E.g. "/resources/press_releases" */
+  /** Base path for links. Page 1 points to basePath, page N to `${basePath}/page/N`. */
   basePath: string;
-  /** Optional preserved query params (other than `page`) appended to every link. */
-  query?: Record<string, string>;
   /** Maximum visible numeric buttons (excluding first / last / ellipsis). Defaults to 3. */
   siblingCount?: number;
 }
@@ -45,27 +43,27 @@ function buildPageList(
 function buildHref(
   basePath: string,
   page: number,
-  query?: Record<string, string>,
 ): string {
-  const params = new URLSearchParams(query);
-  if (page > 1) params.set("page", String(page));
-  else params.delete("page");
-  const qs = params.toString();
-  return qs ? `${basePath}?${qs}` : basePath;
+  const normalizedBase =
+    basePath.length > 1 && basePath.endsWith("/")
+      ? basePath.slice(0, -1)
+      : basePath;
+
+  if (page <= 1) return normalizedBase;
+  return `${normalizedBase}/page/${page}`;
 }
 
 /**
  * Pagination
  * ──────────
- * Server-friendly pagination that uses query string `?page=N` so it works
- * without client-side JS. Renders Previous / page numbers (with ellipses) /
- * Next links following the project's design system.
+ * Server-friendly pagination that uses path segments `/page/N`, which works
+ * with static export. Renders Previous / page numbers (with ellipses) / Next
+ * links following the project's design system.
  */
 export function Pagination({
   currentPage,
   totalPages,
   basePath,
-  query,
   siblingCount = 1,
 }: PaginationProps) {
   if (totalPages < 1) return null;
@@ -85,7 +83,7 @@ export function Pagination({
     >
       {hasPrev ? (
         <Link
-          href={buildHref(basePath, currentPage - 1, query)}
+          href={buildHref(basePath, currentPage - 1)}
           rel="prev"
           className={linkBase}
         >
@@ -111,7 +109,7 @@ export function Pagination({
                   {p}
                 </span>
               ) : (
-                <Link href={buildHref(basePath, p, query)} className={linkBase}>
+                <Link href={buildHref(basePath, p)} className={linkBase}>
                   {p}
                 </Link>
               )}
@@ -122,7 +120,7 @@ export function Pagination({
 
       {hasNext ? (
         <Link
-          href={buildHref(basePath, currentPage + 1, query)}
+          href={buildHref(basePath, currentPage + 1)}
           rel="next"
           className={linkBase}
         >

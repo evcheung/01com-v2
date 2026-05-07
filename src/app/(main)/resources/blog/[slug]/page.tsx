@@ -1,8 +1,15 @@
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
-import { BLOG_QUERY } from "@/sanity/lib/queries";
+import { BLOG_QUERY, BLOG_SLUGS_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const items = await client.fetch(BLOG_SLUGS_QUERY);
+  return (items ?? [])
+    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
+    .map((item: { slug: string }) => ({ slug: item.slug }));
+}
 
 export default async function PostBlogPage({
   params,

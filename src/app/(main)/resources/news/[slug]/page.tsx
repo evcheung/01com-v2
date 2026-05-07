@@ -2,7 +2,14 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
-import { NEWS_ITEM_QUERY } from "@/sanity/lib/queries";
+import { NEWS_ITEM_QUERY, NEWS_SLUGS_QUERY } from "@/sanity/lib/queries";
+
+export async function generateStaticParams() {
+  const items = await client.fetch(NEWS_SLUGS_QUERY);
+  return (items ?? [])
+    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
+    .map((item: { slug: string }) => ({ slug: item.slug }));
+}
 
 export default async function NewsItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

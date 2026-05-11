@@ -5,15 +5,23 @@ import { client } from "@/sanity/lib/client";
 import { REWARD_QUERY, REWARD_SLUGS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 
+const EMPTY_REWARD_STATIC_SLUG = "__no-reward__";
+
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const items = await client.fetch(REWARD_SLUGS_QUERY);
-  return (items ?? [])
+  const slugs = (items ?? [])
     .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
     .map((item: { slug: string }) => ({ slug: item.slug }));
+
+  return slugs.length > 0 ? slugs : [{ slug: EMPTY_REWARD_STATIC_SLUG }];
 }
 
 export default async function RewardItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === EMPTY_REWARD_STATIC_SLUG) notFound();
+
   const post = await client.fetch(REWARD_QUERY, { slug });
   if (!post) notFound();
 

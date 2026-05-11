@@ -3,15 +3,23 @@ import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { NEWSLETTER_QUERY, NEWSLETTER_SLUGS_QUERY } from "@/sanity/lib/queries";
 
+const EMPTY_NEWSLETTER_STATIC_SLUG = "__no-newsletter__";
+
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const items = await client.fetch(NEWSLETTER_SLUGS_QUERY);
-  return (items ?? [])
+  const slugs = (items ?? [])
     .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
     .map((item: { slug: string }) => ({ slug: item.slug }));
+
+  return slugs.length > 0 ? slugs : [{ slug: EMPTY_NEWSLETTER_STATIC_SLUG }];
 }
 
 export default async function NewsletterItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === EMPTY_NEWSLETTER_STATIC_SLUG) notFound();
+
   const item = await client.fetch(NEWSLETTER_QUERY, { slug });
   if (!item) notFound();
 

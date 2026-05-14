@@ -1,10 +1,27 @@
 const imgLogo = "/header_assets/logo.svg";
 const socialLinks = [
-  { icon: "/header_assets/x.svg", url: "https://x.com/01quantuminc", label: "X" },
-  { icon: "/header_assets/fb.svg", url: "https://facebook.com/01QuantumInc", label: "Facebook" },
-  { icon: "/header_assets/in.svg", url: "https://linkedin.com/company/01-quantum/", label: "LinkedIn" },
-  { icon: "/header_assets/yt.svg", url: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg", label: "YouTube" },
+  {
+    icon: "/header_assets/x.svg",
+    url: "https://x.com/01quantuminc",
+    label: "X",
+  },
+  {
+    icon: "/header_assets/fb.svg",
+    url: "https://facebook.com/01QuantumInc",
+    label: "Facebook",
+  },
+  {
+    icon: "/header_assets/in.svg",
+    url: "https://linkedin.com/company/01-quantum/",
+    label: "LinkedIn",
+  },
+  {
+    icon: "/header_assets/yt.svg",
+    url: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg",
+    label: "YouTube",
+  },
 ];
+const socialIconSize = 15;
 
 import { Button } from "@/components/ui/button";
 
@@ -44,8 +61,8 @@ export default function Footer() {
       <footer className="bg-black border-t border-white/10">
         {/* CTA row */}
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 md:py-16 flex justify-center gap-6 md:gap-20">
-          <Button text="CONTACT" url="#" bgDots="bg-white" />
-          <Button text="DEMO" url="#"  bgDots="bg-white" />
+          <Button text="CONTACT" url="/contact" bgDots="bg-white" />
+          <Button text="DEMO" url="/live-demo" bgDots="bg-white" />
         </div>
 
         {/* Links row */}
@@ -59,19 +76,7 @@ export default function Footer() {
               height={48}
               className="object-contain"
             />
-            <div className="flex">
-              {socialLinks.map(({ icon, url, label }) => (
-                <a key={label} href={url} className="mr-4 last:mr-0">
-                  <Image
-                    alt={label}
-                    src={icon}
-                    width={24}
-                    height={24}
-                    className="object-contain"
-                  />
-                </a>
-              ))}
-            </div>
+            
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:items-start md:justify-between gap-8">
@@ -84,19 +89,6 @@ export default function Footer() {
                 height={48}
                 className="object-contain"
               />
-              <div className="flex">
-                {socialLinks.map(({ icon, url, label }) => (
-                  <a key={label} href={url} className="mr-4 last:mr-0">
-                    <Image
-                      alt={label}
-                      src={icon}
-                      width={20}
-                      height={20}
-                      className="object-contain"
-                    />
-                  </a>
-                ))}
-              </div>
             </div>
 
             {footerColumns.map(({ heading, links, urls }) => (
@@ -115,14 +107,32 @@ export default function Footer() {
                 ))}
               </div>
             ))}
+            <div>
+              <div className="flex items-center gap-4">
+                {socialLinks.map(({ icon, url, label }) => (
+                  <a
+                    key={label}
+                    href={url}
+                    className="flex h-6 w-6 items-center justify-center rounded-full"
+                  >
+                    <Image
+                      alt={label}
+                      src={icon}
+                      width={socialIconSize}
+                      height={socialIconSize}
+                      className="h-full w-full object-contain"
+                    />
+                  </a>
+                ))}
+              </div>
+              {/* Copyright */}
+              <div className="py-5 text-center">
+                <p className="text-white text-[12px] font-normal">
+                  © 2026 01 Quantum All rights reserved
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-white/10 py-5 text-center">
-          <p className="text-white text-[12px] font-normal">
-            © 2026 01 Quantum All rights reserved
-          </p>
         </div>
       </footer>
     </>

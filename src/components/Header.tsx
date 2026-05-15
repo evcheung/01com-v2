@@ -14,9 +14,9 @@ const mobileProducts = [
 ];
 
 const mobileLoginOptions = [
-  { label: "Access My PC", href: "/login/access-pc" },
-  { label: "I'm OnCall Agent", href: "/login/oncall-agent" },
-  { label: "Connect An Agent", href: "/login/connect-agent" },
+  { label: "Access My PC", href: "https://locator.01com.com/login.php?" },
+  { label: "I'm OnCall Agent", href: "https://www.01com.com/imoncall-remote-help-desk/login/?" },
+  { label: "Connect An Agent", href: "https://www.01com.com/imoncall-remote-help-desk/connect/?" },
 ];
 
 const navLinks = [

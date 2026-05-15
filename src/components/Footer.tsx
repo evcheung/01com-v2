@@ -51,7 +51,7 @@ const footerColumns = [
   {
     heading: "Support",
     links: ["Support", "Contact", "Login"],
-    urls: ["/support", "/contact", "#"],
+    urls: ["/support", "/contact", "/login"],
   },
 ];
 export default function Footer() {

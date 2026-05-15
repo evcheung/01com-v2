@@ -7,10 +7,11 @@ interface ButtonProps {
   textColor?: string;
   hoverBg?: string;
   bgDots?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 
-export const Button = ({ text, url, border, textColor, hoverBg, bgDots }: ButtonProps) => {
+export const Button = ({ text, url, border, textColor, hoverBg, bgDots, type }: ButtonProps) => {
 
   return (
     <a

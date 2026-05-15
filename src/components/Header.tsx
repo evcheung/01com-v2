@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Dropdown from "@/components/DropdownProducts";
+import DropdownLogin from "@/components/DropdownLogin";
 import Link from "next/link";
 
 const mobileProducts = [
@@ -12,17 +13,23 @@ const mobileProducts = [
   { label: "Intouch", href: "/products/ironcap-intouch" },
 ];
 
+const mobileLoginOptions = [
+  { label: "Access My PC", href: "/login/access-pc" },
+  { label: "I'm OnCall Agent", href: "/login/oncall-agent" },
+  { label: "Connect An Agent", href: "/login/connect-agent" },
+];
+
 const navLinks = [
   { label: "Services +", href: "/services" },
   { label: "Customers", href: "/customers" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Demo", href: "/live-demo" },
-  { label: "Login", href: "/login" },
 ];
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50">
@@ -76,6 +83,12 @@ export default function Header() {
               ];
               if (index === navLinks.length - 1) {
                 items.push(
+                  <li key="divider-login">
+                    <div className="w-px h-[45px] bg-[#B6BBCD]" />
+                  </li>,
+                  <li key="login-dropdown">
+                    <DropdownLogin />
+                  </li>,
                   <li key="divider-end">
                     <div className="w-px h-[45px] bg-[#B6BBCD]" />
                   </li>
@@ -178,6 +191,35 @@ export default function Header() {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                className="flex items-center gap-2 text-white text-[14px] font-normal hover:text-[#71bfff] transition-colors w-full"
+                onClick={() => setLoginOpen((v) => !v)}
+                aria-expanded={loginOpen}
+              >
+                Login
+                <span
+                  className={`ml-auto text-xs transition-transform duration-200 ${loginOpen ? "rotate-180" : ""}`}
+                >
+                  ▾
+                </span>
+              </button>
+              {loginOpen && (
+                <ul className="flex flex-col gap-3 mt-3 pl-3 border-l border-white/20 list-none">
+                  {mobileLoginOptions.map(({ label, href }) => (
+                    <li key={href}>
+                      <a
+                        href={href}
+                        className="text-white/80 text-[13px] hover:text-[#71bfff] transition-colors"
+                        onClick={() => setSidebarOpen(false)}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
           </ul>
         </nav>
       </aside>

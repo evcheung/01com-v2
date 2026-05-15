@@ -51,7 +51,7 @@ const footerColumns = [
   {
     heading: "Support",
     links: ["Support", "Contact", "Login"],
-    urls: ["/support", "/contact", "/login"],
+    urls: ["/support", "/contact", "https://locator.01com.com/login.php?"],
   },
 ];
 export default function Footer() {

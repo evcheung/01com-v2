@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Bottom } from "@/components/resources/Bottom"
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
 
@@ -249,13 +249,7 @@ export default function FaqIronCapXPage() {
 
           {/* Learn-more pill button */}
           <section className="bg-white py-16 flex justify-center">
-            <Button
-              text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-              url="/products/ironcap-engine"
-              border="border-quantum-green/60"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-            />
+            <Bottom/>
           </section>
         </section>
       </div>

@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-
+import { Bottom } from "@/components/resources/Bottom"
 /* ── Data ─────────────────────────────────────────────────────────── */
 const ironcapProducts: { name: React.ReactNode; body: string }[] = [
   {
@@ -245,14 +244,8 @@ export default function UseCases() {
       </section>
 
       {/* ─── Learn More CTA ─── */}
-      <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+      <section className="bg-white flex justify-center">
+        <Bottom/>
       </section>
     </main>
   );

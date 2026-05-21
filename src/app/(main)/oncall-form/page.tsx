@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Titles } from "@/components/Titles";
 import { Button } from "@/components/ui/button";
-
+import { Bottom } from "@/components/resources/Bottom"
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 export default function OnCallForm() {
   return (
@@ -71,13 +71,7 @@ export default function OnCallForm() {
         </p>
       </section>
       <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+        <Bottom/>
       </section>
     </>
   );

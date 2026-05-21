@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-
+import { Bottom } from "@/components/resources/Bottom"
 /* ── Data ─────────────────────────────────────────────────────────── */
 const departmentButtons: { label: string; href: string }[] = [
   { label: "Sales/VARs", href: "#sales" },
@@ -180,13 +180,7 @@ export default function Contact() {
 
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+        <Bottom/>
       </section>
     </main>
   );

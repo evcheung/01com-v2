@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
+import { Bottom } from "@/components/resources/Bottom"
 /* ── Bracket card with SVG bracket frame ─────────────────────────── */
 function BracketCard({
   title,
@@ -20,7 +20,7 @@ function BracketCard({
         className="pointer-events-none select-none object-contain"
       />
       {/* Content */}
-      <div className="relative px-12 py-10 flex flex-col items-center">
+      <div className="relative px-20 py-16 flex flex-col items-center">
         <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-6 self-start">
           {title}
         </h3>
@@ -242,13 +242,7 @@ export default function LiveDemo() {
 
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+        <Bottom/>
       </section>
     </main>
   );

@@ -62,7 +62,7 @@ export default function Footer() {
         {/* CTA row */}
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 md:py-16 flex justify-center gap-6 md:gap-20">
           <Button text="CONTACT" url="/contact" bgDots="bg-white" />
-          <Button text="DEMO" url="/live-demo" bgDots="bg-white" />
+          {/* <Button text="DEMO" url="/live-demo" bgDots="bg-white" /> */}
         </div>
 
         {/* Links row */}

@@ -7,7 +7,7 @@ import animation4 from "@/assets/animations/icon-IC-intouchGoMail.json"
 import animation5 from "@/assets/animations/iconDark-IC-intouchSecureKey.json"
 import animation6 from "@/assets/animations/icon-IC-intouch-SE.json"
 import Image from "next/image";
-
+import { Titles } from "@/components/Titles";
 const howWorkSteps = [
   {
     step: "1",
@@ -41,54 +41,51 @@ export default function InTouchPage() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          Products
-        </h1>
-      </section>
+      <Titles text="Products" />
+
 
       {/* ─── InTouch Intro ─── */}
       <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8 px-[95px] pb-20">
-          <div className="flex-shrink-0 w-[130px] pt-2">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8 px-4 sm:px-6 md:px-12 lg:px-[95px] pb-20">
+          <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation1}
               className="w-[130px] h-[168px]"
             />
           </div>
 
-          <div className="flex flex-col gap-1 max-w-[1140px] pt-10">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex flex-col gap-1 max-w-full lg:max-w-[1140px] pt-0 sm:pt-10">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
               IronCAP<sup className="text-[11.6px]">™</sup> InTouch
             </h2>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Work remotely with quantum-safe, absolute security via any device
               from anywhere, anytime
             </p>
 
-            <h3 className="text-quantum-blue text-[20px] font-medium leading-[34px]">
+            <h3 className="text-quantum-blue text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               A Secure + Improved Alternative to VPN
             </h3>
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Unlike VPN, InTouch establishes zero-trust between the client and
               the corporate network. This means the corporate network will not
               be affected even if the client computer has been compromised.
             </p>
 
-            <h3 className="text-quantum-blue text-[20px] font-medium leading-[34px]">
+            <h3 className="text-quantum-blue text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Securing Accounts with Two-Factor Authentication
             </h3>
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Two-Factor Authentication is an effective way to protect against
               the unlikely event of password breaches. InTouch supports Google
               Authenticator One-Time Password (OTP).
             </p>
 
-            <h3 className="text-quantum-blue text-[20px] font-medium leading-[34px]">
+            <h3 className="text-quantum-blue text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Maximum Security with Controlled Access
             </h3>
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               For maximum security, InTouch lets you exert tight control of the
               access client. You can restrict remote access from devices with
               only certain MAC addresses.
@@ -98,15 +95,15 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── How it Works (video + compatibility) ─── */}
-      <section className="bg-black py-20 px-24">
+      <section className="bg-black py-20 px-4 sm:px-6 md:px-12 lg:px-[95px]">
         <div className="max-w-[1512px] mx-auto">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
+          <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px] mb-10">
             How it Works
           </h2>
 
           {/* Video placeholder */}
-          <div className="flex justify-center mb-12">
-            <div className="w-[733px] h-[434px] rounded-lg border border-white/10 overflow-hidden">
+          <div className="flex justify-center mb-12 px-4 sm:px-0">
+            <div className="w-full sm:w-[733px] h-[200px] sm:h-[434px] rounded-lg border border-white/10 overflow-hidden">
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/tzMxRHmP0s4?si=KOCsKt4jvP4ljdN_"
@@ -130,8 +127,8 @@ export default function InTouchPage() {
           </div>
 
           {/* Compatibility */}
-          <div className="flex justify-center">
-            <div className="grid grid-cols-4 gap-0 border-t border-white/10">
+          <div className="flex justify-center overflow-x-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 border-t border-white/10 min-w-full sm:min-w-0">
               {[
                 { name: "Browser", img: null },
                 {
@@ -146,11 +143,11 @@ export default function InTouchPage() {
               ].map((item, i) => (
                 <div
                   key={item.name}
-                  className={`flex flex-col items-center gap-2 px-10 py-6 ${
-                    i > 0 ? "border-l border-white/10" : ""
-                  }`}
+                  className={`flex flex-col items-center gap-2 px-4 sm:px-8 lg:px-10 py-4 sm:py-6 ${
+                    i > 0 && i % 2 !== 0 || (i > 1 && i % 2 === 0) ? "border-l border-white/10" : ""
+                  } ${i >= 2 ? "border-t border-white/10 sm:border-t-0" : ""}`}
                 >
-                  <div className="w-16 h-16 flex items-center justify-center text-quantum-green/60">
+                  <div className="w-12 sm:w-16 h-12 sm:h-16 flex items-center justify-center text-quantum-green/60">
                     <svg
                       className="w-10 h-10"
                       fill="none"
@@ -192,26 +189,26 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Go ─── */}
-      <section className="bg-white py-16 px-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8">
-          <div className="flex-shrink-0 w-[130px] pt-2">
+      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
+          <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation2}
               className="w-[130px] h-[168px]"
             />
           </div>
 
-          <div className="flex flex-col gap-[7px] max-w-[1141px]">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
               IronCAP<sup className="text-[11.6px]">™</sup> InTouch Go
             </h2>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Remote Working with Quantum-Safe, Absolute Security via Any Device
               from Anywhere, Anytime
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               IronCAP™ InTouch Go is a free mobile app that allows you to remote
               control your computer as if you were sitting in front of it
               without having to use an Internet browser. Now your remote
@@ -237,18 +234,18 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── How it Works (InTouch Go – flow chart) ─── */}
-      <section className="bg-black py-20 px-24">
+      <section className="bg-black py-20 px-4 sm:px-6 md:px-12 lg:px-[95px]">
         <div className="max-w-[1512px] mx-auto">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-4">
+          <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px] mb-4">
             How it Works
           </h2>
 
-          <p className="text-quantum-green text-[20px] font-medium leading-[34px] mb-4">
+          <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px] mb-4">
             Turn your Mobile Device into a Remote Control for your Computer
           </p>
 
           <div className="flex flex-col gap-[7px] mb-12">
-            <p className="text-lite-gray text-[15px] leading-[24px]">
+            <p className="text-lite-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               InTouch Go is a free mobile app that allows you to remotely
               control your computer as if you were sitting in front of it,
               without using a web browser. Now, your remote computer, with all
@@ -260,7 +257,7 @@ export default function InTouchPage() {
               device. Also, there is no longer a security risk, as no
               confidential files leave your office environment.
             </p>
-            <p className="text-lite-gray text-[15px] leading-[24px]">
+            <p className="text-lite-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Before you can use InTouch Go, you must first activate your remote
               computer to become InTouch-enabled. The activation process is as
               easy as 1-2-3. Simply click here to create a Free Account. Then,
@@ -271,36 +268,47 @@ export default function InTouchPage() {
           </div>
 
           {/* 4-step flow */}
-          <div className="flex items-start justify-center">
-            <div className="grid grid-cols-[60px_1fr] gap-y-0 border-t border-white/10 max-w-[1000px]">
-              {howWorkSteps.map((item) => (
-                <div key={item.step} className="contents">
-                  <div className="flex items-center justify-center py-10 border-b border-white/10 text-lite-gray text-[40px] font-medium leading-[50px]">
+          <div className="flex flex-col gap-0 border-t border-white/10 w-full">
+            {howWorkSteps.map((item) => (
+              <div key={item.step} className="grid grid-cols-[50px_1fr_auto] gap-4 items-start py-6 sm:py-10 px-4 sm:px-8 border-b border-white/10">
+                <div className="flex items-center justify-center">
+                  <span className="text-lite-gray text-[24px] sm:text-[40px] font-medium leading-[32px] sm:leading-[50px]">
                     {item.step}
-                  </div>
-                  <div className="flex flex-col gap-2 py-10 px-8 border-b border-white/10">
-                    <h4 className="text-quantum-green text-[15px] font-semibold leading-[24px] uppercase">
-                      {item.title}
-                    </h4>
-                    <p className="text-lite-gray text-[15px] leading-[24px]">
-                      {item.body}
-                    </p>
-                  </div>
+                  </span>
                 </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center border-white/10">
-              <LottiePlayer
-                loop={false}
-                src={animation3}
-                className="w-[130px] h-[168px]"
-              />
-            </div>
+                <div className="flex flex-col gap-2">
+                  <h4 className="text-quantum-green text-[12px] sm:text-[15px] font-semibold leading-[18px] sm:leading-[24px] uppercase">
+                    {item.title}
+                  </h4>
+                  <p className="text-lite-gray text-[12px] sm:text-[15px] leading-[18px] sm:leading-[24px]">
+                    {item.body}
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src={item.icon}
+                    alt={`Step ${item.step}`}
+                    width={80}
+                    height={100}
+                    className="w-16 h-20 object-contain"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
+          {/* Lottie animation - right side */}
+          {/* <div className="hidden lg:flex items-center justify-end mt-8 -mr-24">
+            <LottiePlayer
+              loop={false}
+              src={animation3}
+              className="w-[130px] h-[168px]"
+            />
+          </div> */}
+
           {/* Compatibility */}
-          <div className="flex justify-center mt-16">
-            <div className="grid grid-cols-3 gap-0 border-t border-white/10">
+          <div className="flex justify-center mt-16 overflow-x-auto w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-white/10 w-full sm:w-auto">
               {[
                 {
                   name: "iPhone/iPad",
@@ -314,9 +322,9 @@ export default function InTouchPage() {
               ].map((item, i) => (
                 <div
                   key={item.name}
-                  className={`flex flex-col items-center gap-2 px-12 py-6 ${
+                  className={`flex flex-col items-center gap-2 px-6 sm:px-12 py-6 ${
                     i > 0 ? "border-l border-white/10" : ""
-                  }`}
+                  } ${i >= 1 ? "border-t sm:border-t-0 border-white/10" : ""}`}
                 >
                   <div className="w-16 h-16 flex items-center justify-center text-quantum-green/60">
                     <svg
@@ -353,25 +361,25 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch GoMail ─── */}
-      <section className="bg-white py-16 px-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8">
-          <div className="flex-shrink-0 w-[130px] pt-2">
+      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
+          <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation4}
               className="w-[130px] h-[168px]"
             />
           </div>
 
-          <div className="flex flex-col gap-[7px] max-w-[1141px]">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
               IronCAP<sup className="text-[11.6px]">™</sup> InTouch GoMail
             </h2>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               A revolutionary mobile mailbox
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Unlike other mobile mailbox services, InTouch GoMail does not
               store any messages on your device, enhancing security. It simply
               mobilizes your Outlook and lets you keep all your inbound and
@@ -383,14 +391,14 @@ export default function InTouchPage() {
               security/privacy, plus no third-party storage fee.
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               With a smart notification feature, you can configure your InTouch
               GoMail to receive real-time alerts on your mobile device when
               emails from certain predefined senders arrive at your Outlook.
               This means you will not be bothered by unimportant messages.
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Before you can use InTouch GoMail, you must first activate your
               Outlook computer to become InTouch-enabled. The activation process
               is as easy as 1-2-3. Simply click here to create a Free Account.
@@ -401,8 +409,8 @@ export default function InTouchPage() {
             </p>
 
             {/* GoMail compatibility */}
-            <div className="flex justify-start mt-8">
-              <div className="grid grid-cols-2 gap-0 border-t border-steel-gray/20">
+            <div className="flex justify-start mt-8 overflow-x-auto">
+              <div className="grid grid-cols-2 gap-0 border-t border-steel-gray/20 w-full">
                 {[
                   {
                     name: "iPhone/iPad",
@@ -415,11 +423,11 @@ export default function InTouchPage() {
                 ].map((item, i) => (
                   <div
                     key={item.name}
-                    className={`flex flex-col items-center gap-2 px-12 py-6 ${
+                    className={`flex flex-col items-center gap-2 px-6 sm:px-12 py-6 ${
                       i > 0 ? "border-l border-steel-gray/20" : ""
                     }`}
                   >
-                    <div className="w-16 h-16 flex items-center justify-center text-quantum-green/40">
+                    <div className="hidden sm:flex w-16 h-16 items-center justify-center text-quantum-green/40">
                       <svg
                         className="w-10 h-10"
                         fill="none"
@@ -454,25 +462,25 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch SecureKey (dark) ─── */}
-      <section className="bg-black py-16 px-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8">
-          <div className="flex-shrink-0 w-[130px] pt-2">
+      <section className="bg-black py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
+          <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation5}
               className="w-[130px] h-[168px]"
             />
           </div>
 
-          <div className="flex flex-col gap-[7px] max-w-[1141px]">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
               IronCAP<sup className="text-[11.6px]">™</sup> InTouch SecureKey
             </h2>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Ultimate Security for your InTouch Remote PC Access
             </p>
 
-            <p className="text-white text-[15px] leading-[24px]">
+            <p className="text-white text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               InTouch SecureKey provides additional security to your remote
               access. This requires the user to insert an InTouch SecureKey (a
               USB device) for physical authentication in addition to the
@@ -484,24 +492,24 @@ export default function InTouchPage() {
               computer.
             </p>
 
-            <p className="text-white text-[15px] leading-[24px]">
+            <p className="text-white text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               InTouch SecureKey can be assigned temporarily to occasional mobile
               employees or permanently to those requiring dedicated remote
               access to their computers.
             </p>
 
-            <p className="text-white text-[15px] leading-[24px]">
+            <p className="text-white text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Auto-Login can also be enabled to securely store the login
               password, providing quick access by automating the login process.
             </p>
 
-            <p className="text-white text-[15px] leading-[24px]">
+            <p className="text-white text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               You have to be a subscriber of our InTouch remote access service
               in order to use this optional companion product. If you are not a
               subscriber yet, a free trial is available.
             </p>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px] mt-8">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px] mt-8">
               For more information or to purchase your InTouch SecureKey, call
               1-800-668-2185 or chat with our product specialists.
             </p>
@@ -510,26 +518,26 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Server Edition (light) ─── */}
-      <section className="bg-white py-16 px-24">
-        <div className="max-w-[1512px] mx-auto flex gap-8">
-          <div className="flex-shrink-0 w-[130px] pt-2">
+      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
+          <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation6}
               className="w-[130px] h-[168px]"
             />
           </div>
 
-          <div className="flex flex-col gap-[7px] max-w-[1141px]">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
+          <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
               IronCAP<sup className="text-[11.6px]">™</sup> InTouch Server
               Edition
             </h2>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
               Host your own InTouch remote access service
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               By installing the InTouch Server Edition at your business, you are
               hosting your own InTouch remote access service for your employees.
               This means your employees will be remotely accessing their office
@@ -537,14 +545,14 @@ export default function InTouchPage() {
               hosted by 01 Quantum.
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               While this is equally secure as our hosted InTouch remote access
               service, there is no monthly/annual subscription fees. You
               purchase the number of licenses you need one-time and you have
               100% control in managing your users and bandwidth usage.
             </p>
 
-            <p className="text-steel-gray text-[15px] leading-[24px]">
+            <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Although a trial version of InTouch Server Edition is not
               available, its remote access functionality is identical to the
               hosted InTouch service. Sign up for a free InTouch trial account
@@ -552,7 +560,7 @@ export default function InTouchPage() {
               award winning products.
             </p>
 
-            <p className="text-quantum-green text-[20px] font-medium leading-[34px] mt-8">
+            <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px] mt-8">
               For more information or to purchase your InTouch Server Edition,
               call 1-800-668-2185 or chat with our product specialists.
             </p>
@@ -561,7 +569,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="bg-white py-12 px-24">
+      <section className="bg-white py-12 px-4 sm:px-6 md:px-12 lg:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex justify-center">
           <Button
             text="step into the future, buy IronCAP™ now"

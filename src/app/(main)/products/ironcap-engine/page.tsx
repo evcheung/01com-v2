@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
 import Image from "next/image";
 import animation1 from "@/assets/animations/shieldAnimation.json"
+import { Titles } from "@/components/Titles";
 const strengths = [
   {
     icon: "/product_assets/standard_compliant.svg",
@@ -44,11 +45,7 @@ export default function Products() {
   return (
     <main>
       {/* Page title */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
-          Products
-        </h1>
-      </section>
+      <Titles text="Products" />
 
       {/* IronCAP section */}
 
@@ -168,13 +165,13 @@ export default function Products() {
             alt=""
           />
           <div className="flex flex-col gap-4">
-            <p className="text-lite-gray text-lg md:text-[21px] font-normal leading-[28px] md:leading-[30px] max-w-[928px]">
+            <p className="text-steel-gray text-lg md:text-[21px] font-normal leading-[28px] md:leading-[30px] max-w-[928px]">
               Like most adversaries, quantum attacks will occur when we are
               least prepared. Armed with IronCAP™ solutions and services,
               customers today are safeguarding data and guarding against any
               unexpected quantum attacks in the future.
             </p>
-            <span className="text-lite-gray text-[14px] font-normal uppercase tracking-wide">
+            <span className="text-steel-gray text-[14px] font-normal uppercase tracking-wide">
               Read more on quantum threat . . .
             </span>
           </div>
@@ -182,13 +179,7 @@ export default function Products() {
       </section>
 
       {/* Unique Strengths */}
-      <section
-        className="py-20 px-24 max-w-[1512px] mx-auto"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <section className="py-20 px-24 max-w-[1512px] mx-auto bg-black">
         <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
           Unique Strengths
         </h2>
@@ -230,7 +221,7 @@ export default function Products() {
         </div>
 
         {/* CTA buttons */}
-        <div className="flex justify-center gap-8 mt-16">
+        <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
           <Button
             text="brochure"
             url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"

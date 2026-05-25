@@ -1,4 +1,5 @@
 import { Bottom } from "@/components/resources/Bottom"
+import { Titles } from "@/components/Titles";
 /* ── Data ─────────────────────────────────────────────────────────── */
 const ironcapProducts: { name: React.ReactNode; body: string }[] = [
   {
@@ -129,11 +130,7 @@ export default function UseCases() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
-        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
-          Use Cases
-        </h1>
-      </section>
+      <Titles text="Use Cases" />
 
       {/* ─── Performance / Intro ─── */}
       <section className="bg-black">
@@ -147,10 +144,10 @@ export default function UseCases() {
             Institutions, Government Sectors, Defense and AI Integrators. Below
             are sample use cases in selected sectors.
           </p>
-          <p className="text-[#b6bbcd] text-[12px] font-medium uppercase leading-[24px]">
+          <a href="/contact" target="blank" className="text-[#b6bbcd] text-[12px] font-medium uppercase leading-[24px]">
             To learn more about how 01 Quantum can work with your company,
-            contact us here.
-          </p>
+            contact us here.        
+          </a>
         </div>
       </section>
 
@@ -197,12 +194,13 @@ export default function UseCases() {
           </div>
 
           {/* Government — gradient background per design */}
-          <div className="-mx-6 md:-mx-[95px] px-6 md:px-[95px] py-8 bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7]">
+          <div className="-mx-6 md:-mx-[95px] px-6 md:px-[95px] py-8">
             <h4 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-4">
               Government
             </h4>
             {governmentUseCases.map((row, i) => (
               <UseCaseRow
+
                 key={i}
                 label={row.label}
                 body={row.body}

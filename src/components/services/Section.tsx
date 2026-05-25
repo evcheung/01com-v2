@@ -23,7 +23,7 @@ export function Section({
   return (
     <section id={id} className={`${bg} ${className}`}>
       <div
-        className={`max-w-[1512px] mx-auto px-[95px] ${innerClassName}`}
+        className={`max-w-[1512px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[95px] ${innerClassName}`}
       >
         {children}
       </div>

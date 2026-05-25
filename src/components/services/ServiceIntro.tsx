@@ -40,16 +40,16 @@ export function ServiceIntro({
         />
       ) : null}
 
-      <div className="flex gap-8">
-        <div className="flex-shrink-0 w-[130px]">
+      <div className="flex flex-col sm:flex-row gap-8">
+        <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start">
           <LottiePlayer
             src={animation}
             className="w-[130px] h-[168px]"
           />
         </div>
 
-        <div className="flex flex-col gap-4 max-w-[1140px]">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[40px]">
+        <div className="flex flex-col gap-4 max-w-full lg:max-w-[1140px]">
+          <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[40px]">
             {heading}
           </h2>
 

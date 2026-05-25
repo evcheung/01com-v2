@@ -3,7 +3,7 @@ import { KeyAdvantages } from "@/components/services/KeyAdvantages";
 import { CalloutBox } from "@/components/services/CalloutBox";
 import { ProvenInMarket } from "@/components/services/ProvenInMarket";
 import { Bottom } from "@/components/resources/Bottom"
-
+import { Titles } from "@/components/Titles";
 import animation1 from "@/assets/animations/iconDark-IC-QuantumAIW.json"
 import animation2 from "@/assets/animations/iconDark-IC-DAPS.json"
 import animation3 from "@/assets/animations/iconDark-OSCIS.json"
@@ -133,12 +133,8 @@ const cryptoIntegrationAdvantages = [
 export default function Services() {
   return (
     <main>
-      {/* ─── Page Title ────────────────────────────────────────── */}
-      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
-        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[50px]">
-          Services
-        </h1>
-      </section>
+      {/* ─── Page Title ────────────────────────────────────────── */}      
+      <Titles text="Services" />
 
       {/* ─── 1. IronCAP Quantum AI Wrapper (QAW) ───────────────── */}
       <ServiceIntro
@@ -198,7 +194,7 @@ export default function Services() {
               </p>
               <p className="text-quantum-blue text-[16px] font-medium leading-tight mt-1">
                 On-chain proofs on post-quantum signatures
-              </p>1
+              </p>
               <p className="mt-2">
                 By combining Zero-Knowledge Proofs (ZKPs) with our NIST-endorsed
                 IronCAP

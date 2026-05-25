@@ -106,8 +106,15 @@ export default function InTouchPage() {
 
           {/* Video placeholder */}
           <div className="flex justify-center mb-12">
-            <div className="w-[733px] h-[434px] rounded-lg border border-white/10 bg-[#0a1a2a] flex items-center justify-center">
-              <span className="text-lite-gray text-sm">Video</span>
+            <div className="w-[733px] h-[434px] rounded-lg border border-white/10 overflow-hidden">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/tzMxRHmP0s4?si=KOCsKt4jvP4ljdN_"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
 
@@ -115,7 +122,7 @@ export default function InTouchPage() {
           <div className="flex justify-center mb-16">
             <Button
               text="brochure"
-              url="#"
+              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

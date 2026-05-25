@@ -2,7 +2,7 @@ import { ServiceIntro } from "@/components/services/ServiceIntro";
 import { KeyAdvantages } from "@/components/services/KeyAdvantages";
 import { CalloutBox } from "@/components/services/CalloutBox";
 import { ProvenInMarket } from "@/components/services/ProvenInMarket";
-import { Button } from "@/components/ui/button";
+import { Bottom } from "@/components/resources/Bottom"
 
 import animation1 from "@/assets/animations/iconDark-IC-QuantumAIW.json"
 import animation2 from "@/assets/animations/iconDark-IC-DAPS.json"
@@ -311,13 +311,7 @@ export default function Services() {
       <div className="flex flex-col justify-center items-center bg-white pb-24">
         <KeyAdvantages items={cryptoIntegrationAdvantages} />
         <div>
-          <Button
-            text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-            url="/buy"
-            border="border-quantum-green"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
+          <Bottom/>
         </div>
       </div>
     </main>

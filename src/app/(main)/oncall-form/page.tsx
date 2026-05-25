@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Titles } from "@/components/Titles";
 import { Button } from "@/components/ui/button";
-
+import { Bottom } from "@/components/resources/Bottom"
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 export default function OnCallForm() {
   return (
@@ -15,7 +15,7 @@ export default function OnCallForm() {
         }
       />
       <section className="bg-white flex items-center p-15 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-        <div>
+        <div className="w-xs p-10 flex justify-center items-center">
           <p className="text-gray-600 text-lg">
             Enter the Session Code provided to you and click Go.
           </p>
@@ -26,7 +26,7 @@ export default function OnCallForm() {
             alt="Description of image"
             width={500}
             height={500}
-            className="w-full h-full"
+            className="w-full h-full object-contain hidden md:block"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex flex-col items-center gap-4 w-full max-w-xs px-8">
@@ -71,13 +71,7 @@ export default function OnCallForm() {
         </p>
       </section>
       <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+        <Bottom/>
       </section>
     </>
   );

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Leader } from "@/components/about/Leader";
+import { Bottom } from "@/components/resources/Bottom"
 
 const leaders = [
   {
@@ -246,15 +247,7 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="flex justify-center mt-16">
-            <Button
-              text="LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-              url="/products/ironcap-engine"
-              border="border-quantum-green"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-            />
-          </div>
+          <Bottom/>
         </div>
       </section>
     </main>

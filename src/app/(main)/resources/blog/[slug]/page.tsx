@@ -1,8 +1,21 @@
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
-import { BLOG_QUERY } from "@/sanity/lib/queries";
+import { BLOG_QUERY, BLOG_SLUGS_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
+
+const EMPTY_BLOG_STATIC_SLUG = "__no-blog__";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const items = await client.fetch(BLOG_SLUGS_QUERY);
+  const slugs = (items ?? [])
+    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
+    .map((item: { slug: string }) => ({ slug: item.slug }));
+
+  return slugs.length > 0 ? slugs : [{ slug: EMPTY_BLOG_STATIC_SLUG }];
+}
 
 export default async function PostBlogPage({
   params,
@@ -10,6 +23,8 @@ export default async function PostBlogPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (slug === EMPTY_BLOG_STATIC_SLUG) notFound();
+
   const post = await client.fetch(BLOG_QUERY, { slug });
 
   if (!post) notFound();

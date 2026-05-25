@@ -22,7 +22,7 @@ const strengths = [
       "Elevate from today's proven best-in-class code-base cryptography theory and NIST-selected mechanisms.",
   },
   {
-    icon: "/product_assets/efficient.svg",
+    icon: "/product_assets/practical.svg",
     name: "Efficient",
     description:
       "Quick and efficient encryption/decryption/key-generation processes. Our implementation takes advantage of the Advanced Vector Extensions 2 (AVX2) capability of most modern CPU to ensure the highest possible throughput.",
@@ -33,7 +33,7 @@ const strengths = [
     description: "Guard against future attacks from quantum computers.",
   },
   {
-    icon: "/product_assets/practical.svg",
+    icon: "/product_assets/efficient.svg",
     name: "Practical",
     description:
       "Applicable in today's conventional devices while safe against future quantum computers.",
@@ -193,15 +193,22 @@ export default function Products() {
           Unique Strengths
         </h2>
 
-        <div className=" px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {strengths.map((item, i) => (
             <div
               key={item.name}
               className={[
                 "flex gap-4 py-10",
-                i % 2 === 0 ? "pr-16" : "pl-16 border-l border-white/10",
-                i >= 2 ? "border-t border-white/10" : "",
-              ].join(" ")}
+                i % 2 === 0 ? "md:pr-16" : "md:pl-16",
+                i % 2 === 1 ? "md:border-l md:border-white/10" : "",
+                i === 0
+                  ? ""
+                  : i === 1
+                  ? "border-t border-white/10 md:border-t-0"
+                  : "border-t border-white/10",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <Image
                 width={32}
@@ -226,7 +233,7 @@ export default function Products() {
         <div className="flex justify-center gap-8 mt-16">
           <Button
             text="brochure"
-            url="/brochure"
+            url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
             border="border-quantum-green"
             textColor="text-quantum-green"
             hoverBg="hover:bg-quantum-green/10"

@@ -81,10 +81,10 @@ function TableRow({
 }) {
   return (
     <div
-      className={`flex flex-col md:flex-row py-4 gap-1 md:gap-0 ${isLast ? "" : "border-b border-[#dfe6ea]"}`}
+      className={`flex flex-col md:flex-row items-start md:items-center py-4 gap-1 md:gap-0 ${isLast ? "" : "border-b border-[#dfe6ea]"}`}
     >
       {cells.map((cell, i) => (
-        <div key={i} className={`md:${cell.width}`}>
+        <div key={i} className={cell.width}>
           <p className="text-steel-gray text-[15px] leading-[24px]">
             {cell.content}
           </p>
@@ -143,7 +143,7 @@ export default function InvestorRelations() {
             <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
               <iframe
                 className="absolute inset-0 w-full h-full rounded-md"
-                src="https://www.youtube.com/embed/VIDEO_ID" // add original video
+                src="https://www.youtube.com/embed/KdDLYPvZ2q8"
                 title="Featured video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

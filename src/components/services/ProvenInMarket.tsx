@@ -39,12 +39,6 @@ export function ProvenInMarket({
               <div className="text-steel-gray text-[15px] leading-[24px] flex flex-col gap-3">
                 {body}
               </div>
-              <a
-                href={ctaHref}
-                className="text-steel-gray text-[14px] font-medium uppercase tracking-wide hover:text-quantum-blue transition-colors mt-2"
-              >
-                {ctaLabel} · · ·
-              </a>
             </div>
           </div>
         </div>

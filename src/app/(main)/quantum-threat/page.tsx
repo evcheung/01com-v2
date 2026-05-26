@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Bottom } from "@/components/resources/Bottom"
 
 export default function QuantumThreat() {
   return (
@@ -63,13 +63,7 @@ export default function QuantumThreat() {
           </div>
           <div>
             <div className="flex items-center justify-center py-16">
-              <Button
-                text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-                url="/products/ironcap-engine"
-                border="border-quantum-green/60"
-                textColor="text-quantum-green"
-                hoverBg="hover:bg-quantum-green/10"
-              />
+              <Bottom/>
             </div>
           </div>
         </div>

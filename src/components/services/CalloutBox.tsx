@@ -20,14 +20,14 @@ export function CalloutBox({
   bullets,
 }: CalloutBoxProps) {
   return (
-    <section className="bg-[##171515] py-20">
-      <div className="max-w-[1512px] mx-auto px-[95px]">
-        <div className="bg-[#000000] border border-white/10 rounded-[28px] flex items-center gap-10 px-12 py-10 max-w-[1107px] mx-auto">
-          <div className="flex-shrink-0 w-[260px] h-auto">
+    <section className="bg-[##171515] py-12 sm:py-20">
+      <div className="max-w-[1512px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[95px]">
+        <div className="bg-[#000000] border border-white/10 rounded-[28px] flex flex-col md:flex-row items-center gap-6 md:gap-10 px-6 sm:px-8 md:px-12 py-8 md:py-10 max-w-[1107px] mx-auto">
+          <div className="flex-shrink-0 w-[160px] md:w-[260px] h-auto">
             <LottiePlayer src={animation} className="w-full h-full" />
           </div>
           <div className="flex flex-col gap-4 flex-1 text-white">
-            <h3 className="text-quantum-blue text-[28px] font-semibold leading-[34px]">
+            <h3 className="text-quantum-blue text-[22px] sm:text-[28px] font-semibold leading-[30px] sm:leading-[34px]">
               {heading}
             </h3>
             <div className="text-lite-gray text-[15px] leading-[24px]">

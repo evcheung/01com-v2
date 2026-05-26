@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Titles } from "@/components/Titles";
-import { Button } from "@/components/ui/button";
+import { Bottom } from "@/components/resources/Bottom"
 import { DocumentsCards } from "@/components/Documents";
 
 export default function Support() {
@@ -85,13 +85,7 @@ export default function Support() {
           </div>
         </div>
         <section className="bg-white py-16 flex justify-center">
-          <Button
-            text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-            url="/products"
-            border="border-quantum-green/60"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
+          <Bottom/>
         </section>
       </div>
     </>

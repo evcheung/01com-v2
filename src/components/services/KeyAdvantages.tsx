@@ -24,11 +24,11 @@ interface KeyAdvantagesProps {
 export function KeyAdvantages({ items }: KeyAdvantagesProps) {
   return (
     <Section bg="bg-white" className="py-20">
-      <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-10">
+      <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[30px] mb-10">
         Key Advantages
       </h2>
 
-      <div className="grid grid-cols-2 divide-x divide-lite-gray/40">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-lite-gray/40">
         {[items.filter((_, i) => i % 2 === 0), items.filter((_, i) => i % 2 !== 0)].map(
           (col, colIdx) => (
             <div key={colIdx} className="flex flex-col divide-y divide-lite-gray/40">
@@ -37,7 +37,7 @@ export function KeyAdvantages({ items }: KeyAdvantagesProps) {
                   key={item.title}
                   className={[
                     "relative py-8",
-                    colIdx === 0 ? "pr-10" : "pl-10",
+                    colIdx === 0 ? "md:pr-10" : "md:pl-10",
                   ].join(" ")}
                 >
                   <div className="flex items-center gap-2 mb-3">

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-
+import { Bottom } from "@/components/resources/Bottom"
 /* ── Data ─────────────────────────────────────────────────────────── */
 const presentations = [
   {
@@ -141,27 +141,13 @@ export default function InvestorRelations() {
 
             {/* Right column - video */}
             <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
-              <Image
-                width={540}
-                height={303}
-                src="/investor_relations_assets/featured-video.png"
-                alt="Featured video"
-                className="absolute inset-0 w-full h-full object-cover rounded-md"
+              <iframe
+                className="absolute inset-0 w-full h-full rounded-md"
+                src="https://www.youtube.com/embed/VIDEO_ID" // add original video
+                title="Featured video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
-              <button
-                type="button"
-                aria-label="Play featured video"
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full bg-white/90 hover:bg-white transition-colors flex items-center justify-center shadow-lg"
-              >
-                <span
-                  className="block w-0 h-0 ml-1"
-                  style={{
-                    borderLeft: "18px solid #79c99c",
-                    borderTop: "12px solid transparent",
-                    borderBottom: "12px solid transparent",
-                  }}
-                />
-              </button>
             </div>
           </div>
         </div>
@@ -314,13 +300,7 @@ export default function InvestorRelations() {
 
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
-        <Button
-          text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-          url="/products/ironcap-engine"
-          border="border-quantum-green/60"
-          textColor="text-quantum-green"
-          hoverBg="hover:bg-quantum-green/10"
-        />
+        <Bottom/>
       </section>
     </main>
   );

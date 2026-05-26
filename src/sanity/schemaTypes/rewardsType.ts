@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export const rewardsType = defineType({
-    name: "rewards",
-    title: "Rewards",
+    name: "reviews-awards",
+    title: "Reviews / Awards",
     type: "document",
     fields: [
         defineField({
@@ -15,25 +15,36 @@ export const rewardsType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
-            name: "title",
+            name: "imageAltText",
             type: "string",
+            title: "Image Alt Text",
             validation: (rule) => rule.required(),
         }),
+        defineField({
+            name: "link",
+            type: "string",
+        }),
+
         defineField({
             name: "description",
             type: "string",
             validation: (rule) => rule.required(),
         }),
-        defineField({
-            name: "body",
-            type: "array",
-            of: [{ type: "block" }],
-        }),
-        defineField({
-            name: "slug",
-            type: "slug",
-            options: { source: "title" },
-            validation: (rule) => rule.required(),
-        }),
+        // defineField({
+        //     name: "body",
+        //     type: "array",
+        //     of: [{ type: "block" }],
+        // }),
+        // defineField({
+        //     name: "slug",
+        //     type: "slug",
+        //     options: { source: "title" },
+        //     validation: (rule) => rule.required(),
+        // }),
+                // defineField({
+        //     name: "title",
+        //     type: "string",
+        //     validation: (rule) => rule.required(),
+        // }),
     ],
 });

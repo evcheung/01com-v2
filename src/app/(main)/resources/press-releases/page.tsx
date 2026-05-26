@@ -31,11 +31,11 @@ export default async function ResourcesPressReleases() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-8">
-          {releases.map((item: { _id: string; date: string; title: string; slug: string }) => (
+          {releases.map((item: { _id: string; date: string; description: string; link: string }) => (
             <article key={item._id} className="bg-white rounded-bl-[12px] rounded-tr-[12px] shadow-[0_2px_12px_rgba(0,0,0,0.06)] px-8 py-8 flex flex-col">
               <p className="text-steel-gray text-[13px] leading-[20px] mb-3">{item.date}</p>
-              <h3 className="text-[#2b2f38] text-[15px] leading-[22px] font-normal mb-6 flex-1">{item.title}</h3>
-              <Link href={`/resources/press-releases/${item.slug}`} className="text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline self-start">
+              <h3 className="text-[#2b2f38] text-[15px] leading-[22px] font-normal mb-6 flex-1">{item.description}</h3>
+              <Link target="_blank" href={item.link} className="text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline self-start">
                 Read More
               </Link>
             </article>

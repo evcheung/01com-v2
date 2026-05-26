@@ -1,12 +1,7 @@
 export type PressCardData = {
-  /** Headline / title of the press release */
-  title: string;
-  /** Display date (already formatted, e.g. "March 19, 2026") */
   date: string;
-  /** Link to the full article */
-  href: string;
-  /** Optional CTA label (defaults to "Read Article") */
-  cta?: string;
+  description: string;
+  link?: string;
 };
 
 interface PressCardProps {
@@ -21,21 +16,19 @@ interface PressCardProps {
  * Designed to be data-driven so it can be fed by a CMS such as Sanity.
  */
 export function PressCard({ item, className = "" }: PressCardProps) {
-  const cta = item.cta ?? "Read Article";
-
   return (
     <article
       className={`bg-white w-[408px] h-[201px] p-8 flex flex-col gap-2 shadow-sm ${className}`}
     >
       <p className="text-steel-gray text-[15px] leading-[24px]">{new Date(item.date).toDateString()}</p>
       <p className="text-steel-gray text-[15px] leading-[24px] flex-1 line-clamp-3">
-        {item.title}
+        {item.description}
       </p>
       <a
-        href={item.href}
+        href={item.link}
         className="text-quantum-blue text-[12px] font-medium leading-[24px] uppercase tracking-wider hover:underline mt-auto"
       >
-        {cta}
+        Read Article
       </a>
     </article>
   );

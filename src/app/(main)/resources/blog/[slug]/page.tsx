@@ -1,5 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
+import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { BLOG_QUERY, BLOG_SLUGS_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
@@ -38,12 +39,24 @@ export default async function PostBlogPage({
         >
           ← Back to Blog
         </Link>
-        <p className="text-steel-gray text-[13px] mb-4">{post.date}</p>
+        {post.mainImage && (
+          <div className="relative w-full max-h-[400px] overflow-hidden rounded-lg mb-8">
+            <Image
+              src={post.mainImage}
+              alt={post.mainImageAlt ?? post.title}
+              width={1200}
+              height={630}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+        )}
+        <p className="text-steel-gray text-[13px] mb-4">{new Date(post.publishedAt).toDateString()}</p>
         <h1 className="text-[#2b2f38] text-[28px] md:text-[36px] font-semibold leading-tight mb-8">
           {post.title}
         </h1>
         <p className="text-steel-gray text-[15px] leading-[24px] mb-8 border-l-4 border-quantum-blue pl-4">
-          {post.description}
+          {post.summary}
         </p>
         {post.body && (
           <div className="prose prose-slate max-w-none text-[15px] leading-[26px] text-gray-800">

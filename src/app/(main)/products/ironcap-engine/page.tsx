@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
 import Image from "next/image";
-import animation1 from "@/assets/animations/shieldAnimation.json"
+import animation1 from "@/assets/animations/shieldAnimation.json";
 import { Titles } from "@/components/Titles";
 const strengths = [
   {
@@ -110,10 +110,7 @@ export default function Products() {
 
           {/* Right column */}
           <div className="flex flex-col items-center flex-1">
-            <LottiePlayer
-              src={animation1}
-              className="aspect-square w-60"
-            />
+            <LottiePlayer src={animation1} className="aspect-square w-60" />
             <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
               IronCAP™ included PQC technologies from NIST
             </h2>
@@ -179,63 +176,65 @@ export default function Products() {
       </section>
 
       {/* Unique Strengths */}
-      <section className="py-20 px-24 max-w-[1512px] mx-auto bg-black">
-        <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
-          Unique Strengths
-        </h2>
+      <section className="bg-black">
+        <div className="py-20 px-24 max-w-[1512px] mx-auto ">
+          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
+            Unique Strengths
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {strengths.map((item, i) => (
-            <div
-              key={item.name}
-              className={[
-                "flex gap-4 py-10",
-                i % 2 === 0 ? "md:pr-16" : "md:pl-16",
-                i % 2 === 1 ? "md:border-l md:border-white/10" : "",
-                i === 0
-                  ? ""
-                  : i === 1
-                  ? "border-t border-white/10 md:border-t-0"
-                  : "border-t border-white/10",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <Image
-                width={32}
-                height={32}
-                src={item.icon}
-                alt=""
-                className="w-8 h-8 flex-shrink-0 mt-1"
-              />
-              <div className="flex flex-col gap-[7px]">
-                <p className="text-quantum-green text-[18px] font-semibold leading-[20px] uppercase">
-                  {item.name}
-                </p>
-                <p className="text-white text-[15px] font-normal leading-[24px]">
-                  {item.description}
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {strengths.map((item, i) => (
+              <div
+                key={item.name}
+                className={[
+                  "flex gap-4 py-10",
+                  i % 2 === 0 ? "md:pr-16" : "md:pl-16",
+                  i % 2 === 1 ? "md:border-l md:border-white/10" : "",
+                  i === 0
+                    ? ""
+                    : i === 1
+                      ? "border-t border-white/10 md:border-t-0"
+                      : "border-t border-white/10",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <Image
+                  width={32}
+                  height={32}
+                  src={item.icon}
+                  alt=""
+                  className="w-8 h-8 flex-shrink-0 mt-1"
+                />
+                <div className="flex flex-col gap-[7px]">
+                  <p className="text-quantum-green text-[18px] font-semibold leading-[20px] uppercase">
+                    {item.name}
+                  </p>
+                  <p className="text-white text-[15px] font-normal leading-[24px]">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA buttons */}
-        <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
-          <Button
-            text="brochure"
-            url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
-            border="border-quantum-green"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
-          <Button
-            text="step into the future, buy IronCAP™ now"
-            url="/buy"
-            border="border-quantum-green"
-            textColor="text-quantum-green"
-            hoverBg="hover:bg-quantum-green/10"
-          />
+          {/* CTA buttons */}
+          <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
+            <Button
+              text="brochure"
+              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+            />
+            <Button
+              text="step into the future, buy IronCAP™ now"
+              url="/buy"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+            />
+          </div>
         </div>
       </section>
     </main>

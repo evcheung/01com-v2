@@ -100,10 +100,11 @@ export default function Products() {
             <div>
               <Button
                 text="white paper"
-                url="/products/ironcap"
+                url="https://www.01com.com/pdf/ironcap-white-paper.pdf"
                 border="border-steel-gray"
                 textColor="text-quantum-green"
                 hoverBg="hover:bg-quantum-green/10"
+                isBlank="true"              
               />
             </div>
           </div>
@@ -229,10 +230,11 @@ export default function Products() {
             />
             <Button
               text="step into the future, buy IronCAP™ now"
-              url="/buy"
+              url="https://imoncall.01com.com/ironcapchat/"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
             />
           </div>
         </div>

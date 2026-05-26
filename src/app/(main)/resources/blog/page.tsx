@@ -32,10 +32,10 @@ export default async function BlogPage() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {blogPosts.map((item: { _id: Key | null | undefined; date: string; title: string; slug: string; }) => (
+          {blogPosts.map((item: { _id: Key | null | undefined; publishedAt: string; title: string; slug: string; }) => (
             <PostCard
               key={item._id}
-              date={item.date}
+              publishedAt={item.publishedAt}
               title={item.title}
               slug={item.slug}
             />

@@ -31,8 +31,8 @@ export default async function RewardsPage() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {rewards.map((item: { _id: string; date: string; title: string; image?: string; slug: string }) => (
-            <RewardCard key={item._id} date={item.date} title={item.title} image={item.image ?? ""} slug={item.slug} />
+          {rewards.map((item: { _id: string; date: string; description: string; image?: string; link?: string; imageAltText?: string }) => (
+            <RewardCard key={item._id} date={item.date} description={item.description} image={item.image ?? ""} link={item.link} imageAltText={item.imageAltText ?? ""} />
           ))}
         </div>
         <div className="mt-14">

@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export const newsletterType = defineType({
-    name: "newsletter",
-    title: "Newsletter",
+    name: "newsletters",
+    title: "Newsletters",
     type: "document",
     fields: [
         defineField({
@@ -12,8 +12,7 @@ export const newsletterType = defineType({
         }),
         defineField({
             name: "month",
-            type: "array",
-            of: [{ type: "string" }],
+            type: "string",
             validation: (rule) => rule.required(),
         }),
         defineField({
@@ -24,8 +23,7 @@ export const newsletterType = defineType({
         defineField({
             name: "slug",
             type: "slug",
-            options: { source: (doc) => `${doc.year}-${doc.month}` },
-            validation: (rule) => rule.required(),
+            options: { source: "title" },
         }),
     ],
 });

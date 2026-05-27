@@ -24,3 +24,30 @@ export const REWARDS_QUERY = defineQuery(`*[_type == "reviews-awards"] | order(d
 export const REWARDS_COUNT_QUERY = defineQuery(`count(*[_type == "reviews-awards"])`)
 export const REWARD_QUERY = defineQuery(`*[_type == "reviews-awards" && slug.current == $slug][0] { _id, date, description, "image": image.asset->url, imageAltText, link }`)
 export const REWARD_SLUGS_QUERY = defineQuery(`*[_type == "reviews-awards" && defined(slug.current)] { "slug": slug.current }`)
+
+
+// queries for investor relations
+
+const relevantLinksProjection = `relevantLinks[]{ _key, label, linkType, url }`;
+
+export const INVESTOR_LATEST_PRESENTATION_QUERY = defineQuery(
+    `*[_type == "investor-relations-latest-presentation"] | order(_updatedAt desc) { _id, date, description, isFeatured, ${relevantLinksProjection} }`
+);
+export const INVESTOR_LATEST_PRESENTATION_FEATURED_QUERY = defineQuery(
+    `*[_type == "investor-relations-latest-presentation" && isFeatured == true][0] { _id, date, description, isFeatured, ${relevantLinksProjection} }`
+);
+
+export const INVESTOR_RECENT_EVENTS_QUERY = defineQuery(
+    `*[_type == "investor-relations-recent-events"] | order(date desc) { _id, date, description, ${relevantLinksProjection} }`
+);
+
+export const INVESTOR_VIDEOS_QUERY = defineQuery(
+    `*[_type == "investor-relations-videos"] | order(_updatedAt desc) { _id, title, description, link, isFeatured }`
+);
+export const INVESTOR_VIDEOS_FEATURED_QUERY = defineQuery(
+    `*[_type == "investor-relations-videos" && isFeatured == true] | order(_updatedAt desc) { _id, title, description, link, isFeatured }`
+);
+
+export const INVESTOR_FINANCIAL_RESULTS_QUERY = defineQuery(
+    `*[_type == "investor-relations-financial-results"] | order(_updatedAt desc) { _id, description, ${relevantLinksProjection} }`
+);

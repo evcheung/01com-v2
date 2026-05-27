@@ -1,45 +1,69 @@
+import { client } from "@/sanity/lib/client";
+import {
+  INVESTOR_LATEST_PRESENTATION_QUERY,
+  INVESTOR_RECENT_EVENTS_QUERY,
+  INVESTOR_FINANCIAL_RESULTS_QUERY,
+  INVESTOR_VIDEOS_FEATURED_QUERY,
+} from "@/sanity/lib/queries";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { Bottom } from "@/components/resources/Bottom"
-/* ── Data ─────────────────────────────────────────────────────────── */
-const presentations = [
-  {
-    date: "February 2026",
-    description: "Winter 2026 Investor Deck",
-    link: "Open",
-    href: "#",
-  },
-];
+import { Bottom } from "@/components/resources/Bottom";
 
-const pressReleases = [
-  {
-    date: "March 19, 2026",
-    description: "01 reports fiscal Q1 2026",
-    link: { label: "Read Press Release", href: "#" },
-  },
-  {
-    date: "January 22, 2026",
-    description: "01 reports fiscal Q4 2025",
-    link: { label: "Read Press Release", href: "#" },
-  },
-  {
-    date: "September 18, 2025",
-    description: "01 reports fiscal Q3 2025",
-    link: { label: "Read Press Release", href: "#" },
-  },
-  {
-    date: "June 19, 2025",
-    description: "01 reports fiscal Q2 2025",
-    link: { label: "Read Press Release", href: "#" },
-  },
-];
+type RelevantLink = { _key: string; label: string; linkType: string | null; url: string | null };
 
-const financialResults = [
-  {
-    date: "Latest Results 01 2026",
-    link: { label: "Read Press Release", href: "#" },
-  },
-];
+type Presentation = { _id: string; date: string; description: string; isFeatured: boolean; relevantLinks: RelevantLink[] | null };
+type PressRelease  = { _id: string; date: string; description: string; relevantLinks: RelevantLink[] | null };
+type FinancialResult = { _id: string; description: string; relevantLinks: RelevantLink[] | null };
+type InvestorVideo = { _id: string; title: string; description: string; link: string; isFeatured: boolean };
+
+function formatIsoDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function toEmbedUrl(url: string): { type: "iframe" | "video"; src: string } {
+  // youtube.com/watch?v=ID or youtu.be/ID  →  embed
+  const ytWatch = url.match(/(?:youtube\.com\/watch\?.*v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (ytWatch) return { type: "iframe", src: `https://www.youtube.com/embed/${ytWatch[1]}` };
+
+  // already an embed URL
+  if (url.includes("youtube.com/embed/") || url.includes("player.vimeo.com")) {
+    return { type: "iframe", src: url };
+  }
+
+  // direct file
+  return { type: "video", src: url };
+}
+
+function VideoEmbed({ src, title }: { src: string; title: string }) {
+  const { type, src: embedSrc } = toEmbedUrl(src);
+  const cls = "absolute inset-0 w-full h-full rounded-md";
+
+  if (type === "iframe") {
+    return (
+      <iframe
+        className={cls}
+        src={embedSrc}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+
+  return (
+    <video
+      className={`${cls} object-cover`}
+      src={embedSrc}
+      controls
+      preload="metadata"
+      title={title}
+    />
+  );
+}
 
 /* ── Reusable bits ────────────────────────────────────────────────── */
 function SectionTitle({ children }: { children: React.ReactNode }) {
@@ -94,8 +118,52 @@ function TableRow({
   );
 }
 
+function RelevantLinks({ links, withPlayIcon = false }: { links: RelevantLink[]; withPlayIcon?: boolean }) {
+  return (
+    <span className="inline-flex flex-col gap-1">
+      {links.map((link, i) => (
+        <span key={link._key} className="inline-flex items-center gap-2">
+          {withPlayIcon && i === 0 && (
+            <span
+              aria-hidden
+              className="inline-block w-[16px] h-[16px] rounded-full border-2 border-quantum-green relative shrink-0"
+            >
+              <span
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0"
+                style={{
+                  borderLeft: "5px solid #79c99c",
+                  borderTop: "3px solid transparent",
+                  borderBottom: "3px solid transparent",
+                }}
+              />
+            </span>
+          )}
+          <a
+            href={link.url ?? "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-quantum-green transition-colors"
+          >
+            {link.label}
+          </a>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 /* ── Page ─────────────────────────────────────────────────────────── */
-export default function InvestorRelations() {
+export default async function InvestorRelations() {
+  const [presentations, pressReleases, financialResults, featuredVideos] =
+    await Promise.all([
+      client.fetch<Presentation[]>(INVESTOR_LATEST_PRESENTATION_QUERY),
+      client.fetch<PressRelease[]>(INVESTOR_RECENT_EVENTS_QUERY),
+      client.fetch<FinancialResult[]>(INVESTOR_FINANCIAL_RESULTS_QUERY),
+      client.fetch<InvestorVideo[]>(INVESTOR_VIDEOS_FEATURED_QUERY),
+    ]);
+
+  const featuredVideo = featuredVideos[0] ?? null;
+
   const tableCols = [
     { label: "Date", width: "w-[228px] shrink-0" },
     { label: "Description", width: "w-[316px] shrink-0" },
@@ -123,33 +191,25 @@ export default function InvestorRelations() {
             the OTCQB market under the symbol &lsquo;OONEF&rsquo;.
           </p>
 
-          {/* Callout box */}
-          <div className="bg-gradient-to-r from-[#141313] to-[#141313]/0 rounded-[17px] px-6 md:px-6 md:px-[95px] py-10 md:py-14 flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-            {/* Left column - text */}
-            <div className="flex-1 md:max-w-[414px] flex flex-col gap-2 md:pt-6">
-              <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-2">
-                Featured Video
-              </h2>
-              <p className="text-white text-[15px] leading-[24px]">
-                Andrew Cheung, CEO 01 Quantum Inc. featured by Quantum Economy
-                Podcast
-              </p>
-              <p className="text-white text-[15px] leading-[24px]">
-                01 Quantum talks about its Quantum-safe PQC solutions
-              </p>
-            </div>
+          {featuredVideo && (
+            <div className="bg-gradient-to-r from-[#141313] to-[#141313]/0 rounded-[17px] px-6 md:px-6 md:px-[95px] py-10 md:py-14 flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+              <div className="flex-1 md:max-w-[414px] flex flex-col gap-2 md:pt-6">
+                <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-2">
+                  Featured Video
+                </h2>
+                <p className="text-white text-[15px] leading-[24px]">
+                  {featuredVideo.title}
+                </p>
+                <p className="text-white text-[15px] leading-[24px]">
+                  {featuredVideo.description}
+                </p>
+              </div>
 
-            {/* Right column - video */}
-            <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
-              <iframe
-                className="absolute inset-0 w-full h-full rounded-md"
-                src="https://www.youtube.com/embed/KdDLYPvZ2q8"
-                title="Featured video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
+                <VideoEmbed src={featuredVideo.link} title={featuredVideo.title} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -160,20 +220,13 @@ export default function InvestorRelations() {
           <TableHeader cols={tableCols} />
           {presentations.map((row, i) => (
             <TableRow
-              key={i}
+              key={row._id}
               isLast={i === presentations.length - 1}
               cells={[
                 { content: row.date, width: "w-[228px] shrink-0" },
                 { content: row.description, width: "w-[316px] shrink-0" },
                 {
-                  content: (
-                    <a
-                      href={row.href}
-                      className="hover:text-quantum-green transition-colors"
-                    >
-                      {row.link}
-                    </a>
-                  ),
+                  content: <RelevantLinks links={row.relevantLinks ?? []} />,
                   width: "flex-1",
                 },
               ]}
@@ -189,35 +242,17 @@ export default function InvestorRelations() {
           <TableHeader cols={tableCols} />
           {pressReleases.map((row, i) => (
             <TableRow
-              key={i}
+              key={row._id}
               isLast={i === pressReleases.length - 1}
               cells={[
-                { content: row.date, width: "w-[228px] shrink-0" },
+                { content: formatIsoDate(row.date), width: "w-[228px] shrink-0" },
                 { content: row.description, width: "w-[316px] shrink-0" },
                 {
                   content: (
-                    <span className="inline-flex items-center gap-2">
-                      {i === 0 && (
-                        <span
-                          aria-hidden
-                          className="inline-block w-[16px] h-[16px] rounded-full border-2 border-quantum-green relative"
-                        >
-                          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0"
-                            style={{
-                              borderLeft: "5px solid #79c99c",
-                              borderTop: "3px solid transparent",
-                              borderBottom: "3px solid transparent",
-                            }}
-                          />
-                        </span>
-                      )}
-                      <a
-                        href={row.link.href}
-                        className="hover:text-quantum-green transition-colors"
-                      >
-                        {i === 0 ? "Webinar Replay" : row.link.label}
-                      </a>
-                    </span>
+                    <RelevantLinks
+                      links={row.relevantLinks ?? []}
+                      withPlayIcon={i === 0}
+                    />
                   ),
                   width: "flex-1",
                 },
@@ -233,15 +268,13 @@ export default function InvestorRelations() {
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12">
           <p className="text-steel-gray text-[15px] leading-[24px] max-w-[956px]">
             For more information about 01 Quantum contact us at +1 905 795-2888
-            or +1 800 668-2185 (US/Canada), or email
-            {" "}
+            or +1 800 668-2185 (US/Canada), or email{" "}
             <a
               href="mailto:investorrelations@01com.com"
               className="text-quantum-green hover:underline"
             >
               investorrelations@01com.com
-            </a>
-            {" "}
+            </a>{" "}
             with any comments or suggestions.
           </p>
         </div>
@@ -269,17 +302,24 @@ export default function InvestorRelations() {
       <SectionTitle>Financial Results</SectionTitle>
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
-          {financialResults.map((row, i) => (
-            <div key={i} className="flex flex-col md:flex-row gap-4 md:gap-16 py-4">
+          {financialResults.map((row) => (
+            <div key={row._id} className="flex flex-col md:flex-row gap-4 md:gap-16 py-4 border-b border-[#dfe6ea] last:border-0">
               <p className="text-steel-gray text-[15px] leading-[24px] w-[228px] shrink-0">
-                {row.date}
+                {row.description}
               </p>
-              <a
-                href={row.link.href}
-                className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-green transition-colors"
-              >
-                {row.link.label}
-              </a>
+              <div className="flex flex-col gap-1">
+                {(row.relevantLinks ?? []).map((link: RelevantLink) => (
+                  <a
+                    key={link._key}
+                    href={link.url ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-green transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           ))}
           <p className="text-steel-gray text-[15px] leading-[24px] mt-8 max-w-[956px]">
@@ -300,7 +340,7 @@ export default function InvestorRelations() {
 
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
-        <Bottom/>
+        <Bottom />
       </section>
     </main>
   );

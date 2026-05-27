@@ -1,13 +1,11 @@
 import StudioClient from "./StudioClient";
 
-export const dynamicParams = false;
-
+// With output: export, only this shell is pre-rendered.
+// All studio sub-routes (including document IDs) are handled
+// client-side by the SPA. The hosting platform must serve this
+// same file for any /studio/* 404 (SPA fallback).
 export function generateStaticParams() {
-  return [
-    { tool: [] },
-    { tool: ["structure"] },
-    { tool: ["vision"] },
-  ];
+  return [{ tool: [] }];
 }
 
 export default function StudioPage() {

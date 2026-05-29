@@ -61,7 +61,7 @@ function renderTitle(title: string) {
 export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
   return (
     <article
-      className={`bg-white w-[408px] h-full p-8 pt-9 shadow-sm flex flex-col ${className}`}
+      className={`bg-white w-full sm:w-[408px] h-full p-6 sm:p-8 sm:pt-9 shadow-sm flex flex-col ${className}`}
     >
       <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-6">
         {data.title}
@@ -79,6 +79,8 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
           >
             <a
               href={item.href ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1"
             >
               {renderTitle(item.title)}

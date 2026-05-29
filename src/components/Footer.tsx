@@ -30,8 +30,8 @@ import Image from "next/image";
 const footerColumns = [
   {
     heading: "Company",
-    links: ["Products", "Services", "Customers"],
-    urls: ["/products/ironcap-engine", "/services", "/customers"],
+    links: ["Products", "Services", "Customers", "Partners"],
+    urls: ["/products/ironcap-engine", "/services", "/customers", "/partners"],
   },
   {
     heading: "Resources",

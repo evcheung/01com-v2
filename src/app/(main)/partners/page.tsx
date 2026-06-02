@@ -7,6 +7,21 @@ export interface WhyPartner {
   description: string;
   icon: string;
 }
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
+const DescriptionWithTrademark = ({ text }: { text: string }) => {
+  const parts = text.split('IronCAP™');
+  return (
+    <>
+      {parts.map((part, index) => (
+        <span key={index}>
+          {part}
+          {index < parts.length - 1 && <>IronCAP<Trademark /></>}
+        </span>
+      ))}
+    </>
+  );
+};
 
 const data: WhyPartner[] = [
   {
@@ -207,7 +222,7 @@ export default function PartnersPage() {
                     {item.title}
                   </h3>
                   <p className="text-gray-600 mt-2 leading-relaxed text-sm sm:text-base">
-                    {item.description}
+                    <DescriptionWithTrademark text={item.description} />
                   </p>
                 </div>
               </div>

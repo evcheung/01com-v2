@@ -46,6 +46,7 @@ const leaders = [
     pic: "/about_assets/v.png",
   },
 ];
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 export default function About() {
   return (
@@ -57,7 +58,7 @@ export default function About() {
         </h1>
       </section>
       <section className="bg-white flex flex-col items-center px-6 md:px-24 py-18">
-        <div className="max-w-[1512px] mx-auto px-0 md:px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-0 md:px-[95px] space-y-6">
           <p className="text-steel-gray text-[15px] leading-[24px]">
             <span className="text-quantum-blue font-normal">
               01 Quantum Inc.
@@ -65,7 +66,7 @@ export default function About() {
             , formerly 01 Communique Laboratory Inc., has developed advanced
             post‑quantum cryptographic (PQC) technology to protect digital
             systems against the growing threat of quantum computers. It’s
-            patented IronCAP™ and patent-pending technologies are designed to
+            patented IronCAP<Trademark /> and patent-pending technologies are designed to
             provide long‑term resilience against quantum‑enabled attacks. By
             integrating these technologies into applications such as AI
             platforms, remote access systems, email and digital‑asset platforms,
@@ -94,7 +95,7 @@ export default function About() {
             In response to this emerging threat, the Company has made a
             significant investment in researching and developing disruptive
             cybersecurity technology. As a result, it has created and is
-            commercializing products that incorporate its patented IronCAP™
+            commercializing products that incorporate its patented IronCAP<Trademark />
             technology.
           </p>
         </div>
@@ -117,10 +118,10 @@ export default function About() {
               <ul className="flex flex-col gap-6">
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<sup className="text-[0.55em]">™</sup> XMail
+                    IronCAP<Trademark /> XMail
                   </a>
                   <p className="text-white/70 text-[13px] leading-snug mt-0.5">
                     FREE personal usage
@@ -128,10 +129,10 @@ export default function About() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<sup className="text-[0.55em]">™</sup> XMail
+                    IronCAP<Trademark /> XMail
                   </a>
                   <p className="text-white/70 text-[13px] leading-snug mt-0.5">
                     Business usage
@@ -149,10 +150,10 @@ export default function About() {
               <ul className="flex flex-col gap-6">
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<sup className="text-[0.55em]">™</sup> XMail
+                    IronCAP<Trademark /> XMail
                   </a>
                   <p className="text-white/70 text-[13px] leading-snug mt-0.5">
                     FREE personal usage
@@ -160,10 +161,10 @@ export default function About() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<sup className="text-[0.55em]">™</sup> XMail
+                    IronCAP<Trademark /> XMail
                   </a>
                   <p className="text-white/70 text-[13px] leading-snug mt-0.5">
                     Business usage
@@ -171,10 +172,10 @@ export default function About() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
                     className="text-quantum-green text-[15px] font-medium hover:opacity-80 transition-opacity"
                   >
-                    IronCAP<sup className="text-[0.55em]">™</sup> XMail Tutorial
+                    IronCAP<Trademark /> XMail Tutorial
                   </a>
                 </li>
               </ul>
@@ -189,7 +190,7 @@ export default function About() {
               <ul className="flex flex-col gap-6">
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__01com.com_imintouch-2Dremote-2Dpc-2Ddesktop_faqs_&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=omcXqMC6ZoBsNVua1usK87gtZk_u4ZvCgG5-_D3rknw&e="
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
                     Product FAQs
@@ -197,7 +198,7 @@ export default function About() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.ironcap.ca_ironcap-2Dtoolkits_faq_&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=6U81CLaI4mUNE9H-aGqqXUP2ikbRgSt-5yeBAjVSpwQ&e="
                     className="text-quantum-green text-[15px] font-medium hover:opacity-80 transition-opacity"
                   >
                     Post-Quantum Threat FAQs
@@ -210,11 +211,12 @@ export default function About() {
           {/* CTA */}
           <div className="flex justify-center">
             <Button
-              text="See all Resources · · ·"
-              url="#"
+              text="See all Resources"
+              url="https://urldefense.proofpoint.com/v2/url?u=https-3A__01com.com_imintouch-2Dremote-2Dpc-2Ddesktop_faqs_&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=omcXqMC6ZoBsNVua1usK87gtZk_u4ZvCgG5-_D3rknw&e="
               border="border-white/30"
               textColor="text-quantum-green"
               hoverBg="hover:bg-white/10"
+              isBlank="true"
             />
           </div>
         </div>

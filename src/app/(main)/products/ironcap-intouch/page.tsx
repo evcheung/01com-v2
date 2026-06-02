@@ -34,6 +34,8 @@ const howWorkSteps = [
     icon: "/product_assets/device_4.svg",
   },
 ];
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
 export default function InTouchPage() {
   return (
     <main
@@ -56,7 +58,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-1 max-w-full lg:max-w-[1140px] pt-0 sm:pt-10">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<sup className="text-[11.6px]">™</sup> InTouch
+              IronCAP<Trademark /> InTouch
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -200,7 +202,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<sup className="text-[11.6px]">™</sup> InTouch Go
+              IronCAP<Trademark /> InTouch Go
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -209,7 +211,7 @@ export default function InTouchPage() {
             </p>
 
             <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
-              IronCAP™ InTouch Go is a free mobile app that allows you to remote
+              IronCAP<Trademark /> InTouch Go is a free mobile app that allows you to remote
               control your computer as if you were sitting in front of it
               without having to use an Internet browser. Now your remote
               computer with all your full-blown desktop applications are
@@ -372,7 +374,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<sup className="text-[11.6px]">™</sup> InTouch GoMail
+              IronCAP<Trademark /> InTouch GoMail
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -473,7 +475,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<sup className="text-[11.6px]">™</sup> InTouch SecureKey
+              IronCAP<Trademark /> InTouch SecureKey
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -529,7 +531,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<sup className="text-[11.6px]">™</sup> InTouch Server
+              IronCAP<Trademark /> InTouch Server
               Edition
             </h2>
 
@@ -572,11 +574,12 @@ export default function InTouchPage() {
       <section className="bg-white py-12 px-4 sm:px-6 md:px-12 lg:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex justify-center">
           <Button
-            text="step into the future, buy IronCAP™ now"
-            url="/buy"
+            text="step into the future, buy IronCAP now"
+            url="https://imoncall.01com.com/ironcapchat/"
             border="border-quantum-green"
             textColor="text-quantum-green"
             hoverBg="hover:bg-quantum-green/10"
+            isBlank="true"
           />
         </div>
       </section>

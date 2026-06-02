@@ -1,11 +1,13 @@
 import { Bottom } from "@/components/resources/Bottom"
 import { Titles } from "@/components/Titles";
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
 /* ── Data ─────────────────────────────────────────────────────────── */
 const ironcapProducts: { name: React.ReactNode; body: string }[] = [
   {
     name: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail
+        IronCAP<Trademark /> XMail
       </>
     ),
     body: "Protecting emailed information that has a sensitivity period extending beyond five years; therefore requiring quantum safety.",
@@ -13,7 +15,7 @@ const ironcapProducts: { name: React.ReactNode; body: string }[] = [
   {
     name: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> InTouch
+        IronCAP<Trademark /> InTouch
       </>
     ),
     body: "InTouch lets you work remotely by controlling your office computer as if you were physically there.",
@@ -21,7 +23,7 @@ const ironcapProducts: { name: React.ReactNode; body: string }[] = [
   {
     name: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> OnCall
+        IronCAP<Trademark /> OnCall
       </>
     ),
     body: "Customer support infrastructure with quantum-safe security.",
@@ -83,7 +85,6 @@ const digitalAssetsUseCases = [
     body: "A blockchain-based application with a fail-safe that required both a classic and quantum signature to execute, halting transactions if a valid post-quantum signature is missing, even if classical signature has been compromised.",
   },
 ];
-
 /* ── Reusable bits ────────────────────────────────────────────────── */
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -153,7 +154,7 @@ export default function UseCases() {
 
       {/* ─── IronCAP™ Products ─── */}
       <SectionTitle>
-        IronCAP<sup className="text-[11.61px]">™</sup>&nbsp;&nbsp;Products
+        IronCAP<Trademark />&nbsp;&nbsp;Products
       </SectionTitle>
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
@@ -170,7 +171,7 @@ export default function UseCases() {
 
       {/* ─── IronCAP™ Services ─── */}
       <SectionTitle>
-        IronCAP<sup className="text-[11.61px]">™</sup>&nbsp;&nbsp;Services
+        IronCAP<Trademark />&nbsp;&nbsp;Services
       </SectionTitle>
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10 flex flex-col gap-12">

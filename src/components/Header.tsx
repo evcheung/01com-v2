@@ -173,7 +173,7 @@ export default function Header() {
                         className="text-white/80 text-[13px] hover:text-[#71bfff] transition-colors"
                         onClick={() => setSidebarOpen(false)}
                       >
-                        IronCAP™ {label}
+                        IronCAP {label}
                       </a>
                     </li>
                   ))}

@@ -289,10 +289,11 @@ export default async function InvestorRelations() {
           <div>
             <Button
               text="SEE  STOCK QUOTE"
-              url="#"
+              url="https://money.tmx.com/en/quote/ONE"
               border="border-quantum-green/60"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
             />
           </div>
         </div>

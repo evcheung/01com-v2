@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Bottom } from "@/components/resources/Bottom"
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 export default function QuantumThreat() {
   return (
@@ -55,7 +56,7 @@ export default function QuantumThreat() {
             <p>
               In the United States, NIST has led global PQC standardization
               efforts since 2016, establishing a rigorous, widely adopted path
-              to quantum‑safe cryptography. Our IronCAP™ Engine supports
+              to quantum‑safe cryptography. Our IronCAP<Trademark /> Engine supports
               NIST‑endorsed PQC algorithms—plus additional quantum‑resistant
               options—to help organizations modernize encryption with
               confidence.

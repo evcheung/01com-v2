@@ -90,7 +90,7 @@ function InfoSection({
     </div>
   );
 }
-
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 /* ── Page ─────────────────────────────────────────────────────────── */
 export default function LiveDemo() {
   return (
@@ -124,7 +124,7 @@ export default function LiveDemo() {
               also has faster cryptographic operations (key generation,
               encryption, decryption) than the traditional Goppa Code-based
               technology (McEliece). We are offering a live demonstration for
-              the general public to try and experience the strength of IronCAP™
+              the general public to try and experience the strength of IronCAP<Trademark />
               post-quantum encryption easily.
             </p>
           </div>

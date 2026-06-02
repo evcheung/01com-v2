@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Bottom } from "@/components/resources/Bottom"
 /* ── Data ─────────────────────────────────────────────────────────── */
 const departmentButtons: { label: string; href: string }[] = [
-  { label: "Sales/VARs", href: "#sales" },
-  { label: "Investor Relations", href: "#investor-relations" },
-  { label: "Technical Support", href: "#technical-support" },
-  { label: "Marketing", href: "#marketing" },
-  { label: "Customer Service", href: "#customer-service" },
-  { label: "Human resources", href: "#human-resources" },
+  { label: "Sales/VARs", href: "mailto:sales@01com.com" },
+  { label: "Investor Relations", href: "mailto:ir@01com.com" },
+  { label: "Technical Support", href: "mailto:help@01com.com" },
+  { label: "Marketing", href: "mailto:marketing@01com.com" },
+  { label: "Customer Service", href: "mailto:customerservice@01com.com" },
+  { label: "Human resources", href: "mailto:hr@01com.com" },
 ];
 
 const formFields: {
@@ -50,7 +50,7 @@ export default function Contact() {
 
       {/* ─── Two Column: Contact Info + Form ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-start">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-center">
           {/* Left Column - centered in remaining space */}
           <aside className="flex-1 flex flex-col gap-6 items-center">
             {/* Phone block */}
@@ -133,7 +133,7 @@ export default function Contact() {
           </aside>
 
           {/* Contact Form */}
-          <div className="w-full md:w-[705px] md:min-h-[879px] shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
+          <div className="w-full md:w-[705px]  shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
             <p className="text-steel-gray text-[20px] leading-[32px] max-w-[446px] mb-8">
               Contact us to receive updates, white papers, brochures, articles
               or to answer specific questions.

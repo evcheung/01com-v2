@@ -41,6 +41,8 @@ const strengths = [
   },
 ];
 
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
 export default function Products() {
   return (
     <main>
@@ -64,7 +66,7 @@ export default function Products() {
             <div className="flex flex-col gap-[7px] text-[15px] leading-[24px]">
               <p className="text-steel-gray">
                 <span className="text-quantum-blue font-normal">
-                  IronCAP™ Engine{" "}
+                  IronCAP<Trademark /> Engine{" "}
                 </span>
                 is post-quantum cryptography (PQC) built to protect against
                 today&apos;s threats—and tomorrow&apos;s quantum-enabled
@@ -72,7 +74,7 @@ export default function Products() {
               </p>
               <p className="text-steel-gray">
                 <span className="text-quantum-blue font-normal">
-                  IronCAP™ Toolkits{" "}
+                  IronCAP<Trademark /> Toolkits{" "}
                 </span>
                 combine NIST-approved PQC algorithms with our patent-protected
                 quantum-safe technologies, enabling secure integration across
@@ -84,12 +86,12 @@ export default function Products() {
               </p>
               <p className="text-steel-gray">
                 <span className="text-quantum-blue font-normal">
-                  IronCAP™ Cryptography (ICC)
+                  IronCAP<Trademark /> Cryptography (ICC)
                 </span>{" "}
-                is the core cryptographic suite within the IronCAP™ Toolkits. It
+                is the core cryptographic suite within the IronCAP<Trademark /> Toolkits. It
                 includes NIST algorithms plus our patented, high-performance
                 implementation of Classic McEliece, engineered for large-scale
-                deployments (U.S. Patent No. 11,271,715). IronCAP™ actively
+                deployments (U.S. Patent No. 11,271,715). IronCAP<Trademark /> actively
                 monitors PQC standardization progress at the National Institute
                 of Standards and Technology (NIST) via the Computer Security
                 Resource Center (CSRC) and is continuously updated to remain
@@ -113,7 +115,7 @@ export default function Products() {
           <div className="flex flex-col items-center flex-1">
             <LottiePlayer src={animation1} className="aspect-square w-60" />
             <h2 className="text-quantum-green text-[30px] font-medium leading-[46px] mt-4 max-w-[476px]">
-              IronCAP™ included PQC technologies from NIST
+              IronCAP<Trademark /> included PQC technologies from NIST
             </h2>
             <div className="flex gap-12 mt-3">
               <div className="flex flex-col gap-[7px]">
@@ -165,7 +167,7 @@ export default function Products() {
           <div className="flex flex-col gap-4">
             <p className="text-steel-gray text-lg md:text-[21px] font-normal leading-[28px] md:leading-[30px] max-w-[928px]">
               Like most adversaries, quantum attacks will occur when we are
-              least prepared. Armed with IronCAP™ solutions and services,
+              least prepared. Armed with IronCAP<Trademark /> solutions and services,
               customers today are safeguarding data and guarding against any
               unexpected quantum attacks in the future.
             </p>
@@ -229,7 +231,7 @@ export default function Products() {
               hoverBg="hover:bg-quantum-green/10"
             />
             <Button
-              text="step into the future, buy IronCAP™ now"
+              text="step into the future, buy IronCAP now"
               url="https://imoncall.01com.com/ironcapchat/"
               border="border-quantum-green"
               textColor="text-quantum-green"

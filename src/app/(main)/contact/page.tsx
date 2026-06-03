@@ -167,7 +167,7 @@ export default function Contact() {
 
               <div className="mt-2">
                 <a
-                  href="mailto:help@01com.com"
+                  href="mailto:01com@01com.com"
                   className="inline-block border border-quantum-green/60 rounded-bl-lg rounded-tr-lg text-quantum-green text-[14px] font-medium uppercase tracking-widest px-8 py-3 hover:bg-quantum-green/10 transition-colors"
                 >
                   Go · · ·

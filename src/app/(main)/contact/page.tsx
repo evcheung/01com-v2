@@ -139,7 +139,7 @@ export default function Contact() {
               or to answer specific questions.
             </p>
 
-            <form className="flex flex-col gap-4" action="#" method="post">
+            <form className="flex flex-col gap-4">
               {formFields.map((field) => (
                 <label key={field.name} className="block">
                   <span className="sr-only">{field.label}</span>
@@ -166,12 +166,12 @@ export default function Contact() {
               </label>
 
               <div className="mt-2">
-                <button
-                  type="submit"
+                <a
+                  href="mailto:help@01com.com"
                   className="inline-block border border-quantum-green/60 rounded-bl-lg rounded-tr-lg text-quantum-green text-[14px] font-medium uppercase tracking-widest px-8 py-3 hover:bg-quantum-green/10 transition-colors"
                 >
                   Go · · ·
-                </button>
+                </a>
               </div>
             </form>
           </div>

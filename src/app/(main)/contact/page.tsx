@@ -1,5 +1,9 @@
+"use client";
+
+import { FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Bottom } from "@/components/resources/Bottom"
+import { Bottom } from "@/components/resources/Bottom";
+
 /* ── Data ─────────────────────────────────────────────────────────── */
 const departmentButtons: { label: string; href: string }[] = [
   { label: "Sales/VARs", href: "mailto:sales@01com.com" },
@@ -9,6 +13,8 @@ const departmentButtons: { label: string; href: string }[] = [
   { label: "Customer Service", href: "mailto:customerservice@01com.com" },
   { label: "Human resources", href: "mailto:hr@01com.com" },
 ];
+
+const generalInquiriesEmail = "01com@01com.com";
 
 const formFields: {
   name: string;
@@ -26,6 +32,33 @@ const formFields: {
 
 /* ── Page ─────────────────────────────────────────────────────────── */
 export default function Contact() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
+    const title = formData.get("title");
+    const company = formData.get("company");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const message = formData.get("message");
+
+    const subject = encodeURIComponent("General Inquiry");
+    const body = encodeURIComponent(
+      `First Name: ${firstName}\n` +
+        `Last Name: ${lastName}\n` +
+        `Title: ${title}\n` +
+        `Company: ${company}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n\n` +
+        `Message:\n${message}`
+    );
+
+    window.location.href = `mailto:${generalInquiriesEmail}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <main
       className="font-[family-name:var(--font-urbanist)]"
@@ -55,7 +88,6 @@ export default function Contact() {
           <aside className="flex-1 flex flex-col gap-6 items-center">
             {/* Phone block */}
             <div className="flex items-start gap-4">
-              {/* Phone icon */}
               <span
                 aria-hidden
                 className="shrink-0 w-[34px] h-[40px] flex items-center justify-center text-quantum-green"
@@ -73,6 +105,7 @@ export default function Contact() {
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
               </span>
+
               <div className="flex flex-col gap-2">
                 <a
                   href="tel:+18006682185"
@@ -80,6 +113,7 @@ export default function Contact() {
                 >
                   1 800 668-2185
                 </a>
+
                 <a
                   href="#live-chat"
                   className="inline-flex items-center gap-2 text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
@@ -122,24 +156,38 @@ export default function Contact() {
 
             {/* Address */}
             <address className="not-italic mt-4">
-              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mb-0">01 Quantum</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">789 Don Mills Road, Suite #700</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Toronto, Ontario, M3C 1T5</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Canada</p>
-              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mt-4">Office Hours</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Monday – Friday</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">9 am to 6 pm EST</p>
+              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mb-0">
+                01 Quantum
+              </p>
+              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">
+                789 Don Mills Road, Suite #700
+              </p>
+              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">
+                Toronto, Ontario, M3C 1T5
+              </p>
+              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">
+                Canada
+              </p>
+              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mt-4">
+                Office Hours
+              </p>
+              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">
+                Monday – Friday
+              </p>
+              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">
+                9 am to 6 pm EST
+              </p>
             </address>
           </aside>
 
           {/* Contact Form */}
-          <div className="w-full md:w-[705px]  shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
+          <div className="w-full md:w-[705px] shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
             <p className="text-steel-gray text-[20px] leading-[32px] max-w-[446px] mb-8">
               Contact us to receive updates, white papers, brochures, articles
               or to answer specific questions.
             </p>
 
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               {formFields.map((field) => (
                 <label key={field.name} className="block">
                   <span className="sr-only">{field.label}</span>
@@ -166,12 +214,12 @@ export default function Contact() {
               </label>
 
               <div className="mt-2">
-                <a
-                  href="mailto:01com@01com.com"
+                <button
+                  type="submit"
                   className="inline-block border border-quantum-green/60 rounded-bl-lg rounded-tr-lg text-quantum-green text-[14px] font-medium uppercase tracking-widest px-8 py-3 hover:bg-quantum-green/10 transition-colors"
                 >
                   Go · · ·
-                </a>
+                </button>
               </div>
             </form>
           </div>
@@ -180,7 +228,7 @@ export default function Contact() {
 
       {/* ─── Learn More CTA ─── */}
       <section className="bg-white py-16 flex justify-center">
-        <Bottom/>
+        <Bottom />
       </section>
     </main>
   );

@@ -14,7 +14,7 @@ const departmentButtons: { label: string; href: string }[] = [
   { label: "Human resources", href: "mailto:hr@01com.com" },
 ];
 
-const generalInquiriesEmail = "01com@01com.com";
+const generalInquiriesEmail = "sales@01com.com";
 
 const formFields: {
   name: string;

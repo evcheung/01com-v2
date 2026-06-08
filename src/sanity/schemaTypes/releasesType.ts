@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export const releasesType = defineType({
-  name: "releases",
-  title: "press-releases",
+  name: "press-releases",
+  title: "Press Releases",
   type: "document",
   fields: [
     defineField({

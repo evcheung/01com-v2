@@ -15,10 +15,10 @@ export const NEWSLETTERS_COUNT_QUERY = defineQuery(`count(*[_type == "newsletter
 export const NEWSLETTER_QUERY = defineQuery(`*[_type == "newsletters" && slug.current == $slug][0] { _id, year, month, link }`)
 export const NEWSLETTER_SLUGS_QUERY = defineQuery(`*[_type == "newsletters" && defined(slug.current)] { "slug": slug.current }`)
 
-export const RELEASES_QUERY = defineQuery(`*[_type == "press-releases"] | order(date desc) [$start...$end] { _id, date, description, link, }`)
-export const RELEASES_COUNT_QUERY = defineQuery(`count(*[_type == "press-releases"])`)
-export const RELEASE_QUERY = defineQuery(`*[_type == "press-releases" && slug.current == $slug][0] { _id, date, description, link }`)
-export const RELEASE_SLUGS_QUERY = defineQuery(`*[_type == "press-releases" && defined(slug.current)] { "slug": slug.current }`)
+export const RELEASES_QUERY = defineQuery(`*[_type in ["press-releases", "releases"]] | order(date desc) [$start...$end] { _id, date, description, link, }`)
+export const RELEASES_COUNT_QUERY = defineQuery(`count(*[_type in ["press-releases", "releases"]])`)
+export const RELEASE_QUERY = defineQuery(`*[_type in ["press-releases", "releases"] && slug.current == $slug][0] { _id, date, description, link }`)
+export const RELEASE_SLUGS_QUERY = defineQuery(`*[_type in ["press-releases", "releases"] && defined(slug.current)] { "slug": slug.current }`)
 
 export const REWARDS_QUERY = defineQuery(`*[_type == "reviews-awards"] | order(date desc) [$start...$end] { _id, date, description, "image": image.asset->url, imageAltText, link }`)
 export const REWARDS_COUNT_QUERY = defineQuery(`count(*[_type == "reviews-awards"])`)

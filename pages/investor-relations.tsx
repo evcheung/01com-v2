@@ -59,7 +59,7 @@ const StyledContentHeading = styled(Heading)`
 
   ${breakpoints("font-size", "", [{ 900: theme.fontSize.xl }])}
   ${breakpoints("margin-bottom", "", [{ 760: "12px" }])}
-${breakpoints("line-height", "", [{ 760: "24px" }])}
+  ${breakpoints("line-height", "", [{ 760: "24px" }])}
 `;
 
 const StyledVideoHeader = styled(Text)`
@@ -76,6 +76,7 @@ const FeaturedVideoContainer = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 96px;
+
   ${breakpoints("column-gap", "", [{ 1200: "24px" }])}
   ${breakpoints("padding", "", [{ 1200: "68px 56px" }])}
 `;
@@ -91,7 +92,7 @@ const TableContainer = styled(Box)`
 
   ${breakpoints("grid-template-columns", "", [{ 1200: "2fr 3fr 2fr" }])}
   ${breakpoints("grid-template-columns", "", [{ 760: "1fr" }])}
-${breakpoints("row-gap", "", [{ 760: "8px" }])}
+  ${breakpoints("row-gap", "", [{ 760: "8px" }])}
 `;
 
 const LinkContainer = styled(Box)`
@@ -100,9 +101,9 @@ const LinkContainer = styled(Box)`
   ${breakpoints("flex-direction", "", [{ 1200: "column" }])}
   ${breakpoints("align-items", "", [{ 1200: "flex-start" }])}
 
-${breakpoints("flex-direction", "", [{ 760: "row" }])}
-${breakpoints("align-items", "", [{ 760: "center" }])}
-${breakpoints("margin-bottom", "", [{ 760: "8px" }])}
+  ${breakpoints("flex-direction", "", [{ 760: "row" }])}
+  ${breakpoints("align-items", "", [{ 760: "center" }])}
+  ${breakpoints("margin-bottom", "", [{ 760: "8px" }])}
 `;
 
 const LinkItem = styled(Box)`
@@ -112,6 +113,7 @@ const LinkItem = styled(Box)`
   :first-of-type {
     margin: 0 48px 0 -10px;
   }
+
   :last-of-type {
     ${breakpoints("margin", "", [{ 1200: "10px 0 0 -10px" }])}
     ${breakpoints("margin", "", [{ 760: "0 48px 0 -10px" }])}
@@ -122,6 +124,37 @@ const LinkItem = styled(Box)`
   }
 `;
 
+const ExternalLinkIcon = styled.span`
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  color: currentColor;
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
+`;
+
+const RedirectIcon = () => (
+  <ExternalLinkIcon aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M14 3h7v7" />
+      <path d="M10 14L21 3" />
+      <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+    </svg>
+  </ExternalLinkIcon>
+);
+
 const HeaderContent = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
   const { width } = useWindowSize();
@@ -129,8 +162,11 @@ const HeaderContent = ({ featuredVideo }) => {
   const isMp4 = isMp4Link(featuredVideo?.link);
   const youtubeId = !isMp4 ? getYoutubeId(featuredVideo.link) : "";
   const youtubeThumbnail = useMemo(
-    () => (!isMp4 && youtubeId ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp` : ""),
-    [isMp4, youtubeId]
+    () =>
+      !isMp4 && youtubeId
+        ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`
+        : "",
+    [isMp4, youtubeId],
   );
 
   const VideoBannerDesktop = () => (
@@ -177,7 +213,13 @@ const HeaderContent = ({ featuredVideo }) => {
               style={{ width: "min(960px, 100%)" }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Box style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginBottom: "8px",
+                }}
+              >
                 <button
                   onClick={() => setOpen(false)}
                   style={{
@@ -231,8 +273,8 @@ const HeaderContent = ({ featuredVideo }) => {
         >
           <Text textColor={TextColors.White} alignment="center">
             01 Quantum's common shares are listed on the TSX Venture Exchange
-            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market
-            under the symbol 'OONEF'.
+            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under
+            the symbol 'OONEF'.
           </Text>
         </Box>
 
@@ -242,7 +284,6 @@ const HeaderContent = ({ featuredVideo }) => {
   );
 };
 
-
 const LATEST_PRESENTATION = [
   {
     date: "Spring 2023",
@@ -250,10 +291,10 @@ const LATEST_PRESENTATION = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Presentation.pdf",
-        type: "pdf"
-      }
-    ]
-  }
+        type: "pdf",
+      },
+    ],
+  },
 ];
 
 const RECENT_EVENTS = [
@@ -263,13 +304,13 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q2-2023-Press-Release.pdf",
-        type: "pdf"
+        type: "pdf",
       },
       {
         url: "https://www.01com.com/Videos/2023/2023Q2-Presentation-recording-with-Q&A.mp4",
-        type: "video"
-      }
-    ]
+        type: "video",
+      },
+    ],
   },
   {
     date: "March 21, 2023",
@@ -277,9 +318,9 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q1-2023-Press-Release.pdf",
-        type: "pdf"
-      }
-    ]
+        type: "pdf",
+      },
+    ],
   },
   {
     date: "January 19, 2023",
@@ -287,9 +328,9 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://www.01com.com/pdf/2023/Q4-2022-Press-Release.pdf",
-        type: "pdf"
-      }
-    ]
+        type: "pdf",
+      },
+    ],
   },
   {
     date: "September 15, 2022",
@@ -297,10 +338,10 @@ const RECENT_EVENTS = [
     links: [
       {
         url: "https://01com.com/pdf/2022/Q3-2022-Press-Release.pdf",
-        type: "pdf"
-      }
-    ]
-  }
+        type: "pdf",
+      },
+    ],
+  },
 ];
 
 const VideoBannerMobile = ({ featuredVideo }) => {
@@ -313,7 +354,7 @@ const VideoBannerMobile = ({ featuredVideo }) => {
       !isMp4 && youtubeId
         ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`
         : "",
-    [isMp4, youtubeId]
+    [isMp4, youtubeId],
   );
 
   return (
@@ -375,6 +416,7 @@ const VideoBannerMobile = ({ featuredVideo }) => {
             </Box>
           </Box>
         )}
+
         {!isMp4 && (
           <ModalVideo
             channel="youtube"
@@ -418,29 +460,61 @@ const TableContent = ({ width, data }) => {
         </TableContainer>
       )}
       <HorizontalBorder />
-      {data.map(item => {
+
+      {data.map((item) => {
         return (
           <>
             <TableContainer key={`table-container-${uid.rnd()}`}>
               <Text>{item.date}</Text>
               <Text>{item.description}</Text>
+
               <LinkContainer>
-                {item.relevantLinks.map(link => {
-                  const isPDF = isPdfLink(link.url);
+                {item.relevantLinks?.map((link) => {
+                  const linkType = (
+                    link.type ||
+                    link.linkType ||
+                    link.link_type ||
+                    ""
+                  ).toLowerCase();
+
+                  const href =
+                    link.url ||
+                    link.href ||
+                    link.link ||
+                    link.redirectUrl ||
+                    "";
+
+                  if (!href) return null;
+
+                  const isPDF = linkType === "pdf" || isPdfLink(href);
+                  const isVideo = linkType === "video";
+                  const isRedirect = linkType === "redirect";
+
                   return (
-                    <>
-                      <LinkItem key={`link-item-${uid.rnd()}`}>
-                        <Box margin="0px 8px">
-                          <Image
-                            src={isPDF ? pdf : webinar}
-                            alt={isPDF ? "pdf icon" : "video icon"}
-                          />
-                        </Box>
-                        <Anchor style={{marginTop: "4px"}} href={link.url} target="_blank">
-                          {link.label}
-                        </Anchor>
-                      </LinkItem>
-                    </>
+                    <LinkItem key={`link-item-${uid.rnd()}`}>
+                      <Anchor
+                        style={{
+                          marginTop: "4px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                        }}
+                        href={href}
+                        target="_blank"
+                      >
+                        {isRedirect ? (
+                          <RedirectIcon />
+                        ) : isPDF ? (
+                          <Image src={pdf} alt="pdf icon" />
+                        ) : isVideo ? (
+                          <Image src={webinar} alt="video icon" />
+                        ) : (
+                          <RedirectIcon />
+                        )}
+
+                        {link.label}
+                      </Anchor>
+                    </LinkItem>
                   );
                 })}
               </LinkContainer>
@@ -464,7 +538,7 @@ const ContentContainer = styled(Box)`
 
   ${breakpoints("padding", "", [{ 1200: "0 48px" }])}
   ${breakpoints("margin", "", [{ 900: "48px 0" }])}
-${breakpoints("padding", "", [{ 900: "0" }])}
+  ${breakpoints("padding", "", [{ 900: "0" }])}
 `;
 
 const Section = styled(Box)`
@@ -511,7 +585,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       investorRelations: await client.fetch<InvestorRelations[]>(query),
-    }
+    },
   };
 };
 
@@ -525,13 +599,13 @@ export default function InvestorRelations({ investorRelations }) {
     return dateB - dateA;
   });
 
-  const formattedSortedRecentEvents = sortedRecentEvents.map(item => ({
+  const formattedSortedRecentEvents = sortedRecentEvents.map((item) => ({
     ...item,
     date: new Intl.DateTimeFormat("en-CA", {
       month: "long",
       day: "numeric",
-      year: "numeric"
-    }).format(new Date(item.date + "T00:00"))
+      year: "numeric",
+    }).format(new Date(item.date + "T00:00")),
   }));
 
   return (
@@ -554,6 +628,7 @@ export default function InvestorRelations({ investorRelations }) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         />
       </Head>
+
       <ContentContainer>
         {width <= 900 && (
           <Box margin="0 0 68px 0">
@@ -621,7 +696,8 @@ export default function InvestorRelations({ investorRelations }) {
                 <Box margin="0px 8px">
                   <Image src={pdf} alt="pdf icon" />
                 </Box>
-                <Anchor style={{marginTop: "4px"}}
+                <Anchor
+                  style={{ marginTop: "4px" }}
                   href={
                     investorRelations.financialResults[0].relevantLinks[0].url
                   }

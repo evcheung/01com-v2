@@ -54,6 +54,18 @@ const getHref = (link) => {
   );
 };
 
+const parseDate = (value?: string) => {
+  if (!value) return null;
+
+  const parsed = new Date(value);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return null;
+  }
+
+  return parsed;
+};
+
 export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
 
@@ -179,9 +191,10 @@ const RedirectIcon = () => (
 const HeaderContent = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
   const { width } = useWindowSize();
+  const videoLink = featuredVideo?.link ?? "";
 
-  const isMp4 = isMp4Link(featuredVideo?.link);
-  const youtubeId = !isMp4 ? getYoutubeId(featuredVideo.link) : "";
+  const isMp4 = isMp4Link(videoLink);
+  const youtubeId = !isMp4 ? getYoutubeId(videoLink) : "";
   const youtubeThumbnail = useMemo(
     () =>
       !isMp4 && youtubeId
@@ -299,7 +312,7 @@ const HeaderContent = ({ featuredVideo }) => {
           </Text>
         </Box>
 
-        {width > 900 && <VideoBannerDesktop />}
+        {width > 900 && featuredVideo && <VideoBannerDesktop />}
       </Box>
     </>
   );
@@ -309,10 +322,11 @@ const LATEST_PRESENTATION = [
   {
     date: "Spring 2023",
     description: "Spring 2023 Investor Presentation",
-    links: [
+    relevantLinks: [
       {
         url: "https://www.01com.com/pdf/2023/Presentation.pdf",
         type: "pdf",
+        label: "PDF",
       },
     ],
   },
@@ -322,44 +336,49 @@ const RECENT_EVENTS = [
   {
     date: "June 15, 2023",
     description: "01 reports fiscal Q2 2023",
-    links: [
+    relevantLinks: [
       {
         url: "https://www.01com.com/pdf/2023/Q2-2023-Press-Release.pdf",
         type: "pdf",
+        label: "PDF",
       },
       {
         url: "https://www.01com.com/Videos/2023/2023Q2-Presentation-recording-with-Q&A.mp4",
         type: "video",
+        label: "Video",
       },
     ],
   },
   {
     date: "March 21, 2023",
     description: "01 reports fiscal Q1 2023",
-    links: [
+    relevantLinks: [
       {
         url: "https://www.01com.com/pdf/2023/Q1-2023-Press-Release.pdf",
         type: "pdf",
+        label: "PDF",
       },
     ],
   },
   {
     date: "January 19, 2023",
     description: "01 reports fiscal Q4 2022",
-    links: [
+    relevantLinks: [
       {
         url: "https://www.01com.com/pdf/2023/Q4-2022-Press-Release.pdf",
         type: "pdf",
+        label: "PDF",
       },
     ],
   },
   {
     date: "September 15, 2022",
     description: "01 reports fiscal Q3 2022",
-    links: [
+    relevantLinks: [
       {
         url: "https://01com.com/pdf/2022/Q3-2022-Press-Release.pdf",
         type: "pdf",
+        label: "PDF",
       },
     ],
   },
@@ -367,9 +386,10 @@ const RECENT_EVENTS = [
 
 const VideoBannerMobile = ({ featuredVideo }) => {
   const [isOpen, setOpen] = useState(false);
+  const videoLink = featuredVideo?.link ?? "";
 
-  const isMp4 = isMp4Link(featuredVideo?.link);
-  const youtubeId = !isMp4 ? getYoutubeId(featuredVideo.link) : "";
+  const isMp4 = isMp4Link(videoLink);
+  const youtubeId = !isMp4 ? getYoutubeId(videoLink) : "";
   const youtubeThumbnail = useMemo(
     () =>
       !isMp4 && youtubeId
@@ -565,25 +585,25 @@ type InvestorRelations = {
     description: string;
     link: string;
     isFeatured: boolean;
-  };
+  }[];
   latestPresentation: {
     _id: string;
     date: string;
     description: string;
     relevantLinks: any;
     isFeatured: boolean;
-  };
+  }[];
   recentEvents: {
     _id: string;
     date: string;
     description: string;
     relevantLinks: any;
-  };
+  }[];
   financialResults: {
     _id: string;
     description: string;
     relevantLinks: any;
-  };
+  }[];
 };
 
 export const getStaticProps = async () => {
@@ -593,33 +613,51 @@ export const getStaticProps = async () => {
   const queryFinancial = `*[ _type == "investor-relations-financial-results" ]`;
   const query = `{ "featuredVideo": ${queryVideos}, "latestPresentation": ${queryLatestPresentation}, "recentEvents": ${queryRecentEvents}, "financialResults": ${queryFinancial} }`;
 
+  const investorRelations = await client.fetch<InvestorRelations>(query);
+
   return {
     props: {
-      investorRelations: await client.fetch<InvestorRelations[]>(query),
+      investorRelations: {
+        featuredVideo: investorRelations?.featuredVideo ?? [],
+        latestPresentation:
+          investorRelations?.latestPresentation?.length
+            ? investorRelations.latestPresentation
+            : LATEST_PRESENTATION,
+        recentEvents:
+          investorRelations?.recentEvents?.length
+            ? investorRelations.recentEvents
+            : RECENT_EVENTS,
+        financialResults: investorRelations?.financialResults ?? [],
+      },
     },
   };
 };
 
 export default function InvestorRelations({ investorRelations }) {
   const { width } = useWindowSize();
+  const featuredVideo = investorRelations?.featuredVideo?.[0];
+  const latestPresentation = investorRelations?.latestPresentation ?? [];
+  const recentEvents = investorRelations?.recentEvents ?? [];
+  const financialResults = investorRelations?.financialResults ?? [];
 
-  const sortedRecentEvents = investorRelations.recentEvents.sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
+  const sortedRecentEvents = [...recentEvents].sort((a, b) => {
+    const dateA = parseDate(a?.date)?.getTime() ?? 0;
+    const dateB = parseDate(b?.date)?.getTime() ?? 0;
 
     return dateB - dateA;
   });
 
   const formattedSortedRecentEvents = sortedRecentEvents.map((item) => ({
     ...item,
-    date: new Intl.DateTimeFormat("en-CA", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }).format(new Date(item.date + "T00:00")),
+    date:
+      parseDate(item?.date)?.toLocaleDateString("en-CA", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }) ?? item?.date,
   }));
 
-  const financialResult = investorRelations.financialResults?.[0];
+  const financialResult = financialResults?.[0];
   const financialLink = financialResult?.relevantLinks?.[0];
   const financialHref = getHref(financialLink);
 
@@ -627,9 +665,7 @@ export default function InvestorRelations({ investorRelations }) {
     <Layout
       variant={LayoutVariants.Dark}
       pageTitle="Investor Relations"
-      headerContent={
-        <HeaderContent featuredVideo={investorRelations.featuredVideo[0]} />
-      }
+      headerContent={featuredVideo ? <HeaderContent featuredVideo={featuredVideo} /> : null}
     >
       <Head>
         <title>Remote Desktop Software Press and Reviews</title>
@@ -645,11 +681,9 @@ export default function InvestorRelations({ investorRelations }) {
       </Head>
 
       <ContentContainer>
-        {width <= 900 && (
+        {width <= 900 && featuredVideo && (
           <Box margin="0 0 68px 0">
-            <VideoBannerMobile
-              featuredVideo={investorRelations.featuredVideo[0]}
-            />
+            <VideoBannerMobile featuredVideo={featuredVideo} />
           </Box>
         )}
 
@@ -657,10 +691,7 @@ export default function InvestorRelations({ investorRelations }) {
           <StyledContentHeading as="h2">
             Latest Presentation
           </StyledContentHeading>
-          <TableContent
-            width={width}
-            data={investorRelations.latestPresentation}
-          />
+          <TableContent width={width} data={latestPresentation} />
         </Section>
 
         <Section>

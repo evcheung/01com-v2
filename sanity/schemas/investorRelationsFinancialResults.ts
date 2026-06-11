@@ -28,17 +28,6 @@ export default defineType({
               name: "label",
               title: "Label",
               type: "string"
-            },
-            {
-              name: 'linkType',
-              title: 'Link Type',
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'PDF', value: 'pdf' },
-                  { title: 'Video', value: 'video' },
-                ],
-              }
             }
           ]
         }

@@ -21,6 +21,7 @@ import ShortUniqueId from "short-unique-id";
 import thumbnail from "../public/assets/thumbnail-andrew-cheung.png";
 
 const isMp4Link = (url?: string) => !!url && /\.mp4(\?|#|$)/i.test(url);
+const isPdfLink = (url?: string) => !!url && /\.pdf(\?|#|$)/i.test(url);
 
 const getYoutubeId = (url: string) => {
   // supports youtu.be/<id>, youtube.com/watch?v=<id>, youtube.com/embed/<id>
@@ -425,7 +426,7 @@ const TableContent = ({ width, data }) => {
               <Text>{item.description}</Text>
               <LinkContainer>
                 {item.relevantLinks.map(link => {
-                  const isPDF = link.linkType === "pdf";
+                  const isPDF = isPdfLink(link.url);
                   return (
                     <>
                       <LinkItem key={`link-item-${uid.rnd()}`}>

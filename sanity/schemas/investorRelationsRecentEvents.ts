@@ -38,15 +38,18 @@ export default defineType({
               type: "string"
             },
             {
-              name: 'linkType',
-              title: 'Link Type',
-              type: 'string',
+              name: "linkType",
+              title: "Link Type",
+              type: "string",
               options: {
                 list: [
-                  { title: 'PDF', value: 'pdf' },
-                  { title: 'Video', value: 'video' },
+                  { title: "PDF", value: "pdf" },
+                  { title: "Video", value: "video" },
+                  { title: "Redirect", value: "redirect" }
                 ],
-              }
+                layout: "dropdown"
+              },
+              initialValue: "redirect"
             }
           ]
         }
@@ -66,7 +69,7 @@ export default defineType({
       title: 'Date, New',
       name: 'dateDesc',
       by: [
-        { field: 'date', direction: 'desc', }
+        { field: 'date', direction: 'desc' }
       ],
     },
     {

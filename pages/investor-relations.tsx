@@ -33,6 +33,27 @@ const getYoutubeId = (url: string) => {
   return match?.[1] ?? "";
 };
 
+const getLinkType = (link) => {
+  return String(
+    link?.type ||
+      link?.linkType ||
+      link?.link_type ||
+      link?.typeOfLink ||
+      ""
+  ).toLowerCase();
+};
+
+const getHref = (link) => {
+  return String(
+    link?.url ||
+      link?.href ||
+      link?.link ||
+      link?.redirectUrl ||
+      link?.redirect ||
+      ""
+  );
+};
+
 export const revalidate = 10;
 // export const dynamic = 'force-dynamic'
 
@@ -166,7 +187,7 @@ const HeaderContent = ({ featuredVideo }) => {
       !isMp4 && youtubeId
         ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`
         : "",
-    [isMp4, youtubeId],
+    [isMp4, youtubeId]
   );
 
   const VideoBannerDesktop = () => (
@@ -273,8 +294,8 @@ const HeaderContent = ({ featuredVideo }) => {
         >
           <Text textColor={TextColors.White} alignment="center">
             01 Quantum's common shares are listed on the TSX Venture Exchange
-            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market under
-            the symbol 'OONEF'.
+            (TSX-V) under the symbol 'ONE' and quoted on the OTCQB market
+            under the symbol 'OONEF'.
           </Text>
         </Box>
 
@@ -354,7 +375,7 @@ const VideoBannerMobile = ({ featuredVideo }) => {
       !isMp4 && youtubeId
         ? `https://i.ytimg.com/vi_webp/${youtubeId}/0.webp`
         : "",
-    [isMp4, youtubeId],
+    [isMp4, youtubeId]
   );
 
   return (
@@ -461,28 +482,17 @@ const TableContent = ({ width, data }) => {
       )}
       <HorizontalBorder />
 
-      {data.map((item) => {
+      {data?.map((item) => {
         return (
-          <>
-            <TableContainer key={`table-container-${uid.rnd()}`}>
+          <div key={`table-row-${uid.rnd()}`}>
+            <TableContainer>
               <Text>{item.date}</Text>
               <Text>{item.description}</Text>
 
               <LinkContainer>
                 {item.relevantLinks?.map((link) => {
-                  const linkType = (
-                    link.type ||
-                    link.linkType ||
-                    link.link_type ||
-                    ""
-                  ).toLowerCase();
-
-                  const href =
-                    link.url ||
-                    link.href ||
-                    link.link ||
-                    link.redirectUrl ||
-                    "";
+                  const linkType = getLinkType(link);
+                  const href = getHref(link);
 
                   if (!href) return null;
 
@@ -501,6 +511,7 @@ const TableContent = ({ width, data }) => {
                         }}
                         href={href}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {isRedirect ? (
                           <RedirectIcon />
@@ -520,7 +531,7 @@ const TableContent = ({ width, data }) => {
               </LinkContainer>
             </TableContainer>
             <HorizontalBorder />
-          </>
+          </div>
         );
       })}
     </>
@@ -608,6 +619,10 @@ export default function InvestorRelations({ investorRelations }) {
     }).format(new Date(item.date + "T00:00")),
   }));
 
+  const financialResult = investorRelations.financialResults?.[0];
+  const financialLink = financialResult?.relevantLinks?.[0];
+  const financialHref = getHref(financialLink);
+
   return (
     <Layout
       variant={LayoutVariants.Dark}
@@ -689,23 +704,24 @@ export default function InvestorRelations({ investorRelations }) {
           <HorizontalBorder />
 
           <TableContainer>
-            <Text>{investorRelations.financialResults[0].description}</Text>
+            <Text>{financialResult?.description}</Text>
             <Box></Box>
             <LinkContainer>
-              <LinkItem>
-                <Box margin="0px 8px">
-                  <Image src={pdf} alt="pdf icon" />
-                </Box>
-                <Anchor
-                  style={{ marginTop: "4px" }}
-                  href={
-                    investorRelations.financialResults[0].relevantLinks[0].url
-                  }
-                  target="_blank"
-                >
-                  {investorRelations.financialResults[0].relevantLinks[0].label}
-                </Anchor>
-              </LinkItem>
+              {financialHref && (
+                <LinkItem>
+                  <Box margin="0px 8px">
+                    <Image src={pdf} alt="pdf icon" />
+                  </Box>
+                  <Anchor
+                    style={{ marginTop: "4px" }}
+                    href={financialHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {financialLink?.label}
+                  </Anchor>
+                </LinkItem>
+              )}
             </LinkContainer>
           </TableContainer>
           <HorizontalBorder />

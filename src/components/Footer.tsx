@@ -6,11 +6,6 @@ const socialLinks = [
     label: "X",
   },
   {
-    icon: "/header_assets/fb.svg",
-    url: "https://facebook.com/01QuantumInc",
-    label: "Facebook",
-  },
-  {
     icon: "/header_assets/in.svg",
     url: "https://linkedin.com/company/01-quantum/",
     label: "LinkedIn",
@@ -113,6 +108,8 @@ export default function Footer() {
                   <a
                     key={label}
                     href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-6 w-6 items-center justify-center rounded-full"
                   >
                     <Image

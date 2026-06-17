@@ -8,21 +8,25 @@ const products = [
     name: "IronCAP™ Engine",
     desc: "Software Toolkit",
     icon: "/home_assets/p_1.svg",
+    url: "/products/ironcap-engine/",
   },
   {
     name: "IronCAP™ Xmail",
     desc: "Outlook Email Encryption",
     icon: "/home_assets/p_2.svg",
+    url: "/products/ironcap-xmail/",
   },
   {
     name: "IronCAP™ OnCall",
     desc: "Encrypted Customer Support",
     icon: "/home_assets/p_3.svg",
+    url: "/products/ironcap-oncall/",
   },
   {
     name: "IronCAP™ InTouch",
     desc: "Encrypted Remote Desktop",
     icon: "/home_assets/p_4.svg",
+    url: "/products/ironcap-intouch/",
   },
 ];
 
@@ -31,16 +35,19 @@ const services = [
     name: "Quantum AI Wrapper QAW",
     desc: "AI Prompt + Model Security",
     icon: "/home_assets/s_1.svg",
+    url: "/services/",
   },
   {
     name: "Digital Asset Protection",
     desc: "Quantum-safe Digital Assets",
     icon: "/home_assets/s_2.svg",
+    url: "/services/",
   },
   {
     name: "Cryptographic Integration Services",
     desc: "Open-source Integration + Managed Services",
     icon: "/home_assets/s_3.svg",
+    url: "/services/",
   },
 ];
 
@@ -195,9 +202,7 @@ export default function Home() {
                 solution.
               </p>
               <a
-                href="#"
-                className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors"
-              >
+                href="/quantum-threat/" className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors">
                 Read more on quantum threat · · ·
               </a>
             </div>

@@ -1,10 +1,19 @@
 import { RewardCard } from "@/components/resources/rewards/RewardCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { REWARDS_COUNT_QUERY, REWARDS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 
 const PAGE_SIZE = 12;
+type RewardListItem = {
+  _id: string;
+  date: string;
+  description: string;
+  image?: string;
+  link?: string;
+  imageAltText?: string;
+};
 
 export default async function RewardsPage() {
   const currentPage = 1;
@@ -12,8 +21,8 @@ export default async function RewardsPage() {
   const end = start + PAGE_SIZE;
 
   const [rewards, total] = await Promise.all([
-    client.fetch(REWARDS_QUERY, { start, end }),
-    client.fetch(REWARDS_COUNT_QUERY),
+    sanityFetch<RewardListItem[]>({ query: REWARDS_QUERY, params: { start, end }, tags: [...SANITY_QUERY_TAGS.rewards] }),
+    sanityFetch<number>({ query: REWARDS_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.rewards] }),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

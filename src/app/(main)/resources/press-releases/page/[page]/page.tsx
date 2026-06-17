@@ -1,22 +1,18 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { RELEASES_COUNT_QUERY, RELEASES_QUERY } from "@/sanity/lib/queries";
 import { Pagination } from "@/components/resources/Pagination";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const PAGE_SIZE = 9;
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const total = await client.fetch<number>(RELEASES_COUNT_QUERY);
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-
-  return Array.from({ length: totalPages }, (_, i) => ({
-    page: String(i + 1),
-  }));
-}
+type ReleaseListItem = {
+  _id: string;
+  date: string;
+  description: string;
+  link: string;
+};
 
 export default async function PressReleasesPaginatedPage({
   params,
@@ -31,11 +27,15 @@ export default async function PressReleasesPaginatedPage({
   }
 
   const [releases, total] = await Promise.all([
-    client.fetch(RELEASES_QUERY, {
-      start: (currentPage - 1) * PAGE_SIZE,
-      end: currentPage * PAGE_SIZE,
+    sanityFetch<ReleaseListItem[]>({
+      query: RELEASES_QUERY,
+      params: {
+        start: (currentPage - 1) * PAGE_SIZE,
+        end: currentPage * PAGE_SIZE,
+      },
+      tags: [...SANITY_QUERY_TAGS.releases],
     }),
-    client.fetch<number>(RELEASES_COUNT_QUERY),
+    sanityFetch<number>({ query: RELEASES_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.releases] }),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

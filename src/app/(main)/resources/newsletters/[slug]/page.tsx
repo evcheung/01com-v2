@@ -1,26 +1,28 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { NEWSLETTER_QUERY, NEWSLETTER_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 
-const EMPTY_NEWSLETTER_STATIC_SLUG = "__no-newsletter__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await client.fetch(NEWSLETTER_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_NEWSLETTER_STATIC_SLUG }];
-}
+type NewsletterItem = {
+  year: string;
+  month: string;
+  link: string;
+};
 
 export default async function NewsletterItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (slug === EMPTY_NEWSLETTER_STATIC_SLUG) notFound();
+  const knownSlugs = await sanityFetch<Array<{ slug: string | null }>>({
+    query: NEWSLETTER_SLUGS_QUERY,
+    tags: [...SANITY_QUERY_TAGS.newsletters],
+  });
+  if (!knownSlugs.some((item) => item.slug === slug)) notFound();
 
-  const item = await client.fetch(NEWSLETTER_QUERY, { slug });
+  const item = await sanityFetch<NewsletterItem>({
+    query: NEWSLETTER_QUERY,
+    params: { slug },
+    tags: [...SANITY_QUERY_TAGS.newsletters],
+  });
   if (!item) notFound();
 
   return (

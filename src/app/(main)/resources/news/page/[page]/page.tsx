@@ -1,23 +1,20 @@
 import { NewsCard } from "@/components/resources/news/NewsCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { NEWS_COUNT_QUERY, NEWS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Key } from "react";
 
 const PAGE_SIZE = 12;
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const total = await client.fetch<number>(NEWS_COUNT_QUERY);
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-
-  return Array.from({ length: totalPages }, (_, i) => ({
-    page: String(i + 1),
-  }));
-}
+type NewsListItem = {
+  _id: Key | null | undefined;
+  date: string;
+  title: string;
+  description: string;
+  slug: string;
+};
 
 export default async function NewsPaginatedPage({
   params,
@@ -32,11 +29,15 @@ export default async function NewsPaginatedPage({
   }
 
   const [newsItems, total] = await Promise.all([
-    client.fetch(NEWS_QUERY, {
-      start: (currentPage - 1) * PAGE_SIZE,
-      end: currentPage * PAGE_SIZE,
+    sanityFetch<NewsListItem[]>({
+      query: NEWS_QUERY,
+      params: {
+        start: (currentPage - 1) * PAGE_SIZE,
+        end: currentPage * PAGE_SIZE,
+      },
+      tags: [...SANITY_QUERY_TAGS.news],
     }),
-    client.fetch<number>(NEWS_COUNT_QUERY),
+    sanityFetch<number>({ query: NEWS_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.news] }),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

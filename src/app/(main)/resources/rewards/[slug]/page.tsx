@@ -1,28 +1,34 @@
 import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { REWARD_QUERY, REWARD_SLUGS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 
-const EMPTY_REWARD_STATIC_SLUG = "__no-reward__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await client.fetch(REWARD_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_REWARD_STATIC_SLUG }];
-}
+type RewardItem = {
+  image?: string;
+  title?: string;
+  date: string;
+  imageAltText?: string;
+  description: string;
+  body?: PortableTextBlock[];
+};
 
 export default async function RewardItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (slug === EMPTY_REWARD_STATIC_SLUG) notFound();
+  const knownSlugs = await sanityFetch<Array<{ slug: string | null }>>({
+    query: REWARD_SLUGS_QUERY,
+    tags: [...SANITY_QUERY_TAGS.rewards],
+  });
+  if (!knownSlugs.some((item) => item.slug === slug)) notFound();
 
-  const post = await client.fetch(REWARD_QUERY, { slug });
+  const post = await sanityFetch<RewardItem>({
+    query: REWARD_QUERY,
+    params: { slug },
+    tags: [...SANITY_QUERY_TAGS.rewards],
+  });
   if (!post) notFound();
 
   return (
@@ -32,7 +38,7 @@ export default async function RewardItemPage({ params }: { params: Promise<{ slu
           ← Back to Rewards
         </Link>
         {post.image && (
-          <Image src={post.image} alt={post.title} className="max-h-[120px] w-auto object-contain mb-8" width={120} height={120} />
+          <Image src={post.image} alt={post.title ?? post.description} className="max-h-[120px] w-auto object-contain mb-8" width={120} height={120} />
         )}
         <p className="text-steel-gray text-[13px] mb-4">{post.date}</p>
         <h1 className="text-[#2b2f38] text-[28px] md:text-[36px] font-semibold leading-tight mb-8">{post.title}</h1>

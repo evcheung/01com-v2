@@ -1,27 +1,31 @@
 import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { NEWS_ITEM_QUERY, NEWS_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 
-const EMPTY_NEWS_STATIC_SLUG = "__no-news__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await client.fetch(NEWS_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_NEWS_STATIC_SLUG }];
-}
+type NewsPost = {
+  date: string;
+  title: string;
+  description: string;
+  body?: PortableTextBlock[];
+};
 
 export default async function NewsItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (slug === EMPTY_NEWS_STATIC_SLUG) notFound();
+  const knownSlugs = await sanityFetch<Array<{ slug: string | null }>>({
+    query: NEWS_SLUGS_QUERY,
+    tags: [...SANITY_QUERY_TAGS.news],
+  });
+  if (!knownSlugs.some((item) => item.slug === slug)) notFound();
 
-  const post = await client.fetch(NEWS_ITEM_QUERY, { slug });
+  const post = await sanityFetch<NewsPost>({
+    query: NEWS_ITEM_QUERY,
+    params: { slug },
+    tags: [...SANITY_QUERY_TAGS.news],
+  });
   if (!post) notFound();
 
   return (

@@ -1,27 +1,31 @@
 import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { RELEASE_QUERY, RELEASE_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 
-const EMPTY_RELEASE_STATIC_SLUG = "__no-press-release__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await client.fetch(RELEASE_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_RELEASE_STATIC_SLUG }];
-}
+type ReleaseItem = {
+  title?: string;
+  date: string;
+  description: string;
+  body?: PortableTextBlock[];
+};
 
 export default async function ReleaseItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (slug === EMPTY_RELEASE_STATIC_SLUG) notFound();
+  const knownSlugs = await sanityFetch<Array<{ slug: string | null }>>({
+    query: RELEASE_SLUGS_QUERY,
+    tags: [...SANITY_QUERY_TAGS.releases],
+  });
+  if (!knownSlugs.some((item) => item.slug === slug)) notFound();
 
-  const post = await client.fetch(RELEASE_QUERY, { slug });
+  const post = await sanityFetch<ReleaseItem>({
+    query: RELEASE_QUERY,
+    params: { slug },
+    tags: [...SANITY_QUERY_TAGS.releases],
+  });
   if (!post) notFound();
 
   return (

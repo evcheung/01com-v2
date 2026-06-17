@@ -1,11 +1,19 @@
 import { NewsCard } from "@/components/resources/news/NewsCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { NEWS_COUNT_QUERY, NEWS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 import { Key } from "react";
 
 const PAGE_SIZE = 12;
+type NewsListItem = {
+  _id: Key | null | undefined;
+  date: string;
+  title: string;
+  description: string;
+  slug: string;
+};
 
 export default async function NewsPage() {
   const currentPage = 1;
@@ -13,8 +21,8 @@ export default async function NewsPage() {
   const end = start + PAGE_SIZE;
 
   const [newsItems, total] = await Promise.all([
-    client.fetch(NEWS_QUERY, { start, end }),
-    client.fetch(NEWS_COUNT_QUERY),
+    sanityFetch<NewsListItem[]>({ query: NEWS_QUERY, params: { start, end }, tags: [...SANITY_QUERY_TAGS.news] }),
+    sanityFetch<number>({ query: NEWS_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.news] }),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

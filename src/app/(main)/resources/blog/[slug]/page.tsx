@@ -1,22 +1,20 @@
 import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Link from "next/link";
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { BLOG_QUERY, BLOG_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import { notFound } from "next/navigation";
 
-const EMPTY_BLOG_STATIC_SLUG = "__no-blog__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await client.fetch(BLOG_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_BLOG_STATIC_SLUG }];
-}
+type BlogPost = {
+  mainImage?: string;
+  mainImageAlt?: string | null;
+  title: string;
+  publishedAt: string;
+  summary: string;
+  body?: PortableTextBlock[];
+};
 
 export default async function PostBlogPage({
   params,
@@ -24,9 +22,17 @@ export default async function PostBlogPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (slug === EMPTY_BLOG_STATIC_SLUG) notFound();
+  const knownSlugs = await sanityFetch<Array<{ slug: string | null }>>({
+    query: BLOG_SLUGS_QUERY,
+    tags: [...SANITY_QUERY_TAGS.blog],
+  });
+  if (!knownSlugs.some((item) => item.slug === slug)) notFound();
 
-  const post = await client.fetch(BLOG_QUERY, { slug });
+  const post = await sanityFetch<BlogPost>({
+    query: BLOG_QUERY,
+    params: { slug },
+    tags: [...SANITY_QUERY_TAGS.blog],
+  });
 
   if (!post) notFound();
 

@@ -24,7 +24,7 @@ export default function DropdownProducts() {
       <button
         aria-expanded={open}
         aria-haspopup="menu"
-        className="text-white text-[12px] font-normal hover:text-[#71bfff] transition-colors px-6 cursor-pointer"
+        className="text-white text-[15px] font-normal hover:text-[#71bfff] transition-colors px-6 cursor-pointer"
       >
         Products +
       </button>

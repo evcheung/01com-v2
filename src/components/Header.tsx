@@ -51,8 +51,8 @@ export default function Header() {
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
-            width={70}
-            height={70}
+            width={84}
+            height={84}
             className="object-contain"
           />
         </Link>
@@ -75,7 +75,7 @@ export default function Header() {
                 <li key={`link-${label}`}>
                   <a
                     href={href}
-                    className="text-white text-[15px] font-normal hover:text-[#71bfff] transition-colors px-6"
+                    className="text-white text-[17px] font-normal hover:text-[#71bfff] transition-colors px-6"
                   >
                     {label}
                   </a>
@@ -142,8 +142,8 @@ export default function Header() {
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
-            width={50}
-            height={50}
+            width={60}
+            height={60}
             className="object-contain"
           />
         </Link>

@@ -45,7 +45,6 @@ export default function InTouchPage() {
       {/* ─── Page Title ─── */}
       <Titles text="Products" />
 
-
       {/* ─── InTouch Intro ─── */}
       <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8 px-4 sm:px-6 md:px-12 lg:px-[95px] pb-20">

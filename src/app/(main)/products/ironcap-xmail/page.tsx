@@ -6,6 +6,8 @@ import xmailIconAnim from "@/assets/animations/icon-IC-EmailX.json";
 import emailEncryptionFlowchart from "@/assets/animations/EmailEncryptionFlowchart.json";
 import digitalSignatureFlowchart from "@/assets/animations/DIgitalSignatureFlowchart.json";
 
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
 /* ── Data ──────────────────────────────────────────────────────────── */
 const xmailAdvantages = [
   {
@@ -83,7 +85,7 @@ export default function IroncapXmail() {
             {/* Text */}
             <div className="flex flex-col gap-4 max-w-[1140px] pt-10">
               <h2 className="text-[#71bfff] text-[30px] font-medium leading-[46px]">
-                IronCAP<sup className="text-[11.61px]">™</sup> XMail
+                IronCAP<Trademark /> XMail
               </h2>
               <p className="text-[#79c99c] text-[20px] font-medium leading-[34px]">
                 End-to-End, Quantum-Safe Email Security

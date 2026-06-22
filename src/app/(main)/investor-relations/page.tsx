@@ -118,12 +118,30 @@ function TableRow({
   );
 }
 
-function RelevantLinks({ links, withPlayIcon = false }: { links: RelevantLink[]; withPlayIcon?: boolean }) {
+function RelevantLinks({
+  links,
+  withPlayIcon = false,
+  desktopInlineMax = 1,
+}: {
+  links: RelevantLink[];
+  withPlayIcon?: boolean;
+  desktopInlineMax?: 1 | 2 | 3;
+}) {
+  const displayLinks = links.filter((link) => link.label && link.url);
+  const inlineColumns =
+    displayLinks.length > 1 ? Math.min(displayLinks.length, desktopInlineMax) : 1;
+  const containerClass =
+    inlineColumns === 3
+      ? "inline-flex flex-col gap-1 md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-2 md:w-full"
+      : inlineColumns === 2
+        ? "inline-flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-2 md:w-full"
+        : "inline-flex flex-col gap-1";
+
   return (
-    <span className="inline-flex flex-col gap-1">
-      {links.map((link, i) => (
+    <span className={containerClass}>
+      {displayLinks.map((link) => (
         <span key={link._key} className="inline-flex items-center gap-2">
-          {withPlayIcon && i === 0 && (
+          {withPlayIcon && link.linkType?.toLowerCase() === "video" && (
             <span
               aria-hidden
               className="inline-block w-[16px] h-[16px] rounded-full border-2 border-quantum-green relative shrink-0"
@@ -142,7 +160,7 @@ function RelevantLinks({ links, withPlayIcon = false }: { links: RelevantLink[];
             href={link.url ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-quantum-green transition-colors"
+            className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-green transition-colors"
           >
             {link.label}
           </a>
@@ -226,7 +244,12 @@ export default async function InvestorRelations() {
                 { content: row.date, width: "w-[228px] shrink-0" },
                 { content: row.description, width: "w-[316px] shrink-0" },
                 {
-                  content: <RelevantLinks links={row.relevantLinks ?? []} />,
+                  content: (
+                    <RelevantLinks
+                      links={row.relevantLinks ?? []}
+                      withPlayIcon
+                    />
+                  ),
                   width: "flex-1",
                 },
               ]}
@@ -251,7 +274,8 @@ export default async function InvestorRelations() {
                   content: (
                     <RelevantLinks
                       links={row.relevantLinks ?? []}
-                      withPlayIcon={i === 0}
+                      withPlayIcon
+                      desktopInlineMax={3}
                     />
                   ),
                   width: "flex-1",
@@ -308,19 +332,10 @@ export default async function InvestorRelations() {
               <p className="text-steel-gray text-[15px] leading-[24px] w-[228px] shrink-0">
                 {row.description}
               </p>
-              <div className="flex flex-col gap-1">
-                {(row.relevantLinks ?? []).map((link: RelevantLink) => (
-                  <a
-                    key={link._key}
-                    href={link.url ?? "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-green transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+              <RelevantLinks
+                links={row.relevantLinks ?? []}
+                withPlayIcon
+              />
             </div>
           ))}
           <p className="text-steel-gray text-[15px] leading-[24px] mt-8 max-w-[956px]">

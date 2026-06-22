@@ -16,6 +16,23 @@ interface IronCapSectionProps {
   services: Item[];
 }
 
+function renderTrademarkedName(name: string) {
+  const parts = name.split("™");
+
+  return parts.flatMap((part, index) => {
+    const isLast = index === parts.length - 1;
+
+    return isLast
+      ? [part]
+      : [
+          part,
+          <sup key={`${name}-${index}`} className="text-[0.55em] align-super">
+            ™
+          </sup>,
+        ];
+  });
+}
+
 function AnimatedList({
   items,
   nameColor,
@@ -63,7 +80,7 @@ function AnimatedList({
                   className="text-[18px] font-semibold uppercase leading-none mb-2"
                   style={{ color: nameColor }}
                 >
-                  {name}
+                  {renderTrademarkedName(name)}
                 </p>
                 <p className="text-white text-[16px] font-normal leading-none mb-1">
                   {desc}

@@ -67,8 +67,8 @@ export default function Footer() {
             <Image
               alt="01 Quantum"
               src={imgLogo}
-              width={48}
-              height={48}
+              width={58}
+              height={58}
               className="object-contain"
             />
             
@@ -80,8 +80,8 @@ export default function Footer() {
               <Image
                 alt="01 Quantum"
                 src={imgLogo}
-                width={48}
-                height={48}
+                width={58}
+                height={58}
                 className="object-contain"
               />
             </div>

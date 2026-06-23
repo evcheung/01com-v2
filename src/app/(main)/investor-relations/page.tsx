@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import {
   INVESTOR_LATEST_PRESENTATION_QUERY,
@@ -14,6 +15,60 @@ type Presentation = { _id: string; date: string; description: string; isFeatured
 type PressRelease  = { _id: string; date: string; description: string; relevantLinks: RelevantLink[] | null };
 type FinancialResult = { _id: string; description: string; relevantLinks: RelevantLink[] | null };
 type InvestorVideo = { _id: string; title: string; description: string; link: string; isFeatured: boolean };
+
+function LinkTypeIcon({ linkType }: { linkType: string | null }) {
+  const normalizedType = linkType?.toLowerCase();
+
+  if (normalizedType === "video") {
+    return (
+      <span
+        aria-hidden
+        className="inline-block w-[16px] h-[16px] rounded-full border-2 border-quantum-green relative shrink-0"
+      >
+        <span
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0"
+          style={{
+            borderLeft: "5px solid #79c99c",
+            borderTop: "3px solid transparent",
+            borderBottom: "3px solid transparent",
+          }}
+        />
+      </span>
+    );
+  }
+
+  if (normalizedType === "pdf" || normalizedType === "link") {
+    return (
+      <Image
+        src={normalizedType === "pdf" ? "/investor_relations_assets/pdf.svg" : "/investor_relations_assets/redirect.svg"}
+        alt=""
+        aria-hidden="true"
+        width={14}
+        height={14}
+        className="shrink-0"
+      />
+    );
+  }
+
+  return null;
+}
+
+function resolveRelevantLinkType(
+  link: RelevantLink,
+  defaultNonVideoType?: "link",
+) {
+  const normalizedType = link.linkType?.toLowerCase();
+
+  if (normalizedType === "video" || normalizedType === "pdf" || normalizedType === "link") {
+    return normalizedType;
+  }
+
+  if (defaultNonVideoType && link.url) {
+    return defaultNonVideoType;
+  }
+
+  return null;
+}
 
 function formatIsoDate(iso: string) {
   const [year, month, day] = iso.split("-").map(Number);
@@ -122,10 +177,12 @@ function RelevantLinks({
   links,
   withPlayIcon = false,
   desktopInlineMax = 1,
+  defaultNonVideoType,
 }: {
   links: RelevantLink[];
   withPlayIcon?: boolean;
   desktopInlineMax?: 1 | 2 | 3;
+  defaultNonVideoType?: "link";
 }) {
   const displayLinks = links.filter((link) => link.label && link.url);
   const inlineColumns =
@@ -141,20 +198,10 @@ function RelevantLinks({
     <span className={containerClass}>
       {displayLinks.map((link) => (
         <span key={link._key} className="inline-flex items-center gap-2">
-          {withPlayIcon && link.linkType?.toLowerCase() === "video" && (
-            <span
-              aria-hidden
-              className="inline-block w-[16px] h-[16px] rounded-full border-2 border-quantum-green relative shrink-0"
-            >
-              <span
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0"
-                style={{
-                  borderLeft: "5px solid #79c99c",
-                  borderTop: "3px solid transparent",
-                  borderBottom: "3px solid transparent",
-                }}
-              />
-            </span>
+          {withPlayIcon && (
+            <LinkTypeIcon
+              linkType={resolveRelevantLinkType(link, defaultNonVideoType)}
+            />
           )}
           <a
             href={link.url ?? "#"}
@@ -276,6 +323,7 @@ export default async function InvestorRelations() {
                       links={row.relevantLinks ?? []}
                       withPlayIcon
                       desktopInlineMax={3}
+                      defaultNonVideoType="link"
                     />
                   ),
                   width: "flex-1",

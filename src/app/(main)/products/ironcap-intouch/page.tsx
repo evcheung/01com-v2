@@ -47,7 +47,7 @@ export default function InTouchPage() {
 
       {/* ─── InTouch Intro ─── */}
       <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
-        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8 px-4 sm:px-6 md:px-12 lg:px-[95px] pb-20">
+        <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8 px-6 md:px-[95px] pb-12 md:pb-20">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
               src={animation1}
@@ -96,7 +96,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── How it Works (video + compatibility) ─── */}
-      <section className="bg-black py-20 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-black py-12 md:py-20 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto">
           <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px] mb-10">
             How it Works
@@ -124,6 +124,7 @@ export default function InTouchPage() {
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
             />
           </div>
 
@@ -190,7 +191,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Go ─── */}
-      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -235,7 +236,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── How it Works (InTouch Go – flow chart) ─── */}
-      <section className="bg-black py-20 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-black py-12 md:py-20 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto">
           <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px] mb-4">
             How it Works
@@ -362,7 +363,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch GoMail ─── */}
-      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -463,7 +464,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch SecureKey (dark) ─── */}
-      <section className="bg-black py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-black py-16 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -519,7 +520,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Server Edition (light) ─── */}
-      <section className="bg-white py-16 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -570,7 +571,7 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="bg-white py-12 px-4 sm:px-6 md:px-12 lg:px-[95px]">
+      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
         <div className="max-w-[1512px] mx-auto flex justify-center">
           <Button
             text="step into the future, buy IronCAP now"

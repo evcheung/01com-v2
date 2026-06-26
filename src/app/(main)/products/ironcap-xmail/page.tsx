@@ -66,26 +66,30 @@ export default function IroncapXmail() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 md:px-24 min-h-[120px] md:min-h-[196px]">
+        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-tight md:leading-[50px]">
           Products
         </h1>
       </section>
 
       {/* ══ XMail section ═══════════════════════════════════════════ */}
-      <section id="ironcap-xmail" className="relative overflow-hidden bg-white text-black scroll-mt-24">
+      <section
+        id="ironcap-xmail"
+        className="relative overflow-hidden bg-white text-black scroll-mt-24"
+      >
         {/* Product intro */}
-        <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
-          <div className="flex items-start gap-14">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12 md:pb-20">
+          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-14">
             {/* Lottie icon */}
-            <div className="flex-shrink-0 w-[130px] pt-2">
+            <div className="flex-shrink-0 w-[90px] md:w-[130px] pt-2">
               <LottiePlayer src={xmailIconAnim} className="w-full" />
             </div>
 
             {/* Text */}
-            <div className="flex flex-col gap-4 max-w-[1140px] pt-10">
+            <div className="flex flex-col gap-4 max-w-[1140px] md:pt-10">
               <h2 className="text-[#71bfff] text-[30px] font-medium leading-[46px]">
-                IronCAP<Trademark /> XMail
+                IronCAP
+                <Trademark /> XMail
               </h2>
               <p className="text-[#79c99c] text-[20px] font-medium leading-[34px]">
                 End-to-End, Quantum-Safe Email Security
@@ -136,7 +140,7 @@ export default function IroncapXmail() {
 
       {/* ── How it Works ────────────────────────────────────── */}
       <section className="bg-black text-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pt-20 pb-20">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-12 md:pt-20 pb-12 md:pb-20">
           <h3 className="text-[#71bfff] text-[30px] font-medium leading-[46px] mb-10">
             How it Works
           </h3>
@@ -183,15 +187,15 @@ export default function IroncapXmail() {
 
       {/* ── XMail Key Advantages ──────────────────────────────────── */}
       <section className="bg-black text-white">
-        <div className="max-w-[1512px] mx-auto px-[95px] pb-20">
-          <h3 className="text-[#71bfff] text-[30px] font-medium leading-[46px] mb-10">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12 md:pb-20">
+          <h3 className="text-[#71bfff] text-[24px] md:text-[30px] font-medium leading-[46px] mb-6 md:mb-10">
             Key Advantages
           </h3>
           <div className="relative">
-            {/* Decorative dividers */}
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-px bg-white/15 pointer-events-none" />
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/15 pointer-events-none" />
-            <div className="grid grid-cols-2 gap-x-36 gap-y-16 py-14 relative">
+            {/* Decorative dividers — desktop only */}
+            <div className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 h-full w-px bg-white/15 pointer-events-none" />
+            <div className="hidden md:block absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/15 pointer-events-none" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-36 gap-y-10 md:gap-y-16 py-8 md:py-14 relative">
               {xmailAdvantages.map((adv, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <p className="text-[#79c99c] text-[18px] font-semibold leading-[20px] uppercase">
@@ -203,19 +207,27 @@ export default function IroncapXmail() {
                 </div>
               ))}
             </div>
-            <div className="max-w-[1512px] mx-auto px-[95px] pb-24 flex justify-center gap-6">
-              <Button
-                text="brochure"
-                url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
-                border="border-gray-200"
-                textColor="text-green-400"
-                hoverBg="hover:bg-green-500/10"
-              />
-            </div>
+          </div>
+          <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
+            <Button
+              text="brochure"
+              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
+            />
+            <Button
+              text="step into the future, buy IronCAP now"
+              url="https://imoncall.01com.com/ironcapchat/"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
+            />
           </div>
         </div>
       </section>
-
     </main>
   );
 }

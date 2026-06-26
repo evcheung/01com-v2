@@ -180,8 +180,8 @@ export default function Products() {
 
       {/* Unique Strengths */}
       <section className="bg-black">
-        <div className="py-20 px-24 max-w-[1512px] mx-auto ">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
+        <div className="py-12 md:py-20 px-6 md:px-[95px] max-w-[1512px] mx-auto">
+          <h2 className="text-quantum-blue text-[24px] md:text-[30px] font-medium leading-[46px] mb-6 md:mb-10">
             Unique Strengths
           </h2>
 
@@ -229,6 +229,7 @@ export default function Products() {
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
             />
             <Button
               text="step into the future, buy IronCAP now"

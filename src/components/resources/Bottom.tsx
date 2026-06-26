@@ -9,6 +9,7 @@ export const Bottom = () => {
         border="border-quantum-green/60"
         textColor="text-quantum-green"
         hoverBg="hover:bg-quantum-green/10"
+        isBlank="true"
       />
     </div>
   );

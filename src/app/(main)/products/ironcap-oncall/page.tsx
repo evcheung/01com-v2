@@ -2,7 +2,7 @@
 
 import LottiePlayer from "@/components/LottiePlayer";
 import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
-
+import { Button } from "@/components/ui/button";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 /* ── Data ──────────────────────────────────────────────────────────── */
@@ -44,7 +44,8 @@ export default function IroncapOncall() {
             {/* Text */}
             <div className="flex flex-col gap-4 max-w-[1140px] pt-2 md:pt-10">
               <h2 className="text-[#71bfff] text-[24px] md:text-[30px] font-medium leading-[34px] md:leading-[46px]">
-                IronCAP<Trademark /> OnCall
+                IronCAP
+                <Trademark /> OnCall
               </h2>
               <p className="text-[#79c99c] text-[17px] md:text-[20px] font-medium leading-[26px] md:leading-[34px]">
                 End-to-End, Quantum-Safe Customer Support
@@ -82,6 +83,25 @@ export default function IroncapOncall() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
+            <Button
+              text="brochure"
+              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
+            />
+            <Button
+              text="step into the future, buy IronCAP now"
+              url="https://imoncall.01com.com/ironcapchat/"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
+            />
           </div>
         </div>
       </section>

@@ -23,7 +23,7 @@ const navLinks = [
   { label: "Services +", href: "/services" },
   { label: "Customers", href: "/customers" },
   { label: "Use Cases", href: "/use-cases" },
-  { label: "Demo", href: "/live-demo" },
+  { label: "Demo", href: "https://ironcap.ca/demo" },
 ];
 
 export default function Header() {

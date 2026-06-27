@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bottom } from "@/components/resources/Bottom"
+import { ContactEmailForm } from "@/components/contact/ContactEmailForm";
 /* ── Data ─────────────────────────────────────────────────────────── */
 const departmentButtons: { label: string; href: string }[] = [
   { label: "Sales/VARs", href: "mailto:sales@01com.com" },
@@ -8,20 +9,6 @@ const departmentButtons: { label: string; href: string }[] = [
   { label: "Marketing", href: "mailto:marketing@01com.com" },
   { label: "Customer Service", href: "mailto:customerservice@01com.com" },
   { label: "Human resources", href: "mailto:hr@01com.com" },
-];
-
-const formFields: {
-  name: string;
-  label: string;
-  type: "text" | "email" | "tel";
-  autoComplete?: string;
-}[] = [
-  { name: "firstName", label: "First Name*", type: "text", autoComplete: "given-name" },
-  { name: "lastName", label: "Last Name*", type: "text", autoComplete: "family-name" },
-  { name: "title", label: "Title*", type: "text", autoComplete: "organization-title" },
-  { name: "company", label: "Company*", type: "text", autoComplete: "organization" },
-  { name: "email", label: "Email*", type: "email", autoComplete: "email" },
-  { name: "phone", label: "Phone*", type: "tel", autoComplete: "tel" },
 ];
 
 /* ── Page ─────────────────────────────────────────────────────────── */
@@ -139,41 +126,7 @@ export default function Contact() {
               or to answer specific questions.
             </p>
 
-            <form className="flex flex-col gap-4" action="#" method="post">
-              {formFields.map((field) => (
-                <label key={field.name} className="block">
-                  <span className="sr-only">{field.label}</span>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    placeholder={field.label}
-                    autoComplete={field.autoComplete}
-                    required
-                    className="w-full h-9 px-4 bg-white border border-[#dfe6ea] rounded-md text-steel-gray text-[15px] leading-[22px] placeholder:text-steel-gray/70 focus:outline-none focus:border-quantum-green focus:ring-1 focus:ring-quantum-green/40 transition-colors"
-                  />
-                </label>
-              ))}
-
-              <label className="block">
-                <span className="sr-only">Message*</span>
-                <textarea
-                  name="message"
-                  placeholder="Message*"
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white border border-[#dfe6ea] rounded-md text-steel-gray text-[15px] leading-[22px] placeholder:text-steel-gray/70 focus:outline-none focus:border-quantum-green focus:ring-1 focus:ring-quantum-green/40 transition-colors resize-none"
-                />
-              </label>
-
-              <div className="mt-2">
-                <button
-                  type="submit"
-                  className="inline-block border border-quantum-green/60 rounded-bl-lg rounded-tr-lg text-quantum-green text-[14px] font-medium uppercase tracking-widest px-8 py-3 hover:bg-quantum-green/10 transition-colors"
-                >
-                  Go · · ·
-                </button>
-              </div>
-            </form>
+            <ContactEmailForm />
           </div>
         </div>
       </section>

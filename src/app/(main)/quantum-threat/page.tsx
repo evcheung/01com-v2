@@ -4,30 +4,34 @@ const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 export default function QuantumThreat() {
   return (
-    <main>
+    <main className="font-[family-name:var(--font-urbanist)]">
       {/* Page title */}
       <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
         <h1 className="text-white text-[28px] md:text-[50px] font-medium leading-[50px]">
           Quantum-safe Cryptography
         </h1>
       </section>
-      <section className="bg-black flex flex-col items-center px-6 md:px-24 pt-18">
+
+      <section className="bg-black px-6 md:px-24 pt-12 pb-16">
         <div className="max-w-[1512px] mx-auto">
-          <div className="flex flex-col md:flex-row mb-10 items-center gap-8">
-            <div className="flex flex-col gap-4">
-              <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-4">
+
+          {/* Quantum Attack */}
+          <div className="flex flex-col md:flex-row gap-10 items-center mb-14">
+            <div className="flex flex-col gap-4 flex-1">
+              <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-2">
                 Quantum Attack
               </h2>
-              <p>
+              <p className="text-white/75 text-[15px] leading-[26px]">
                 Quantum computing introduces a credible, long-term threat to
-                today’s public-key encryption—especially RSA and elliptic-curve
+                today&apos;s public-key encryption—especially RSA and elliptic-curve
                 cryptography (ECC), which underpin many secure communication
-                systems. A key driver is **Shor’s Algorithm (1994)**, which
-                showed that sufficiently powerful quantum computers could factor
-                large numbers and solve discrete logarithms dramatically faster
-                than classical methods.
+                systems. A key driver is{" "}
+                <strong className="text-white font-semibold">Shor&apos;s Algorithm (1994)</strong>,
+                which showed that sufficiently powerful quantum computers could
+                factor large numbers and solve discrete logarithms dramatically
+                faster than classical methods.
               </p>
-              <p>
+              <p className="text-white/75 text-[15px] leading-[26px]">
                 If large-scale, fault-tolerant cryptographically relevant
                 quantum computers (CRQCs) become practical, they could
                 compromise RSA and ECC, weakening the security foundations of
@@ -43,17 +47,21 @@ export default function QuantumThreat() {
             />
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-4">
+          {/* Divider */}
+          <div className="h-px bg-white/10 mb-14" />
+
+          {/* Post-Quantum Cryptography */}
+          <div className="flex flex-col gap-4 mb-16">
+            <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-2">
               Post-Quantum Cryptography (PQC)
             </h2>
-            <p>
+            <p className="text-white/75 text-[15px] leading-[26px]">
               The industry response is post‑quantum cryptography (PQC): new,
               quantum‑resistant algorithms designed to remain secure even in the
               presence of CRQCs. This transition is already underway across
               government and enterprise security programs.
             </p>
-            <p>
+            <p className="text-white/75 text-[15px] leading-[26px]">
               In the United States, NIST has led global PQC standardization
               efforts since 2016, establishing a rigorous, widely adopted path
               to quantum‑safe cryptography. Our IronCAP<Trademark /> Engine supports
@@ -62,10 +70,9 @@ export default function QuantumThreat() {
               confidence.
             </p>
           </div>
-          <div>
-            <div className="flex items-center justify-center py-16">
-              <Bottom/>
-            </div>
+
+          <div className="flex items-center justify-center">
+            <Bottom />
           </div>
         </div>
       </section>

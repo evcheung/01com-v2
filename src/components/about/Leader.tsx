@@ -5,9 +5,10 @@ interface LeaderProps {
   title: string;
   bun: string;
   pic: string;
+  linkedIn: string;
 }
 
-export const Leader = ({ name, title, bun, pic }: LeaderProps) => {
+export const Leader = ({ name, title, bun, pic, linkedIn }: LeaderProps) => {
   return (
     <div className="flex flex-col items-start gap-2">
       <Image
@@ -27,7 +28,13 @@ export const Leader = ({ name, title, bun, pic }: LeaderProps) => {
       >
         {bun}
       </a>
-      <a href="#" aria-label={`${name} LinkedIn`} className="mt-0.5">
+      <a
+        href={linkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${name} LinkedIn`}
+        className="mt-0.5"
+      >
         <Image
           src="/about_assets/in.svg"
           alt="LinkedIn"

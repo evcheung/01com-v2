@@ -24,7 +24,21 @@ const generalFaqs: Faq[] = [
         <Trademark /> InTouch is a remote access solution that allows you to
         provide remote access to multiple computers with the ability to
         administer and manage them from a single web page. After signing up for
-        the service here, you can login to your Administrator page from here, to
+        the service{" "}
+        <a
+          href="https://locator.01com.com/ecommerce/account.php"
+          className="text-quantum-blue hover:underline"
+        >
+          here
+        </a>
+        , you can login to your Administrator page from{" "}
+        <a
+          href="https://locator.01com.com/login.php?"
+          className="text-quantum-blue hover:underline"
+        >
+          here
+        </a>
+        , to
         activate computers, configure settings, and quickly access any of your
         computers. Try it out for free by signing up for a free 30-day trial.
       </>
@@ -41,12 +55,19 @@ const generalFaqs: Faq[] = [
     answer: (
       <>
         IronCAP
-        <Trademark /> InTouch should be installed on the PC you wish to access
+        <Trademark />{" "}InTouch should be installed on the PC you wish to access
         remotely from anywhere. During installation, you will be required to
         select a ComputerName, login name and password. 01 Quantum&apos;s
         patented technology uses this ComputerName to find your PC on the
         Internet. Upon activation, you can access your computer from anywhere.
-        Login here using your Computer Name, Login Name and Password. 01
+        Login{" "}
+        <a
+          href="https://locator.01com.com/login.php?"
+          className="text-quantum-blue hover:underline"
+        >
+          here
+        </a>{" "}
+        using your Computer Name, Login Name and Password. 01
         Quantum&apos;s technology establishes a connection between the device
         you are currently using, and your distant computer. Each connection is
         encrypted using Secure Socket Layer (SSL) 256 bit key encryption for
@@ -111,8 +132,8 @@ const generalFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          The system requirements for the computer that IronCAP
-          <Trademark /> InTouch will be installed on are:
+          The system requirements for the computer on which IronCAP
+          <Trademark />{" "}InTouch will be installed are:
         </p>
         <ul className="mt-2 list-disc pl-6">
           <li>Windows 7, 8, 10, 11+</li>
@@ -134,10 +155,10 @@ const generalFaqs: Faq[] = [
         <ul className="mt-1 list-disc pl-6">
           <li>
             A minimum of 2 computers with IronCAP
-            <Trademark /> InTouch installed on the same wired network are
-            required. One computer is the computer you wish to wake-up access
-            and the other will act as the &quot;Wake-Up Proxy&quot; to send the
-            wake-up signal to the host computer.
+            <Trademark />{" "}InTouch installed on the same wired network are
+            required. One computer is the computer you wish to wake up to
+            access, and the other will act as the &quot;Wake-Up Proxy&quot; to
+            send the wake-up signal to the host computer.
           </li>
           <li>
             The host computer&apos;s bios and network card must support Wake-Up
@@ -172,7 +193,7 @@ const generalFaqs: Faq[] = [
           <li>Internet Explorer 7.0+</li>
           <li>Mozilla Firefox 5.0 or later</li>
           <li>Microsoft Pocket PC Internet Explorer</li>
-          <li>Go.Web by GoAmerica</li>
+          <li>GoWeb by GoAmerica</li>
           <li>Blazer</li>
           <li>Openwave Mobile Browser</li>
           <li>Palm Web Pro 3 Browser</li>
@@ -280,15 +301,22 @@ const generalFaqs: Faq[] = [
     answer: (
       <>
         To upgrade to the latest version of IronCAP
-        <Trademark /> InTouch, select &ldquo;Run Update Now&rdquo; by
+        <Trademark />{" "}InTouch, select &ldquo;Run Update Now&rdquo; by
         right-clicking the green satellite icon in your Windows system tray or
         from the Start menu in the IronCAP
-        <Trademark /> InTouch folder. Additionally, IronCAP
-        <Trademark /> InTouch will automatically check for updates every time
-        IronCAP
-        <Trademark /> InTouch is started on your computer. If you are not
+        <Trademark />{" "}InTouch folder. Additionally, IronCAP
+        <Trademark />{" "}InTouch will automatically check for updates every
+        time IronCAP
+        <Trademark />{" "}InTouch is started on your computer. If you are not
         currently an IronCAP
-        <Trademark /> InTouch subscriber, click here to try it free for 30 days.
+        <Trademark />{" "}InTouch subscriber, click{" "}
+        <a
+          href="https://locator.01com.com/ecommerce/account.php"
+          className="text-quantum-blue hover:underline"
+        >
+          here
+        </a>{" "}
+        to try it free for 30 days.
       </>
     ),
   },
@@ -321,12 +349,12 @@ const wakeUpFaqs: Faq[] = [
     answer: (
       <>
         For this feature to work, a minimum of 2 licenses on your IronCAP
-        <Trademark /> InTouch account are required with at least one of them
+        <Trademark />{" "}InTouch account are required with at least one of them
         always on. When you want to wake-up your host computer that is in
         &ldquo;shutdown mode&rdquo;, the IronCAP
-        <Trademark /> InTouch server will use one of the host computers in your
-        IronCAP
-        <Trademark /> InTouch account that is &ldquo;on&rdquo; to
+        <Trademark />{" "}InTouch server will use one of the host computers in
+        your IronCAP
+        <Trademark />{" "}InTouch account that is &ldquo;on&rdquo; to
         &ldquo;magically&rdquo; wake-up the host computer you want to switch on.
         The computer you want to &ldquo;switch on&rdquo; must either support the
         &ldquo;Wake-up-on-LAN&rdquo; (WOL) or the Intel vPro feature. Most of
@@ -435,12 +463,13 @@ const wakeUpFaqs: Faq[] = [
     answer: (
       <>
         By default, IronCAP
-        <Trademark /> InTouch uses the same password for your I&apos;m InTouch
+        <Trademark />{" "}InTouch uses the same password for your I&apos;m
+        InTouch
         account login password and the Remote Wake-Up password. Unless you have
         deliberately configured them to be different, the IronCAP
-        <Trademark /> InTouch account login password is the same as the remote
-        login password of your IronCAP
-        <Trademark /> InTouch host computer.
+        <Trademark />{" "}InTouch account login password is the same as the
+        remote login password of your IronCAP
+        <Trademark />{" "}InTouch host computer.
       </>
     ),
   },

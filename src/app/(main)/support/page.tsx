@@ -33,9 +33,12 @@ export default function Support() {
                   width={40}
                   height={40}
                 />
-                <span className="text-steel-gray text-[16px]">
+                <a
+                  href="tel:18006682185"
+                  className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors"
+                >
                   1 800 668-2185.
-                </span>
+                </a>
               </div>
               {/* Email */}
               <div className="flex items-center gap-4 p-4 md:border-r border-gray-300">
@@ -45,9 +48,12 @@ export default function Support() {
                   width={40}
                   height={40}
                 />
-                <span className="text-steel-gray text-[16px]">
+                <a
+                  href="mailto:info@ironcap.ca"
+                  className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors"
+                >
                   info@ironcap.ca
-                </span>
+                </a>
               </div>
               {/* Live Chat Pre-Sales */}
               <div className="flex items-center gap-4 p-4 md:border-r border-gray-300">
@@ -57,9 +63,14 @@ export default function Support() {
                   width={40}
                   height={40}
                 />
-                <span className="text-steel-gray text-[16px]">
+                <a
+                  href="https://imoncall.01com.com/pre-sales/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors"
+                >
                   Live Chat Pre-Sales
-                </span>
+                </a>
               </div>
               {/* Live Chat After-Sales */}
               <div className="flex items-center gap-4 p-4">
@@ -69,9 +80,14 @@ export default function Support() {
                   width={40}
                   height={40}
                 />
-                <span className="text-steel-gray text-[16px]">
+                <a
+                  href="https://imoncall.01com.com/ironcapchat/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors"
+                >
                   Live Chat After-Sales
-                </span>
+                </a>
               </div>
             </div>
           </section>

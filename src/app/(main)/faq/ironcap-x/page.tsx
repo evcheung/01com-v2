@@ -37,7 +37,7 @@ const faqs: Faq[] = [
     ),
     answer: (
       <>
-        IronCAP X<Trademark /> is the world&apos;s first Quantum-safe end-to-end
+        IronCAP X<Trademark /> {' '} is the world&apos;s first Quantum-safe end-to-end
         email encryption system utilizing IronCAP Crypto (ICC) as its
         cryptographic foundation with post-quantum cryptographic algorithms that
         are approved by NIST (National Institute of Standards and Technology in

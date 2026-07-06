@@ -72,7 +72,10 @@ export default function QuantumThreat() {
           </div>
 
           <div className="flex items-center justify-center">
-            <Bottom />
+            <Bottom
+              url="/products/ironcap-engine"
+              isBlank="false"
+            />
           </div>
         </div>
       </section>

@@ -133,7 +133,7 @@ const partners: Partners[] = [
     links: [
       { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/Joint-Press-Release-PWC.pdf"},
       { name: "Webinar", url: "https://www.youtube.com/watch?v=eVkxYhfZWrs" },
-      { name: "Whitepaper", url: "https://www.pwccn.com/en/issues/cybersecurity-and-data-privacy/rethinking-cybersecurity-in-a-quantum-world-jul2021.pdf"},
+      { name: "Whitepaper", url: "https://www.pwccn.com/en/research-and-insights/publications/fs-ai-survey-mar2026.pdf"},
       { name: "Quantum-Safe Solution", url: "https://www.youtube.com/watch?v=1Ql7fmGTB4c"}
     ],
   },

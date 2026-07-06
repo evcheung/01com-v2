@@ -94,14 +94,6 @@ export default function IroncapOncall() {
               hoverBg="hover:bg-quantum-green/10"
               isBlank="true"
             />
-            <Button
-              text="step into the future, buy IronCAP now"
-              url="https://imoncall.01com.com/ironcapchat/"
-              border="border-quantum-green"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-              isBlank="true"
-            />
           </div>
         </div>
       </section>

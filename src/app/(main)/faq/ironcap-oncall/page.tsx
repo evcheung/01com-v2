@@ -19,7 +19,7 @@ const oncallFaqs: Faq[] = [
     ),
     answer: (
       <>
-        IronCAP<Trademark /> OnCall is a secure online help desk support
+        IronCAP<Trademark />{" "}OnCall is a secure online help desk support
         application that auto configures a connection to your customer&apos;s
         PC or Mac, without any pre-installed software. Eliminate precious
         time spent on a support phone call or a premise visit, and dedicate
@@ -38,10 +38,10 @@ const oncallFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          The IronCAP<Trademark /> OnCall help desk management solution gives
+          The IronCAP<Trademark />{" "}OnCall help desk management solution gives
           you the ability to deliver online computer remote support services
           to your customers. Just as you would log on to your favorite
-          website, you can securely connect to IronCAP<Trademark /> OnCall
+          website, you can securely connect to IronCAP<Trademark />{" "}OnCall
           from anywhere and provide live computer support to new and existing
           customers. Built on a secure managed infrastructure, IronCAP
           <Trademark /> OnCall allows you to seamlessly control your
@@ -241,7 +241,7 @@ const oncallFaqs: Faq[] = [
     id: "benefit",
     question: (
       <>
-        How can I benefit from using IronCAP<Trademark /> OnCall?
+        Who can benefit from using IronCAP<Trademark /> OnCall?
       </>
     ),
     answer: (

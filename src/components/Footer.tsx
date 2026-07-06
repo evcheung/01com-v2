@@ -35,8 +35,8 @@ const footerColumns = [
   },
   {
     heading: "About",
-    links: ["Investor Relations", "About", "Newsletters"],
-    urls: ["/investor-relations", "/about", "/resources/newsletters"],
+    links: ["About", "Newsletters"],
+    urls: ["/about", "/resources/newsletters"],
   },
   {
     heading: "Legal",

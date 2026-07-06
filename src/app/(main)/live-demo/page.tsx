@@ -1,6 +1,20 @@
 import Image from "next/image";
 import { Titles } from "@/components/Titles";
 import { Bottom } from "@/components/resources/Bottom";
+
+const legacyDemoUrl =
+  process.env.NEXT_PUBLIC_IRONCAP_LEGACY_DEMO_URL ||
+  "https://www.ironcap.ca/demo/";
+
+function buildLegacyDemoHref(
+  intent: "register" | "login",
+  provider: "facebook" | "google"
+) {
+  const url = new URL(legacyDemoUrl);
+  url.searchParams.set("auth_intent", intent);
+  url.searchParams.set("auth_provider", provider);
+  return url.toString();
+}
 /* ── Bracket card with SVG bracket frame ─────────────────────────── */
 function BracketCard({
   title,
@@ -35,14 +49,16 @@ function SsoButton({
   iconSrc,
   label,
   iconSize = 18,
+  href,
 }: {
   iconSrc: string;
   label: string;
   iconSize?: number;
+  href: string;
 }) {
   return (
-    <button
-      type="button"
+    <a
+      href={href}
       className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
       style={{
         outline: "0.30px solid #B6BBCD",
@@ -62,7 +78,7 @@ function SsoButton({
         />
       </span>
       <span>{label}</span>
-    </button>
+    </a>
   );
 }
 
@@ -227,84 +243,39 @@ export default function LiveDemo() {
               {/* Registration */}
               <BracketCard title="Registration">
                 <div className="flex flex-col gap-3 items-center">
-                  <a
-                    href="https://www.facebook.com/v2.3/dialog/oauth?app_id=1597333030401506&auth_type=&cbt=1780076033489&channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfff05cd97f7e20cc7%26domain%3Dwww.ironcap.ca%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.ironcap.ca%252Ffa87d8e0a118ef8da%26relation%3Dopener&client_id=1597333030401506&display=popup&domain=www.ironcap.ca&e2e=%7B%7D&fallback_redirect_uri=https%3A%2F%2Fwww.ironcap.ca%2Fdemo%2F&locale=en_US&logger_id=f19986f2bfcc3b883&origin=1&redirect_uri=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df87d83b5be1114b0d%26domain%3Dwww.ironcap.ca%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.ironcap.ca%252Ffa87d8e0a118ef8da%26relation%3Dopener%26frame%3Df272c21d07129ddb5&response_type=token%2Csigned_request%2Cgraph_domain&return_scopes=false&scope=public_profile%2C%20email&sdk=joey&version=v2.3"
-                    className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
-                  >
-                    <span
-                      className="shrink-0 flex items-center justify-center"
-                      style={{ width: 16, height: 16 }}
-                    >
-                      <Image
-                        src="/live_demo_assets/Facebook_icon.svg"
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </span>
-                    <span>Continue with Facebook</span>
-                  </a>
-                  <a
-                    href="https://accounts.google.com/v3/signin/accountchooser?client_id=784107785027-u5k96i9hcp0hue8gbbj1ef02ko96gnf6.apps.googleusercontent.com&display=popup&enable_granular_consent=true&gis_params=GBMqKzdLS0VHQjJPdHY3cURlNm93bXdGck8xUFk2SktONHpvQmVLYUFObC8yclk4AUIJYXV0aDI2OTc0aAE&gsiwebsdk=gis_attributes&include_granted_scopes=true&origin=https%3A%2F%2Fwww.ironcap.ca&redirect_uri=gis_transform&response_mode=form_post&response_type=token&scope=profile+email&dsh=S993516758%3A1780075977225822&o2v=1&service=lso&flowName=GeneralOAuthFlow&opparams=%253Fenable_granular_consent%253Dtrue%2526gis_params%253DGBMqKzdLS0VHQjJPdHY3cURlNm93bXdGck8xUFk2SktONHpvQmVLYUFObC8yclk4AUIJYXV0aDI2OTc0aAE%2526response_mode%253Dform_post&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAPtpiTNLDM6jcLg3gJhknAazYSvQpxVDbhvtNrJqR_VUOF1kqdZnI1sVeeYrjZgRRcR2D75KZGFJrknvUdUVANHSGmjwj3YzJlO_FEX1j5k5AQKIMNJAbdVU_C2qiomIaKx3zmSJGNFBB2uc9iYoyGhQUO_n70WGzfgSxvT5PKQK4GdGVWpQziaeu24oPIQOlER0MtRkyACnXa2EBuw1lIO1NXYxpFkTjOOZPSa8TEzzl9ZJkHNT6Ms5oZmzCAfWQ0ITBRK9pI-bG6RzgHDr08y5Pm2gywlScCOzvoCX7-mKXjp7nxZVOI8yR8_LtVUdRIISI-6artWnRBIhpcS7uvsU6cu2BJs_gQGAIvbFwvpgqvPSemDSl31G2dJCMtgqKo30ZMzBkexiH4avMPO30ztzPMiamDHvKstxRbwUBqntKRxNUE8f5Y-tr2fBNONE9MXG3nnHnucsMmhy-lILerCMVx41g%26flowName%3DGeneralOAuthFlow%26as%3DS993516758%253A1780075977225822%26client_id%3D784107785027-u5k96i9hcp0hue8gbbj1ef02ko96gnf6.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=https%3A%2F%2Fwww.ironcap.ca"
-                    className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
-                  >
-                    <span
-                      className="shrink-0 flex items-center justify-center"
-                      style={{ width: 18, height: 18 }}
-                    >
-                      <Image
-                        src="/live_demo_assets/Google_icon.svg"
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </span>
-                    <span>Continue with Google</span>
-                  </a>
+                  <SsoButton
+                    href={buildLegacyDemoHref("register", "facebook")}
+                    iconSrc="/live_demo_assets/Facebook_icon.svg"
+                    label="Continue with Facebook"
+                    iconSize={16}
+                  />
+                  <SsoButton
+                    href={buildLegacyDemoHref("register", "google")}
+                    iconSrc="/live_demo_assets/Google_icon.svg"
+                    label="Continue with Google"
+                  />
                 </div>
               </BracketCard>
 
               {/* Already Registered? */}
               <BracketCard title="Already Registered?">
                 <div className="flex flex-col gap-3 items-center">
-                  <a
-                    href="https://www.facebook.com/v2.3/dialog/oauth?app_id=1597333030401506&auth_type=&cbt=1780076136350&channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df0fc24e584661c399%26domain%3Dwww.ironcap.ca%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.ironcap.ca%252Ffa87d8e0a118ef8da%26relation%3Dopener&client_id=1597333030401506&display=popup&domain=www.ironcap.ca&e2e=%7B%7D&fallback_redirect_uri=https%3A%2F%2Fwww.ironcap.ca%2Fdemo%2F&locale=en_US&logger_id=f54f45cb64c9b74ba&origin=1&redirect_uri=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfb12311929852306b%26domain%3Dwww.ironcap.ca%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.ironcap.ca%252Ffa87d8e0a118ef8da%26relation%3Dopener%26frame%3Df2b62a6ac1c2619c9&response_type=token%2Csigned_request%2Cgraph_domain&return_scopes=false&scope=public_profile%2C%20email&sdk=joey&version=v2.3"
-                    className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
-                  >
-                    <span
-                      className="shrink-0 flex items-center justify-center"
-                      style={{ width: 16, height: 16 }}
-                    >
-                      <Image
-                        src="/live_demo_assets/Facebook_icon.svg"
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </span>
-                    <span>Continue with Facebook</span>
-                  </a>
-                  <a
-                    href="https://accounts.google.com/v3/signin/accountchooser?client_id=784107785027-u5k96i9hcp0hue8gbbj1ef02ko96gnf6.apps.googleusercontent.com&display=popup&enable_granular_consent=true&gis_params=GBMqK1I1ZzdUVTI1SVJ0Znl5OWtvSUNJNisyU211YnNVTGR0eUR1aWFXNmQ2cEU4AUIKYXV0aDMxOTYwN2gB&gsiwebsdk=gis_attributes&include_granted_scopes=true&origin=https%3A%2F%2Fwww.ironcap.ca&redirect_uri=gis_transform&response_mode=form_post&response_type=token&scope=profile+email&dsh=S638636705%3A1780076259094326&o2v=1&service=lso&flowName=GeneralOAuthFlow&opparams=%253Fenable_granular_consent%253Dtrue%2526gis_params%253DGBMqK1I1ZzdUVTI1SVJ0Znl5OWtvSUNJNisyU211YnNVTGR0eUR1aWFXNmQ2cEU4AUIKYXV0aDMxOTYwN2gB%2526response_mode%253Dform_post&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMBAxA3gsZ601cU5A6hJ5JpFhOaw3spqFv278M1VnWJGJoFutfgBh62YMHSk93pBCggxK1h9WmmQmPfckOBX4qegKpoq9-UAZ6rZaBSGXHudmEPuhDtgjBgon004UjY0iTrhA99aOaORCSSpDU24kCdDbXWG3ME0t6PXUnWkoitTs_vwXr0dwSPcJOzQWcBwJSW7yQ_T2A-qKRBkCwaG62VIp0cA8fz6YlbI4YaeO5gcsrhatqsImqgwv0fox9UGWZG03SmWRPqW2K1TBUoO1nq6jfcBKKZOXajJxg94kvqTyX-y6Ix_OJfgVHH20v41-SYxnyVmr6YzdK-xBYuxabwBamD8fzwwBxlfMh9NKoqPfr-G21hrMvkCIn0oDYClUOSRFXas1JQWhptI4jA5Wgk0HvqSMoFilCZHVQrJ8FOAiINuXACXC_Qjebj_xweGHDjoMYr5nH3k0f3bhrvq4iQ6bT6oA%26flowName%3DGeneralOAuthFlow%26as%3DS638636705%253A1780076259094326%26client_id%3D784107785027-u5k96i9hcp0hue8gbbj1ef02ko96gnf6.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=https%3A%2F%2Fwww.ironcap.ca"
-                    className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
-                  >
-                    <span
-                      className="shrink-0 flex items-center justify-center"
-                      style={{ width: 18, height: 18 }}
-                    >
-                      <Image
-                        src="/live_demo_assets/Google_icon.svg"
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </span>
-                    <span>Continue with Google</span>
-                  </a>
+                  <SsoButton
+                    href={buildLegacyDemoHref("login", "facebook")}
+                    iconSrc="/live_demo_assets/Facebook_icon.svg"
+                    label="Continue with Facebook"
+                    iconSize={16}
+                  />
+                  <SsoButton
+                    href={buildLegacyDemoHref("login", "google")}
+                    iconSrc="/live_demo_assets/Google_icon.svg"
+                    label="Continue with Google"
+                  />
+                  <p className="max-w-[260px] text-center text-[12px] leading-[18px] text-steel-gray/80">
+                    Authentication continues on the current IronCAP demo
+                    service, which still owns the working Google and Facebook
+                    sign-in flow.
+                  </p>
                 </div>
               </BracketCard>
             </div>

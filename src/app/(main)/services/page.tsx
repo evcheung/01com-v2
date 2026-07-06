@@ -307,7 +307,7 @@ export default function Services() {
       <div className="flex flex-col justify-center items-center bg-white pb-24">
         <KeyAdvantages items={cryptoIntegrationAdvantages} />
         <div>
-          <Bottom/>
+          <Bottom url="/use-cases" isBlank="false" />
         </div>
       </div>
     </main>

@@ -77,20 +77,39 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
               i < data.items.length - 1 ? "border-b border-[#dfe6ea]" : ""
             }`}
           >
-            <a
-              href={item.href ?? "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1"
-            >
-              {renderTitle(item.title)}
-            </a>
-            <span
-              aria-hidden
-              className="text-quantum-green shrink-0 flex items-center justify-center"
-            >
-              {item.icon ?? <DownloadIcon />}
-            </span>
+            {item.href ? (
+              <>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1"
+                >
+                  {renderTitle(item.title)}
+                </a>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${item.title}`}
+                  className="text-quantum-green shrink-0 flex items-center justify-center hover:text-quantum-blue transition-colors"
+                >
+                  {item.icon ?? <DownloadIcon />}
+                </a>
+              </>
+            ) : (
+              <>
+                <span className="text-steel-gray text-[15px] leading-[24px] flex-1">
+                  {renderTitle(item.title)}
+                </span>
+                <span
+                  aria-hidden
+                  className="text-quantum-green/40 shrink-0 flex items-center justify-center"
+                >
+                  {item.icon ?? <DownloadIcon />}
+                </span>
+              </>
+            )}
           </li>
         ))}
       </ul>

@@ -37,13 +37,14 @@ export default function DropdownProducts() {
       onMouseLeave={() => setOpen(false)}
     >
       {/* Trigger */}
-      <button
+      <Link
+        href="/products/ironcap-engine"
         aria-expanded={open}
         aria-haspopup="menu"
         className="text-white text-[17px] font-normal hover:text-[#71bfff] transition-colors px-6 cursor-pointer"
       >
         Products +
-      </button>
+      </Link>
 
       {/* Panel — outer div starts at top-full (no gap) with pt-3 as a transparent bridge */}
       {open && (

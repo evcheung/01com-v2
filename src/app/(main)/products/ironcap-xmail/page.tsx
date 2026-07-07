@@ -211,7 +211,7 @@ export default function IroncapXmail() {
           <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
             <Button
               text="brochure"
-              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              url="https://www.01com.com/pdf/brochures/IronCAP%20X%20Brochure_Web.pdf"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

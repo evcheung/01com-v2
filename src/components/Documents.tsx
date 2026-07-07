@@ -6,13 +6,20 @@ import {
 /* ── Data ─────────────────────────────────────────────────────────── */
 const cards: DocumentsCardData[] = [
   {
-    title: "User Guides",
+    title: "User Guide",
     items: [
-      { title: "IronCAP XMail™ (FREE Personal Usage)", href: "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e=" },
-      { title: "IronCAP XMail™ (Business Usage)", href: "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e=" },
-      { title: "IronCAP XMail™ Tutorial", href: "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e=" },
-      { title: "IronCAP™ InTouch", href: "https://urldefense.proofpoint.com/v2/url?u=https-3A__locator.01com.com_desktop_iitwebhelp_en_outputs_index.htm-23t-3DIIT-252FFirst-5FTopic.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ftiFioQwgGtlncwIedxwxjI5q7Xw84OdUF1VvnG5Fjg&e=" },
-      { title: "IronCAP™ OnCall", href: "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_imoncall_webhelp_desktop_welcome.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=6kiz09nYgXV6AL8xvor3trfhMVtxoiVA1FlPe8WTGWU&e=" },
+      {
+        title: "IronCAP™ X",
+        href: "https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm",
+      },
+      {
+        title: "IronCAP™ InTouch",
+        href: "https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm",
+      },
+      {
+        title: "IronCAP™ OnCall",
+        href: "https://www.01com.com/01com/imoncall/webhelp/desktop/welcome.htm",
+      },
     ],
   },
   {
@@ -38,7 +45,7 @@ const cards: DocumentsCardData[] = [
 
 export const DocumentsCards = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 gap-y-6 lg:gap-y-8 items-stretch auto-rows-fr">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 gap-y-6 lg:gap-y-8 items-stretch auto-rows-fr">
       {cards.map((c) => (
         <DocumentsCard key={c.title} data={c} />
       ))}

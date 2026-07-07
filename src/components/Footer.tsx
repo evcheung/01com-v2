@@ -55,15 +55,15 @@ export default function Footer() {
       {/* ── Footer ─────────────────────────────────────────────── */}
       <footer className="bg-black border-t border-white/10">
         {/* CTA row */}
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 md:py-16 flex justify-center gap-6 md:gap-20">
+        <div className="max-w-[1512px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[95px] py-10 sm:py-12 md:py-16 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-20">
           <Button text="CONTACT" url="/contact" bgDots="bg-white" />
           {/* <Button text="DEMO" url="/live-demo" bgDots="bg-white" /> */}
         </div>
 
         {/* Links row */}
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12">
+        <div className="max-w-[1512px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[95px] pb-10 sm:pb-12">
           {/* Logo + social */}
-          <div className="flex flex-col gap-4 mb-10 md:mb-0 md:hidden">
+          <div className="flex flex-col gap-4 mb-10 lg:mb-0 lg:hidden">
             <Image
               alt="01 Quantum"
               src={imgLogo}
@@ -74,9 +74,9 @@ export default function Footer() {
             
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:items-start md:justify-between gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between gap-8">
             {/* Logo + social — desktop only */}
-            <div className="hidden md:flex flex-col gap-4">
+            <div className="hidden lg:flex flex-col gap-4">
               <Image
                 alt="01 Quantum"
                 src={imgLogo}
@@ -102,7 +102,7 @@ export default function Footer() {
                 ))}
               </div>
             ))}
-            <div>
+            <div className="col-span-2 sm:col-span-3 lg:col-auto">
               <div className="flex items-center gap-4">
                 {socialLinks.map(({ icon, url, label }) => (
                   <a
@@ -123,7 +123,7 @@ export default function Footer() {
                 ))}
               </div>
               {/* Copyright */}
-              <div className="py-5 text-center">
+              <div className="py-4 lg:py-5 text-left lg:text-center">
                 <p className="text-white text-[12px] font-normal">
                   © 2026 01 Quantum All rights reserved
                 </p>

@@ -352,18 +352,6 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] mb-12">
             <p className="text-lite-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
-              InTouch Go is a free mobile app that allows you to remotely
-              control your computer as if you were sitting in front of it,
-              without using a web browser. Now, your remote computer, with all
-              your full-blown desktop applications, is at your fingertips. You
-              can check your emails, edit your documents, work on your
-              spreadsheet and any software program on your mobile device. No
-              more frustration about application costs and incompatibility
-              issues since no application is required to reside on your mobile
-              device. Also, there is no longer a security risk, as no
-              confidential files leave your office environment.
-            </p>
-            <p className="text-lite-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
               Before you can use InTouch Go, you must first activate your remote
               computer to become InTouch-enabled. The activation process is as
               easy as 1-2-3. Simply click{" "}

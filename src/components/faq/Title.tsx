@@ -60,18 +60,18 @@ export function Title({ title = "FAQ" }: { title?: string }) {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 py-10 sm:py-12 min-h-[140px] lg:min-h-[196px]">
+        <h1 className="text-white text-[35px] sm:text-[42px] lg:text-[50px] font-medium leading-tight lg:leading-[50px]">
           {title}
         </h1>
       </section>
 
       {/* ─── Sub Menu ─── */}
-      <section className="bg-black relative flex items-center justify-center py-5 md:h-[88px] md:py-0">
+      <section className="bg-black relative flex items-center justify-center py-4 sm:py-5 lg:h-[88px] lg:py-0">
         {/* Top divider line */}
         <div
           aria-hidden
-          className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] max-w-[90%] bg-white/30"
+          className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] max-w-[calc(100%-3rem)] bg-white/30"
         />
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12px]">
           {faqMenuItems.map((m, i) => {

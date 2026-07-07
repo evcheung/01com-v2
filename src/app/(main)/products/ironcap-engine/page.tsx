@@ -225,7 +225,7 @@ export default function Products() {
           <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
             <Button
               text="brochure"
-              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              url="https://www.01com.com/pdf/brochures/IronCAP%20Brochure%20Digital.pdf"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

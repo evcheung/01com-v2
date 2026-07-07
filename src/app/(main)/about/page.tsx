@@ -148,41 +148,35 @@ export default function About() {
               </ul>
             </div>
 
-            {/* User Guides */}
+            {/* User Guide */}
             <div className="bg-[#0d0d0d] border border-white/10 rounded-[20px] px-10 py-9">
               <h3 className="text-quantum-blue text-[22px] font-medium leading-tight mb-4">
-                User Guides
+                User Guide
               </h3>
               <div className="h-px bg-white/15 mb-6" />
               <ul className="flex flex-col gap-6">
                 <li>
                   <a
-                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
+                    href="https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm"
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<Trademark /> XMail
+                    IronCAP<Trademark /> X
                   </a>
-                  <p className="text-white/70 text-[13px] leading-snug mt-0.5">
-                    FREE personal usage
-                  </p>
                 </li>
                 <li>
                   <a
-                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
+                    href="https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm"
                     className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<Trademark /> XMail
+                    IronCAP<Trademark /> InTouch
                   </a>
-                  <p className="text-white/70 text-[13px] leading-snug mt-0.5">
-                    Business usage
-                  </p>
                 </li>
                 <li>
                   <a
-                    href="https://urldefense.proofpoint.com/v2/url?u=https-3A__www.01com.com_01com_ironcap-2Dx_webhelp_index.htm-23t-3DIronCAP-5FX-252FWelcome-5Fto-5FIronCap-5FX.htm&d=DwMFaQ&c=euGZstcaTDllvimEN8b7jXrwqOf-v5A_CdpgnVfiiMM&r=rEJur_OGYQNs-phXiKUcBPKldLTp6HsLpSHEZOZDNmw&m=m1Op600E1VbudoCuRCNoEgQ7c6miCl6yRFsh-ajVRaw10in3CmrbVO4MlT4G9l2d&s=ctOayCFZ7NMIbWoBte6i7Pv-QWrd2zJhnTfTraz35Cc&e="
-                    className="text-quantum-green text-[15px] font-medium hover:opacity-80 transition-opacity"
+                    href="https://www.01com.com/01com/imoncall/webhelp/desktop/welcome.htm"
+                    className="text-quantum-green text-[15px] font-medium hover:text-quantum-blue transition-colors"
                   >
-                    IronCAP<Trademark /> XMail Tutorial
+                    IronCAP<Trademark /> OnCall
                   </a>
                 </li>
               </ul>

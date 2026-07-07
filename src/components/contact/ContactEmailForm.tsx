@@ -36,7 +36,7 @@ const initialValues: ContactFormValues = {
   message: "",
 };
 
-const contactEmail = "help@01com.com";
+const contactEmail = "sales@01com.com";
 
 export function ContactEmailForm() {
   const [values, setValues] = useState<ContactFormValues>(initialValues);

@@ -124,7 +124,7 @@ function VideoEmbed({ src, title }: { src: string; title: string }) {
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7] py-7">
-      <div className="max-w-[1512px] mx-auto px-6 md:px-6 md:px-[95px]">
+      <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px]">
         <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
           {children}
         </h2>
@@ -139,7 +139,7 @@ function TableHeader({
   cols: { label: string; width: string }[];
 }) {
   return (
-    <div className="hidden md:flex border-b border-[#dfe6ea] pb-3">
+    <div className="hidden lg:flex border-b border-[#dfe6ea] pb-3">
       {cols.map((c, i) => (
         <div key={i} className={c.width}>
           <p className="text-quantum-green text-[20px] font-medium leading-[34px]">
@@ -160,7 +160,7 @@ function TableRow({
 }) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-start md:items-center py-4 gap-1 md:gap-0 ${isLast ? "" : "border-b border-[#dfe6ea]"}`}
+      className={`flex flex-col lg:flex-row items-start lg:items-center py-4 gap-1 lg:gap-0 ${isLast ? "" : "border-b border-[#dfe6ea]"}`}
     >
       {cells.map((cell, i) => (
         <div key={i} className={cell.width}>
@@ -189,9 +189,9 @@ function RelevantLinks({
     displayLinks.length > 1 ? Math.min(displayLinks.length, desktopInlineMax) : 1;
   const containerClass =
     inlineColumns === 3
-      ? "inline-flex flex-col gap-1 md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-2 md:w-full"
+      ? "inline-flex flex-col gap-1 lg:grid lg:grid-cols-3 lg:gap-x-12 lg:gap-y-2 lg:w-full"
       : inlineColumns === 2
-        ? "inline-flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-2 md:w-full"
+        ? "inline-flex flex-col gap-1 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-2 lg:w-full"
         : "inline-flex flex-col gap-1";
 
   return (
@@ -241,15 +241,15 @@ export default async function InvestorRelations() {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-6 md:px-24 min-h-[196px]">
-        <h1 className="text-white text-[28px] md:text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 py-10 sm:py-12 min-h-[140px] lg:min-h-[196px]">
+        <h1 className="text-white text-[28px] sm:text-[36px] lg:text-[50px] font-medium leading-tight lg:leading-[50px]">
           Investor Relations
         </h1>
       </section>
 
       {/* ─── Featured Video / Intro ─── */}
       <section className="bg-black">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-6 md:px-[95px] pt-4 pb-16 flex flex-col gap-10">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] pt-4 pb-16 flex flex-col gap-10">
           <p className="text-white text-[15px] leading-[24px] max-w-[1129px]">
             01 Quantum&apos;s common shares are listed on the TSX Venture
             Exchange (TSX-V) under the symbol &lsquo;ONE&rsquo; and quoted on
@@ -257,8 +257,8 @@ export default async function InvestorRelations() {
           </p>
 
           {featuredVideo && (
-            <div className="bg-gradient-to-r from-[#141313] to-[#141313]/0 rounded-[17px] px-6 md:px-6 md:px-[95px] py-10 md:py-14 flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <div className="flex-1 md:max-w-[414px] flex flex-col gap-2 md:pt-6">
+            <div className="bg-gradient-to-r from-[#141313] to-[#141313]/0 rounded-[17px] px-6 sm:px-8 lg:px-10 xl:px-[95px] py-8 sm:py-10 lg:py-14 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+              <div className="flex-1 lg:max-w-[414px] flex flex-col gap-2 lg:pt-6">
                 <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-2">
                   Featured Video
                 </h2>
@@ -270,7 +270,7 @@ export default async function InvestorRelations() {
                 </p>
               </div>
 
-              <div className="relative w-full md:w-[540px] h-[220px] md:h-[303px] shrink-0">
+              <div className="relative w-full max-w-[540px] lg:w-[540px] h-[220px] sm:h-[260px] lg:h-[303px] mx-auto lg:mx-0 lg:shrink-0">
                 <VideoEmbed src={featuredVideo.link} title={featuredVideo.title} />
               </div>
             </div>
@@ -281,15 +281,15 @@ export default async function InvestorRelations() {
       {/* ─── Latest Presentation ─── */}
       <SectionTitle>Latest Presentation</SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] py-10">
           <TableHeader cols={tableCols} />
           {presentations.map((row, i) => (
             <TableRow
               key={row._id}
               isLast={i === presentations.length - 1}
               cells={[
-                { content: row.date, width: "w-[228px] shrink-0" },
-                { content: row.description, width: "w-[316px] shrink-0" },
+                { content: row.date, width: "w-full lg:w-[228px] lg:shrink-0" },
+                { content: row.description, width: "w-full lg:w-[316px] lg:shrink-0" },
                 {
                   content: (
                     <RelevantLinks
@@ -308,15 +308,15 @@ export default async function InvestorRelations() {
       {/* ─── Press Releases ─── */}
       <SectionTitle>Press Releases</SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] py-10">
           <TableHeader cols={tableCols} />
           {pressReleases.map((row, i) => (
             <TableRow
               key={row._id}
               isLast={i === pressReleases.length - 1}
               cells={[
-                { content: formatIsoDate(row.date), width: "w-[228px] shrink-0" },
-                { content: row.description, width: "w-[316px] shrink-0" },
+                { content: formatIsoDate(row.date), width: "w-full lg:w-[228px] lg:shrink-0" },
+                { content: row.description, width: "w-full lg:w-[316px] lg:shrink-0" },
                 {
                   content: (
                     <RelevantLinks
@@ -337,7 +337,7 @@ export default async function InvestorRelations() {
       {/* ─── Information Request ─── */}
       <SectionTitle>Information Request</SectionTitle>
       <section className="bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7]">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] pb-12">
           <p className="text-steel-gray text-[15px] leading-[24px] max-w-[956px]">
             For more information about 01 Quantum contact us at +1 905 795-2888
             or +1 800 668-2185 (US/Canada), or email{" "}
@@ -354,7 +354,7 @@ export default async function InvestorRelations() {
 
       {/* ─── Stock Quote ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-12 flex flex-col gap-6">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] py-12 flex flex-col gap-6">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
             Stock Quote
           </h2>
@@ -374,10 +374,10 @@ export default async function InvestorRelations() {
       {/* ─── Financial Results ─── */}
       <SectionTitle>Financial Results</SectionTitle>
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] py-10">
           {financialResults.map((row) => (
-            <div key={row._id} className="flex flex-col md:flex-row gap-4 md:gap-16 py-4 border-b border-[#dfe6ea] last:border-0">
-              <p className="text-steel-gray text-[15px] leading-[24px] w-[228px] shrink-0">
+            <div key={row._id} className="flex flex-col lg:flex-row gap-4 lg:gap-16 py-4 border-b border-[#dfe6ea] last:border-0">
+              <p className="text-steel-gray text-[15px] leading-[24px] w-full lg:w-[228px] lg:shrink-0">
                 {row.description}
               </p>
               <RelevantLinks

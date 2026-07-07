@@ -3,6 +3,7 @@ import { Bottom } from "@/components/resources/Bottom"
 import { ContactEmailForm } from "@/components/contact/ContactEmailForm";
 /* ── Data ─────────────────────────────────────────────────────────── */
 const departmentButtons: { label: string; href: string }[] = [
+  { label: "General Inquiries", href: "mailto:01com@01com.com" },
   { label: "Sales/VARs", href: "mailto:sales@01com.com" },
   { label: "Investor Relations", href: "mailto:ir@01com.com" },
   { label: "Technical Support", href: "mailto:help@01com.com" },
@@ -40,57 +41,57 @@ export default function Contact() {
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-center">
           {/* Left Column - centered in remaining space */}
           <aside className="flex-1 flex flex-col gap-6 items-center">
-            {/* Phone block */}
-            <div className="flex items-start gap-4">
-              {/* Phone icon */}
-              <span
-                aria-hidden
-                className="shrink-0 w-[34px] h-[40px] flex items-center justify-center text-quantum-green"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.6}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-7 h-7"
+            {/* Phone + Live Chat */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+                <span
+                  aria-hidden
+                  className="flex h-[40px] w-[34px] shrink-0 items-center justify-center text-quantum-green"
                 >
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-              </span>
-              <div className="flex flex-col gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.6}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-7 w-7"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </span>
                 <a
                   href="tel:+18006682185"
                   className="text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
                 >
                   1 800 668-2185
                 </a>
-                <a
-                  href="#live-chat"
-                  className="inline-flex items-center gap-2 text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
-                >
-                  <span
-                    aria-hidden
-                    className="inline-flex w-7 h-7 items-center justify-center text-quantum-green"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1.6}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-5 h-5"
-                    >
-                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                    </svg>
-                  </span>
-                  Live Chat
-                </a>
               </div>
+
+              <a
+                href="#live-chat"
+                className="flex items-center gap-4 text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
+              >
+                <span
+                  aria-hidden
+                  className="flex h-[40px] w-[34px] shrink-0 items-center justify-center text-quantum-green"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.6}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-7 w-7"
+                  >
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                  </svg>
+                </span>
+                <span>Live Chat</span>
+              </a>
             </div>
 
             {/* Department buttons */}

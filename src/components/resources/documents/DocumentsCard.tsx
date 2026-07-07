@@ -61,9 +61,9 @@ function renderTitle(title: string) {
 export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
   return (
     <article
-      className={`bg-white w-full sm:w-[408px] h-full p-6 sm:p-8 sm:pt-9 shadow-sm flex flex-col ${className}`}
+      className={`bg-white w-full max-w-[408px] mx-auto h-full p-6 sm:p-8 sm:pt-9 shadow-sm flex flex-col ${className}`}
     >
-      <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-6">
+      <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-4 sm:mb-6">
         {data.title}
       </h3>
 
@@ -71,7 +71,7 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
         {data.items.map((item, i) => (
           <li
             key={i}
-            className={`flex items-center justify-between gap-4 py-4 ${
+            className={`flex items-start sm:items-center justify-between gap-3 sm:gap-4 py-4 ${
               i === 0 ? "pt-0" : ""
             } ${
               i < data.items.length - 1 ? "border-b border-[#dfe6ea]" : ""
@@ -83,7 +83,7 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1"
+                  className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1 min-w-0"
                 >
                   {renderTitle(item.title)}
                 </a>
@@ -99,7 +99,7 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
               </>
             ) : (
               <>
-                <span className="text-steel-gray text-[15px] leading-[24px] flex-1">
+                <span className="text-steel-gray text-[15px] leading-[24px] flex-1 min-w-0">
                   {renderTitle(item.title)}
                 </span>
                 <span

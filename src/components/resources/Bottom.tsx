@@ -8,11 +8,11 @@ interface BottomProps {
 
 export const Bottom = ({
   text = " LEARN MORE ABOUT 01 QUANTUM PRODUCTS",
-  url = "https://01com.com/pdf/brochures/AI%20Brochure.pdf",
-  isBlank = "true",
+  url = "/use-cases",
+  isBlank = "false",
 }: BottomProps) => {
   return (
-    <div className="py-16 flex justify-center items-center px-24 min-h-[196px]">
+    <div className="py-12 sm:py-16 flex justify-center items-center px-6 sm:px-10 lg:px-16 xl:px-24 min-h-[160px] sm:min-h-[196px]">
       <Button
         text={text}
         url={url}

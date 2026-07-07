@@ -115,10 +115,35 @@ const oncallFaqs: Faq[] = [
           focus on delivering your expertise in computer remote support
           services. Here are the requirements:
         </p>
-        <p className="mt-3 font-medium text-steel-gray">Windows:</p>
-        <p className="mt-1">Lorem Ipsum &ndash; need this copy</p>
-        <p className="mt-3 font-medium text-steel-gray">Mac:</p>
-        <p className="mt-1">Lorem Ipsum &hellip; need this copy</p>
+        <p className="mt-3 font-medium text-steel-gray">
+          The Customer You Will Support Remotely
+        </p>
+        <p className="mt-3 font-medium text-steel-gray">
+          For Windows Computers
+        </p>
+        <ul className="mt-1 list-disc pl-6">
+          <li>Windows XP/Server 2003/Vista/7/8</li>
+          <li>Latest versions of Internet Explorer, Firefox and Google Chrome</li>
+          <li>
+            High-speed Internet Connection (e.g. Cable modem, DSL, IDSN, T1)
+          </li>
+        </ul>
+        <p className="mt-3 font-medium text-steel-gray">For Mac Computers</p>
+        <ul className="mt-1 list-disc pl-6">
+          <li>Apple Mac OSX 10.5 &ldquo;Leopard&rdquo; or higher</li>
+          <li>Latest version of Safari net browser</li>
+          <li>
+            High-speed Internet Connection (e.g. Cable modem, DSL, IDSN, T1)
+          </li>
+        </ul>
+        <p className="mt-3 font-medium text-steel-gray">Yourself</p>
+        <ul className="mt-1 list-disc pl-6">
+          <li>Windows 2000/XP/Server 2003/Vista/7/8</li>
+          <li>Latest versions of Internet Explorer, Firefox and Google Chrome</li>
+          <li>
+            High-speed Internet Connection (e.g. Cable modem, DSL IDSN, T1)
+          </li>
+        </ul>
       </>
     ),
   },

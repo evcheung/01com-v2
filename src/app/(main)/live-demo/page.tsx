@@ -24,7 +24,7 @@ function BracketCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative w-full max-w-[494px] h-[311px]">
+    <div className="relative w-full max-w-[494px] min-h-[311px] h-auto">
       {/* Bracket frame */}
       <Image
         src="/live_demo_assets/Bracket.svg"
@@ -34,7 +34,7 @@ function BracketCard({
         className="pointer-events-none select-none object-contain"
       />
       {/* Content */}
-      <div className="relative px-20 py-16 flex flex-col items-center">
+      <div className="relative px-6 sm:px-10 lg:px-16 xl:px-20 py-10 sm:py-12 lg:py-16 flex flex-col items-center">
         <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-6 self-start">
           {title}
         </h3>
@@ -59,7 +59,7 @@ function SsoButton({
   return (
     <a
       href={href}
-      className="flex items-center gap-2 w-[260px] h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
+      className="flex items-center gap-2 w-full max-w-[260px] min-h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
       style={{
         outline: "0.30px solid #B6BBCD",
         outlineOffset: "-0.15px",
@@ -130,7 +130,7 @@ export default function LiveDemo() {
       {/* ─── Intro ─── */}
       <div className="bg-white flex flex-col max-w-[1512px] mx-auto">
         <section>
-          <div className="px-6 md:px-[95px] pt-12 pb-8">
+          <div className="px-6 sm:px-8 lg:px-10 xl:px-[95px] pt-12 pb-8">
             <p className="text-steel-gray text-[15px] leading-[24px] max-w-[1230px]">
               IronCAP<sup className="text-[9.675px]">™</sup> is our latest
               innovation for the post-quantum cybersecurity. This
@@ -148,9 +148,9 @@ export default function LiveDemo() {
 
         {/* ─── Two-column layout ─── */}
         <section className="bg-white">
-          <div className="px-6 md:px-[95px] pb-16 flex flex-col md:flex-row gap-12 items-start">
+          <div className="px-6 sm:px-8 lg:px-10 xl:px-[95px] pb-16 flex flex-col lg:flex-row gap-12 items-start">
             {/* Left column – instructions + info */}
-            <div className="w-full md:w-[479px] shrink-0 flex flex-col gap-6">
+            <div className="w-full lg:w-[479px] lg:shrink-0 flex flex-col gap-6">
               {/* Try IronCAP™ encryption */}
               <div>
                 <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-1">
@@ -239,7 +239,7 @@ export default function LiveDemo() {
             </div>
 
             {/* Right column – registration boxes */}
-            <div className="flex flex-col gap-8 shrink-0 w-full md:w-auto md:ml-[150px]">
+            <div className="flex flex-col gap-8 w-full lg:w-auto lg:shrink-0 lg:ml-12 xl:ml-[150px]">
               {/* Registration */}
               <BracketCard title="Registration">
                 <div className="flex flex-col gap-3 items-center">

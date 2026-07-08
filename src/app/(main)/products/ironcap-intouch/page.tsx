@@ -7,7 +7,6 @@ import animation4 from "@/assets/animations/icon-IC-intouchGoMail.json"
 import animation5 from "@/assets/animations/iconDark-IC-intouchSecureKey.json"
 import animation6 from "@/assets/animations/icon-IC-intouch-SE.json"
 import Image from "next/image";
-import { Titles } from "@/components/Titles";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 const howWorkSteps = [
@@ -111,9 +110,6 @@ export default function InTouchPage() {
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
-      {/* ─── Page Title ─── */}
-      <Titles text="Products" />
-
       {/* ─── InTouch Intro ─── */}
       <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12 md:pb-20">

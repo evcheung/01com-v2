@@ -1,5 +1,5 @@
-import InTouchBlankSection from "@/components/products/InTouchBlankSection";
+import OnCallPricingComparisonSection from "@/components/products/OnCallPricingComparisonSection";
 
 export default function IroncapOnCallPricingAndComparisonPage() {
-  return <InTouchBlankSection sectionTitle="Pricing & Comparison" />;
+  return <OnCallPricingComparisonSection />;
 }

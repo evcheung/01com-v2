@@ -36,9 +36,15 @@ const initialValues: ContactFormValues = {
   message: "",
 };
 
-const contactEmail = "sales@01com.com";
+type ContactEmailFormProps = {
+  contactEmail: string;
+  contactLabel: string;
+};
 
-export function ContactEmailForm() {
+export function ContactEmailForm({
+  contactEmail,
+  contactLabel,
+}: ContactEmailFormProps) {
   const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [error, setError] = useState<string | null>(null);
 
@@ -109,7 +115,8 @@ export function ContactEmailForm() {
       </label>
 
       <p className="text-steel-gray text-[13px] leading-[20px]">
-        This site opens your email application with a prefilled message to {contactEmail}.
+        This site opens your email application with a prefilled message to{" "}
+        {contactLabel} at {contactEmail}.
       </p>
 
       {error ? (

@@ -1,5 +1,5 @@
-import InTouchBlankSection from "@/components/products/InTouchBlankSection";
+import OnCallReferralDiscountSection from "@/components/products/OnCallReferralDiscountSection";
 
 export default function IroncapOnCallReferralDiscountPage() {
-  return <InTouchBlankSection sectionTitle="Referral Discount" />;
+  return <OnCallReferralDiscountSection />;
 }

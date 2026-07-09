@@ -14,19 +14,6 @@ export const onCallSectionItems = [
     label: "Referral Discount",
     href: "/products/ironcap-oncall/referral-discount",
   },
-  {
-    label: "Connect to an Agent",
-    href: "/products/ironcap-oncall/connect-to-an-agent",
-  },
-  { label: "Usage Tips", href: "/products/ironcap-oncall/usage-tips" },
-  {
-    label: "News & Updates",
-    href: "/products/ironcap-oncall/news-and-updates",
-  },
-  {
-    label: "Press Endorsement",
-    href: "/products/ironcap-oncall/press-endorsement",
-  },
 ];
 
 const MAIN_PAGE_HREF = "/products/ironcap-oncall";

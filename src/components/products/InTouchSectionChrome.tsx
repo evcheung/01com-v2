@@ -11,15 +11,6 @@ export const inTouchSectionItems = [
     label: "Pricing and Comparison",
     href: "/products/ironcap-intouch/pricing-and-comparison",
   },
-  { label: "Usage Tips", href: "/products/ironcap-intouch/usage-tips" },
-  {
-    label: "News & Updates",
-    href: "/products/ironcap-intouch/news-and-updates",
-  },
-  {
-    label: "Press Endorsement",
-    href: "/products/ironcap-intouch/press-endorsement",
-  },
 ];
 
 const MAIN_PAGE_HREF = "/products/ironcap-intouch";

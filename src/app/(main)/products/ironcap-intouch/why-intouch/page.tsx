@@ -1,5 +1,5 @@
-import InTouchBlankSection from "@/components/products/InTouchBlankSection";
+import InTouchWhySection from "@/components/products/InTouchWhySection";
 
 export default function InTouchWhyInTouchPage() {
-  return <InTouchBlankSection sectionTitle="Why InTouch?" />;
+  return <InTouchWhySection />;
 }

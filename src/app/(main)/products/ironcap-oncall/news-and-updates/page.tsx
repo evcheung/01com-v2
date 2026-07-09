@@ -1,5 +1,5 @@
-import InTouchBlankSection from "@/components/products/InTouchBlankSection";
+import OnCallLegacyHighlightsSection from "@/components/products/OnCallLegacyHighlightsSection";
 
 export default function IroncapOnCallNewsAndUpdatesPage() {
-  return <InTouchBlankSection sectionTitle="News & Updates" />;
+  return <OnCallLegacyHighlightsSection mode="news" />;
 }

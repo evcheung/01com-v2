@@ -1,5 +1,5 @@
-import InTouchBlankSection from "@/components/products/InTouchBlankSection";
+import InTouchPricingComparisonSection from "@/components/products/InTouchPricingComparisonSection";
 
 export default function InTouchPricingAndComparisonPage() {
-  return <InTouchBlankSection sectionTitle="Pricing and Comparison" />;
+  return <InTouchPricingComparisonSection />;
 }

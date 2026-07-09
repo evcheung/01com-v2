@@ -1,6 +1,7 @@
 "use client";
 
 import LottiePlayer from "@/components/LottiePlayer";
+import OnCallLegacyHighlightsSection from "@/components/products/OnCallLegacyHighlightsSection";
 import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
 import { Button } from "@/components/ui/button";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
@@ -90,6 +91,8 @@ export default function IroncapOncall() {
           </div>
         </div>
       </section>
+
+      <OnCallLegacyHighlightsSection />
     </main>
   );
 }

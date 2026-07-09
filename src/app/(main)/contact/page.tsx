@@ -1,15 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Bottom } from "@/components/resources/Bottom"
-import { ContactEmailForm } from "@/components/contact/ContactEmailForm";
+import { Bottom } from "@/components/resources/Bottom";
+import { ContactDepartmentSection } from "@/components/contact/ContactDepartmentSection";
 /* ── Data ─────────────────────────────────────────────────────────── */
-const departmentButtons: { label: string; href: string }[] = [
-  { label: "General Inquiries", href: "mailto:01com@01com.com" },
-  { label: "Sales/VARs", href: "mailto:sales@01com.com" },
-  { label: "Investor Relations", href: "mailto:ir@01com.com" },
-  { label: "Technical Support", href: "mailto:help@01com.com" },
-  { label: "Marketing", href: "mailto:marketing@01com.com" },
-  { label: "Customer Service", href: "mailto:customerservice@01com.com" },
-  { label: "Human resources", href: "mailto:hr@01com.com" },
+const departmentButtons: { label: string; email: string }[] = [
+  { label: "General Inquiries", email: "01com@01com.com" },
+  { label: "Sales/VARs", email: "sales@01com.com" },
+  { label: "Investor Relations", email: "ir@01com.com" },
+  { label: "Technical Support", email: "help@01com.com" },
+  { label: "Marketing", email: "marketing@01com.com" },
+  { label: "Customer Service", email: "customerservice@01com.com" },
+  { label: "Human resources", email: "hr@01com.com" },
 ];
 
 /* ── Page ─────────────────────────────────────────────────────────── */
@@ -38,98 +37,7 @@ export default function Contact() {
 
       {/* ─── Two Column: Contact Info + Form ─── */}
       <section className="bg-white">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-center">
-          {/* Left Column - centered in remaining space */}
-          <aside className="flex-1 flex flex-col gap-6 items-center">
-            {/* Phone + Live Chat */}
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-4">
-                <span
-                  aria-hidden
-                  className="flex h-[40px] w-[34px] shrink-0 items-center justify-center text-quantum-green"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.6}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-7 w-7"
-                  >
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                </span>
-                <a
-                  href="tel:+18006682185"
-                  className="text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
-                >
-                  1 800 668-2185
-                </a>
-              </div>
-
-              <a
-                href="#live-chat"
-                className="flex items-center gap-4 text-lite-gray text-[20px] font-medium leading-[34px] break-words hover:text-quantum-green transition-colors"
-              >
-                <span
-                  aria-hidden
-                  className="flex h-[40px] w-[34px] shrink-0 items-center justify-center text-quantum-green"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.6}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-7 w-7"
-                  >
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                  </svg>
-                </span>
-                <span>Live Chat</span>
-              </a>
-            </div>
-
-            {/* Department buttons */}
-            <div className="flex flex-col gap-3 mt-2">
-              {departmentButtons.map((b) => (
-                <Button
-                  key={b.label}
-                  text={b.label}
-                  url={b.href}
-                  border="border-quantum-green/60"
-                  textColor="text-quantum-green"
-                  hoverBg="hover:bg-quantum-green/10"
-                />
-              ))}
-            </div>
-
-            {/* Address */}
-            <address className="not-italic mt-4">
-              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mb-0">01 Quantum</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">789 Don Mills Road, Suite #700</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Toronto, Ontario, M3C 1T5</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Canada</p>
-              <p className="text-quantum-green text-[20px] font-medium leading-[34px] break-words mt-4">Office Hours</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">Monday – Friday</p>
-              <p className="text-steel-gray text-[15px] font-normal leading-[24px] break-words">9 am to 6 pm EST</p>
-            </address>
-          </aside>
-
-          {/* Contact Form */}
-          <div className="w-full md:w-[705px]  shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
-            <p className="text-steel-gray text-[20px] leading-[32px] max-w-[446px] mb-8">
-              Contact us to receive updates, white papers, brochures, articles
-              or to answer specific questions.
-            </p>
-
-            <ContactEmailForm />
-          </div>
-        </div>
+        <ContactDepartmentSection departmentButtons={departmentButtons} />
       </section>
 
       {/* ─── Learn More CTA ─── */}

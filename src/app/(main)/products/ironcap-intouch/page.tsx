@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
+import InTouchLegacyHighlightsSection from "@/components/products/InTouchLegacyHighlightsSection";
 import animation1 from "@/assets/animations/icon-IC-inTouch.json"
 import animation2 from  "@/assets/animations/icon-IC-intouchGo.json"
 import animation3 from "@/assets/animations/intouchGoFlowchart.json"
@@ -701,6 +702,8 @@ export default function InTouchPage() {
           </div>
         </div>
       </section>
+
+      <InTouchLegacyHighlightsSection />
 
     </main>
   );

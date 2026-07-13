@@ -1,84 +1,13 @@
-import Image from "next/image";
 import { Titles } from "@/components/Titles";
+import LiveDemoPanel from "@/components/live-demo/LiveDemoPanel";
 import { Bottom } from "@/components/resources/Bottom";
 
-const legacyDemoUrl =
-  process.env.NEXT_PUBLIC_IRONCAP_LEGACY_DEMO_URL ||
-  "https://www.ironcap.ca/demo/";
-
-function buildLegacyDemoHref(
-  intent: "register" | "login",
-  provider: "facebook" | "google"
-) {
-  const url = new URL(legacyDemoUrl);
-  url.searchParams.set("auth_intent", intent);
-  url.searchParams.set("auth_provider", provider);
-  return url.toString();
-}
-/* ── Bracket card with SVG bracket frame ─────────────────────────── */
-function BracketCard({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+/* ── Requirement bullet list ─────────────────────────────────────── */
+function RequirementList({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full max-w-[494px] min-h-[311px] h-auto">
-      {/* Bracket frame */}
-      <Image
-        src="/live_demo_assets/Bracket.svg"
-        alt=""
-        fill
-        aria-hidden
-        className="pointer-events-none select-none object-contain"
-      />
-      {/* Content */}
-      <div className="relative px-6 sm:px-10 lg:px-16 xl:px-20 py-10 sm:py-12 lg:py-16 flex flex-col items-center">
-        <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-6 self-start">
-          {title}
-        </h3>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/* ── SSO Button ───────────────────────────────────────────────────── */
-function SsoButton({
-  iconSrc,
-  label,
-  iconSize = 18,
-  href,
-}: {
-  iconSrc: string;
-  label: string;
-  iconSize?: number;
-  href: string;
-}) {
-  return (
-    <a
-      href={href}
-      className="flex items-center gap-2 w-full max-w-[260px] min-h-[40px] px-4 bg-white rounded-[4px] text-steel-gray text-[14px] leading-[20px] hover:bg-[#f2f6f7] transition-colors"
-      style={{
-        outline: "0.30px solid #B6BBCD",
-        outlineOffset: "-0.15px",
-      }}
-    >
-      <span
-        className="shrink-0 flex items-center justify-center"
-        style={{ width: iconSize, height: iconSize }}
-      >
-        <Image
-          src={iconSrc}
-          alt=""
-          width={iconSize}
-          height={iconSize}
-          className="object-contain max-w-full max-h-full"
-        />
-      </span>
-      <span>{label}</span>
-    </a>
+    <ul className="ml-5 list-disc space-y-3 text-steel-gray marker:text-quantum-green text-[15px] leading-[24px]">
+      {children}
+    </ul>
   );
 }
 
@@ -87,10 +16,12 @@ function InfoSection({
   title,
   items,
   divider = true,
+  arrows = false,
 }: {
   title: React.ReactNode;
   items: React.ReactNode[];
   divider?: boolean;
+  arrows?: boolean;
 }) {
   return (
     <div>
@@ -100,7 +31,17 @@ function InfoSection({
       </h3>
       <div className="flex flex-col text-steel-gray text-[15px] leading-[24px]">
         {items.map((item, i) => (
-          <p key={i}>{item}</p>
+          <p key={i} className={arrows ? "flex gap-2" : undefined}>
+            {arrows && (
+              <span
+                aria-hidden
+                className="relative mt-[11px] h-[2px] w-2 shrink-0 bg-quantum-green"
+              >
+                <span className="absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rotate-45 border-r-2 border-t-2 border-quantum-green" />
+              </span>
+            )}
+            <span>{item}</span>
+          </p>
         ))}
       </div>
     </div>
@@ -156,18 +97,13 @@ export default function LiveDemo() {
                 <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-1">
                   Try IronCAP<sup className="text-[12.9px]">™</sup> encryption
                 </h3>
-                <ul className="text-steel-gray text-[15px] leading-[24px] flex flex-col gap-3 list-disc list-inside"></ul>
-
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;Upload any file (Max: 2MB) to be encrypted
-                </p>
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;Click &ldquo;Encrypt&rdquo; to encrypt the
-                  uploaded file
-                </p>
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;The encrypted file will be downloaded
-                </p>
+                <RequirementList>
+                  <li>Upload any file (Max: 2MB) to be encrypted</li>
+                  <li>
+                    Click &ldquo;Encrypt&rdquo; to encrypt the uploaded file
+                  </li>
+                  <li>The encrypted file will be downloaded</li>
+                </RequirementList>
               </div>
 
               {/* Try IronCAP™ decryption */}
@@ -175,19 +111,21 @@ export default function LiveDemo() {
                 <h3 className="text-quantum-green text-[20px] font-medium leading-[34px] mb-1">
                   Try IronCAP<sup className="text-[12.9px]">™</sup> decryption
                 </h3>
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;Upload any file previously encrypted by
-                  IronCAP<sup className="text-[9.675px]">™</sup>
-                </p>
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;Click &ldquo;Decrypt&rdquo; to decrypt the
-                  uploaded file
-                </p>
-                <p className="text-steel-gray text-[15px] leading-[24px]">
-                  &nbsp;&nbsp;&nbsp;The decrypted file will be downloaded (files
-                  not encrypted by IronCAP
-                  <sup className="text-[9.675px]">™</sup> will fail to decrypt)
-                </p>
+                <RequirementList>
+                  <li>
+                    Upload any file previously encrypted by IronCAP
+                    <sup className="text-[9.675px]">™</sup>
+                  </li>
+                  <li>
+                    Click &ldquo;Decrypt&rdquo; to decrypt the uploaded file
+                  </li>
+                  <li>
+                    The decrypted file will be downloaded (files not encrypted
+                    by IronCAP
+                    <sup className="text-[9.675px]">™</sup> will fail to
+                    decrypt)
+                  </li>
+                </RequirementList>
               </div>
 
               <hr className="border-t border-[#dfe6ea]" />
@@ -195,6 +133,7 @@ export default function LiveDemo() {
               {/* Eligibility */}
               <InfoSection
                 divider={false}
+                arrows
                 title="Eligibility"
                 items={[
                   "Anyone with a Facebook or Google account",
@@ -208,6 +147,7 @@ export default function LiveDemo() {
               {/* How it Works */}
               <InfoSection
                 divider={false}
+                arrows
                 title="How it Works"
                 items={[
                   "Register an account",
@@ -238,47 +178,7 @@ export default function LiveDemo() {
               />
             </div>
 
-            {/* Right column – registration boxes */}
-            <div className="flex flex-col gap-8 w-full lg:w-auto lg:shrink-0 lg:ml-12 xl:ml-[150px]">
-              {/* Registration */}
-              <BracketCard title="Registration">
-                <div className="flex flex-col gap-3 items-center">
-                  <SsoButton
-                    href={buildLegacyDemoHref("register", "facebook")}
-                    iconSrc="/live_demo_assets/Facebook_icon.svg"
-                    label="Continue with Facebook"
-                    iconSize={16}
-                  />
-                  <SsoButton
-                    href={buildLegacyDemoHref("register", "google")}
-                    iconSrc="/live_demo_assets/Google_icon.svg"
-                    label="Continue with Google"
-                  />
-                </div>
-              </BracketCard>
-
-              {/* Already Registered? */}
-              <BracketCard title="Already Registered?">
-                <div className="flex flex-col gap-3 items-center">
-                  <SsoButton
-                    href={buildLegacyDemoHref("login", "facebook")}
-                    iconSrc="/live_demo_assets/Facebook_icon.svg"
-                    label="Continue with Facebook"
-                    iconSize={16}
-                  />
-                  <SsoButton
-                    href={buildLegacyDemoHref("login", "google")}
-                    iconSrc="/live_demo_assets/Google_icon.svg"
-                    label="Continue with Google"
-                  />
-                  <p className="max-w-[260px] text-center text-[12px] leading-[18px] text-steel-gray/80">
-                    Authentication continues on the current IronCAP demo
-                    service, which still owns the working Google and Facebook
-                    sign-in flow.
-                  </p>
-                </div>
-              </BracketCard>
-            </div>
+            <LiveDemoPanel />
           </div>
         </section>
       </div>

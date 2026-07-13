@@ -65,13 +65,6 @@ export default function IroncapXmail() {
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
-      {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-6 md:px-24 min-h-[120px] md:min-h-[196px]">
-        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-tight md:leading-[50px]">
-          Products
-        </h1>
-      </section>
-
       {/* ══ XMail section ═══════════════════════════════════════════ */}
       <section
         id="ironcap-xmail"

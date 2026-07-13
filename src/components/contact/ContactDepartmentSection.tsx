@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ContactEmailForm } from "@/components/contact/ContactEmailForm";
 import { GreenDots } from "@/components/ui/GreenDots";
@@ -14,12 +14,38 @@ type ContactDepartmentSectionProps = {
   departmentButtons: DepartmentButton[];
 };
 
+function normalizeDepartmentValue(value: string) {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 export function ContactDepartmentSection({
   departmentButtons,
 }: ContactDepartmentSectionProps) {
   const [selectedDepartment, setSelectedDepartment] = useState<DepartmentButton>(
     departmentButtons[0],
   );
+
+  useEffect(() => {
+    const requestedDepartment = new URLSearchParams(window.location.search).get(
+      "department",
+    );
+
+    if (!requestedDepartment) {
+      return;
+    }
+
+    const normalizedRequest = normalizeDepartmentValue(requestedDepartment);
+    const matchedDepartment = departmentButtons.find((department) => {
+      return (
+        normalizeDepartmentValue(department.label).includes(normalizedRequest) ||
+        normalizeDepartmentValue(department.email).includes(normalizedRequest)
+      );
+    });
+
+    if (matchedDepartment) {
+      setSelectedDepartment(matchedDepartment);
+    }
+  }, [departmentButtons]);
 
   return (
     <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-20 flex flex-col md:flex-row gap-8 items-center">

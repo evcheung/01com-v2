@@ -1,6 +1,39 @@
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-const Trademark = () => <sup className="text-[0.55em]">&trade;</sup>;
+const PATENTS = [
+  {
+    title: "US Patent #11,669,833",
+    link: "https://www.01com.com/pdf/US11669833.pdf",
+  },
+  {
+    title: "US Patent #11,271,715",
+    link: "https://www.01com.com/pdf/US11271715.pdf",
+  },
+  {
+    title: "US Patent #6,928,479",
+    link: "https://www.01com.com/pdf/US6928479.pdf",
+  },
+  {
+    title: "US Patent #6,938,076",
+    link: "https://www.01com.com/pdf/US6938076.pdf",
+  },
+  {
+    title: "US Patent #8,234,701",
+    link: "https://www.01com.com/pdf/US8234701.pdf",
+  },
+  {
+    title: "Canadian Patent #2,309,398",
+    link: "https://www.01com.com/pdf/CA2309398.pdf",
+  },
+  {
+    title: "Japanese Patent #4,875,094",
+    link: "https://www.01com.com/pdf/JP4875094.pdf",
+  },
+  {
+    title: "Canadian Patent #2,524,039",
+    link: "https://www.01com.com/pdf/cp2524039.pdf",
+  },
+];
 
 export default function ResourcesIntellectualProperties() {
   return (
@@ -13,60 +46,50 @@ export default function ResourcesIntellectualProperties() {
           <div className="flex-1 h-px bg-lite-gray/60" />
         </div>
 
-        <div className="max-w-[1230px] space-y-6">
+        <div className="max-w-[1230px] space-y-8">
           <p className="text-steel-gray text-[15px] leading-[24px]">
-            This page summarizes intellectual property references currently
-            presented across 01 Quantum website materials for IronCAP
-            <Trademark /> technologies and related offerings.
+            Innovative technologies used in our Post-Quantum Cybersecurity and
+            Remote Access products are protected by a portfolio of
+            international patents. Established in 1992, 01 Quantum is always
+            at the forefront of technology. Its latest innovation is on
+            cybersecurity with the development focus on Post-Quantum
+            Cryptography (PQC). 01&apos;s PQC algorithms are designed to
+            operate on classical computer systems as we know them today while
+            at the same time secure enough to safeguard against potential
+            cyberattacks from quantum computers.
           </p>
 
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[20px] border border-lite-gray/60 bg-white p-8">
-              <h3 className="text-quantum-green text-[20px] font-medium leading-[28px] mb-4">
-                Patent References
-              </h3>
-              <ul className="space-y-3 text-steel-gray text-[15px] leading-[24px] list-disc pl-5">
-                <li>
-                  01 Quantum describes IronCAP<Trademark /> technologies as
-                  patented and patent-pending across multiple pages on this
-                  site.
-                </li>
-                <li>
-                  The IronCAP<Trademark /> Engine materials reference U.S.
-                  Patent No. 11,271,715 for IronCAP cryptography deployments.
-                </li>
-              </ul>
+          <div className="rounded-[20px] border border-lite-gray/60 bg-white px-6 py-7 sm:px-8">
+            <h3 className="text-quantum-green text-[20px] font-medium leading-[28px] mb-6">
+              Patents
+            </h3>
+            <div className="border-t border-lite-gray/60">
+              {PATENTS.map((patent) => (
+                <div
+                  key={patent.title}
+                  className="flex flex-col gap-4 border-b border-lite-gray/60 py-5 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <p className="text-[#2b2f38] text-[15px] leading-[24px]">
+                    {patent.title}
+                  </p>
+                  <a
+                    href={patent.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline"
+                  >
+                    <Image
+                      src="/investor_relations_assets/pdf.svg"
+                      alt=""
+                      aria-hidden="true"
+                      width={18}
+                      height={18}
+                    />
+                    View PDF
+                  </a>
+                </div>
+              ))}
             </div>
-
-            <div className="rounded-[20px] border border-lite-gray/60 bg-white p-8">
-              <h3 className="text-quantum-green text-[20px] font-medium leading-[28px] mb-4">
-                Trademark References
-              </h3>
-              <ul className="space-y-3 text-steel-gray text-[15px] leading-[24px] list-disc pl-5">
-                <li>IronCAP<Trademark /> </li>
-                <li>IronCAP<Trademark /> Engine</li>
-                <li>IronCAP<Trademark /> X</li>
-                <li>IronCAP<Trademark /> XMail</li>
-                <li>IronCAP<Trademark /> InTouch</li>
-                <li>IronCAP<Trademark /> OnCall</li>
-              </ul>
-            </div>
-          </div>
-
-          <p className="text-steel-gray text-[15px] leading-[24px]">
-            Other product names, company names, brands, and trademarks
-            referenced on this website remain the property of their respective
-            owners.
-          </p>
-
-          <div className="pt-2">
-            <Button
-              text="CONTACT · · ·"
-              url="/contact"
-              border="border-quantum-green/60"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-            />
           </div>
         </div>
       </div>

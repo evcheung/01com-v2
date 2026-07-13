@@ -1,5 +1,5 @@
 import { ResourcesSubMenu } from "@/components/resources/ResourcesSubMenu";
-import { Bottom } from "@/components/resources/Bottom";
+import { ResourcesBottom } from "@/components/resources/ResourcesBottom";
 export default function ResourcesLayout({
   children,
 }: {
@@ -21,7 +21,7 @@ export default function ResourcesLayout({
       <ResourcesSubMenu />
 
       {children}
-      <Bottom />
+      <ResourcesBottom />
     </div>
   );
 }

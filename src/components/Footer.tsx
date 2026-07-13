@@ -31,12 +31,18 @@ const footerColumns = [
   {
     heading: "Resources",
     links: [
+      "Brochures",
+      "White Papers & Use Cases",
+      "Videos",
       "Use Cases",
       "Investor Relations",
       "Press Room",
       "Intellectual Properties",
     ],
     urls: [
+      "/resources/brochures",
+      "/resources/white-papers-use-cases",
+      "/resources/videos",
       "/use-cases",
       "/investor-relations",
       "/resources/press-releases",

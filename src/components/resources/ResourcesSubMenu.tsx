@@ -9,12 +9,19 @@ export type ResourceMenuItem = {
 };
 
 export const resourceMenuItems: ResourceMenuItem[] = [
+  { label: "Brochures", href: "/resources/brochures" },
+  {
+    label: "White Papers & Use Cases",
+    href: "/resources/white-papers-use-cases",
+  },
+  { label: "Videos", href: "/resources/videos" },
   // { label: "News", href: "/resources/news" },
   { label: "Blog", href: "/resources/blog" },
   { label: "Newsletters", href: "/resources/newsletters" },
   { label: "Reviews + Awards", href: "/resources/rewards" },
   { label: "Press Releases", href: "/resources/press-releases" },
   { label: "Documents", href: "/resources/documents" },
+  { label: "Intellectual Properties", href: "/resources/intellectual-properties" },
 ];
 
 /**

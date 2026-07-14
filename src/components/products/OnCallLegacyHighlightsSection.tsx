@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const newsUpdates = [
   {
-    label: "I'm InTouch v11 is available",
+    label: (
+      <>
+        IronCAP
+        <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+        {" "}InTouch v11 is available
+      </>
+    ),
     href: "https://www.01com.com/imintouch/v11.0/en/",
   },
   {
@@ -15,13 +22,28 @@ const newsUpdates = [
   },
 ];
 
-const usageTips = [
-  "I'm OnCall's Shareable Licenses means you can have as many technicians as you want without having to purchase one license for each technician.",
-  "You can personalize your I'm OnCall pages by using your company's logo.",
+const onCallTrademarkName = (
+  <>
+    IronCAP
+    <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+    {" "}OnCall
+  </>
+);
+
+const usageTips: ReactNode[] = [
+  <>
+    {onCallTrademarkName}&apos;s Shareable Licenses means you can have as many
+    technicians as you want without having to purchase one license for each
+    technician.
+  </>,
+  <>
+    You can personalize your {onCallTrademarkName} pages by using your
+    company&apos;s logo.
+  </>,
   "There is no pre-loaded software required for a remote session.",
   "You can support more than one customer at a time from the same machine.",
-  "I'm OnCall is a secure encrypted connection.",
-  "I'm OnCall can support computers behind firewalls without opening ports.",
+  <>{onCallTrademarkName} is a secure encrypted connection.</>,
+  <>{onCallTrademarkName} can support computers behind firewalls without opening ports.</>,
   "A customer has the ability to start a chat session or terminate the session at any time.",
   "You can support Mac customers.",
   "Technicians can transfer files and folders.",
@@ -105,7 +127,7 @@ function NewsUpdatesCard() {
       <div className="mt-6 flex-1">
         {newsUpdates.map((item) => (
           <a
-            key={item.label}
+            key={item.href}
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"

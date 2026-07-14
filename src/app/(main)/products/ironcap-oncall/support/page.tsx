@@ -1,6 +1,16 @@
 import Link from "next/link";
 import LiveChatLink from "@/components/LiveChatLink";
 
+function OnCallTrademarkName() {
+  return (
+    <>
+      IronCAP
+      <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+      {" "}OnCall
+    </>
+  );
+}
+
 const contactItems = [
   {
     label: "Sales (Toll-Free):",
@@ -63,7 +73,7 @@ export default function IroncapOnCallSupportPage() {
             General Support
           </h2>
           <p className="mx-auto max-w-[900px] text-[15px] leading-[26px] text-steel-gray sm:text-[16px]">
-            The I&apos;m OnCall{" "}
+            The <OnCallTrademarkName />{" "}
             <Link
               href="/products/ironcap-oncall/features"
               className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"

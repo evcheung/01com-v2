@@ -32,6 +32,8 @@ const footerColumns = [
     heading: "Resources",
     links: [
       "Brochures",
+      "FAQs",
+      "Documents",
       "White Papers & Use Cases",
       "Videos",
       "Use Cases",
@@ -41,6 +43,8 @@ const footerColumns = [
     ],
     urls: [
       "/resources/brochures",
+      "/faq/ironcap-x",
+      "/resources/documents",
       "/resources/white-papers-use-cases",
       "/resources/videos",
       "/use-cases",
@@ -56,13 +60,13 @@ const footerColumns = [
   },
   {
     heading: "Legal",
-    links: ["Blog", "Product FAQ", "General FAQ"],
-    urls: ["/resources/blog", "/resources/documents", "/faq/ironcap-x"],
+    links: ["Terms of Use", "Privacy Policy"],
+    urls: ["/terms-of-use", "/privacy-policy"],
   },
   {
     heading: "Support",
-    links: ["Support", "Contact", "Login"],
-    urls: ["/support", "/contact", "https://locator.01com.com/login.php?"],
+    links: ["Support", "Contact"],
+    urls: ["/support", "/contact"],
   },
 ];
 export default function Footer() {

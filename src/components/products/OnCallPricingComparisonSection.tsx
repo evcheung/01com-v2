@@ -108,7 +108,9 @@ const quantityOptions = [
 function OnCallTrademarkName({ className = "" }: { className?: string }) {
   return (
     <span className={className}>
-      I&apos;m OnCall
+      IronCAP
+      <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+      {" "}OnCall
     </span>
   );
 }
@@ -302,9 +304,9 @@ export default function OnCallPricingComparisonSection() {
               Several agents can share one license. How many you should purchase
               is determined by how many of them will do remote support at the
               same time. For example, if you have 5 remote customer service
-              agents. You know that no more than 3 will be using I&apos;m OnCall at
-              the same time. Instead of buying 5 I&apos;m OnCall licenses, you only
-              need to purchase 3.
+              agents. You know that no more than 3 will be using{" "}
+              <OnCallTrademarkName /> at the same time. Instead of buying 5{" "}
+              <OnCallTrademarkName /> licenses, you only need to purchase 3.
             </p>
           </div>
         </div>

@@ -5,7 +5,7 @@ export type DocumentItem = {
    */
   title: string;
   href?: string;
-  /** Optional override icon for this row (defaults to download arrow). */
+  /** Optional override icon for this row (defaults to link icon). */
   icon?: React.ReactNode;
 };
 
@@ -19,8 +19,8 @@ interface DocumentsCardProps {
   className?: string;
 }
 
-/* ── Default download icon (right-pointing arrow into tray) ───────── */
-function DownloadIcon() {
+/* ── Default link icon ────────────────────────────────────────────── */
+function LinkIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -32,9 +32,8 @@ function DownloadIcon() {
       className="w-4 h-4"
       aria-hidden
     >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
+      <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L10.9 5.03" />
+      <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07l1.22-1.22" />
     </svg>
   );
 }
@@ -55,7 +54,7 @@ function renderTitle(title: string) {
 /**
  * DocumentsCard
  * ─────────────
- * White card listing downloadable resources (User Guides, Downloads, FAQs).
+ * White card listing document resources.
  * Each row is a link with an icon, separated by horizontal dividers.
  */
 export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
@@ -94,7 +93,7 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
                   aria-label={`Open ${item.title}`}
                   className="text-quantum-green shrink-0 flex items-center justify-center hover:text-quantum-blue transition-colors"
                 >
-                  {item.icon ?? <DownloadIcon />}
+                  {item.icon ?? <LinkIcon />}
                 </a>
               </>
             ) : (
@@ -106,7 +105,7 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
                   aria-hidden
                   className="text-quantum-green/40 shrink-0 flex items-center justify-center"
                 >
-                  {item.icon ?? <DownloadIcon />}
+                  {item.icon ?? <LinkIcon />}
                 </span>
               </>
             )}

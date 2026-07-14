@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const inTouchTrademarkName = (
+  <>
+    IronCAP
+    <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+    {" "}InTouch
+  </>
+);
+
 const newsUpdates = [
   {
-    label: "I'm InTouch v11 is available",
+    label: <>{inTouchTrademarkName} v11 is available</>,
     href: "https://www.01com.com/imintouch/v11.0/en/",
   },
   {
@@ -15,19 +24,49 @@ const newsUpdates = [
   },
 ];
 
-const usageTips = [
-  "You can temporarily add Guest Users to I'm InTouch, perfect for conducting online meetings and presentations.",
-  "You can remotely control your I'm InTouch computer using a Pocket PC with an Internet connection.",
-  "You can discreetly monitor your children's computer activities using I'm InTouch's Stealth Mode.",
-  "I'm InTouch can notify your cell phone whenever you receive an email on your computer.",
-  "You can print files from your distant computer to a local printer using I'm InTouch.",
+const usageTips: ReactNode[] = [
+  <>
+    You can temporarily add Guest Users to {inTouchTrademarkName}, perfect for
+    conducting online meetings and presentations.
+  </>,
+  <>
+    You can remotely control your {inTouchTrademarkName} computer using a
+    Pocket PC with an Internet connection.
+  </>,
+  <>
+    You can discreetly monitor your children&apos;s computer activities using{" "}
+    {inTouchTrademarkName}&apos;s Stealth Mode.
+  </>,
+  <>
+    {inTouchTrademarkName} can notify your cell phone whenever you receive an
+    email on your computer.
+  </>,
+  <>
+    You can print files from your distant computer to a local printer using{" "}
+    {inTouchTrademarkName}.
+  </>,
   "With the Remote Audio feature, you can listen to music on your distant PC from anywhere.",
-  "You can remotely view all the monitors connected to your Host PC using I'm InTouch's Multi Monitor feature.",
+  <>
+    You can remotely view all the monitors connected to your Host PC using{" "}
+    {inTouchTrademarkName}&apos;s Multi Monitor feature.
+  </>,
   "You can stream video from a webcam on your Host PC to any Computer or Pocket PC.",
-  "You can view a list of all your computers on one screen and access them with a single click in I'm InTouch.",
-  "You can access your computer even if it is turned off with the I'm InTouch Wake-up feature.",
-  "I'm InTouch provides you with direct access to your Outlook or Windows Mail Emails from any wireless device.",
-  "You can transfer files between your computers using I'm InTouch's File Transfer feature.",
+  <>
+    You can view a list of all your computers on one screen and access them with
+    a single click in {inTouchTrademarkName}.
+  </>,
+  <>
+    You can access your computer even if it is turned off with the{" "}
+    {inTouchTrademarkName} Wake-up feature.
+  </>,
+  <>
+    {inTouchTrademarkName} provides you with direct access to your Outlook or
+    Windows Mail Emails from any wireless device.
+  </>,
+  <>
+    You can transfer files between your computers using{" "}
+    {inTouchTrademarkName}&apos;s File Transfer feature.
+  </>,
 ];
 
 const pressEndorsement = {
@@ -124,7 +163,7 @@ export default function InTouchLegacyHighlightsSection() {
               <div className="mt-6 flex-1">
                 {newsUpdates.map((item) => (
                   <a
-                    key={item.label}
+                    key={item.href}
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"

@@ -2,6 +2,16 @@ import Image from "next/image";
 
 import discountBanner from "@/assets/images/products/oncall-referral-discount.png";
 
+function OnCallTrademarkName() {
+  return (
+    <>
+      IronCAP
+      <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+      {" "}OnCall
+    </>
+  );
+}
+
 export default function OnCallReferralDiscountSection() {
   return (
     <section className="bg-[linear-gradient(180deg,#FFFFFF_0%,#F7FBFF_100%)]">
@@ -14,8 +24,8 @@ export default function OnCallReferralDiscountSection() {
             Spread the word to your friends and family about this great remote
             support tool. You can quickly entice them for a free and no
             obligation 30-day trial. As a token of our appreciation, we will
-            send you a Promotional Code to take a 20% off your I&apos;m OnCall
-            subscription fee.
+            send you a Promotional Code to take a 20% off your{" "}
+            <OnCallTrademarkName /> subscription fee.
           </p>
           <div className="mt-8 flex justify-center">
             <div className="overflow-hidden rounded-[24px] border border-[#D7DEE3] bg-white p-3 shadow-[0_18px_44px_rgba(27,27,39,0.06)]">

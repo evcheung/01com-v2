@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import type { ReactNode } from "react";
 
 import browserIcon from "@/assets/images/products/oncall-features/browser.png";
 import collaborationIcon from "@/assets/images/products/oncall-features/collaboration.png";
@@ -13,10 +14,20 @@ const OLD_SITE_BASE_URL = "https://www.01com.com";
 
 type FeatureCard = {
   title: string;
-  description: string;
+  description: ReactNode;
   href?: string;
   icon: StaticImageData;
 };
+
+function OnCallTrademarkName() {
+  return (
+    <>
+      IronCAP
+      <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+      {" "}OnCall
+    </>
+  );
+}
 
 const featureCards: FeatureCard[] = [
   {
@@ -34,8 +45,16 @@ const featureCards: FeatureCard[] = [
   },
   {
     title: "Live Chat",
-    description:
-      "This essentially can eliminate your customer service phone lines. Your customers can submit live chat requests through a queue (clicking the Live-Chat button on your web site embedded with an URL given to you by I'm OnCall). Your agents simply pick up requests and perform real-time live chat with the customers via the Internet. Your customers may leave call-back requests if the queue is busy.",
+    description: (
+      <>
+        This essentially can eliminate your customer service phone lines. Your
+        customers can submit live chat requests through a queue (clicking the
+        Live-Chat button on your web site embedded with an URL given to you by{" "}
+        <OnCallTrademarkName />). Your agents simply pick up requests and
+        perform real-time live chat with the customers via the Internet. Your
+        customers may leave call-back requests if the queue is busy.
+      </>
+    ),
     href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/chat/`,
     icon: liveChatIcon,
   },
@@ -54,8 +73,13 @@ const featureCards: FeatureCard[] = [
   },
   {
     title: "Customization",
-    description:
-      "A wide range of customization options including customizing your banner, agents' photos, etc. on the support session page are available in I'm OnCall.",
+    description: (
+      <>
+        A wide range of customization options including customizing your banner,
+        agents&apos; photos, etc. on the support session page are available in{" "}
+        <OnCallTrademarkName />.
+      </>
+    ),
     href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/easy-customization/`,
     icon: puzzleIcon,
   },

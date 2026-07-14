@@ -122,6 +122,16 @@ function joinApiUrl(path: string) {
   return `${demoApiUrl.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
 }
 
+function getDemoApiConfigMessage(url: string) {
+  const target = new URL(url, window.location.href);
+  const isSameOrigin = target.origin === window.location.origin;
+  const hint = isSameOrigin
+    ? " The demo API URL currently points at this Next.js site, so the request is reaching a page route instead of the demo backend."
+    : "";
+
+  return `Demo API returned HTML instead of JSON from ${target.href}.${hint} Configure DEMO_SERVER_API_URL or NEXT_PUBLIC_DEMO_SERVER_API_URL to the live demo API root.`;
+}
+
 function loadScript(id: string, src: string) {
   if (typeof document === "undefined") {
     return Promise.reject(new Error("This action is only available in a browser."));
@@ -190,14 +200,57 @@ function getGoogleOriginError() {
 
 async function readErrorMessage(response: Response) {
   const contentType = response.headers.get("content-type") || "";
+  const text = await response.text();
+  const trimmed = text.trim();
 
   if (contentType.includes("application/json")) {
-    const data = (await response.json()) as { message?: string; error?: string };
-    return data.message || data.error || `Request failed with ${response.status}.`;
+    try {
+      const data = JSON.parse(trimmed) as { message?: string; error?: string };
+      return data.message || data.error || `Request failed with ${response.status}.`;
+    } catch {
+      return `Request failed with ${response.status}.`;
+    }
   }
 
-  const text = await response.text();
+  if (
+    contentType.includes("text/html") ||
+    trimmed.toLowerCase().startsWith("<!doctype") ||
+    trimmed.startsWith("<html")
+  ) {
+    return getDemoApiConfigMessage(response.url);
+  }
+
   return text || `Request failed with ${response.status}.`;
+}
+
+async function readJson<T>(response: Response) {
+  const text = await response.text();
+  const contentType = response.headers.get("content-type") || "";
+  const trimmed = text.trim();
+
+  if (!trimmed) {
+    throw new DemoApiError(
+      response.status,
+      `Demo API returned an empty response from ${response.url}.`
+    );
+  }
+
+  if (
+    contentType.includes("text/html") ||
+    trimmed.toLowerCase().startsWith("<!doctype") ||
+    trimmed.startsWith("<html")
+  ) {
+    throw new DemoApiError(response.status, getDemoApiConfigMessage(response.url));
+  }
+
+  try {
+    return JSON.parse(trimmed) as T;
+  } catch {
+    throw new DemoApiError(
+      response.status,
+      `Demo API returned a non-JSON response from ${response.url}.`
+    );
+  }
 }
 
 async function postJson<T>(path: string, body: Record<string, unknown>) {
@@ -213,7 +266,7 @@ async function postJson<T>(path: string, body: Record<string, unknown>) {
     throw new DemoApiError(response.status, await readErrorMessage(response));
   }
 
-  return (await response.json()) as T;
+  return readJson<T>(response);
 }
 
 async function postForm<T>(path: string, body: FormData) {
@@ -226,7 +279,7 @@ async function postForm<T>(path: string, body: FormData) {
     throw new DemoApiError(response.status, await readErrorMessage(response));
   }
 
-  return (await response.json()) as T;
+  return readJson<T>(response);
 }
 
 function toHex(value: string) {

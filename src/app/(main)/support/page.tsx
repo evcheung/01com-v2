@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Titles } from "@/components/Titles";
 import { Bottom } from "@/components/resources/Bottom"
-import { DocumentsCards } from "@/components/Documents";
+import { DocumentsCards, supportDocumentCards } from "@/components/Documents";
 import LiveChatLink from "@/components/LiveChatLink";
 
 export default function Support() {
@@ -96,7 +96,7 @@ export default function Support() {
             <h2 className="text-[32px] leading-[40px] text-black text-quantum-blue font-medium mb-8">
               Documentation
             </h2>
-            <DocumentsCards />
+            <DocumentsCards cards={supportDocumentCards} />
           </div>
         </div>
         <section className="bg-white py-16 flex justify-center">

@@ -1,4 +1,13 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
+
+const inTouchTrademarkName = (
+  <>
+    IronCAP
+    <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+    {" "}InTouch
+  </>
+);
 
 const contactItems = [
   {
@@ -22,13 +31,13 @@ const contactItems = [
   },
 ];
 
-const systemRequirements = [
+const systemRequirements: ReactNode[] = [
   "Windows Server, Windows 7, 8, 10, and 11 (32-bit or 64-bit)",
   "Minimum 40M+ free disk space",
   "Outlook 2003+ (for Outlook mobilization features)",
   "Edge, Google Chrome, Firefox, Internet Explorer",
-  "Mobile app: I'm InTouch Go for iOS, Android, and Windows Tablet",
-  "Mobile app: I'm InTouch GoMail for iOS and Android",
+  <>Mobile app: {inTouchTrademarkName} Go for iOS, Android, and Windows Tablet</>,
+  <>Mobile app: {inTouchTrademarkName} GoMail for iOS and Android</>,
 ];
 
 export default function InTouchSupportPage() {

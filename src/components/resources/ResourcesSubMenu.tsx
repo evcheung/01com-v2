@@ -20,7 +20,6 @@ export const resourceMenuItems: ResourceMenuItem[] = [
   { label: "Newsletters", href: "/resources/newsletters" },
   { label: "Reviews + Awards", href: "/resources/rewards" },
   { label: "Press Releases", href: "/resources/press-releases" },
-  { label: "Documents", href: "/resources/documents" },
   { label: "Intellectual Properties", href: "/resources/intellectual-properties" },
 ];
 
@@ -31,7 +30,7 @@ export const resourceMenuItems: ResourceMenuItem[] = [
  * The active item is determined from the current pathname.
  */
 export function ResourcesSubMenu() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   return (
     <section className="bg-black relative flex items-center justify-center py-4 sm:py-5 lg:h-[88px] lg:py-0">

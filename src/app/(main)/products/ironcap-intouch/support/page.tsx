@@ -31,13 +31,33 @@ const contactItems = [
   },
 ];
 
-const systemRequirements: ReactNode[] = [
-  "Windows Server, Windows 7, 8, 10, and 11 (32-bit or 64-bit)",
-  "Minimum 40M+ free disk space",
-  "Outlook 2003+ (for Outlook mobilization features)",
-  "Edge, Google Chrome, Firefox, Internet Explorer",
-  <>Mobile app: {inTouchTrademarkName} Go for iOS, Android, and Windows Tablet</>,
-  <>Mobile app: {inTouchTrademarkName} GoMail for iOS and Android</>,
+const systemRequirements: { key: string; content: ReactNode }[] = [
+  {
+    key: "windows",
+    content: "Windows Server, Windows 7, 8, 10, and 11 (32-bit or 64-bit)",
+  },
+  {
+    key: "disk-space",
+    content: "Minimum 40M+ free disk space",
+  },
+  {
+    key: "outlook",
+    content: "Outlook 2003+ (for Outlook mobilization features)",
+  },
+  {
+    key: "browsers",
+    content: "Edge, Google Chrome, Firefox, Internet Explorer",
+  },
+  {
+    key: "intouch-go",
+    content: (
+      <>Mobile app: {inTouchTrademarkName} Go for iOS, Android, and Windows Tablet</>
+    ),
+  },
+  {
+    key: "intouch-gomail",
+    content: <>Mobile app: {inTouchTrademarkName} GoMail for iOS and Android</>,
+  },
 ];
 
 export default function InTouchSupportPage() {
@@ -105,10 +125,10 @@ export default function InTouchSupportPage() {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {systemRequirements.map((item) => (
               <li
-                key={item}
+                key={item.key}
                 className="rounded-[18px] border border-white bg-white px-5 py-4 text-[15px] leading-[24px] text-steel-gray"
               >
-                {item}
+                {item.content}
               </li>
             ))}
           </ul>

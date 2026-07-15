@@ -11,7 +11,9 @@ export type FaqMenuItem = {
   href: string;
 };
 
-const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+const Trademark = () => (
+  <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+);
 
 export const faqMenuItems: FaqMenuItem[] = [
   {
@@ -40,6 +42,15 @@ export const faqMenuItems: FaqMenuItem[] = [
       </>
     ),
     href: "/faq/ironcap-oncall",
+  },
+  {
+    label: "IronCAP Toolkits",
+    display: (
+      <>
+        IronCAP<Trademark /> Toolkits
+      </>
+    ),
+    href: "/faq/ironcap-toolkits",
   },
 ];
 

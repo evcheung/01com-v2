@@ -23,7 +23,10 @@ export const Leader = ({ name, title, bun, pic, linkedIn }: LeaderProps) => {
       </h3>
       <p className="text-steel-gray text-[13px] leading-snug">{title}</p>
       <a
-        href="#"
+        href={linkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${name} bio`}
         className="text-steel-gray text-[13px] hover:text-quantum-blue transition-colors"
       >
         {bun}

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import LiveChatLink from "@/components/LiveChatLink";
 import { Title } from "@/components/faq/Title";
 import { Button } from "@/components/ui/button";
 
@@ -19,84 +18,42 @@ type ToolkitUseCase = {
 
 const toolkitUseCases: ToolkitUseCase[] = [
   {
-    title: "Emails/Files Encryption",
+    title: "What is ICC?",
     description: (
       <>
-        IronCAP<Trademark /> post-quantum cryptography can encrypt emails and
-        sensitive files so that only the intended recipient can read them.
+        ICC stands for IronCAP Crypto, an NIST-approved quantum-safe
+        cryptographic system utilizing NIST-approved post-quantum cryptography
+        (PQC) algorithms and IronCAP<Trademark />&apos;s ground breaking
+        technologies. IronCAP<Trademark /> Toolkits provide the application
+        programming interface to developers to let them easily integrate ICC
+        with their applications. This transforms their applications to be safe
+        against cyberattacks from not only computers today but also against
+        those from upcoming quantum computers.
       </>
     ),
     icon: EmailFilesIcon,
   },
   {
-    title: "Digital Signature",
+    title: "What is the cost of using IronCAP Toolkits?",
     description: (
       <>
-        IronCAP<Trademark /> can digitally sign electronic documents, emails,
-        and files to certify their authenticity to recipients.
+        ICC Toolkits is designed to be extremely cost effective to fit all
+        possible vertical industries. Please contact us to discuss your needs.
+        We will tailor a deal to best fit your specific requirements and
+        business nature.
       </>
     ),
     icon: DigitalSignatureIcon,
   },
   {
-    title: "Blockchain",
+    title: "How do I license IronCAP Toolkits?",
     description: (
       <>
-        IronCAP<Trademark /> helps blockchain and cryptocurrency vendors sign
-        new blocks for security today and in tomorrow&apos;s post-quantum world.
+        Please contact us by email at sales@ironcap.ca or give us a call at
+        1-800-668-2185 for licensing information.
       </>
     ),
     icon: BlockchainIcon,
-  },
-  {
-    title: "Remote Access/VPN",
-    description: (
-      <>
-        IronCAP<Trademark /> can help remote access and VPN vendors protect the
-        privacy of their remote access channels.
-      </>
-    ),
-    icon: RemoteAccessIcon,
-  },
-  {
-    title: "Password Management",
-    description: (
-      <>
-        Password-management vendors can use IronCAP<Trademark /> to generate
-        passwords with unpredictability against classical and quantum attacks.
-      </>
-    ),
-    icon: PasswordIcon,
-  },
-  {
-    title: "Credit Card Security",
-    description: (
-      <>
-        Smart cards on credit cards or smartphones can use IronCAP<Trademark />{" "}
-        encryption to protect data into the post-quantum era.
-      </>
-    ),
-    icon: CreditCardIcon,
-  },
-  {
-    title: "Cloud Storage",
-    description: (
-      <>
-        IronCAP<Trademark /> post-quantum cryptography can help keep cloud data
-        safe against hackers now and in the post-quantum world.
-      </>
-    ),
-    icon: CloudStorageIcon,
-  },
-  {
-    title: "Website Security",
-    description: (
-      <>
-        Websites can use IronCAP<Trademark /> to help protect identification and
-        channel privacy by encrypting channel session keys.
-      </>
-    ),
-    icon: WebsiteSecurityIcon,
   },
 ];
 
@@ -179,110 +136,6 @@ function BlockchainIcon({ className }: IconProps) {
   );
 }
 
-function RemoteAccessIcon({ className }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M8 12h32v22H8z" />
-      <path d="M18 40h12" />
-      <path d="M24 34v6" />
-      <path d="M18 24a8 8 0 0 1 12 0" />
-      <path d="M14 20a14 14 0 0 1 20 0" />
-      <path d="M22 28h4" />
-    </svg>
-  );
-}
-
-function PasswordIcon({ className }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M14 22h20v17H14z" />
-      <path d="M18 22v-5a6 6 0 0 1 12 0v5" />
-      <path d="M20 30h.01" />
-      <path d="M24 30h.01" />
-      <path d="M28 30h.01" />
-      <path d="M24 34h.01" />
-    </svg>
-  );
-}
-
-function CreditCardIcon({ className }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M7 14h34v22H7z" />
-      <path d="M7 21h34" />
-      <path d="M14 28h8v5h-8z" />
-      <path d="M28 30h7" />
-    </svg>
-  );
-}
-
-function CloudStorageIcon({ className }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M17 36h19a8 8 0 0 0 1-15.9A12 12 0 0 0 13.8 23 6.5 6.5 0 0 0 17 36z" />
-      <path d="M24 30v-9" />
-      <path d="m20 25 4-4 4 4" />
-    </svg>
-  );
-}
-
-function WebsiteSecurityIcon({ className }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <circle cx="24" cy="24" r="16" />
-      <path d="M8 24h32" />
-      <path d="M24 8a24 24 0 0 1 0 32" />
-      <path d="M24 8a24 24 0 0 0 0 32" />
-      <path d="M27 25h9v7c0 5-4.5 7.5-4.5 7.5S27 37 27 32v-7z" />
-    </svg>
-  );
-}
-
 export default function FaqIronCapToolkitsPage() {
   return (
     <div className="bg-white font-urbanist">
@@ -291,21 +144,18 @@ export default function FaqIronCapToolkitsPage() {
       <main className="mx-auto max-w-[1512px] px-6 py-16 md:px-[95px] md:py-20">
         <section className="mx-auto max-w-[980px] text-center">
           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-quantum-green">
-            Post-Quantum
+            General Questions
           </p>
           <h2 className="mt-4 text-[34px] font-medium leading-[42px] text-quantum-blue sm:text-[42px] sm:leading-[50px]">
-            IronCAP<Trademark /> Toolkits
+            IronCAP<Trademark /> Toolkits FAQs
           </h2>
           <p className="mt-6 text-[17px] leading-[28px] text-steel-gray sm:text-[18px] sm:leading-[30px]">
-            Our IronCAP<Trademark /> Toolkits allow vendors of vertical
-            applications to transform their products for protection against
-            cyber attacks from the classical computers of today and future
-            attacks from quantum computers.
+            Find answers about ICC, IronCAP<Trademark /> Toolkits costs, and
+            licensing information.
           </p>
           <div className="mt-8 flex justify-center">
-            <LiveChatLink
-              href="https://imoncall.01com.com/pre-sales/"
-              windowName="live-chat-pre-sales"
+            <a
+              href="/contact"
               className="group inline-flex rounded-[16px] border border-[#C7C7D0] bg-white px-4 py-3 transition-colors hover:border-[#9FD8B4] hover:bg-[#F7F9FC]"
             >
               <span className="flex items-center gap-3 whitespace-nowrap">
@@ -313,10 +163,10 @@ export default function FaqIronCapToolkitsPage() {
                   <LiveChatIcon />
                 </span>
                 <span className="text-[15px] font-medium leading-[22px] text-quantum-blue">
-                  Live Chat (pre-sales)
+                  Contact Us
                 </span>
               </span>
-            </LiveChatLink>
+            </a>
           </div>
         </section>
 
@@ -324,26 +174,18 @@ export default function FaqIronCapToolkitsPage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] lg:gap-14">
             <div>
               <h2 className="text-[28px] font-medium leading-[36px] text-quantum-blue sm:text-[30px] sm:leading-[40px]">
-                Vertical Applications Integration
+                Categories
               </h2>
             </div>
             <div className="space-y-4 text-[15px] leading-[25px] text-steel-gray sm:text-[16px] sm:leading-[26px]">
               <p>
-                IronCAP<Trademark /> Toolkits can be used by vendors to build
-                highly secure systems for blockchain security, IoT devices,
-                data storage, remote access, encryption, digital signing, and
-                other vertical applications.
+                General Questions
               </p>
               <p>
-                The toolkits use NIST-approved post-quantum cryptography
-                technologies to protect customers from evolving malicious
-                access to their data today and from quantum computers in the
-                future.
+                How to use IronCAP Toolkits
               </p>
               <p>
-                To support seamless integration, IronCAP<Trademark /> Toolkits
-                are compliant with OpenSSL, PKCS#11, and OpenPGP (RFC4880)
-                industry standards.
+                Still have questions: Contact Us
               </p>
             </div>
           </div>
@@ -372,8 +214,8 @@ export default function FaqIronCapToolkitsPage() {
 
         <section className="flex justify-center bg-white pt-14 pb-4">
           <Button
-            text=" LEARN MORE ABOUT 01 QUANTUM PRODUCTS"
-            url="/use-cases"
+            text=" CONTACT US"
+            url="/contact"
             border="border-quantum-green/60"
             textColor="text-quantum-green"
             hoverBg="hover:bg-quantum-green/10"

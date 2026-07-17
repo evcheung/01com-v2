@@ -48,7 +48,7 @@ export default async function RewardsPaginatedPage({
       <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
         <div className="flex items-center gap-6 mb-12">
           <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
-            Reviews & Rewards
+            Reviews + Awards
           </h2>
           <div className="flex-1 h-px bg-lite-gray/60" />
           <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">

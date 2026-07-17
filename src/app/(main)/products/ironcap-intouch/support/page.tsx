@@ -77,7 +77,7 @@ export default function InTouchSupportPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-1 text-[15px] font-medium">
             <a
-              href="https://www.01com.com/01com/imintouch/webhelp/desktop/Welcome.htm"
+              href="https://locator.01com.com/desktop/iitwebhelp/en/outputs/index.htm#t=IIT%2FFirst_Topic.htm"
               target="_blank"
               rel="noopener noreferrer"
               className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"

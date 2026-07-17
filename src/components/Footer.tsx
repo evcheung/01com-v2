@@ -15,6 +15,11 @@ const socialLinks = [
     url: "https://www.youtube.com/channel/UCrbGgkSemPtfQgpKX8stySg",
     label: "YouTube",
   },
+  {
+    icon: "/resources_assets/blog_i.svg",
+    url: "/resources/blog",
+    label: "Blog",
+  },
 ];
 const socialIconSize = 15;
 
@@ -30,33 +35,33 @@ const footerColumns = [
   },
   {
     heading: "Resources",
-    links: [
-      "Brochures",
-      "FAQs",
-      "Documents",
-      "White Papers & Use Cases",
-      "Videos",
-      "Use Cases",
-      "Investor Relations",
-      "Press Room",
-      "Intellectual Properties",
-    ],
+    links: ["Brochures", "White Papers", "Videos", "Use Cases", "FAQs"],
     urls: [
       "/resources/brochures",
-      "/faq/ironcap-x",
-      "/resources/documents",
       "/resources/white-papers-use-cases",
       "/resources/videos",
       "/use-cases",
-      "/investor-relations",
-      "/resources/press-releases",
-      "/resources/intellectual-properties",
+      "/faq/ironcap-x",
     ],
   },
   {
     heading: "About",
-    links: ["About", "Newsletters"],
-    urls: ["/about", "/resources/newsletters"],
+    links: [
+      "About",
+      "Investor Relations",
+      "Intellectual Properties",
+      "Press Releases",
+      "Newsletters",
+      "Reviews + Awards",
+    ],
+    urls: [
+      "/about",
+      "/investor-relations",
+      "/resources/intellectual-properties",
+      "/resources/press-releases-newsletters#press-releases",
+      "/resources/press-releases-newsletters#newsletters",
+      "/resources/rewards",
+    ],
   },
   {
     heading: "Legal",

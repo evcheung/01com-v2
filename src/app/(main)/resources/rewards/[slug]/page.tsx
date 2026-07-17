@@ -29,7 +29,7 @@ export default async function RewardItemPage({ params }: { params: Promise<{ slu
     <section className="bg-[#f5f6f8] py-16 min-h-screen">
       <div className="max-w-[860px] mx-auto px-6 md:px-[95px]">
         <Link href="/resources/rewards" className="text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline mb-10 inline-block">
-          ← Back to Rewards
+          ← Back to Reviews + Awards
         </Link>
         {post.image && (
           <Image src={post.image} alt={post.title} className="max-h-[120px] w-auto object-contain mb-8" width={120} height={120} />

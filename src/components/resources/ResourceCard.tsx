@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Fragment } from "react";
 
 type ResourceCardKind = "pdf" | "video" | "link";
 
@@ -55,6 +56,20 @@ function ResourceCardIcon({ kind = "link" }: { kind?: ResourceCardKind }) {
   );
 }
 
+function renderTrademarkText(text: string) {
+  return text.split(/(™|\bTM\b)/g).map((part, index) => {
+    if (part === "™" || part === "TM") {
+      return (
+        <sup key={`${part}-${index}`} className="align-super text-[0.55em]">
+          {part}
+        </sup>
+      );
+    }
+
+    return <Fragment key={`${part}-${index}`}>{part}</Fragment>;
+  });
+}
+
 export function ResourceCard({
   title,
   description,
@@ -72,11 +87,11 @@ export function ResourceCard({
       ) : null}
 
       <h3 className="text-[#2b2f38] text-[20px] font-medium leading-[28px] mb-4">
-        {title}
+        {renderTrademarkText(title)}
       </h3>
 
       <p className="text-steel-gray text-[15px] leading-[24px] flex-1">
-        {description}
+        {renderTrademarkText(description)}
       </p>
 
       <a

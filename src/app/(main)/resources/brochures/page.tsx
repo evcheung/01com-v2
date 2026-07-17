@@ -14,6 +14,12 @@ const brochures = [
       "IronCAP X™ is the world's first quantum-safe, end-to-end email security system utilizing the IronCAP™ Crypto (ICC) as its cryptographic foundation. Our end-to-end encryption eliminates the intermediary server aka MITM (Man In The Middle) to ensure 100% security not only today but also in the fast approaching quantum computing era.",
     href: "/pdf/brochures/IronCAP%20X%20Brochure_Web.pdf",
   },
+  {
+    title: "IronCAP™ InTouch",
+    description:
+      "IronCAP™ InTouch helps users work remotely with quantum-safe, absolute security via any device from anywhere, anytime.",
+    href: "https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf",
+  },
 ];
 
 export default function ResourcesBrochures() {

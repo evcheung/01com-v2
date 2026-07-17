@@ -36,24 +36,13 @@ const sections = [
       },
     ],
   },
-  {
-    title: "Use Cases",
-    items: [
-      {
-        title: "Use Case - DAEM (World's First Quantum-Safe Bitcoin ATM)",
-        description:
-          "Cryptocurrency is redefining the conventional finance industry, and blockchain technology is changing the face of how businesses and governments operate. In December 2020, our partner, ixFintech launched the world's first quantum-safe DAEM (Digital Asset Exchange Machine) at Cyberport, Hong Kong by utilizing IronCAP™'s quantum-safe cryptographic technology.",
-        href: "https://01com.com/pdf/2021/UseCase-DAEM.pdf",
-      },
-    ],
-  },
 ];
 
 export default function ResourcesWhitePapersUseCases() {
   return (
     <section className="bg-[#f5f6f8] py-16">
       <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px]">
-        <ResourceSectionTitle title="White Papers & Use Cases" />
+        <ResourceSectionTitle title="White Papers" />
 
         <div className="space-y-14">
           {sections.map((section) => (

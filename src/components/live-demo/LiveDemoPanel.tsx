@@ -107,6 +107,9 @@ const facebookApiVersion =
   process.env.NEXT_PUBLIC_FACEBOOK_API_VERSION || "v21.0";
 
 const scriptLoads = new Map<string, Promise<void>>();
+const API_REQUEST_TIMEOUT_MS = 20000;
+const AUTH_POPUP_TIMEOUT_MS = 90000;
+const AUTH_POPUP_CLOSE_GRACE_MS = 1200;
 
 class DemoApiError extends Error {
   status: number;
@@ -120,6 +123,87 @@ class DemoApiError extends Error {
 
 function joinApiUrl(path: string) {
   return `${demoApiUrl.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
+}
+
+async function fetchWithTimeout(
+  input: RequestInfo | URL,
+  init?: RequestInit,
+  timeoutMs = API_REQUEST_TIMEOUT_MS
+) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(input, {
+      ...init,
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error(
+        "The demo server did not respond in time. Please check the email/account and try again."
+      );
+    }
+
+    throw error;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+function createPopupCancelMonitor(reject: (error: Error) => void) {
+  let settled = false;
+  let closeTimer: number | null = null;
+
+  const cleanup = () => {
+    settled = true;
+    if (closeTimer) {
+      window.clearTimeout(closeTimer);
+    }
+    window.clearTimeout(authTimeout);
+    window.removeEventListener("focus", scheduleCancelCheck);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  };
+
+  const rejectIfStillPending = () => {
+    if (settled) {
+      return;
+    }
+
+    cleanup();
+    reject(new Error("Google sign-in was cancelled."));
+  };
+
+  const scheduleCancelCheck = () => {
+    if (settled || closeTimer) {
+      return;
+    }
+
+    closeTimer = window.setTimeout(() => {
+      closeTimer = null;
+      rejectIfStillPending();
+    }, AUTH_POPUP_CLOSE_GRACE_MS);
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === "visible") {
+      scheduleCancelCheck();
+    }
+  };
+
+  const authTimeout = window.setTimeout(() => {
+    if (settled) {
+      return;
+    }
+
+    cleanup();
+    reject(new Error("Google sign-in timed out. Please try again."));
+  }, AUTH_POPUP_TIMEOUT_MS);
+
+  window.addEventListener("focus", scheduleCancelCheck);
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  return cleanup;
 }
 
 function getDemoApiConfigMessage(url: string) {
@@ -254,7 +338,7 @@ async function readJson<T>(response: Response) {
 }
 
 async function postJson<T>(path: string, body: Record<string, unknown>) {
-  const response = await fetch(joinApiUrl(path), {
+  const response = await fetchWithTimeout(joinApiUrl(path), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -270,7 +354,7 @@ async function postJson<T>(path: string, body: Record<string, unknown>) {
 }
 
 async function postForm<T>(path: string, body: FormData) {
-  const response = await fetch(joinApiUrl(path), {
+  const response = await fetchWithTimeout(joinApiUrl(path), {
     method: "POST",
     body,
   });
@@ -557,18 +641,41 @@ export default function LiveDemoPanel() {
     }
 
     return new Promise<ProviderProfile>((resolve, reject) => {
+      let cleanupPopupMonitor = () => {};
+      let settled = false;
+
+      const resolveProfile = (profile: ProviderProfile) => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        cleanupPopupMonitor();
+        resolve(profile);
+      };
+
+      const rejectProfile = (error: Error) => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        cleanupPopupMonitor();
+        reject(error);
+      };
+
       const tokenClient = googleOauth.initTokenClient({
         client_id: googleClientId,
         scope: "profile email",
         ux_mode: "popup",
         callback: async (tokenResponse) => {
           if (!tokenResponse.access_token || tokenResponse.error) {
-            reject(new Error("Google sign-in was cancelled."));
+            rejectProfile(new Error("Google sign-in was cancelled."));
             return;
           }
 
           try {
-            const response = await fetch(
+            const response = await fetchWithTimeout(
               `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${encodeURIComponent(
                 tokenResponse.access_token
               )}`
@@ -589,7 +696,7 @@ export default function LiveDemoPanel() {
               throw new Error("Google did not return an email address.");
             }
 
-            resolve({
+            resolveProfile({
               email: data.email,
               firstname: data.given_name || "",
               lastname: data.family_name || "",
@@ -598,11 +705,16 @@ export default function LiveDemoPanel() {
               token: tokenResponse.access_token,
             });
           } catch (error) {
-            reject(error);
+            rejectProfile(
+              error instanceof Error
+                ? error
+                : new Error("Google profile lookup failed.")
+            );
           }
         },
       });
 
+      cleanupPopupMonitor = createPopupCancelMonitor(rejectProfile);
       tokenClient.requestAccessToken({ prompt: "" });
     });
   }

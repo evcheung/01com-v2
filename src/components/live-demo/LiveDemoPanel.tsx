@@ -51,6 +51,7 @@ type GoogleAccounts = {
       scope: string;
       ux_mode?: "popup";
       callback: (response: { access_token?: string; error?: string }) => void;
+      error_callback?: (error: { type?: string; message?: string }) => void;
     }) => GoogleTokenClient;
   };
 };
@@ -109,7 +110,6 @@ const facebookApiVersion =
 const scriptLoads = new Map<string, Promise<void>>();
 const API_REQUEST_TIMEOUT_MS = 20000;
 const AUTH_POPUP_TIMEOUT_MS = 90000;
-const AUTH_POPUP_CLOSE_GRACE_MS = 1200;
 
 class DemoApiError extends Error {
   status: number;
@@ -149,61 +149,6 @@ async function fetchWithTimeout(
   } finally {
     window.clearTimeout(timeout);
   }
-}
-
-function createPopupCancelMonitor(reject: (error: Error) => void) {
-  let settled = false;
-  let closeTimer: number | null = null;
-
-  const cleanup = () => {
-    settled = true;
-    if (closeTimer) {
-      window.clearTimeout(closeTimer);
-    }
-    window.clearTimeout(authTimeout);
-    window.removeEventListener("focus", scheduleCancelCheck);
-    document.removeEventListener("visibilitychange", handleVisibilityChange);
-  };
-
-  const rejectIfStillPending = () => {
-    if (settled) {
-      return;
-    }
-
-    cleanup();
-    reject(new Error("Google sign-in was cancelled."));
-  };
-
-  const scheduleCancelCheck = () => {
-    if (settled || closeTimer) {
-      return;
-    }
-
-    closeTimer = window.setTimeout(() => {
-      closeTimer = null;
-      rejectIfStillPending();
-    }, AUTH_POPUP_CLOSE_GRACE_MS);
-  };
-
-  const handleVisibilityChange = () => {
-    if (document.visibilityState === "visible") {
-      scheduleCancelCheck();
-    }
-  };
-
-  const authTimeout = window.setTimeout(() => {
-    if (settled) {
-      return;
-    }
-
-    cleanup();
-    reject(new Error("Google sign-in timed out. Please try again."));
-  }, AUTH_POPUP_TIMEOUT_MS);
-
-  window.addEventListener("focus", scheduleCancelCheck);
-  document.addEventListener("visibilitychange", handleVisibilityChange);
-
-  return cleanup;
 }
 
 function getDemoApiConfigMessage(url: string) {
@@ -641,8 +586,15 @@ export default function LiveDemoPanel() {
     }
 
     return new Promise<ProviderProfile>((resolve, reject) => {
-      let cleanupPopupMonitor = () => {};
+      let authTimeout: number | null = null;
       let settled = false;
+
+      const cleanup = () => {
+        if (authTimeout) {
+          window.clearTimeout(authTimeout);
+          authTimeout = null;
+        }
+      };
 
       const resolveProfile = (profile: ProviderProfile) => {
         if (settled) {
@@ -650,7 +602,7 @@ export default function LiveDemoPanel() {
         }
 
         settled = true;
-        cleanupPopupMonitor();
+        cleanup();
         resolve(profile);
       };
 
@@ -660,9 +612,13 @@ export default function LiveDemoPanel() {
         }
 
         settled = true;
-        cleanupPopupMonitor();
+        cleanup();
         reject(error);
       };
+
+      authTimeout = window.setTimeout(() => {
+        rejectProfile(new Error("Google sign-in timed out. Please try again."));
+      }, AUTH_POPUP_TIMEOUT_MS);
 
       const tokenClient = googleOauth.initTokenClient({
         client_id: googleClientId,
@@ -712,10 +668,21 @@ export default function LiveDemoPanel() {
             );
           }
         },
+        error_callback: (error) => {
+          const errorType = error.type || "";
+
+          if (errorType === "popup_closed") {
+            rejectProfile(new Error("Google sign-in was cancelled."));
+            return;
+          }
+
+          rejectProfile(
+            new Error(error.message || "Google sign-in could not open.")
+          );
+        },
       });
 
-      cleanupPopupMonitor = createPopupCancelMonitor(rejectProfile);
-      tokenClient.requestAccessToken({ prompt: "" });
+      tokenClient.requestAccessToken();
     });
   }
 

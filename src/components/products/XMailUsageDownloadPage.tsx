@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-
-const TERMS_URL = "https://www.01com.com/pdf/ironcapx-terms-of-service.pdf";
-const PRIVACY_URL = "https://www.01com.com/pdf/ironcap-privacy-policy.pdf";
+import { XMailInstallationForm } from "./XMailInstallationForm";
 
 const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
 
@@ -76,20 +74,6 @@ function CheckIcon() {
   );
 }
 
-function Field({ label, type = "text" }: { label: string; type?: string }) {
-  return (
-    <label className="block">
-      <span className="sr-only">{label}</span>
-      <input
-        type={type}
-        name={label.toLowerCase().replaceAll(" ", "-")}
-        placeholder={label}
-        className="h-12 w-full rounded-[4px] border border-[#D7DEE3] bg-white px-4 text-[15px] leading-[24px] text-steel-gray outline-none transition-colors placeholder:text-steel-gray/70 focus:border-quantum-green focus:ring-1 focus:ring-quantum-green/40"
-      />
-    </label>
-  );
-}
-
 export default function XMailUsageDownloadPage({ type }: { type: UsageType }) {
   const page = usagePages[type];
   const features = [...sharedFeatures, ...page.highlights];
@@ -139,47 +123,7 @@ export default function XMailUsageDownloadPage({ type }: { type: UsageType }) {
             )}
           </article>
 
-          <form className="rounded-[8px] border border-[#D7DEE3] bg-white p-6 shadow-[0_18px_44px_rgba(27,27,39,0.07)] sm:p-8">
-            <div className="grid gap-4">
-              <Field label="Email" type="email" />
-              <Field label="First Name" />
-              <Field label="Last Name" />
-            </div>
-
-            <p className="mt-6 text-[13px] leading-[22px] text-steel-gray">
-              By clicking below, I agree to the{" "}
-              <a
-                href={TERMS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
-              >
-                Terms
-              </a>{" "}
-              and{" "}
-              <a
-                href={PRIVACY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
-              >
-                Privacy Policy
-              </a>
-              . An email will be sent to the above address with a link to
-              install IronCAP XMail.
-            </p>
-
-            <div className="mt-6 flex min-h-[78px] items-center justify-center rounded-[4px] border border-dashed border-[#D7DEE3] bg-[#F7FBFF] px-4 text-center text-[13px] leading-[20px] text-steel-gray">
-              Verification
-            </div>
-
-            <button
-              type="button"
-              className="mt-6 inline-flex min-h-[44px] max-w-full flex-wrap items-center justify-center rounded-bl-lg rounded-tr-lg border border-quantum-green px-5 py-3 text-center text-[12px] font-medium uppercase leading-[1.4] tracking-widest text-quantum-green transition-colors hover:bg-quantum-green/10 sm:flex-nowrap sm:px-6"
-            >
-              {page.buttonText}
-            </button>
-          </form>
+          <XMailInstallationForm buttonText={page.buttonText} />
 
           <article className="rounded-[8px] border border-quantum-blue/25 bg-black p-6 text-white shadow-[0_18px_44px_rgba(0,0,0,0.14)] sm:p-8">
             <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-quantum-green">

@@ -9,8 +9,17 @@ type InstallationPayload = {
   g_recaptcha_response?: unknown;
 };
 
+type ParsedUpstreamResponse = {
+  data: unknown;
+  isJson: boolean;
+};
+
 function normalizeString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 function getInstallationUrl() {
@@ -21,18 +30,61 @@ function getInstallationUrl() {
   return `${baseUrl}${INSTALLATION_PATH}`;
 }
 
-async function parseUpstreamResponse(response: Response) {
+async function parseUpstreamResponse(
+  response: Response
+): Promise<ParsedUpstreamResponse> {
   const text = await response.text();
 
   if (!text) {
-    return null;
+    return { data: null, isJson: false };
   }
 
   try {
-    return JSON.parse(text);
+    return { data: JSON.parse(text), isJson: true };
   } catch {
-    return { message: text };
+    return { data: { message: text }, isJson: false };
   }
+}
+
+function getUpstreamMessage(data: unknown) {
+  if (!isRecord(data)) {
+    return null;
+  }
+
+  for (const key of ["message", "reason", "error", "detail"]) {
+    const value = data[key];
+
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return null;
+}
+
+function hasExplicitFailure(data: unknown) {
+  if (!isRecord(data)) {
+    return false;
+  }
+
+  for (const key of ["status", "success", "ok"]) {
+    const value = data[key];
+
+    if (value === false) {
+      return true;
+    }
+
+    if (
+      typeof value === "string" &&
+      ["false", "failed", "failure", "error", "bad request"].includes(
+        value.trim().toLowerCase()
+      )
+    ) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export async function POST(request: Request) {
@@ -76,16 +128,18 @@ export async function POST(request: Request) {
       }),
     });
 
-    const data = await parseUpstreamResponse(upstreamResponse);
+    const { data, isJson } = await parseUpstreamResponse(upstreamResponse);
 
-    if (!upstreamResponse.ok) {
+    if (!upstreamResponse.ok || hasExplicitFailure(data) || !isJson) {
+      const upstreamMessage = getUpstreamMessage(data);
+
       return Response.json(
         {
           message:
-            data?.message ||
+            upstreamMessage ||
             "The installation email could not be sent. Please try again.",
         },
-        { status: upstreamResponse.status }
+        { status: upstreamResponse.ok ? 502 : upstreamResponse.status }
       );
     }
 

@@ -17,6 +17,11 @@ type InstallationFormValues = {
   lastname: string;
 };
 
+type ParsedResponse = {
+  data: unknown;
+  text: string;
+};
+
 type RecaptchaWidget = {
   render: (
     container: HTMLElement,
@@ -123,6 +128,45 @@ function getResponseMessage(data: unknown) {
   }
 
   return "";
+}
+
+function hasExplicitFailure(data: unknown) {
+  if (!isRecord(data)) {
+    return false;
+  }
+
+  for (const key of ["status", "success", "ok"]) {
+    const value = data[key];
+
+    if (value === false) {
+      return true;
+    }
+
+    if (
+      typeof value === "string" &&
+      ["false", "failed", "failure", "error", "bad request"].includes(
+        value.trim().toLowerCase()
+      )
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+async function parseResponse(response: Response): Promise<ParsedResponse> {
+  const text = await response.text();
+
+  if (!text) {
+    return { data: null, text: "" };
+  }
+
+  try {
+    return { data: JSON.parse(text), text };
+  } catch {
+    return { data: null, text };
+  }
 }
 
 export function XMailInstallationForm({
@@ -245,11 +289,13 @@ export function XMailInstallationForm({
           g_recaptcha_response: recaptchaToken,
         }),
       });
-      const data = await response.json().catch(() => null);
+      const { data, text } = await parseResponse(response);
 
-      if (!response.ok) {
+      if (!response.ok || hasExplicitFailure(data)) {
         throw new Error(
           getResponseMessage(data) ||
+            text.trim() ||
+            `${response.status} ${response.statusText}`.trim() ||
             "The installation email could not be sent. Please try again."
         );
       }

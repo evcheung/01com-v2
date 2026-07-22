@@ -4,15 +4,21 @@ interface BottomProps {
   text?: string;
   url?: string;
   isBlank?: boolean | "true" | "false";
+  compact?: boolean;
 }
 
 export const Bottom = ({
   text = " LEARN MORE ABOUT 01 QUANTUM PRODUCTS",
   url = "/use-cases",
   isBlank = "false",
+  compact = false,
 }: BottomProps) => {
   return (
-    <div className="py-12 sm:py-16 flex justify-center items-center px-6 sm:px-10 lg:px-16 xl:px-24 min-h-[160px] sm:min-h-[196px]">
+    <div
+      className={`flex justify-center items-center px-6 sm:px-10 lg:px-16 xl:px-24 ${
+        compact ? "py-0" : "py-12 sm:py-16 min-h-[160px] sm:min-h-[196px]"
+      }`}
+    >
       <Button
         text={text}
         url={url}

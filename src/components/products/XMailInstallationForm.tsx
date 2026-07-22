@@ -74,6 +74,10 @@ function loadRecaptchaScript() {
   document.body.appendChild(script);
 }
 
+function getProvisionIdFromUrl() {
+  return new URLSearchParams(window.location.search).get("provid")?.trim() || "";
+}
+
 export function XMailInstallationForm({
   buttonText,
 }: {
@@ -140,6 +144,12 @@ export function XMailInstallationForm({
     setRecaptchaToken("");
   };
 
+  const isComplete =
+    values.email.trim().length > 0 &&
+    values.firstname.trim().length > 0 &&
+    values.lastname.trim().length > 0 &&
+    recaptchaToken.length > 0;
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -161,14 +171,14 @@ export function XMailInstallationForm({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/ironcap-xmail/installation", {
+      const response = await fetch("/api/installation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...values,
-          provisionid: "",
+          provisionid: getProvisionIdFromUrl(),
           g_recaptcha_response: recaptchaToken,
         }),
       });
@@ -206,9 +216,9 @@ export function XMailInstallationForm({
           Check your inbox
         </h2>
         <p className="mt-3 text-[15px] leading-[24px] text-steel-gray">
-          An installation email has been sent to{" "}
+          Installation email sent to{" "}
           <span className="font-medium text-quantum-green">{successEmail}</span>
-          .
+          . Please check your inbox and spam folder.
         </p>
         <ol className="mt-6 list-decimal space-y-3 pl-5 text-left text-[14px] leading-[22px] text-steel-gray">
           <li>Go to the computer where you normally send and receive email.</li>
@@ -276,7 +286,11 @@ export function XMailInstallationForm({
         <div className="mt-6 min-h-[78px] rounded-[4px] border border-dashed border-[#D7DEE3] bg-[#F7FBFF] px-4 py-4">
           <div className="flex justify-center" ref={recaptchaContainerRef} />
         </div>
-      ) : null}
+      ) : (
+        <p className="mt-4 text-[13px] leading-[20px] text-[#b64747]" role="alert">
+          Verification is not configured. Please try again later.
+        </p>
+      )}
 
       {error ? (
         <p className="mt-4 text-[13px] leading-[20px] text-[#b64747]" role="alert">
@@ -286,7 +300,7 @@ export function XMailInstallationForm({
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !isComplete}
         className="mt-6 inline-flex min-h-[44px] max-w-full flex-wrap items-center justify-center rounded-bl-lg rounded-tr-lg border border-quantum-green px-5 py-3 text-center text-[12px] font-medium uppercase leading-[1.4] tracking-widest text-quantum-green transition-colors hover:bg-quantum-green/10 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-nowrap sm:px-6"
       >
         {isSubmitting ? "Sending..." : buttonText}

@@ -8,7 +8,7 @@ export default function Support() {
   return (
     <>
       <Titles text="Support" />
-      <div className="bg-white pb-20">
+      <div className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px]">
           {/* parragraph */}
           <section className="flex items-center justify-center py-12 md:py-24 text-[18px] sm:text-[20px] leading-[28px] sm:leading-[30px]">
@@ -24,7 +24,7 @@ export default function Support() {
             </p>
           </section>
           {/* icons */}
-          <section className="py-12 md:py-24">
+          <section className="py-4 md:py-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
               {/* Phone */}
               <div className="flex items-center gap-4 p-4 min-w-0 xl:border-r border-gray-300">
@@ -99,8 +99,8 @@ export default function Support() {
             <DocumentsCards cards={supportDocumentCards} />
           </div>
         </div>
-        <section className="bg-white py-16 flex justify-center">
-          <Bottom/>
+        <section className="bg-white py-10 flex items-center justify-center">
+          <Bottom compact />
         </section>
       </div>
     </>

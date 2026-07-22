@@ -105,6 +105,26 @@ function eraseCookie(name: string) {
   document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function getResponseMessage(data: unknown) {
+  if (!isRecord(data)) {
+    return "";
+  }
+
+  for (const key of ["message", "reason", "error", "detail"]) {
+    const value = data[key];
+
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return "";
+}
+
 export function XMailInstallationForm({
   buttonText,
 }: {
@@ -229,7 +249,7 @@ export function XMailInstallationForm({
 
       if (!response.ok) {
         throw new Error(
-          data?.message ||
+          getResponseMessage(data) ||
             "The installation email could not be sent. Please try again."
         );
       }

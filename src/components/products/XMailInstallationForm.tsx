@@ -148,7 +148,7 @@ export function XMailInstallationForm({
     values.email.trim().length > 0 &&
     values.firstname.trim().length > 0 &&
     values.lastname.trim().length > 0 &&
-    recaptchaToken.length > 0;
+    (!RECAPTCHA_SITE_KEY || recaptchaToken.length > 0);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -286,11 +286,7 @@ export function XMailInstallationForm({
         <div className="mt-6 min-h-[78px] rounded-[4px] border border-dashed border-[#D7DEE3] bg-[#F7FBFF] px-4 py-4">
           <div className="flex justify-center" ref={recaptchaContainerRef} />
         </div>
-      ) : (
-        <p className="mt-4 text-[13px] leading-[20px] text-[#b64747]" role="alert">
-          Verification is not configured. Please try again later.
-        </p>
-      )}
+      ) : null}
 
       {error ? (
         <p className="mt-4 text-[13px] leading-[20px] text-[#b64747]" role="alert">

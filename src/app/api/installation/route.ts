@@ -144,13 +144,6 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!gRecaptchaResponse) {
-    return Response.json(
-      { message: "Please complete verification before continuing." },
-      { status: 400 }
-    );
-  }
-
   try {
     const upstreamResponse = await fetch(installationUrl, {
       method: "POST",

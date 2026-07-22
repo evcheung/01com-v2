@@ -3,6 +3,13 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+const KEYSERVER_API_URL =
+  process.env.NEXT_PUBLIC_KEYSERVER_API_URL ||
+  "https://keyserver000101.01com.com";
+const INSTALLATION_API_URL = `${KEYSERVER_API_URL.replace(
+  /\/+$/,
+  ""
+)}/api/v1/installation`;
 
 type InstallationFormValues = {
   email: string;
@@ -78,6 +85,26 @@ function getProvisionIdFromUrl() {
   return new URLSearchParams(window.location.search).get("provid")?.trim() || "";
 }
 
+function getCookie(name: string) {
+  const prefix = `${name}=`;
+  const cookie = document.cookie
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(prefix));
+
+  return cookie ? cookie.slice(prefix.length) : "";
+}
+
+function setCookie(name: string, value: string, days: number) {
+  const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+
+  document.cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/; secure;`;
+}
+
+function eraseCookie(name: string) {
+  document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+}
+
 export function XMailInstallationForm({
   buttonText,
 }: {
@@ -90,6 +117,19 @@ export function XMailInstallationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null);
   const recaptchaWidgetIdRef = useRef<number | null>(null);
+  const provisionIdRef = useRef("");
+
+  useEffect(() => {
+    const provisionIdFromUrl = getProvisionIdFromUrl();
+
+    if (provisionIdFromUrl) {
+      setCookie("prov_id", provisionIdFromUrl, 1);
+      provisionIdRef.current = provisionIdFromUrl;
+      return;
+    }
+
+    provisionIdRef.current = getCookie("prov_id");
+  }, []);
 
   useEffect(() => {
     if (!RECAPTCHA_SITE_KEY) {
@@ -171,14 +211,17 @@ export function XMailInstallationForm({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/installation", {
+      const response = await fetch(INSTALLATION_API_URL, {
         method: "POST",
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...values,
-          provisionid: getProvisionIdFromUrl(),
+          email: values.email,
+          firstname: values.firstname,
+          lastname: values.lastname,
+          provisionid: provisionIdRef.current,
           g_recaptcha_response: recaptchaToken,
         }),
       });
@@ -193,6 +236,7 @@ export function XMailInstallationForm({
 
       setSuccessEmail(values.email);
       setValues(initialValues);
+      eraseCookie("prov_id");
       resetRecaptcha();
     } catch (submitError) {
       setError(

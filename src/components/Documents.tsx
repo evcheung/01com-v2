@@ -2,6 +2,7 @@ import {
   DocumentsCard,
   type DocumentsCardData,
 } from "@/components/resources/documents/DocumentsCard";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 export const documentsCards: DocumentsCardData[] = [
@@ -31,7 +32,7 @@ export const documentsCards: DocumentsCardData[] = [
     items: [
       {
         title: "IronCAP™ XMail",
-        href: "https://www.01com.com/ironcap-x/personal",
+        href: IRONCAP_X_FREE_DOWNLOAD_URL,
       },
       {
         title: "IronCAP™ InTouch",

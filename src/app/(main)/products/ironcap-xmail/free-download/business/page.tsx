@@ -1,5 +1,6 @@
-import XMailUsageDownloadPage from "@/components/products/XMailUsageDownloadPage";
+import { redirect } from "next/navigation";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 export default function IroncapXMailBusinessDownloadPage() {
-  return <XMailUsageDownloadPage type="business" />;
+  redirect(IRONCAP_X_FREE_DOWNLOAD_URL);
 }

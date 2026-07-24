@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -46,7 +47,7 @@ export default function IroncapXMailWhyXMailPage() {
           <div className="mt-10 flex justify-center">
             <Button
               text="Try It Free"
-              url="https://www.ironcap.ca/ironcap-x"
+              url={IRONCAP_X_FREE_DOWNLOAD_URL}
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

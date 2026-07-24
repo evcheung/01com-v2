@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 export const xMailSectionItems = [
-  { label: "Free Download", href: "/products/ironcap-xmail/free-download" },
+  { label: "Free Download", href: IRONCAP_X_FREE_DOWNLOAD_URL, external: true },
   { label: "Why XMail?", href: "/products/ironcap-xmail/why-xmail" },
   {
     label: "Pricing & Comparison",
@@ -50,24 +51,36 @@ export function XMailSectionChrome({
         />
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
           {xMailSectionItems.map((item, i) => {
-            const active = pathname === normalizePath(item.href);
+            const active = !item.external && pathname === normalizePath(item.href);
+            const linkClassName = `text-center transition-colors lg:text-left ${
+              active
+                ? "text-quantum-blue font-medium"
+                : "text-white hover:text-quantum-blue"
+            }`;
 
             return (
               <li
                 key={item.href}
                 className="flex items-center justify-center gap-4 lg:justify-start"
               >
-                <Link
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`text-center transition-colors lg:text-left ${
-                    active
-                      ? "text-quantum-blue font-medium"
-                      : "text-white hover:text-quantum-blue"
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClassName}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={linkClassName}
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {i < xMailSectionItems.length - 1 && (
                   <span aria-hidden className="hidden text-white/50 lg:inline">
                     |

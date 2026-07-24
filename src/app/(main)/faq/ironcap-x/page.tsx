@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Bottom } from "@/components/resources/Bottom";
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -43,10 +44,16 @@ const faqCategories: FaqCategory[] = [
         answer: (
           <>
             IronCAP X<Trademark /> is free for personal usage. To sign up for a
-            FREE account, simply visit www.ironcapx.com and click &quot;FREE Personal
-            Usage&quot;. Enter your name and email address. Then click &quot;Send
-            Installation Email&quot;. An email will be sent to you with a link to
-            install IronCAP X<Trademark /> onto your computer.
+            FREE account, visit{" "}
+            <a
+              href={IRONCAP_X_FREE_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
+            >
+              www.ironcap.ca/ironcap-x/personal
+            </a>{" "}
+            to get the free personal version of IronCAP X<Trademark />.
           </>
         ),
       },

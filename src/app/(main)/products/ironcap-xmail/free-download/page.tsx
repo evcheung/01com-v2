@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
 
 const downloadOptions = [
   {
@@ -6,14 +7,14 @@ const downloadOptions = [
     description:
       "For individuals who want free quantum-safe email, file encryption, and digital signing for everyday personal communications.",
     buttonText: "Personal Download",
-    href: "/products/ironcap-xmail/free-download/personal",
+    href: IRONCAP_X_FREE_DOWNLOAD_URL,
   },
   {
     label: "Business Usage",
     description:
       "For organizations that need IronCAP XMail protection with business account support and centralized user management.",
     buttonText: "Business Download",
-    href: "/products/ironcap-xmail/free-download/business",
+    href: IRONCAP_X_FREE_DOWNLOAD_URL,
   },
 ] as const;
 
@@ -31,7 +32,7 @@ export default function IroncapXMailFreeDownloadPage() {
           <p className="text-[15px] leading-[26px] text-steel-gray sm:text-[16px]">
             Simply go to{" "}
             <a
-              href="https://www.ironcap.ca/ironcap-x/personal"
+              href={IRONCAP_X_FREE_DOWNLOAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
@@ -70,6 +71,7 @@ export default function IroncapXMailFreeDownloadPage() {
                   border="border-quantum-green"
                   textColor="text-quantum-green"
                   hoverBg="hover:bg-quantum-green/10"
+                  isBlank="true"
                 />
               </div>
             </article>

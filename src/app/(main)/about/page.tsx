@@ -81,7 +81,7 @@ export default function About() {
           About
         </h1>
       </section>
-      <section className="bg-white flex flex-col items-center px-6 md:px-24 py-18">
+      <section className="bg-white flex flex-col items-center px-6 py-10 md:px-24 md:pt-18 md:pb-8">
         <div className="max-w-[1512px] mx-auto px-0 md:px-[95px] space-y-6">
           <p className="text-steel-gray text-[15px] leading-[24px]">
             <span className="text-quantum-blue font-normal">
@@ -126,7 +126,7 @@ export default function About() {
       </section>
 
       {/* Leadership */}
-      <section className="bg-white py-20 px-6 md:px-[95px]">
+      <section className="bg-white px-6 pt-4 pb-20 md:px-[95px] md:pt-4">
         <div className="max-w-[1512px] mx-auto px-0 md:px-[95px]">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-[30px] mb-14">
             Leadership

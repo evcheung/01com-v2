@@ -4,7 +4,7 @@ import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Privacy Policy | 01 Quantum",
   description:
-    "Privacy Policy information for 01 Quantum and 01 Communique services.",
+    "Privacy Policy information for 01 Quantum services.",
 };
 
 export default function PrivacyPolicy() {
@@ -14,14 +14,14 @@ export default function PrivacyPolicy() {
       intro={
         <p>
           As a global provider of remote access services and integrated
-          communications software, 01 Communique respects your privacy and is
+          communications software, 01 Quantum respects your privacy and is
           committed to protecting the personal information you share with us.
           Outlined below is information about how we collect and use your
           personal information.
         </p>
       }
     >
-      <LegalSection title="Personal Information 01 Communique May Ask For">
+      <LegalSection title="Personal Information 01 Quantum May Ask For">
         <p>
           Personal information means any information that may be used to identify
           an individual, including but not limited to a first and last name,
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
           service you have requested from us.
         </p>
         <p>
-          01 Communique may ask you to provide personal information by filling
+          01 Quantum may ask you to provide personal information by filling
           out and submitting an online form when you elect to use a free trial
           of our products and services, subscribe to a service, purchase product
           and have it shipped to you, or request a product or service upgrade.
@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
 
       <LegalSection title="What We Do With Personal Information We Ask For">
         <p>
-          01 Communique uses your personal information to deliver free trials,
+          01 Quantum uses your personal information to deliver free trials,
           complete online service subscriptions, product purchases or upgrade
           requests, keep you up to date on product announcements, software
           updates, special offers or other information we feel may be of
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
           introductions.
         </p>
         <p>
-          At all times, you have the option to request that 01 Communique
+          At all times, you have the option to request that 01 Quantum
           unsubscribe you from the delivery of any future communications.
         </p>
         <p>
@@ -83,15 +83,15 @@ export default function PrivacyPolicy() {
 
       <LegalSection title="Cookies">
         <p>
-          The 01 Communique website may use cookies, small text files delivered
+          The 01 Quantum website may use cookies, small text files delivered
           to your browser to track your visits to our website. The information
-          contained in a cookie can only be read by a 01 Communique web server
+          contained in a cookie can only be read by a 01 Quantum web server
           and cannot be used to run programs or deliver viruses to your
           computer. A cookie functions as an identifier, but does not attach
           itself to or contain any personal data you may provide to 01.
         </p>
         <p>
-          01 Communique&apos;s website uses cookies to track user traffic
+          01 Quantum&apos;s website uses cookies to track user traffic
           patterns so we can improve our navigational structure and better help
           users reach the information they require.
         </p>
@@ -105,11 +105,11 @@ export default function PrivacyPolicy() {
 
       <LegalSection title="Privacy Issues and Concerns">
         <p>
-          If you have any questions or concerns regarding 01 Communique&apos;s
+          If you have any questions or concerns regarding 01 Quantum&apos;s
           online privacy policy, please contact us electronically or by mail.
         </p>
         <address className="not-italic text-steel-gray">
-          01 Communique
+          01 Quantum
           <br />
           Online Privacy
           <br />

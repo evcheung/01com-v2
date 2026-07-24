@@ -136,7 +136,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "3afa668b6d040",
                 "_type": "span",
                 "marks": [],
-                "text": "IronCAP InTouch should be installed on the PC you wish to access remotely from anywhere. During installation, you will be required to select a ComputerName, login name and password. 01 Communique's patented technology uses this ComputerName to find your PC on the Internet.\n"
+                "text": "IronCAP InTouch should be installed on the PC you wish to access remotely from anywhere. During installation, you will be required to select a ComputerName, login name and password. 01 Quantum's patented technology uses this ComputerName to find your PC on the Internet.\n"
               }
             ],
             "markDefs": [],
@@ -4344,7 +4344,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "657eb0e23d8c0",
                 "_type": "span",
                 "marks": [],
-                "text": "You can cancel your service by contacting 01 Communique."
+                "text": "You can cancel your service by contacting 01 Quantum."
               }
             ],
             "markDefs": [],
@@ -4354,7 +4354,7 @@ const faqGroups: FaqGroup[] = [
       },
       {
         "id": "12a89c155605",
-        "question": "What is 01 Communique's policy on the IronCAP InTouch Remote Desktop Software upgrades?  ",
+        "question": "What is 01 Quantum's policy on the IronCAP InTouch Remote Desktop Software upgrades?  ",
         "answer": [
           {
             "_key": "dc057ee8c646",

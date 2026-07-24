@@ -2,10 +2,18 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 import { Button } from "@/components/ui/button";
 
+const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
+
+const ProductName = ({ children }: { children: string }) => (
+  <>
+    IronCAP<Trademark /> {children}
+  </>
+);
+
 export const metadata: Metadata = {
   title: "Terms of Use | 01 Quantum",
   description:
-    "Terms of Use information for 01 Quantum remote access services.",
+    "Terms of Use information for 01 Quantum products and services.",
 };
 
 export default function TermsOfUse() {
@@ -15,8 +23,10 @@ export default function TermsOfUse() {
       intro={
         <>
           <p>
-            The I&apos;m InTouch, I&apos;m OnCall, and I&apos;m InTouch Meeting
-            remote access services are subject to the current Terms of Service.
+            The <ProductName>XMail</ProductName>,{" "}
+            <ProductName>InTouch</ProductName>, and{" "}
+            <ProductName>OnCall</ProductName> products and services are subject
+            to the current Terms of Service.
           </p>
           <div className="pt-2">
             <Button
@@ -33,32 +43,32 @@ export default function TermsOfUse() {
     >
       <LegalSection title="Service Subscriptions">
         <p>
-          To continue using the I&apos;m InTouch, I&apos;m OnCall, or I&apos;m
-          InTouch Meeting remote access service after the free trial period, you
-          must subscribe to the service.
+          To continue using <ProductName>XMail</ProductName>,{" "}
+          <ProductName>InTouch</ProductName>, or <ProductName>OnCall</ProductName>{" "}
+          after the free trial period, you must subscribe to the service.
         </p>
         <ol className="list-decimal space-y-3 pl-5">
           <li>
-            Login to your online account at{" "}
+            Login to your online account for{" "}
             <a
-              href="https://www.imintouch.com"
+              href="/products/ironcap-xmail"
               className="text-quantum-blue transition-colors hover:text-quantum-green"
             >
-              www.imintouch.com
+              <ProductName>XMail</ProductName>
             </a>
             ,{" "}
             <a
-              href="https://www.imoncall.com"
+              href="/products/ironcap-intouch"
               className="text-quantum-blue transition-colors hover:text-quantum-green"
             >
-              www.imoncall.com
+              <ProductName>InTouch</ProductName>
             </a>
             , or{" "}
             <a
-              href="https://www.imintouchmeeting.com"
+              href="/products/ironcap-oncall"
               className="text-quantum-blue transition-colors hover:text-quantum-green"
             >
-              www.imintouchmeeting.com
+              <ProductName>OnCall</ProductName>
             </a>
             .
           </li>
@@ -75,7 +85,7 @@ export default function TermsOfUse() {
 
       <LegalSection title="Technical Support">
         <p>
-          01 Communique provides free technical support for trial accounts via
+          01 Quantum provides free technical support for trial accounts via
           email at{" "}
           <a
             href="mailto:help@01com.com"

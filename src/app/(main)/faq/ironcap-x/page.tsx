@@ -600,7 +600,7 @@ const faqCategories: FaqCategory[] = [
           <>
             IronCAP X<Trademark /> accepts the following credit cards: Amex,
             VISA, and Mastercard. Your credit card bills will show the charge
-            from 01 Communique (www.01com.com).
+            from 01 Quantum (www.01com.com).
           </>
         ),
       },

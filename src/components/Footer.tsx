@@ -52,7 +52,6 @@ const footerColumns = [
       "Intellectual Properties",
       "Press Releases",
       "Newsletters",
-      "Reviews + Awards",
     ],
     urls: [
       "/about",
@@ -60,7 +59,6 @@ const footerColumns = [
       "/resources/intellectual-properties",
       "/resources/press-releases-newsletters#press-releases",
       "/resources/press-releases-newsletters#newsletters",
-      "/resources/rewards",
     ],
   },
   {

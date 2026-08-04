@@ -39,13 +39,6 @@ export default function ResourcesIntellectualProperties() {
   return (
     <section className="bg-[#f5f6f8] py-16">
       <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px]">
-        <div className="flex items-center gap-4 sm:gap-6 mb-12">
-          <h2 className="text-quantum-blue text-[24px] sm:text-[26px] font-medium leading-[30px] whitespace-nowrap">
-            Intellectual Properties
-          </h2>
-          <div className="flex-1 h-px bg-lite-gray/60" />
-        </div>
-
         <div className="max-w-[1230px] space-y-8">
           <p className="text-steel-gray text-[15px] leading-[24px]">
             Innovative technologies used in our Post-Quantum Cybersecurity and

@@ -496,7 +496,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "5d494d6c8d440",
                 "_type": "span",
                 "marks": [],
-                "text": "The system requirements for the computer that IronCAP InTouch will be installed on are:"
+                "text": "The system requirements for the computer on which IronCAP InTouch will be installed are:"
               }
             ],
             "markDefs": [],
@@ -620,7 +620,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "27c2bfe5998d0",
                 "_type": "span",
                 "marks": [],
-                "text": "A minimum of 2 computers with IronCAP InTouch installed on the same wired network are required. One computer is the computer you wish to wake-up access and the other will act as the \"Wake-Up Proxy\" to send the wake-up signal to the host computer."
+                "text": "A minimum of 2 computers with IronCAP InTouch installed on the same wired network are required. One computer is the computer you wish to wake up and the other will act as the \"Wake-Up Proxy\" to send the wake-up signal to the host computer."
               }
             ],
             "level": 1,
@@ -3415,7 +3415,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "921992932a850",
                 "_type": "span",
                 "marks": [],
-                "text": "Once in the MEBx, use the default password \"admin\" (case-sensitive) to log in, thenchange it to a new password that meets Intel's strong password criteria: at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a specialcharacter (excluding quotes, apostrophes, commas, angle brackets, colons, ampersands, and spaces). Please make sure you setup the same password as the IronCAP InTouch password of the targeted host computer."
+                "text": "Once in the MEBx, use the default password \"admin\" (case-sensitive) to log in, then change it to a new password that meets Intel's strong password criteria: at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a specialcharacter (excluding quotes, apostrophes, commas, angle brackets, colons, ampersands, and spaces). Please make sure you setup the same password as the IronCAP InTouch password of the targeted host computer."
               }
             ],
             "level": 1,
@@ -4647,13 +4647,23 @@ const faqGroups: FaqGroup[] = [
                   "bdacc899af7a"
                 ],
                 "text": "Norton Internet Security 2010"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f51",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "bdacc899af7a",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/Norton_2010.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab964836",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f52",
                 "_type": "span",
@@ -4661,13 +4671,23 @@ const faqGroups: FaqGroup[] = [
                   "7c54b910c8eb"
                 ],
                 "text": "Norton Internet Security 2008"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f53",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "7c54b910c8eb",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/Norton_2008.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab964837",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f54",
                 "_type": "span",
@@ -4675,13 +4695,23 @@ const faqGroups: FaqGroup[] = [
                   "04c6d806ed34"
                 ],
                 "text": "Trend Micro Internet Security 2010"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f55",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "04c6d806ed34",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/Trend_2010.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab964838",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f56",
                 "_type": "span",
@@ -4689,13 +4719,23 @@ const faqGroups: FaqGroup[] = [
                   "5db6d9fd1e4d"
                 ],
                 "text": "McAfee Internet Security 2007 Configuration Guidelines"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f57",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "5db6d9fd1e4d",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/McAfee_2007.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab964839",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f58",
                 "_type": "span",
@@ -4703,13 +4743,23 @@ const faqGroups: FaqGroup[] = [
                   "ba1242a40249"
                 ],
                 "text": "McAfee Internet Security Configuration Guidelines"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f59",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "ba1242a40249",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/McAfee.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab96483a",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f510",
                 "_type": "span",
@@ -4717,13 +4767,23 @@ const faqGroups: FaqGroup[] = [
                   "539591b54fbf"
                 ],
                 "text": "NOD32 Security Configuration Guidelines"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f511",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "539591b54fbf",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/NOD32.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab96483b",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f512",
                 "_type": "span",
@@ -4731,13 +4791,23 @@ const faqGroups: FaqGroup[] = [
                   "a6ec4f421af8"
                 ],
                 "text": "F-Secure Internet Security 2010 Configuration Guidelines"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f513",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "a6ec4f421af8",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/Fsecureinternetsecurity2010.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab96483c",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f514",
                 "_type": "span",
@@ -4745,13 +4815,23 @@ const faqGroups: FaqGroup[] = [
                   "a2ec34b76044"
                 ],
                 "text": "Zone Alarm Pro PC Firewall"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f515",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "a2ec34b76044",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/zonealarm.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab96483d",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f516",
                 "_type": "span",
@@ -4759,13 +4839,23 @@ const faqGroups: FaqGroup[] = [
                   "0e1af325aa73"
                 ],
                 "text": "System Mechanic Professional 4 Configuration Guidelines"
-              },
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [
               {
-                "_key": "4e8653bcf1f517",
-                "_type": "span",
-                "marks": [],
-                "text": "\n"
-              },
+                "_key": "0e1af325aa73",
+                "_type": "link",
+                "href": "https://www.01com.com/pdf/SystemMechanicProsetup.pdf"
+              }
+            ],
+            "style": "normal"
+          },
+          {
+            "_key": "ae17ab96483e",
+            "_type": "block",
+            "children": [
               {
                 "_key": "4e8653bcf1f518",
                 "_type": "span",
@@ -4775,52 +4865,9 @@ const faqGroups: FaqGroup[] = [
                 "text": "Windows Live OneCare Configuration Guidelines"
               }
             ],
+            "level": 1,
+            "listItem": "bullet",
             "markDefs": [
-              {
-                "_key": "bdacc899af7a",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/Norton_2010.pdf"
-              },
-              {
-                "_key": "7c54b910c8eb",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/Norton_2008.pdf"
-              },
-              {
-                "_key": "04c6d806ed34",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/Trend_2010.pdf"
-              },
-              {
-                "_key": "5db6d9fd1e4d",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/McAfee_2007.pdf"
-              },
-              {
-                "_key": "ba1242a40249",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/McAfee.pdf"
-              },
-              {
-                "_key": "539591b54fbf",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/NOD32.pdf"
-              },
-              {
-                "_key": "a6ec4f421af8",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/Fsecureinternetsecurity2010.pdf"
-              },
-              {
-                "_key": "a2ec34b76044",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/zonealarm.pdf"
-              },
-              {
-                "_key": "0e1af325aa73",
-                "_type": "link",
-                "href": "https://www.01com.com/pdf/SystemMechanicProsetup.pdf"
-              },
               {
                 "_key": "c5fc73cbf5b8",
                 "_type": "link",
@@ -5406,8 +5453,6 @@ const faqGroups: FaqGroup[] = [
                 "text": "IronCAP InTouch automatically mutes sound on the host computer when remote audio is enabled. In rare cases, this may cause the audio to be muted on the remote computer as well. To fix this:"
               }
             ],
-            "level": 1,
-            "listItem": "bullet",
             "markDefs": [],
             "style": "normal"
           },
@@ -5470,8 +5515,6 @@ const faqGroups: FaqGroup[] = [
                 "text": "IronCAP InTouch may not have automatically detected the correct input device. To set it manually:"
               }
             ],
-            "level": 1,
-            "listItem": "bullet",
             "markDefs": [],
             "style": "normal"
           },
@@ -5578,7 +5621,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "b79e8667dd8a",
                 "_type": "link",
-                "href": "http://www.microsoft.com/windows/windowsmedia/default.mspx"
+                "href": "https://support.microsoft.com/en-us/windows/windows-media-player-d10303a5-896c-2ce2-53d4-5bd5b9fd888b"
               }
             ],
             "style": "normal"

@@ -124,14 +124,20 @@ function UseCaseRow({
 }
 
 /* ── Page ─────────────────────────────────────────────────────────── */
-export default function UseCases() {
+export function UseCasesContent({
+  showPageTitle = true,
+  showBottom = true,
+}: {
+  showPageTitle?: boolean;
+  showBottom?: boolean;
+}) {
   return (
     <main
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <Titles text="Use Cases" />
+      {showPageTitle ? <Titles text="Use Cases" /> : null}
 
       {/* ─── Performance / Intro ─── */}
       <section className="bg-black">
@@ -243,9 +249,15 @@ export default function UseCases() {
       </section>
 
       {/* ─── Learn More CTA ─── */}
-      <section className="bg-white flex justify-center">
-        <Bottom/>
-      </section>
+      {showBottom ? (
+        <section className="bg-white flex justify-center">
+          <Bottom/>
+        </section>
+      ) : null}
     </main>
   );
+}
+
+export default function UseCases() {
+  return <UseCasesContent />;
 }

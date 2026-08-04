@@ -41,8 +41,8 @@ export default function Contact() {
       </section>
 
       {/* ─── Learn More CTA ─── */}
-      <section className="bg-white py-16 flex justify-center">
-        <Bottom/>
+      <section className="bg-white pt-10 pb-14 flex justify-center">
+        <Bottom compact />
       </section>
     </main>
   );

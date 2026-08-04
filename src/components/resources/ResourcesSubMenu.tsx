@@ -8,13 +8,25 @@ export type ResourceMenuItem = {
   href: string;
 };
 
-export const resourceMenuItems: ResourceMenuItem[] = [
+const resourceMenuItems: ResourceMenuItem[] = [
   { label: "Brochures", href: "/resources/brochures" },
   { label: "White Papers", href: "/resources/white-papers-use-cases" },
   { label: "Videos", href: "/resources/videos" },
-  { label: "Use Cases", href: "/use-cases" },
-  { label: "FAQs", href: "/faq/ironcap-x" },
 ];
+
+const pressRoomMenuItems: ResourceMenuItem[] = [
+  { label: "Press Releases", href: "/resources/press-releases" },
+  { label: "Newsletters", href: "/resources/newsletters" },
+];
+
+const pressRoomPaths = [
+  "/resources/press-releases-newsletters",
+  "/resources/press-releases",
+  "/resources/newsletters",
+];
+
+const blogPaths = ["/resources/blog"];
+const intellectualPropertiesPaths = ["/resources/intellectual-properties"];
 
 /**
  * ResourcesSubMenu
@@ -24,6 +36,18 @@ export const resourceMenuItems: ResourceMenuItem[] = [
  */
 export function ResourcesSubMenu() {
   const pathname = usePathname() ?? "";
+  const isPressRoom = pressRoomPaths.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+  const isBlog = blogPaths.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+  const isIntellectualProperties = intellectualPropertiesPaths.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+  const menuItems = isPressRoom ? pressRoomMenuItems : resourceMenuItems;
+
+  if (isBlog || isIntellectualProperties) return null;
 
   return (
     <section className="bg-black relative flex items-center justify-center py-4 sm:py-5 lg:h-[88px] lg:py-0">
@@ -32,12 +56,12 @@ export function ResourcesSubMenu() {
         aria-hidden
         className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] max-w-[calc(100%-3rem)] bg-white/30"
       />
-      {/* Mobile: 3-col × 2-row grid | Desktop: single row */}
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
-        {resourceMenuItems.map((m, i) => {
-          const active = pathname === m.href;
+      {/* Responsive resource tabs */}
+      <ul className="grid grid-cols-2 gap-x-6 gap-y-3 px-6 text-[12px] sm:grid-cols-3 lg:flex lg:flex-wrap lg:items-center lg:justify-center lg:gap-x-4 lg:gap-y-3 lg:px-8 xl:gap-x-6">
+        {menuItems.map((m, i) => {
+          const active = pathname === m.href || pathname.startsWith(`${m.href}/`);
           return (
-            <li key={m.label} className="flex items-center justify-center gap-4 lg:gap-6 lg:justify-start">
+            <li key={m.label} className="flex items-center justify-center gap-4 lg:gap-4 lg:justify-start xl:gap-6">
               <Link
                 href={m.href}
                 aria-current={active ? "page" : undefined}
@@ -50,7 +74,7 @@ export function ResourcesSubMenu() {
                 {m.label}
               </Link>
               {/* Separator only visible in desktop row layout */}
-              {i < resourceMenuItems.length - 1 && (
+              {i < menuItems.length - 1 && (
                 <span aria-hidden className="hidden text-white/50 lg:inline">
                   |
                 </span>

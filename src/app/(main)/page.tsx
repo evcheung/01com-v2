@@ -35,19 +35,19 @@ const services = [
     name: "Quantum AI Wrapper QAW",
     desc: "AI Prompt + Model Security",
     icon: "/home_assets/s_1.svg",
-    url: "/services/",
+    url: "/services/#qaw",
   },
   {
     name: "Digital Asset Protection",
     desc: "Quantum-safe Digital Assets",
     icon: "/home_assets/s_2.svg",
-    url: "/services/",
+    url: "/services/#digital-asset",
   },
   {
     name: "Cryptographic Integration Services",
     desc: "Open-source Integration + Managed Services",
     icon: "/home_assets/s_3.svg",
-    url: "/services/",
+    url: "/services/#open-source-crypto",
   },
 ];
 
@@ -203,7 +203,7 @@ export default function Home() {
               </p>
               <a
                 href="/quantum-threat/" className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors">
-                Read more on quantum threat · · ·
+                Read more about the quantum cryptography
               </a>
             </div>
           </div>

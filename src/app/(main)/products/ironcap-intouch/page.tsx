@@ -3,7 +3,6 @@ import LottiePlayer from "@/components/LottiePlayer";
 import InTouchLegacyHighlightsSection from "@/components/products/InTouchLegacyHighlightsSection";
 import animation1 from "@/assets/animations/icon-IC-inTouch.json"
 import animation2 from  "@/assets/animations/icon-IC-intouchGo.json"
-import animation3 from "@/assets/animations/intouchGoFlowchart.json"
 import animation4 from "@/assets/animations/icon-IC-intouchGoMail.json"
 import animation5 from "@/assets/animations/iconDark-IC-intouchSecureKey.json"
 import animation6 from "@/assets/animations/icon-IC-intouch-SE.json"
@@ -40,27 +39,6 @@ const howWorkSteps = [
   },
   {
     step: "3",
-    title: "LOGIN + SELECT COMPUTER",
-    body: (
-      <>
-        Either login to your InTouch account to pick your computer from the
-        list or quickly find your computer by its Computer Name (Click{" "}
-        <a
-          href="https://www.01com.com/imintouch-remote-pc-desktop/how-it-works/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-quantum-green hover:underline"
-        >
-          here
-        </a>{" "}
-        to see how to create an InTouch account and activate your computer to
-        become InTouch enabled.)
-      </>
-    ),
-    icon: "/product_assets/device_3.svg",
-  },
-  {
-    step: "4",
     title: "READY TO GO",
     body: "After authentication, you will be able to remotely control your desktop computer from your mobile device.",
     icon: "/product_assets/device_4.svg",
@@ -193,16 +171,33 @@ export default function InTouchPage() {
             </div>
           </div>
 
-          {/* Brochure button */}
-          <div className="flex justify-center mb-16">
-            <Button
-              text="brochure"
-              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
-              border="border-quantum-green"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-              isBlank="true"
-            />
+          <div className="flex flex-col gap-0 border-t border-white/10 w-full mb-12">
+            {howWorkSteps.map((item) => (
+              <div key={item.step} className="grid grid-cols-[50px_1fr_auto] gap-4 items-start py-6 sm:py-10 px-4 sm:px-8 border-b border-white/10">
+                <div className="flex items-center justify-center">
+                  <span className="text-lite-gray text-[24px] sm:text-[40px] font-medium leading-[32px] sm:leading-[50px]">
+                    {item.step}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h4 className="text-quantum-green text-[12px] sm:text-[15px] font-semibold leading-[18px] sm:leading-[24px] uppercase">
+                    {item.title}
+                  </h4>
+                  <p className="text-lite-gray text-[12px] sm:text-[15px] leading-[18px] sm:leading-[24px]">
+                    {item.body}
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src={item.icon}
+                    alt={`Step ${item.step}`}
+                    width={80}
+                    height={100}
+                    className="w-16 h-20 object-contain"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Compatibility */}
@@ -281,6 +276,18 @@ export default function InTouchPage() {
               ))}
             </div>
           </div>
+
+          {/* Brochure button */}
+          <div className="flex justify-center mt-16">
+            <Button
+              text="brochure"
+              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
+              border="border-quantum-green"
+              textColor="text-quantum-green"
+              hoverBg="hover:bg-quantum-green/10"
+              isBlank="true"
+            />
+          </div>
         </div>
       </section>
 
@@ -332,142 +339,6 @@ export default function InTouchPage() {
               InTouch. Login to the InTouch account you have just created and
               follow the on-screen instructions to activate the computer.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── How it Works (InTouch Go – flow chart) ─── */}
-      <section className="bg-black py-12 md:py-20 px-6 md:px-[95px]">
-        <div className="max-w-[1512px] mx-auto">
-          <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px] mb-4">
-            How it Works
-          </h2>
-
-          <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px] mb-4">
-            Turn your Mobile Device into a Remote Control for your Computer
-          </p>
-
-          <div className="flex flex-col gap-[7px] mb-12">
-            <p className="text-lite-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
-              Before you can use InTouch Go, you must first activate your remote
-              computer to become InTouch-enabled. The activation process is as
-              easy as 1-2-3. Simply click{" "}
-              <a
-                href="https://locator.01com.com/ecommerce/account.php"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-quantum-green hover:underline"
-              >
-                here
-              </a>
-              {" "}to create a Free Account. Then,
-              from the computer you wish to activate, go to www.intouch.com. Log
-              in to the InTouch account you have just created and follow the
-              on-screen instructions to activate the computer.
-            </p>
-          </div>
-
-          {/* 4-step flow */}
-          <div className="flex flex-col gap-0 border-t border-white/10 w-full">
-            {howWorkSteps.map((item) => (
-              <div key={item.step} className="grid grid-cols-[50px_1fr_auto] gap-4 items-start py-6 sm:py-10 px-4 sm:px-8 border-b border-white/10">
-                <div className="flex items-center justify-center">
-                  <span className="text-lite-gray text-[24px] sm:text-[40px] font-medium leading-[32px] sm:leading-[50px]">
-                    {item.step}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h4 className="text-quantum-green text-[12px] sm:text-[15px] font-semibold leading-[18px] sm:leading-[24px] uppercase">
-                    {item.title}
-                  </h4>
-                  <p className="text-lite-gray text-[12px] sm:text-[15px] leading-[18px] sm:leading-[24px]">
-                    {item.body}
-                  </p>
-                </div>
-                <div className="hidden sm:flex items-center justify-center flex-shrink-0">
-                  <Image
-                    src={item.icon}
-                    alt={`Step ${item.step}`}
-                    width={80}
-                    height={100}
-                    className="w-16 h-20 object-contain"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Lottie animation - right side */}
-          {/* <div className="hidden lg:flex items-center justify-end mt-8 -mr-24">
-            <LottiePlayer
-              loop={false}
-              src={animation3}
-              className="w-[130px] h-[168px]"
-            />
-          </div> */}
-
-          {/* Compatibility */}
-          <div className="flex justify-center mt-16 overflow-x-auto w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-white/10 w-full sm:w-auto">
-              {[
-                {
-                  name: "iPhone/iPad",
-                  img: "/product_assets/Rectangle_appstore.png",
-                  url: "https://apps.apple.com/ca/app/im-intouch-go/id526473842",
-                },
-                {
-                  name: "Android",
-                  img: "/product_assets/Rectangle_gplay.png",
-                  url: "https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo&hl=en_CA",
-                },
-                {
-                  name: "Windows Tablet",
-                  img: "/product_assets/Rectangle_microsoft.png",
-                  url: "https://apps.microsoft.com/detail/9wzdncrdsmrk?hl=en-US&gl=US",
-                },
-              ].map((item, i) => (
-                <div
-                  key={item.name}
-                  className={`flex flex-col items-center gap-2 px-6 sm:px-12 py-6 ${
-                    i > 0 ? "border-l border-white/10" : ""
-                  } ${i >= 1 ? "border-t sm:border-t-0 border-white/10" : ""}`}
-                >
-                  <div className="w-16 h-16 flex items-center justify-center text-quantum-green/60">
-                    <svg
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1}
-                      viewBox="0 0 24 24"
-                    >
-                      {i === 0 && (
-                        <rect x="7" y="2" width="10" height="20" rx="2" />
-                      )}
-                      {i === 1 && (
-                        <rect x="6" y="3" width="12" height="18" rx="2" />
-                      )}
-                      {i === 2 && <path d="M4 6h16v12H4zM2 18h20" />}
-                    </svg>
-                  </div>
-                  <span className="text-lite-gray text-[12px]">
-                    {item.name}
-                  </span>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      width={64}
-                      height={64}
-                      src={item.img}
-                      alt={item.name}
-                      className="h-6 object-contain"
-                    />
-                  </a>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

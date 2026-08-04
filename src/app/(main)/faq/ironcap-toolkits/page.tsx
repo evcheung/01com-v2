@@ -71,7 +71,39 @@ const faqCategories: FaqCategory[] = [
   {
     id: "howToUse",
     label: "How to use IronCAP Toolkits",
-    items: [],
+    items: [
+      {
+        id: "features",
+        question: "What kind of cryptographic features does IronCAP Toolkits provide?",
+        answer: (
+          <>
+            IronCAP<Trademark /> Toolkits provides 5 functionalities:
+            <ol className="mt-3 list-decimal space-y-1 pl-6">
+              <li>Private/Public key generation</li>
+              <li>Encryption</li>
+              <li>Decryption</li>
+              <li>Digital signature</li>
+              <li>Signature verification</li>
+            </ol>
+          </>
+        ),
+      },
+      {
+        id: "how-do-i-use",
+        question: "How do I use IronCAP Toolkits in my application?",
+        answer: (
+          <>
+            IronCAP<Trademark /> Toolkits provides an application programming
+            interface (API) that is compatible with industry standards such as
+            PKCS#11, OpenSSL, and OpenPGP. It is implemented as a shared / DLL
+            library and comes with C header files which include definitions for
+            ICC-specific object types (keys) as well as all the standard
+            PKCS#11 definitions. This assures portability and rapid integration
+            into new, or already existing applications.
+          </>
+        ),
+      },
+    ],
   },
 ];
 

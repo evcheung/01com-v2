@@ -10,13 +10,18 @@ export interface WhyPartner {
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 const DescriptionWithTrademark = ({ text }: { text: string }) => {
-  const parts = text.split('IronCAP™');
+  const parts = text.split("IronCAP™");
   return (
     <>
       {parts.map((part, index) => (
         <span key={index}>
           {part}
-          {index < parts.length - 1 && <>IronCAP<Trademark /></>}
+          {index < parts.length - 1 && (
+            <>
+              IronCAP
+              <Trademark />
+            </>
+          )}
         </span>
       ))}
     </>
@@ -52,6 +57,8 @@ const data: WhyPartner[] = [
 
 export interface Partners {
   logo: string;
+  logoWidth?: number;
+  logoHeight?: number;
   links: Array<{
     name: string;
     url: string;
@@ -59,6 +66,87 @@ export interface Partners {
 }
 
 const partners: Partners[] = [
+  {
+    logo: "/partners_assets/logos/hitachi.png",
+    logoWidth: 320,
+    logoHeight: 80,
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.newsfilecorp.com/release/280462/01-Quantum-Inc.-and-Hitachi-Solutions-Create-Ltd.-Announce-Availability-of-DoMobile-Ver.5-a-Remote-Access-System-Enhanced-with-PostQuantum-Cryptography",
+      },
+      {
+        name: "Solutions",
+        url: "https://www.hitachi-solutions-create.co.jp/solution/domobile_asp/index.html",
+      },
+    ],
+  },
+  {
+    logo: "/partners_assets/logos/cgi.png",
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.newsfilecorp.com/release/300832",
+      },
+      {
+        name: "Webinar",
+        url: "https://www.youtube.com/watch?v=p3es6SPb6oA&feature=youtu.be",
+      },
+    ],
+  },
+  {
+    logo: "/partners_assets/logos/thales.png",
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2022/Thales_01_Partnership_Press_Release.pdf",
+      },
+      {
+        name: "Blog",
+        url: "https://cpl.thalesgroup.com/blog/data-protection/building-quantum-safe-blockchain-security",
+      },
+      {
+        name: "Solutions",
+        url: "https://cpl.thalesgroup.com/partners/01-communique-laboratory-inc",
+      },
+    ],
+  },
+  {
+    logo: "/partners_assets/logos/pwc.png",
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2020/Joint-Press-Release-PWC.pdf",
+      },
+      { name: "Webinar", url: "https://www.youtube.com/watch?v=eVkxYhfZWrs" },
+      {
+        name: "Whitepaper",
+        url: "https://www.pwccn.com/en/research-and-insights/publications/fs-ai-survey-mar2026.pdf",
+      },
+      {
+        name: "Quantum-Safe Solution",
+        url: "https://www.youtube.com/watch?v=1Ql7fmGTB4c",
+      },
+    ],
+  },
+  {
+    logo: "/partners_assets/logos/keyfactor.png",
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://01com.com/pdf/2023/Keyfactor_01_Partnership_Press_Release.pdf",
+      },
+    ],
+  },
+  {
+    logo: "/partners_assets/logos/ISA.png",
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2021/ISA-CyberSecurity-01%20Communique-partnership.pdf",
+      },
+    ],
+  },
   {
     logo: "/partners_assets/logos/super.png",
     links: [
@@ -87,109 +175,59 @@ const partners: Partners[] = [
     ],
   },
   {
-    logo: "/partners_assets/logos/keyfactor.png",
-    links: [
-      {
-        name: "PR Announcement",
-        url: "https://01com.com/pdf/2023/Keyfactor_01_Partnership_Press_Release.pdf",
-      },
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/thales.png",
-    links: [
-      {
-        name: "PR Announcement",
-        url: "https://www.01com.com/pdf/2022/Thales_01_Partnership_Press_Release.pdf",
-      },
-      {
-        name: "Blog",
-        url: "https://cpl.thalesgroup.com/blog/data-protection/building-quantum-safe-blockchain-security",
-      },
-      {
-        name: "Solutions",
-        url: "https://cpl.thalesgroup.com/partners/01-communique-laboratory-inc",
-      },
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/hitachi.png",
-    links: [
-      {
-        name: "PR Announcement",
-        url: "https://www.hitachi-solutions-create.co.jp/solution/domobile_asp/index.html",
-      },
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/cgi.png",
-    links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/Partnership-July-2020.pdf"},
-      { name: "Webinar", url: "https://www.youtube.com/watch?v=p3es6SPb6oA&feature=youtu.be" },
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/pwc.png",
-    links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/Joint-Press-Release-PWC.pdf"},
-      { name: "Webinar", url: "https://www.youtube.com/watch?v=eVkxYhfZWrs" },
-      { name: "Whitepaper", url: "https://www.pwccn.com/en/research-and-insights/publications/fs-ai-survey-mar2026.pdf"},
-      { name: "Quantum-Safe Solution", url: "https://www.youtube.com/watch?v=1Ql7fmGTB4c"}
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/ISA.png",
-    links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2021/ISA-CyberSecurity-01%20Communique-partnership.pdf"},
-    ],
-  },
-  {
     logo: "/partners_assets/logos/mirata.png",
     links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2021/ISA-CyberSecurity-01%20Communique-partnership.pdf"},
+      {
+        name: "PR Announcement",
+        url: "http://01com.com/pdf/2020/Mirata-Partnership-Dec-14-2020.pdf",
+      },
       { name: "Quantum-Safe Webinar", url: "https://vimeo.com/529739263" },
-      { name: "Interview with Professor Sergey Bezzateev", url: "https://vimeo.com/529265672" }
+      {
+        name: "Interview with Professor Sergey Bezzateev",
+        url: "https://vimeo.com/529265672",
+      },
     ],
   },
   {
     logo: "/partners_assets/logos/ixfintech.png",
     links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/Quantum-safe-Bitcoin-ATM-machine.pdf"},
-      { name: "Use Case", url: "https://www.01com.com/pdf/2021/UseCase-DAEM.pdf"},
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2020/Quantum-safe-Bitcoin-ATM-machine.pdf",
+      },
+      {
+        name: "Use Case",
+        url: "https://www.01com.com/pdf/2021/UseCase-DAEM.pdf",
+      },
     ],
   },
   {
     logo: "/partners_assets/logos/nexusguard.jpeg",
     links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/NexusGuard-press-release.pdf"},
-    ],
-  },
-  {
-    logo: "/partners_assets/logos/digiflynt.png",
-    links: [
-      { name: "PR Announcement", url: "https://digiflynt.com/digiflynt-takes-ironcap-technology-to-gcc-countries-and-the-west-african-region/"},
-      { name: "Q-Day Solution", url: "https://digiflynt.com/partnerships/"},
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2020/NexusGuard-press-release.pdf",
+      },
     ],
   },
   {
     logo: "/partners_assets/logos/phorizon.jpeg",
     links: [
-      { name: "PR Announcement", url: "https://www.01com.com/pdf/2020/Partnership-agreeemnt-with-Privacy-Horizons.pdf"},
+      {
+        name: "PR Announcement",
+        url: "https://www.01com.com/pdf/2020/Partnership-agreeemnt-with-Privacy-Horizons.pdf",
+      },
     ],
   },
   {
     logo: "/partners_assets/logos/threat.png",
     links: [
-      { name: "PR Announcement", url: "https://rthreat.net/2021/04/06/01-communique-signs-partnership-agreement-with-rthreat-inc/"},
+      {
+        name: "PR Announcement",
+        url: "https://rthreat.net/2021/04/06/01-communique-signs-partnership-agreement-with-rthreat-inc/",
+      },
     ],
   },
-  {
-    logo: "/partners_assets/logos/polydigi.jpeg",
-    links: [
-      { name: "PR Announcement", url: "https://polydigitech.uk/news/20210629_press/"},
-    ],
-  }
-
 ];
 
 export default function PartnersPage() {
@@ -244,8 +282,8 @@ export default function PartnersPage() {
                   <Image
                     src={partner.logo}
                     alt="Partner logo"
-                    width={200}
-                    height={160}
+                    width={partner.logoWidth ?? 200}
+                    height={partner.logoHeight ?? 160}
                     className="object-contain"
                   />
                 </div>

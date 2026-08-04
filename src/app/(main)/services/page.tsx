@@ -3,6 +3,7 @@ import { KeyAdvantages } from "@/components/services/KeyAdvantages";
 import { CalloutBox } from "@/components/services/CalloutBox";
 import { ProvenInMarket } from "@/components/services/ProvenInMarket";
 import { Bottom } from "@/components/resources/Bottom"
+import { Button } from "@/components/ui/button";
 import { Titles } from "@/components/Titles";
 import animation1 from "@/assets/animations/iconDark-IC-QuantumAIW.json"
 import animation2 from "@/assets/animations/iconDark-IC-DAPS.json"
@@ -304,10 +305,20 @@ export default function Services() {
           </>
         }
       />
-      <div className="flex flex-col justify-center items-center bg-white pb-24">
+      <div className="flex flex-col justify-center items-center bg-white pb-12">
         <KeyAdvantages items={cryptoIntegrationAdvantages} />
-        <div>
-          <Bottom url="/use-cases" isBlank="false" />
+        <div className="flex justify-center pt-4 pb-2">
+          <Button
+            text="brochure"
+            url="https://01com.com/pdf/brochures/AI%20Brochure.pdf"
+            border="border-quantum-green"
+            textColor="text-quantum-green"
+            hoverBg="hover:bg-quantum-green/10"
+            isBlank="true"
+          />
+        </div>
+        <div className="pt-12">
+          <Bottom url="/use-cases" isBlank="false" compact />
         </div>
       </div>
     </main>

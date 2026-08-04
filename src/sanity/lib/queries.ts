@@ -10,7 +10,28 @@ export const NEWS_COUNT_QUERY = defineQuery(`count(*[_type == "news"])`)
 export const NEWS_ITEM_QUERY = defineQuery(`*[_type == "news" && slug.current == $slug][0] { _id, date, title, description, body }`)
 export const NEWS_SLUGS_QUERY = defineQuery(`*[_type == "news" && defined(slug.current)] { "slug": slug.current }`)
 
-export const NEWSLETTERS_QUERY = defineQuery(`*[_type == "newsletters"] | order(year desc, month desc) [$start...$end] { _id, year, month, link, "slug": slug.current }`)
+export const NEWSLETTERS_QUERY = defineQuery(`*[_type == "newsletters"] {
+  _id,
+  year,
+  month,
+  link,
+  "slug": slug.current,
+  "monthNumber": select(
+    month in ["December", "Dec", "12"] => 12,
+    month in ["November", "Nov", "11"] => 11,
+    month in ["October", "Oct", "10"] => 10,
+    month in ["September", "Sep", "Sept", "09", "9"] => 9,
+    month in ["August", "Aug", "08", "8"] => 8,
+    month in ["July", "Jul", "07", "7"] => 7,
+    month in ["June", "Jun", "06", "6"] => 6,
+    month in ["May", "05", "5"] => 5,
+    month in ["April", "Apr", "04", "4"] => 4,
+    month in ["March", "Mar", "03", "3"] => 3,
+    month in ["February", "Feb", "02", "2"] => 2,
+    month in ["January", "Jan", "01", "1"] => 1,
+    0
+  )
+} | order(year desc, monthNumber desc, _createdAt desc) [$start...$end] { _id, year, month, link, slug }`)
 export const NEWSLETTERS_COUNT_QUERY = defineQuery(`count(*[_type == "newsletters"])`)
 export const NEWSLETTER_QUERY = defineQuery(`*[_type == "newsletters" && slug.current == $slug][0] { _id, year, month, link }`)
 export const NEWSLETTER_SLUGS_QUERY = defineQuery(`*[_type == "newsletters" && defined(slug.current)] { "slug": slug.current }`)

@@ -14,7 +14,7 @@ const oncallFaqs: Faq[] = [
     id: "what-is-oncall",
     question: (
       <>
-        What is IronCAP<Trademark /> OnCall Remote Support Software?
+        What is IronCAP<Trademark />{" "}OnCall Remote Support Software?
       </>
     ),
     answer: (
@@ -32,7 +32,7 @@ const oncallFaqs: Faq[] = [
     id: "how-does-it-work",
     question: (
       <>
-        How does IronCAP<Trademark /> OnCall Help Desk Software work?
+        How does IronCAP<Trademark />{" "}OnCall Help Desk Software work?
       </>
     ),
     answer: (
@@ -44,7 +44,7 @@ const oncallFaqs: Faq[] = [
           website, you can securely connect to IronCAP<Trademark />{" "}OnCall
           from anywhere and provide live computer support to new and existing
           customers. Built on a secure managed infrastructure, IronCAP
-          <Trademark /> OnCall allows you to seamlessly control your
+          <Trademark />{" "}OnCall allows you to seamlessly control your
           customer&apos;s PC or Mac from anywhere, and hence provide
           cost-effective problem resolutions.
         </p>
@@ -59,7 +59,7 @@ const oncallFaqs: Faq[] = [
             access files.
           </li>
           <li>
-            IronCAP<Trademark /> OnCall auto configures your remote access
+            IronCAP<Trademark />{" "}OnCall auto configures your remote access
             across the Internet and displays your customer&apos;s computer
             within seconds
           </li>
@@ -76,7 +76,7 @@ const oncallFaqs: Faq[] = [
     id: "security-features",
     question: (
       <>
-        What are the security features of IronCAP<Trademark /> OnCall?
+        What are the security features of IronCAP<Trademark />{" "}OnCall?
       </>
     ),
     answer: (
@@ -103,13 +103,13 @@ const oncallFaqs: Faq[] = [
     id: "system-requirements",
     question: (
       <>
-        What are the system requirements for IronCAP<Trademark /> OnCall?
+        What are the system requirements for IronCAP<Trademark />{" "}OnCall?
       </>
     ),
     answer: (
       <>
         <p>
-          The IronCAP<Trademark /> OnCall service technology, hosted in a
+          The IronCAP<Trademark />{" "}OnCall service technology, hosted in a
           secure data center, does all the work for you and therefore
           requires no investment in hardware or programming, leaving you to
           focus on delivering your expertise in computer remote support
@@ -151,7 +151,7 @@ const oncallFaqs: Faq[] = [
     id: "subscribe",
     question: (
       <>
-        How can I subscribe to IronCAP<Trademark /> OnCall during or after my
+        How can I subscribe to IronCAP<Trademark />{" "}OnCall during or after my
         trial period?
       </>
     ),
@@ -163,7 +163,7 @@ const oncallFaqs: Faq[] = [
         </p>
         <ol className="mt-2 list-decimal pl-6">
           <li>
-            Login to your IronCAP<Trademark /> OnCall account
+            Login to your IronCAP<Trademark />{" "}OnCall account
           </li>
           <li>
             Click on the &ldquo;Subscribe Now!&rdquo; link and you will be
@@ -182,7 +182,7 @@ const oncallFaqs: Faq[] = [
           </li>
         </ol>
         <p className="mt-3">
-          Users can also purchase IronCAP<Trademark /> OnCall by contacting a
+          Users can also purchase IronCAP<Trademark />{" "}OnCall by contacting a
           sales representative by phone at 905-795-2888 or toll free at
           {" "}1-800-668-2185 or by e-mail at{" "}
           <a
@@ -200,7 +200,7 @@ const oncallFaqs: Faq[] = [
     id: "cost",
     question: (
       <>
-        How much does IronCAP<Trademark /> OnCall cost?
+        How much does IronCAP<Trademark />{" "}OnCall cost?
       </>
     ),
     answer: (
@@ -248,7 +248,7 @@ const oncallFaqs: Faq[] = [
           * Determined by the number of remote support software licenses that
           will be in use at the same time. For example, you have 5 help desk
           technicians. You know that no more than 3 will be using the IronCAP
-          <Trademark /> OnCall Remote Support Software at the same time.
+          <Trademark />{" "}OnCall Remote Support Software at the same time.
           Instead of buying 5 licenses, you can just buy 3 licenses.
         </p>
         <p className="mt-3 font-medium text-steel-gray">License includes:</p>
@@ -266,7 +266,7 @@ const oncallFaqs: Faq[] = [
     id: "benefit",
     question: (
       <>
-        Who can benefit from using IronCAP<Trademark /> OnCall?
+        Who can benefit from using IronCAP<Trademark />{" "}OnCall?
       </>
     ),
     answer: (
@@ -284,17 +284,17 @@ const oncallFaqs: Faq[] = [
     question: (
       <>
         How quickly can my company be up and running with IronCAP
-        <Trademark /> OnCall?
+        <Trademark />{" "}OnCall?
       </>
     ),
     answer: (
       <>
-        As IronCAP<Trademark /> OnCall is a managed service platform, you can
+        As IronCAP<Trademark />{" "}OnCall is a managed service platform, you can
         be up and running within a few minutes of your first login. Just as
         you would log on to your favorite Web Site, you can securely connect
-        to IronCAP<Trademark /> OnCall from anywhere and provide instant
+        to IronCAP<Trademark />{" "}OnCall from anywhere and provide instant
         computer remote support services to new and existing customers. If
-        you haven&apos;t already tried IronCAP<Trademark /> OnCall, start a
+        you haven&apos;t already tried IronCAP<Trademark />{" "}OnCall, start a
         free trial.
       </>
     ),
@@ -303,14 +303,14 @@ const oncallFaqs: Faq[] = [
     id: "brand",
     question: (
       <>
-        Can I brand the IronCAP<Trademark /> OnCall Help Desk Software with
+        Can I brand the IronCAP<Trademark />{" "}OnCall Help Desk Software with
         my own company logo?
       </>
     ),
     answer: (
       <>
         Yes, you can display your company logo on every page of IronCAP
-        <Trademark /> OnCall to both your customers and technicians during a
+        <Trademark />{" "}OnCall to both your customers and technicians during a
         PC remote support session. Just upload your company logo to our
         servers and we will display it on all web pages. You can even add
         photos of your technicians if you want to personalize the support
@@ -336,7 +336,7 @@ const oncallFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          To export or backup data, log into your IronCAP<Trademark /> OnCall
+          To export or backup data, log into your IronCAP<Trademark />{" "}OnCall
           system, and click the History tab. At the top right of your
           screen, there is an &ldquo;Export&rdquo; link. This link will
           export all data displayed on the page to a comma-delimited file
@@ -346,7 +346,7 @@ const oncallFaqs: Faq[] = [
         <p className="mt-3">
           <span className="font-medium text-steel-gray">Important:</span>{" "}
           Please note that any information entered into your IronCAP
-          <Trademark /> OnCall system will be stored for only ninety (90)
+          <Trademark />{" "}OnCall system will be stored for only ninety (90)
           days from the date of entry. We recommend you back up any data you
           require by exporting it to your local computer.
         </p>
@@ -364,7 +364,7 @@ const oncallFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          Login to your IronCAP<Trademark /> OnCall as Administrator and go
+          Login to your IronCAP<Trademark />{" "}OnCall as Administrator and go
           to the Users tab. Then click on the user with the &ldquo;Logged
           in&rdquo; status and click on the &ldquo;Suspend&rdquo; button. The
           license will then be released, and the user suspended. You can
@@ -447,7 +447,7 @@ export default function FaqIronCapOnCallPage() {
       {/* ─── Body (full-width single column) ─── */}
       <div className="mx-auto w-full max-w-322.5 px-6 py-16 lg:px-9">
         <h2 className="text-quantum-blue text-[30px] font-medium leading-11.5">
-          IronCAP<Trademark /> OnCall FAQs
+          IronCAP<Trademark />{" "}OnCall FAQs
         </h2>
         <div className="mt-2 h-px w-full bg-lite-gray/40" />
 

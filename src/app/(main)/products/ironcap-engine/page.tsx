@@ -172,7 +172,7 @@ export default function Products() {
               unexpected quantum attacks in the future.
             </p>
             <a  href="/quantum-threat/" className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors">
-              Read more on quantum threat . . .
+              Read more about the quantum cryptography
             </a>
           </div>
         </div>

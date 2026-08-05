@@ -1,6 +1,6 @@
 import { PostCard } from "@/components/resources/blog/PostCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { BLOGS_COUNT_QUERY, BLOGS_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import { Key } from "react";
@@ -10,7 +10,7 @@ const PAGE_SIZE = 12;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const total = await client.fetch<number>(BLOGS_COUNT_QUERY);
+  const total = await fetchSanity<number>(BLOGS_COUNT_QUERY);
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return Array.from({ length: totalPages }, (_, i) => ({
@@ -31,11 +31,11 @@ export default async function BlogPaginatedPage({
   }
 
   const [blogPosts, total] = await Promise.all([
-    client.fetch(BLOGS_QUERY, {
+    fetchSanity(BLOGS_QUERY, {
       start: (currentPage - 1) * PAGE_SIZE,
       end: currentPage * PAGE_SIZE,
     }),
-    client.fetch<number>(BLOGS_COUNT_QUERY),
+    fetchSanity<number>(BLOGS_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

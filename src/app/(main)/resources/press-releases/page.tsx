@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { RELEASES_COUNT_QUERY, RELEASES_QUERY } from "@/sanity/lib/queries";
 import { Pagination } from "@/components/resources/Pagination";
 import Link from "next/link";
@@ -12,8 +12,8 @@ export default async function ResourcesPressReleases() {
   const end = start + PAGE_SIZE;
 
   const [releases, total] = await Promise.all([
-    client.fetch(RELEASES_QUERY, { start, end }),
-    client.fetch(RELEASES_COUNT_QUERY),
+    fetchSanity(RELEASES_QUERY, { start, end }),
+    fetchSanity(RELEASES_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

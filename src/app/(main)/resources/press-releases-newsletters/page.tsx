@@ -1,5 +1,5 @@
 import { NewsletterCard } from "@/components/resources/newsletters/NewsletterCard";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { NEWSLETTERS_QUERY, RELEASES_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,8 +8,8 @@ const ITEM_COUNT = 6;
 
 export default async function PressReleasesNewslettersPage() {
   const [releases, newsletters] = await Promise.all([
-    client.fetch(RELEASES_QUERY, { start: 0, end: ITEM_COUNT }),
-    client.fetch(NEWSLETTERS_QUERY, { start: 0, end: ITEM_COUNT }),
+    fetchSanity(RELEASES_QUERY, { start: 0, end: ITEM_COUNT }),
+    fetchSanity(NEWSLETTERS_QUERY, { start: 0, end: ITEM_COUNT }),
   ]);
 
   return (

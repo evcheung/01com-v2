@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import {
   INVESTOR_LATEST_PRESENTATION_QUERY,
   INVESTOR_RECENT_EVENTS_QUERY,
@@ -221,10 +221,10 @@ function RelevantLinks({
 export default async function InvestorRelations() {
   const [presentations, pressReleases, financialResults, featuredVideos] =
     await Promise.all([
-      client.fetch<Presentation[]>(INVESTOR_LATEST_PRESENTATION_QUERY),
-      client.fetch<PressRelease[]>(INVESTOR_RECENT_EVENTS_QUERY),
-      client.fetch<FinancialResult[]>(INVESTOR_FINANCIAL_RESULTS_QUERY),
-      client.fetch<InvestorVideo[]>(INVESTOR_VIDEOS_FEATURED_QUERY),
+      fetchSanity<Presentation[]>(INVESTOR_LATEST_PRESENTATION_QUERY),
+      fetchSanity<PressRelease[]>(INVESTOR_RECENT_EVENTS_QUERY),
+      fetchSanity<FinancialResult[]>(INVESTOR_FINANCIAL_RESULTS_QUERY),
+      fetchSanity<InvestorVideo[]>(INVESTOR_VIDEOS_FEATURED_QUERY),
     ]);
 
   const featuredVideo = featuredVideos[0] ?? null;

@@ -1,7 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { RELEASE_QUERY, RELEASE_SLUGS_QUERY } from "@/sanity/lib/queries";
 
 const EMPTY_RELEASE_STATIC_SLUG = "__no-press-release__";
@@ -9,7 +9,7 @@ const EMPTY_RELEASE_STATIC_SLUG = "__no-press-release__";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const items = await client.fetch(RELEASE_SLUGS_QUERY);
+  const items = await fetchSanity(RELEASE_SLUGS_QUERY);
   const slugs = (items ?? [])
     .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
     .map((item: { slug: string }) => ({ slug: item.slug }));
@@ -21,7 +21,7 @@ export default async function ReleaseItemPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   if (slug === EMPTY_RELEASE_STATIC_SLUG) notFound();
 
-  const post = await client.fetch(RELEASE_QUERY, { slug });
+  const post = await fetchSanity(RELEASE_QUERY, { slug });
   if (!post) notFound();
 
   return (

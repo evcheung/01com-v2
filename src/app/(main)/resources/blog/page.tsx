@@ -1,6 +1,6 @@
 import { PostCard } from "@/components/resources/blog/PostCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { BLOGS_COUNT_QUERY, BLOGS_QUERY } from "@/sanity/lib/queries";
 import { Key } from "react";
 
@@ -12,8 +12,8 @@ export default async function BlogPage() {
   const end = start + PAGE_SIZE;
 
   const [blogPosts, total] = await Promise.all([
-    client.fetch(BLOGS_QUERY, { start, end }),
-    client.fetch(BLOGS_COUNT_QUERY),
+    fetchSanity(BLOGS_QUERY, { start, end }),
+    fetchSanity(BLOGS_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

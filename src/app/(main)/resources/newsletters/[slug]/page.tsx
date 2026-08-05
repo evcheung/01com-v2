@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { NEWSLETTER_QUERY, NEWSLETTER_SLUGS_QUERY } from "@/sanity/lib/queries";
 
 const EMPTY_NEWSLETTER_STATIC_SLUG = "__no-newsletter__";
@@ -8,7 +8,7 @@ const EMPTY_NEWSLETTER_STATIC_SLUG = "__no-newsletter__";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const items = await client.fetch(NEWSLETTER_SLUGS_QUERY);
+  const items = await fetchSanity(NEWSLETTER_SLUGS_QUERY);
   const slugs = (items ?? [])
     .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
     .map((item: { slug: string }) => ({ slug: item.slug }));
@@ -20,7 +20,7 @@ export default async function NewsletterItemPage({ params }: { params: Promise<{
   const { slug } = await params;
   if (slug === EMPTY_NEWSLETTER_STATIC_SLUG) notFound();
 
-  const item = await client.fetch(NEWSLETTER_QUERY, { slug });
+  const item = await fetchSanity(NEWSLETTER_QUERY, { slug });
   if (!item) notFound();
 
   return (

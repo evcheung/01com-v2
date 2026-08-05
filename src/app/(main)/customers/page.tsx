@@ -1,8 +1,7 @@
 import { Titles } from "@/components/Titles";
-import { Button } from "@/components/ui/button";
 import { Bottom } from "@/components/resources/Bottom"
 
-export const Heading = ({ text }: { text: string }) => (
+const Heading = ({ text }: { text: string }) => (
   <section className="bg-gradient-to-l from-[#f2f6f7] via-white to-[#f2f6f7] py-7">
     <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
       <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">

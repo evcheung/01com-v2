@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { Bottom } from "@/components/resources/Bottom";
 import { ContactDepartmentSection } from "@/components/contact/ContactDepartmentSection";
 /* ── Data ─────────────────────────────────────────────────────────── */
@@ -37,7 +39,9 @@ export default function Contact() {
 
       {/* ─── Two Column: Contact Info + Form ─── */}
       <section className="bg-white">
-        <ContactDepartmentSection departmentButtons={departmentButtons} />
+        <Suspense fallback={null}>
+          <ContactDepartmentSection departmentButtons={departmentButtons} />
+        </Suspense>
       </section>
 
       {/* ─── Learn More CTA ─── */}

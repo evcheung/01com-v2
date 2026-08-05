@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { ContactEmailForm } from "@/components/contact/ContactEmailForm";
 import { GreenDots } from "@/components/ui/GreenDots";
@@ -21,31 +22,39 @@ function normalizeDepartmentValue(value: string) {
 export function ContactDepartmentSection({
   departmentButtons,
 }: ContactDepartmentSectionProps) {
-  const [selectedDepartment, setSelectedDepartment] = useState<DepartmentButton>(
-    departmentButtons[0],
-  );
+  const searchParams = useSearchParams();
+  const requestedDepartment = searchParams?.get("department") ?? null;
+  const [selectedDepartmentEmail, setSelectedDepartmentEmail] = useState<
+    string | null
+  >(null);
 
-  useEffect(() => {
-    const requestedDepartment = new URLSearchParams(window.location.search).get(
-      "department",
+  const selectedDepartment = useMemo(() => {
+    const selectedByClick = departmentButtons.find(
+      (department) => department.email === selectedDepartmentEmail,
     );
 
-    if (!requestedDepartment) {
-      return;
+    if (selectedByClick) {
+      return selectedByClick;
     }
 
-    const normalizedRequest = normalizeDepartmentValue(requestedDepartment);
-    const matchedDepartment = departmentButtons.find((department) => {
-      return (
-        normalizeDepartmentValue(department.label).includes(normalizedRequest) ||
-        normalizeDepartmentValue(department.email).includes(normalizedRequest)
-      );
-    });
+    if (requestedDepartment) {
+      const normalizedRequest = normalizeDepartmentValue(requestedDepartment);
+      const matchedDepartment = departmentButtons.find((department) => {
+        return (
+          normalizeDepartmentValue(department.label).includes(
+            normalizedRequest,
+          ) ||
+          normalizeDepartmentValue(department.email).includes(normalizedRequest)
+        );
+      });
 
-    if (matchedDepartment) {
-      setSelectedDepartment(matchedDepartment);
+      if (matchedDepartment) {
+        return matchedDepartment;
+      }
     }
-  }, [departmentButtons]);
+
+    return departmentButtons[0];
+  }, [departmentButtons, requestedDepartment, selectedDepartmentEmail]);
 
   return (
     <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-8 flex flex-col md:flex-row gap-8 items-center">
@@ -110,7 +119,7 @@ export function ContactDepartmentSection({
               <button
                 key={department.label}
                 type="button"
-                onClick={() => setSelectedDepartment(department)}
+                onClick={() => setSelectedDepartmentEmail(department.email)}
                 aria-pressed={isSelected}
                 className={`inline-flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-2 border rounded-bl-lg rounded-tr-lg text-[12px] font-medium uppercase tracking-widest text-center leading-[1.4] px-5 sm:px-6 py-3 whitespace-normal sm:flex-nowrap sm:whitespace-nowrap transition-colors ${
                   isSelected

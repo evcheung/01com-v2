@@ -30,7 +30,7 @@ const faqCategories: FaqCategory[] = [
             ICC stands for IronCAP Crypto, an NIST-approved quantum-safe
             cryptographic system utilizing NIST-approved post-quantum
             cryptography (PQC) algorithms and IronCAP<Trademark />&apos;s ground
-            breaking technologies. IronCAP<Trademark /> Toolkits provide the
+            breaking technologies. IronCAP<Trademark />{" "}Toolkits provide the
             application programming interface to developers to let them easily
             integrate ICC with their applications. This transforms their
             applications to be safe against cyberattacks from not only computers
@@ -77,7 +77,7 @@ const faqCategories: FaqCategory[] = [
         question: "What kind of cryptographic features does IronCAP Toolkits provide?",
         answer: (
           <>
-            IronCAP<Trademark /> Toolkits provides 5 functionalities:
+            IronCAP<Trademark />{" "}Toolkits provides 5 functionalities:
             <ol className="mt-3 list-decimal space-y-1 pl-6">
               <li>Private/Public key generation</li>
               <li>Encryption</li>
@@ -93,7 +93,7 @@ const faqCategories: FaqCategory[] = [
         question: "How do I use IronCAP Toolkits in my application?",
         answer: (
           <>
-            IronCAP<Trademark /> Toolkits provides an application programming
+            IronCAP<Trademark />{" "}Toolkits provides an application programming
             interface (API) that is compatible with industry standards such as
             PKCS#11, OpenSSL, and OpenPGP. It is implemented as a shared / DLL
             library and comes with C header files which include definitions for
@@ -166,7 +166,7 @@ export default function FaqIronCapToolkitsPage() {
 
         <section className="px-6 py-16 lg:px-13">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-11.5">
-            IronCAP<Trademark /> Toolkits FAQs
+            IronCAP<Trademark />{" "}Toolkits FAQs
           </h2>
 
           <div className="mt-2 h-px w-full max-w-156.75 bg-lite-gray/40" />

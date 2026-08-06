@@ -57,18 +57,6 @@ export const documentsCards: DocumentsCardData[] = [
 export const supportDocumentCards: DocumentsCardData[] = [
   documentsCards[0],
   documentsCards[1],
-  {
-    title: "FAQs",
-    items: [
-      {
-        title: "IronCAP™ Toolkits",
-        href: "https://www.ironcap.ca/ironcap-toolkits/faq/",
-      },
-      { title: "IronCAP™ XMail", href: "/faq/ironcap-x" },
-      { title: "IronCAP™ InTouch", href: "/faq/ironcap-intouch" },
-      { title: "IronCAP™ OnCall", href: "/faq/ironcap-oncall" },
-    ],
-  },
 ];
 
 export const DocumentsCards = ({

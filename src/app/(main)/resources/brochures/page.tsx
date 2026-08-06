@@ -20,6 +20,12 @@ const brochures = [
       "IronCAP™ InTouch helps users work remotely with quantum-safe, absolute security via any device from anywhere, anytime.",
     href: "https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf",
   },
+  {
+    title: "Quantum AI Wrapper (QAW)",
+    description:
+      "QAW is 01 Quantum's security architecture for encrypted AI workflows, helping organizations protect sensitive prompts, data, and model interactions with quantum-safe controls.",
+    href: "http://01com.com/pdf/brochures/AI%20Brochure.pdf",
+  },
 ];
 
 export default function ResourcesBrochures() {

@@ -196,7 +196,7 @@ export default function Home() {
               <p className="text-[#abacac] text-[16px] md:text-[21px] font-normal leading-[26px] md:leading-[30px] mb-8 max-w-[928px]">
                 With the advent of scaled-up quantum computers, critical forms
                 of the cryptography we have relied on for 40 years fails,
-                exposing of biggest investments in AI, digital assets and
+                exposing the biggest investments in AI, digital assets and
                 general day to day communications to unmitigated risks. 01
                 Quantum brings practical experience and working products to your
                 solution.

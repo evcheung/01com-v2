@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
-import { Button} from "@/components/ui/button";
-import { Bottom } from "@/components/resources/Bottom"
+import { Bottom } from "@/components/resources/Bottom";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+const OnCallBrand = () => (
+  <>
+    IronCAP<Trademark />{" "}OnCall
+  </>
+);
 
 type Faq = { id: string; question: React.ReactNode; answer: React.ReactNode };
 
@@ -19,7 +23,7 @@ const oncallFaqs: Faq[] = [
     ),
     answer: (
       <>
-        IronCAP<Trademark />{" "}OnCall is a secure online help desk support
+        <OnCallBrand />{" "}is a secure online help desk support
         application that auto configures a connection to your customer&apos;s
         PC or Mac, without any pre-installed software. Eliminate precious
         time spent on a support phone call or a premise visit, and dedicate
@@ -38,13 +42,12 @@ const oncallFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          The IronCAP<Trademark />{" "}OnCall help desk management solution gives
+          The <OnCallBrand />{" "}help desk management solution gives
           you the ability to deliver online computer remote support services
           to your customers. Just as you would log on to your favorite
-          website, you can securely connect to IronCAP<Trademark />{" "}OnCall
+          website, you can securely connect to <OnCallBrand />{" "}
           from anywhere and provide live computer support to new and existing
-          customers. Built on a secure managed infrastructure, IronCAP
-          <Trademark />{" "}OnCall allows you to seamlessly control your
+          customers. Built on a secure managed infrastructure, <OnCallBrand />{" "}allows you to seamlessly control your
           customer&apos;s PC or Mac from anywhere, and hence provide
           cost-effective problem resolutions.
         </p>
@@ -59,7 +62,7 @@ const oncallFaqs: Faq[] = [
             access files.
           </li>
           <li>
-            IronCAP<Trademark />{" "}OnCall auto configures your remote access
+            <OnCallBrand />{" "}auto configures your remote access
             across the Internet and displays your customer&apos;s computer
             within seconds
           </li>
@@ -345,8 +348,7 @@ const oncallFaqs: Faq[] = [
         </p>
         <p className="mt-3">
           <span className="font-medium text-steel-gray">Important:</span>{" "}
-          Please note that any information entered into your IronCAP
-          <Trademark />{" "}OnCall system will be stored for only ninety (90)
+          Please note that any information entered into your <OnCallBrand />{" "}system will be stored for only ninety (90)
           days from the date of entry. We recommend you back up any data you
           require by exporting it to your local computer.
         </p>
@@ -364,7 +366,7 @@ const oncallFaqs: Faq[] = [
     answer: (
       <>
         <p>
-          Login to your IronCAP<Trademark />{" "}OnCall as Administrator and go
+          Login to your <OnCallBrand />{" "}as Administrator and go
           to the Users tab. Then click on the user with the &ldquo;Logged
           in&rdquo; status and click on the &ldquo;Suspend&rdquo; button. The
           license will then be released, and the user suspended. You can

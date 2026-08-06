@@ -74,12 +74,7 @@ export default function IroncapOnCallSupportPage() {
           </h2>
           <p className="mx-auto max-w-[900px] text-[15px] leading-[26px] text-steel-gray sm:text-[16px]">
             The <OnCallTrademarkName />{" "}
-            <Link
-              href="/products/ironcap-oncall/features"
-              className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
-            >
-              remote IT support service
-            </Link>{" "}
+            remote IT support service{" "}
             technology is hosted in our secure data center. You don&apos;t need
             to invest in any expensive new hardware or software. Be our
             subscriber and you can focus on delivering superb support services

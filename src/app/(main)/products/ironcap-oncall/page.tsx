@@ -3,7 +3,6 @@
 import LottiePlayer from "@/components/LottiePlayer";
 import OnCallLegacyHighlightsSection from "@/components/products/OnCallLegacyHighlightsSection";
 import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
-import { Button } from "@/components/ui/button";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 /* ── Data ──────────────────────────────────────────────────────────── */
@@ -79,16 +78,6 @@ export default function IroncapOncall() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
-            <Button
-              text="brochure"
-              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
-              border="border-quantum-green"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-              isBlank="true"
-            />
-          </div>
         </div>
       </section>
 

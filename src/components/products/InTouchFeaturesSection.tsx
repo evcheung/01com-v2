@@ -8,6 +8,8 @@ import shieldIcon from "@/assets/images/products/intouch-features/shield-2.686ef
 
 const OLD_SITE_BASE_URL = "https://01com.com";
 
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
 type FeatureItem = {
   description: string;
   href?: string;
@@ -136,20 +138,20 @@ function TintedPngIcon({
   );
 }
 
-function LinkArrowIcon() {
+function LinkIcon() {
   return (
     <svg
       aria-hidden
-      viewBox="0 0 32 24"
+      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth={1.6}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="mt-0.5 h-6 w-8 shrink-0 text-quantum-blue"
+      className="mt-1 h-5 w-5 shrink-0 text-quantum-blue"
     >
-      <path d="M5 12h18" />
-      <path d="m17 6 6 6-6 6" />
+      <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L10.9 5.03" />
+      <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07l1.22-1.22" />
     </svg>
   );
 }
@@ -160,7 +162,7 @@ function FeatureItemRow({ item }: { item: FeatureItem }) {
       <span className="text-[15px] leading-[24px] text-steel-gray transition-colors group-hover:text-quantum-blue">
         {item.description}
       </span>
-      {item.href ? <LinkArrowIcon /> : null}
+      {item.href ? <LinkIcon /> : null}
     </>
   );
 
@@ -227,9 +229,10 @@ export default function InTouchFeaturesSection() {
             Features
           </h2>
           <p className="mt-4 text-[15px] leading-[24px] text-steel-gray sm:text-[16px] sm:leading-[28px]">
-            IronCAP InTouch lets you work remotely by controlling your office
-            computer as if you are physically there. It combines top security
-            with the features you need into one simple, affordable subscription.
+            IronCAP<Trademark /> InTouch lets you work remotely by controlling
+            your office computer as if you are physically there. It combines top
+            security with the features you need into one simple, affordable
+            subscription.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[15px] font-medium">

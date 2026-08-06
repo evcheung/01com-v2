@@ -151,7 +151,8 @@ export default function Services() {
           <>
             <p>
               IronCAP
-              <Trademark /> QAW is 01 Quantum&rsquo;s security architecture for
+              <Trademark />{" "}
+              QAW is 01 Quantum&rsquo;s security architecture for
               deploying high-performance AI with hard security and privacy by
               design. It enables computation on encrypted data using a fully
               software-based Fully Homomorphic Encryption (FHE) approach—or a

@@ -9,15 +9,15 @@ const videos = [
     href: "https://www.youtube.com/watch?v=eV5zc8hwUFU",
   },
   {
-    title: "IronCAP X™ - The World's first end-to-end email encryption and signature system",
+    title: "IronCAP™ XMail - The World's first end-to-end email encryption and signature system",
     description:
-      "IronCAP X™ is the world's first end-to-end email/file encryption and digital signing system that utilizes patent-protected IronCAP™ Toolkits as the underlying cryptographic system to ensure safety against cyber attacks from not only the conventional world of computers today but also against future attacks from quantum computers. IronCAP X™ simply integrates with your everyday email client such as Outlook, Gmail, Yahoo, etc. to ensure zero learning curve.",
+      "IronCAP™ XMail is the world's first end-to-end email/file encryption and digital signing system that utilizes patent-protected IronCAP™ Toolkits as the underlying cryptographic system to ensure safety against cyber attacks from not only the conventional world of computers today but also against future attacks from quantum computers. IronCAP™ XMail simply integrates with your everyday email client such as Outlook, Gmail, Yahoo, etc. to ensure zero learning curve.",
     href: "https://www.youtube.com/watch?v=Kc6TGzEXs74",
   },
   {
-    title: "How IronCAP X™ Works?",
+    title: "How IronCAP™ X Works?",
     description:
-      "IronCAP X™ simply integrates with your everyday email clients such as Outlook and Gmail. We only charge for business usage. For personal usage, simply sign up a FREE account and install IronCAP X™ on your computer where you run your email clients and begin sending encrypted emails to your recipients as well as enjoying other features. Use IronCAP X™ to ensure the safety of your data, not only against cyber attacks from computers today but also from quantum computers in the future.",
+      "IronCAP™ X simply integrates with your everyday email clients such as Outlook and Gmail. We only charge for business usage. For personal usage, simply sign up a FREE account and install IronCAP™ X on your computer where you run your email clients and begin sending encrypted emails to your recipients as well as enjoying other features. Use IronCAP™ X to ensure the safety of your data, not only against cyber attacks from computers today but also from quantum computers in the future.",
     href: "https://www.youtube.com/watch?v=iKSD8MYShsY",
   },
   {
@@ -69,9 +69,9 @@ const videos = [
     href: "https://www.youtube.com/watch?v=PNuX-usIgbA",
   },
   {
-    title: "IronCAP X™ Tutorial",
+    title: "IronCAP™ X Tutorial",
     description:
-      "Tutorial of our newest launch, IronCAP X™. The world's most proven, quantum-safe, end-to-end encryption. It seamlessly integrates with existing systems and protects your data with its unique technology and digital signatures.",
+      "Tutorial of our newest launch, IronCAP™ X. The world's most proven, quantum-safe, end-to-end encryption. It seamlessly integrates with existing systems and protects your data with its unique technology and digital signatures.",
     href: "https://www.youtube.com/watch?v=iKSD8MYShsY",
   },
 ];

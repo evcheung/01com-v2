@@ -1,4 +1,3 @@
-import { Bottom } from "@/components/resources/Bottom"
 import { Titles } from "@/components/Titles";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -126,10 +125,8 @@ function UseCaseRow({
 /* ── Page ─────────────────────────────────────────────────────────── */
 export function UseCasesContent({
   showPageTitle = true,
-  showBottom = true,
 }: {
   showPageTitle?: boolean;
-  showBottom?: boolean;
 }) {
   return (
     <main
@@ -140,21 +137,23 @@ export function UseCasesContent({
       {showPageTitle ? <Titles text="Use Cases" /> : null}
 
       {/* ─── Performance / Intro ─── */}
-      <section className="bg-black">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pt-4 pb-16 flex flex-col gap-6">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px]">
-            Performance
-          </h2>
-          <p className="text-white text-[15px] leading-[24px] max-w-[1255px]">
+      <SectionTitle>Performance</SectionTitle>
+      <section className="bg-white">
+        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10 flex flex-col gap-6">
+          <p className="text-steel-gray text-[15px] leading-[24px] max-w-[1255px]">
             01 Quantum portfolio of quantum-safe products and services is
             available for a variety of business verticals, including Financial
             Institutions, Government Sectors, Defense and AI Integrators. Below
             are sample use cases in selected sectors.
           </p>
-          <a href="/contact" target="blank" className="text-[#b6bbcd] text-[12px] font-medium uppercase leading-[24px]">
+          <p className="text-steel-gray text-[12px] font-medium uppercase leading-[24px]">
             To learn more about how 01 Quantum can work with your company,
-            contact us here.        
-          </a>
+            contact us{" "}
+            <a href="/contact" className="text-quantum-green hover:underline">
+              here
+            </a>
+            .
+          </p>
         </div>
       </section>
 
@@ -247,13 +246,6 @@ export function UseCasesContent({
           ))}
         </div>
       </section>
-
-      {/* ─── Learn More CTA ─── */}
-      {showBottom ? (
-        <section className="bg-white flex justify-center">
-          <Bottom/>
-        </section>
-      ) : null}
     </main>
   );
 }

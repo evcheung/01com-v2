@@ -10,8 +10,8 @@ export default function IroncapXMailWhyXMailPage() {
         <div className="mx-auto max-w-[1120px]">
           <div className="text-center">
             <h1 className="mt-0 text-[#71bfff] text-[30px] font-medium leading-[46px]">
-              Why XMail
-              <Trademark />?
+              Why IronCAP
+              <Trademark />{" "}X?
             </h1>
           </div>
           <div className="mt-5">
@@ -32,9 +32,10 @@ export default function IroncapXMailWhyXMailPage() {
               more serious with the arrival of quantum computers.
             </p>
             <p>
-              IronCAP X<Trademark /> is truly end-to-end with zero third-party
-              trust. It lets you send end-to-end, quantum-safe encrypted email
-              which can only be decrypted by the designated recipients.
+              IronCAP<Trademark />{" "}X is truly end-to-end with zero
+              third-party trust. It lets you send end-to-end, quantum-safe
+              encrypted email which can only be decrypted by the designated
+              recipients.
               Additionally, you can digitally sign your emails so your
               recipients can easily distinguish your legitimate email from a fake
               one. If your laptops got stolen or your email accounts got

@@ -18,7 +18,7 @@ const howWorkSteps = [
         Either login to your InTouch account to pick your computer from the
         list or quickly find your computer by its Computer Name (Click{" "}
         <a
-          href="https://www.01com.com/imintouch-remote-pc-desktop/how-it-works/"
+          href="https://locator.01com.com/ecommerce/account.php"
           target="_blank"
           rel="noopener noreferrer"
           className="text-quantum-green hover:underline"

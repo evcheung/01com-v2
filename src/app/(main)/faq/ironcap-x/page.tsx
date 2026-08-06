@@ -43,7 +43,7 @@ const faqCategories: FaqCategory[] = [
         question: "How do I sign up for a FREE account?",
         answer: (
           <>
-            IronCAP X<Trademark /> is free for personal usage. To sign up for a
+            IronCAP X<Trademark />{" "}is free for personal usage. To sign up for a
             FREE account, visit{" "}
             <a
               href={IRONCAP_X_FREE_DOWNLOAD_URL}
@@ -66,7 +66,7 @@ const faqCategories: FaqCategory[] = [
         ),
         answer: (
           <>
-            IronCAP X<Trademark /> requires Windows 7 or above with Outlook
+            IronCAP X<Trademark />{" "}requires Windows 7 or above with Outlook
             2010+ as the email client. Note: Web-based clients such as Gmail,
             Yahoo, and Hotmail will be supported in a future version.
           </>
@@ -76,12 +76,12 @@ const faqCategories: FaqCategory[] = [
         id: "outlook",
         question: (
           <>
-            Can IronCAP X<Trademark /> work with Outlook?
+            Can IronCAP X<Trademark />{" "}work with Outlook?
           </>
         ),
         answer: (
           <>
-            Yes, IronCAP X<Trademark /> works with Outlook 2010 or above.
+            Yes, IronCAP X<Trademark />{" "}works with Outlook 2010 or above.
           </>
         ),
       },
@@ -89,7 +89,7 @@ const faqCategories: FaqCategory[] = [
         id: "webEmail",
         question: (
           <>
-            Can IronCAP X<Trademark /> work with other web-based email (e.g.
+            Can IronCAP X<Trademark />{" "}work with other web-based email (e.g.
             Gmail)?
           </>
         ),
@@ -106,12 +106,12 @@ const faqCategories: FaqCategory[] = [
         id: "mobileEmail",
         question: (
           <>
-            Does IronCAP X<Trademark /> support mobile email clients?
+            Does IronCAP X<Trademark />{" "}support mobile email clients?
           </>
         ),
         answer: (
           <>
-            Current version of IronCAP X<Trademark /> supports Windows-based
+            Current version of IronCAP X<Trademark />{" "}supports Windows-based
             Outlook. Support of webmail clients is coming soon.
           </>
         ),
@@ -121,7 +121,7 @@ const faqCategories: FaqCategory[] = [
         question: "Can I manage more than 1 email address on one computer?",
         answer: (
           <>
-            Current version of IronCAP X<Trademark /> only supports 1 email
+            Current version of IronCAP X<Trademark />{" "}only supports 1 email
             address per license. Future version will allow up to 3 email
             addresses on the same computer.
           </>
@@ -138,7 +138,7 @@ const faqCategories: FaqCategory[] = [
         question: "Will I be charged at all for the FREE Personal Usage account?",
         answer: (
           <>
-            IronCAP X<Trademark /> is free for personal usage. No credit card is
+            IronCAP X<Trademark />{" "}is free for personal usage. No credit card is
             needed to sign up for a FREE Personal Usage account.
           </>
         ),
@@ -166,14 +166,14 @@ const faqCategories: FaqCategory[] = [
         id: "compatible",
         question: (
           <>
-            Is the IronCAP<Trademark /> Key compatible with the FREE account?
+            Is the IronCAP<Trademark />{" "}Key compatible with the FREE account?
           </>
         ),
         answer: (
           <>
-            Yes. IronCAP<Trademark /> Key is fully compatible with the FREE
+            Yes. IronCAP<Trademark />{" "}Key is fully compatible with the FREE
             account. You will need to make a one-time non-refundable purchase of
-            the IronCAP<Trademark /> Key.
+            the IronCAP<Trademark />{" "}Key.
           </>
         ),
       },
@@ -189,7 +189,7 @@ const faqCategories: FaqCategory[] = [
         question: "What happens when a business account expires?",
         answer: (
           <>
-            You can still use the expired IronCAP X<Trademark /> Business
+            You can still use the expired IronCAP X<Trademark />{" "}Business
             license to read your encrypted messages. However, the ability to
             encrypt emails/files and to digitally sign your emails/files will be
             disabled until you have resubscribed.
@@ -206,12 +206,12 @@ const faqCategories: FaqCategory[] = [
         id: "security",
         question: (
           <>
-            How secure is the IronCAP X<Trademark /> private key?
+            How secure is the IronCAP X<Trademark />{" "}private key?
           </>
         ),
         answer: (
           <>
-            The IronCAP X<Trademark /> private key is quantum-safe. This means
+            The IronCAP X<Trademark />{" "}private key is quantum-safe. This means
             it is not only safe against attacks from classical computers but
             also against attacks from future quantum computers. Its underlying
             cryptographic technology is IronCAP Crypto (ICC) which contains
@@ -225,7 +225,7 @@ const faqCategories: FaqCategory[] = [
         question: "Where does my private key reside?",
         answer: (
           <>
-            Your IronCAP X<Trademark /> private key is stored locally in the
+            Your IronCAP X<Trademark />{" "}private key is stored locally in the
             computer where you have installed IronCAP X<Trademark />.
           </>
         ),
@@ -234,7 +234,7 @@ const faqCategories: FaqCategory[] = [
         id: "keyCopy",
         question: (
           <>
-            Does your IronCAP X<Trademark /> server store a copy of my private
+            Does your IronCAP X<Trademark />{" "}server store a copy of my private
             key?
           </>
         ),
@@ -250,7 +250,7 @@ const faqCategories: FaqCategory[] = [
         question: "Is my private key encrypted?",
         answer: (
           <>
-            Yes, your IronCAP X<Trademark /> private key is always encrypted
+            Yes, your IronCAP X<Trademark />{" "}private key is always encrypted
             using your user password.
           </>
         ),
@@ -260,8 +260,8 @@ const faqCategories: FaqCategory[] = [
         question: "Where is the user password stored?",
         answer: (
           <>
-            Your IronCAP X<Trademark /> user password is not stored anywhere,
-            neither on our IronCAP X<Trademark /> server nor your own
+            Your IronCAP X<Trademark />{" "}user password is not stored anywhere,
+            neither on our IronCAP X<Trademark />{" "}server nor your own
             computer/device. It is being used to encrypt your private key. The
             only way to decrypt your private key is to provide the correct
             password. In other words, it is impossible to retrieve your user
@@ -275,7 +275,7 @@ const faqCategories: FaqCategory[] = [
         question: "What if I forget the user password?",
         answer: (
           <>
-            IronCAP X<Trademark /> allows the Administrator of a Business account
+            IronCAP X<Trademark />{" "}allows the Administrator of a Business account
             to reset the password of every user under the account. The password
             reset feature is not available to the individual user. To access the
             password reset feature, the account Administrator needs to provide
@@ -306,9 +306,9 @@ const faqCategories: FaqCategory[] = [
           <>
             Yes, especially if you use the same password for different
             applications. The best bet for ultra security will be to purchase the
-            optional IronCAP<Trademark /> Key device. IronCAP<Trademark /> Key is
+            optional IronCAP<Trademark />{" "}Key device. IronCAP<Trademark />{" "}Key is
             a USB device that offloads the private key and cryptographic
-            functions inside the device. If the IronCAP<Trademark /> Key has
+            functions inside the device. If the IronCAP<Trademark />{" "}Key has
             been removed when the computer is stolen, there is zero chance that
             the encrypted emails can be compromised because the private key is
             not even on the computer.
@@ -319,7 +319,7 @@ const faqCategories: FaqCategory[] = [
         id: "keyStolen",
         question: (
           <>
-            What if the IronCAP<Trademark /> Key itself is stolen?
+            What if the IronCAP<Trademark />{" "}Key itself is stolen?
           </>
         ),
         answer: (
@@ -328,8 +328,8 @@ const faqCategories: FaqCategory[] = [
             Key is protected by a PIN. If the PIN is entered incorrectly 5 times
             the encrypted private key inside the IronCAP<Trademark />{" "}
             Key will be self-destroyed. The legitimate user needs
-            to purchase a new IronCAP<Trademark /> Key and use the Administrator
-            feature to restore the IronCAP<Trademark /> Key.
+            to purchase a new IronCAP<Trademark />{" "}Key and use the Administrator
+            feature to restore the IronCAP<Trademark />{" "}Key.
           </>
         ),
       },
@@ -344,7 +344,7 @@ const faqCategories: FaqCategory[] = [
         question: "Who is the Administrator?",
         answer: (
           <>
-            The Administrator of an IronCAP X<Trademark /> account is usually
+            The Administrator of an IronCAP X<Trademark />{" "}account is usually
             the person that signs up for the account.
           </>
         ),
@@ -365,7 +365,7 @@ const faqCategories: FaqCategory[] = [
             automatically detects if the user is the
             Administrator. The special Admin Settings features tabs (e.g.
             Password Policy) will only be presented if the user is the
-            Administrator of the IronCAP X<Trademark /> account.
+            Administrator of the IronCAP X<Trademark />{" "}account.
           </>
         ),
       },
@@ -389,7 +389,7 @@ const faqCategories: FaqCategory[] = [
           <>
             The Administrator can launch the IronCAP X<Trademark />{" "}
             configuration application and click the &quot;User Management&quot; button.
-            Then click &quot;Add User&quot;. Note: The IronCAP X<Trademark /> account must
+            Then click &quot;Add User&quot;. Note: The IronCAP X<Trademark />{" "}account must
             have enough unused licenses to permit this operation.
           </>
         ),
@@ -415,13 +415,13 @@ const faqCategories: FaqCategory[] = [
         id: "uninstalledRead1",
         question: (
           <>
-            Can old encrypted emails be read if IronCAP X<Trademark /> has been
+            Can old encrypted emails be read if IronCAP X<Trademark />{" "}has been
             uninstalled from the computer?
           </>
         ),
         answer: (
           <>
-            No, since the IronCAP X<Trademark /> private key does not exist
+            No, since the IronCAP X<Trademark />{" "}private key does not exist
             anymore.
           </>
         ),
@@ -472,7 +472,7 @@ const faqCategories: FaqCategory[] = [
         question: (
           <>
             Is it necessary for both the sender and the recipient(s) to be an
-            IronCAP X<Trademark /> User?
+            IronCAP X<Trademark />{" "}User?
           </>
         ),
         answer: (
@@ -487,13 +487,13 @@ const faqCategories: FaqCategory[] = [
         question: (
           <>
             What if I try to send encrypted emails to my colleagues who are not
-            IronCAP X<Trademark /> users?
+            IronCAP X<Trademark />{" "}users?
           </>
         ),
         answer: (
           <>
-            IronCAP X<Trademark /> will automatically detect if the recipient is
-            an IronCAP X<Trademark /> user. If not, it will encrypt the message
+            IronCAP X<Trademark />{" "}will automatically detect if the recipient is
+            an IronCAP X<Trademark />{" "}user. If not, it will encrypt the message
             and insert an invitation message asking the recipient to click on the
             link to sign up for a FREE personal account. Once the recipient has
             signed up for a FREE personal account, the user can open the
@@ -511,8 +511,8 @@ const faqCategories: FaqCategory[] = [
         ),
         answer: (
           <>
-            Yes, IronCAP X<Trademark /> will automatically differentiate them.
-            Non-IronCAP X<Trademark /> users will receive the encrypted message
+            Yes, IronCAP X<Trademark />{" "}will automatically differentiate them.
+            Non-IronCAP X<Trademark />{" "}users will receive the encrypted message
             plus an invitation message asking them to sign up for a FREE
             personal account.
           </>
@@ -549,13 +549,13 @@ const faqCategories: FaqCategory[] = [
         id: "uninstalledRead2",
         question: (
           <>
-            Can old encrypted emails be read if IronCAP X<Trademark /> has been
+            Can old encrypted emails be read if IronCAP X<Trademark />{" "}has been
             uninstalled from the computer?
           </>
         ),
         answer: (
           <>
-            No, since the IronCAP X<Trademark /> private key does not exist
+            No, since the IronCAP X<Trademark />{" "}private key does not exist
             anymore.
           </>
         ),
@@ -565,10 +565,10 @@ const faqCategories: FaqCategory[] = [
         question: "Why should I keep a backup of my private key?",
         answer: (
           <>
-            For maximum security and privacy, IronCAP X<Trademark /> does not
+            For maximum security and privacy, IronCAP X<Trademark />{" "}does not
             keep a copy of your private key in its server. Therefore, it is
             necessary for you to keep a backup of your private key in case of
-            abnormal circumstances such as restoring IronCAP X<Trademark /> on a
+            abnormal circumstances such as restoring IronCAP X<Trademark />{" "}on a
             new computer after a computer has crashed, etc. It is strongly
             recommended to keep the backup inside a storage media residing on a
             different computer (e.g. an external storage, etc.). You will be
@@ -593,12 +593,12 @@ const faqCategories: FaqCategory[] = [
         id: "creditCards",
         question: (
           <>
-            What credit cards does IronCAP X<Trademark /> accept?
+            What credit cards does IronCAP X<Trademark />{" "}accept?
           </>
         ),
         answer: (
           <>
-            IronCAP X<Trademark /> accepts the following credit cards: Amex,
+            IronCAP X<Trademark />{" "}accepts the following credit cards: Amex,
             VISA, and Mastercard. Your credit card bills will show the charge
             from 01 Quantum (www.01com.com).
           </>
@@ -645,12 +645,12 @@ const faqCategories: FaqCategory[] = [
         id: "cancel",
         question: (
           <>
-            Can I cancel my IronCAP X<Trademark /> account?
+            Can I cancel my IronCAP X<Trademark />{" "}account?
           </>
         ),
         answer: (
           <>
-            Yes, you can cancel your IronCAP X<Trademark /> account any time.
+            Yes, you can cancel your IronCAP X<Trademark />{" "}account any time.
             Please call our customer service at 1-800-668-2185 to facilitate
             that. Please note that after cancellation the user licenses will be
             valid until the end of that paid billing cycle.
@@ -668,7 +668,7 @@ const faqCategories: FaqCategory[] = [
         question: "I have changed my email address.",
         answer: (
           <>
-            You will need to uninstall IronCAP X<Trademark /> and re-install
+            You will need to uninstall IronCAP X<Trademark />{" "}and re-install
             with the new email address. Please note that encrypted emails under
             the old email address can no longer be decrypted.
           </>
@@ -690,7 +690,7 @@ const faqCategories: FaqCategory[] = [
         id: "ITsubscribe",
         question: (
           <>
-            I have tried IronCAP X<Trademark /> using the FREE account. How do I
+            I have tried IronCAP X<Trademark />{" "}using the FREE account. How do I
             have my IT subscribe to it under a Business account of my company?
           </>
         ),
@@ -698,12 +698,12 @@ const faqCategories: FaqCategory[] = [
           <>
             Assuming you are not the IT of your company and the email address of
             your IT is different from yours, your IT has already created a
-            Business account using its email address and they will be the
+            Business account using their email address and they will be the
             Administrator. During user creation, your IT will need to enter the
             email address of the FREE account. When you or the FREE user runs
-            the installation on his/her computer, IronCAP X<Trademark /> is
+            the installation on their computer, IronCAP X<Trademark />{" "}is
             smart enough to recognize that the installation is on top of an
-            existing FREE IronCAP X<Trademark /> account. It will then tie the
+            existing FREE IronCAP X<Trademark />{" "}account. It will then tie the
             billing onto this Business account. The new private key will be
             installed on the computer while keeping the old private key so that
             the old encrypted emails can still be opened. The new public key
@@ -795,7 +795,7 @@ export default function FaqIronCapXPage() {
 
         <section className="px-6 py-16 lg:px-13">
           <h2 className="text-quantum-blue text-[30px] font-medium leading-11.5">
-            IronCAP X<Trademark /> FAQs
+            IronCAP X<Trademark />{" "}FAQs
           </h2>
 
           <div className="mt-2 h-px w-full max-w-156.75 bg-lite-gray/40" />

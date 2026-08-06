@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -233,9 +234,14 @@ export default function InTouchPricingComparisonSection() {
             <p className="mt-4 text-[15px] leading-[24px] text-steel-gray sm:text-[16px] sm:leading-[28px]">
               Compare the full
               {" "}
-              <InTouchTrademarkName className="font-medium text-quantum-blue" />
+              <Link
+                href="/products/ironcap-intouch/features"
+                className="font-medium text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
+              >
+                <InTouchTrademarkName /> feature set
+              </Link>
               {" "}
-              feature set against conventional remote-access subscriptions and
+              against conventional remote-access subscriptions and
               estimate your service plan using the current public fee table.
             </p>
 

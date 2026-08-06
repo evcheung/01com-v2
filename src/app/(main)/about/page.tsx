@@ -89,8 +89,8 @@ export default function About() {
             </span>
             has developed advanced post‑quantum cryptographic (PQC) technology
             to protect digital systems against the growing threat of quantum
-            computers. It’s
-            patented IronCAP<Trademark /> and patent-pending technologies are designed to
+            computers. Its
+            patented IronCAP<Trademark />{" "}and patent-pending technologies are designed to
             provide long‑term resilience against quantum‑enabled attacks. By
             integrating these technologies into applications such as AI
             platforms, remote access systems, email and digital‑asset platforms,
@@ -119,7 +119,7 @@ export default function About() {
             In response to this emerging threat, the Company has made a
             significant investment in researching and developing disruptive
             cybersecurity technology. As a result, it has created and is
-            commercializing products that incorporate its patented IronCAP<Trademark />
+            commercializing products that incorporate its patented IronCAP<Trademark />{" "}
             technology.
           </p>
         </div>

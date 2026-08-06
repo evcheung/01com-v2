@@ -1970,7 +1970,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "1be9bf0ec9310",
                 "_type": "span",
                 "marks": [],
-                "text": "Click on the \"Physical Authention\" link"
+                "text": "Click on the \"Physical Authentication\" link"
               }
             ],
             "level": 1,
@@ -2660,7 +2660,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "248b140ebf36",
                 "_type": "span",
                 "marks": [],
-                "text": " You can set as Group Administrator one or more computers within the group. By doing so, the next time the Group Administrator logs in, his/her List of Computers will display all the computers assigned to the group where he was set as Administrator plus the computers whose Login ID matches the Group Administrator’s Login ID"
+                "text": " You can designate one or more users as Group Administrators for a group. When a Group Administrator logs in, their List of Computers will display all computers assigned to groups where they are an Administrator, plus computers whose Login ID matches the Group Administrator’s Login ID."
               }
             ],
             "markDefs": [],
@@ -3415,7 +3415,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "921992932a850",
                 "_type": "span",
                 "marks": [],
-                "text": "Once in the MEBx, use the default password \"admin\" (case-sensitive) to log in, then change it to a new password that meets Intel's strong password criteria: at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a specialcharacter (excluding quotes, apostrophes, commas, angle brackets, colons, ampersands, and spaces). Please make sure you setup the same password as the IronCAP InTouch password of the targeted host computer."
+                "text": "Once in the MEBx, use the default password \"admin\" (case-sensitive) to log in, then change it to a new password that meets Intel's strong password criteria: at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character (excluding quotes, apostrophes, commas, angle brackets, colons, ampersands, and spaces). Please make sure you setup the same password as the IronCAP InTouch password of the targeted host computer."
               }
             ],
             "level": 1,
@@ -5621,7 +5621,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "b79e8667dd8a",
                 "_type": "link",
-                "href": "https://support.microsoft.com/en-us/windows/windows-media-player-d10303a5-896c-2ce2-53d4-5bd5b9fd888b"
+                "href": "https://apps.microsoft.com/detail/9wzdncrfj3pt"
               }
             ],
             "style": "normal"
@@ -5665,7 +5665,7 @@ function renderBrandText(text: string) {
       nodes.push(
         <span key={`brand-${index}`}>
           IronCAP
-          <Trademark /> InTouch
+          <Trademark />{" "}InTouch
         </span>,
       );
     }
@@ -5748,7 +5748,7 @@ function PortableAnswer({ blocks }: { blocks: PortableBlock[] }) {
 
   const flushList = () => {
     if (listBuffer.length === 0) return;
-    rendered.push(renderList(listBuffer, listKey));
+    rendered.push(renderList(listBuffer, `${listKey}-${listBuffer[0]._key}`));
     listBuffer = [];
     listKey = "";
   };

@@ -57,8 +57,8 @@ export function ContactDepartmentSection({
   }, [departmentButtons, requestedDepartment, selectedDepartmentEmail]);
 
   return (
-    <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-8 flex flex-col md:flex-row gap-8 items-center">
-      <aside className="flex-1 flex flex-col gap-6 items-center">
+    <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-8 flex flex-col min-[1200px]:flex-row gap-8 items-center min-[1200px]:items-start">
+      <aside className="w-full max-w-[360px] min-[1200px]:max-w-none min-[1200px]:flex-1 flex flex-col gap-6 items-center">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-4">
             <span
@@ -159,7 +159,7 @@ export function ContactDepartmentSection({
         </address>
       </aside>
 
-      <div className="w-full md:w-[705px] shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
+      <div className="w-full max-w-[705px] min-[1200px]:w-[705px] min-[1200px]:shrink-0 bg-gradient-to-br from-[#f2f6f7] to-white rounded-[17px] p-8 md:p-12 shadow-sm">
         <p className="text-steel-gray text-[20px] leading-[32px] max-w-[446px] mb-8">
           Contact us to receive updates, white papers, brochures, articles or
           to answer specific questions.

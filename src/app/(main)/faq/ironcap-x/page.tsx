@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Bottom } from "@/components/resources/Bottom";
 import { useState } from "react";
 import { Title } from "@/components/faq/Title";
-import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
+import { IRONCAP_X_FREE_DOWNLOAD_ROUTE } from "@/components/products/ironcapDownloadLinks";
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -45,14 +45,12 @@ const faqCategories: FaqCategory[] = [
           <>
             IronCAP X<Trademark />{" "}is free for personal usage. To sign up for a
             FREE account, visit{" "}
-            <a
-              href={IRONCAP_X_FREE_DOWNLOAD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={IRONCAP_X_FREE_DOWNLOAD_ROUTE}
               className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
             >
-              www.ironcap.ca/ironcap-x/personal
-            </a>{" "}
+              the IronCAP XMail download page
+            </Link>{" "}
             to get the free personal version of IronCAP X<Trademark />.
           </>
         ),

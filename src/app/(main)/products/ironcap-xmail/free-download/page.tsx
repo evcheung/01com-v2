@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
+import {
+  IRONCAP_X_BUSINESS_DOWNLOAD_ROUTE,
+  IRONCAP_X_PERSONAL_DOWNLOAD_ROUTE,
+} from "@/components/products/ironcapDownloadLinks";
 
 const downloadOptions = [
   {
@@ -7,14 +10,14 @@ const downloadOptions = [
     description:
       "For individuals who want free quantum-safe email, file encryption, and digital signing for everyday personal communications.",
     buttonText: "Personal Download",
-    href: IRONCAP_X_FREE_DOWNLOAD_URL,
+    href: IRONCAP_X_PERSONAL_DOWNLOAD_ROUTE,
   },
   {
     label: "Business Usage",
     description:
       "For organizations that need IronCAP XMail protection with business account support and centralized user management.",
     buttonText: "Business Download",
-    href: IRONCAP_X_FREE_DOWNLOAD_URL,
+    href: IRONCAP_X_BUSINESS_DOWNLOAD_ROUTE,
   },
 ] as const;
 
@@ -30,18 +33,8 @@ export default function IroncapXMailFreeDownloadPage() {
             Try it Free
           </h2>
           <p className="text-[15px] leading-[26px] text-steel-gray sm:text-[16px]">
-            Simply go to{" "}
-            <a
-              href={IRONCAP_X_FREE_DOWNLOAD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
-            >
-              www.ironcap.ca/ironcap-x/personal
-            </a>{" "}
-            and get the FREE personal version today! A Business version with a
-            central user management tool for the IT department to manage their
-            users and passwords are also available. Now your email/files are
+            Choose the FREE personal version for individual use, or the Business
+            version for centralized user management. Now your email/files are
             truly end-to-end encrypted with no third-party trust.
           </p>
         </div>
@@ -71,7 +64,6 @@ export default function IroncapXMailFreeDownloadPage() {
                   border="border-quantum-green"
                   textColor="text-quantum-green"
                   hoverBg="hover:bg-quantum-green/10"
-                  isBlank="true"
                 />
               </div>
             </article>

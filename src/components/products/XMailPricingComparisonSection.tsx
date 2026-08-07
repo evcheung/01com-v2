@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
+import { IRONCAP_X_PERSONAL_DOWNLOAD_ROUTE } from "@/components/products/ironcapDownloadLinks";
 
 const CONTACT_URL = "/contact";
 const SALES_CONTACT_URL = "/contact?department=sales";
@@ -52,9 +52,8 @@ const plans: readonly Plan[] = [
     ],
     cta: {
       text: "Free Download",
-      url: IRONCAP_X_FREE_DOWNLOAD_URL,
+      url: IRONCAP_X_PERSONAL_DOWNLOAD_ROUTE,
       variant: "green",
-      isBlank: true,
     },
   },
   {

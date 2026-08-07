@@ -16,8 +16,12 @@ const usagePages = {
     title: "Personal Usage",
     price: "$0.00",
     cadence: "Free unlimited personal usage",
-    description:
-      "IronCAP XMail provides unlimited free usage for personal accounts. Business and commercial usage are handled separately.",
+    description: (
+      <>
+        IronCAP<Trademark /> XMail provides unlimited free usage for personal
+        accounts. Business and commercial usage are handled separately.
+      </>
+    ),
     highlights: [
       "Free Unlimited Personal Usage",
       "No Credit Card Required",

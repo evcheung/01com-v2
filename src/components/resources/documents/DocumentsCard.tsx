@@ -51,6 +51,10 @@ function renderTitle(title: string) {
   );
 }
 
+function isExternalHref(href: string) {
+  return /^(?:[a-z][a-z\d+.-]*:)?\/\//i.test(href);
+}
+
 /**
  * DocumentsCard
  * ─────────────
@@ -67,50 +71,56 @@ export function DocumentsCard({ data, className = "" }: DocumentsCardProps) {
       </h3>
 
       <ul className="flex flex-col">
-        {data.items.map((item, i) => (
-          <li
-            key={i}
-            className={`flex items-start sm:items-center justify-between gap-3 sm:gap-4 py-4 ${
-              i === 0 ? "pt-0" : ""
-            } ${
-              i < data.items.length - 1 ? "border-b border-[#dfe6ea]" : ""
-            }`}
-          >
-            {item.href ? (
-              <>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1 min-w-0"
-                >
-                  {renderTitle(item.title)}
-                </a>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${item.title}`}
-                  className="text-quantum-green shrink-0 flex items-center justify-center hover:text-quantum-blue transition-colors"
-                >
-                  {item.icon ?? <LinkIcon />}
-                </a>
-              </>
-            ) : (
-              <>
-                <span className="text-steel-gray text-[15px] leading-[24px] flex-1 min-w-0">
-                  {renderTitle(item.title)}
-                </span>
-                <span
-                  aria-hidden
-                  className="text-quantum-green/40 shrink-0 flex items-center justify-center"
-                >
-                  {item.icon ?? <LinkIcon />}
-                </span>
-              </>
-            )}
-          </li>
-        ))}
+        {data.items.map((item, i) => {
+          const external = item.href ? isExternalHref(item.href) : false;
+          const target = external ? "_blank" : undefined;
+          const rel = external ? "noopener noreferrer" : undefined;
+
+          return (
+            <li
+              key={i}
+              className={`flex items-start sm:items-center justify-between gap-3 sm:gap-4 py-4 ${
+                i === 0 ? "pt-0" : ""
+              } ${
+                i < data.items.length - 1 ? "border-b border-[#dfe6ea]" : ""
+              }`}
+            >
+              {item.href ? (
+                <>
+                  <a
+                    href={item.href}
+                    target={target}
+                    rel={rel}
+                    className="text-steel-gray text-[15px] leading-[24px] hover:text-quantum-blue transition-colors flex-1 min-w-0"
+                  >
+                    {renderTitle(item.title)}
+                  </a>
+                  <a
+                    href={item.href}
+                    target={target}
+                    rel={rel}
+                    aria-label={`Open ${item.title}`}
+                    className="text-quantum-green shrink-0 flex items-center justify-center hover:text-quantum-blue transition-colors"
+                  >
+                    {item.icon ?? <LinkIcon />}
+                  </a>
+                </>
+              ) : (
+                <>
+                  <span className="text-steel-gray text-[15px] leading-[24px] flex-1 min-w-0">
+                    {renderTitle(item.title)}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="text-quantum-green/40 shrink-0 flex items-center justify-center"
+                  >
+                    {item.icon ?? <LinkIcon />}
+                  </span>
+                </>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </article>
   );

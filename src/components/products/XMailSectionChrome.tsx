@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IRONCAP_X_FREE_DOWNLOAD_URL } from "@/components/products/ironcapDownloadLinks";
+import { IRONCAP_X_FREE_DOWNLOAD_ROUTE } from "@/components/products/ironcapDownloadLinks";
 
-export const xMailSectionItems = [
-  { label: "Free Download", href: IRONCAP_X_FREE_DOWNLOAD_URL, external: true },
+type XMailSectionItem = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export const xMailSectionItems: XMailSectionItem[] = [
+  { label: "Free Download", href: IRONCAP_X_FREE_DOWNLOAD_ROUTE },
   { label: "Why XMail?", href: "/products/ironcap-xmail/why-xmail" },
   {
     label: "Pricing & Comparison",

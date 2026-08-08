@@ -49,9 +49,19 @@ Then edit `.env.production`:
 NEXT_PUBLIC_SANITY_DATASET=your_dataset_name
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_API_VERSION=your_api_version
+KEYSERVER_API_URL=https://keyserver000101.01com.com
+RECAPTCHA_SITE_KEY=your_recaptcha_site_key
 ```
 
-> All three variables are required. The `NEXT_PUBLIC_` prefix exposes them to the browser at build time.
+> The Sanity variables are required for CMS-backed pages. The `NEXT_PUBLIC_`
+> prefix exposes them to the browser at build time.
+
+For the IronCAP XMail download form, `RECAPTCHA_SITE_KEY` and either
+`KEYSERVER_API_URL` or `XMAIL_INSTALLATION_API_URL` must be present before
+building the static export. `KEYSERVER_API_URL` is converted into the browser
+submit endpoint `${KEYSERVER_API_URL}/api/v1/installation`. Set
+`XMAIL_INSTALLATION_API_URL` directly instead if the test server proxies
+installation requests through another URL.
 
 ---
 

@@ -2,7 +2,9 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+const INSTALLATION_API_URL =
+  process.env.XMAIL_INSTALLATION_API_URL || "/api/installation";
+const RECAPTCHA_SITE_KEY = process.env.XMAIL_RECAPTCHA_SITE_KEY || "";
 
 type InstallationFormValues = {
   email: string;
@@ -90,9 +92,14 @@ export function XMailInstallationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null);
   const recaptchaWidgetIdRef = useRef<number | null>(null);
+  const configurationError = !RECAPTCHA_SITE_KEY
+    ? "Installation verification is not configured. Please contact support."
+    : !INSTALLATION_API_URL
+      ? "Installation email service is not configured. Please contact support."
+      : "";
 
   useEffect(() => {
-    if (!RECAPTCHA_SITE_KEY) {
+    if (!RECAPTCHA_SITE_KEY || successEmail) {
       return;
     }
 
@@ -127,7 +134,7 @@ export function XMailInstallationForm({
     }, 300);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [successEmail]);
 
   const updateValue = (name: keyof InstallationFormValues, value: string) => {
     setValues((current) => ({
@@ -148,7 +155,8 @@ export function XMailInstallationForm({
     values.email.trim().length > 0 &&
     values.firstname.trim().length > 0 &&
     values.lastname.trim().length > 0 &&
-    (!RECAPTCHA_SITE_KEY || recaptchaToken.length > 0);
+    !configurationError &&
+    recaptchaToken.length > 0;
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -162,7 +170,12 @@ export function XMailInstallationForm({
       return;
     }
 
-    if (RECAPTCHA_SITE_KEY && !recaptchaToken) {
+    if (configurationError) {
+      setError(configurationError);
+      return;
+    }
+
+    if (!recaptchaToken) {
       setError("Please complete verification before continuing.");
       return;
     }
@@ -171,7 +184,7 @@ export function XMailInstallationForm({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/installation", {
+      const response = await fetch(INSTALLATION_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -227,7 +240,11 @@ export function XMailInstallationForm({
         </ol>
         <button
           type="button"
-          onClick={() => setSuccessEmail("")}
+          onClick={() => {
+            recaptchaWidgetIdRef.current = null;
+            setRecaptchaToken("");
+            setSuccessEmail("");
+          }}
           className="mt-6 inline-flex min-h-[44px] max-w-full items-center justify-center rounded-bl-lg rounded-tr-lg border border-quantum-green px-5 py-3 text-center text-[12px] font-medium uppercase leading-[1.4] tracking-widest text-quantum-green transition-colors hover:bg-quantum-green/10 sm:px-6"
         >
           Send Another Email
@@ -288,9 +305,9 @@ export function XMailInstallationForm({
         </div>
       ) : null}
 
-      {error ? (
+      {error || configurationError ? (
         <p className="mt-4 text-[13px] leading-[20px] text-[#b64747]" role="alert">
-          {error}
+          {error || configurationError}
         </p>
       ) : null}
 

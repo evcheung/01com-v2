@@ -110,6 +110,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "https",
+        hostname: "www.01com.com",
+        pathname: "/_next/static/media/**",
+      },
     ],
   },
 

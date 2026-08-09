@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 import browserIcon from "@/assets/images/products/oncall-features/browser.png";
 import collaborationIcon from "@/assets/images/products/oncall-features/collaboration.png";
@@ -10,7 +11,7 @@ import puzzleIcon from "@/assets/images/products/oncall-features/puzzle.png";
 import remoteControlIcon from "@/assets/images/products/oncall-features/remote-control.png";
 import trackingIcon from "@/assets/images/products/oncall-features/tracking.png";
 
-const OLD_SITE_BASE_URL = "https://www.01com.com";
+const FEATURE_BASE_PATH = "/products/ironcap-oncall/features";
 
 type FeatureCard = {
   title: string;
@@ -40,7 +41,7 @@ const featureCards: FeatureCard[] = [
     title: "Remote Control",
     description:
       "As a support agent, nothing is more effective than temporarily taking remote control of your customers' computers to resolve their technical issues. In addition to controlling the screen you may also do remote file transfer.",
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/remote-desktop-control/`,
+    href: `${FEATURE_BASE_PATH}/remote-desktop-control`,
     icon: remoteControlIcon,
   },
   {
@@ -55,20 +56,20 @@ const featureCards: FeatureCard[] = [
         customers may leave call-back requests if the queue is busy.
       </>
     ),
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/chat/`,
+    href: `${FEATURE_BASE_PATH}/chat`,
     icon: liveChatIcon,
   },
   {
     title: "Multi-session",
     description: "Agents can chat with many customers at the same time.",
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/multi-sessions/`,
+    href: `${FEATURE_BASE_PATH}/multi-sessions`,
     icon: conferenceIcon,
   },
   {
     title: "Post-session Survey",
     description:
       "You can ensure customer satisfaction by sending a survey to them automatically. Customers can rate on the support service they have just received.",
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/survey/`,
+    href: `${FEATURE_BASE_PATH}/survey`,
     icon: browserIcon,
   },
   {
@@ -80,21 +81,21 @@ const featureCards: FeatureCard[] = [
         <OnCallTrademarkName />.
       </>
     ),
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/easy-customization/`,
+    href: `${FEATURE_BASE_PATH}/easy-customization`,
     icon: puzzleIcon,
   },
   {
     title: "Incident Tracking",
     description:
       "Your agents or service representatives can view all open incidents including time stamping, priority and categories. Closed incidents are also available via the History feature.",
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/incident-status-viewing/`,
+    href: `${FEATURE_BASE_PATH}/incident-status-viewing`,
     icon: trackingIcon,
   },
   {
     title: "User Hierarchy",
     description:
       "You can classify users into Agents, Supervisors, and Adminstrators according to your company requirements.",
-    href: `${OLD_SITE_BASE_URL}/imoncall-remote-help-desk/features/technician-management/`,
+    href: `${FEATURE_BASE_PATH}/technician-management`,
     icon: hierarchyStructureIcon,
   },
 ];
@@ -169,14 +170,12 @@ function FeatureCard({ card }: { card: FeatureCard }) {
   }
 
   return (
-    <a
+    <Link
       href={card.href}
-      target="_blank"
-      rel="noopener noreferrer"
       className="group block h-full"
     >
       {content}
-    </a>
+    </Link>
   );
 }
 

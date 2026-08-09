@@ -51,7 +51,10 @@ export function InTouchSectionChrome({
         />
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
           {inTouchSectionItems.map((item, i) => {
-            const active = pathname === normalizePath(item.href);
+            const normalizedHref = normalizePath(item.href);
+            const active =
+              pathname === normalizedHref ||
+              pathname.startsWith(`${normalizedHref}/`);
 
             return (
               <li

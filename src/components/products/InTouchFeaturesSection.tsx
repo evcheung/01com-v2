@@ -6,7 +6,7 @@ import outlookIcon from "@/assets/images/products/intouch-features/outlook.6fedd
 import puzzleIcon from "@/assets/images/products/intouch-features/puzzle.13a0b0c9.png";
 import shieldIcon from "@/assets/images/products/intouch-features/shield-2.686efb10.png";
 
-const OLD_SITE_BASE_URL = "https://01com.com";
+const FEATURE_BASE_PATH = "/products/ironcap-intouch/features";
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -32,19 +32,19 @@ const featureCards: FeatureCard[] = [
       { description: "End-to-end encryption to maintain 100% privacy" },
       {
         description: "2-Factor Authentication",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/2-factor-authentication`,
+        href: `${FEATURE_BASE_PATH}/2-factor-authentication`,
       },
       {
         description: "LDAP authentication",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/ldap-authentication`,
+        href: `${FEATURE_BASE_PATH}/ldap-authentication`,
       },
       {
         description: "MAC address restriction",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/mac-address-restriction`,
+        href: `${FEATURE_BASE_PATH}/mac-address-restriction`,
       },
       {
         description: "Wake up a remote computer that is powered off",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/remote-wakeup`,
+        href: `${FEATURE_BASE_PATH}/remote-wakeup`,
       },
     ],
   },
@@ -55,27 +55,27 @@ const featureCards: FeatureCard[] = [
     items: [
       {
         description: "Unlimited remote access",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/remote-control`,
+        href: `${FEATURE_BASE_PATH}/remote-control`,
       },
       { description: "Free mobile apps" },
       {
         description: "Remote printing",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/remote-printing`,
+        href: `${FEATURE_BASE_PATH}/remote-printing`,
       },
       { description: "Keyboard/mouse lock" },
       {
         description: "File transfer",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/file-transfer`,
+        href: `${FEATURE_BASE_PATH}/file-transfer`,
       },
       { description: "Blanking screen" },
       {
         description: "Remote 2-way audio",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/remote-audio`,
+        href: `${FEATURE_BASE_PATH}/remote-audio`,
       },
       { description: "Clipboard sync" },
       {
         description: "Multi-monitor support",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/multi-monitor`,
+        href: `${FEATURE_BASE_PATH}/multi-monitor`,
       },
       { description: "Whiteboard" },
     ],
@@ -88,11 +88,11 @@ const featureCards: FeatureCard[] = [
     items: [
       {
         description: "Notify your mobile device upon receiving important emails",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/email-notification`,
+        href: `${FEATURE_BASE_PATH}/email-notification`,
       },
       {
         description: "Access your Outlook Inbox remotely",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/outlook-access`,
+        href: `${FEATURE_BASE_PATH}/outlook-access`,
       },
     ],
   },
@@ -104,7 +104,7 @@ const featureCards: FeatureCard[] = [
       {
         description:
           "Central users administration for 1 to unlimited number of users",
-        href: `${OLD_SITE_BASE_URL}/imintouch-remote-pc-desktop/features/central-administration`,
+        href: `${FEATURE_BASE_PATH}/central-administration`,
       },
       { description: "Users grouping" },
     ],
@@ -174,14 +174,9 @@ function FeatureItemRow({ item }: { item: FeatureItem }) {
   }
 
   return (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={rowClassName}
-    >
+    <Link href={item.href} className={rowClassName}>
       {content}
-    </a>
+    </Link>
   );
 }
 

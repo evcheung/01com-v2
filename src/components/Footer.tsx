@@ -19,6 +19,7 @@ const socialLinks = [
     icon: "/resources_assets/blog_i.svg",
     url: "/resources/blog",
     label: "Blog",
+    isExternal: false,
   },
 ];
 const socialIconSize = 15;
@@ -26,6 +27,7 @@ const socialIconSize = 15;
 import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const footerColumns = [
   {
@@ -35,22 +37,12 @@ const footerColumns = [
   },
   {
     heading: "Resources",
-    links: [
-      "Brochures",
-      "White Papers",
-      "Press Room",
-      "Videos",
-      "Use Cases",
-      "Blog",
-      "FAQs",
-    ],
+    links: ["Brochures", "White Papers", "Videos", "Use Cases", "FAQs"],
     urls: [
       "/resources/brochures",
-      "/resources/white-papers-use-cases",
-      "/resources/press-releases-newsletters",
+      "/resources/white-papers",
       "/resources/videos",
       "/resources/use-cases",
-      "/resources/blog",
       "/faq/ironcap-x",
     ],
   },
@@ -66,9 +58,9 @@ const footerColumns = [
     urls: [
       "/about",
       "/investor-relations",
-      "/resources/intellectual-properties",
-      "/resources/press-releases",
-      "/resources/newsletters",
+      "/intellectual-properties",
+      "/resources/press-releases-newsletters#press-releases",
+      "/resources/press-releases-newsletters#newsletters",
     ],
   },
   {
@@ -125,26 +117,20 @@ export default function Footer() {
                   {heading}
                 </p>
                 {links.map((link, index) => (
-                  <a
+                  <Link
                     key={link}
                     href={urls[index]}
                     className="text-white text-[12px] hover:text-[#71bfff] transition-colors"
                   >
                     {link}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}
             <div className="col-span-2 sm:col-span-3 lg:col-auto">
               <div className="flex items-center gap-4">
-                {socialLinks.map(({ icon, url, label }) => (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-6 w-6 items-center justify-center rounded-full"
-                  >
+                {socialLinks.map(({ icon, url, label, isExternal = true }) => {
+                  const iconImage = (
                     <Image
                       alt={label}
                       src={icon}
@@ -152,8 +138,26 @@ export default function Footer() {
                       height={socialIconSize}
                       className="h-full w-full object-contain"
                     />
-                  </a>
-                ))}
+                  );
+                  const className =
+                    "flex h-6 w-6 items-center justify-center rounded-full";
+
+                  return isExternal ? (
+                    <a
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {iconImage}
+                    </a>
+                  ) : (
+                    <Link key={label} href={url} className={className}>
+                      {iconImage}
+                    </Link>
+                  );
+                })}
               </div>
               {/* Copyright */}
               <div className="py-4 lg:py-5 text-left lg:text-center">

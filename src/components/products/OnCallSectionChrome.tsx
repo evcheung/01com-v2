@@ -17,6 +17,17 @@ export const onCallSectionItems = [
 ];
 
 const MAIN_PAGE_HREF = "/products/ironcap-oncall";
+const FEATURES_PAGE_HREF = "/products/ironcap-oncall/features";
+
+const featureDetailLabels: Record<string, string> = {
+  "remote-desktop-control": "Remote Control",
+  chat: "Live Chat",
+  "multi-sessions": "Multi-session",
+  survey: "Post-session Survey",
+  "easy-customization": "Customization",
+  "incident-status-viewing": "Incident Tracking",
+  "technician-management": "Users Hierarchy",
+};
 
 const normalizePath = (path: string | null) => {
   if (!path) {
@@ -26,12 +37,35 @@ const normalizePath = (path: string | null) => {
   return path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
 };
 
+function getFeatureBreadcrumb(pathname: string) {
+  const featurePrefix = `${FEATURES_PAGE_HREF}/`;
+
+  if (!pathname.startsWith(featurePrefix)) {
+    return null;
+  }
+
+  const slug = pathname.slice(featurePrefix.length);
+
+  if (!slug || slug.includes("/")) {
+    return null;
+  }
+
+  const label = featureDetailLabels[slug];
+
+  if (!label) {
+    return null;
+  }
+
+  return { label, href: pathname };
+}
+
 export function OnCallSectionChrome({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = normalizePath(usePathname());
+  const featureBreadcrumb = getFeatureBreadcrumb(pathname);
   const showBackArrow = pathname !== MAIN_PAGE_HREF;
 
   return (
@@ -54,7 +88,10 @@ export function OnCallSectionChrome({
         />
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
           {onCallSectionItems.map((item, i) => {
-            const active = pathname === normalizePath(item.href);
+            const normalizedHref = normalizePath(item.href);
+            const active =
+              pathname === normalizedHref ||
+              pathname.startsWith(`${normalizedHref}/`);
 
             return (
               <li
@@ -84,8 +121,8 @@ export function OnCallSectionChrome({
       </section>
 
       {showBackArrow && (
-        <section className="bg-white py-5">
-          <div className="px-4 sm:px-5 lg:px-6">
+        <section className="bg-white py-2">
+          <div className="flex items-center gap-4 px-4 sm:px-5 lg:px-6">
             <Link
               href={MAIN_PAGE_HREF}
               aria-label="Back to IronCAP OnCall"
@@ -99,11 +136,32 @@ export function OnCallSectionChrome({
                 strokeWidth={1.8}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-8 w-8 sm:h-9 sm:w-9"
+                className="h-7 w-7 sm:h-8 sm:w-8"
               >
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </Link>
+
+            {featureBreadcrumb ? (
+              <nav aria-label="Breadcrumb">
+                <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[9px] font-medium uppercase tracking-[0.06em] text-quantum-blue">
+                  <li className="flex items-center gap-1.5">
+                    <Link
+                      href={FEATURES_PAGE_HREF}
+                      className="transition-colors hover:text-quantum-green"
+                    >
+                      Features
+                    </Link>
+                    <span aria-hidden className="text-quantum-blue/60">
+                      &gt;
+                    </span>
+                  </li>
+                  <li aria-current="page" className="text-quantum-blue/75">
+                    {featureBreadcrumb.label}
+                  </li>
+                </ol>
+              </nav>
+            ) : null}
           </div>
         </section>
       )}

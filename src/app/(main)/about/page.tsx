@@ -1,5 +1,4 @@
 import { Leader } from "@/components/about/Leader";
-import { Bottom } from "@/components/resources/Bottom"
 
 const leaders = [
   {
@@ -137,7 +136,6 @@ export default function About() {
               <Leader key={leader.name} {...leader} />
             ))}
           </div>
-          <Bottom/>
         </div>
       </section>
     </main>

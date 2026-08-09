@@ -1,22 +1,38 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export type ResourceMenuItem = {
   label: string;
   href: string;
+  activePaths?: string[];
 };
 
 const resourceMenuItems: ResourceMenuItem[] = [
   { label: "Brochures", href: "/resources/brochures" },
-  { label: "White Papers", href: "/resources/white-papers-use-cases" },
+  {
+    label: "White Papers",
+    href: "/resources/white-papers",
+    activePaths: ["/resources/white-papers", "/resources/white-papers-use-cases"],
+  },
   { label: "Videos", href: "/resources/videos" },
+  { label: "Use Cases", href: "/resources/use-cases" },
+  { label: "FAQs", href: "/faq/ironcap-x", activePaths: ["/faq"] },
 ];
 
 const pressRoomMenuItems: ResourceMenuItem[] = [
-  { label: "Press Releases", href: "/resources/press-releases" },
-  { label: "Newsletters", href: "/resources/newsletters" },
+  {
+    label: "Press Releases",
+    href: "/resources/press-releases-newsletters#press-releases",
+    activePaths: ["/resources/press-releases"],
+  },
+  {
+    label: "Newsletters",
+    href: "/resources/press-releases-newsletters#newsletters",
+    activePaths: ["/resources/newsletters"],
+  },
 ];
 
 const pressRoomPaths = [
@@ -36,6 +52,17 @@ const intellectualPropertiesPaths = ["/resources/intellectual-properties"];
  */
 export function ResourcesSubMenu() {
   const pathname = usePathname() ?? "";
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    const updateHash = () => setHash(window.location.hash);
+
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, [pathname]);
+
   const isPressRoom = pressRoomPaths.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
@@ -59,7 +86,17 @@ export function ResourcesSubMenu() {
       {/* Responsive resource tabs */}
       <ul className="grid grid-cols-2 gap-x-6 gap-y-3 px-6 text-[12px] sm:grid-cols-3 lg:flex lg:flex-wrap lg:items-center lg:justify-center lg:gap-x-4 lg:gap-y-3 lg:px-8 xl:gap-x-6">
         {menuItems.map((m, i) => {
-          const active = pathname === m.href || pathname.startsWith(`${m.href}/`);
+          const hrefPath = m.href.split("#")[0];
+          const hrefHash = m.href.includes("#")
+            ? `#${m.href.split("#")[1]}`
+            : "";
+          const activePaths = m.activePaths ?? [hrefPath];
+          const active =
+            pathname === "/resources/press-releases-newsletters" && hrefHash
+              ? (hash || "#press-releases") === hrefHash
+              : activePaths.some(
+                  (path) => pathname === path || pathname.startsWith(`${path}/`),
+                );
           return (
             <li key={m.label} className="flex items-center justify-center gap-4 lg:gap-4 lg:justify-start xl:gap-6">
               <Link

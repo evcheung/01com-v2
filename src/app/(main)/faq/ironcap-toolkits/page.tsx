@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Title } from "@/components/faq/Title";
+import { useEffect, useState } from "react";
+import { FaqBreadcrumb, Title } from "@/components/faq/Title";
+import { Bottom } from "@/components/resources/Bottom";
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
@@ -107,6 +108,30 @@ const faqCategories: FaqCategory[] = [
   },
 ];
 
+const DEFAULT_FAQ_CATEGORY_ID = faqCategories[0].id;
+
+function getFaqCategoryIdFromHash() {
+  const hash = window.location.hash.replace(/^#/, "");
+
+  return faqCategories.some((category) => category.id === hash)
+    ? hash
+    : DEFAULT_FAQ_CATEGORY_ID;
+}
+
+function getFaqCategoryHref(categoryId: string) {
+  if (categoryId === DEFAULT_FAQ_CATEGORY_ID) {
+    return "/faq/ironcap-toolkits";
+  }
+
+  return `/faq/ironcap-toolkits#${categoryId}`;
+}
+
+function pushFaqCategoryHref(href: string) {
+  if (`${window.location.pathname}${window.location.hash}` !== href) {
+    window.history.pushState(null, "", href);
+  }
+}
+
 function GreenDots() {
   return (
     <span aria-hidden className="inline-flex items-center gap-0.75">
@@ -118,18 +143,48 @@ function GreenDots() {
 }
 
 export default function FaqIronCapToolkitsPage() {
-  const [activeCategoryId, setActiveCategoryId] = useState(faqCategories[0].id);
+  const [activeCategoryId, setActiveCategoryId] = useState(DEFAULT_FAQ_CATEGORY_ID);
   const [openId, setOpenId] = useState<string | null>(null);
   const activeCategory =
     faqCategories.find((category) => category.id === activeCategoryId) ??
     faqCategories[0];
 
+  useEffect(() => {
+    const syncCategoryWithHash = () => {
+      setActiveCategoryId(getFaqCategoryIdFromHash());
+      setOpenId(null);
+    };
+    const frame = requestAnimationFrame(syncCategoryWithHash);
+
+    window.addEventListener("hashchange", syncCategoryWithHash);
+    window.addEventListener("popstate", syncCategoryWithHash);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", syncCategoryWithHash);
+      window.removeEventListener("popstate", syncCategoryWithHash);
+    };
+  }, []);
+
+  const handleSelectCategory = (categoryId: string) => {
+    setActiveCategoryId(categoryId);
+    setOpenId(null);
+    pushFaqCategoryHref(getFaqCategoryHref(categoryId));
+  };
+
+  const handleActiveFaqHeadingClick = (
+    _href: string,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
+    event.preventDefault();
+    handleSelectCategory(DEFAULT_FAQ_CATEGORY_ID);
+  };
+
   return (
     <div className="bg-white font-urbanist">
-      <Title />
+      <Title onActiveItemClick={handleActiveFaqHeadingClick} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[405px_1fr]">
-        <aside className="bg-black px-6 py-10 text-white sm:px-10 lg:min-h-197.5 lg:px-12 lg:py-16">
+        <aside className="bg-black px-6 py-10 text-white sm:px-10 lg:px-12 lg:py-16">
           <h2 className="text-[20px] font-medium leading-8.5 text-white">
             Categories
           </h2>
@@ -142,10 +197,7 @@ export default function FaqIronCapToolkitsPage() {
                 <li key={category.id}>
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveCategoryId(category.id);
-                      setOpenId(null);
-                    }}
+                    onClick={() => handleSelectCategory(category.id)}
                     aria-pressed={active}
                     className={`flex w-full cursor-pointer items-center gap-3 py-1 text-left transition-colors ${
                       active
@@ -164,9 +216,13 @@ export default function FaqIronCapToolkitsPage() {
           </ul>
         </aside>
 
-        <section className="px-6 py-16 lg:px-13">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-11.5">
-            IronCAP<Trademark />{" "}Toolkits FAQs
+        <section className="relative self-start px-6 pt-16 pb-0 lg:px-13">
+          <FaqBreadcrumb />
+          <h2
+            id={activeCategory.id}
+            className="text-quantum-blue text-[30px] font-medium leading-11.5"
+          >
+            {activeCategory.label}
           </h2>
 
           <div className="mt-2 h-px w-full max-w-156.75 bg-lite-gray/40" />
@@ -199,18 +255,30 @@ export default function FaqIronCapToolkitsPage() {
                     </span>
                   </button>
 
-                  {open && (
+                  <div
+                    id={`${faq.id}-panel`}
+                    aria-hidden={!open}
+                    inert={!open}
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="min-h-0 overflow-hidden">
                     <div
-                      id={`${faq.id}-panel`}
                       className="mt-2 rounded-[9px] bg-white px-5 py-4 text-[15px] leading-6 text-steel-gray shadow-sm sm:px-7"
                     >
                       {faq.answer}
                     </div>
-                  )}
+                    </div>
+                  </div>
                 </li>
               );
             })}
           </ul>
+
+          <section className="flex justify-center bg-white py-16">
+            <Bottom compact />
+          </section>
         </section>
       </div>
     </div>

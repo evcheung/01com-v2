@@ -9,9 +9,9 @@ const brochures = [
     href: "/pdf/brochures/IronCAP%20Brochure%20Digital.pdf",
   },
   {
-    title: "IronCAP X™",
+    title: "IronCAP™ XMail",
     description:
-      "IronCAP X™ is the world's first quantum-safe, end-to-end email security system utilizing the IronCAP™ Crypto (ICC) as its cryptographic foundation. Our end-to-end encryption eliminates the intermediary server aka MITM (Man In The Middle) to ensure 100% security not only today but also in the fast approaching quantum computing era.",
+      "IronCAP™ XMail is the world's first quantum-safe, end-to-end email security system utilizing the IronCAP™ Crypto (ICC) as its cryptographic foundation. Our end-to-end encryption eliminates the intermediary server aka MITM (Man In The Middle) to ensure 100% security not only today but also in the fast approaching quantum computing era.",
     href: "/pdf/brochures/IronCAP%20X%20Brochure_Web.pdf",
   },
   {

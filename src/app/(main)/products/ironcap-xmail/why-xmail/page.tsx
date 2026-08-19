@@ -11,7 +11,7 @@ export default function IroncapXMailWhyXMailPage() {
           <div className="text-center">
             <h1 className="mt-0 text-[#71bfff] text-[30px] font-medium leading-[46px]">
               Why IronCAP
-              <Trademark />{" "}X?
+              <Trademark />{" "}XMail?
             </h1>
           </div>
           <div className="mt-5">
@@ -32,7 +32,7 @@ export default function IroncapXMailWhyXMailPage() {
               more serious with the arrival of quantum computers.
             </p>
             <p>
-              IronCAP<Trademark />{" "}X is truly end-to-end with zero
+              IronCAP<Trademark />{" "}XMail is truly end-to-end with zero
               third-party trust. It lets you send end-to-end, quantum-safe
               encrypted email which can only be decrypted by the designated
               recipients.

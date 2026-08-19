@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import {
+  getProductFeatureBreadcrumb,
+  normalizeProductPath,
+  ProductFeatureBreadcrumb,
+} from "@/components/products/ProductFeatureBreadcrumb";
+
 export const inTouchSectionItems = [
   { label: "Features", href: "/products/ironcap-intouch/features" },
   { label: "Why InTouch?", href: "/products/ironcap-intouch/why-intouch" },
@@ -14,13 +20,21 @@ export const inTouchSectionItems = [
 ];
 
 const MAIN_PAGE_HREF = "/products/ironcap-intouch";
+const FEATURES_PAGE_HREF = "/products/ironcap-intouch/features";
 
-const normalizePath = (path: string | null) => {
-  if (!path) {
-    return "";
-  }
-
-  return path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+const featureDetailLabels: Record<string, string> = {
+  "2-factor-authentication": "2-Factor Authentication",
+  "ldap-authentication": "LDAP Authentication",
+  "mac-address-restriction": "MAC Address Restriction",
+  "remote-wakeup": "Remote Wakeup",
+  "remote-control": "Remote Control",
+  "remote-printing": "Remote Printing",
+  "file-transfer": "File Transfer",
+  "remote-audio": "Remote 2-Way Audio",
+  "multi-monitor": "Multi-monitor",
+  "email-notification": "Notification of Important Emails",
+  "outlook-access": "Access your Outlook Inbox",
+  "central-administration": "Central Administration",
 };
 
 export function InTouchSectionChrome({
@@ -28,7 +42,12 @@ export function InTouchSectionChrome({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = normalizePath(usePathname());
+  const pathname = normalizeProductPath(usePathname());
+  const featureBreadcrumb = getProductFeatureBreadcrumb({
+    pathname,
+    featuresPageHref: FEATURES_PAGE_HREF,
+    featureDetailLabels,
+  });
   const showBackArrow = pathname !== MAIN_PAGE_HREF;
 
   return (
@@ -51,7 +70,7 @@ export function InTouchSectionChrome({
         />
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
           {inTouchSectionItems.map((item, i) => {
-            const normalizedHref = normalizePath(item.href);
+            const normalizedHref = normalizeProductPath(item.href);
             const active =
               pathname === normalizedHref ||
               pathname.startsWith(`${normalizedHref}/`);
@@ -84,8 +103,8 @@ export function InTouchSectionChrome({
       </section>
 
       {showBackArrow && (
-        <section className="bg-white py-5">
-          <div className="px-4 sm:px-5 lg:px-6">
+        <section className="bg-white py-2">
+          <div className="flex items-center gap-4 px-4 sm:px-5 lg:px-6">
             <Link
               href={MAIN_PAGE_HREF}
               aria-label="Back to IronCAP InTouch"
@@ -99,11 +118,18 @@ export function InTouchSectionChrome({
                 strokeWidth={1.8}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-8 w-8 sm:h-9 sm:w-9"
+                className="h-7 w-7 sm:h-8 sm:w-8"
               >
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </Link>
+
+            {featureBreadcrumb ? (
+              <ProductFeatureBreadcrumb
+                label={featureBreadcrumb.label}
+                featuresPageHref={FEATURES_PAGE_HREF}
+              />
+            ) : null}
           </div>
         </section>
       )}

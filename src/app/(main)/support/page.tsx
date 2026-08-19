@@ -65,7 +65,7 @@ export default function Support() {
                   height={40}
                 />
                 <LiveChatLink
-                  href="https://imoncall.01com.com/pre-sales/"
+                  href="/pre-sales"
                   windowName="live-chat-pre-sales"
                   className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors min-w-0"
                 >

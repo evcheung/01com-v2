@@ -146,14 +146,6 @@ export function UseCasesContent({
             Institutions, Government Sectors, Defense and AI Integrators. Below
             are sample use cases in selected sectors.
           </p>
-          <p className="text-steel-gray text-[12px] font-medium uppercase leading-[24px]">
-            To learn more about how 01 Quantum can work with your company,
-            contact us{" "}
-            <a href="/contact" className="text-quantum-green hover:underline">
-              here
-            </a>
-            .
-          </p>
         </div>
       </section>
 

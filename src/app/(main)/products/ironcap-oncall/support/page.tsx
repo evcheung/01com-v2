@@ -103,12 +103,12 @@ export default function IroncapOnCallSupportPage() {
           <div className="inline-flex max-w-full flex-col items-center rounded-[24px] border border-[#C7C7D0] bg-[#F7F9FC] px-4 py-4 sm:px-5 sm:py-5">
             <div className="flex flex-wrap justify-center gap-4">
               <LiveChatLink
-                href="https://imoncall.01com.com/pre-sales/"
+                href="/pre-sales"
                 windowName="live-chat-pre-sales"
                 className="group rounded-[16px] border border-white bg-white px-4 py-3 transition-colors hover:border-[#9FD8B4]"
               >
                 <span className="flex items-center gap-3 whitespace-nowrap">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#71bfff] text-black transition-colors group-hover:bg-[#5aaff0]">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-quantum-blue text-black transition-colors group-hover:bg-quantum-blue/85">
                     <LiveChatIcon />
                   </span>
                   <span className="text-[15px] font-medium leading-[22px] text-quantum-blue">
@@ -122,7 +122,7 @@ export default function IroncapOnCallSupportPage() {
                 className="group rounded-[16px] border border-white bg-white px-4 py-3 transition-colors hover:border-[#9FD8B4]"
               >
                 <span className="flex items-center gap-3 whitespace-nowrap">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#71bfff] text-black transition-colors group-hover:bg-[#5aaff0]">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-quantum-blue text-black transition-colors group-hover:bg-quantum-blue/85">
                     <LiveChatIcon />
                   </span>
                   <span className="text-[15px] font-medium leading-[22px] text-quantum-blue">

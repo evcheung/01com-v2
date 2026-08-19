@@ -5,23 +5,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const newsUpdates = [
-  {
-    label: (
-      <>
-        IronCAP
-        <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
-        {" "}InTouch v11 is available
-      </>
-    ),
-    href: "https://www.01com.com/imintouch/v11.0/en/",
-  },
-  {
-    label: "Read this month's newsletter",
-    href: "https://www.01com.com/newsletter/Latest/letter01.html",
-  },
-];
-
 const onCallTrademarkName = (
   <>
     IronCAP
@@ -29,6 +12,25 @@ const onCallTrademarkName = (
     {" "}OnCall
   </>
 );
+
+const inTouchTrademarkName = (
+  <>
+    IronCAP
+    <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+    {" "}InTouch
+  </>
+);
+
+const newsUpdates = [
+  {
+    label: <>{inTouchTrademarkName} v12 is available</>,
+    href: "/imintouch/v12.0/en/",
+  },
+  {
+    label: "Read this month's newsletter",
+    href: "https://www.01com.com/newsletter/Latest/letter01.html",
+  },
+];
 
 const usageTips: ReactNode[] = [
   <>

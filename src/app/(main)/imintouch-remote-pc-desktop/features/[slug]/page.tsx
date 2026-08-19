@@ -4,6 +4,7 @@ import InTouchFeatureDetailPage, {
   getInTouchFeatureDetail,
   inTouchFeatureDetails,
 } from "@/components/products/InTouchFeatureDetailPage";
+import InTouchSectionChrome from "@/components/products/InTouchSectionChrome";
 
 export function generateStaticParams() {
   return inTouchFeatureDetails.map((feature) => ({
@@ -29,12 +30,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function InTouchFeatureSlugPage({
+export default async function LegacyInTouchFeatureSlugPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
-  return <InTouchFeatureDetailPage slug={slug} />;
+  return (
+    <InTouchSectionChrome>
+      <InTouchFeatureDetailPage slug={slug} />
+    </InTouchSectionChrome>
+  );
 }

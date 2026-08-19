@@ -17,10 +17,10 @@ const Trademark = () => (
 
 export const faqMenuItems: FaqMenuItem[] = [
   {
-    label: "IronCAP X",
+    label: "IronCAP XMail",
     display: (
       <>
-        IronCAP X<Trademark />
+        IronCAP<Trademark /> XMail
       </>
     ),
     href: "/faq/ironcap-x",
@@ -54,6 +54,49 @@ export const faqMenuItems: FaqMenuItem[] = [
   },
 ];
 
+function normalizePathname(pathname: string | null) {
+  if (!pathname) {
+    return "/";
+  }
+
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function getActiveFaqItem(pathname: string) {
+  return faqMenuItems.find((item) => {
+    const href = normalizePathname(item.href);
+    return pathname === href || pathname.startsWith(`${href}/`);
+  });
+}
+
+export function FaqBreadcrumb({
+  positionClassName = "left-6 lg:left-13",
+}: {
+  positionClassName?: string;
+}) {
+  const pathname = normalizePathname(usePathname());
+  const activeItem = getActiveFaqItem(pathname);
+
+  if (!activeItem) {
+    return null;
+  }
+
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className={`absolute top-7 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] ${positionClassName}`}
+    >
+      <span className="text-steel-gray">FAQ</span>
+      <span aria-hidden className="text-lite-gray">
+        /
+      </span>
+      <span className="text-quantum-blue">
+        {activeItem.display ?? activeItem.label}
+      </span>
+    </nav>
+  );
+}
+
 /**
  * FAQ Title
  * ─────────
@@ -62,8 +105,17 @@ export const faqMenuItems: FaqMenuItem[] = [
  *   2. Black sub-menu bar with the FAQ category links. The active item
  *      (matched against the current pathname) is highlighted in quantum blue.
  */
-export function Title({ title = "FAQ" }: { title?: string }) {
-  const pathname = usePathname();
+export function Title({
+  title = "FAQ",
+  onActiveItemClick,
+}: {
+  title?: string;
+  onActiveItemClick?: (
+    href: string,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => void;
+}) {
+  const pathname = normalizePathname(usePathname());
 
   return (
     <div
@@ -86,11 +138,17 @@ export function Title({ title = "FAQ" }: { title?: string }) {
         />
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12px]">
           {faqMenuItems.map((m, i) => {
-            const active = pathname === m.href;
+            const href = normalizePathname(m.href);
+            const active = pathname === href || pathname.startsWith(`${href}/`);
             return (
               <li key={m.label} className="flex items-center gap-6">
                 <Link
                   href={m.href}
+                  onClick={(event) => {
+                    if (active) {
+                      onActiveItemClick?.(m.href, event);
+                    }
+                  }}
                   aria-current={active ? "page" : undefined}
                   className={`${
                     active

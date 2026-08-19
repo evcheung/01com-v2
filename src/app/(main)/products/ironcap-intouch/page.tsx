@@ -1,46 +1,85 @@
 import { Button } from "@/components/ui/button";
 import LottiePlayer from "@/components/LottiePlayer";
 import InTouchLegacyHighlightsSection from "@/components/products/InTouchLegacyHighlightsSection";
-import animation1 from "@/assets/animations/icon-IC-inTouch.json"
+import InTouchProductTitle from "@/components/products/InTouchProductTitle";
 import animation2 from  "@/assets/animations/icon-IC-intouchGo.json"
 import animation4 from "@/assets/animations/icon-IC-intouchGoMail.json"
 import animation5 from "@/assets/animations/iconDark-IC-intouchSecureKey.json"
 import animation6 from "@/assets/animations/icon-IC-intouch-SE.json"
+import Link from "next/link";
 import Image from "next/image";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 
 const howWorkSteps = [
   {
     step: "1",
-    title: "LOGIN + SELECT COMPUTER",
+    title: "SIGN UP",
     body: (
       <>
-        Either login to your InTouch account to pick your computer from the
-        list or quickly find your computer by its Computer Name (Click{" "}
+        Sign up for a free IronCAP<Trademark /> InTouch account{" "}
         <a
-          href="https://locator.01com.com/ecommerce/account.php"
+          href="https://locator.01com.com/ecommerce/?pid=5"
           target="_blank"
           rel="noopener noreferrer"
           className="text-quantum-green hover:underline"
         >
           here
-        </a>{" "}
-        to see how to create an InTouch account and activate your computer to
-        become InTouch enabled.)
+        </a>
+        .
       </>
     ),
     icon: "/product_assets/device_1.svg",
   },
   {
     step: "2",
-    title: "LAUNCH INTOUCH GO",
-    body: "Make sure you have internet connection on your mobile device (e.g. cellular data or WiFi internet connection) and then launch InTouch Go.",
+    title: "INSTALL INTOUCH",
+    body: (
+      <>
+        From the computer that you wish to remotely access, go to{" "}
+        <Link
+          href="/"
+          className="text-quantum-green hover:underline"
+        >
+          01com.com
+        </Link>
+        .
+        Login to your IronCAP<Trademark /> InTouch account (Login -&gt; Access My
+        PC) and download/install the IronCAP<Trademark /> InTouch software onto
+        the computer. Follow the simple on-screen instructions to create your
+        remote access credentials.
+      </>
+    ),
     icon: "/product_assets/device_2.svg",
   },
   {
     step: "3",
-    title: "READY TO GO",
-    body: "After authentication, you will be able to remotely control your desktop computer from your mobile device.",
+    title: "REMOTELY ACCESS",
+    body: (
+      <>
+        To remotely access your IronCAP<Trademark /> InTouch-ready computer,
+        simply go to{" "}
+        <Link
+          href="/"
+          className="text-quantum-green hover:underline"
+        >
+          01com.com
+        </Link>{" "}
+        and login to your IronCAP<Trademark /> InTouch account or quickly find
+        your InTouch-ready computer by its name. For speedy access from your
+        mobile devices, you can install our free mobile app{" "}
+        <a href="#intouch-go" className="text-quantum-green hover:underline">
+          IronCAP<Trademark /> InTouch Go
+        </a>{" "}
+        or{" "}
+        <a
+          href="#intouch-gomail"
+          className="text-quantum-green hover:underline"
+        >
+          IronCAP<Trademark /> InTouch GoMail
+        </a>{" "}
+        (for Outlook Mobilization).
+      </>
+    ),
     icon: "/product_assets/device_4.svg",
   },
 ];
@@ -93,25 +132,7 @@ export default function InTouchPage() {
       <section className="relative overflow-hidden bg-white text-black scroll-mt-24">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12 md:pb-20">
           <div className="flex flex-col gap-6 lg:gap-8">
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center">
-              <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start">
-                <LottiePlayer
-                  src={animation1}
-                  className="w-[130px] h-[168px]"
-                />
-              </div>
-
-              <div className="flex flex-col justify-center gap-1 max-w-full lg:max-w-[980px]">
-                <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-                  IronCAP<Trademark /> InTouch
-                </h2>
-
-                <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
-                  Work remotely with quantum-safe, absolute security via any
-                  device from anywhere, anytime
-                </p>
-              </div>
-            </div>
+            <InTouchProductTitle />
 
             <div className="grid gap-8 py-2 sm:pl-[162px] xl:grid-cols-2 xl:gap-16">
               {introFeatureColumns.map((item) => (
@@ -292,7 +313,10 @@ export default function InTouchPage() {
       </section>
 
       {/* ─── InTouch Go ─── */}
-      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
+      <section
+        id="intouch-go"
+        className="bg-white py-12 md:py-16 px-6 md:px-[95px] scroll-mt-24"
+      >
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -339,12 +363,76 @@ export default function InTouchPage() {
               InTouch. Login to the InTouch account you have just created and
               follow the on-screen instructions to activate the computer.
             </p>
+
+            <div className="flex justify-start mt-8 overflow-x-auto">
+              <div className="grid grid-cols-3 gap-0 w-full">
+                {[
+                  {
+                    name: "iPhone/iPad",
+                    img: "/product_assets/Rectangle_appstore.png",
+                    url: "https://apps.apple.com/ca/app/im-intouch-go/id526473842",
+                  },
+                  {
+                    name: "Android",
+                    img: "/product_assets/Rectangle_gplay.png",
+                    url: "https://play.google.com/store/apps/details?id=com.zeroonecom.iitgo",
+                  },
+                  {
+                    name: "Windows Tablet",
+                    img: "/product_assets/Rectangle_microsoft.png",
+                    url: "https://apps.microsoft.com/detail/9wzdncrdsmrk?hl=en-US&gl=US",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={item.name}
+                    className="flex flex-col items-center gap-2 px-6 sm:px-12 py-6"
+                  >
+                    <div className="hidden sm:flex w-16 h-16 items-center justify-center text-quantum-green/40">
+                      <svg
+                        className="w-10 h-10"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        viewBox="0 0 24 24"
+                      >
+                        {i === 0 && (
+                          <rect x="7" y="2" width="10" height="20" rx="2" />
+                        )}
+                        {i === 1 && (
+                          <rect x="6" y="3" width="12" height="18" rx="2" />
+                        )}
+                        {i === 2 && <path d="M4 6h16v12H4zM2 18h20" />}
+                      </svg>
+                    </div>
+                    <span className="text-steel-gray text-[12px]">
+                      {item.name}
+                    </span>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={item.img}
+                        alt={item.name}
+                        className="h-6 object-contain"
+                        width={64}
+                        height={64}
+                      />
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── InTouch GoMail ─── */}
-      <section className="bg-white py-12 md:py-16 px-6 md:px-[95px]">
+      <section
+        id="intouch-gomail"
+        className="bg-white py-12 md:py-16 px-6 md:px-[95px] scroll-mt-24"
+      >
         <div className="max-w-[1512px] mx-auto flex flex-col lg:flex-row gap-8">
           <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start pt-2">
             <LottiePlayer
@@ -408,7 +496,7 @@ export default function InTouchPage() {
 
             {/* GoMail compatibility */}
             <div className="flex justify-start mt-8 overflow-x-auto">
-              <div className="grid grid-cols-2 gap-0 border-t border-steel-gray/20 w-full">
+              <div className="grid grid-cols-2 gap-0 w-full">
                 {[
                   {
                     name: "iPhone/iPad",
@@ -423,9 +511,7 @@ export default function InTouchPage() {
                 ].map((item, i) => (
                   <div
                     key={item.name}
-                    className={`flex flex-col items-center gap-2 px-6 sm:px-12 py-6 ${
-                      i > 0 ? "border-l border-steel-gray/20" : ""
-                    }`}
+                    className="flex flex-col items-center gap-2 px-6 sm:px-12 py-6"
                   >
                     <div className="hidden sm:flex w-16 h-16 items-center justify-center text-quantum-green/40">
                       <svg

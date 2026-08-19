@@ -10,7 +10,7 @@ export const documentsCards: DocumentsCardData[] = [
     title: "User's Guide",
     items: [
       {
-        title: "IronCAP™ X",
+        title: "IronCAP™ XMail",
         href: "https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm",
       },
       {
@@ -44,7 +44,7 @@ export const documentsCards: DocumentsCardData[] = [
       },
       {
         title: "IronCAP™ OnCall",
-        href: "https://imoncall.01com.com/go/freeversion.php",
+        href: "/products/ironcap-oncall/pricing-and-comparison",
       },
       {
         title: "IronCAP™ Co-Branding Guideline",

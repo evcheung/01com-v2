@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import {
+  getProductFeatureBreadcrumb,
+  normalizeProductPath,
+  ProductFeatureBreadcrumb,
+} from "@/components/products/ProductFeatureBreadcrumb";
+
 export const onCallSectionItems = [
   { label: "Features", href: "/products/ironcap-oncall/features" },
   { label: "Support", href: "/products/ironcap-oncall/support" },
@@ -29,43 +35,17 @@ const featureDetailLabels: Record<string, string> = {
   "technician-management": "Users Hierarchy",
 };
 
-const normalizePath = (path: string | null) => {
-  if (!path) {
-    return "";
-  }
-
-  return path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
-};
-
-function getFeatureBreadcrumb(pathname: string) {
-  const featurePrefix = `${FEATURES_PAGE_HREF}/`;
-
-  if (!pathname.startsWith(featurePrefix)) {
-    return null;
-  }
-
-  const slug = pathname.slice(featurePrefix.length);
-
-  if (!slug || slug.includes("/")) {
-    return null;
-  }
-
-  const label = featureDetailLabels[slug];
-
-  if (!label) {
-    return null;
-  }
-
-  return { label, href: pathname };
-}
-
 export function OnCallSectionChrome({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = normalizePath(usePathname());
-  const featureBreadcrumb = getFeatureBreadcrumb(pathname);
+  const pathname = normalizeProductPath(usePathname());
+  const featureBreadcrumb = getProductFeatureBreadcrumb({
+    pathname,
+    featuresPageHref: FEATURES_PAGE_HREF,
+    featureDetailLabels,
+  });
   const showBackArrow = pathname !== MAIN_PAGE_HREF;
 
   return (
@@ -88,7 +68,7 @@ export function OnCallSectionChrome({
         />
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] sm:grid-cols-3 lg:flex lg:items-center lg:gap-6">
           {onCallSectionItems.map((item, i) => {
-            const normalizedHref = normalizePath(item.href);
+            const normalizedHref = normalizeProductPath(item.href);
             const active =
               pathname === normalizedHref ||
               pathname.startsWith(`${normalizedHref}/`);
@@ -143,24 +123,10 @@ export function OnCallSectionChrome({
             </Link>
 
             {featureBreadcrumb ? (
-              <nav aria-label="Breadcrumb">
-                <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[9px] font-medium uppercase tracking-[0.06em] text-quantum-blue">
-                  <li className="flex items-center gap-1.5">
-                    <Link
-                      href={FEATURES_PAGE_HREF}
-                      className="transition-colors hover:text-quantum-green"
-                    >
-                      Features
-                    </Link>
-                    <span aria-hidden className="text-quantum-blue/60">
-                      &gt;
-                    </span>
-                  </li>
-                  <li aria-current="page" className="text-quantum-blue/75">
-                    {featureBreadcrumb.label}
-                  </li>
-                </ol>
-              </nav>
+              <ProductFeatureBreadcrumb
+                label={featureBreadcrumb.label}
+                featuresPageHref={FEATURES_PAGE_HREF}
+              />
             ) : null}
           </div>
         </section>

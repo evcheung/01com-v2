@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Title } from "@/components/faq/Title";
+import { useEffect, useState } from "react";
+import { FaqBreadcrumb, Title } from "@/components/faq/Title";
 import { Bottom } from "@/components/resources/Bottom";
 
 type SpanChild = {
@@ -41,6 +41,9 @@ type FaqGroup = {
 
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 const brandPhrase = "IronCAP InTouch";
+const DEFAULT_FAQ_CATEGORY = "General Questions";
+const REMOTE_WAKE_UP_CATEGORY = "Using Remote Wake-Up";
+const REMOTE_WAKE_UP_FAQ_HREF = "/faq/ironcap-intouch#using-remote-wake-up";
 
 const faqGroups: FaqGroup[] = [
   {
@@ -58,7 +61,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "40b76e8abccf0",
                 "_type": "span",
                 "marks": [],
-                "text": "IronCAP InTouch is a remote access solution that allows you to provide remote access to multiple computers with the ability to administer and manage them from a single web page. After signing up for the service at "
+                "text": "IronCAP InTouch is a remote access solution that allows you to provide remote access to multiple computers with the ability to administer and manage them from a single web page. After signing up for the service "
               },
               {
                 "_key": "40b76e8abccf1",
@@ -66,13 +69,13 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "5085ab87ecb5"
                 ],
-                "text": "www.imintouch.com"
+                "text": "here"
               },
               {
                 "_key": "40b76e8abccf2",
                 "_type": "span",
                 "marks": [],
-                "text": ", you can login to your Administrator page from "
+                "text": ", you can log in to your Administrator page "
               },
               {
                 "_key": "40b76e8abccf3",
@@ -80,13 +83,13 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "f1648390660b"
                 ],
-                "text": "www.imintouch.com"
+                "text": "here"
               },
               {
                 "_key": "40b76e8abccf4",
                 "_type": "span",
                 "marks": [],
-                "text": ", to activate computers, configure settings, and quickly access any of your computers. Try it out for free by signing up for a "
+                "text": " to activate computers, configure settings, and quickly access any of your computers. Try it out for free by signing up for a "
               },
               {
                 "_key": "40b76e8abccf5",
@@ -107,12 +110,12 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "5085ab87ecb5",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/"
+                "href": "https://locator.01com.com/ecommerce/account.php"
               },
               {
                 "_key": "f1648390660b",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/login/"
+                "href": "https://locator.01com.com/login.php?"
               },
               {
                 "_key": "bc52c6c4a67f",
@@ -150,7 +153,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "24d8be9040c9",
                 "_type": "span",
                 "marks": [],
-                "text": "Upon activation, you can access your computer from anywhere. Go to "
+                "text": "Upon activation, you can access your computer from anywhere. Go "
               },
               {
                 "_key": "34ce96e4ae1f",
@@ -158,20 +161,20 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "6a35464aa6fa"
                 ],
-                "text": "www.imintouch.com"
+                "text": "here"
               },
               {
                 "_key": "63596a09853d",
                 "_type": "span",
                 "marks": [],
-                "text": ", and login using your Computer Name, Login Name and Password. 01's technology establishes a connection between the device you are currently using, and your distant computer. Each connection is encrypted using Secure Socket Layer (SSL) 256 bit key encryption for complete data security - the same technology that is used for most online banking applications."
+                "text": " and log in using your Computer Name, Login Name and Password. 01's technology establishes a connection between the device you are currently using and your distant computer. Each connection is encrypted using Secure Socket Layer (SSL) 256-bit key encryption for complete data security, the same technology used for most online banking applications."
               }
             ],
             "markDefs": [
               {
                 "_key": "6a35464aa6fa",
                 "_type": "link",
-                "href": "https://01com.com/imintouch-remote-pc-desktop/"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -542,7 +545,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "b5b0a73805230",
                 "_type": "span",
                 "marks": [],
-                "text": "Latest versions of Internet Explorer, Mozilla Firefox and Google Chrome"
+                "text": "Latest versions of Edge, Mozilla Firefox and Google Chrome"
               }
             ],
             "level": 1,
@@ -636,7 +639,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "977170035dec0",
                 "_type": "span",
                 "marks": [],
-                "text": "The host computer's bios and network card must support Wake-Up on Lan (WOL), and it must be enabled in both."
+                "text": "The host computer must support either Intel vPro or Wakeup-up-on-LAN or both."
               }
             ],
             "level": 1,
@@ -683,7 +686,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "cbafe464426f",
                 "_type": "link",
-                "href": "https://01com.com/imintouch-remote-pc-desktop/faqs#using-remote-wake-up"
+                "href": "/faq/ironcap-intouch#using-remote-wake-up"
               }
             ],
             "style": "normal"
@@ -758,7 +761,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "e0e6663369da0",
                 "_type": "span",
                 "marks": [],
-                "text": "Internet Explorer 7.0+"
+                "text": "Edge 7.0+"
               }
             ],
             "level": 1,
@@ -790,7 +793,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "366886d97ef10",
                 "_type": "span",
                 "marks": [],
-                "text": "Microsoft Pocket PC Internet Explorer"
+                "text": "Microsoft Pocket PC Edge"
               }
             ],
             "level": 1,
@@ -979,7 +982,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "e14e66b85360",
                 "_type": "link",
-                "href": "https://01com.com/imintouch-remote-pc-desktop/faqs#using-remote-wake-up"
+                "href": "/faq/ironcap-intouch#using-remote-wake-up"
               }
             ],
             "style": "normal"
@@ -1191,7 +1194,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "68e6ff9ea5d6",
                 "_type": "link",
-                "href": "http://www.01com.com/free-trials/imintouch_download_trial_choose.php"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -1355,7 +1358,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "b439d2a7414c0",
                 "_type": "span",
                 "marks": [],
-                "text": "To learn more about SecurePC / SecureKEY go to "
+                "text": "To learn more about SecurePC / SecureKEY, go "
               },
               {
                 "_key": "d7895c2298c7",
@@ -1363,14 +1366,14 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "4e73ded7aea7"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key/"
+                "text": "here."
               }
             ],
             "markDefs": [
               {
                 "_key": "4e73ded7aea7",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key/"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -1591,7 +1594,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "b2e7069ab73b0",
                 "_type": "span",
                 "marks": [],
-                "text": "Yes, Peregrine Technology Inc. conducted an independent security audit. Read their report by clicking "
+                "text": "Yes, Peregrine Technology Inc. conducted an independent security audit. Read their report "
               },
               {
                 "_key": "b2e7069ab73b1",
@@ -1605,14 +1608,14 @@ const faqGroups: FaqGroup[] = [
                 "_key": "b2e7069ab73b2",
                 "_type": "span",
                 "marks": [],
-                "text": " (link to Peregrine Technology audit PDF)."
+                "text": "."
               }
             ],
             "markDefs": [
               {
                 "_key": "2b5b954ab0a0",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Peregrine_testimony.pdf"
+                "href": "/pdf/Peregrine_testimony.pdf"
               }
             ],
             "style": "normal"
@@ -1890,7 +1893,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "94e4bfcf3b1e0",
                 "_type": "span",
                 "marks": [],
-                "text": "Learn more about the IronCAP InTouch SecurePC / SecureKEY at "
+                "text": "Learn more about the IronCAP InTouch SecurePC / SecureKEY "
               },
               {
                 "_key": "e9d8dad26d84",
@@ -1898,14 +1901,14 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "e20d0ab38fcb"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key"
+                "text": "here."
               }
             ],
             "markDefs": [
               {
                 "_key": "e20d0ab38fcb",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -2055,7 +2058,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "dbe625b54d300",
                 "_type": "span",
                 "marks": [],
-                "text": "Learn more about the IronCAP InTouch SecurePC / SecureKEY at "
+                "text": "Learn more about the IronCAP InTouch SecurePC / SecureKEY "
               },
               {
                 "_key": "17a85695159d",
@@ -2063,14 +2066,14 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "c49eb9ba2551"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key"
+                "text": "here."
               }
             ],
             "markDefs": [
               {
                 "_key": "c49eb9ba2551",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/secure-key"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -2801,7 +2804,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "9455f9018db10",
                 "_type": "span",
                 "marks": [],
-                "text": "From any PC with the Internet, go to "
+                "text": "From any PC with Internet access, go "
               },
               {
                 "_key": "8bc81c8924e5",
@@ -2809,20 +2812,20 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "bc7d5c737306"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "text": "here"
               },
               {
                 "_key": "2c97de3ad2f9",
                 "_type": "span",
                 "marks": [],
-                "text": " then click \"Login\" and select \"Access My PC\".\n\nIf you want to access a specific computer: Enter the Computer Name you established during IronCAP InTouch installation and click \"Go\". Once your computer has been found, you will be prompted for your Login Name and Password to authenticate yourself. Finally, select the feature you wish to choose from the drop down box and click \"Login\". You are now connected to your remote computer using IronCAP InTouch.\n\nIf you want to access a computer from the List of Computers page (List of all the computers assigned to your account): Enter the Login ID and Password you used when requesting your IronCAP InTouch trial, and then click \"Go\". Click on the \"Nickname\" of the computer you wish to access and then enter the \"My Desktop\" password when prompted. You are now connected to your remote computer using IronCAP InTouch."
+                "text": ", then click \"Login\" and select \"Access My PC\".\n\nIf you want to access a specific computer: Enter the Computer Name you established during IronCAP InTouch installation and click \"Go\". Once your computer has been found, you will be prompted for your Login Name and Password to authenticate yourself. Finally, select the feature you wish to choose from the drop down box and click \"Login\". You are now connected to your remote computer using IronCAP InTouch.\n\nIf you want to access a computer from the List of Computers page (List of all the computers assigned to your account): Enter the Login ID and Password you used when requesting your IronCAP InTouch trial, and then click \"Go\". Click on the \"Nickname\" of the computer you wish to access and then enter the \"My Desktop\" password when prompted. You are now connected to your remote computer using IronCAP InTouch."
               }
             ],
             "markDefs": [
               {
                 "_key": "bc7d5c737306",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -2855,7 +2858,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "76834fd9ec920",
                 "_type": "span",
                 "marks": [],
-                "text": "For any other devices, open the browser of your wireless device and go to  "
+                "text": "For any other devices, open the browser on your wireless device and go "
               },
               {
                 "_key": "98f67e507a9b",
@@ -2863,7 +2866,7 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "26c3ab2a6f8e"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "text": "here"
               },
               {
                 "_key": "5b0c589afb13",
@@ -2876,7 +2879,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "26c3ab2a6f8e",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -2976,7 +2979,7 @@ const faqGroups: FaqGroup[] = [
       },
       {
         "id": "2c4118489156",
-        "question": "I receive an error message in Internet Explorer 8 (or later) when trying to upload files using the My Files option, how can I resolve this?",
+        "question": "I receive an error message in Edge 8 (or later) when trying to upload files using the My Files option, how can I resolve this?",
         "answer": [
           {
             "_key": "0e4958016bf8",
@@ -3000,7 +3003,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "e5511931156a0",
                 "_type": "span",
                 "marks": [],
-                "text": "In Internet Explorer, select Tools->Internet Options"
+                "text": "In Edge, select Tools->Internet Options"
               }
             ],
             "level": 1,
@@ -3060,7 +3063,7 @@ const faqGroups: FaqGroup[] = [
       },
       {
         "id": "847af5777f15",
-        "question": "I cannot start the remote control viewer when using Internet Explorer 10, how can I resolve this?",
+        "question": "I cannot start the remote control viewer when using Edge 10, how can I resolve this?",
         "answer": [
           {
             "_key": "431eb7864076",
@@ -3084,7 +3087,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "0ee9f79f01de0",
                 "_type": "span",
                 "marks": [],
-                "text": "Open Internet Explorer 10"
+                "text": "Open Edge 10"
               }
             ],
             "level": 1,
@@ -3179,7 +3182,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "e71bc3af09780",
                 "_type": "span",
                 "marks": [],
-                "text": "The computer you want to “switch on” must either support the “Wake-up-on-LAN” (WOL) or the Intel vPro feature. Most of the newer computers have built-in support of WOL but only more high-end business computers have the Intel vPro feature. If you are not sure, please check with your computer vendors. If your computer supports both WOL and Intel vPro, the IronCAP InTouch Remote Wake-Up feature will work with either one or both enabled."
+                "text": "The host computer must support either Intel vPro or Wakeup-up-on-LAN or both."
               }
             ],
             "level": 1,
@@ -3348,7 +3351,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "7ebb7f85d833",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/support/"
+                "href": "/products/ironcap-intouch/support"
               }
             ],
             "style": "normal"
@@ -3725,7 +3728,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "46eb2f3268ba",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/pricing-comparison/"
+                "href": "/products/ironcap-intouch/pricing-and-comparison"
               }
             ],
             "style": "normal"
@@ -3868,7 +3871,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "f3e17f7920ea0",
                 "_type": "span",
                 "marks": [],
-                "text": "Login to your online account "
+                "text": "Log in to your online account "
               },
               {
                 "_key": "8a826e9a9adc",
@@ -4389,7 +4392,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "d0007e2b9a5b0",
                 "_type": "span",
                 "marks": [],
-                "text": "Periodically, "
+                "text": "Periodically, the "
               },
               {
                 "_key": "67e8c92bb77e",
@@ -4397,13 +4400,13 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "2652b31cc92e"
                 ],
-                "text": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "text": "IronCAP InTouch login page"
               },
               {
                 "_key": "6c8fe000f01b",
                 "_type": "span",
                 "marks": [],
-                "text": " will be unavailable due to maintenance. If you cannot access it, please try using our backup login page at "
+                "text": " will be unavailable due to maintenance. If you cannot access it, please try using our backup login page "
               },
               {
                 "_key": "d0007e2b9a5b3",
@@ -4411,7 +4414,7 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "2d78c3a3ed8f"
                 ],
-                "text": "http://locator.01com.com"
+                "text": "here."
               }
             ],
             "markDefs": [
@@ -4423,7 +4426,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "2652b31cc92e",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop"
+                "href": "/products/ironcap-intouch"
               }
             ],
             "style": "normal"
@@ -4491,7 +4494,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "9a78e0901c9b",
                 "_type": "link",
-                "href": "https://www.01com.com/imintouch-remote-pc-desktop/features"
+                "href": "/products/ironcap-intouch/features"
               }
             ],
             "style": "normal"
@@ -4655,7 +4658,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "bdacc899af7a",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Norton_2010.pdf"
+                "href": "/pdf/Norton_2010.pdf"
               }
             ],
             "style": "normal"
@@ -4679,7 +4682,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "7c54b910c8eb",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Norton_2008.pdf"
+                "href": "/pdf/Norton_2008.pdf"
               }
             ],
             "style": "normal"
@@ -4703,7 +4706,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "04c6d806ed34",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Trend_2010.pdf"
+                "href": "/pdf/Trend_2010.pdf"
               }
             ],
             "style": "normal"
@@ -4727,7 +4730,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "5db6d9fd1e4d",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/McAfee_2007.pdf"
+                "href": "/pdf/McAfee_2007.pdf"
               }
             ],
             "style": "normal"
@@ -4751,7 +4754,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "ba1242a40249",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/McAfee.pdf"
+                "href": "/pdf/McAfee.pdf"
               }
             ],
             "style": "normal"
@@ -4775,7 +4778,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "539591b54fbf",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/NOD32.pdf"
+                "href": "/pdf/NOD32.pdf"
               }
             ],
             "style": "normal"
@@ -4799,7 +4802,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "a6ec4f421af8",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Fsecureinternetsecurity2010.pdf"
+                "href": "/pdf/Fsecureinternetsecurity2010.pdf"
               }
             ],
             "style": "normal"
@@ -4823,7 +4826,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "a2ec34b76044",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/zonealarm.pdf"
+                "href": "/pdf/zonealarm.pdf"
               }
             ],
             "style": "normal"
@@ -4847,7 +4850,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "0e1af325aa73",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/SystemMechanicProsetup.pdf"
+                "href": "/pdf/SystemMechanicProsetup.pdf"
               }
             ],
             "style": "normal"
@@ -4871,7 +4874,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "c5fc73cbf5b8",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/Windows_Live_OneCare.pdf"
+                "href": "/pdf/Windows_Live_OneCare.pdf"
               }
             ],
             "style": "normal"
@@ -5047,7 +5050,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "30275bddfce10",
                 "_type": "span",
                 "marks": [],
-                "text": "If your computer is part of a Local Area Network behind a Proxy Server, enter the Proxy Directory name established by your IS administrator. More information is available at "
+                "text": "If your computer is part of a Local Area Network behind a Proxy Server, enter the Proxy Directory name established by your IS administrator. More information is available "
               },
               {
                 "_key": "30275bddfce11",
@@ -5055,20 +5058,20 @@ const faqGroups: FaqGroup[] = [
                 "marks": [
                   "1482faf3ef79"
                 ],
-                "text": "http://www.01com.com/pdf/faqs/proxy_document.pdf"
+                "text": "here"
               },
               {
                 "_key": "30275bddfce12",
                 "_type": "span",
                 "marks": [],
-                "text": " when your computer is connected behind a MicroSoft Proxy Server."
+                "text": " when your computer is connected behind a Microsoft Proxy Server."
               }
             ],
             "markDefs": [
               {
                 "_key": "1482faf3ef79",
                 "_type": "link",
-                "href": "http://www.01com.com/pdf/faqs/proxy_document.pdf"
+                "href": "/pdf/faqs/proxy_document.pdf"
               }
             ],
             "style": "normal"
@@ -5178,7 +5181,7 @@ const faqGroups: FaqGroup[] = [
               {
                 "_key": "25f6fb374750",
                 "_type": "link",
-                "href": "https://www.01com.com/pdf/products_iit/NortonAntiVirus_email.pdf"
+                "href": "/pdf/products_iit/NortonAntiVirus_email.pdf"
               }
             ],
             "style": "normal"
@@ -5649,6 +5652,31 @@ function slugify(value: string) {
     .replace(/^-|-$/g, "");
 }
 
+function getFaqCategoryFromHash() {
+  const hash = window.location.hash.replace(/^#/, "");
+
+  return (
+    faqGroups.find((group) => slugify(group.category) === hash)?.category ??
+    DEFAULT_FAQ_CATEGORY
+  );
+}
+
+function getFaqCategoryHref(category: string) {
+  const categoryHash = slugify(category);
+
+  if (category === DEFAULT_FAQ_CATEGORY) {
+    return "/faq/ironcap-intouch";
+  }
+
+  return `/faq/ironcap-intouch#${categoryHash}`;
+}
+
+function pushFaqCategoryHref(href: string) {
+  if (`${window.location.pathname}${window.location.hash}` !== href) {
+    window.history.pushState(null, "", href);
+  }
+}
+
 function renderBrandText(text: string) {
   const parts = text.split(brandPhrase);
 
@@ -5673,7 +5701,11 @@ function renderBrandText(text: string) {
   });
 }
 
-function renderChild(child: SpanChild, markDefs: MarkDef[] = []) {
+function renderChild(
+  child: SpanChild,
+  markDefs: MarkDef[] = [],
+  onRemoteWakeUpLinkClick?: () => void,
+) {
   const marks = child.marks ?? [];
   return marks.reduce<React.ReactNode>((node, mark) => {
     if (mark === "strong") {
@@ -5686,9 +5718,27 @@ function renderChild(child: SpanChild, markDefs: MarkDef[] = []) {
 
     const link = markDefs.find((definition) => definition._key === mark);
     if (link) {
+      const href = link.href;
+
+      if (href.startsWith("/")) {
+        const handleClick =
+          href === REMOTE_WAKE_UP_FAQ_HREF && onRemoteWakeUpLinkClick
+            ? (event: React.MouseEvent<HTMLAnchorElement>) => {
+                event.preventDefault();
+                onRemoteWakeUpLinkClick();
+              }
+            : undefined;
+
+        return (
+          <Link href={href} onClick={handleClick} className="text-quantum-blue hover:underline">
+            {node}
+          </Link>
+        );
+      }
+
       return (
         <a
-          href={link.href}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           className="text-quantum-blue hover:underline"
@@ -5702,29 +5752,35 @@ function renderChild(child: SpanChild, markDefs: MarkDef[] = []) {
   }, renderBrandText(child.text));
 }
 
-function renderInline(block: PortableBlock) {
+function renderInline(block: PortableBlock, onRemoteWakeUpLinkClick?: () => void) {
   return block.children.map((child) => (
-    <span key={child._key}>{renderChild(child, block.markDefs)}</span>
+    <span key={child._key}>
+      {renderChild(child, block.markDefs, onRemoteWakeUpLinkClick)}
+    </span>
   ));
 }
 
-function renderParagraph(block: PortableBlock) {
+function renderParagraph(block: PortableBlock, onRemoteWakeUpLinkClick?: () => void) {
   if (block.style === "h4" || block.style === "h5") {
     return (
       <h4 key={block._key} className="mt-4 text-[18px] font-medium text-steel-gray first:mt-0">
-        {renderInline(block)}
+        {renderInline(block, onRemoteWakeUpLinkClick)}
       </h4>
     );
   }
 
   return (
     <p key={block._key} className="mb-3 last:mb-0">
-      {renderInline(block)}
+      {renderInline(block, onRemoteWakeUpLinkClick)}
     </p>
   );
 }
 
-function renderList(blocks: PortableBlock[], key: string) {
+function renderList(
+  blocks: PortableBlock[],
+  key: string,
+  onRemoteWakeUpLinkClick?: () => void,
+) {
   const listType = blocks[0]?.listItem;
   const level = blocks[0]?.level ?? 1;
   const ListTag = listType === "number" ? "ol" : "ul";
@@ -5734,21 +5790,29 @@ function renderList(blocks: PortableBlock[], key: string) {
     <ListTag key={key} className={`mb-3 ${listStyle} ${level > 1 ? "pl-10" : "pl-6"}`}>
       {blocks.map((block) => (
         <li key={block._key} className="mb-1 last:mb-0">
-          {renderInline(block)}
+          {renderInline(block, onRemoteWakeUpLinkClick)}
         </li>
       ))}
     </ListTag>
   );
 }
 
-function PortableAnswer({ blocks }: { blocks: PortableBlock[] }) {
+function PortableAnswer({
+  blocks,
+  onRemoteWakeUpLinkClick,
+}: {
+  blocks: PortableBlock[];
+  onRemoteWakeUpLinkClick?: () => void;
+}) {
   const rendered: React.ReactNode[] = [];
   let listBuffer: PortableBlock[] = [];
   let listKey = "";
 
   const flushList = () => {
     if (listBuffer.length === 0) return;
-    rendered.push(renderList(listBuffer, `${listKey}-${listBuffer[0]._key}`));
+    rendered.push(
+      renderList(listBuffer, `${listKey}-${listBuffer[0]._key}`, onRemoteWakeUpLinkClick),
+    );
     listBuffer = [];
     listKey = "";
   };
@@ -5765,7 +5829,7 @@ function PortableAnswer({ blocks }: { blocks: PortableBlock[] }) {
     }
 
     flushList();
-    rendered.push(renderParagraph(block));
+    rendered.push(renderParagraph(block, onRemoteWakeUpLinkClick));
   });
 
   flushList();
@@ -5777,10 +5841,12 @@ function FaqList({
   items,
   openId,
   onToggle,
+  onRemoteWakeUpLinkClick,
 }: {
   items: Faq[];
   openId: string | null;
   onToggle: (id: string) => void;
+  onRemoteWakeUpLinkClick?: () => void;
 }) {
   return (
     <ul className="flex flex-col gap-3">
@@ -5810,14 +5876,25 @@ function FaqList({
               </span>
             </button>
 
-            {open && (
+            <div
+              id={`${faq.id}-panel`}
+              aria-hidden={!open}
+              inert={!open}
+              className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="min-h-0 overflow-hidden">
               <div
-                id={`${faq.id}-panel`}
                 className="mt-2 rounded-[9px] bg-white px-5 py-5 text-[15px] leading-6 text-steel-gray shadow-sm sm:px-7"
               >
-                <PortableAnswer blocks={faq.answer} />
+                <PortableAnswer
+                  blocks={faq.answer}
+                  onRemoteWakeUpLinkClick={onRemoteWakeUpLinkClick}
+                />
               </div>
-            )}
+              </div>
+            </div>
           </li>
         );
       })}
@@ -5826,14 +5903,57 @@ function FaqList({
 }
 
 export default function FaqIronCapInTouchPage() {
-  const [selectedCategory, setSelectedCategory] = useState(faqGroups[0].category);
+  const [selectedCategory, setSelectedCategory] = useState(DEFAULT_FAQ_CATEGORY);
   const [openId, setOpenId] = useState<string | null>(null);
   const selectedGroup =
     faqGroups.find((group) => group.category === selectedCategory) ?? faqGroups[0];
 
+  useEffect(() => {
+    if (window.location.hash === `#${slugify(selectedCategory)}`) {
+      requestAnimationFrame(() => {
+        document.getElementById(slugify(selectedCategory))?.scrollIntoView();
+      });
+    }
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    const syncCategoryWithHash = () => {
+      setSelectedCategory(getFaqCategoryFromHash());
+      setOpenId(null);
+    };
+    const frame = requestAnimationFrame(syncCategoryWithHash);
+
+    window.addEventListener("hashchange", syncCategoryWithHash);
+    window.addEventListener("popstate", syncCategoryWithHash);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", syncCategoryWithHash);
+      window.removeEventListener("popstate", syncCategoryWithHash);
+    };
+  }, []);
+
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category);
     setOpenId(null);
+    pushFaqCategoryHref(getFaqCategoryHref(category));
+  };
+
+  const handleActiveFaqHeadingClick = (
+    _href: string,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
+    event.preventDefault();
+    handleSelectCategory(DEFAULT_FAQ_CATEGORY);
+  };
+
+  const handleRemoteWakeUpLinkClick = () => {
+    handleSelectCategory(REMOTE_WAKE_UP_CATEGORY);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById("using-remote-wake-up")?.scrollIntoView();
+      });
+    });
   };
 
   const handleToggle = (id: string) => {
@@ -5842,10 +5962,10 @@ export default function FaqIronCapInTouchPage() {
 
   return (
     <div className="bg-white font-urbanist">
-      <Title />
+      <Title onActiveItemClick={handleActiveFaqHeadingClick} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[405px_1fr]">
-        <aside className="bg-black px-6 py-12 text-white sm:px-12 lg:min-h-197.5 lg:py-16">
+        <aside className="bg-black px-6 py-12 text-white sm:px-12 lg:py-16">
           <h2 className="text-[20px] font-medium leading-8.5 text-white">
             Categories
           </h2>
@@ -5886,7 +6006,8 @@ export default function FaqIronCapInTouchPage() {
           </div>
         </aside>
 
-        <section className="px-6 py-16 lg:px-13">
+        <section className="relative self-start px-6 pt-16 pb-0 lg:px-13">
+          <FaqBreadcrumb />
           <h2
             id={slugify(selectedGroup.category)}
             className="text-quantum-blue text-[30px] font-medium leading-11.5"
@@ -5900,11 +6021,12 @@ export default function FaqIronCapInTouchPage() {
               items={selectedGroup.faqs}
               openId={openId}
               onToggle={handleToggle}
+              onRemoteWakeUpLinkClick={handleRemoteWakeUpLinkClick}
             />
           </div>
 
           <section className="flex justify-center bg-white py-16">
-            <Bottom />
+            <Bottom compact />
           </section>
         </section>
       </div>

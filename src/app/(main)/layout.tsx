@@ -10,9 +10,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <Footer />
 
       <LiveChatLink
-        href="https://imoncall.01com.com/pre-sales/"
+        href="/pre-sales"
         windowName="live-chat-pre-sales"
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 bg-[#71bfff] hover:bg-[#5aaff0] text-black font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-lg transition-colors"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 bg-quantum-blue hover:bg-quantum-blue/85 text-black font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-lg transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

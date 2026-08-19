@@ -16,7 +16,7 @@ const inTouchTrademarkName = (
 const newsUpdates = [
   {
     label: <>{inTouchTrademarkName} v12 is available</>,
-    href: "https://www.01com.com/imintouch/v12.0/en/",
+    href: "/imintouch/v12.0/en/",
   },
   {
     label: "Read this month's newsletter",

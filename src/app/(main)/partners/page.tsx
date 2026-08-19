@@ -50,7 +50,7 @@ const data: WhyPartner[] = [
   {
     title: "Industry Leader",
     description:
-      "Utilizing the IronCAP™ Toolkits, we have developed the industry's first quantum-safe email encryption software, IronCAP X™ that everyone can use today on their classical computers. Besides  setting a precedent for developing a practical solution using IronCAP™'s post-quantum cryptography, we can also help vendors to become the First Movers of their respective solutions for the quantum computing era.",
+      "Utilizing the IronCAP™ Toolkits, we have developed the industry's first quantum-safe email encryption software, IronCAP™ XMail, that everyone can use today on their classical computers. Besides  setting a precedent for developing a practical solution using IronCAP™'s post-quantum cryptography, we can also help vendors to become the First Movers of their respective solutions for the quantum computing era.",
     icon: "/partners_assets/icons/a-3.svg",
   },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Title } from "@/components/faq/Title";
+import { FaqBreadcrumb, Title } from "@/components/faq/Title";
 import { Bottom } from "@/components/resources/Bottom";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
 const OnCallBrand = () => (
@@ -422,14 +422,22 @@ function FaqList({
               </span>
             </button>
 
-            {open && (
+            <div
+              id={`${f.id}-panel`}
+              aria-hidden={!open}
+              inert={!open}
+              className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="min-h-0 overflow-hidden">
               <div
-                id={`${f.id}-panel`}
                 className="mt-2 rounded-[9px] bg-white px-7 py-5 text-[15px] leading-6 text-steel-gray shadow-sm"
               >
                 {f.answer}
               </div>
-            )}
+              </div>
+            </div>
           </li>
         );
       })}
@@ -447,9 +455,13 @@ export default function FaqIronCapOnCallPage() {
       <Title />
 
       {/* ─── Body (full-width single column) ─── */}
-      <div className="mx-auto w-full max-w-322.5 px-6 py-16 lg:px-9">
-        <h2 className="text-quantum-blue text-[30px] font-medium leading-11.5">
-          IronCAP<Trademark />{" "}OnCall FAQs
+      <div className="relative mx-auto w-full max-w-322.5 px-6 pt-16 pb-0 lg:px-9">
+        <FaqBreadcrumb positionClassName="left-6 lg:left-9" />
+        <h2
+          id="general-questions"
+          className="text-quantum-blue text-[30px] font-medium leading-11.5"
+        >
+          General Questions
         </h2>
         <div className="mt-2 h-px w-full bg-lite-gray/40" />
 
@@ -462,9 +474,9 @@ export default function FaqIronCapOnCallPage() {
         </div>
 
         {/* Learn-more pill button */}
-      <section className="bg-white py-16 flex justify-center">
-        <Bottom/>
-      </section>
+        <section className="flex justify-center bg-white py-16">
+          <Bottom compact />
+        </section>
       </div>
     </div>
   );

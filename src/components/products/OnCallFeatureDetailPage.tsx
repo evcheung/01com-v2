@@ -17,7 +17,7 @@ export type OnCallFeatureDetail = {
 export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   {
     slug: "remote-desktop-control",
-    title: "Features - Remote Control",
+    title: "Remote Control",
     description:
       "As a support agent, nothing is more effective than temporarily taking remote control of your customers' computers to resolve their technical issues. In addition to controlling the screen you may also do remote file transfer.",
     images: [
@@ -31,7 +31,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "chat",
-    title: "Features - Live Chat",
+    title: "Live Chat",
     description:
       "This essentially can eliminate your customer service phone lines. Your customers can submit live chat requests through a queue (clicking the Live-Chat button on your web site embedded with an URL given to you by I'm OnCall). Your agents simply pick up requests and perform real-time live chat with the customers via the Internet. Your customers may leave call-back requests if the queue is busy.",
     images: [
@@ -53,7 +53,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "multi-sessions",
-    title: "Features - Multi-session",
+    title: "Multi-session",
     description: "Agents can chat with many customers at the same time.",
     images: [
       {
@@ -66,7 +66,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "survey",
-    title: "Features - Post-session Survey",
+    title: "Post-session Survey",
     description:
       "You can ensure customer satisfaction by sending a survey to them automatically. Customers can rate on the support service they have just received.",
     images: [
@@ -80,7 +80,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "easy-customization",
-    title: "Features - Customization",
+    title: "Customization",
     description:
       "A wide range of customization options including customizing your banner, agents' photos, etc. on the support session page are available in I'm OnCall.",
     images: [
@@ -94,7 +94,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "incident-status-viewing",
-    title: "Features - Incident Tracking",
+    title: "Incident Tracking",
     description:
       "Your agents or service representatives can view all open incidents including time stamping, priority and categories. Closed incidents are also available via the History feature.",
     images: [
@@ -108,7 +108,7 @@ export const onCallFeatureDetails: OnCallFeatureDetail[] = [
   },
   {
     slug: "technician-management",
-    title: "Features - Users Hierarchy",
+    title: "Users Hierarchy",
     description:
       "You can classify users into Agents, Supervisors, and Adminstrators according to your company requirements.",
     images: [

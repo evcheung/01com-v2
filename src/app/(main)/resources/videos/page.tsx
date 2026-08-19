@@ -15,9 +15,9 @@ const videos = [
     href: "https://www.youtube.com/watch?v=Kc6TGzEXs74",
   },
   {
-    title: "How IronCAP™ X Works?",
+    title: "How IronCAP™ XMail Works?",
     description:
-      "IronCAP™ X simply integrates with your everyday email clients such as Outlook and Gmail. We only charge for business usage. For personal usage, simply sign up a FREE account and install IronCAP™ X on your computer where you run your email clients and begin sending encrypted emails to your recipients as well as enjoying other features. Use IronCAP™ X to ensure the safety of your data, not only against cyber attacks from computers today but also from quantum computers in the future.",
+      "IronCAP™ XMail simply integrates with your everyday email clients such as Outlook and Gmail. We only charge for business usage. For personal usage, simply sign up a FREE account and install IronCAP™ XMail on your computer where you run your email clients and begin sending encrypted emails to your recipients as well as enjoying other features. Use IronCAP™ XMail to ensure the safety of your data, not only against cyber attacks from computers today but also from quantum computers in the future.",
     href: "https://www.youtube.com/watch?v=iKSD8MYShsY",
   },
   {
@@ -69,9 +69,9 @@ const videos = [
     href: "https://www.youtube.com/watch?v=PNuX-usIgbA",
   },
   {
-    title: "IronCAP™ X Tutorial",
+    title: "IronCAP™ XMail Tutorial",
     description:
-      "Tutorial of our newest launch, IronCAP™ X. The world's most proven, quantum-safe, end-to-end encryption. It seamlessly integrates with existing systems and protects your data with its unique technology and digital signatures.",
+      "Tutorial of our newest launch, IronCAP™ XMail, the world's most proven, quantum-safe, end-to-end encryption. It seamlessly integrates with existing systems and protects your data with its unique technology and digital signatures.",
     href: "https://www.youtube.com/watch?v=iKSD8MYShsY",
   },
 ];

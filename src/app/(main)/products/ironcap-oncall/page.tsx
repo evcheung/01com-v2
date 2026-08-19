@@ -3,7 +3,11 @@
 import LottiePlayer from "@/components/LottiePlayer";
 import OnCallLegacyHighlightsSection from "@/components/products/OnCallLegacyHighlightsSection";
 import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
+import { Button } from "@/components/ui/button";
 const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
+const BUY_NOW_URL = "https://www.01com.com/free-trials/imoncall_free_trial.php?b=1";
+const TRY_IT_FREE_URL = "https://imoncall.01com.com/go/freeversion.php";
 
 /* ── Data ──────────────────────────────────────────────────────────── */
 const onCallAdvantages = [
@@ -49,6 +53,25 @@ export default function IroncapOncall() {
                 organizations to offer remote support over the Internet to their
                 customers.
               </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button
+                  text="Try It Free"
+                  url={TRY_IT_FREE_URL}
+                  border="border-quantum-blue"
+                  textColor="text-quantum-blue"
+                  hoverBg="hover:bg-quantum-blue/10"
+                  bgDots="bg-quantum-blue"
+                  isBlank="true"
+                />
+                <Button
+                  text="Buy Now"
+                  url={BUY_NOW_URL}
+                  border="border-quantum-green"
+                  textColor="text-quantum-green"
+                  hoverBg="hover:bg-quantum-green/10"
+                  isBlank="true"
+                />
+              </div>
             </div>
           </div>
         </div>

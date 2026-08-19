@@ -11,7 +11,7 @@ const products = [
     url: "/products/ironcap-engine/",
   },
   {
-    name: "IronCAP™ Xmail",
+    name: "IronCAP™ XMail",
     desc: "Outlook Email Encryption",
     icon: "/home_assets/p_2.svg",
     url: "/products/ironcap-xmail/",
@@ -203,7 +203,7 @@ export default function Home() {
               </p>
               <a
                 href="/quantum-threat/" className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors">
-                Read more about the quantum cryptography
+                About Quantum Threat (Q-Day)
               </a>
             </div>
           </div>

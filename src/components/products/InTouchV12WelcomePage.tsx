@@ -114,7 +114,7 @@ const featureGroups: FeatureGroup[] = [
 function InTouchTrademarkName() {
   return (
     <>
-      IronCAP<sup className="text-[0.55em]">™</sup> InTouch
+      IronCAP<sup className="text-[0.55em]">™</sup>{" "}InTouch
     </>
   );
 }
@@ -163,9 +163,14 @@ function LinkIcon() {
 }
 
 function FeatureItemRow({ item }: { item: FeatureItem }) {
+  const isLink = Boolean(item.href);
   const content = (
     <>
-      <span className="text-[15px] leading-[24px] text-steel-gray transition-colors group-hover:text-quantum-blue">
+      <span
+        className={`text-[15px] leading-[24px] text-steel-gray ${
+          isLink ? "transition-colors group-hover:text-quantum-blue" : ""
+        }`}
+      >
         {item.description}
       </span>
       {item.href ? <LinkIcon /> : null}
@@ -173,14 +178,14 @@ function FeatureItemRow({ item }: { item: FeatureItem }) {
   );
 
   const className =
-    "group flex min-h-[64px] items-start justify-between gap-5 border-t border-[#D7DEE3] py-4";
+    "flex min-h-[64px] items-start justify-between gap-5 border-t border-[#D7DEE3] py-4";
 
   if (!item.href) {
     return <div className={className}>{content}</div>;
   }
 
   return (
-    <Link href={item.href} className={className}>
+    <Link href={item.href} className={`group ${className}`}>
       {content}
     </Link>
   );

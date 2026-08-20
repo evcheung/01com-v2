@@ -699,7 +699,7 @@ const faqCategories: FaqCategory[] = [
             Business account using their email address and they will be the
             Administrator. During user creation, your IT will need to enter the
             email address of the FREE account. When you or the FREE user runs
-            the installation on their computer, IronCAP<Trademark /> XMail{" "}is
+            the installation on their computers, IronCAP<Trademark /> XMail{" "}is
             smart enough to recognize that the installation is on top of an
             existing FREE IronCAP<Trademark /> XMail{" "}account. It will then tie the
             billing onto this Business account. The new private key will be

@@ -66,7 +66,7 @@ function TintedPngIcon({
   return (
     <span
       aria-hidden
-      className={`block bg-quantum-blue transition-colors duration-200 group-hover:bg-quantum-green ${className}`}
+      className={`block bg-quantum-blue ${className}`}
       style={{
         WebkitMaskImage: `url("${icon.src}")`,
         maskImage: `url("${icon.src}")`,
@@ -83,7 +83,7 @@ function TintedPngIcon({
 
 function WhyInTouchCard({ card }: { card: WhyInTouchCard }) {
   return (
-    <article className="group rounded-[24px] border border-[#D7DEE3] bg-white p-6 shadow-[0_14px_32px_rgba(27,27,39,0.06)] transition-transform duration-200 hover:-translate-y-1 sm:p-8">
+    <article className="rounded-[24px] border border-[#D7DEE3] bg-white p-6 shadow-[0_14px_32px_rgba(27,27,39,0.06)] sm:p-8">
       <div className="flex items-center gap-4">
         <div className="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-[20px] bg-[#EEF7FF] ring-1 ring-[#D6EAFE]">
           <TintedPngIcon icon={card.icon} className="h-[42px] w-[42px]" />

@@ -16,7 +16,7 @@ const howWorkSteps = [
     title: "SIGN UP",
     body: (
       <>
-        Sign up for a free IronCAP<Trademark /> InTouch account{" "}
+        Sign up for a free IronCAP<Trademark />{" "}InTouch account{" "}
         <a
           href="https://locator.01com.com/ecommerce/?pid=5"
           target="_blank"
@@ -43,8 +43,8 @@ const howWorkSteps = [
           01com.com
         </Link>
         .
-        Login to your IronCAP<Trademark /> InTouch account (Login -&gt; Access My
-        PC) and download/install the IronCAP<Trademark /> InTouch software onto
+        Login to your IronCAP<Trademark />{" "}InTouch account (Login -&gt; Access My
+        PC) and download/install the IronCAP<Trademark />{" "}InTouch software onto
         the computer. Follow the simple on-screen instructions to create your
         remote access credentials.
       </>
@@ -56,7 +56,7 @@ const howWorkSteps = [
     title: "REMOTELY ACCESS",
     body: (
       <>
-        To remotely access your IronCAP<Trademark /> InTouch-ready computer,
+        To remotely access your IronCAP<Trademark />{" "}InTouch-ready computer,
         simply go to{" "}
         <Link
           href="/"
@@ -64,18 +64,18 @@ const howWorkSteps = [
         >
           01com.com
         </Link>{" "}
-        and login to your IronCAP<Trademark /> InTouch account or quickly find
+        and login to your IronCAP<Trademark />{" "}InTouch account or quickly find
         your InTouch-ready computer by its name. For speedy access from your
         mobile devices, you can install our free mobile app{" "}
         <a href="#intouch-go" className="text-quantum-green hover:underline">
-          IronCAP<Trademark /> InTouch Go
+          IronCAP<Trademark />{" "}InTouch Go
         </a>{" "}
         or{" "}
         <a
           href="#intouch-gomail"
           className="text-quantum-green hover:underline"
         >
-          IronCAP<Trademark /> InTouch GoMail
+          IronCAP<Trademark />{" "}InTouch GoMail
         </a>{" "}
         (for Outlook Mobilization).
       </>
@@ -327,7 +327,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<Trademark /> InTouch Go
+              IronCAP<Trademark />{" "}InTouch Go
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -336,7 +336,7 @@ export default function InTouchPage() {
             </p>
 
             <p className="text-steel-gray text-[14px] sm:text-[15px] leading-[22px] sm:leading-[24px]">
-              IronCAP<Trademark /> InTouch Go is a free mobile app that allows
+              IronCAP<Trademark />{" "}InTouch Go is a free mobile app that allows
               you to remote control your computer as if you were sitting in
               front of it without having to use an Internet browser. Your
               remote computer, with all your full-blown desktop applications,
@@ -443,7 +443,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<Trademark /> InTouch GoMail
+              IronCAP<Trademark />{" "}InTouch GoMail
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -565,7 +565,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<Trademark /> InTouch SecureKey
+              IronCAP<Trademark />{" "}InTouch SecureKey
             </h2>
 
             <p className="text-quantum-green text-[16px] sm:text-[20px] font-medium leading-[28px] sm:leading-[34px]">
@@ -621,7 +621,7 @@ export default function InTouchPage() {
 
           <div className="flex flex-col gap-[7px] max-w-full lg:max-w-[1141px]">
             <h2 className="text-quantum-blue text-[24px] sm:text-[30px] font-medium leading-[34px] sm:leading-[46px]">
-              IronCAP<Trademark /> InTouch Server
+              IronCAP<Trademark />{" "}InTouch Server
               Edition
             </h2>
 

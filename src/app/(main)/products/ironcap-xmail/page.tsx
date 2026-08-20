@@ -14,12 +14,12 @@ const xmailAdvantages = [
     title: "Quick + Easy Setup",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail will automatically
+        IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail will automatically
         detect if your email recipient has an IronCAP
-        <sup className="text-[9.675px]">™</sup> XMail account. If not, an
+        <sup className="text-[9.675px]">™</sup>{" "}XMail account. If not, an
         invitation message with the link to install the software will be sent
         accordingly. Upon creating a free personal IronCAP
-        <sup className="text-[9.675px]">™</sup> XMail account, the recipient can
+        <sup className="text-[9.675px]">™</sup>{" "}XMail account, the recipient can
         decrypt and read your encrypted email. It&apos;s that simple.
       </>
     ),
@@ -28,7 +28,7 @@ const xmailAdvantages = [
     title: "Zero Learning Curve",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail tightly integrates
+        IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail tightly integrates
         with your everyday email client such as Outlook, Gmail, Yahoo, etc. to
         ensure a zero learning curve. After composing your email, you can choose
         to encrypt and digitally sign this message with a simple click before
@@ -40,7 +40,7 @@ const xmailAdvantages = [
     title: "Digital Document Authenticity",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you sign your
+        IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail lets you sign your
         digital files to prove their authenticity that they are the original
         true copies from you rather than from a bogus hacker.
       </>
@@ -50,7 +50,7 @@ const xmailAdvantages = [
     title: "General File Encryption",
     body: (
       <>
-        IronCAP<sup className="text-[9.675px]">™</sup> XMail allows you to
+        IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail allows you to
         encrypt your sensitive files such as personal finances, etc. to
         safeguard against cyber attacks.
       </>
@@ -82,13 +82,13 @@ export default function IroncapXmail() {
             <div className="flex flex-col gap-4 max-w-[1140px] md:pt-10">
               <h2 className="text-[#71bfff] text-[30px] font-medium leading-[46px]">
                 IronCAP
-                <Trademark /> XMail
+                <Trademark />{" "}XMail
               </h2>
               <p className="text-[#79c99c] text-[20px] font-medium leading-[34px]">
                 End-to-End, Quantum-Safe Email Security
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                IronCAP<sup className="text-[9.675px]">™</sup> XMail is a
+                IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail is a
                 quantum-safe, end-to-end email security system powered by
                 IronCAP
                 <sup className="text-[9.675px]">™</sup> Crypto (ICC)—our
@@ -99,7 +99,7 @@ export default function IroncapXmail() {
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
                 By removing intermediary servers from the trust chain, IronCAP
-                <sup className="text-[9.675px]">™</sup> XMail helps eliminate
+                <sup className="text-[9.675px]">™</sup>{" "}XMail helps eliminate
                 man-in-the-middle exposure and ensures only intended recipients
                 can decrypt your communications. This end-to-end, zero-trust
                 design keeps every email and attachment encrypted on your
@@ -117,12 +117,12 @@ export default function IroncapXmail() {
                 If a device is lost or an account is accessed without
                 authorization, your sensitive content remains protected. Because
                 it is built on quantum-resistant cryptography, IronCAP
-                <sup className="text-[9.675px]">™</sup> XMail safeguards
+                <sup className="text-[9.675px]">™</sup>{" "}XMail safeguards
                 communications not only for today&apos;s risk landscape, but for
                 the long-term realities of the post-quantum era.
               </p>
               <p className="text-[#6e8090] text-[15px] leading-[24px]">
-                IronCAP<sup className="text-[9.675px]">™</sup> XMail sets a new
+                IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail sets a new
                 standard for email security: end-to-end, quantum-safe, and
                 engineered for enduring trust.
               </p>
@@ -146,7 +146,7 @@ export default function IroncapXmail() {
             <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
               Unlike some secure email systems that store your emails and
               require your recipients to read from their servers, IronCAP
-              <sup className="text-[9.675px]">™</sup> XMail provides direct
+              <sup className="text-[9.675px]">™</sup>{" "}XMail provides direct
               end-to-end encryption with no central storage point that&apos;s
               vulnerable to a cyber attack.
             </p>
@@ -164,7 +164,7 @@ export default function IroncapXmail() {
               End-to-End Digital Signature
             </p>
             <p className="text-white text-[15px] leading-[24px] mb-8 max-w-[1246px]">
-              IronCAP<sup className="text-[9.675px]">™</sup> XMail lets you
+              IronCAP<sup className="text-[9.675px]">™</sup>{" "}XMail lets you
               digitally sign your emails. Recipients can easily distinguish
               between your legitimate emails from those phishing ones.
             </p>

@@ -639,7 +639,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "977170035dec0",
                 "_type": "span",
                 "marks": [],
-                "text": "The host computer must support either Intel vPro or Wakeup-up-on-LAN or both."
+                "text": "The host computer must support either Intel vPro or Wakeup-on-LAN or both."
               }
             ],
             "level": 1,
@@ -3182,7 +3182,7 @@ const faqGroups: FaqGroup[] = [
                 "_key": "e71bc3af09780",
                 "_type": "span",
                 "marks": [],
-                "text": "The host computer must support either Intel vPro or Wakeup-up-on-LAN or both."
+                "text": "The host computer must support either Intel vPro or Wakeup-on-LAN or both."
               }
             ],
             "level": 1,

@@ -4,7 +4,7 @@ import { XMailInstallationForm } from "./XMailInstallationForm";
 const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
 
 const sharedFeatures = [
-  "Protected by IronCAP Cryptography",
+  "Protected by IronCAP™ Cryptography",
   "Send/Receive Encrypted Emails",
   "Encrypt Sensitive Files",
   "Digitally Sign your Emails/Files",
@@ -48,7 +48,7 @@ const usagePages = {
       },
       {
         title: "Already have a FREE Personal account?",
-        body: 'There is no need to reinstall. Select "My Account" in your IronCAP XMail software to upgrade to a Business account.',
+        body: 'There is no need to reinstall. Select "My Account" in your IronCAP™ XMail software to upgrade to a Business account.',
       },
     ],
     buttonText: "Send Installation Email",

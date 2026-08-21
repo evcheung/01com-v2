@@ -19,6 +19,7 @@ function XMailName({ className = "" }: { className?: string }) {
 
 type Plan = {
   name: string;
+  displayName?: React.ReactNode;
   eyebrow: string;
   price: string;
   cadence: string;
@@ -42,7 +43,7 @@ const plans: readonly Plan[] = [
     description:
       "For individuals who need quantum-safe email, file encryption, and signing without a business account.",
     features: [
-      "Protected by IronCAP Cryptography",
+      "Protected by IronCAP™ Cryptography",
       "Send/Receive Encrypted Emails",
       "Encrypt Sensitive Files",
       "Digitally Sign your Emails/Files",
@@ -64,7 +65,7 @@ const plans: readonly Plan[] = [
     description:
       "For organizations that need unlimited business use with centralized user and account administration.",
     features: [
-      "Protected by IronCAP Cryptography",
+      "Protected by IronCAP™ Cryptography",
       "Send/Receive Encrypted Emails",
       "Encrypt Sensitive Files",
       "Digitally Sign your Emails/Files",
@@ -81,6 +82,11 @@ const plans: readonly Plan[] = [
   },
   {
     name: "IronCAP Key",
+    displayName: (
+      <>
+        IronCAP<Trademark /> Key
+      </>
+    ),
     eyebrow: "Optional add-on",
     price: "$199.95",
     cadence: "one-time purchase",
@@ -89,7 +95,7 @@ const plans: readonly Plan[] = [
     features: [
       "Add Physical Authentication",
       "Compatible with Free and Business Users",
-      "Cryptographic Processing Inside the IronCAP Key",
+      "Cryptographic Processing Inside the IronCAP™ Key",
       "Extra Protection Outside the Operating System",
     ],
     cta: {
@@ -102,7 +108,7 @@ const plans: readonly Plan[] = [
 
 const comparisonRows = [
   {
-    capability: "Protected by IronCAP Cryptography",
+    capability: "Protected by IronCAP™ Cryptography",
     personal: "Included",
     business: "Included",
     key: "Enhances protection",
@@ -170,7 +176,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           {plan.eyebrow}
         </p>
         <h3 className="mt-3 text-[24px] font-medium leading-[32px] text-quantum-blue">
-          {plan.name}
+          {plan.displayName ?? plan.name}
         </h3>
         <div className="mt-6 flex flex-wrap items-end gap-x-3 gap-y-1">
           <p className="text-[42px] font-medium leading-none text-quantum-green sm:text-[50px]">
@@ -244,14 +250,14 @@ export default function XMailPricingComparisonSection() {
         <div className="mx-auto max-w-[1512px] px-6 pb-14 md:px-[95px] md:pb-[72px]">
           <div className="mx-auto max-w-[980px] text-center">
             <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-quantum-green">
-              IronCAP XMail Plans
+              <XMailName /> Plans
             </p>
             <h2 className="mt-3 text-[30px] font-medium leading-[40px] text-quantum-blue sm:text-[38px] sm:leading-[46px]">
               Pricing &amp; Comparison
             </h2>
             <p className="mt-4 text-[15px] leading-[24px] text-steel-gray sm:text-[16px] sm:leading-[28px]">
               Choose free personal protection, business licensing for teams, or
-              the optional IronCAP Key for hardware-backed authentication with
+              the optional IronCAP<Trademark /> Key for hardware-backed authentication with
               {" "}
               <XMailName className="font-medium text-quantum-blue" />.
             </p>
@@ -298,7 +304,7 @@ export default function XMailPricingComparisonSection() {
                       Business Usage
                     </th>
                     <th className="w-[23%] border-b border-[#D7DEE3] px-4 py-4 text-left text-[18px] font-medium text-quantum-blue">
-                      IronCAP Key
+                      IronCAP<Trademark /> Key
                     </th>
                   </tr>
                 </thead>

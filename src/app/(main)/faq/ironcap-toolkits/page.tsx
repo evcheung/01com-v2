@@ -28,20 +28,25 @@ const faqCategories: FaqCategory[] = [
         question: "What is ICC?",
         answer: (
           <>
-            ICC stands for IronCAP Crypto, an NIST-approved quantum-safe
-            cryptographic system utilizing NIST-approved post-quantum
-            cryptography (PQC) algorithms and IronCAP<Trademark />&apos;s ground
-            breaking technologies. IronCAP<Trademark />{" "}Toolkits provide the
-            application programming interface to developers to let them easily
-            integrate ICC with their applications. This transforms their
-            applications to be safe against cyberattacks from not only computers
-            today but also against those from upcoming quantum computers.
+            ICC stands for IronCAP<Trademark /> Crypto, an NIST-approved
+            quantum-safe cryptographic system utilizing NIST-approved
+            post-quantum cryptography (PQC) algorithms and
+            IronCAP<Trademark />&apos;s ground breaking technologies.
+            IronCAP<Trademark />{" "}Toolkits provide the application programming
+            interface to developers to let them easily integrate ICC with their
+            applications. This transforms their applications to be safe against
+            cyberattacks from not only computers today but also against those
+            from upcoming quantum computers.
           </>
         ),
       },
       {
         id: "cost",
-        question: "What is the cost of using IronCAP Toolkits?",
+        question: (
+          <>
+            What is the cost of using IronCAP<Trademark /> Toolkits?
+          </>
+        ),
         answer: (
           <>
             ICC Toolkits is designed to be extremely cost effective to fit all
@@ -53,7 +58,11 @@ const faqCategories: FaqCategory[] = [
       },
       {
         id: "license",
-        question: "How do I license IronCAP Toolkits?",
+        question: (
+          <>
+            How do I license IronCAP<Trademark /> Toolkits?
+          </>
+        ),
         answer: (
           <>
             Please contact us by email at{" "}
@@ -71,11 +80,19 @@ const faqCategories: FaqCategory[] = [
   },
   {
     id: "howToUse",
-    label: "How to use IronCAP Toolkits",
+    label: (
+      <>
+        How to use IronCAP<Trademark /> Toolkits
+      </>
+    ),
     items: [
       {
         id: "features",
-        question: "What kind of cryptographic features does IronCAP Toolkits provide?",
+        question: (
+          <>
+            What kind of cryptographic features does IronCAP<Trademark /> Toolkits provide?
+          </>
+        ),
         answer: (
           <>
             IronCAP<Trademark />{" "}Toolkits provides 5 functionalities:
@@ -91,7 +108,11 @@ const faqCategories: FaqCategory[] = [
       },
       {
         id: "how-do-i-use",
-        question: "How do I use IronCAP Toolkits in my application?",
+        question: (
+          <>
+            How do I use IronCAP<Trademark /> Toolkits in my application?
+          </>
+        ),
         answer: (
           <>
             IronCAP<Trademark />{" "}Toolkits provides an application programming

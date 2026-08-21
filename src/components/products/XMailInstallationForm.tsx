@@ -6,6 +6,8 @@ const INSTALLATION_API_URL =
   process.env.XMAIL_INSTALLATION_API_URL || "/api/installation";
 const RECAPTCHA_SITE_KEY = process.env.XMAIL_RECAPTCHA_SITE_KEY || "";
 
+const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
+
 type InstallationFormValues = {
   email: string;
   firstname: string;
@@ -235,8 +237,12 @@ export function XMailInstallationForm({
         </p>
         <ol className="mt-6 list-decimal space-y-3 pl-5 text-left text-[14px] leading-[22px] text-steel-gray">
           <li>Go to the computer where you normally send and receive email.</li>
-          <li>Open the installation email from IronCAP XMail.</li>
-          <li>Follow the instructions in that email to install IronCAP XMail.</li>
+          <li>
+            Open the installation email from IronCAP<Trademark /> XMail.
+          </li>
+          <li>
+            Follow the instructions in that email to install IronCAP<Trademark /> XMail.
+          </li>
         </ol>
         <button
           type="button"
@@ -296,7 +302,7 @@ export function XMailInstallationForm({
           Privacy Policy
         </a>
         . An email will be sent to the above address with a link to install
-        IronCAP XMail.
+        IronCAP<Trademark /> XMail.
       </p>
 
       {RECAPTCHA_SITE_KEY ? (

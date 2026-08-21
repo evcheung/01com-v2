@@ -5336,7 +5336,7 @@ const faqGroups: FaqGroup[] = [
       },
       {
         "id": "fb461bb2962e",
-        "question": "How do I stop an end-user from gaining remote computer access to their computer?",
+        "question": "How do I stop an end-user from gaining remote computer access to their computers?",
         "answer": [
           {
             "_key": "02cf77fce7b9",

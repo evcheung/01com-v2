@@ -15,7 +15,7 @@ const downloadOptions = [
   {
     label: "Business Usage",
     description:
-      "For organizations that need IronCAP XMail protection with business account support and centralized user management.",
+      "For organizations that need IronCAP™ XMail protection with business account support and centralized user management.",
     buttonText: "Business Download",
     href: IRONCAP_X_BUSINESS_DOWNLOAD_ROUTE,
   },

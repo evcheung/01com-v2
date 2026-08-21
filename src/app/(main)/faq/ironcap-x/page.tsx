@@ -31,10 +31,10 @@ const faqCategories: FaqCategory[] = [
         answer: (
           <>
             IronCAP<Trademark /> XMail{" "}is the world&apos;s first Quantum-safe end-to-end
-            email encryption system utilizing IronCAP Crypto (ICC) as its
-            cryptographic foundation with post-quantum cryptographic algorithms
-            that are approved by NIST (National Institute of Standards and
-            Technology in the US).
+            email encryption system utilizing IronCAP<Trademark /> Crypto (ICC)
+            as its cryptographic foundation with post-quantum cryptographic
+            algorithms that are approved by NIST (National Institute of
+            Standards and Technology in the US).
           </>
         ),
       },
@@ -49,7 +49,7 @@ const faqCategories: FaqCategory[] = [
               href={IRONCAP_X_FREE_DOWNLOAD_ROUTE}
               className="text-quantum-blue transition-colors hover:text-quantum-green hover:underline"
             >
-              the IronCAP XMail download page
+              the IronCAP<Trademark /> XMail download page
             </Link>{" "}
             to get the free personal version of IronCAP<Trademark /> XMail.
           </>
@@ -212,9 +212,9 @@ const faqCategories: FaqCategory[] = [
             The IronCAP<Trademark /> XMail{" "}private key is quantum-safe. This means
             it is not only safe against attacks from classical computers but
             also against attacks from future quantum computers. Its underlying
-            cryptographic technology is IronCAP Crypto (ICC) which contains
-            post-quantum cryptographic algorithms that are approved by NIST
-            (National Institute of Standards and Technology in the US).
+            cryptographic technology is IronCAP<Trademark /> Crypto (ICC) which
+            contains post-quantum cryptographic algorithms that are approved by
+            NIST (National Institute of Standards and Technology in the US).
           </>
         ),
       },

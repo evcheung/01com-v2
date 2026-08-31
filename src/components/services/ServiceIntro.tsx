@@ -28,7 +28,6 @@ export function ServiceIntro({
 }: ServiceIntroProps) {
   return (
     <Section
-      id={id}
       bg="bg-black"
       className="pb-16"
       innerClassName="text-white"
@@ -40,7 +39,7 @@ export function ServiceIntro({
         />
       ) : null}
 
-      <div className="flex flex-col sm:flex-row gap-8">
+      <div id={id} className="scroll-mt-32 flex flex-col sm:flex-row gap-8">
         <div className="flex-shrink-0 w-full sm:w-[130px] flex justify-center sm:justify-start">
           <LottiePlayer
             src={animation}

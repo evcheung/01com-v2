@@ -171,17 +171,17 @@ export default function Products() {
               customers today are safeguarding data and guarding against any
               unexpected quantum attacks in the future.
             </p>
-            <span className="text-steel-gray text-[14px] font-normal uppercase tracking-wide">
-              Read more on quantum threat . . .
-            </span>
+            <a  href="/quantum-threat/" className="text-[#b6bbcd] text-[14px] font-normal uppercase tracking-wide hover:text-[#71bfff] transition-colors">
+              About Quantum Threat (Q-Day)
+            </a>
           </div>
         </div>
       </section>
 
       {/* Unique Strengths */}
       <section className="bg-black">
-        <div className="py-20 px-24 max-w-[1512px] mx-auto ">
-          <h2 className="text-quantum-blue text-[30px] font-medium leading-[46px] mb-10">
+        <div className="py-12 md:py-20 px-6 md:px-[95px] max-w-[1512px] mx-auto">
+          <h2 className="text-quantum-blue text-[24px] md:text-[30px] font-medium leading-[46px] mb-6 md:mb-10">
             Unique Strengths
           </h2>
 
@@ -225,14 +225,7 @@ export default function Products() {
           <div className="flex flex-col md:flex-row justify-center gap-8 mt-16">
             <Button
               text="brochure"
-              url="https://www.01com.com/pdf/brochures/IIT%20Brochure.pdf"
-              border="border-quantum-green"
-              textColor="text-quantum-green"
-              hoverBg="hover:bg-quantum-green/10"
-            />
-            <Button
-              text="step into the future, buy IronCAP now"
-              url="https://imoncall.01com.com/ironcapchat/"
+              url="https://www.01com.com/pdf/brochures/IronCAP%20Brochure%20Digital.pdf"
               border="border-quantum-green"
               textColor="text-quantum-green"
               hoverBg="hover:bg-quantum-green/10"

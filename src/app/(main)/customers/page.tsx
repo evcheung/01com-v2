@@ -88,9 +88,10 @@ export default function CustomersPage() {
                 Automated Border Control
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
-                Visa and entry decisions require sub-100ms response times. TEEs
-                allow complex logic rules to run securely at the edge without the
-                high latency of FHE.
+                Visa and entry decisions require sub-100ms response times.
+                Trusted Execution Environments (TEEs) allow complex logic rules
+                to run securely at the edge without the high latency of Fully
+                Homomorphic Encryption (FHE).
               </p>
             </div>
             <div>
@@ -137,8 +138,10 @@ export default function CustomersPage() {
                 Intel Synthesis (LLM) 
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
-                Resource-heavy Transformers are prohibitively expensive on FHE;
-                TEEs offer the only viable path to secure high-performance LLMs.
+                Resource-heavy Transformers are prohibitively expensive on Fully
+                Homomorphic Encryption (FHE); Trusted Execution Environments
+                (TEEs) offer the only viable path to secure high-performance
+                LLMs.
               </p>
             </div>
             <div>
@@ -146,8 +149,9 @@ export default function CustomersPage() {
                 Network Intrusion (IDS)
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
-                Packet classification requires massive scale; TEE overhead stays
-                manageable at ~17% to 40% higher CPU utilization.
+                Packet classification requires massive scale; Trusted Execution
+                Environment (TEE) overhead stays manageable at ~17% to 40%
+                higher CPU utilization.
               </p>
             </div>
             <div>
@@ -156,7 +160,8 @@ export default function CustomersPage() {
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
                 Sub-100-ms response is required for frictionless border control.
-                TEEs provide this at a low multiple of baseline cost.
+                Trusted Execution Environments (TEEs) provide this at a low
+                multiple of baseline cost.
               </p>
             </div>
             <div>
@@ -165,20 +170,21 @@ export default function CustomersPage() {
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
                 Efficient local processing on edge devices where specialized
-                FHE-GPU hardware is too heavy or power- hungry.
+                Fully Homomorphic Encryption (FHE)-GPU hardware is too heavy or
+                power-hungry.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <Heading text="IA Integrators" />
+      <Heading text="Artificial Intelligence (AI) Integrators" />
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] py-10">
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-medium text-quantum-green mb-2">
-                AI Integrators
+                Artificial Intelligence (AI) Integrators
               </h3>
               <p className="text-steel-gray text-[15px] leading-[24px]">
                 System Integrators (SI)

@@ -11,14 +11,16 @@ export type FaqMenuItem = {
   href: string;
 };
 
-const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+const Trademark = () => (
+  <sup className="ml-0.5 align-super text-[0.48em] font-semibold">TM</sup>
+);
 
 export const faqMenuItems: FaqMenuItem[] = [
   {
-    label: "IronCAP X",
+    label: "IronCAP XMail",
     display: (
       <>
-        IronCAP X<Trademark />
+        IronCAP<Trademark /> XMail
       </>
     ),
     href: "/faq/ironcap-x",
@@ -41,7 +43,59 @@ export const faqMenuItems: FaqMenuItem[] = [
     ),
     href: "/faq/ironcap-oncall",
   },
+  {
+    label: "IronCAP Toolkits",
+    display: (
+      <>
+        IronCAP<Trademark /> Toolkits
+      </>
+    ),
+    href: "/faq/ironcap-toolkits",
+  },
 ];
+
+function normalizePathname(pathname: string | null) {
+  if (!pathname) {
+    return "/";
+  }
+
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function getActiveFaqItem(pathname: string) {
+  return faqMenuItems.find((item) => {
+    const href = normalizePathname(item.href);
+    return pathname === href || pathname.startsWith(`${href}/`);
+  });
+}
+
+export function FaqBreadcrumb({
+  positionClassName = "left-6 lg:left-13",
+}: {
+  positionClassName?: string;
+}) {
+  const pathname = normalizePathname(usePathname());
+  const activeItem = getActiveFaqItem(pathname);
+
+  if (!activeItem) {
+    return null;
+  }
+
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className={`absolute top-7 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] ${positionClassName}`}
+    >
+      <span className="text-steel-gray">FAQ</span>
+      <span aria-hidden className="text-lite-gray">
+        /
+      </span>
+      <span className="text-quantum-blue">
+        {activeItem.display ?? activeItem.label}
+      </span>
+    </nav>
+  );
+}
 
 /**
  * FAQ Title
@@ -51,8 +105,17 @@ export const faqMenuItems: FaqMenuItem[] = [
  *   2. Black sub-menu bar with the FAQ category links. The active item
  *      (matched against the current pathname) is highlighted in quantum blue.
  */
-export function Title({ title = "FAQ" }: { title?: string }) {
-  const pathname = usePathname();
+export function Title({
+  title = "FAQ",
+  onActiveItemClick,
+}: {
+  title?: string;
+  onActiveItemClick?: (
+    href: string,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => void;
+}) {
+  const pathname = normalizePathname(usePathname());
 
   return (
     <div
@@ -60,26 +123,32 @@ export function Title({ title = "FAQ" }: { title?: string }) {
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
       {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-24 min-h-[196px]">
-        <h1 className="text-white text-[50px] font-medium leading-[50px]">
+      <section className="bg-black flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 py-10 sm:py-12 min-h-[140px] lg:min-h-[196px]">
+        <h1 className="text-white text-[35px] sm:text-[42px] lg:text-[50px] font-medium leading-tight lg:leading-[50px]">
           {title}
         </h1>
       </section>
 
       {/* ─── Sub Menu ─── */}
-      <section className="bg-black relative flex items-center justify-center py-5 md:h-[88px] md:py-0">
+      <section className="bg-black relative flex items-center justify-center py-4 sm:py-5 lg:h-[88px] lg:py-0">
         {/* Top divider line */}
         <div
           aria-hidden
-          className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] max-w-[90%] bg-white/30"
+          className="absolute left-1/2 -translate-x-1/2 top-[15px] h-px w-[806px] max-w-[calc(100%-3rem)] bg-white/30"
         />
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12px]">
           {faqMenuItems.map((m, i) => {
-            const active = pathname === m.href;
+            const href = normalizePathname(m.href);
+            const active = pathname === href || pathname.startsWith(`${href}/`);
             return (
               <li key={m.label} className="flex items-center gap-6">
                 <Link
                   href={m.href}
+                  onClick={(event) => {
+                    if (active) {
+                      onActiveItemClick?.(m.href, event);
+                    }
+                  }}
                   aria-current={active ? "page" : undefined}
                   className={`${
                     active

@@ -1,19 +1,10 @@
 import { RewardCard } from "@/components/resources/rewards/RewardCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { sanityFetch } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { REWARDS_COUNT_QUERY, REWARDS_QUERY } from "@/sanity/lib/queries";
-import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 
 const PAGE_SIZE = 12;
-type RewardListItem = {
-  _id: string;
-  date: string;
-  description: string;
-  image?: string;
-  link?: string;
-  imageAltText?: string;
-};
 
 export default async function RewardsPage() {
   const currentPage = 1;
@@ -21,8 +12,8 @@ export default async function RewardsPage() {
   const end = start + PAGE_SIZE;
 
   const [rewards, total] = await Promise.all([
-    sanityFetch<RewardListItem[]>({ query: REWARDS_QUERY, params: { start, end }, tags: [...SANITY_QUERY_TAGS.rewards] }),
-    sanityFetch<number>({ query: REWARDS_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.rewards] }),
+    fetchSanity(REWARDS_QUERY, { start, end }),
+    fetchSanity(REWARDS_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
@@ -32,7 +23,7 @@ export default async function RewardsPage() {
       <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
         <div className="flex items-center gap-6 mb-12">
           <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
-            Reviews & Rewards
+            Reviews + Awards
           </h2>
           <div className="flex-1 h-px bg-lite-gray/60" />
           <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">

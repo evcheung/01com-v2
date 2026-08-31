@@ -1,7 +1,13 @@
 "use client";
 
 import LottiePlayer from "@/components/LottiePlayer";
+import OnCallLegacyHighlightsSection from "@/components/products/OnCallLegacyHighlightsSection";
 import onCallIconAnim from "@/assets/animations/icon-IC-onCall.json";
+import { Button } from "@/components/ui/button";
+const Trademark = () => <sup className="text-[0.55em]">™</sup>;
+
+const BUY_NOW_URL = "https://www.01com.com/free-trials/imoncall_free_trial.php?b=1";
+const TRY_IT_FREE_URL = "https://imoncall.01com.com/go/freeversion.php";
 
 /* ── Data ──────────────────────────────────────────────────────────── */
 const onCallAdvantages = [
@@ -22,13 +28,6 @@ export default function IroncapOncall() {
       className="font-[family-name:var(--font-urbanist)]"
       style={{ fontFamily: "var(--font-urbanist), Urbanist, sans-serif" }}
     >
-      {/* ─── Page Title ─── */}
-      <section className="bg-black flex items-center px-6 md:px-24 min-h-[140px] md:min-h-[196px]">
-        <h1 className="text-white text-[32px] md:text-[50px] font-medium leading-[40px] md:leading-[50px]">
-          Products
-        </h1>
-      </section>
-
       {/* ══ OnCall section ══════════════════════════════════════════ */}
       <section id="ironcap-oncall" className="bg-white text-black scroll-mt-24">
         <div className="max-w-[1512px] mx-auto px-6 md:px-[95px] pb-12 md:pb-20">
@@ -42,7 +41,8 @@ export default function IroncapOncall() {
             {/* Text */}
             <div className="flex flex-col gap-4 max-w-[1140px] pt-2 md:pt-10">
               <h2 className="text-[#71bfff] text-[24px] md:text-[30px] font-medium leading-[34px] md:leading-[46px]">
-                IronCAP<sup className="text-[9.275px] md:text-[11.61px]">™</sup> OnCall
+                IronCAP
+                <Trademark /> OnCall
               </h2>
               <p className="text-[#79c99c] text-[17px] md:text-[20px] font-medium leading-[26px] md:leading-[34px]">
                 End-to-End, Quantum-Safe Customer Support
@@ -53,6 +53,25 @@ export default function IroncapOncall() {
                 organizations to offer remote support over the Internet to their
                 customers.
               </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button
+                  text="Try It Free"
+                  url={TRY_IT_FREE_URL}
+                  border="border-quantum-blue"
+                  textColor="text-quantum-blue"
+                  hoverBg="hover:bg-quantum-blue/10"
+                  bgDots="bg-quantum-blue"
+                  isBlank="true"
+                />
+                <Button
+                  text="Buy Now"
+                  url={BUY_NOW_URL}
+                  border="border-quantum-green"
+                  textColor="text-quantum-green"
+                  hoverBg="hover:bg-quantum-green/10"
+                  isBlank="true"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -81,8 +100,11 @@ export default function IroncapOncall() {
               ))}
             </div>
           </div>
+
         </div>
       </section>
+
+      <OnCallLegacyHighlightsSection />
     </main>
   );
 }

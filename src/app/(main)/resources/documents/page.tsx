@@ -9,14 +9,14 @@ export default function ResourcesDocuments() {
     <>
       {/* ─── Content ─── */}
       <section className="bg-[#f5f6f8] py-16">
-        <div className="max-w-[1512px] mx-auto px-6 md:px-[95px]">
+        <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px]">
           {/* Header row */}
-          <div className="flex items-center gap-6 mb-12">
-            <h2 className="text-quantum-blue text-[26px] font-medium leading-[30px] whitespace-nowrap">
+          <div className="flex items-center gap-4 sm:gap-6 mb-12">
+            <h2 className="text-quantum-blue text-[24px] sm:text-[26px] font-medium leading-[30px] whitespace-nowrap">
               Documents
             </h2>
             <div className="flex-1 h-px bg-lite-gray/60" />
-            <div className="flex items-center justify-center w-[50px] h-[50px] text-steel-gray shrink-0">
+            <div className="flex items-center justify-center w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] text-steel-gray shrink-0">
               <Image
                 src="/resources_assets/news_i.svg"
                 alt=""

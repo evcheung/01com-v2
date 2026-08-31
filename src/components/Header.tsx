@@ -20,7 +20,7 @@ const mobileLoginOptions = [
 ];
 
 const navLinks = [
-  { label: "Services +", href: "/services" },
+  { label: "Services", href: "/services" },
   { label: "Customers", href: "/customers" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Demo", href: "/live-demo" },
@@ -46,19 +46,19 @@ export default function Header() {
       </div>
 
       {/* Desktop header */}
-      <div className="relative z-10 max-w-[1512px] mx-auto px-6 md:px-[95px] h-[91px] flex items-center justify-between">
+      <div className="relative z-10 max-w-[1512px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[95px] h-[91px] flex items-center justify-between gap-4">
         <Link href="/">
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
-            width={60}
-            height={60}
+            width={84}
+            height={84}
             className="object-contain"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Main navigation" className="hidden md:block">
+        <nav aria-label="Main navigation" className="hidden lg:block">
           <ul className="flex items-center list-none">
             <li key="divider-products">
               <div className="w-px h-[45px] bg-[#B6BBCD]" />
@@ -75,7 +75,7 @@ export default function Header() {
                 <li key={`link-${label}`}>
                   <a
                     href={href}
-                    className="text-white text-[12px] font-normal hover:text-[#71bfff] transition-colors px-6"
+                    className="text-white text-[16px] xl:text-[17px] font-normal hover:text-[#71bfff] transition-colors px-4 xl:px-6"
                   >
                     {label}
                   </a>
@@ -101,7 +101,7 @@ export default function Header() {
 
         {/* Hamburger button (mobile only) */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10"
+          className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10"
           onClick={() => setSidebarOpen(true)}
           aria-label="Open menu"
         >
@@ -114,7 +114,7 @@ export default function Header() {
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
         />
@@ -122,7 +122,7 @@ export default function Header() {
 
       {/* Mobile sidebar */}
       <aside
-        className={`fixed top-0 right-0 h-full w-72 z-50 md:hidden flex flex-col pt-8 px-6 transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-full max-w-72 z-50 lg:hidden flex flex-col pt-8 px-6 transition-transform duration-300 ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ background: "#0a0a0a" }}
@@ -142,8 +142,8 @@ export default function Header() {
           <Image
             alt="01 Quantum"
             src="/header_assets/logo.svg"
-            width={50}
-            height={50}
+            width={60}
+            height={60}
             className="object-contain"
           />
         </Link>

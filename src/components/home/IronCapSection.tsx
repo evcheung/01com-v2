@@ -1,17 +1,36 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface Item {
   name: string;
   desc: string;
   icon: string;
+  url: string;
 }
 
 interface IronCapSectionProps {
   products: Item[];
   services: Item[];
+}
+
+function renderTrademarkedName(name: string) {
+  const parts = name.split("™");
+
+  return parts.flatMap((part, index) => {
+    const isLast = index === parts.length - 1;
+
+    return isLast
+      ? [part]
+      : [
+          part,
+          <sup key={`${name}-${index}`} className="text-[0.55em] align-super">
+            ™
+          </sup>,
+        ];
+  });
 }
 
 function AnimatedList({
@@ -27,7 +46,7 @@ function AnimatedList({
 }) {
   return (
     <ul className="space-y-6">
-      {items.map(({ name, desc, icon }, index) => {
+      {items.map(({ name, desc, icon, url }, index) => {
         const itemDelay = (columnOffset + index) * 0.1;
         const iconDelay = itemDelay + 0.5;
         return (
@@ -61,14 +80,16 @@ function AnimatedList({
                   className="text-[18px] font-semibold uppercase leading-none mb-2"
                   style={{ color: nameColor }}
                 >
-                  {name}
+                  {renderTrademarkedName(name)}
                 </p>
                 <p className="text-white text-[16px] font-normal leading-none mb-1">
                   {desc}
                 </p>
-                <p className="text-[#6e8090] text-[12px] font-medium uppercase">
-                  More · · ·
-                </p>
+                <Link href={url} className="inline-block mt-1" style={{ color: "#6e8090" }}>                
+                  <p className="text-[#6e8090] text-[12px] font-medium uppercase">
+                    More · · ·
+                  </p>
+                </Link>
               </div>
             </div>
           </li>

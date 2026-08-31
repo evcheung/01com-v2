@@ -7,18 +7,19 @@ interface ButtonProps {
   textColor?: string;
   hoverBg?: string;
   bgDots?: string;
-  type?: "button" | "submit" | "reset";
   isBlank?: boolean | "true" | "false";
 }
 
 
-export const Button = ({ text, url, border, textColor, hoverBg, bgDots, type, isBlank }: ButtonProps) => {
-
+export const Button = ({ text, url, border, textColor, hoverBg, bgDots, isBlank }: ButtonProps) => {
+  const target = isBlank == "true" ? "_blank" : undefined;
+  const rel = target === "_blank" ? "noopener noreferrer" : undefined;
   return (
     <a
       href={url}
-      target={isBlank == "true" ? "_blank" : "_self"}
-      className={`inline-block border ${border || "border-white/60"} inline-flex items-center justify-center rounded-bl-lg rounded-tr-lg ${textColor || "text-white"} text-[12px] font-medium uppercase tracking-widest px-6 py-3 ${hoverBg || "hover:bg-white/10"} transition-colors`}>
+      target={target}
+      rel={rel}
+      className={`inline-flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-2 border ${border || "border-white/60"} rounded-bl-lg rounded-tr-lg ${textColor || "text-white"} text-[12px] font-medium uppercase tracking-widest text-center leading-[1.4] px-5 sm:px-6 py-3 whitespace-normal sm:flex-nowrap sm:whitespace-nowrap ${hoverBg || "hover:bg-white/10"} transition-colors`}>
       {text}
       <GreenDots color={bgDots}/>
     </a>

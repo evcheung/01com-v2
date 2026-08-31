@@ -1,17 +1,10 @@
-import { sanityFetch } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { RELEASES_COUNT_QUERY, RELEASES_QUERY } from "@/sanity/lib/queries";
 import { Pagination } from "@/components/resources/Pagination";
-import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Link from "next/link";
 import Image from "next/image";
 
 const PAGE_SIZE = 9;
-type ReleaseListItem = {
-  _id: string;
-  date: string;
-  description: string;
-  link: string;
-};
 
 export default async function ResourcesPressReleases() {
   const currentPage = 1;
@@ -19,8 +12,8 @@ export default async function ResourcesPressReleases() {
   const end = start + PAGE_SIZE;
 
   const [releases, total] = await Promise.all([
-    sanityFetch<ReleaseListItem[]>({ query: RELEASES_QUERY, params: { start, end }, tags: [...SANITY_QUERY_TAGS.releases] }),
-    sanityFetch<number>({ query: RELEASES_COUNT_QUERY, tags: [...SANITY_QUERY_TAGS.releases] }),
+    fetchSanity(RELEASES_QUERY, { start, end }),
+    fetchSanity(RELEASES_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

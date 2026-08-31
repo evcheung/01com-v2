@@ -1,18 +1,10 @@
 import { NewsletterCard } from "@/components/resources/newsletters/NewsletterCard";
 import { Pagination } from "@/components/resources/Pagination";
-import { sanityFetch } from "@/sanity/lib/client";
+import { fetchSanity } from "@/sanity/lib/client";
 import { NEWSLETTERS_COUNT_QUERY, NEWSLETTERS_QUERY } from "@/sanity/lib/queries";
-import { SANITY_QUERY_TAGS } from "@/sanity/lib/revalidation";
 import Image from "next/image";
 
 const PAGE_SIZE = 12;
-type NewsletterListItem = {
-  _id: string;
-  year: string;
-  month: string;
-  link: string;
-  slug?: string;
-};
 
 export default async function ResourcesNewsletters() {
   const currentPage = 1;
@@ -20,15 +12,8 @@ export default async function ResourcesNewsletters() {
   const end = start + PAGE_SIZE;
 
   const [newsletters, total] = await Promise.all([
-    sanityFetch<NewsletterListItem[]>({
-      query: NEWSLETTERS_QUERY,
-      params: { start, end },
-      tags: [...SANITY_QUERY_TAGS.newsletters],
-    }),
-    sanityFetch<number>({
-      query: NEWSLETTERS_COUNT_QUERY,
-      tags: [...SANITY_QUERY_TAGS.newsletters],
-    }),
+    fetchSanity(NEWSLETTERS_QUERY, { start, end }),
+    fetchSanity(NEWSLETTERS_COUNT_QUERY),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);

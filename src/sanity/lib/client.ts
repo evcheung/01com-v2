@@ -52,5 +52,11 @@ export function fetchLatestSanity<Result = any>(
   query: string,
   params: QueryParams = {},
 ) {
+  if (!sanityReadToken && process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'Missing SANITY_API_READ_TOKEN or SANITY_PREVIEW_READ_TOKEN. Production builds require a Sanity read token so latest investor content is fetched from the draft overlay instead of stale published data.',
+    )
+  }
+
   return latestContentClient.fetch<Result>(query, params, freshFetchOptions)
 }

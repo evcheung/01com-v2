@@ -11,7 +11,7 @@ import { Bottom } from "@/components/resources/Bottom";
 
 type RelevantLink = { _key: string; label: string; linkType: string | null; url: string | null };
 
-type Presentation = { _id: string; date: string; description: string; isFeatured: boolean; relevantLinks: RelevantLink[] | null };
+type Presentation = { _id: string; date: string; title: string; description: string; isFeatured: boolean; relevantLinks: RelevantLink[] | null };
 type PressRelease  = { _id: string; date: string; description: string; relevantLinks: RelevantLink[] | null };
 type FinancialResult = { _id: string; description: string; relevantLinks: RelevantLink[] | null };
 type InvestorVideo = { _id: string; title: string; description: string; link: string; isFeatured: boolean };
@@ -234,6 +234,11 @@ export default async function InvestorRelations() {
     { label: "Description", width: "w-[316px] shrink-0" },
     { label: "Relevant Links", width: "flex-1" },
   ];
+  const presentationTableCols = [
+    { label: "Date", width: "w-[228px] shrink-0" },
+    { label: "Title", width: "w-[316px] shrink-0" },
+    { label: "Relevant Links", width: "flex-1" },
+  ];
 
   return (
     <main
@@ -282,14 +287,14 @@ export default async function InvestorRelations() {
       <SectionTitle>Latest Presentation</SectionTitle>
       <section className="bg-white">
         <div className="max-w-[1512px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-[95px] py-10">
-          <TableHeader cols={tableCols} />
+          <TableHeader cols={presentationTableCols} />
           {presentations.map((row, i) => (
             <TableRow
               key={row._id}
               isLast={i === presentations.length - 1}
               cells={[
                 { content: row.date, width: "w-full lg:w-[228px] lg:shrink-0" },
-                { content: row.description, width: "w-full lg:w-[316px] lg:shrink-0" },
+                { content: row.title, width: "w-full lg:w-[316px] lg:shrink-0" },
                 {
                   content: (
                     <RelevantLinks

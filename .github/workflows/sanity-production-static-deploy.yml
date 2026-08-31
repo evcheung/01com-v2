@@ -1,0 +1,103 @@
+name: Sanity Production Static Deploy
+
+on:
+  repository_dispatch:
+    types: [sanity-production-deploy]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sanity-production-static-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build published site and deploy to production
+    runs-on: ubuntu-latest
+    environment: sanity-production
+    env:
+      NODE_VERSION: 24.14.0
+      SANITY_BUILD_PERSPECTIVE: published
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+      SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+      DEMO_SERVER_API_URL: ${{ secrets.DEMO_SERVER_API_URL }}
+      XMAIL_INSTALLATION_API_URL: ${{ secrets.XMAIL_INSTALLATION_API_URL }}
+      KEYSERVER_API_URL: ${{ secrets.KEYSERVER_API_URL }}
+      RECAPTCHA_SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
+      GOOGLE_API_ID: ${{ secrets.GOOGLE_API_ID }}
+      GOOGLE_AUTHORIZED_ORIGINS: ${{ secrets.GOOGLE_AUTHORIZED_ORIGINS }}
+      FACEBOOK_API_ID: ${{ secrets.FACEBOOK_API_ID }}
+      FACEBOOK_API_VERSION: ${{ secrets.FACEBOOK_API_VERSION }}
+      DEPLOY_HOST: ${{ secrets.PRODUCTION_DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.PRODUCTION_DEPLOY_USER }}
+      DEPLOY_PATH: ${{ secrets.PRODUCTION_DEPLOY_PATH }}
+      DEPLOY_SSH_KEY: ${{ secrets.PRODUCTION_DEPLOY_SSH_KEY }}
+      DEPLOY_KNOWN_HOSTS: ${{ secrets.PRODUCTION_DEPLOY_KNOWN_HOSTS }}
+      DEPLOY_PORT: ${{ vars.PRODUCTION_DEPLOY_PORT || '22' }}
+
+    steps:
+      - name: Validate required configuration
+        shell: bash
+        run: |
+          missing=0
+          required=(
+            NEXT_PUBLIC_SANITY_DATASET
+            NEXT_PUBLIC_SANITY_PROJECT_ID
+            DEPLOY_HOST
+            DEPLOY_USER
+            DEPLOY_PATH
+            DEPLOY_SSH_KEY
+            DEPLOY_KNOWN_HOSTS
+          )
+
+          for name in "${required[@]}"; do
+            if [[ -z "${!name:-}" ]]; then
+              echo "::error::Missing required configuration: ${name}"
+              missing=1
+            fi
+          done
+
+          exit "${missing}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static production export
+        run: npm run build
+
+      - name: Upload static artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanity-production-static-export
+          path: out
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Install SSH key
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          install -m 600 /dev/null ~/.ssh/deploy_key
+          printf '%s\n' "${DEPLOY_SSH_KEY}" > ~/.ssh/deploy_key
+          printf '%s\n' "${DEPLOY_KNOWN_HOSTS}" > ~/.ssh/known_hosts
+
+      - name: Deploy static export to production server
+        shell: bash
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT} -o StrictHostKeyChecking=yes" \
+            out/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH%/}/"
+

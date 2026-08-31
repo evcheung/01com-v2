@@ -49,6 +49,7 @@ Then edit `.env.production`:
 NEXT_PUBLIC_SANITY_DATASET=your_dataset_name
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_API_VERSION=your_api_version
+SANITY_BUILD_PERSPECTIVE=published
 KEYSERVER_API_URL=https://keyserver000101.01com.com
 RECAPTCHA_SITE_KEY=your_recaptcha_site_key
 ```
@@ -62,6 +63,10 @@ building the static export. `KEYSERVER_API_URL` is converted into the browser
 submit endpoint `${KEYSERVER_API_URL}/api/v1/installation`. Set
 `XMAIL_INSTALLATION_API_URL` directly instead if the test server proxies
 installation requests through another URL.
+
+For Sanity-triggered static deploys, set `SANITY_BUILD_PERSPECTIVE=drafts` in
+the preview workflow so draft and unpublished documents are included in the test
+build. Keep `SANITY_BUILD_PERSPECTIVE=published` for production builds.
 
 ---
 
@@ -84,7 +89,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 npm run build
 ```
 
-> **Note:** Client-side-only deployment (serving the compiled output without SSR) is currently being evaluated. The goal is to deploy only the static build artifacts instead of running the full Node.js server in production. This approach and a potential CI/CD pipeline via GitHub Actions will be documented here once finalized.
+Preview and production static builds can be run explicitly:
+
+```bash
+npm run build:preview
+npm run build:production
+```
+
+> **Note:** Phase 1 keeps `output: "export"` and deploys the generated `out/`
+> directory. The Sanity-triggered GitHub Actions setup is documented in
+> `ops/sanity/option-1-static-deploy.md`.
 
 ---
 

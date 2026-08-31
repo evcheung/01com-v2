@@ -5,6 +5,8 @@ import { draftMode } from "next/headers";
 import { apiVersion, dataset, projectId } from "../env";
 import { getSanityReadToken } from "./secrets";
 
+type SanityBuildPerspective = "published" | "drafts";
+
 export const client = createClient({
   projectId,
   dataset,
@@ -13,17 +15,54 @@ export const client = createClient({
   useCdn: false,
 });
 
-const sanityReadToken =
-  process.env.SANITY_API_READ_TOKEN || process.env.SANITY_PREVIEW_READ_TOKEN;
+function resolveSanityBuildPerspective(): SanityBuildPerspective {
+  const configured = process.env.SANITY_BUILD_PERSPECTIVE?.trim();
 
-const latestContentClient = sanityReadToken
-  ? client.withConfig({
+  if (!configured) {
+    return "published";
+  }
+
+  if (configured === "previewDrafts") {
+    return "drafts";
+  }
+
+  if (configured === "published" || configured === "drafts") {
+    return configured;
+  }
+
+  throw new Error(
+    'Invalid SANITY_BUILD_PERSPECTIVE. Use "published" or "drafts".',
+  );
+}
+
+export const sanityBuildPerspective = resolveSanityBuildPerspective();
+
+function createBuildContentClient() {
+  if (sanityBuildPerspective === "drafts") {
+    const sanityReadToken = getSanityReadToken();
+
+    if (!sanityReadToken) {
+      throw new Error(
+        "SANITY_BUILD_PERSPECTIVE=drafts requires SANITY_PREVIEW_READ_TOKEN or SANITY_API_READ_TOKEN.",
+      );
+    }
+
+    return client.withConfig({
       token: sanityReadToken,
       perspective: "drafts",
       useCdn: false,
       stega: false,
-    })
-  : client;
+    });
+  }
+
+  return client.withConfig({
+    perspective: "published",
+    useCdn: false,
+    stega: false,
+  });
+}
+
+const buildContentClient = createBuildContentClient();
 
 const sanityBuildTagSource =
   process.env.SANITY_BUILD_CACHE_BUSTER ||
@@ -87,15 +126,15 @@ export function fetchSanity<Result = any>(
   query: string,
   params: QueryParams = {},
 ) {
-  return client.fetch<Result>(query, params, freshFetchOptions);
+  return buildContentClient.fetch<Result>(query, params, freshFetchOptions);
 }
 
-// Static export builds need the saved Sanity draft overlay for investor content
-// when the deployment provides a server-side read token.
+// Backward-compatible alias for older investor pages. The selected build
+// perspective is now controlled globally by SANITY_BUILD_PERSPECTIVE.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fetchLatestSanity<Result = any>(
   query: string,
   params: QueryParams = {},
 ) {
-  return latestContentClient.fetch<Result>(query, params, freshFetchOptions);
+  return buildContentClient.fetch<Result>(query, params, freshFetchOptions);
 }

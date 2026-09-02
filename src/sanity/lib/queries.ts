@@ -54,10 +54,10 @@ export const REWARD_SLUGS_QUERY = defineQuery(`*[_type == "reviews-awards" && de
 const relevantLinksProjection = `relevantLinks[]{ _key, label, linkType, url }`;
 
 export const INVESTOR_LATEST_PRESENTATION_QUERY = defineQuery(
-    `*[_type == "investor-relations-latest-presentation"] | order(_updatedAt desc) { _id, date, description, isFeatured, ${relevantLinksProjection} }`
+    `*[_type == "investor-relations-latest-presentation"] | order(_updatedAt desc) { _id, date, "title": coalesce(title, description), description, isFeatured, ${relevantLinksProjection} }`
 );
 export const INVESTOR_LATEST_PRESENTATION_FEATURED_QUERY = defineQuery(
-    `*[_type == "investor-relations-latest-presentation" && isFeatured == true][0] { _id, date, description, isFeatured, ${relevantLinksProjection} }`
+    `*[_type == "investor-relations-latest-presentation" && isFeatured == true][0] { _id, date, "title": coalesce(title, description), description, isFeatured, ${relevantLinksProjection} }`
 );
 
 export const INVESTOR_RECENT_EVENTS_QUERY = defineQuery(

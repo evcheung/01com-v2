@@ -57,7 +57,7 @@ function buildHref(
  * Pagination
  * ──────────
  * Server-friendly pagination that uses path segments `/page/N`, which works
- * with static export. Renders Previous / page numbers (with ellipses) / Next
+ * with server-rendered routes. Renders Previous / page numbers (with ellipses) / Next
  * links following the project's design system.
  */
 export function Pagination({

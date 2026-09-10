@@ -32,6 +32,7 @@ export async function POST(request: NextRequest) {
     // Broad fallback for CMS-driven sites: any valid Sanity content mutation
     // invalidates the full app cache tree on the next visit.
     revalidatePath("/", "layout");
+    revalidateTag("sanity", "max");
 
     for (const tag of tags) {
       revalidateTag(tag, "max");
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
       revalidated: true,
       revalidatedPath: "/",
       paths,
-      tags,
+      tags: ["sanity", ...tags],
       type: body._type,
     });
   } catch (error) {

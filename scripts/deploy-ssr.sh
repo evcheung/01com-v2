@@ -16,5 +16,6 @@ if [[ "${current_branch}" != "${deploy_branch}" ]]; then
 fi
 
 git pull --ff-only origin "${deploy_branch}"
+npm ci
 npm run build
-pm2 restart "${pm2_app_name}"
+pm2 reload "${pm2_app_name}" --update-env

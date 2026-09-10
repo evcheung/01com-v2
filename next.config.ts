@@ -79,8 +79,8 @@ function resolveGoogleAuthorizedOrigins() {
 }
 
 const nextConfig: NextConfig = {
-  output: "export",
   trailingSlash: true,
+  poweredByHeader: false,
   env: {
     DEMO_SERVER_API_URL: resolveDemoApiUrl(),
     XMAIL_INSTALLATION_API_URL: resolveXMailInstallationApiUrl(),
@@ -99,7 +99,6 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -118,6 +117,34 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find((rule: { test?: { test?: (value: string) => boolean } }) =>
+      rule.test?.test?.(".svg"),
+    );
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule?.issuer,
+        resourceQuery: {
+          not: [...(fileLoaderRule?.resourceQuery?.not ?? []), /url/],
+        },
+        use: ["@svgr/webpack"],
+      },
+    );
+
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i;
+    }
+
+    return config;
+  },
+
   turbopack: {
     rules: {
       "*.svg": {
@@ -125,6 +152,15 @@ const nextConfig: NextConfig = {
         as: "*.js",
       },
     },
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Accel-Buffering", value: "no" }],
+      },
+    ];
   },
 };
 

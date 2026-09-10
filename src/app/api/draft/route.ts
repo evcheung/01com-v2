@@ -9,7 +9,7 @@ function getPreviewSecretClient() {
   const token = getSanityReadToken();
 
   if (!token) {
-    throw new Error("Missing Sanity read token. Set SANITY_PREVIEW_READ_TOKEN or SANITY_API_READ_TOKEN.");
+    throw new Error("Missing Sanity read token. Set SANITY_PREVIEW_READ_TOKEN.");
   }
 
   return client.withConfig({ token });

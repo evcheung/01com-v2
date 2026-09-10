@@ -7,17 +7,6 @@ import { notFound } from "next/navigation";
 
 const PAGE_SIZE = 9;
 
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const total = await fetchSanity<number>(RELEASES_COUNT_QUERY);
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-
-  return Array.from({ length: totalPages }, (_, i) => ({
-    page: String(i + 1),
-  }));
-}
-
 export default async function PressReleasesPaginatedPage({
   params,
 }: {

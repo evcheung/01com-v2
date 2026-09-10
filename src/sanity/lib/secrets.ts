@@ -1,4 +1,5 @@
 export function getSanityReadToken() {
+  // Keep preview credentials isolated from any older, shared API read token.
   return process.env.SANITY_PREVIEW_READ_TOKEN || process.env.SANITY_API_READ_TOKEN;
 }
 

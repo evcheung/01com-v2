@@ -6,6 +6,11 @@ import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { SanityLive } from "@/sanity/lib/client";
 import "./globals.css";
 
+// This site is deployed as a Node.js application, not as a static export.
+// Keep every route request-rendered, including marketing pages that otherwise
+// have no dynamic data dependency for Next.js to detect.
+export const dynamic = "force-dynamic";
+
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const urbanist = Urbanist({

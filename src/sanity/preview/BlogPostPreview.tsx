@@ -32,12 +32,21 @@ export const BlogPostPreview: UserViewComponent = ({ document }) => {
     }
 
     let cancelled = false;
-    const origin = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+    // A hosted Sanity Studio is a separately built browser app. It only exposes
+    // `SANITY_STUDIO_*` variables, so it must not infer the preview host from
+    // the Studio's own `*.sanity.studio` origin.
+    const origin = process.env.SANITY_STUDIO_PREVIEW_URL;
 
     async function createPreviewUrl() {
       setPreview({ status: "loading" });
 
       try {
+        if (!origin) {
+          throw new Error(
+            "Missing preview URL. Set SANITY_STUDIO_PREVIEW_URL when building the Studio.",
+          );
+        }
+
         const { secret } = await createPreviewSecret(
           client,
           "01com-v2/blog-post-preview",

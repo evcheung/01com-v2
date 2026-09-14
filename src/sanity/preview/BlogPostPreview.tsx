@@ -56,7 +56,7 @@ export const BlogPostPreview: UserViewComponent = ({ document }) => {
         const url = new URL("/api/draft", origin);
 
         // The endpoint validates this short-lived secret, sets the server-side
-        // Draft Mode cookie, and redirects to this post's URL.
+        // Draft Mode cookie, and redirects the iframe to this post's URL.
         url.searchParams.set("sanity-preview-secret", secret);
         url.searchParams.set("sanity-preview-pathname", `/resources/blog/${slug}`);
         url.searchParams.set("sanity-preview-perspective", "previewDrafts");
@@ -97,28 +97,11 @@ export const BlogPostPreview: UserViewComponent = ({ document }) => {
   }
 
   return (
-    <div style={{ maxWidth: 640, padding: "1.5rem" }}>
-      <h2 style={{ marginTop: 0 }}>Preview: {title}</h2>
-      <p>
-        Open the draft preview in a separate tab. This keeps the preview site protected from
-        cross-origin framing while still enabling Draft Mode for this post.
-      </p>
-      <a
-        href={preview.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-block",
-          background: "#2276fc",
-          borderRadius: 3,
-          color: "#fff",
-          fontWeight: 600,
-          padding: "0.75rem 1rem",
-          textDecoration: "none",
-        }}
-      >
-        Open draft preview
-      </a>
-    </div>
+    <iframe
+      key={preview.url}
+      src={preview.url}
+      title={`Preview: ${title}`}
+      style={{ border: 0, display: "block", height: "calc(100vh - 5rem)", width: "100%" }}
+    />
   );
 };

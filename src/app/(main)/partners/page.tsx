@@ -112,6 +112,17 @@ const partners: Partners[] = [
     ],
   },
   {
+    logo: "/partners_assets/logos/utimaco.png",
+    logoWidth: 320,
+    logoHeight: 72,
+    links: [
+      {
+        name: "PR Announcement",
+        url: "https://www.newsfilecorp.com/release/314284",
+      },
+    ],
+  },
+  {
     logo: "/partners_assets/logos/pwc.png",
     links: [
       {

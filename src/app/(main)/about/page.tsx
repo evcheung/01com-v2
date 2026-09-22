@@ -13,6 +13,7 @@ const leaders = [
   {
     name: "Jeffrey Kilborn",
     title: "CFO",
+    pic: "/about_assets/jeffrey-kilborn.jpg",
     linkedIn: "https://www.linkedin.com/in/jeffrey-kilborn/",
     bio: [
       "Jeff has more than 20 years of experience in public companies, capital markets, corporate finance and strategic advisory. Most recently, he served as Chief Financial Officer and Vice President, Corporate Development of Atlas Salt Inc., where he played a key role in raising more than $25 million in capital during his tenure. He also served as a Director and Chair of the Audit Committee of Canadian Gold Corp.",

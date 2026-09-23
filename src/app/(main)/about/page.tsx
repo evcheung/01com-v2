@@ -11,12 +11,13 @@ const leaders = [
     ],
   },
   {
-    name: "Brian Stringer",
+    name: "Jeffrey Kilborn",
     title: "CFO",
-    pic: "/about_assets/g.png",
-    linkedIn: "https://www.linkedin.com/in/brian-stringer-220b5323/",
+    pic: "/about_assets/jeffrey-kilborn.jpg",
+    linkedIn: "https://www.linkedin.com/in/jeffrey-kilborn/",
     bio: [
-      "A Chartered Professional Accountant (CPA) with 25+ years experience in managing publicly listed companies, Brian has been the CFO of 01 for over 18 years. Prior to joining 01, Brian worked as the CFO of various other publicly listed companies. In addition to his extensive CFO experience, Brian also has 12 years experience in patent prosecution and patent litigation in the US and Canada.",
+      "Jeff has more than 20 years of experience in public companies, capital markets, corporate finance and strategic advisory. Most recently, he served as Chief Financial Officer and Vice President, Corporate Development of Atlas Salt Inc., where he played a key role in raising more than $25 million in capital during his tenure. He also served as a Director and Chair of the Audit Committee of Canadian Gold Corp.",
+      "Throughout his career, Jeff has developed broad experience across equity and debt financings, mergers and acquisitions, corporate strategy, financial reporting and public company governance. Jeff holds an Honours Business Administration degree from the Ivey Business School at Western University and is a Certified Management Consultant through the Canadian Association of Management Consultants.",
     ],
   },
   {
@@ -58,14 +59,23 @@ const leaders = [
     ],
   },
   {
-    name: "Edoardo Persichetti",
-    title: "PQC Advisor",
+    name: "Dr. Edoardo Persichetti",
+    title: "Board Member & PQC Advisor",
     pic: "/about_assets/v.png",
     linkedIn: "https://www.linkedin.com/in/edoardo-persichetti-56a92a8b/",
     bio: [
       "Dr. Edoardo Persichetti is currently an Associate Professor in the Department of Mathematical and Statistics at Florida Atlantic University. Before moving to Florida, he was a Postdoc (Adiunkt Naukowy) in the Cryptography and Data Security Group at Warsaw University in Poland. He completed his PhD in Mathematics in late 2012 at University of Auckland, New Zealand.",
       "Dr. Persichetti's research interests revolve around public-key cryptography and number theory, with a particular focus on code-based cryptography. He has an established track record of publications in cryptography. He is a co-author of four distinct submissions to the first NIST Post-Quantum Standardization process. Three of the four algorithms - Classic McEliece, BIKE and HQC reached the conclusive round, with HQC being selected in March 2025 as one of the two new standards for encryption. He has also co-authored three submissions to NIST's \"onramp\" call for novel signature schemes.",
       "Dr. Persichetti is one of the most acclaimed researchers in code-based cryptography frequently invited to act as a program committee member for major cryptography conferences such as CRYPTO, EUROCRYPT and ASIACRYPT, as well as a peer-reviewer for publications like the Journal of Mathematical Cryptology and Designs, Codes and Cryptography. He was the chair of the 2018 edition of the Code-Based Cryptography Workshop (CBC 2018) and the co-chair of the 2019 and 2020 editions. He is currently serving as the General Chair for EUROCRYPT 2026 and as the Program Chair for PKC 2026. His expertise is called upon regularly to speak at events such as the Joint Mathematics Meetings (JMM), coding and cryptography by AMS, SIAM and DIMACS, workshops on Post-Quantum Cryptography, and many others.",
+    ],
+  },
+  {
+    name: "Brian Stringer",
+    title: "Advisor",
+    pic: "/about_assets/g.png",
+    linkedIn: "https://www.linkedin.com/in/brian-stringer-220b5323/",
+    bio: [
+      "A Chartered Professional Accountant (CPA) with 25+ years experience in managing publicly listed companies, Brian has been the CFO of 01 for over 18 years. Prior to joining 01, Brian worked as the CFO of various other publicly listed companies. In addition to his extensive CFO experience, Brian also has 12 years experience in patent prosecution and patent litigation in the US and Canada.",
     ],
   },
 ];

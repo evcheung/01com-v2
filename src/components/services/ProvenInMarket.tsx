@@ -2,20 +2,13 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 interface ProvenInMarketProps {
   body: ReactNode;
-  /** CTA href, e.g. "/qlabs" */
-  ctaHref?: string;
-  ctaLabel?: string;
 }
 
 /**
  * "Proven in Market" callout — light gradient panel with a circular logo on the left
  * connected by a thin curved bracket to the title/body block on the right.
  */
-export function ProvenInMarket({
-  body,
-  ctaHref = "#",
-  ctaLabel = "Learn More about QLABS",
-}: ProvenInMarketProps) {
+export function ProvenInMarket({ body }: ProvenInMarketProps) {
   return (
     <section className="bg-white py-12 sm:py-20">
       <div className="max-w-[1512px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[95px]">

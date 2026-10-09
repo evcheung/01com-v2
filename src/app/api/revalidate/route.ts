@@ -10,7 +10,10 @@ export async function POST(request: NextRequest) {
 
   if (!secret) {
     return NextResponse.json(
-      { message: "Missing webhook secret. Set SANITY_WEBHOOK_SECRET or SANITY_REVALIDATE_SECRET." },
+      {
+        message:
+          "Missing webhook secret. Set SANITY_WEBHOOK_SECRET, SANITY_REVALIDATE_SECRET, or SANITY_PREVIEW_WEBHOOK_SECRET.",
+      },
       { status: 500 },
     );
   }

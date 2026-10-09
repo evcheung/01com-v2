@@ -11,7 +11,7 @@ export const documentsCards: DocumentsCardData[] = [
     items: [
       {
         title: "IronCAP™ XMail",
-        href: "https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_X%2FWelcome_to_IronCap_X.htm",
+        href: "https://www.01com.com/01com/ironcap-x/webhelp/index.htm#t=IronCAP_XMail%2FWelcome_to_IronCAP_XMail.htm",
       },
       {
         title: "IronCAP™ Tutorial",

@@ -50,10 +50,10 @@ export default function Support() {
                   height={40}
                 />
                 <a
-                  href="mailto:info@ironcap.ca"
+                  href="mailto:help@01com.com"
                   className="text-steel-gray text-[16px] hover:text-quantum-blue transition-colors break-words min-w-0"
                 >
-                  info@ironcap.ca
+                  help@01com.com
                 </a>
               </div>
               {/* Live Chat Pre-Sales */}

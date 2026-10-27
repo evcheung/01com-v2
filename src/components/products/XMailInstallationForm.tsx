@@ -1,12 +1,11 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { Trademark } from "./TrademarkText";
 
 const INSTALLATION_API_URL =
   process.env.XMAIL_INSTALLATION_API_URL || "/api/installation";
 const RECAPTCHA_SITE_KEY = process.env.XMAIL_RECAPTCHA_SITE_KEY || "";
-
-const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
 
 type InstallationFormValues = {
   email: string;

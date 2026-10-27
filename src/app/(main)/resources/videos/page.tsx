@@ -3,6 +3,18 @@ import { ResourceSectionTitle } from "@/components/resources/ResourceSectionTitl
 
 const videos = [
   {
+    title:
+      "Andrew Cheung, CEO 01 Quantum Inc. featured by Quantum Economy Podcast",
+    description: "01 Quantum talks about its Quantum-safe PQC solutions.",
+    href: "https://www.youtube.com/watch?v=KdDLYPvZ2q8",
+  },
+  {
+    title: "Cantech 2026 - 01 Quantum",
+    description:
+      "Interview Andrew Cheung of 01 Quantum - featured by Cantech 2026.",
+    href: "https://youtu.be/7O4LCTXUsiI",
+  },
+  {
     title: "Vulnerabilities of Blockchain Security in the World of Quantum Computing",
     description:
       "PKI is the security backbone of blockchain technology to ensure trustworthiness. In the world of cryptocurrencies, private keys are used by the payer to sign and initiate a transaction. It is also used by a validator to sign and validate a transaction. The rapid development of quantum computing is posing security threats to PKI breaking the backbone of blockchain security because transactions cannot be trusted anymore. In this session we will demonstrate some practical implementations of PQC that have been performed to convert an existing blockchain network to become quantum-safe.",

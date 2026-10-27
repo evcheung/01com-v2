@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Trademark, TrademarkText } from "./TrademarkText";
 import { XMailInstallationForm } from "./XMailInstallationForm";
-
-const Trademark = () => <sup className="text-[0.55em]">TM</sup>;
 
 const sharedFeatures = [
   "Protected by IronCAP™ Cryptography",
@@ -119,7 +118,7 @@ export default function XMailUsageDownloadPage({ type }: { type: UsageType }) {
                       {note.title}
                     </p>
                     <p className="mt-2 text-[14px] leading-[22px] text-steel-gray">
-                      {note.body}
+                      <TrademarkText text={note.body} />
                     </p>
                   </div>
                 ))}
@@ -137,7 +136,9 @@ export default function XMailUsageDownloadPage({ type }: { type: UsageType }) {
               {features.map((feature) => (
                 <li key={feature} className="flex gap-3 text-[14px] leading-[22px]">
                   <CheckIcon />
-                  <span>{feature}</span>
+                  <span>
+                    <TrademarkText text={feature} />
+                  </span>
                 </li>
               ))}
             </ul>

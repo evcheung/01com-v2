@@ -3,6 +3,10 @@ import {
   IRONCAP_X_BUSINESS_DOWNLOAD_ROUTE,
   IRONCAP_X_PERSONAL_DOWNLOAD_ROUTE,
 } from "@/components/products/ironcapDownloadLinks";
+import {
+  Trademark,
+  TrademarkText,
+} from "@/components/products/TrademarkText";
 
 const downloadOptions = [
   {
@@ -27,7 +31,7 @@ export default function IroncapXMailFreeDownloadPage() {
       <div className="mx-auto flex max-w-[1512px] flex-col gap-8 px-6 pb-14 md:gap-12 md:px-[95px] md:pb-[72px]">
         <div className="mx-auto flex max-w-[860px] flex-col gap-5 text-center">
           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-quantum-green">
-            IronCAP<sup className="text-[0.55em]">TM</sup> XMail
+            IronCAP<Trademark /> XMail
           </p>
           <h2 className="text-[28px] font-medium leading-[36px] text-quantum-blue sm:text-[32px] sm:leading-[42px]">
             Try it Free
@@ -53,7 +57,7 @@ export default function IroncapXMailFreeDownloadPage() {
                   {option.label}
                 </h3>
                 <p className="text-[15px] leading-[24px] text-steel-gray">
-                  {option.description}
+                  <TrademarkText text={option.description} />
                 </p>
               </div>
 
@@ -79,8 +83,8 @@ export default function IroncapXMailFreeDownloadPage() {
               Co branding guidelines
             </h3>
             <p className="max-w-[720px] text-[15px] leading-[24px] text-lite-gray">
-              Review the IronCAP co-branding guidance for approved logo usage,
-              visual standards, and partner presentation rules.
+              Review the IronCAP<Trademark /> co-branding guidance for approved
+              logo usage, visual standards, and partner presentation rules.
             </p>
           </div>
 

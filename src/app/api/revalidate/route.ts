@@ -35,10 +35,13 @@ export async function POST(request: NextRequest) {
     // Broad fallback for CMS-driven sites: any valid Sanity content mutation
     // invalidates the full app cache tree on the next visit.
     revalidatePath("/", "layout");
-    revalidateTag("sanity", "max");
+    // A webhook is an authoritative external mutation. Expire these entries
+    // immediately so the first request after Publish reads the new content
+    // instead of receiving one stale response while the cache refreshes.
+    revalidateTag("sanity", { expire: 0 });
 
     for (const tag of tags) {
-      revalidateTag(tag, "max");
+      revalidateTag(tag, { expire: 0 });
     }
 
     for (const target of paths) {

@@ -2,6 +2,10 @@ import Image from "next/image";
 
 const PATENTS = [
   {
+    title: "US Patent #12,744,764",
+    link: "/pdf/US12744764.pdf",
+  },
+  {
     title: "US Patent #11,669,833",
     link: "https://www.01com.com/pdf/US11669833.pdf",
   },

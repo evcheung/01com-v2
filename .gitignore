@@ -45,3 +45,4 @@ next-env.d.ts
 
 .claude/.env.local
 .vscode/settings.json
+/sanity-deploy-strategy-comparison.pdf

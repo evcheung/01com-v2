@@ -2,21 +2,8 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchSanity } from "@/sanity/lib/client";
-import { BLOG_QUERY, BLOG_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { BLOG_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
-
-const EMPTY_BLOG_STATIC_SLUG = "__no-blog__";
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const items = await fetchSanity(BLOG_SLUGS_QUERY);
-  const slugs = (items ?? [])
-    .filter((item: { slug: string | null }): item is { slug: string } => Boolean(item.slug))
-    .map((item: { slug: string }) => ({ slug: item.slug }));
-
-  return slugs.length > 0 ? slugs : [{ slug: EMPTY_BLOG_STATIC_SLUG }];
-}
 
 export default async function PostBlogPage({
   params,
@@ -24,7 +11,6 @@ export default async function PostBlogPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (slug === EMPTY_BLOG_STATIC_SLUG) notFound();
 
   const post = await fetchSanity(BLOG_QUERY, { slug });
 
@@ -51,17 +37,49 @@ export default async function PostBlogPage({
             />
           </div>
         )}
-        <p className="text-steel-gray text-[13px] mb-4">{new Date(post.publishedAt).toDateString()}</p>
-        <h1 className="text-[#2b2f38] text-[28px] md:text-[36px] font-semibold leading-tight mb-8">
+        <p className="text-steel-gray text-[0.9rem] mb-4">{new Date(post.publishedAt).toDateString()}</p>
+        <h1 className="blog-post-title text-[#2b2f38] font-semibold mb-8">
           {post.title}
         </h1>
-        <p className="text-steel-gray text-[15px] leading-[24px] mb-8 border-l-4 border-quantum-blue pl-4">
+        <p className="text-[#171717] text-[1.05rem] font-bold leading-[1.55] mb-8">
           {post.summary}
         </p>
         {post.body && (
-          <div className="prose prose-slate max-w-none text-[15px] leading-[26px] text-gray-800">
+          <div className="blog-article-content max-w-none text-gray-800">
             <PortableText value={post.body} />
           </div>
+        )}
+        {(post.previousPost || post.nextPost) && (
+          <nav aria-label="Blog post navigation" className="mt-14 border-t border-[#d7dce2] pt-8">
+            <div className="grid gap-6 sm:grid-cols-2">
+              {post.previousPost && (
+                <Link
+                  href={`/resources/blog/${post.previousPost.slug}`}
+                  className="group max-w-sm text-left"
+                >
+                  <span className="block text-[0.75rem] font-medium uppercase tracking-[0.12em] text-quantum-blue">
+                    ← Previous post
+                  </span>
+                  <span className="mt-2 block text-[1.05rem] font-medium leading-snug text-[#2b2f38] group-hover:underline">
+                    {post.previousPost.title}
+                  </span>
+                </Link>
+              )}
+              {post.nextPost && (
+                <Link
+                  href={`/resources/blog/${post.nextPost.slug}`}
+                  className={`group max-w-sm text-right sm:justify-self-end ${post.previousPost ? "" : "sm:col-start-2"}`}
+                >
+                  <span className="block text-[0.75rem] font-medium uppercase tracking-[0.12em] text-quantum-blue">
+                    Next post →
+                  </span>
+                  <span className="mt-2 block text-[1.05rem] font-medium leading-snug text-[#2b2f38] group-hover:underline">
+                    {post.nextPost.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </nav>
         )}
       </div>
     </section>

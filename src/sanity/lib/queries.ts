@@ -2,7 +2,23 @@ import { defineQuery } from 'next-sanity'
 
 export const BLOGS_QUERY = defineQuery(`*[_type == "blogPost"] | order(publishedAt desc) [$start...$end] { _id, publishedAt, title, "slug": slug.current }`)
 export const BLOGS_COUNT_QUERY = defineQuery(`count(*[_type == "blogPost"])`)
-export const BLOG_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0] { _id, publishedAt, title, summary, body, "mainImage": mainImage.asset->url, "mainImageAlt": mainImage.alt }`)
+export const BLOG_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0] {
+  _id,
+  publishedAt,
+  title,
+  summary,
+  body,
+  "mainImage": mainImage.asset->url,
+  "mainImageAlt": mainImage.alt,
+  "previousPost": *[_type == "blogPost" && defined(slug.current) && publishedAt < ^.publishedAt] | order(publishedAt desc)[0] {
+    title,
+    "slug": slug.current
+  },
+  "nextPost": *[_type == "blogPost" && defined(slug.current) && publishedAt > ^.publishedAt] | order(publishedAt asc)[0] {
+    title,
+    "slug": slug.current
+  }
+}`)
 export const BLOG_SLUGS_QUERY = defineQuery(`*[_type == "blogPost" && defined(slug.current)] { "slug": slug.current }`)
 
 export const NEWS_QUERY = defineQuery(`*[_type == "news"] | order(date desc) [$start...$end] { _id, date, title, "slug": slug.current }`)

@@ -79,8 +79,8 @@ function resolveGoogleAuthorizedOrigins() {
 }
 
 const nextConfig: NextConfig = {
-  output: "export",
   trailingSlash: true,
+  poweredByHeader: false,
   env: {
     DEMO_SERVER_API_URL: resolveDemoApiUrl(),
     XMAIL_INSTALLATION_API_URL: resolveXMailInstallationApiUrl(),
@@ -99,7 +99,6 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -153,6 +152,15 @@ const nextConfig: NextConfig = {
         as: "*.js",
       },
     },
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Accel-Buffering", value: "no" }],
+      },
+    ];
   },
 };
 

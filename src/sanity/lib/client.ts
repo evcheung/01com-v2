@@ -1,56 +1,59 @@
-import { createClient } from 'next-sanity'
-import type { QueryParams } from '@sanity/client'
+import type { QueryParams } from "@sanity/client";
+import { createClient } from "next-sanity";
+import { defineLive } from "next-sanity/live";
 
-import { apiVersion, dataset, projectId } from '../env'
+import { apiVersion, dataset, projectId } from "../env";
+import { getSanityReadToken } from "./secrets";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false,
-})
+  perspective: "published",
+  useCdn: true,
+  stega: {
+    studioUrl:
+      process.env.NEXT_PUBLIC_SANITY_STUDIO_URL || `${siteUrl}/studio`,
+  },
+});
 
-const sanityReadToken =
-  process.env.SANITY_API_READ_TOKEN || process.env.SANITY_PREVIEW_READ_TOKEN
+const serverToken = getSanityReadToken() || false;
+const browserToken =
+  process.env.SANITY_BROWSER_READ_TOKEN || getSanityReadToken() || false;
 
-const latestContentClient = sanityReadToken
-  ? client.withConfig({
-      token: sanityReadToken,
-      perspective: 'drafts',
-      useCdn: false,
-      stega: false,
-    })
-  : client
+const { sanityFetch: liveSanityFetch, SanityLive } = defineLive({
+  client,
+  serverToken,
+  browserToken,
+});
 
-const sanityBuildTagSource =
-  process.env.SANITY_BUILD_CACHE_BUSTER ||
-  process.env.VERCEL_GIT_COMMIT_SHA ||
-  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
-  Date.now().toString(36)
+export { SanityLive };
 
-const sanityBuildTag = `build.${sanityBuildTagSource}`
-  .replace(/[^a-z0-9._-]/gi, '-')
-  .slice(0, 75)
+// Preserve the existing call signature while routing all CMS reads through
+// Sanity Live. It handles published/draft perspectives, source maps, caching,
+// and live invalidation based on Next.js Draft Mode.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function fetchSanity<Result = any>(
+  query: string,
+  params: QueryParams = {},
+  tags: string[] = [],
+) {
+  const { data } = await liveSanityFetch({
+    query,
+    params,
+    tags: Array.from(new Set(["sanity", ...tags])),
+  });
 
-const freshFetchOptions = {
-  tag: sanityBuildTag,
+  return data as Result;
 }
 
-// Match Sanity client's default fetch ergonomics while cache-busting each build.
+// Backward-compatible alias for investor pages.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function fetchSanity<Result = any>(
+export async function fetchLatestSanity<Result = any>(
   query: string,
   params: QueryParams = {},
 ) {
-  return client.fetch<Result>(query, params, freshFetchOptions)
-}
-
-// Static export builds need the saved Sanity draft overlay for investor content
-// when the deployment provides a server-side read token.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function fetchLatestSanity<Result = any>(
-  query: string,
-  params: QueryParams = {},
-) {
-  return latestContentClient.fetch<Result>(query, params, freshFetchOptions)
+  return fetchSanity<Result>(query, params, ["investor-relations"]);
 }

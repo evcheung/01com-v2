@@ -1,0 +1,17 @@
+<service>
+  <id>01com-v2</id>
+  <name>01com-v2 Next.js</name>
+  <description>Server-rendered 01com-v2 Next.js application</description>
+  <executable>C:\Program Files\nodejs\node.exe</executable>
+  <arguments>node_modules\next\dist\bin\next start -H 127.0.0.1 -p 3000</arguments>
+  <workingdirectory>C:\inetpub\01com-v2</workingdirectory>
+  <env name="NODE_ENV" value="production" />
+  <log mode="roll-by-size-time">
+    <sizeThreshold>10240</sizeThreshold>
+    <pattern>yyyyMMdd</pattern>
+    <autoRollAtTime>00:00:00</autoRollAtTime>
+    <zipOlderThanNumDays>7</zipOlderThanNumDays>
+    <zipDateFormat>yyyyMMdd</zipDateFormat>
+  </log>
+  <onfailure action="restart" delay="10 sec" />
+</service>

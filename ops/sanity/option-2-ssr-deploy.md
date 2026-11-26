@@ -56,7 +56,7 @@ In `sanity.io/manage`, configure:
 3. API > Webhooks: create one enabled document webhook with:
    - URL: `https://preview.01com.com/api/revalidate/`
    - Trigger: Create, Update, Delete
-   - Filter: `_type in ["blogPost", "news", "newsletters", "press-releases", "reviews-awards", "investor-relations-recent-events", "investor-relations-videos", "investor-relations-financial-results", "investor-relations-latest-presentation"]`
+   - Filter: `_type in ["blogPost", "news", "newsletters", "press-releases", "reviews-awards", "resourceVideo", "investor-relations-recent-events", "investor-relations-videos", "investor-relations-financial-results", "investor-relations-latest-presentation"]`
    - Projection: `{"_type": coalesce(_type, before()._type), "slug": coalesce(slug.current, before().slug.current)}`
    - HTTP method: `POST`
    - Drafts: disabled

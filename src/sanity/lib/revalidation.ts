@@ -53,6 +53,7 @@ const PATHS_BY_TYPE: Record<string, RevalidateTarget[]> = {
   "press-releases": RELEASE_PATHS,
   releases: RELEASE_PATHS,
   "reviews-awards": REWARD_PATHS,
+  resourceVideo: [{ path: "/resources/videos" }],
 };
 
 function getSpecificDetailPath(type: string, slug: string): string | undefined {

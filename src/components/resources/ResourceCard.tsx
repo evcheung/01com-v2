@@ -10,6 +10,7 @@ interface ResourceCardProps {
   ctaLabel: string;
   kind?: ResourceCardKind;
   eyebrow?: string;
+  date?: string;
 }
 
 function ResourceCardIcon({ kind = "link" }: { kind?: ResourceCardKind }) {
@@ -77,6 +78,7 @@ export function ResourceCard({
   ctaLabel,
   kind = "link",
   eyebrow,
+  date,
 }: ResourceCardProps) {
   return (
     <article className="h-full rounded-[20px] border border-lite-gray/60 bg-white px-6 py-7 sm:px-8 flex flex-col">
@@ -94,15 +96,27 @@ export function ResourceCard({
         {renderTrademarkText(description)}
       </p>
 
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center gap-2 text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline"
-      >
-        <ResourceCardIcon kind={kind} />
-        {ctaLabel}
-      </a>
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-quantum-blue text-[12px] font-semibold uppercase tracking-[0.12em] hover:underline"
+        >
+          <ResourceCardIcon kind={kind} />
+          {ctaLabel}
+        </a>
+        {date ? (
+          <time dateTime={date} className="text-steel-gray text-[14px]">
+            {new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              timeZone: "UTC",
+            })}
+          </time>
+        ) : null}
+      </div>
     </article>
   );
 }

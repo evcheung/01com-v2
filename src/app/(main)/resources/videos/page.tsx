@@ -22,6 +22,7 @@ export default async function ResourcesVideos() {
               href={video.link}
               ctaLabel="Watch Video"
               kind="video"
+              date={video.date}
             />
           ))}
         </div>

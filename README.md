@@ -99,3 +99,26 @@ npm run build
   ├── components/         # Reusable UI components
   ├── sanity/             # Sanity client configuration and queries
   ├── types/
+
+## Resource videos
+
+The Videos page reads published `Resource Videos` documents from Sanity, ordered
+by date (newest first). The date controls ordering and is not displayed on the
+cards. This site is a static export, so publishing video edits requires a new
+site build and deployment before they appear on the website. Studio schema
+changes also require a new build and deployment of the Studio hosted at
+`/studio`.
+
+The existing videos have been imported into the production dataset. To seed a
+different dataset, use an account with write access:
+
+```bash
+npx sanity datasets import sanity-migrations/resource-videos.ndjson --dataset YOUR_DATASET --missing
+```
+
+The import preserves the existing titles, descriptions, links and their prior
+order, but intentionally leaves dates empty because the page did not contain
+verified dates. Add a date to each imported video in Studio and publish it;
+undated videos appear after dated videos until then. The `--missing` flag avoids
+replacing an existing document with the same ID on a repeated import. Import
+into a new dataset before building the site so the existing videos remain visible.

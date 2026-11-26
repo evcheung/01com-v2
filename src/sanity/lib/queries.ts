@@ -1,5 +1,7 @@
 import { defineQuery } from 'next-sanity'
 
+export const RESOURCE_VIDEOS_QUERY = defineQuery(`*[_type == "resourceVideo"] | order(date desc, _id asc) { _id, title, description, link, date }`)
+
 export const BLOGS_QUERY = defineQuery(`*[_type == "blogPost"] | order(publishedAt desc) [$start...$end] { _id, publishedAt, title, "slug": slug.current }`)
 export const BLOGS_COUNT_QUERY = defineQuery(`count(*[_type == "blogPost"])`)
 export const BLOG_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0] { _id, publishedAt, title, summary, body, "mainImage": mainImage.asset->url, "mainImageAlt": mainImage.alt }`)
